@@ -1,0 +1,6 @@
+*.o
+src/librim.a
+src/rim
+src/rime
+src/rimh
+src/lxtest

@@ -7,70 +7,27 @@ PILE = CC_f2c=$(CC)  f77
 LIBRIM=librim.a
 AR = ar rv
 RAN = ranlib
-# make rim (generic instructions to be customized for each installation)
+
+# make rim (generic instructions)
 #
-# Rim executable
-#
+
+all: rim librim.a
+
+# creates rim, rime, rimh, 
+#    executes rimh (creation of help files), 
+#        installs programs and files
 rim::
-	(cd src;     make rim)
-	(cd src;     make rimlib)
-#	$(PILE) -o rim src/rim.o src/rimlib
-	$(PILE) -Bstatic -o rim src/rim.o src/rimlib
-#
-# Rim file editor (for debugging)
-#
-rime::
-	(cd src;     make rime)
-	(cd src;     make rimlib)
-	$(PILE) -o rime src/rime.o src/rimlib
-#
-# Rim help database generator
-#
-rimh::
-	(cd src;     make rimh)
-	(cd src;     make rimlib)
-	(cd src;     make librim.a)
-	$(PILE) -o rimh src/rimh.o src/rimlib -Lsrc -lrim
-#
-# Program to test text i/o and parsing routines
-#
-lxtest::
-	(cd src;     make lxtest)
-	(cd src;     make rimlib)
-	$(PILE) -o lxtest src/lxtest.o src/rimlib
-#
-# Help database
-#
-help::
-	(make rimh)
-	(rm -f rim_help.rimdb1)
-	(rm -f rim_help.rimdb2)
-	(rm -f rim_help.rimdb3)
-	rim src/rim_help.schema
-	rimh
-#
-# archive library for the user callable library
-#
-librim.a::
-	(cd src;     make librim.a)
-	cp src/librim.a .
-#
-# install everything
-#
-install::
-	install rim_help.rimdb1 /usr/local/lib
-	install rim_help.rimdb2 /usr/local/lib
-	install rim_help.rimdb3 /usr/local/lib
-	install rim /usr/local/bin
-	install rime /usr/local/bin
-	install librim.a /usr/lib
-	install rim.1 /usr/man/manl/rim.l
-#
-# clean-up
-#
-clean::
-	rm -f rimh
-	rm -f lxtest
-	rm -f src/*.o
+	run.setup
 	rm -f src/rimlib
-	rm -f doc/*.dvi *.log
+	find src -name "*.o" -exec rm -f {} \;
+	(cd src; make -f Makefile rim; mv rim $(UNIX_BIN);)
+	(cd src; make -f Makefile rime;	mv rime $(UNIX_BIN);)
+	rim src/rim_help.schema
+	make -f Makefile rimh
+#not required:	make -f Makefile help
+	$(GMAKE) -makeparentdir librim.a
+	(cd src; make -f Makefile librim.a; mv 'librim.a' ../$(LIBARCH)/librim.a;)
+	cp rim_help.rimdb1 rim_help.rimdb2 rim_help.rimdb3 /usr/local/lib
+	cp rim.1 /usr/man/man1/rim.1
+	find src -name "*.o" -exec rm -f {} \;
+	rm -f rimh src/rimh
