@@ -4,3 +4,10 @@ src/rim
 src/rime
 src/rimh
 src/lxtest
+.DS_Store
+
+build
+
+*.idx
+*.log
+
