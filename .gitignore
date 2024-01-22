@@ -11,3 +11,5 @@ build
 *.idx
 *.log
 
+.vscode/*
+
