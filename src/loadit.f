@@ -1,5 +1,5 @@
       SUBROUTINE LOADIT(MAT,ATT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE IS THE FORTRAN ROUTINE FOR LOADING DATA VALUES IN THE
 C  RIM DATA BASE.
@@ -8,13 +8,13 @@ C  PARAMETERS:
 C         MAT-----SCRATCH ARRAY FOR BUILDING TUPLES
 C         ATT-----ARRAY OF TUPLEA VALUES
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'files.d'
-      INCLUDE 'start.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'start.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'flags.inc'
 C
       INTEGER COLUMN
       LOGICAL EQKEYW

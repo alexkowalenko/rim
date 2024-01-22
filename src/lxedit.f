@@ -1,14 +1,14 @@
       SUBROUTINE LXEDIT
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RECALL AND EDIT AN INPUT LINE OR COMMAND
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'cards.d'
-      INCLUDE 'files.d'
-      INCLUDE 'prom.d'
-      INCLUDE 'msgcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'cards.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'prom.inc'
+      INCLUDE 'msgcom.inc'
 C
       INTEGER EDTREC(ZCARDW)
       INTEGER CPYREC(ZCARDW)

@@ -1,5 +1,5 @@
       PROGRAM MAIN
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     TEST THE FORTRAN INTERFACE OF RIM
 C
@@ -11,7 +11,7 @@ C
       INTEGER BUF(LBUF)
       CHARACTER*1 OP
 C
-      INCLUDE 'rimcom.d'
+      INCLUDE 'rimcom.inc'
 C
       NAMELIST /BREAK/ OP, BUF
 C

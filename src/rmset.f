@@ -1,13 +1,13 @@
       SUBROUTINE RMSET(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:  SET A PARAMETER
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'files.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'files.inc'
 C
       LOGICAL EQKEYW
       CHARACTER*(ZFNAML) FN

@@ -1,5 +1,5 @@
       SUBROUTINE IMSG(NUM,NUMC,MCONT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  ROUTINE TO FORMAT AND PRINT AN INTEGER
 C
@@ -11,8 +11,8 @@ C         MCONT---IF NON-BLANK MESSAGE CONTINUES ON NEXT CALL
 C
       CHARACTER*1 MCONT
 C
-      INCLUDE 'files.d'
-      INCLUDE 'msgcom.d'
+      INCLUDE 'files.inc'
+      INCLUDE 'msgcom.inc'
       PARAMETER (MAXL=24,MAXW=24/ZCW)
       INTEGER NSTR(MAXW)
 C

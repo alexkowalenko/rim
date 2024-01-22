@@ -1,5 +1,5 @@
       LOGICAL FUNCTION EQKEYW(I,KEYW)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     THIS FUNCTION COMPARES KEYW WITH ITEM I OF THE
 C     COMMAND TOKEN LIST
@@ -14,7 +14,7 @@ C                         AND C. ITEM IT MATCHES KEYWORD TO MINIMUM
 C                                OF 8 AND THE NUMBER OF CHARACTERS
 C                                IN ITEM I.
 C
-      INCLUDE 'tokens.d'
+      INCLUDE 'tokens.inc'
  
       CHARACTER*(*) KEYW
       L = LEN(KEYW)

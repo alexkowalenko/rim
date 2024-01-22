@@ -1,5 +1,5 @@
       SUBROUTINE BTSERT(VAL,IP,STACK,SP,LOC,IN)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  INSERT VAL INTO LOC REFERENCED BY THE STACK POINTER.
 C
@@ -8,9 +8,9 @@ C         BTGET---PAGING ROUTINE
 C         BTPUT---PAGING ROUTINE
 C         BTMOVE--MOVES DATA BETWEEN AREAS
 C
-      INCLUDE 'f3com.d'
-      INCLUDE 'btbuf.d'
-      INCLUDE 'start.d'
+      INCLUDE 'f3com.inc'
+      INCLUDE 'btbuf.inc'
+      INCLUDE 'start.inc'
       INTEGER VALT
       INTEGER VAL,STACK(1),SP
 C

@@ -1,5 +1,5 @@
       SUBROUTINE RMHELP(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     PROCESSES THE HELP COMMAND
 C
@@ -13,18 +13,18 @@ C     THE USERS DATA BASE FILE IS CLOSED AND THE HELP FILES OPENED.
 C     AFTER PROCESSING HELP COMMANDS,
 C     THE HELP DATA BASE IS CLOSED AND THE USERS DATA BASE IS REOPENED.
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'files.d'
-      INCLUDE 'cflags.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'rimptr.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'cflags.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'rimptr.inc'
  
       COMMON /SAVDB/STOL,SSAVE,SPCENT,SRUCK
       LOGICAL SSAVE,SPCENT,SRUCK

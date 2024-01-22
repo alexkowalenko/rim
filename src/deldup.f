@@ -1,5 +1,5 @@
       SUBROUTINE DELDUP(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DELETE DUPLICATES ROUTINE
 C
@@ -10,22 +10,22 @@ C                      DUPLICATES
 C              3. WHEN DONE RESET RSTART AND NTUPLE, PRINT MESSAGE,
 C                  AND RETURN
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'f2com.d'
-      INCLUDE 'start.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'files.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'srtcom.d'
-      INCLUDE 'whcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'f2com.inc'
+      INCLUDE 'start.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'srtcom.inc'
+      INCLUDE 'whcom.inc'
 C
       LOGICAL IFALL
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
       LOGICAL SELREL
 C
 C

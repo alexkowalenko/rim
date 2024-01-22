@@ -1,5 +1,5 @@
       INTEGER FUNCTION ASCCHR(CH)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     ** UNIX SYSTEM DEPENDENT INTERNAL ROUTINE **
 C

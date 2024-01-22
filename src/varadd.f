@@ -1,16 +1,16 @@
       LOGICAL FUNCTION VARADD()
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     ADD A VARIABLE TO THE VAR LIST
 C
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'incore.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'pgmcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'incore.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'pgmcom.inc'
 C
 100   IF (PGVPTR+2+Z+ATTWDS.GT.PGVMAX) THEN
          CALL MSG('E','VARIABLE SPACE IS EXHAUSTED.',' ')

@@ -1,13 +1,13 @@
       SUBROUTINE REPORT(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     PROCESS REPORT COMMAND
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'files.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'flags.inc'
 C
       CHARACTER*(ZFNAML) FN
       LOGICAL OUTFIL, EQKEYW

@@ -1,5 +1,5 @@
       SUBROUTINE AMSG(MTEXT,NUMC,MCONT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  ROUTINE TO FORMAT AND PRINT ASCII-TEXT
 C
@@ -17,10 +17,10 @@ C-----------------------------------------
       INTEGER NUMC
       CHARACTER*1 MCONT
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'files.d'
-      INCLUDE 'msgcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'msgcom.inc'
       LOGICAL DTB
 C
 C

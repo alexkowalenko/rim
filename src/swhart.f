@@ -1,5 +1,5 @@
       SUBROUTINE SWHART(INFIL,OUTFIL,BUFFER,LLL)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE  CONTROLLING ROUTINE FOR IN-CORE HART SORT
 C
@@ -25,7 +25,7 @@ C  BUFFER  CORE BUFFER TO USE FOR SORT      (ANY,SCR)
 C
 C  LLL     LENGTH OF LINK LIST              (INT,I)
 C
-      INCLUDE 'srtcom.d'
+      INCLUDE 'srtcom.inc'
       INTEGER BUFFER(1)
 C
       IF(FIXLT) GO TO 10

@@ -1,5 +1,5 @@
       SUBROUTINE MOTSCN(MOTID,IPTR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:  SCAN THROUGH A MULTIPLE OCCURENCE TABLE (MOT)
 C
@@ -10,7 +10,7 @@ C                    (0 IMPLIES THIS IS THE LAST VALUE)
 C            IPTR----USER POINTER DESIRED
 C
 C  DECLARATIVES
-      INCLUDE 'btbuf.d'
+      INCLUDE 'btbuf.inc'
 C
 C  CHECK FOR END OF MOT LIST.
 C

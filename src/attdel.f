@@ -1,14 +1,14 @@
       SUBROUTINE ATTDEL(STATUS)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   DELETE THE CURRENT TUPLE FROM THE ATTRIBUTE RELATION
 C             BASED ON CONDITIONS SET UP IN LOCATT AND ATTGET
 C
 C  PARAMETERS:
 C         STATUS--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
-      INCLUDE 'rmatts.d'
-      INCLUDE 'attble.d'
-      INCLUDE 'start.d'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'attble.inc'
+      INCLUDE 'start.inc'
 C
       STATUS = 0
       IF(LROW.EQ.0) GO TO 9000

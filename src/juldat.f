@@ -1,5 +1,5 @@
       LOGICAL FUNCTION JULDAT(DD,MM,YY,JUL)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     CONVERT D,M,Y TO JULIAN
 C     RETURN <TRUE> IF D,M,Y ARE VALID

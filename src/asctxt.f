@@ -1,5 +1,5 @@
       SUBROUTINE ASCTXT(ATXT,LTXT,CSTR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RETURN THE ASCII-TEXT EQUIVALENT OF CSTR
 C
@@ -10,7 +10,7 @@ C
       INTEGER ATXT(1)
       CHARACTER*(*) CSTR
 C
-      INCLUDE 'ascpar.d'
+      INCLUDE 'ascpar.inc'
 C
       L = LEN(CSTR)
       DO 100 I = 1, LTXT

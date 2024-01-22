@@ -1,5 +1,5 @@
       SUBROUTINE STRMOV(FTXT,FPOS,NUMC,TTXT,TPOS)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C
 C  MOVE NUMC ASCII-CHARS FROM FTXT(FPOS) -> TTXT(TPOS)               .

@@ -6,13 +6,13 @@ C     EXPANDS A MACRO (M) DEFINITION AT ITEMS
 C
 C-----------------------------------------------------
 C
-      INCLUDE 'syspar.d'
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'cards.d'
-      INCLUDE 'maccom.d'
+      INCLUDE 'syspar.inc'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'cards.inc'
+      INCLUDE 'maccom.inc'
  
       MI = ITEMS
 C     ACCUMULATE ARGUMENTS

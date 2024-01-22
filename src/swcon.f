@@ -1,5 +1,5 @@
       SUBROUTINE SWCON(BUFFER,LBUF,INFIL,OUTFIL)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE  CONTROLLING ROUTINE FOR SORT
 C
@@ -32,7 +32,7 @@ C          OUTFIL MAY EQ INFIL
 C          FORMAT OF OUTFIL IS THE
 C          SAME AS THAT OF INFIL
 C
-      INCLUDE 'srtcom.d'
+      INCLUDE 'srtcom.inc'
 C
 C
       INTEGER BUFFER(1)

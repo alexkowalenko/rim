@@ -1,5 +1,5 @@
       FUNCTION PGEEXP(VP,TP)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     EVALUATE AN EXPRESSION (FOR PROGRAM MODE)
 C
@@ -8,15 +8,15 @@ C     RETURNS TRUE IF EVALUATION OK
 C
       LOGICAL PGEEXP
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'expcom.d'
-      INCLUDE 'lxlcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'expcom.inc'
+      INCLUDE 'lxlcom.inc'
 C
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
  
       PARAMETER (NGSIGN=94)
       PARAMETER (VOP=1,MOP=2)

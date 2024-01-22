@@ -1,9 +1,9 @@
       SUBROUTINE BTMOVE(NEW,OLD,NV)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   MOVE NV VALUES FROM OLD TO NEW.
 C
-      INCLUDE 'btbuf.d'
+      INCLUDE 'btbuf.inc'
       INTEGER OLD
       IS = 1
       IF(NV.LT.0) IS = -1

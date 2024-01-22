@@ -1,5 +1,5 @@
       LOGICAL FUNCTION PGBSTO(TYP)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     STORE A COMMON BLOCK
 C
@@ -11,14 +11,14 @@ C                    EXP = EXPCOM
 C
       CHARACTER*3 TYP
  
-      INCLUDE 'selcom.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'ptrcom.d'
-      INCLUDE 'srtcom.d'
-      INCLUDE 'pgmcom.d'
-      INCLUDE 'expcom.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'rimptr.d'
+      INCLUDE 'selcom.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'ptrcom.inc'
+      INCLUDE 'srtcom.inc'
+      INCLUDE 'pgmcom.inc'
+      INCLUDE 'expcom.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'rimptr.inc'
       LOGICAL PGSTOR
 C
       PGBSTO = .FALSE.

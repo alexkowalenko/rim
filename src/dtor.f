@@ -1,5 +1,5 @@
       INTEGER FUNCTION DTOR(D)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     CONVERT A DOUBLE (D) TO REAL (DTOR) 
 C     BOTH ARE INTEGER VARS

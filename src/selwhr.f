@@ -1,5 +1,5 @@
       FUNCTION SELWHR(ST,NT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:  PROCESS A RIM WHERE CLAUSE
 C
@@ -9,24 +9,24 @@ C         NT------NUMBER OF TOKENS
 C
       LOGICAL SELWHR
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'files.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'pgmcom.d'
-      INCLUDE 'ptrcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'pgmcom.inc'
+      INCLUDE 'ptrcom.inc'
 C
       CHARACTER*(ZKEYWL) KOMPAR
       CHARACTER*3 KMM
       LOGICAL EQKEYW, EQTOK
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
       LOGICAL VLIST
       INTEGER OPLIST(2*ZMWHR)
       INTEGER TSTKYS(ZMWHR)

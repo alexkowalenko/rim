@@ -7,15 +7,15 @@ C     MANY OF THESE ARE SYSTEM OR INSTALLATION DEPENDENT
 C
 C------------------------------------------------------------
 C
-      INCLUDE 'syspar.d'
-      INCLUDE 'ascpar.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'files.d'
-      INCLUDE 'cards.d'
-      INCLUDE 'msgcom.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'prom.d'
-      INCLUDE 'maccom.d'
+      INCLUDE 'syspar.inc'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'cards.inc'
+      INCLUDE 'msgcom.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'prom.inc'
+      INCLUDE 'maccom.inc'
 C
       CHARACTER*3 MONTHS(12)
       DATA MONTHS /'JAN','FEB','MAR','APR','MAY','JUN',

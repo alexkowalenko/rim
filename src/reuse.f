@@ -1,9 +1,9 @@
       SUBROUTINE REUSE
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:    RESET THE USAGE FLAGS TO OFF IN THE ICORE FLAGS
 C
-      INCLUDE 'f3com.d'
+      INCLUDE 'f3com.inc'
       DO 100 NUMB=1,NUMIC
       ICORE(1,NUMB) = 0
   100 CONTINUE

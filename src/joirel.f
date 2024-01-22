@@ -1,6 +1,6 @@
       SUBROUTINE JOIREL(*)
  
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE FINDS THE JOIN OF TWO RELATIONS BASED UPON JOINING
 C  TWO ATTRIBUTES.  THE RESULT FROM THIS PROCESS IS A
@@ -11,26 +11,26 @@ C  THE SYNTAX FOR THE JOIN COMMAND IS:
 C
 C  JOIN REL1 USING ATT1 WITH REL2 USING ATT2 FORMING REL3 WHERE EQ
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'files.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'whcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'whcom.inc'
 C
       INTEGER PTABLE
       LOGICAL EQ
       LOGICAL NE
       LOGICAL EQKEYW
-      INCLUDE 'dclar1.d'
-      INCLUDE 'dclar3.d'
+      INCLUDE 'dclar1.inc'
+      INCLUDE 'dclar3.inc'
 C  LOCAL ARRAYS AND VARIABLES :
 C
-      INCLUDE 'ptbl.d'
+      INCLUDE 'ptbl.inc'
 C        PTABLE (MATRIX 7) USED TO CONTROL POINTERS
 C        PTBL1-- ATTRIBUTE NAME
 C        PTBL2-- ATTRIBUTE LOCATION IN RELATION 1

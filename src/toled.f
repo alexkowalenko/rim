@@ -1,12 +1,12 @@
       SUBROUTINE TOLED(K,V,N)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     THIS ROUTINE APPLIES A TOLERANCE TO A DOUBLE ROUTINE
 C
 C     K IS LOCBOO VALUE
 C     V(N) IS DOUBLE ARRAY
 C
-      INCLUDE 'flags.d'
+      INCLUDE 'flags.inc'
       DOUBLE PRECISION V(N)
       DOUBLE PRECISION X
       X = TOL

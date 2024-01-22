@@ -1,6 +1,6 @@
       SUBROUTINE SUBTRC(RNAME2,RNAME3,MATN3,NCOL3,NATT3,PTABLE,
      XKEYCOL,KEYTYP)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE PERFORMS THE ACTUAL SUBTRACT
 C       ( REL2 - REL2 = REL3 )
@@ -15,16 +15,16 @@ C         NATT3---NUMBER OF ATTRIBUTES IN MATN3
 C         PTABLE--POINTER TABLE FOR THIS SUBTRACT
 C         KEYCOL--COLUMN OF MATN2 USED FOR SUPPLYING KEY VALUES
 C         KEYTYP--ATTRIBUTE TYPE OF MATN1 USED FOR KEY VALUES
-      INCLUDE 'rmatts.d'
-      INCLUDE 'files.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'dclar1.d'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'dclar1.inc'
       DIMENSION MATN3(1)
-      INCLUDE 'ptbl.d'
+      INCLUDE 'ptbl.inc'
       INTEGER PTABLE(PTBLL,1)
       INTEGER ATTLEN
       INTEGER ENDCOL

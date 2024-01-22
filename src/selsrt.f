@@ -1,5 +1,5 @@
       FUNCTION SELSRT(FTOK,NTOK)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     PROCESS THE QUERY SORT CLAUSE
 C
@@ -8,17 +8,17 @@ C     NTOK IS THE NUMBER OF SORT TOKENS
 C
       LOGICAL SELSRT
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'selcom.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'files.d'
-      INCLUDE 'srtcom.d'
-      INCLUDE 'dclar1.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'selcom.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'srtcom.inc'
+      INCLUDE 'dclar1.inc'
       LOGICAL EQKEYW,SAORD, EQTOK
 C
 C     *********************************************** S T A R T

@@ -1,21 +1,21 @@
       SUBROUTINE RMINIT
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RUN-TIME INITIALIZATION (CALLED WHEN DATABASE IS OPENED)
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'f1com.d'
-      INCLUDE 'f2com.d'
-      INCLUDE 'f3com.d'
-      INCLUDE 'incore.d'
-      INCLUDE 'reltbl.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'attble.d'
-      INCLUDE 'lnktbl.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'srtcom.d'
-      INCLUDE 'ptrcom.d'
-      INCLUDE 'pgmcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'f1com.inc'
+      INCLUDE 'f2com.inc'
+      INCLUDE 'f3com.inc'
+      INCLUDE 'incore.inc'
+      INCLUDE 'reltbl.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'attble.inc'
+      INCLUDE 'lnktbl.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'srtcom.inc'
+      INCLUDE 'ptrcom.inc'
+      INCLUDE 'pgmcom.inc'
 C
 C  /RELTBL/
       CALL ZMOVE(CNAME,BLANK)

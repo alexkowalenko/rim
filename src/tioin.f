@@ -1,5 +1,5 @@
       SUBROUTINE TIOIN(FILE,TEXT,LEN,EOF)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     **UNIX SYSTEM DEPENDENT ROUTINE **
 C
@@ -14,8 +14,8 @@ C         EOF-----END-OF-FILE FLAG (0=NO, 1=YES)
 C
       INTEGER TEXT(1)
 C
-      INCLUDE '../src/flags.d' 
-      INCLUDE '../src/prom.d'
+      INCLUDE '../src/flags.inc' 
+      INCLUDE '../src/prom.inc'
 C
       CHARACTER*(ZCARDL) INCARD
       INTEGER ASCCHR

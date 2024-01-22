@@ -1,5 +1,5 @@
       SUBROUTINE ASCDAT(STR,SC,L,JDAT,DFMT,TYP)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     CONVERT A DATE INTEGER TO ASCII-TEXT
 C
@@ -14,9 +14,9 @@ C         TYP----TYPE (KZDATE / KZTIME)
 C
       INTEGER STR(1)
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'flags.inc'
 C
       PARAMETER (U0=48,U9=57,PLUS=43,MINUS=45,DECIM=46,COLON=58)
 C

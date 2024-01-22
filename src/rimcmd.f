@@ -1,15 +1,15 @@
       SUBROUTINE RIMCMD
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RIM COMMAND DISPATCHER
 C
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'files.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'files.inc'
 C
       LOGICAL EQKEYW, SELREL
 C

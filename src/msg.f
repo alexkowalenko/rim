@@ -1,5 +1,5 @@
       SUBROUTINE MSG(MTYPE,MTEXT,MCONT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  ROUTINE TO FORMAT AND PRINT MESSAGES
 C
@@ -29,11 +29,11 @@ C
       CHARACTER*(*) MTEXT
       CHARACTER*(1) MCONT
 C
-      INCLUDE 'rmatts.d'
-      INCLUDE 'files.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'msgcom.d'
-      INCLUDE 'cards.d'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'msgcom.inc'
+      INCLUDE 'cards.inc'
 C
       CHARACTER*1 CTYPE, MTYPE1
 C

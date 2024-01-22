@@ -1,22 +1,22 @@
       SUBROUTINE REMKEY(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     REMOVE A KEY (MAKE ATTRIBUTE NON-KEYED)
 C
 C     :  REMOVE KEY FOR ATTRIBUTE IN RELATION
  
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'attble.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'attble.inc'
+      INCLUDE 'flags.inc'
       LOGICAL EQKEYW
       LOGICAL NE
       LOGICAL EQ
-      INCLUDE 'dclar1.d'
-      INCLUDE 'rmatts.d'
+      INCLUDE 'dclar1.inc'
+      INCLUDE 'rmatts.inc'
 C
 C
 C     CHECK FOR A DATABASE

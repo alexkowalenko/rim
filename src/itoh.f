@@ -1,5 +1,5 @@
       SUBROUTINE ITOH(I,J,K)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   UNPACK I AND J FROM K
 C

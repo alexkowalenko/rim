@@ -1,17 +1,17 @@
       SUBROUTINE F1CLO
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   CLOSE THE RIM DIRECTORY FILE - FILE 1
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'f1com.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'attble.d'
-      INCLUDE 'reltbl.d'
-      INCLUDE 'lnktbl.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'f1com.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'attble.inc'
+      INCLUDE 'reltbl.inc'
+      INCLUDE 'lnktbl.inc'
+      INCLUDE 'flags.inc'
       COMMON /USAGE/ CPTTD,CPSTRT,KUSAGE(20)
-      INCLUDE 'dstats.d'
+      INCLUDE 'dstats.inc'
 C
 C  WRITE OUT THE RELATION BUFFER IF IT WAS MODIFIED.
 C

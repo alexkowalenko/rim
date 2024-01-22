@@ -1,11 +1,11 @@
       SUBROUTINE LXSREC(I,STRING,NUMC)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C
 C  MOVE NUMC ASCII-CHARS FROM THE ITH ITEM.                   .
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
       INTEGER STRING(1)
 C
 C  BLANK FILL FIRST.

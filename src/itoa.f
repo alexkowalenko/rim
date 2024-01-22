@@ -1,5 +1,5 @@
       SUBROUTINE ITOA(STRING,SC,FMT,INT,IERR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     THIS ROUTINE CONVERTS AN INTEGER (INT) TO ASCII-TEXT (STRING)
 C     IF THE INTEGER WILL NOT FIT, STRING IS
@@ -11,8 +11,8 @@ C     FMT ......FORMAT CODE (TOTAL WIDTH + 100*DECIMAL + 10000*REPEAT)
 C     INT.......INTEGER TO CONVERT.
 C     IERR......0 IF INT FITS, 1 OTHERWISE
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'lxlcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'lxlcom.inc'
 C
       IERR = 0
       S = SC - 1

@@ -1,5 +1,5 @@
       SUBROUTINE CHANGE(MAT,NVAL,IFLAG,NTUP)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE PROCESSES A CHANGE IN RIM.
 C
@@ -9,18 +9,18 @@ C         NVAL----SCRATCH ARRAY FOR A TUPLE
 C        IFLAG---OUTPUT 1 : NON EXPRESSION CHANGE
 C                       0 : EXPRESSION CHANGE
 C         NTUP----SCRATCH ARRAY FOR A TUPLE
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'files.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'start.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'start.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
 C
       CHARACTER*1 OP
       DIMENSION MAT(1)
@@ -28,7 +28,7 @@ C
       LOGICAL NE, EQ
       LOGICAL SINGLE
       LOGICAL EQKEYW
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
 C
 C     DEFINITION OF SOME LOCAL VARIABLES :
 C         PN----POSITION OF 'IN' AMONG THE COMMAND STATEMENT

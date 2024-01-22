@@ -1,5 +1,5 @@
       FUNCTION RIM(IND,COM)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RIM FORTRAN INTERFACE (COMMANDS)
 C
@@ -10,14 +10,14 @@ C
       LOGICAL RIM
       CHARACTER*(*) COM
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'cards.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'files.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'cards.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'files.inc'
 C
       LOGICAL EQKEYW
 C
@@ -153,7 +153,7 @@ C
       RETURN
       END
       FUNCTION RIMDM(IND,COM,TUPLE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RIM FORTRAN INTERFACE (DATA MOVEMENT)
 C
@@ -169,10 +169,10 @@ C
       CHARACTER*(*) COM
       INTEGER TUPLE(1)
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'flags.inc'
 C
       CHARACTER*1 OP
 C
@@ -237,7 +237,7 @@ C
       RETURN
       END
       SUBROUTINE TXTASC(STR,ASC,NC)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RETURN THE CHARACTER EQUIVALENT OF ASC (ASCII-TEXT, LENGTH NC)
 C     (LIKE STRASC BUT WITHOUT UPPER CASE TRANSLATION)

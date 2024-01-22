@@ -1,5 +1,5 @@
       INTEGER FUNCTION NDIGIT(INT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RETURN THE NUMBER OF DIGITS IN INT
 C

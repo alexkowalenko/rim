@@ -1,5 +1,5 @@
       LOGICAL FUNCTION CHTYPE(TYPE,ASCHR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RETURN TRUE IF ASCHR IS OF TYPE 'TYPE'
 C     TYPE MAY BE
@@ -10,8 +10,8 @@ C         'XDIGIT' - (0-9, PLUS, MINUS, DECIMAL, 'E')
 C         'DELIMIT'- (DELIMITERS)
 C
       CHARACTER*(*) TYPE
-      INCLUDE 'ascpar.d'
-      INCLUDE 'lxlcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'lxlcom.inc'
 C
 C
       IF (TYPE.EQ.'LETTER') THEN

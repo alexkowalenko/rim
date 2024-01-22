@@ -1,13 +1,13 @@
       SUBROUTINE LNKPUT(STATUS)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     REPLACE THE CURRENT LINK TUPLE INTO /LNKTBL/
 C
 C         STATUS--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
  
-      INCLUDE 'flags.d'
-      INCLUDE 'tuplel.d'
-      INCLUDE 'lnktbl.d'
+      INCLUDE 'flags.inc'
+      INCLUDE 'tuplel.inc'
+      INCLUDE 'lnktbl.inc'
 C
       STATUS = 0
       IF(LLROW.EQ.0) GO TO 9000

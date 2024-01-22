@@ -1,27 +1,27 @@
       SUBROUTINE PGEPRT(PTR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     EXECUTE HEAD/FOOT PRINT
 C
 C     PTR-- ADDRESS OF SELCOM SAVE BLOCK
  
-      INCLUDE 'ascpar.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tuplel.d'
-      INCLUDE 'files.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'selcom.d'
-      INCLUDE 'srtcom.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'msgcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tuplel.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'selcom.inc'
+      INCLUDE 'srtcom.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'msgcom.inc'
 C
-      INCLUDE 'pgmcom.d'
-      INCLUDE 'expcom.d'
+      INCLUDE 'pgmcom.inc'
+      INCLUDE 'expcom.inc'
  
       LOGICAL ALDONE, ATDONE
       LOGICAL PGEEXP, WHEVAL

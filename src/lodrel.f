@@ -1,16 +1,16 @@
       SUBROUTINE LODREL(NUMELE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     LOAD THE RELATION DESCRIPTION
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'files.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'files.inc'
 C
       LOGICAL EQKEYW
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
 C
 C  READ RELATION DATA.
 C

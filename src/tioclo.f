@@ -1,5 +1,5 @@
       SUBROUTINE TIOCLO(FILE,UNIT,MODE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     ***UNIX SYSTEM DEPENDENT ROUTINE ***
 C

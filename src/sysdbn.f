@@ -1,5 +1,5 @@
       SUBROUTINE SYSDBN(DBN,F1N,F2N,F3N,FXN)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     ***UNIX SYSTEM DEPENDENT ROUTINE ***
 C
@@ -14,8 +14,8 @@ C        FXN  =  Setup file name
       CHARACTER*(*) DBN,F1N,F2N,F3N,FXN 
     
  
-      INCLUDE 'ascpar.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'flags.inc'
 C
       COMMON /SYSEXT/ DBDRF
       CHARACTER*(ZFNAML) DBDRF

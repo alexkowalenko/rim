@@ -9,11 +9,11 @@ C         ARRAY   = ARRAY TO RECEIVE THE TUPLE
 C         LENGTH  = LENGTH OF THE TUPLE
 C         
 
-      INCLUDE 'syspar.d'
-      INCLUDE 'f2com.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'syspar.inc'
+      INCLUDE 'f2com.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'flags.inc'
 C
       INTEGER OFFSET
       INTEGER ARRAY(1)

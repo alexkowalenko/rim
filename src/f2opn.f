@@ -1,16 +1,16 @@
       SUBROUTINE F2OPN(RIMDB2)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:    OPEN A DATA RANDOM IO PAGING FILE - FILE 2
 C
 C  PARAMETERS:
 C        RIMDB2-----NAME OF THE FILE TO USE FOR FILE 2
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'f2com.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'rimcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'f2com.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'rimcom.inc'
  
       LOGICAL NE
       CHARACTER*(ZFNAML) RIMDB2

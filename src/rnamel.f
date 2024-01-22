@@ -1,18 +1,18 @@
       SUBROUTINE RNAMEL(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RENAME A LINK IN THE DATABASE
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'tuplel.d'
-      INCLUDE 'lnktbl.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'tuplel.inc'
+      INCLUDE 'lnktbl.inc'
+      INCLUDE 'flags.inc'
       LOGICAL EQKEYW
       LOGICAL NE
       LOGICAL EQ
-      INCLUDE 'rmatts.d'
+      INCLUDE 'rmatts.inc'
 C
       INTEGER LKNAM(Z), NLKNAM(Z)
 C

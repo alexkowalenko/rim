@@ -1,5 +1,5 @@
       PROGRAM MAIN
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  ****************************************************************
 C
@@ -7,14 +7,14 @@ C  THIS PROGRAM IS A FILE EDITOR FOR THE RIM DBMS
 C
 C     BY JIM FOX, UNIV OF WASHINGTON (ACS)
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'cflags.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'files.d'
-      INCLUDE 'prom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'cflags.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'prom.inc'
 C
       LOGICAL EQKEYW
       CHARACTER*(ZFNAML) RIMDB1,RIMDB2,RIMDB3,RIMDBX
@@ -495,11 +495,11 @@ C
       CALL EXIT(0)
       END
       SUBROUTINE FINDR(ITEM,RW)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RIME SUBROUTINE - LOOKUP RELATION BY NAME
 C
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
       LOGICAL EQ
 C
       COMMON /GRIMEX/ CURF, CURR, CUREL(Z), IOS,
@@ -517,12 +517,12 @@ C
       RETURN
       END
       SUBROUTINE FINDA(ITEM,RW)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RIME SUBROUTINE - LOOKUP ATTRIBUTE BY NAME
 C
-      INCLUDE 'tokens.d'
-      INCLUDE 'dclar1.d'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'dclar1.inc'
       LOGICAL EQ,NE
 C
       COMMON /GRIMEX/ CURF, CURR, CUREL(Z), IOS,
@@ -541,11 +541,11 @@ C
       RETURN
       END
       SUBROUTINE FINDL(ITEM,RW)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RIME SUBROUTINE - LOOKUP LINK BY NAME
 C
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
       LOGICAL EQ
 C
       COMMON /GRIMEX/ CURF, CURR, CUREL(Z), IOS,
@@ -563,7 +563,7 @@ C
       RETURN
       END
       SUBROUTINE GETRA(RW,R,W,RPB,RL)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RIME SUBROUTINE - GET A RELATION/ATTRIBUTE RECORD
 C

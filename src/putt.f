@@ -1,5 +1,5 @@
       SUBROUTINE PUTT(ASTXT,POS,ASCHR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     PUT THE ASCII-CHAR INTO ASTXT AT POS
 C

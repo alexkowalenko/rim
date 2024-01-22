@@ -1,28 +1,28 @@
       SUBROUTINE CHKATT(TMPA,NUMELE,ERROR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     THIS ROUTINE EDITS THE ATTRIBUTE LIST ON THE RELATION CARD
 C     AND CREATES A NEW RELATION.
 C
 C  PARAMETERS:
 C         TMPA----SCRATCH ARRAY WITH NEW ATTRIBUTE NAMES
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'tmpa.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'tmpa.inc'
 C
 C         NUMELE--THE NUMBER OF ATTRIBUTES IN TMPA
 C         ERROR---COUNT OF THE ERRORS ENCOUNTERED
 C
       INTEGER TMPA(TMPAL,1)
 C
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'files.d'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'files.inc'
 C
       LOGICAL EQ, NE
       INTEGER IFLAG
       INTEGER CSTART
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
 C
       ERROR = 0
       NCOLS = 0

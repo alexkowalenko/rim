@@ -1,5 +1,5 @@
       SUBROUTINE SYSTRP(mode)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
  
 C     **UNIX SYSTEM DEPENDENT ROUTINE **
  
@@ -16,13 +16,13 @@ C      TTSTAT = signal(2,UNIXTRP,-1)
       END
  
       SUBROUTINE UNIXTRP
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
  
 C     **UNIX SYSTEM DEPENDENT ROUTINE **
  
 C     CATCH SYSTEM INTERRUPTS (CTRL-C) (PART 2)
  
-      INCLUDE '../src/flags.d'
+      INCLUDE '../src/flags.inc'
 C
       HXFLAG = 1
       RETURN

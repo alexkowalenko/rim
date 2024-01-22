@@ -1,5 +1,5 @@
       SUBROUTINE KOMPXX(VALUE1,VALUE2,LEN,NK,OK,TYPE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE COMPARES VALUE1 AND VALUE2 TO SEE IF THEY MEET THE
 C  DESIRED CONDITIONS.
@@ -13,8 +13,8 @@ C         OK------.FALSE. COMING IN, .TRUE. GOING OUT IF THE CONDITIONS
 C                 ARE MET
 C         TYPE----TYPE OF VALUES BEING COMPARED
 C
-      INCLUDE 'rmatts.d'
-      INCLUDE 'ascpar.d'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'ascpar.inc'
 C
       INTEGER VALUE1(1)
       INTEGER VALUE2(1)

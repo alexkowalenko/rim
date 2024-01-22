@@ -1,17 +1,17 @@
       SUBROUTINE DELETE(MAT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE PROCESSES A DELETE IN RIM.
 C
 C  PARAMETERS
 C         MAT-----ARRAY TO HOLD ONE TUPLE
-      INCLUDE 'ascpar.d'
-      INCLUDE 'start.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'files.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'start.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'files.inc'
       INTEGER COLUMN
 C
 C  DIMENSION STATEMENTS.

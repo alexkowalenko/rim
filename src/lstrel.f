@@ -1,17 +1,17 @@
       SUBROUTINE LSTREL(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     SUMMARIZE THE USERS DEFINITION OF A RELATION
 C
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tuplel.d'
-      INCLUDE 'files.d'
-      INCLUDE 'tokens.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tuplel.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'tokens.inc'
  
       INTEGER STATUS
       LOGICAL EQ
@@ -20,7 +20,7 @@ C
       LOGICAL ALLREL
       CHARACTER*4 KEY,CRPW,CMPW
       INTEGER FMTSTR(3)
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
 C
 C
 C

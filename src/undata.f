@@ -1,5 +1,5 @@
       SUBROUTINE UNDATA(ALL,IRCNTR,IDAY,MODE,LHASH,ATDATA)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     UNLOAD THE DATA OF A DATABASE.
 C
@@ -13,18 +13,18 @@ C          NAMDB--------NAMDB FOR DEFINE.
 C
       CHARACTER*(*) MODE
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'files.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'msgcom.d'
-      INCLUDE 'dclar1.d'
-      INCLUDE 'dclar3.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'msgcom.inc'
+      INCLUDE 'dclar1.inc'
+      INCLUDE 'dclar3.inc'
 C
       INTEGER IREL(Z,1),ATDATA(250,7),STAT
       EQUIVALENCE (BUFFER(1),IREL(1,1))

@@ -1,14 +1,14 @@
       SUBROUTINE LODREC
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  SUBROUTINE TO READ A FREE-FIELD FORMAT INPUT RECORD.
 C
 C
-      INCLUDE 'flags.d'
-      INCLUDE 'files.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'maccom.d'
+      INCLUDE 'flags.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'maccom.inc'
 C
       LOGICAL EQKEYW
       CHARACTER*2 PKW

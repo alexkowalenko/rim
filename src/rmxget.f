@@ -1,5 +1,5 @@
       SUBROUTINE RMXGET(INDPTR,TUPLE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE GETS THE NEXT ROW FROM A RELATION AND STORES
 C  IT IN TUPLE.
@@ -8,14 +8,14 @@ C  PARAMETERS:
 C         INDPTR--INDEX TO SAVE BLOCK
 C         TUPLE---USER ARRAY TO HOLD ONE COMPLETE TUPLE
  
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'vardat.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'picom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'vardat.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'picom.inc'
 C
       INTEGER TUPLE(1)
  

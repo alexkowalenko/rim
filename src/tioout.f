@@ -1,5 +1,5 @@
       SUBROUTINE TIOOUT(FILE,TEXT,LEN,IERR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     **UNIX SYSTEM DEPENDENT ROUTINE **
 C
@@ -14,7 +14,7 @@ C         IERR----ERROR FLAG
 C
       INTEGER FILE
       INTEGER TEXT(1)
-      INCLUDE '../src/files.d'
+      INCLUDE '../src/files.inc'
  
       CHARACTER*1 CHRASC, ffchar
       CHARACTER*(ZPRINL) OULINE

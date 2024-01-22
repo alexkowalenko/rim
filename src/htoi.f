@@ -1,5 +1,5 @@
       SUBROUTINE HTOI(I,J,K)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   PACK I AND J INTO K
 C

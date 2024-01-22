@@ -1,5 +1,5 @@
       INTEGER FUNCTION SWITCP(I1,I2,LEN)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     COMPARE TWO ARRAYS OF ASCII-TEXT (WORD LEN = LEN)
 C
@@ -7,7 +7,7 @@ C     IF I1 = I2 THEN SET SWITCP ZERO
 C     IF I1 > I2 THEN SET SWITCP NEG
 C     IF I1 < I2 THEN SET SWITCP POS
 C
-      INCLUDE 'flags.d'
+      INCLUDE 'flags.inc'
 C
       IF (LEN.EQ.0) GOTO 15
       NC = LEN*ZCW

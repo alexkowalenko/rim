@@ -1,12 +1,12 @@
       SUBROUTINE SYSINI
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     ***UNIX SYSTEM DEPENDENT ROUTINE ***
 C
 C     SYSTEM INITIALIZE
 C
-      INCLUDE '../src/files.d'
-      INCLUDE '../src/prom.d'
+      INCLUDE '../src/files.inc'
+      INCLUDE '../src/prom.inc'
 C
 C     GET FILENAME FROM COMMAND LINE
 C

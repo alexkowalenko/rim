@@ -1,11 +1,11 @@
       SUBROUTINE WHRNAM(N,ATT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     SETUP A WHERE CLAUSE TO MATCH AN ATTRIBUTE NAME
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'rmatts.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'rmatts.inc'
 C
       NBOO = 1
       BOO(1) = WHAND

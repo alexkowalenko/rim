@@ -1,7 +1,7 @@
       SUBROUTINE UNION(RNAME,RNAME3,MATN3,NCOL3,NATT3,PTABLE,
      X  KEYCOL,KEYTYP,UPASS)
  
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE PERFORMS THE ACTUAL UNION BETWEEN
 C  RELATION 1 AND 2 FORMING 3
@@ -21,17 +21,17 @@ C                 1 = 2ND PASS (SOURCE RELATION = RNAME1)
 C                              (RNAME = RNAME2) (EXCLUDE MATCHES)
  
  
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'files.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'dclar1.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'dclar1.inc'
       DIMENSION MATN3(1)
-      INCLUDE 'ptbl.d'
+      INCLUDE 'ptbl.inc'
       INTEGER PTABLE(PTBLL,1)
       INTEGER ATTLEN
       INTEGER ENDCOL

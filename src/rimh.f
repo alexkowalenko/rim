@@ -1,5 +1,5 @@
       PROGRAM MAIN
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     GENERATE THE HELP DATABASE
 C
@@ -32,10 +32,10 @@ C     '.' = BEGIN NEW COMMAND OR SUBCOMMAND
 C     '&' = BEGIN MACRO DEFINITION
 C     '=' = COPY MACRO TEXT
 C
-      INCLUDE '../src/ascpar.d'
-      INCLUDE '../src/flags.d'
-      INCLUDE '../src/rimcom.d'
-      INCLUDE '../src/dclar1.d'
+      INCLUDE '../src/ascpar.inc'
+      INCLUDE '../src/flags.inc'
+      INCLUDE '../src/rimcom.inc'
+      INCLUDE '../src/dclar1.inc'
       LOGICAL RIM
 C
       PARAMETER (NW = 80/ZCW)
@@ -144,12 +144,12 @@ C
       STOP
       END
       FUNCTION GETLIN(COM)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     GET A LINE OF TEXT
 C
       CHARACTER*1 COM
-      INCLUDE '../src/ascpar.d'
+      INCLUDE '../src/ascpar.inc'
  
       PARAMETER (NW = 80/ZCW)
       COMMON /LINE/ UNIT, LINE(NW), LINEL, EOF
@@ -175,12 +175,12 @@ C
       RETURN
       END
       FUNCTION KEY3(SUB)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     GET FIRST THREE CHARS OF FIRST WORD
 C     GET FIRST THREE CHARS OF SECOND WORD TO SUB
 C
-      INCLUDE '../src/ascpar.d'
+      INCLUDE '../src/ascpar.inc'
  
       PARAMETER (NW = 80/ZCW)
       COMMON /LINE/ UNIT, LINE(NW), LINEL, EOF
@@ -207,11 +207,11 @@ C
 900   RETURN
       END
       SUBROUTINE LODROW(LINE,NC)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     WRITE A LINE TO DB
 C
-      INCLUDE '../src/rimcom.d'
+      INCLUDE '../src/rimcom.inc'
       LOGICAL RIMDM
 C
       PARAMETER (NW = 80/ZCW)

@@ -1,17 +1,17 @@
       SUBROUTINE LODLNK
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     LOADS LINK DEFINITIONS.
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'files.d'
-      INCLUDE 'tuplel.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'tuplel.inc'
 C
       LOGICAL EQKEYW
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
       INTEGER LKNAM(Z)
 C
 C     READ LINK DEFINITIONS

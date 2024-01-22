@@ -1,5 +1,5 @@
       FUNCTION PARSE(KEYLST,KEYLEN,KEYPTR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  SUBROUTINE TO PARSE A FREE-FIELD FORMAT INPUT RECORD.
 C  LOOKING FOR KEYWORDS
@@ -15,11 +15,11 @@ C
       CHARACTER*(ZKEYWL) KEYLST(1)
       INTEGER KEYPTR(2,1)
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'rmatts.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'rmatts.inc'
 C
 C
 C     FIND THE TOKENS

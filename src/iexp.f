@@ -2,7 +2,7 @@
 C
 C     THIS FUNCTION RETURNS THE BASE TEN EXPONENT OF A DOUBLE
 C
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
       DOUBLE PRECISION REAL,X
       IE = 1
       X = 1.0*DABS(REAL)

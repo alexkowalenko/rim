@@ -1,21 +1,21 @@
       SUBROUTINE LODELE(NUMELE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     LOAD THE ELEMENT DATA INTO THE SCRATCH AREA
 C
 C  PARAMETERS:
 C         NUMELE--NUMBER OF NEWLY DEFINED ATTRIBUTES
 C
-      INCLUDE 'rmatts.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'files.d'
-      INCLUDE 'ascpar.d'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'ascpar.inc'
 C
 C     TEMPORARY ATTRIBUTE STORAGE
-      INCLUDE 'tmpa.d'
+      INCLUDE 'tmpa.inc'
 C
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
       LOGICAL EQKEYW
 C
 C  READ AN ELEMENT RECORD.

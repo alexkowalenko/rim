@@ -1,5 +1,5 @@
       SUBROUTINE BTLKR(VAL,IPTR,MOTID)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:  LOOKUP PROCESSING ROUTINE FOR BTREES
 C
@@ -11,10 +11,10 @@ C
 C  SUBROUTINES USED
 C         BTGET---PAGING ROUTINE
 C
-      INCLUDE 'f3com.d'
-      INCLUDE 'ascpar.d'
-      INCLUDE 'btbuf.d'
-      INCLUDE 'start.d'
+      INCLUDE 'f3com.inc'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'btbuf.inc'
+      INCLUDE 'start.inc'
 C
 C     VAL IS REAL UNTIL BTREE IS ALLOWED 2 WORDS
 C

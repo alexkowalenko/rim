@@ -8,10 +8,10 @@ C
 C     PARAMETERS
 C              CH  =  CHARACTER TO REPLACE
 C
-      INCLUDE 'syspar.d'
-      INCLUDE 'ascpar.d'
-      INCLUDE 'cards.d'
-      INCLUDE 'maccom.d'
+      INCLUDE 'syspar.inc'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'cards.inc'
+      INCLUDE 'maccom.inc'
 C
 C     CH MAY BE REPLACED IN THE MACRO BUFFER OR IN THE CARD BUFFER
 C

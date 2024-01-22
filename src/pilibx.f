@@ -1,5 +1,5 @@
       SUBROUTINE AMSG(MTEXT,NUMC,MCONT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -7,7 +7,7 @@ C
       RETURN
       END
       SUBROUTINE DMSG(JDAT,DFMT,MCONT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -15,7 +15,7 @@ C
       RETURN
       END
       SUBROUTINE IMSG(NUM,NUMC,MCONT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -23,7 +23,7 @@ C
       RETURN
       END
       SUBROUTINE MSG(MTYPE,MTEXT,MCONT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -31,13 +31,13 @@ C     IF THIS IS ERROR MESSAGE AND RMSTAT <> 0 THEN SET RMSTAT
 C
       CHARACTER*(*) MTYPE, MTEXT, MCONT
 C
-      INCLUDE 'rimcom.d'
+      INCLUDE 'rimcom.inc'
 C
       IF (MTYPE(1:1).EQ.'E' .AND. RMSTAT.EQ.0) RMSTAT = 999
       RETURN
       END
       SUBROUTINE MSGCMV(MTEXT,CTYPE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -45,21 +45,21 @@ C
       RETURN
       END
       SUBROUTINE NXTCRD(EOF)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
       RETURN
       END
       SUBROUTINE PROMPT(PTXT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
       RETURN
       END
       SUBROUTINE SETIN(FILE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -67,7 +67,7 @@ C
       RETURN
       END
       SUBROUTINE SETOUT(UN,UNF,FILE,STAT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -75,17 +75,17 @@ C
       RETURN
       END
       SUBROUTINE WARN(W,TEXT1,TEXT2)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
-      INCLUDE 'rimcom.d'
+      INCLUDE 'rimcom.inc'
 C
       IF (RMSTAT.EQ.0) RMSTAT = W
       RETURN
       END
       SUBROUTINE PRMSET(MODE,PR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -94,14 +94,14 @@ C
       RETURN
       END
       SUBROUTINE LOADIT(MAT,ATT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
       RETURN
       END
       SUBROUTINE LOADFM(MAT,ATT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C

@@ -1,5 +1,5 @@
       SUBROUTINE DBOPEN(NEWNAM,NEWOK)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:  OPEN A RIM DATABASE.
 C
@@ -8,13 +8,13 @@ C     NEWOK = .TRUE. IF THE DB MAY BE CREATED
 C
       CHARACTER*(*) NEWNAM
       LOGICAL NEWOK
-      INCLUDE 'rimcom.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'f1com.d'
-      INCLUDE 'f2com.d'
-      INCLUDE 'f3com.d'
-      INCLUDE 'attble.d'
-      INCLUDE 'ascpar.d'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'f1com.inc'
+      INCLUDE 'f2com.inc'
+      INCLUDE 'f3com.inc'
+      INCLUDE 'attble.inc'
+      INCLUDE 'ascpar.inc'
 C
       LOGICAL RW, CHKFIL
       CHARACTER*(ZFNAML) RIMDB1,RIMDB2,RIMDB3,RIMDBX

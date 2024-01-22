@@ -1,5 +1,5 @@
       SUBROUTINE RIOOPN(FNAME,FILE,NWDS,IOS)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     *** UNIX SYSTEM DEPENDENT ROUTINE ***
 C
@@ -11,7 +11,7 @@ C         FILE----UNIT TO OPEN
 C         NWDS----NUMBER OF WORDS PER RECORD
 C         IOS-----STATUS VARIABLE - O MEANS SUCCESS, ELSE TILT
 C
-      INCLUDE '../src/rio.d'
+      INCLUDE '../src/rio.inc'
       CHARACTER*(*) FNAME
 C
 C     Ignore names for scratch files

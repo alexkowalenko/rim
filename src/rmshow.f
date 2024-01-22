@@ -1,17 +1,17 @@
       SUBROUTINE RMSHOW(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     SHOW PARAMETER VALUES
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'files.d'
-      INCLUDE 'msgcom.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'maccom.d'
-      INCLUDE 'tupler.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'msgcom.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'maccom.inc'
+      INCLUDE 'tupler.inc'
  
       LOGICAL Q
       LOGICAL EQKEYW, NE

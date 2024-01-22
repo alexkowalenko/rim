@@ -1,12 +1,12 @@
       SUBROUTINE RELADD
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   ADD A NEW TUPLE TO THE RELTBL RELATION
 C
-      INCLUDE 'tupler.d'
-      INCLUDE 'reltbl.d'
-      INCLUDE 'f1com.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'reltbl.inc'
+      INCLUDE 'f1com.inc'
+      INCLUDE 'flags.inc'
 C
 C  GET THE PAGE FOR ADDING NEW TUPLES.
 C

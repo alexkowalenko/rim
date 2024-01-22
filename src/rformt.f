@@ -1,16 +1,16 @@
       SUBROUTINE RFORMT(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C
 C     REFORMAT AN ATTRIBUTE
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'files.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'dclar1.d'
-      INCLUDE 'rimcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'dclar1.inc'
+      INCLUDE 'rimcom.inc'
       LOGICAL NE,EQ,EQKEYW
 C
 C

@@ -1,5 +1,5 @@
       SUBROUTINE LODPAS(ERROR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     PROCESS PASSWORDS DEFINITIONS
 C             PASSWORD KEYWORDS MAY BE ABBREVIATED
@@ -11,14 +11,14 @@ C             WPW FOR <REL> IS <PASSWORD>
 C
 C             <REL> CAN BE * FOR ALL RELATIONS
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'files.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'files.inc'
       INTEGER ERROR
       LOGICAL EQKEYW
-      INCLUDE 'dclar1.d'
-      INCLUDE 'dclar3.d'
+      INCLUDE 'dclar1.inc'
+      INCLUDE 'dclar3.inc'
 C
 C  READ A PASSWORD.
 C

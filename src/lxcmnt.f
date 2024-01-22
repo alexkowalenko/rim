@@ -1,5 +1,5 @@
       SUBROUTINE LXCMNT(EOR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     REMOVE A COMMENT FROM THE INPUT TOKEN STREAM
 C     THE COMMENT MAY HAVE A SET COMMAND WITHIN
@@ -9,10 +9,10 @@ C                 TOKEN(ITEMS)   = (
 C
 C     ON EXIT:    ITEMS = ITEMS - 2
 C
-      INCLUDE 'flags.d'
-      INCLUDE 'files.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'lxlcom.d'
+      INCLUDE 'flags.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'lxlcom.inc'
 C
       CHARACTER*(ZKEYWL) OPT
 C

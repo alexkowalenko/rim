@@ -1,15 +1,15 @@
       SUBROUTINE WHETOL
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     THIS ROUTINE CHANGES THE WHERE COMMON BLOCK TO REFLECT
 C     TOLERANCES WHERE POSSIBLE.  LE,LT,GE,GT TOLERANCES ARE
 C     CRANKED INTO WHCOM TO AVOID CALCULATING THEM FOR EVERY
 C     ROW.  EQ AND NE WILL BE DONE IN KOMPAR.
 C
-      INCLUDE 'rmatts.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'rimptr.d'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'rimptr.inc'
       IF(TOL.EQ.0.) RETURN
       IF(NBOO.EQ.0) RETURN
       IF(KATTY(NBOO).EQ.KZREAL) NS = 0

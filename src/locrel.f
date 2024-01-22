@@ -1,17 +1,17 @@
       FUNCTION LOCREL(RNAME)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   LOOK FOR A RELATION IN THE RELTBL RELATION
 C
 C  PARAMETERS:
 C         RNAME---NAME OF RELATION OR BLANK
 C         LOCREL--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
-      INCLUDE 'reltbl.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rimptr.d'
+      INCLUDE 'reltbl.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rimptr.inc'
       LOGICAL EQ
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
       LOCREL = 0
 C
 C  SCAN FOR THIS RELATION.

@@ -1,5 +1,5 @@
       FUNCTION LOCPRM(RNAME,JCODE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  CHECK PERMISSION FOR A USERID AGAINST A RELATION.
 C
@@ -10,12 +10,12 @@ C                 1 FOR READ
 C                 2 FOR MODIFY
 C         LOCPRM--O FOR OK, 1 FOR NO-WAY
 
-      INCLUDE 'flags.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'ascpar.d'
+      INCLUDE 'flags.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'ascpar.inc'
       LOGICAL EQ,NE
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
 C
 C  RETRIEVE THE PASSWORDS.
 C

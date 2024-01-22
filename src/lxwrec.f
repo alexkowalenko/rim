@@ -1,10 +1,10 @@
       FUNCTION LXWREC(I,J)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  RETURN THE JTH WORD OF THE ITH ITEM OF TEXT.
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
 C
       LXWREC = BLANK(1)
       IF(TOKTYP(IDT(I),KXTEXT)) THEN

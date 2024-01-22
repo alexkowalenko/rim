@@ -17,12 +17,12 @@ C  RIM IS A DESCENDANT OF THE RIM OF UW/BOEING/NASA FAME.
 C
 C------------------------------------------------------------
 
-      INCLUDE 'syspar.d'
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'files.d'
-      INCLUDE 'prom.d'
+      INCLUDE 'syspar.inc'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'prom.inc'
 C
       CHARACTER*4 VER
       CHARACTER*8 VDATE

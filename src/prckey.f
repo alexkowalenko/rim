@@ -1,5 +1,5 @@
       SUBROUTINE PRCKEY(IWORD,MAT,ATT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE PROCESSES KEY ATTRIBUTES WHEN
 C  LOADING (ADDING) OR DELETING OR REPLACING
@@ -11,11 +11,11 @@ C         MAT-----CONTAINS ONE TUPLE OF DATA
 C         ATT-----ARRAY OF TUPLEA VALUES
 C                 (ATTRIBUTE TABLE)
 C
-      INCLUDE 'tupler.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'start.d'
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rimptr.d'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'start.inc'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rimptr.inc'
       CHARACTER*(*) IWORD
       INTEGER COLUMN
       INTEGER MAT(1),ATT(ZTUPAL,1)

@@ -1,23 +1,23 @@
       SUBROUTINE REMREL(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     REMOVE A RELATION FROM THE DATABASE
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'reltbl.d'
-      INCLUDE 'attble.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'files.d'
-      INCLUDE 'rmatts.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'reltbl.inc'
+      INCLUDE 'attble.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'rmatts.inc'
 C
       LOGICAL EQKEYW
       LOGICAL NE
       LOGICAL EQ
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
 C
 C     CHECK FOR A DATABASE
 C

@@ -1,5 +1,5 @@
       SUBROUTINE RTOA(STRING,SC,FMT,RNUM,IERR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     CONVERT A REAL (RNUM) TO ASCII-TEXT (STRING)
 C     IF THE REAL WILL NOT FIT, STRING IS
@@ -13,8 +13,8 @@ C     IERR......0 IF VAL FITS, 1 OTHERWISE
 C
       DOUBLE PRECISION RNUM
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'lxlcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'lxlcom.inc'
       LOGICAL FFMT
 C
       DOUBLE PRECISION R,RR,REAL,POINT,RREM

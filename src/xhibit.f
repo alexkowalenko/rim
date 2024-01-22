@@ -1,14 +1,14 @@
       SUBROUTINE XHIBIT(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     LIST ALL RELATIONS HAVING SELECTED ATTRIBUTES.
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'files.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'buffer.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'buffer.inc'
 C
       LOGICAL EQ
       LOGICAL FLAG

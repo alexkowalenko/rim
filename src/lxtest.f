@@ -1,12 +1,12 @@
       PROGRAM MAIN
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     TEST LXL ROUTINES
 C
-      INCLUDE 'tokens.d'
-      INCLUDE 'cards.d'
-      INCLUDE 'files.d'
-      INCLUDE 'rmatts.d'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'cards.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'rmatts.inc'
 C
       LOGICAL EQKEYW
 C

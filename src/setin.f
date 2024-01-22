@@ -1,5 +1,5 @@
       SUBROUTINE SETIN(FILE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     SET THE INPUT FILE TO FILE
 C         IF FILE IS THE TERMINAL THEN SWITCH TO UNIT NINT
@@ -7,8 +7,8 @@ C         ELSE SWITCH TO UNIT NINTA AND OPEN THE FILE
 C
       CHARACTER*(*) FILE
 C
-      INCLUDE 'files.d'
-      INCLUDE 'prom.d'
+      INCLUDE 'files.inc'
+      INCLUDE 'prom.inc'
  
 C
 C  SEE IF THE CURRENT INPUT FILE NEEDS TO BE CLOSED.

@@ -1,9 +1,9 @@
       SUBROUTINE BLKDSP(NAME,BLK,CODES,LABELS,LLABEL)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DISPLAY A BLOCK OF DATA TO LOG
 C
-      INCLUDE 'rmatts.d'
+      INCLUDE 'rmatts.inc'
       INTEGER BLK(1), IBLK
       LOGICAL LBLK
       EQUIVALENCE(IBLK,LBLK)

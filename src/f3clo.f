@@ -1,13 +1,13 @@
       SUBROUTINE F3CLO
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:    CLOSE THE B-TREE RANDOM IO FILE - FILE 3
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'f3com.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'btbuf.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'f3com.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'btbuf.inc'
+      INCLUDE 'flags.inc'
 C
 C  SEQUENCE THROUGH THE INCORE BLOCKS LOOKING FOR WRITE FLAGS.
 C

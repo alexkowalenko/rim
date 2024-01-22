@@ -1,9 +1,9 @@
       FUNCTION RMTYPT(TYPE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RETURN THE CHARACTER LABEL OF A RMTYPE CODE (KZXXXX)
 C
-      INCLUDE 'rmatts.d'
+      INCLUDE 'rmatts.inc'
 C
       RMTYPT = '    '
       IF (TYPE.EQ.KZINT ) RMTYPT = 'INT '

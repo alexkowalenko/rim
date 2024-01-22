@@ -1,26 +1,26 @@
       FUNCTION SELATT(FTOK,NTOK)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     PARSE ATTRIBUTE SELECT ATTRIBUTE LIST
 C
       LOGICAL SELATT
  
-      INCLUDE 'ascpar.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'tuplel.d'
-      INCLUDE 'files.d'
-      INCLUDE 'selcom.d'
-      INCLUDE 'srtcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplel.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'selcom.inc'
+      INCLUDE 'srtcom.inc'
  
       LOGICAL EQKEYW,END,ALLATT,EQTOK
       LOGICAL EQ,NE
       INTEGER STATUS
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
       LOGICAL SUMALL
       CHARACTER*3 FUN
       INTEGER LKNAM(Z)

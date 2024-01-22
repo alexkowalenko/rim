@@ -1,5 +1,5 @@
       SUBROUTINE RMDATE(DAT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     ***UNIX SYSTEM DEPENDENT ROUTINE ***
 C

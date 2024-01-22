@@ -1,5 +1,5 @@
       LOGICAL FUNCTION PGCPRT(BLKTYP,MAXLIN)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     COMPILE A PRINT CLAUSE
 C
@@ -8,20 +8,20 @@ C     MAXLIN = NUMBER OF LINES IN THE BLOCK
 C
       CHARACTER*(6) BLKTYP
  
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'selcom.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'files.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'selcom.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'files.inc'
 C
-      INCLUDE 'pgmcom.d'
+      INCLUDE 'pgmcom.inc'
  
       LOGICAL EQKEYW, PGSTOR
 C

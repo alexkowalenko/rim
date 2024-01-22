@@ -1,5 +1,5 @@
       SUBROUTINE ZMOVE(WORD1,WORD2)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   COPIES WORD2 TO WORD1
 C

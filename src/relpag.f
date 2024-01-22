@@ -1,14 +1,14 @@
       SUBROUTINE RELPAG(THEROW)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   DO PAGING AS NEEDED FOR THE RELTBL RELATION
 C
 C  PARAMETERS:
 C         THEROW--INPUT - ROW WANTED
 C                 OUTPUT - ACTUAL ROW TO USE IN THE BUFFER
-      INCLUDE 'reltbl.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'f1com.d'
+      INCLUDE 'reltbl.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'f1com.inc'
       INTEGER THEROW
 C
 C  TURN THE REQUESTED ROW INTO A RECORD AND OFFSET.

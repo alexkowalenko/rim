@@ -1,5 +1,5 @@
       LOGICAL FUNCTION LXDATE(I,JDAT,FMT,TYP)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  RETURN THE DATE FROM THE ITH ITEM.
 C
@@ -9,10 +9,10 @@ C     LXDATE IS TRUE IF ALL OK
 C     TYP IS DATA TYPE
 C
       LOGICAL JULDAT
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'flags.inc'
       LOGICAL ATOI
 C
       LXDATE = .FALSE.

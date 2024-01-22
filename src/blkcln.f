@@ -1,14 +1,14 @@
       SUBROUTINE BLKCLN
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE: CLEAN OUT THE ENTIRE BUFFER AREA
 C
 C  PARAMETERS -- NONE
 C
-      INCLUDE 'incore.d'
-      INCLUDE 'f2com.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'rimcom.d'
+      INCLUDE 'incore.inc'
+      INCLUDE 'f2com.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'rimcom.inc'
 C
 C  WRITE OUT ANY PAGES THAT HAVE BEEN MODIFIED
 C

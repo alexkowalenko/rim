@@ -1,5 +1,5 @@
       SUBROUTINE RMXLOD(INDPTR,TUPLE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE LOADS DATA FROM TUPLE INTO THE CURRENT RELATION.
 C
@@ -8,19 +8,19 @@ C         INDPTR--INDEX TO SAVE BLOCK
 C         TUPLE---USER ARRAY WITH REPLACEMENT TUPLE
       INTEGER TUPLE(1)
  
-      INCLUDE 'rimcom.d'
-      INCLUDE 'vardat.d'
-      INCLUDE 'keydat.d'
-      INCLUDE 'ascpar.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'start.d'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'vardat.inc'
+      INCLUDE 'keydat.inc'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'start.inc'
       INTEGER COLUMN
-      INCLUDE 'picom.d'
+      INCLUDE 'picom.inc'
 C
       RMSTAT = 0
  

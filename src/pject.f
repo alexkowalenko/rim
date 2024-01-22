@@ -1,28 +1,28 @@
       SUBROUTINE PJECT(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     PERFORM PHYSICAL PROJECTIONS ON EXISTING RELATIONS.
 C
 C     PROJECT RNAME2 FROM RNAME1 USING ATTR1 ATTR2...ATTRN
 C       ... WHERE CONDITION
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'files.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'flags.inc'
 C
 C
       INTEGER STATUS
       LOGICAL EQKEYW
       INTEGER ATNCOL
       LOGICAL PJALL
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
 C
 C
 C     CHECK FOR A DATABASE

@@ -1,5 +1,5 @@
       SUBROUTINE PUTDAT(INDEX,ID,ARRAY,LENGTH)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   REPLACE A TUPLE ON THE DATA FILE
 C
@@ -8,10 +8,10 @@ C         INDEX---BLOCK REFERENCE NUMBER
 C         ID------PACKED ID WORD WITH OFFSET,IOBN
 C         ARRAY---ARRAY TO RECEIVE THE TUPLE
 C         LENGTH--LENGTH OF THE TUPLE
-      INCLUDE 'f2com.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'f2com.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'flags.inc'
 C
       INTEGER OFFSET
       INTEGER ARRAY(1)

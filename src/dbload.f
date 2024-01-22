@@ -1,23 +1,23 @@
       SUBROUTINE DBLOAD(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE IS THE DRIVER FOR LOADING DATA VALUES IN THE
 C  RIM DATA BASE.
 C
 C     :  LOAD REL_NAME <FROM FILE_NAME> <USING FILENAME>
  
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'files.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'prom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'prom.inc'
 C
       LOGICAL EQKEYW
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
       CHARACTER*(ZFNAML) FN, DFN
 C
 C     PARSING DATA FOR QUERY COMMANDS

@@ -1,5 +1,5 @@
       SUBROUTINE SWICST(MM,M,N)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
       DIMENSION M(1),MM(1)
 C
 C
@@ -17,7 +17,7 @@ C
 C  N         NUMBER OF ELEMENTS TO SORT
 C
 C
-      INCLUDE 'srtcom.d'
+      INCLUDE 'srtcom.inc'
       INTEGER SWIICP,SWIDCP,SWIRCP,SWITCP,SWVACP
       I = 1
       DO 10 J=1,30

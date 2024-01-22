@@ -2,7 +2,7 @@
 C
 C     FORTRAN INTERFACE SUBROUTINE
 C
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE: THIS ROUTINE CHANGES THE VARIABLE LENGTH ATTRIBUTE
 C           TUPLE HEADERS FROM INTERNAL TO USER REPRESENTATION
@@ -23,12 +23,12 @@ C           CTYP-----CONVERSION TYPE - -1 = INTERNAL TO USER
 C                                      +1 = USER TO INTERNAL
 C           TUPVAL---ARRAY CONTAINING THE TUPLE VALUES
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'vardat.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'tuplea.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'vardat.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc'
 C
       INTEGER CTYP
       INTEGER TUPVAL(1)

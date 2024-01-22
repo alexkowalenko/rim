@@ -1,5 +1,5 @@
       SUBROUTINE SORT(NKSORT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:  INTERFACE WITH SOCON TO SORT RIM DATA
 C
@@ -14,17 +14,17 @@ C
 C     SORT MAY BE CALLED WITH NSOVAR=0 TO COPY THE SELECTED
 C     TUPLES TO UNIT=ZNSRT (PASS-THRU SORT)
 C
-      INCLUDE 'rimptr.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'srtcom.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'files.d'
-      INCLUDE 'ascpar.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'incore.d'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'srtcom.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'incore.inc'
 C
       DIMENSION JBUF(ZMSRT)
 C===============================

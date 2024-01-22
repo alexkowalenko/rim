@@ -1,9 +1,9 @@
       SUBROUTINE LXINIT
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     INITIALIZE THE LXLCOM VARIABLES
 C
-      INCLUDE 'lxlcom.d'
+      INCLUDE 'lxlcom.inc'
  
       ASBLK  = ASCCHR(' ')
       ASBLAN = ASCCHR(' ')

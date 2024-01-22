@@ -1,5 +1,5 @@
       SUBROUTINE FMTDEC(DTFINT,TYPE,DTFASC,DTFASL)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DECODE A FORMAT INTEGER INTO A STRING (ASCII-TEXT)
 C
@@ -10,9 +10,9 @@ C     DTFASL = LENGTH OF DTFASC
 C
       INTEGER DTFASC(1)
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'lxlcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'lxlcom.inc'
 C
 C     OFFSETS FOR DATA PACKING FOR DATE TYPES
 C

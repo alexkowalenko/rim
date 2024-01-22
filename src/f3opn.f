@@ -1,17 +1,17 @@
       SUBROUTINE F3OPN(RIMDB3)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:    OPEN A B-TREE RANDOM IO PAGING FILE - FILE 3
 C
 C  PARAMETERS:
 C          RIMDB3----NAME OF THE FILE TO USE FOR FILE 3
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'f3com.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'btbuf.d'
-      INCLUDE 'start.d'
-      INCLUDE 'rimcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'f3com.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'btbuf.inc'
+      INCLUDE 'start.inc'
+      INCLUDE 'rimcom.inc'
  
       LOGICAL NE
       CHARACTER*(ZFNAML) RIMDB3

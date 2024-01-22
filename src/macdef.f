@@ -9,12 +9,12 @@ C     *  =  RETURN STATEMENT
 C
 C-----------------------------------------------------
 C
-      INCLUDE 'syspar.d'
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'maccom.d'
+      INCLUDE 'syspar.inc'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'maccom.inc'
  
       LOGICAL EQKEYW
       INTEGER MAC(Z)

@@ -1,5 +1,5 @@
       SUBROUTINE SYSDBG(DBX,STATUS)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     ***UNIX SYSTEM DEPENDENT ROUTINE ***
 C
@@ -8,8 +8,8 @@ C     (GET DIRECTORY AND FILENAME FROM COMMAND LINE)
 C
 C     DBX = POINTER IN TOKENS TO DATABASE NAME
 C
-      INCLUDE '../src/tokens.d'
-      INCLUDE '../src/cflags.d'
+      INCLUDE '../src/tokens.inc'
+      INCLUDE '../src/cflags.inc'
       COMMON /SYSEXT/ DBDRF
       CHARACTER*(ZFNAML) DBDRF
  

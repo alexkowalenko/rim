@@ -1,5 +1,5 @@
       SUBROUTINE RITOA(STRING,SC,LEN,RINT,REM,IERR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     CONVERT THE INTEGER PARTOF A DOUBLE (RINT) TO ASCII-TEXT (STRING)
 C     IF IT WILL NOT FIT RETURN IERR > 0
@@ -13,8 +13,8 @@ C     IERR......0 IF RINT FITS, 1 OTHERWISE
 C
       DOUBLE PRECISION RINT, REM
  
-      INCLUDE 'ascpar.d'
-      INCLUDE 'lxlcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'lxlcom.inc'
  
       DOUBLE PRECISION R
 C

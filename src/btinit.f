@@ -1,14 +1,14 @@
       SUBROUTINE BTINIT(START)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   INITIALIZE FOR A NEW BTREE
 C
 C  PARAMETERS:
 C         START---NEW RECORD USED FOR THIS BTREE
 C
-      INCLUDE 'f3com.d'
-      INCLUDE 'ascpar.d'
-      INCLUDE 'btbuf.d'
+      INCLUDE 'f3com.inc'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'btbuf.inc'
 C
       INTEGER START
 C

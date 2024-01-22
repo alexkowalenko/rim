@@ -1,5 +1,5 @@
       SUBROUTINE RMLOOK(MAT,INDEX,IFLAG,LENGTH)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C   LOCATE NEXT DESIRED TUPLE
 C
@@ -11,14 +11,14 @@ C         INDEX---PAGE BUFFER TO USE
 C         IFLAG---0 IFF TUPLE IS RETURNED
 C                 ELSE POINTER TO TUPLE IS RETURNED IN MAT
 C         LENGTH--LENGTH OF TUPLE IN WORDS
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'start.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'start.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'flags.inc'
 C
       DIMENSION MAT(1)
       LOGICAL EQTEST, WHEVAL

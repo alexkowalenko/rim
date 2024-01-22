@@ -1,5 +1,5 @@
       SUBROUTINE LXFMT(I,TYP,FMT,LEN)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     ENCODE A FORMAT STRING INTO AN INTEGER
 C
@@ -8,8 +8,8 @@ C     TYP IS THE DATA TYPE
 C     FMT IS THE ENCODED FORMAT
 C     LEN IS THE LENGTH OF THE DATA AS FORMATTED
 C
-      INCLUDE 'tokens.d'
-      INCLUDE 'rmatts.d'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'rmatts.inc'
 C
       CHARACTER*1 CHRASC
       CHARACTER*1 FC

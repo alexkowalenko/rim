@@ -1,18 +1,18 @@
       FUNCTION LOCVAR(ANAME)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     LOOK FOR VARIABLE
 C
 C         ANAME---NAME OF VARIABLE
 C         LOCVAR--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
  
-      INCLUDE 'tuplea.d'
-      INCLUDE 'ascpar.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'pgmcom.d'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'pgmcom.inc'
       LOGICAL EQ
       LOGICAL NE
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
       LOCVAR = 0
 C
 C  LOOK FOR THE VARIABLE

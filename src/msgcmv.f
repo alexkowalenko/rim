@@ -1,5 +1,5 @@
       SUBROUTINE MSGCMV(MTEXT,CTYPE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  ROUTINE TO ADD CHARS TO THE OUTPUT LINE
 C
@@ -16,9 +16,9 @@ C
       CHARACTER*(*) MTEXT
       CHARACTER*(*) CTYPE
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'files.d'
-      INCLUDE 'msgcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'msgcom.inc'
 C
       LOGICAL UCASE, FCHAR
 C

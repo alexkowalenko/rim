@@ -1,5 +1,5 @@
       LOGICAL FUNCTION PGSTOR(PGM,LPGM)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     STORE PART OF A PROGRAM
 C
@@ -7,11 +7,11 @@ C     INPUT:   PGM-----PROGRAM TO STORE
 C              LPGM----LENGTH OF PGM
 C              IF LPGM<0 THEN ALLOCATE ENSURE SPACE ONLY
 C
-      INCLUDE 'incore.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'pgmcom.d'
+      INCLUDE 'incore.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'pgmcom.inc'
 C
       PGSTOR = .FALSE.
 100   IF (PGPPTR+IABS(LPGM).GT.PGPMAX) THEN

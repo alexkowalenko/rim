@@ -1,5 +1,5 @@
       SUBROUTINE GETDAT(INDEX,ID,LOCTUP,LENGTH)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:  GET A TUPLE FROM THE DATA FILE
 C
@@ -8,11 +8,11 @@ C         INDEX---BLOCK REFERENCE NUMBER
 C         ID------PACKED ID WORD WITH START,PRU
 C         LOCTUP--OFFSET IN BUFFER FOR THE TUPLE
 C         LENGTH---LENGTH OF THE TUPLE
-      INCLUDE 'flags.d'
-      INCLUDE 'f2com.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'rimptr.d'
+      INCLUDE 'flags.inc'
+      INCLUDE 'f2com.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'rimptr.inc'
 C
       INTEGER OFFSET
 C

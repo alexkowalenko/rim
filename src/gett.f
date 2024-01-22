@@ -1,5 +1,5 @@
       SUBROUTINE GETT(ASTXT,POS,ASCHR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RETURN THE CH'TH ASCII-CHAR FROM ASTXT
 C

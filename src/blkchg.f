@@ -1,5 +1,5 @@
       SUBROUTINE BLKCHG(IND,NROWS,NCOLS)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:    CHANGE THE DIMENSIONS OF AN EXISTING BLOCK
 C
@@ -7,10 +7,10 @@ C  PARAMETERS
 C     INPUT:   IND-----BLOCK INDEX
 C              NROWS---NUMBER OF ROWS
 C              NCOLS---NUMBER OF COLUMNS
-      INCLUDE 'incore.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'incore.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'flags.inc'
 C
 C     TRACING
       IF (TRACE.GE.9) THEN

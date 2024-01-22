@@ -1,5 +1,5 @@
       SUBROUTINE TUPLRC(OPCODE,*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     PERFORM TUPLE RELATIONAL CALCULUS
 C
@@ -15,26 +15,26 @@ C
       PARAMETER (OPIS=1, OPUN=2, OPSB=3)
 C
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'files.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'whcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'whcom.inc'
 C
-      INCLUDE 'ptbl.d'
+      INCLUDE 'ptbl.inc'
       INTEGER PTABLE
       LOGICAL EQ
       LOGICAL NE
       LOGICAL EQKEYW
       LOGICAL GETKCA, REQKCA
-      INCLUDE 'dclar1.d'
-      INCLUDE 'dclar3.d'
+      INCLUDE 'dclar1.inc'
+      INCLUDE 'dclar3.inc'
 C
 C
 C     CHECK FOR A DATABASE

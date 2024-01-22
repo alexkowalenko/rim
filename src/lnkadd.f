@@ -1,12 +1,12 @@
       SUBROUTINE LNKADD
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     ADD A NEW LINK ROW
 C
-      INCLUDE 'tuplel.d'
-      INCLUDE 'lnktbl.d'
-      INCLUDE 'f1com.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'tuplel.inc'
+      INCLUDE 'lnktbl.inc'
+      INCLUDE 'f1com.inc'
+      INCLUDE 'flags.inc'
 C
 C  GET THE PAGE FOR ADDING NEW TUPLES.
 C

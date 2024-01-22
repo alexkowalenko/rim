@@ -2,9 +2,9 @@
 C
 C  PURPOSE:   CLOSE A RIM DATABASE.
 C
-      INCLUDE 'syspar.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'syspar.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'flags.inc'
 C
 C
 C  DO NOT CLOSE THE DATABASE IF THERE WERE NO MODIFICATIONS

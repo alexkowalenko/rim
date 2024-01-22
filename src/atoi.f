@@ -1,12 +1,12 @@
       LOGICAL FUNCTION ATOI(ASTR,SC,NC,VAL)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     CONVERT ASCII-TEXT TO INTEGER AND RETURN TRUE IF OK
 C
 C     SC -- STARTING CHAR IN ASTR
 C     NC -- NUMBER OF CHARS
 C
-      INCLUDE 'lxlcom.d'
+      INCLUDE 'lxlcom.inc'
 C
       VAL = 0
       SGN = 1

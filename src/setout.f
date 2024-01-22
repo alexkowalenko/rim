@@ -1,5 +1,5 @@
       SUBROUTINE SETOUT(UN,UNF,FILE,STAT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     SET THE OUTPUT FILE
 C         IF FILE IS THE TERMINAL THEN SET UN TO NOUT
@@ -8,7 +8,7 @@ C     IF COULD NOT OPEN FILE THEN SET STAT NE 0
 C
       CHARACTER*(*) FILE
 C
-      INCLUDE 'files.d'
+      INCLUDE 'files.inc'
 C
       STAT = 0
 C

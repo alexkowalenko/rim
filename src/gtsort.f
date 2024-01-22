@@ -1,5 +1,5 @@
       SUBROUTINE GTSORT(MAT,INDEX,IFLAG,LENGTH)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:  READ IN TUPLES FROM THE SORTED DATA FILE
 C            UNIT = ZNSRT + MRINDX
@@ -13,15 +13,15 @@ C                    1 IF THE BUFFER POINTER IS RETURNED IN MAT
 C                   -1 OPEN THE SORT FILE AND INITIALIZE
 C            LENGTH--LENGTH OF TUPLE IN WORDS
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'srtcom.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'f2com.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'srtcom.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'f2com.inc'
 C
-      INCLUDE 'rimptr.d'
+      INCLUDE 'rimptr.inc'
       DIMENSION MAT(1)
 C
 C     USE BLOCKS 8-10 (FOR INDICES 1-3) 

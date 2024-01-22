@@ -1,5 +1,5 @@
       SUBROUTINE TIOOPN(FILE,UNIT,MODE,ERR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     ***UNIX SYSTEM DEPENDENT ROUTINE ***
 C
@@ -13,7 +13,7 @@ C
       CHARACTER*(*) MODE
       CHARACTER*2 UN
 C
-      INCLUDE '../src/flags.d'
+      INCLUDE '../src/flags.inc'
  
       character*(zfnaml) ffile
       LOGICAL EXI

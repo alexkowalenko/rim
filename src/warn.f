@@ -1,5 +1,5 @@
       SUBROUTINE WARN(W,TEXT1,TEXT2)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   GENERAL PURPOSE ERROR PRINT ROUTINE
 C
@@ -8,10 +8,10 @@ C     INPUT:  W-------WARNING NUMBER
 C             TEXT1----OPTIONAL ASCII-TEXT
 C             TEXT2----OPTIONAL ASCII-TEXT
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'files.d'
-      INCLUDE 'rimcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'rimcom.inc'
 C
 C     MESSAGES
 C

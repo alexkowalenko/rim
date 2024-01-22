@@ -1,5 +1,5 @@
       SUBROUTINE DATJUL(DD,MM,YY,JUL)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     CONVERT JULIAN TO D,M,Y
 C

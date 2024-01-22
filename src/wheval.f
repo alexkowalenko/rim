@@ -1,5 +1,5 @@
       LOGICAL FUNCTION WHEVAL(ITUP)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     EVALUATE THE WHERE CLAUSE FOR THE CURRENT TUPLE
 C
@@ -7,15 +7,15 @@ C     ITUP-----POINTER TO TUPLE
 C     RETURNS THE VALUE OF THE WHERE CLAUSE
 C
  
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'start.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'pgmcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'start.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'pgmcom.inc'
 C
       LOGICAL OK,BTEST
       LOGICAL EQTEST, LKSTR

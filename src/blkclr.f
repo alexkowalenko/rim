@@ -1,14 +1,14 @@
       SUBROUTINE BLKCLR(IND)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:    CLEAR A BLOCK FROM THE INCORE BUFFER
 C
 C     IND-----BLOCK INDEX
  
  
-      INCLUDE 'incore.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'incore.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'flags.inc'
 C
 C     TRACING
       IF (TRACE.GE.11) THEN

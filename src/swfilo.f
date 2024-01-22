@@ -1,6 +1,6 @@
       SUBROUTINE SWFILO(BUFFER,LTUP,LREC,NTUREC,NINTUP,
      X                  INFIL,OUTFIL)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE  LOADING PASS FOR OUT-OF-CORE SORT
 C           OF FIXED LENGTH TUPLES
@@ -43,7 +43,7 @@ C            WORD 2   = CHAIN NO,NEG FOR LAST BLOCK
 C            WORD 3FF = TUPLES INSORTED ORDER
 C
 C
-      INCLUDE 'srtcom.d'
+      INCLUDE 'srtcom.inc'
       INTEGER BUFFER(1)
       I2 = 0
       J1 = NINTUP*(1+LTUP)

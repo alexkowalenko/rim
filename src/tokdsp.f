@@ -1,10 +1,10 @@
       SUBROUTINE TOKDSP
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DISPLAY /TOKENS/ COMMON
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
       INTEGER RTXT(ZPRINW)
 C
       CALL MSG(' ',' /TOKENS/ ',' ')

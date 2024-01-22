@@ -1,5 +1,5 @@
       SUBROUTINE RIOIN(FILE,RECORD,BUFFER,NWDS,IOS)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     **UNIX SYSTEM DEPENDENT ROUTINE **
 C
@@ -13,8 +13,8 @@ C         NWDS----NUMBER OF WORDS PER BUFFER
 C         IOS-----STATUS VARIABLE - 0 MEANS SUCCESS, ELSE TILT
 C
       INTEGER BUFFER(1)
-      INCLUDE '../src/flags.d'
-      INCLUDE '../src/rio.d'
+      INCLUDE '../src/flags.inc'
+      INCLUDE '../src/rio.inc'
  
       READ(FILE,REC=RECORD,IOSTAT=IOS) (BUFFER(I),I=1,NWDS)
       IUN = FILE - ZNFIL1 + 1

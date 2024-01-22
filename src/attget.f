@@ -1,14 +1,14 @@
       SUBROUTINE ATTGET(STATUS)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   RETRIEVE THE NEXT TUPLE FROM THE ATTRIBUTE RELATION
 C             BASED ON CONDITIONS SET UP IN LOCATT
 C
 C  PARAMETERS:
 C         STATUS--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'attble.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'attble.inc'
       LOGICAL EQ
       LOGICAL NE
 C

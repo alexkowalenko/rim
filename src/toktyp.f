@@ -1,5 +1,5 @@
       FUNCTION TOKTYP(I,TYPE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     THIS FUNCTION CHECKS IF THE I'TH TOKEN IS OF TYPE 'TYPE'
 C
@@ -7,7 +7,7 @@ C     INPUT - I........ITEM NUMBER
 C             TYPE.....TYPE TO MATCH
 C     OUTPUT- TOKTYP ...TRUE IF THE ITEM CAN BE OF TYPE 'TYPE'
 C
-      INCLUDE 'tokens.d'
+      INCLUDE 'tokens.inc'
 C
 C     FOR SUN FORTRAN I REPLACED IAND WINT AND
       IF (AND(IDT(I),TYPE).NE.0) THEN

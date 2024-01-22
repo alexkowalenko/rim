@@ -1,5 +1,5 @@
       SUBROUTINE NXTCRD(EOF)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  ROUTINE TO READ A RECORD TO /CARDS/
 C
@@ -7,12 +7,12 @@ C  PARAMETERS
 C
 C         EOF-----END-OF-FILE FLAG (0=NO, 1=YES)
 C
-      INCLUDE 'flags.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'cards.d'
-      INCLUDE 'files.d'
-      INCLUDE 'prom.d'
-      INCLUDE 'msgcom.d'
+      INCLUDE 'flags.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'cards.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'prom.inc'
+      INCLUDE 'msgcom.inc'
 C
 C
 C  READ A LINE FROM THE INPUT FILE

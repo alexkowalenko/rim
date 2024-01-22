@@ -6,8 +6,8 @@ C     LOCMAC = POSITION OF MACRO OR 0 IF NOT FOUND
 C
 C-----------------------------------------------------
 C
-      INCLUDE 'syspar.d'
-      INCLUDE 'maccom.d'
+      INCLUDE 'syspar.inc'
+      INCLUDE 'maccom.inc'
  
       LOGICAL EQ
       INTEGER MAC(Z)

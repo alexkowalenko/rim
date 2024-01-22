@@ -1,5 +1,5 @@
       SUBROUTINE LOADFM(MAT,ATT,FOR,NFOR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     LOAD DATA VALUES FROM A FILE USING FORMAT.
 C
@@ -15,19 +15,19 @@ C            5) FORMAT
 C            6) ITEM POSITION (LOADFM CALCULATES THIS)
 C         NFOR----NUMBER OF ITEMS IN FOR
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'cards.d'
-      INCLUDE 'files.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'start.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'dclar1.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'cards.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'start.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'dclar1.inc'
 C
 C  DECLARATION STATEMENTS
 C

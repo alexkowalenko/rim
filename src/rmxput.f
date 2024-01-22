@@ -1,5 +1,5 @@
       SUBROUTINE RMXPUT(INDPTR,TUPLE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE PUTS DATA FROM TUPLE INTO THE CURRENT ROW.
 C
@@ -7,19 +7,19 @@ C  PARAMETERS:
 C         INDPTR--INDEX TO SAVE BLOCK
 C         TUPLE---USER ARRAY WITH REPLACEMENT TUPLE
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'keydat.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'vardat.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'start.d'
-      INCLUDE 'picom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'keydat.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'vardat.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'start.inc'
+      INCLUDE 'picom.inc'
 C
       INTEGER TUPLE(1)
       RMSTAT = 0

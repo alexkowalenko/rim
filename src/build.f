@@ -1,23 +1,23 @@
       SUBROUTINE BUILD(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:  BUILD A KEY INDEX FOR AN ATTRIBUTE IN A RELATION
 C
 C SYNTAX:  BUILD KEY FOR <ATTRIBUTE> IN <RELATION>
 C
-      INCLUDE 'tokens.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'start.d'
-      INCLUDE 'files.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'srtcom.d'
-      INCLUDE 'dclar1.d'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'start.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'srtcom.inc'
+      INCLUDE 'dclar1.inc'
       INTEGER COLUMN
 C
       LOGICAL EQKEYW

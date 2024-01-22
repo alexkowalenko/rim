@@ -1,5 +1,5 @@
       FUNCTION LOCASE(ASCHR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RETURN THE LOWER CASE EQUIVALENT OF ASCHR (ASCII-CHAR)
 C

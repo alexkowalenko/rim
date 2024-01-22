@@ -1,16 +1,16 @@
       SUBROUTINE ATTNEW(RNAME,NATT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   ADD A NEW RELATION TO THE ATTRIBUTE RELATION
 C
 C  PARAMETERS:
 C         RNAME---NAME OF A RELATION
 C         NATT----NUMBER OF ATTRIBUTES IN THE RELATION
-      INCLUDE 'rmatts.d'
-      INCLUDE 'attble.d'
-      INCLUDE 'f1com.d'
-      INCLUDE 'start.d'
-      INCLUDE 'dclar1.d'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'attble.inc'
+      INCLUDE 'f1com.inc'
+      INCLUDE 'start.inc'
+      INCLUDE 'dclar1.inc'
 C
 C  ADJUST NAROW IF ALL ATTRIBUTES WILL NOT FIT ON THE PAGE.
 C

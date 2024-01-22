@@ -1,10 +1,10 @@
       SUBROUTINE BLKNXT(NXT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  CLEAR OUT THE CURRENT BLOCK SET AND RETURN A POINTER TO THE
 C  FIRST AVAILABLE WORD IN //BUFFER.
 C
-      INCLUDE 'incore.d'
+      INCLUDE 'incore.inc'
 C
       CALL BLKCLN
       NXT = NEXT

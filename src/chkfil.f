@@ -1,5 +1,5 @@
       LOGICAL FUNCTION CHKFIL(FNAME,RW)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     **UNIX SYSTEM DEPENDENT INTERNAL ROUTINE **
 C

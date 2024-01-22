@@ -1,5 +1,5 @@
       SUBROUTINE BLKMOV(TO,FROM,NWORDS)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   MOVE WORDS BETWEEN ARRAYS
 C

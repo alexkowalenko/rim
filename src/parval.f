@@ -1,5 +1,5 @@
       SUBROUTINE PARVAL(ID,MAT,ATYPE,NWORDS,ROW,NCOLT,IERR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     THIS ROUTINE PARSES A VALUE SPECIFICATION AND STORES THE
 C     VALUE IN MAT.
@@ -20,13 +20,13 @@ C                      2 IF COUNT MISMATCH
 C                      3 IF PAREN MISMATCH
 C              INPUT- -1 PUT NULL INTO MAT
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'files.d'
-      INCLUDE 'tuplea.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'tuplea.inc'
  
       DOUBLE PRECISION RR
       INTEGER IR(2)

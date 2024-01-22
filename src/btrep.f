@@ -1,5 +1,5 @@
       SUBROUTINE BTREP(VALU,IPTR,IPTRO,TYPE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   REPLACE VALUES IN A BTREE
 C
@@ -16,12 +16,12 @@ C         BTPUT---PAGING ROUTINE
 C
 C  DECLARATIVES
 C
-      INCLUDE 'rmatts.d'
-      INCLUDE 'f3com.d'
-      INCLUDE 'ascpar.d'
-      INCLUDE 'btbuf.d'
-      INCLUDE 'start.d'
-      INCLUDE 'stack.d'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'f3com.inc'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'btbuf.inc'
+      INCLUDE 'start.inc'
+      INCLUDE 'stack.inc'
 C
       INTEGER VAL,VALU(1)
 C

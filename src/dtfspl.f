@@ -1,9 +1,9 @@
       SUBROUTINE DTFSPL(L,DP,MP,ML,YP,YL,SC,DTFINT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     SPLIT A DATE-TIME FORMAT INTEGER INTO COMPONENTS
 C
-      INCLUDE 'flags.d'
+      INCLUDE 'flags.inc'
 C
 C     OFFSETS FOR DATA PACKING
 C

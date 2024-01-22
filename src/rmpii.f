@@ -1,23 +1,23 @@
       SUBROUTINE RMPII
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     INITIALIZE THE PI DATA FOR CURRENT RELATION
 C
 C     INDCUR: MULTIPLE RELATION POSITION INDICATOR
 C
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'vardat.d'
-      INCLUDE 'keydat.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'rimptr.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'vardat.inc'
+      INCLUDE 'keydat.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'rimptr.inc'
 C
       LOGICAL EQ
 C
-      INCLUDE 'picom.d'
+      INCLUDE 'picom.inc'
 C
 C  SET PI VARS
 C

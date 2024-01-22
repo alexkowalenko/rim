@@ -1,23 +1,23 @@
       SUBROUTINE DELROW(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DELETE ROWS FROM A RELATION
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'attble.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'attble.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'flags.inc'
       LOGICAL EQKEYW
       LOGICAL NE
       LOGICAL EQ
       LOGICAL SELWHR
-      INCLUDE 'dclar1.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'whcom.d'
+      INCLUDE 'dclar1.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'whcom.inc'
 C
 C
 C     CHECK FOR A DATABASE

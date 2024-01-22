@@ -1,15 +1,15 @@
       SUBROUTINE DELDAT(INDEX,ID)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   DELINK A TUPLE FROM THE DATA FILE
 C
 C  PARAMETERS:
 C         INDEX---BLOCK REFERENCE NUMBER
 C         ID------PACKED ID WORD WITH OFFSET,IOBN
-      INCLUDE 'f2com.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'f2com.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'flags.inc'
 C
       INTEGER OFFSET
 C

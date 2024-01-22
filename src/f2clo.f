@@ -1,13 +1,13 @@
       SUBROUTINE F2CLO
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:    CLOSE THE DATA RANDOM IO FILE - FILE 2
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'f2com.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'f2com.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'flags.inc'
 C
 C  SEQUENCE THROUGH THE BUFFERS LOOKING FOR WRITE FLAGS.
 C

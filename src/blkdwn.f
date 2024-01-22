@@ -2,10 +2,10 @@
 C
 C  GO TO THE NEXT LOWER BLOCK SET.
 C
-      INCLUDE 'syspar.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'incore.d'
-      INCLUDE 'f2com.d'
+      INCLUDE 'syspar.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'incore.inc'
+      INCLUDE 'f2com.inc'
       CALL BLKCLN
       DO 107 II=10,20
 107   CALL BLKCLR(II)

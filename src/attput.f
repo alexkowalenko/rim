@@ -1,14 +1,14 @@
       SUBROUTINE ATTPUT(STATUS)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   REPLACE THE CURRENT TUPLE FROM THE ATTRIBUTE RELATION
 C             BASED ON CONDITIONS SET UP IN LOCATT AND ATTGET
 C
 C  PARAMETERS:
 C         STATUS--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
-      INCLUDE 'flags.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'attble.d'
+      INCLUDE 'flags.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'attble.inc'
       INTEGER STATUS
 C
       STATUS = 0

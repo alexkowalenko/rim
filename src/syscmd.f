@@ -1,5 +1,5 @@
       SUBROUTINE SYSCMD(CMD,ERR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     ***UNIX SYSTEM DEPENDENT ROUTINE ***
 C

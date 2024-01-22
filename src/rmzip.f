@@ -1,13 +1,13 @@
       SUBROUTINE RMZIP(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:  PROCESS ZIP COMMAND  (CALL SYSTEM FUNCTION)
 C
-      INCLUDE 'flags.d'
-      INCLUDE 'cflags.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'cards.d'
+      INCLUDE 'flags.inc'
+      INCLUDE 'cflags.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'cards.inc'
 C
       CHARACTER*1 CHRASC
 C

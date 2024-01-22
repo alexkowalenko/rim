@@ -1,5 +1,5 @@
       FUNCTION UPCASE(ASCHR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RETURN THE UPPER CASE EQUIVALENT OF ASCHR (ASCII-CHAR)
 C

@@ -1,5 +1,5 @@
       LOGICAL FUNCTION GETKCA(PTABLE,NATT,RNAME,REQKCA)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     GET A KEYED COMMON ATTRIBUTE FROM A SET OF ATTRIBUTES
 C     DEFINED IN BLOCK 10
@@ -16,12 +16,12 @@ C       GETKCA RETURNS TRUE IF A KEYED COMMON ATTRIBUTE WAS FOUND
 C
       LOGICAL REQKCA
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'dclar1.d'
-      INCLUDE 'ptbl.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'dclar1.inc'
+      INCLUDE 'ptbl.inc'
 C
 C     TOKEN DATA TO BUILD KEYS
 C

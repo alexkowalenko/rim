@@ -1,13 +1,13 @@
       SUBROUTINE PROMPT(PTXT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     **UNIX SYSTEM DEPENDENT INTERNAL ROUTINE **
 C
 C     ISSUE TERMINAL PROMPT
 C
-      INCLUDE '../src/ascpar.d'
-      INCLUDE '../src/msgcom.d'
-      INCLUDE '../src/files.d'
+      INCLUDE '../src/ascpar.inc'
+      INCLUDE '../src/msgcom.inc'
+      INCLUDE '../src/files.inc'
       character*1 chrasc
  
       character*(zc) p

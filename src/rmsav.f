@@ -1,23 +1,23 @@
       SUBROUTINE RMSAV(INDPTR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   SAVE THE INTERNAL POINTERS FOR THE
 C             MULTIPLE PROGRAM INTERFACE.
 C
 C  PARAMETERS:
 C     INPUT:  INDPTR--INDEX TO SAVE BLOCK (RANGE OF 1 TO ZPIMAX)
-      INCLUDE 'ascpar.d'
-      INCLUDE 'keydat.d'
-      INCLUDE 'srtcom.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'vardat.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'ptrcom.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'keydat.inc'
+      INCLUDE 'srtcom.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'vardat.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'ptrcom.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'flags.inc'
 C
 C  SEE IF THE INDEX IS WITHIN RANGE.
 C

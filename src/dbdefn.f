@@ -1,5 +1,5 @@
       SUBROUTINE DBDEFN(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DEFINE THE DATABASE SCHEMA
 C
@@ -8,13 +8,13 @@ C           <COMMANDS>
 C           END
 C
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'cflags.d'
-      INCLUDE 'files.d'
-      INCLUDE 'prom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'cflags.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'prom.inc'
 C
       LOGICAL EQKEYW
       LOGICAL EQ, NE

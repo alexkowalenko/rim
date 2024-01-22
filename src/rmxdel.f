@@ -1,19 +1,19 @@
       SUBROUTINE RMXDEL(INDPTR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     DELETES THE CURRENT ROW.
 C
 C  PARAMETERS:
 C         INDPTR--INDEX TO SAVE BLOCK (RANGE OF 1 TO 9)
-      INCLUDE 'keydat.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'ascpar.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'start.d'
+      INCLUDE 'keydat.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'start.inc'
       INTEGER COLUMN
       RMSTAT = 0
 C

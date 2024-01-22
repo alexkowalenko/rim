@@ -1,5 +1,5 @@
       SUBROUTINE BTGET(ID,NSTRT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:    RETREIVE OR SET UP A BTREE OR MOT NODE.
 C
@@ -7,9 +7,9 @@ C  PARAMETERS
 C     INPUT:   ID------DESIRED RECORD NUMBER
 C     OUTPUT:  NSTRT---BUFFER INDEX FOR REQUESTED NODE
 C
-      INCLUDE 'btbuf.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'f3com.d'
+      INCLUDE 'btbuf.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'f3com.inc'
 C
 C  SEE IF THE BLOCK IS IN CORE.
 C

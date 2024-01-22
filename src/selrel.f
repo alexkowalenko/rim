@@ -1,5 +1,5 @@
       FUNCTION SELREL(FTOK,NTOK)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  FUNCTION TO VALIDATE AND PROCESS A FROM OR USE CLAUSE
 C
@@ -10,11 +10,11 @@ C                 NTOK = 0 USES PRIOR VALUE
 C
       LOGICAL SELREL
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'selcom.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'dclar1.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'selcom.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'dclar1.inc'
  
       LOGICAL NE, EQ
 C

@@ -1,5 +1,5 @@
       FUNCTION LOCATT(ANAME,RNAME)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   LOOK FOR ATTRIBUTES AND RELATIONS IN THE ATTRIBUTE
 C             RELATION
@@ -8,12 +8,12 @@ C  PARAMETERS:
 C         ANAME---NAME OF ATTRIBUTE OR BLANKS
 C         RNAME---NAME OF RELATION OR BLANKS
 C         LOCATT--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
-      INCLUDE 'attble.d'
-      INCLUDE 'start.d'
-      INCLUDE 'ascpar.d'
+      INCLUDE 'attble.inc'
+      INCLUDE 'start.inc'
+      INCLUDE 'ascpar.inc'
       LOGICAL EQ
       LOGICAL NE
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
       LOCATT = 0
 C
 C  SEE WHAT THE CALLER WANTS.

@@ -1,5 +1,5 @@
       SUBROUTINE SELOUT(MAT,IATT,ADONE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     PRINT ATTRIBUTE TO LINE
 C
@@ -7,11 +7,11 @@ C     MAT.......DATA FOR THIS ATTRIBUTE
 C     IATT......ATTRIBUTE NUMBER IN SELCOM
 C     ADONE.....SET TO .TRUE. IF NO PARAGRAPHING LEFT
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'selcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'selcom.inc'
 C
       DIMENSION MAT(1)
       LOGICAL ADONE

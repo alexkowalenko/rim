@@ -1,5 +1,5 @@
       SUBROUTINE DMSG(JDAT,DFMT,MCONT,TYP)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  ROUTINE TO FORMAT AND PRINT A JULIAN DATE
 C
@@ -12,10 +12,10 @@ C         TYP-----TYPE (KZDATE / KZTIME)
 C
       CHARACTER*1 MCONT
 C
-      INCLUDE 'flags.d'
-      INCLUDE 'files.d'
-      INCLUDE 'msgcom.d'
-      INCLUDE 'rmatts.d'
+      INCLUDE 'flags.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'msgcom.inc'
+      INCLUDE 'rmatts.inc'
 C
       PARAMETER (DATW=12/ZCW)
       INTEGER ADAT(DATW)

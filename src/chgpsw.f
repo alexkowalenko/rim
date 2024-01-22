@@ -1,13 +1,13 @@
       SUBROUTINE CHGPSW(*)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     CHANGE A PASSWORD
 C
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'files.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'files.inc'
 C
       LOGICAL EQKEYW
       LOGICAL NE

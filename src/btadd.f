@@ -1,5 +1,5 @@
       SUBROUTINE BTADD(VALU,IPTR,TYPE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   ADD NEW VALUES TO A BTREE
 C
@@ -13,13 +13,13 @@ C         BTGET---PAGING ROUTINE
 C         BTSERT--USED TO INSERT VALUES IN A BTREE
 C         BTPUT---PAGING ROUTINE
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'f3com.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'btbuf.d'
-      INCLUDE 'start.d'
-      INCLUDE 'stack.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'f3com.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'btbuf.inc'
+      INCLUDE 'start.inc'
+      INCLUDE 'stack.inc'
 C
 C     RVAL IS REAL UNTIL BTREE IS ALLOWED 2 WORDS PER ENTRY
 C

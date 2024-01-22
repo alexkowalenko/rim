@@ -1,5 +1,5 @@
       SUBROUTINE SELPUT(VAL,TYP,FMT,START,STRING)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     THIS ROUTINE PUTS AN ACTUAL VALUE (NON-TEXT) INTO STRING.
 C     VAL ---- VALUE
@@ -8,9 +8,9 @@ C     FMT ---- FORMAT TO USE
 C     START -- STARTING PLACE IN STRING
 C     STRING - PLACE TO PUT TEXT
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'rmatts.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'rmatts.inc'
 C
       INTEGER IV(2)
 C

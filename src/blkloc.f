@@ -1,5 +1,5 @@
       INTEGER FUNCTION BLKLOC(IND)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:    RETURN THE STARTING ADDRESS FOR THE REQUESTED BLOCK
 C
@@ -8,9 +8,9 @@ C     INPUT:   IND-----BLOCK INDEX
 C     OUTPUT:  BLKLOC--ADDRESS OF 1,1 ENTRY FOR THE BLOCK
  
  
-      INCLUDE 'incore.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'incore.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'flags.inc'
 C
 C     TRACING
 CCC   IF (TRACE.GT.20) THEN

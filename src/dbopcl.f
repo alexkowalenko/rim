@@ -1,14 +1,14 @@
       SUBROUTINE DBOPCL(*,MODE)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     OPEN/CLOSE A DATABASE
 C
       CHARACTER*(*) MODE
 C
-      INCLUDE 'flags.d'
-      INCLUDE 'cflags.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'tokens.d'
+      INCLUDE 'flags.inc'
+      INCLUDE 'cflags.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'tokens.inc'
  
       LOGICAL CHKFIL
       CHARACTER*(ZFNAML) F1N,F2N,F3N,FSET

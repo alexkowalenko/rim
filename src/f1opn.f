@@ -1,23 +1,23 @@
       SUBROUTINE F1OPN(RIMDB1)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   OPEN THE RIM DIRECTORY FILE - FILE 1
 C
 C  PARAMETERS:
 C         RIMDB1--NAME OF THE FILE TO USE FOR FILE1
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'f1com.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'attble.d'
-      INCLUDE 'reltbl.d'
-      INCLUDE 'lnktbl.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'cflags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'f1com.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'attble.inc'
+      INCLUDE 'reltbl.inc'
+      INCLUDE 'lnktbl.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'cflags.inc'
  
       LOGICAL NE
       COMMON /USAGE/ CPTTD,CPSTRT,KUSAGE(20)
-      INCLUDE 'dstats.d'
+      INCLUDE 'dstats.inc'
       CHARACTER*(ZFNAML) RIMDB1
  
 C

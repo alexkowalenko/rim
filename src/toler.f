@@ -1,12 +1,12 @@
       SUBROUTINE TOLER(K,V,N)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     THIS ROUTINE APPLIES A TOLERANCE TO A REAL ROUTINE
 C
 C     K IS LOCBOO VALUE
 C     V(N) IS REAL ARRAY
 C
-      INCLUDE 'flags.d'
+      INCLUDE 'flags.inc'
       REAL V(N)
       REAL X
       X = TOL

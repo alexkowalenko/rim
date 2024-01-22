@@ -11,15 +11,15 @@ C              EOR--- <0  INDICATES ERROR
 C
 C     TOKEN IS PUT INTO /TOKENS/ AT ITEMS+1
 C
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
  
       INTEGER EOR
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'cards.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'cards.inc'
+      INCLUDE 'flags.inc'
 C
       INTEGER ASCHR
       LOGICAL TXTONL,KWSOK,KNMOK

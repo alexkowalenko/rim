@@ -11,17 +11,17 @@ C     CHARACTER IS RETURNED AS THE FUNCTION VALUE (ASCII-CHAR)
 C
 C     IF MACWPT<MACWPZ THEN THE CHARACTER IS TAKEN FROM MACWRK
 C
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
  
  
       LOGICAL TXTONL
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'cards.d'
-      INCLUDE 'files.d'
-      INCLUDE 'maccom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'cards.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'maccom.inc'
 C
       CHARACTER*1 CHRASC
 C

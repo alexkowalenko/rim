@@ -1,24 +1,24 @@
       SUBROUTINE RMRES(INDPTR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   RESTORE THE INTERNAL POINTERS FOR THE
 C             MULTIPLE PROGRAM INTERFACE.
 C
 C  PARAMETERS:
 C     INPUT:  INDPTR--INDEX TO SAVE BLOCK (RANGE OF 0 TO ZPIMAX)
-      INCLUDE 'ascpar.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'vardat.d'
-      INCLUDE 'keydat.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'reltbl.d'
-      INCLUDE 'ptrcom.d'
-      INCLUDE 'srtcom.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'vardat.inc'
+      INCLUDE 'keydat.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'reltbl.inc'
+      INCLUDE 'ptrcom.inc'
+      INCLUDE 'srtcom.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'flags.inc'
       LOGICAL NE
       LOGICAL EQ
 C

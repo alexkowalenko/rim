@@ -1,13 +1,13 @@
       SUBROUTINE RELGET(STATUS)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   GET THE NEXT TUPLE IN THE RELTBL RELATION
 C
 C  PARAMETERS:
 C         STATUS--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
-      INCLUDE 'ascpar.d'
-      INCLUDE 'reltbl.d'
-      INCLUDE 'tupler.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'reltbl.inc'
+      INCLUDE 'tupler.inc'
       INTEGER STATUS
       LOGICAL EQ
       STATUS = 0

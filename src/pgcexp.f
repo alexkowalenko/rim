@@ -1,5 +1,5 @@
       FUNCTION PGCEXP(ST,NT)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     COMPILE AN EXPRESSION (FOR PROGRAM MODE)
 C
@@ -8,19 +8,19 @@ C         NT------NUMBER OF TOKENS
 C
       LOGICAL PGCEXP
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'pgmcom.d'
-      INCLUDE 'expcom.d'
-      INCLUDE 'lxlcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'pgmcom.inc'
+      INCLUDE 'expcom.inc'
+      INCLUDE 'lxlcom.inc'
 C
       CHARACTER*(ZKEYWL) KOMPAR
       LOGICAL EQKEYW, EQTOK, PGSTOR
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
       LOGICAL LXDATE
  
 C     OPLIST CONTAINS OPCODE + LEVEL*100 (NOTE MAX OPCODE = 99)

@@ -1,12 +1,12 @@
       SUBROUTINE ATTADD
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   ADD A NEW TUPLE TO THE ATTRIBUTE RELATION
 C
-      INCLUDE 'tuplea.d'
-      INCLUDE 'attble.d'
-      INCLUDE 'f1com.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'attble.inc'
+      INCLUDE 'f1com.inc'
+      INCLUDE 'flags.inc'
 C
 C  GET THE PAGE FOR ADDING NEW TUPLES.
 C

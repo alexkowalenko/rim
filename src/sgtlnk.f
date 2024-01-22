@@ -1,5 +1,5 @@
       LOGICAL FUNCTION SGTLNK(I,MP,LP)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     GET A LINKED TUPLE USING INFO IN SELCOM
 C
@@ -8,19 +8,19 @@ C     MP = POINTER TO MAIN TUPLE IN BUFFER
 C     LP = POINTER TO LINKED TUPLE IN BUFFER
 C     RETURNS TRUE IF LINKED TUPLE FOUND
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tuplel.d'
-      INCLUDE 'files.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'selcom.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'msgcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tuplel.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'selcom.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'msgcom.inc'
 C
       SGTLNK = .FALSE.
  

@@ -1,5 +1,5 @@
       LOGICAL FUNCTION LOADMV(CCOL,CLEN)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     CHECK FORMATTED LOADING DATA FOR MISSING VALUES
 C
@@ -7,10 +7,10 @@ C  PARAMETERS:
 C         CCOL----STARTING COLUMN
 C         CLEN----LENGTH
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'cards.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'cards.inc'
+      INCLUDE 'flags.inc'
 C
 C  DECLARATION STATEMENTS
 C

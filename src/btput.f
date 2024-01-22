@@ -1,13 +1,13 @@
       SUBROUTINE BTPUT(ID)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C  PURPOSE:    TURN ON THE WRITE FLAG ON THE INDICATED BLOCK
 C
 C  PARAMETERS
 C     INPUT:   ID------RECORD NUMBER
-      INCLUDE 'f3com.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'f3com.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'flags.inc'
 C
 C  LOOK FOR THIS BLOCK IN CORE.
 C

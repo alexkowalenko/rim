@@ -1,28 +1,28 @@
       SUBROUTINE RMQERY(*,QCOM)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     PROG INTERFACE DRIVER FOR QUERY OF THE RIM DATA BASE.
 C     ( THIS IS SIMILAR TO QUERY, BUT DOES NOT LOAD THE
 C       SELATT ROUTINES AND COMMONS )
 C
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'selcom.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'files.d'
-      INCLUDE 'srtcom.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'selcom.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'srtcom.inc'
 C
       LOGICAL EQKEYW
       LOGICAL SELREL, SELWHR, SELSRT
       LOGICAL SAORD, LTEST
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
 C
       CHARACTER*(*) QCOM
       LOGICAL ITALLY

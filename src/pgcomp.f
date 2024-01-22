@@ -1,31 +1,31 @@
       SUBROUTINE PGCOMP
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     COMPILE A RIM PROGRAM
 C
 C     THE PROGRAM IS COMPILED AND STORED IN /BUFFER/ IN BLOCK6.
 C     VARIABLES ARE ALSO STORED IN /BUFFER/ IN BLOCK5.
 C
-      INCLUDE 'ascpar.d'
-      INCLUDE 'tokens.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'selcom.d'
-      INCLUDE 'rmatts.d'
-      INCLUDE 'rimcom.d'
-      INCLUDE 'rimptr.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'files.d'
-      INCLUDE 'srtcom.d'
-      INCLUDE 'f2com.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'selcom.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'srtcom.inc'
+      INCLUDE 'f2com.inc'
 C
-      INCLUDE 'pgmcom.d'
-      INCLUDE 'expcom.d'
+      INCLUDE 'pgmcom.inc'
+      INCLUDE 'expcom.inc'
  
-      INCLUDE 'dclar1.d'
+      INCLUDE 'dclar1.inc'
       LOGICAL EQKEYW, PGSTOR, PGBSTO
       LOGICAL SELREL, SELWHR, SELSRT
       LOGICAL VARADD, PGCEXP, PGCPRT

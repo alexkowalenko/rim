@@ -1,5 +1,5 @@
       SUBROUTINE UNDEF(ALL,IRCNTR,IDAY,MODE,LHASH,ATREL)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     UNLOAD THE SCHEMA OF A DATABASE.
 C
@@ -9,18 +9,18 @@ C          IRCNTR---------NUMBER OF RELATIONS IF SPECIFIED (ALL IS FALSE
 C          IDAY-----------DAY CODE FOR HASH.
 C          MODE -----------COMMAND SPECIFIED.
 C
-      INCLUDE 'rmatts.d'
-      INCLUDE 'ascpar.d'
-      INCLUDE 'files.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'flags.d'
-      INCLUDE 'tuplea.d'
-      INCLUDE 'tupler.d'
-      INCLUDE 'tuplel.d'
-      INCLUDE 'lxlcom.d'
-      INCLUDE 'msgcom.d'
-      INCLUDE 'dclar1.d'
-      INCLUDE 'dclar3.d'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'tuplea.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplel.inc'
+      INCLUDE 'lxlcom.inc'
+      INCLUDE 'msgcom.inc'
+      INCLUDE 'dclar1.inc'
+      INCLUDE 'dclar3.inc'
       LOGICAL EQ, NE
       LOGICAL ALL,PERM,LHASH
 C

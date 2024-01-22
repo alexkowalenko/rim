@@ -1,5 +1,5 @@
       SUBROUTINE RIOOUT(FILE,RECORD,BUFFER,NWDS,IOS)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     **UNIX SYSTEM DEPENDENT ROUTINE **
 C
@@ -12,8 +12,8 @@ C         BUFFER--BUFFER TO WRITE FROM
 C         NWDS----NUMBER OF WORDS PER BUFFER
 C         IOS-----STATUS VARIABLE - 0 MEANS SUCCESS, ELSE TILT
 C
-      INCLUDE '../src/flags.d'
-      INCLUDE '../src/rio.d'
+      INCLUDE '../src/flags.inc'
+      INCLUDE '../src/rio.inc'
       INTEGER BUFFER(1)
  
       IUN = FILE - ZNFIL1 + 1

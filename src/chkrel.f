@@ -1,5 +1,5 @@
       SUBROUTINE CHKREL (PERM,MODE,ISTAT,NAMUSR)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     CHECKS PERMISSION TO SEE IF USER CAN UNLOAD THIS
 C     RELATION.  PERM SET TO TRUE IF USER CAN.
@@ -17,8 +17,8 @@ C
       LOGICAL PERM
       CHARACTER*(*) MODE
 C
-      INCLUDE 'tupler.d'
-      INCLUDE 'flags.d'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'flags.inc'
       INTEGER NAMUSR(Z)
       LOGICAL EQ
  

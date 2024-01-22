@@ -1,5 +1,5 @@
       SUBROUTINE PGBRES(TYP,P)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     RESTORE A COMMON BLOCK
 C
@@ -14,13 +14,13 @@ C     OUT:     P ------LOCATION OF NEXT BUFFER POSITION
 C
       CHARACTER*3 TYP
  
-      INCLUDE 'selcom.d'
-      INCLUDE 'whcom.d'
-      INCLUDE 'ptrcom.d'
-      INCLUDE 'srtcom.d'
-      INCLUDE 'expcom.d'
-      INCLUDE 'buffer.d'
-      INCLUDE 'rimptr.d'
+      INCLUDE 'selcom.inc'
+      INCLUDE 'whcom.inc'
+      INCLUDE 'ptrcom.inc'
+      INCLUDE 'srtcom.inc'
+      INCLUDE 'expcom.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'rimptr.inc'
 C
  
       IF (TYP.EQ.'SEL') THEN

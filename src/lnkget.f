@@ -1,14 +1,14 @@
       SUBROUTINE LNKGET(STATUS)
-      INCLUDE 'syspar.d'
+      INCLUDE 'syspar.inc'
 C
 C     GET THE NEXT LINK ROW
 C
 C     PARAMETERS:
 C         STATUS--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
  
-      INCLUDE 'ascpar.d'
-      INCLUDE 'lnktbl.d'
-      INCLUDE 'tuplel.d'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'lnktbl.inc'
+      INCLUDE 'tuplel.inc'
       INTEGER STATUS
       LOGICAL EQ
       STATUS = 0
