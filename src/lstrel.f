@@ -1,4 +1,7 @@
       SUBROUTINE LSTREL(*)
+
+      USE DateTime, only: RMTIME, RMDATE
+
       INCLUDE 'syspar.inc'
 C
 C     SUMMARIZE THE USERS DEFINITION OF A RELATION
@@ -32,8 +35,8 @@ C
       ENDIF
 C
 C
-      CALL RMDATE(TDAY)
-      CALL RMTIME(TTIM)
+      TDAY = RMDATE()
+      TTIM = RMTIME()
       I = LOCREL(BLANK)
       NP = 0
       IF(I.NE.0) THEN

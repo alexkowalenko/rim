@@ -1,4 +1,7 @@
       SUBROUTINE DBDEFN(*)
+
+      USE DateTime, only : RMDATE
+      
       INCLUDE 'syspar.inc'
 C
 C     DEFINE THE DATABASE SCHEMA
@@ -23,7 +26,7 @@ C
  
       NUMELE  = 0
       NEWCSN = 0
-      CALL RMDATE(TDAY)
+      TDAY = RMDATE()
 C
 C     SET THE PROMPT CHARACTER
 C

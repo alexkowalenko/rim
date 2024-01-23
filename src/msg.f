@@ -1,4 +1,7 @@
       SUBROUTINE MSG(MTYPE,MTEXT,MCONT)
+
+      USE DateTime, only: RMTIME, RMDATE
+
       INCLUDE 'syspar.inc'
 C
 C  ROUTINE TO FORMAT AND PRINT MESSAGES
@@ -73,8 +76,8 @@ C--------   CALL SETIN(ZTRMIN)
          IF (MTYPE1.EQ.'T') THEN
             MSUNIT = NOUTT
             CALL MSGCMV('* ','U')
-            CALL RMDATE(TDAY)
-            CALL RMTIME(TTIM)
+            TDAY = RMDATE()
+            TTIM = RMTIME()
             CALL DMSG(TDAY,0,'+',KZDATE)
             CALL MSGCMV(' ','U')
             CALL DMSG(TTIM,0,'+',KZTIME)

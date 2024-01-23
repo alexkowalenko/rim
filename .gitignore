@@ -7,9 +7,16 @@ src/lxtest
 .DS_Store
 
 build
+*.mod
 
 *.idx
 *.log
+*.aux
+*.lot
+*.lof
+*.out
+*.toc
+*.pdf
 
 .vscode/*
 

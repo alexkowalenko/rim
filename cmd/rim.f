@@ -17,6 +17,8 @@ C  RIM IS A DESCENDANT OF THE RIM OF UW/BOEING/NASA FAME.
 C
 C------------------------------------------------------------
 
+      USE DateTime, only: RMTIME, RMDATE
+
       INCLUDE 'syspar.inc'
       INCLUDE 'ascpar.inc'
       INCLUDE 'rmatts.inc'
@@ -47,8 +49,8 @@ C
 C
 C  PRINT THE RIM EXECUTION HEADER
 C
-      CALL RMDATE(TDAY)
-      CALL RMTIME(TTIM)
+      TDAY = RMDATE()
+      TTIM = RMTIME()
 C     CALL MSG(' ',' ',' ')
 C     CALL MSG(' F','UNIVERSITY OF ' ,'+')
 C     CALL MSG(' F','WASHINGTON',' ')
@@ -77,8 +79,8 @@ C
 C  PRINT THE CLOSING MESSAGE
 C
   999 CONTINUE
-      CALL RMDATE(TDAY)
-      CALL RMTIME(TTIM)
+      TDAY = RMDATE()
+      TTIM =  RMTIME()
       CALL MSG(' ','END RIM EXECUTION   ','+')
       CALL DMSG(TDAY,0,'+',KZDATE)
       CALL MSG(' ','  ','+')

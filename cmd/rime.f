@@ -1,4 +1,7 @@
       PROGRAM MAIN
+
+      USE DateTime, only: RMTIME, RMDATE
+      
       INCLUDE 'syspar.inc'
 C
 C  ****************************************************************
@@ -69,8 +72,8 @@ C     DON'T USE THE INIT FILE
 C
 C  GET THE DATE AND TIME
 C
-      CALL RMDATE(TDAY)
-      CALL RMTIME(TTIM)
+      TDAY = RMDATE()
+      TTIM = RMTIME()
 C
 C  SET THE PROMPT TO EDIT
 C
@@ -492,7 +495,7 @@ C  POSSIBLE SYSTEM DEPENDANT EXIT ROUTINE
 C
       CALL SYSEXI
 C
-      CALL EXIT
+      CALL EXIT(0)
       END
       SUBROUTINE FINDR(ITEM,RW)
       INCLUDE 'syspar.inc'

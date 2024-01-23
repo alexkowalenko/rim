@@ -1,4 +1,6 @@
       SUBROUTINE TUPLRC(OPCODE,*)
+
+      USE DateTime, only : RMDATE
       INCLUDE 'syspar.inc'
 C
 C     PERFORM TUPLE RELATIONAL CALCULUS
@@ -312,7 +314,7 @@ C
 C  SET UP RELATION TABLE.
 C
       CALL ZMOVE(NAME,RNAME3)
-      CALL RMDATE(RDATE)
+      RDATE = RMDATE()
       NCOL = ICT
       NCOL3 = ICT
       NATT = NATT3

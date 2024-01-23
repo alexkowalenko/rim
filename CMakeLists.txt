@@ -1,3 +1,7 @@
+#
+# CMakeLists.txt top level
+#
+
 cmake_minimum_required(VERSION 3.20)
 
 set(AX_LLVM /opt/homebrew/Cellar/llvm/18.0.0)
@@ -20,3 +24,4 @@ set(FVERSION "-std=legacy") # -std=f95, f2003, f2008, gnu, legacy
 set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} ${FVERSION}")
 
 add_subdirectory(src)
+add_subdirectory(cmd)

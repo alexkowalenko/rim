@@ -1,4 +1,7 @@
       SUBROUTINE UNLOAD(*)
+
+      USE DateTime, only: RMTIME, RMDATE
+
       INCLUDE 'syspar.inc'
 C
 C     UNLOAD DATABASE SCHEMA, DATA, OR BOTH
@@ -148,10 +151,10 @@ C
       CALL MSG('R','*(UNLOAD OF ','+')
       CALL AMSG(DBNAME,-ZC,'+')
       CALL MSG(' ',' AT ','+')
-      CALL RMDATE(I)
+      I = RMDATE()
       CALL DMSG(I,0,'+',KZDATE)
       CALL MSG(' ','  ','+')
-      CALL RMTIME(I)
+      I = RMTIME()
       CALL DMSG(I,0,'+',KZTIME)
       CALL MSG(' ',')',' ')
 C

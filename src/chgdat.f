@@ -1,4 +1,7 @@
       SUBROUTINE CHGDAT(*)
+
+      USE DateTime, only : RMDATE
+      
       INCLUDE 'syspar.inc'
 C
 C     PROCESS CHANGE DATA COMMAND
@@ -81,7 +84,7 @@ C
       KQ1 = BLKLOC(7)
       KQ11 = BLKLOC(8)
       KQ12 = BLKLOC(9)
-      CALL RMDATE(RDATE)
+      RDATE = RMDATE()
       CALL CHANGE(BUFFER(KQ1),BUFFER(KQ11),IFLAG,BUFFER(KQ12))
 C
 999   RETURN 1

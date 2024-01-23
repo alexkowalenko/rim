@@ -1,4 +1,7 @@
       SUBROUTINE RMSHOW(*)
+
+      USE DateTime, only: RMTIME, RMDATE
+
       INCLUDE 'syspar.inc'
 C
 C     SHOW PARAMETER VALUES
@@ -22,8 +25,8 @@ C
 C
 C     SHOW DATE/TIME
 C
-      CALL RMDATE(TDAY)
-      CALL RMTIME(TTIM)
+      TDAY = RMDATE()
+      TTIM = RMTIME()
       MSUNIT = NOUT
       CALL DMSG(TDAY,0,'+',KZDATE)
       CALL MSG(' ','  ','+')

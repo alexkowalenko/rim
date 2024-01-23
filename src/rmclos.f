@@ -2,6 +2,9 @@
 C
 C  PURPOSE:   CLOSE A RIM DATABASE.
 C
+            
+      USE DateTime, only: RMTIME, RMDATE
+
       INCLUDE 'syspar.inc'
       INCLUDE 'rimcom.inc'
       INCLUDE 'flags.inc'
@@ -16,8 +19,8 @@ C
 C
 C  RESET THE DATABASE DATE AND TIME.
 C
-      CALL RMDATE(DBDATE)
-      CALL RMTIME(DBTIME)
+      DBDATE = RMDATE()
+      DBTIME = RMTIME()
 C
 C  CLOSE THE THREE DATABASE FILES.
 C

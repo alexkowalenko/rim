@@ -1,5 +1,6 @@
-
-include_directories(${PROJECT_SOURCE_DIR}/src)
+#
+# CMakeLists.txt libraries
+#
 
 add_library(rimintlib STATIC
 adddat.f amsg.f ascan.f ascchr.f ascdat.f
@@ -28,9 +29,9 @@ pgcomp.f pgcprt.f pgeexp.f pgeprt.f pgexec.f pgstor.f
 pject.f prckey.f prjtup.f prmset.f prompt.f ptrs.f putdat.f putt.f
 reladd.f relget.f relpag.f relput.f remkey.f remlnk.f remrel.f
 report.f reuse.f rformt.f rimcmd.f rioclo.f rioin.f rioopn.f
-rioout.f ritoa.f rmclos.f rmcons.f rmdate.f rmhelp.f rminit.f
+rioout.f ritoa.f rmclos.f rmcons.f rmhelp.f rminit.f
 rmlook.f rmpii.f rmqery.f rmres.f rmsav.f rmset.f rmshow.f
-rmtime.f rmtypt.f rmvarc.f rmzip.f rnamea.f rnamel.f rnamer.f
+rmtypt.f rmvarc.f rmzip.f rnamea.f rnamel.f rnamer.f
 roun.f rtoa.f rtod.f
 selatt.f select.f selout.f selput.f selrel.f selrpt.f selsrt.f
 selwhr.f setin.f setout.f sgtlnk.f sort.f strasc.f strmov.f
@@ -41,7 +42,8 @@ swvllo.f syscmd.f syscom.f sysdbg.f sysdbn.f sysdel.f sysexi.f
 sysini.f systrp.f tioclo.f tioin.f tioopn.f tioout.f tokdsp.f toktyp.f
 toled.f toler.f tuplrc.f typer.f undata.f undef.f union.f
 unload.f unpass.f upcase.f varadd.f warn.f whetol.f
-wheval.f whrnam.f xhibit.f zeroit.f zmove.f)
+wheval.f whrnam.f xhibit.f zeroit.f zmove.f
+datetime.f90)
 
 add_library(rimlib STATIC
 adddat.f ascan.f ascchr.f ascdat.f asctxt.f atoi.f ator.f
@@ -63,8 +65,8 @@ adddat.f ascan.f ascchr.f ascdat.f asctxt.f atoi.f ator.f
  parse.f parval.f pilib.f pilibx.f pject.f prckey.f prjtup.f
  ptrs.f putdat.f putt.f reladd.f relget.f relpag.f relput.f remkey.f
  remrel.f reuse.f rformt.f rioclo.f rioin.f rioopn.f rioout.f
- ritoa.f rmclos.f rmcons.f rmdate.f rminit.f rmlook.f rmpii.f
- rmqery.f rmres.f rmsav.f rmset.f rmtime.f rmtypt.f rmvarc.f
+ ritoa.f rmclos.f rmcons.f rminit.f rmlook.f rmpii.f
+ rmqery.f rmres.f rmsav.f rmset.f rmtypt.f rmvarc.f
  rmxdel.f rmxget.f rmxlod.f rmxput.f rnamea.f rnamer.f roun.f
  rtoa.f rtod.f selrel.f selsrt.f selwhr.f sort.f strasc.f strmov.f 
  subtrc.f swcon.f swcost.f swfilo.f swflfs.f swhart.f swhrtd.f 
@@ -74,25 +76,4 @@ adddat.f ascan.f ascchr.f ascdat.f asctxt.f atoi.f ator.f
  sysdel.f tokdsp.f toktyp.f toled.f toler.f tuplrc.f typer.f 
  union.f upcase.f whetol.f wheval.f 
  whrnam.f xhibit.f zeroit.f zmove.f
- time_date.c)
-
-add_executable(rim rim.f)
-add_executable(rime rime.f)
-add_executable(rimh rimh.f)
-add_executable(lxtest lxtest.f)
-
-target_link_libraries(rim
-     PRIVATE
-     rimintlib)
-
-target_link_libraries(rime
-     PRIVATE
-     rimintlib)
-
-target_link_libraries(rimh
-     PRIVATE
-     rimlib)
-
-target_link_libraries(lxtest
-    PRIVATE
-    rimintlib)
+ datetime.f90)
