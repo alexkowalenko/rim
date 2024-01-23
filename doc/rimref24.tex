@@ -11,15 +11,6 @@
 \def\Opt#1{$\Bigl\langle \mbox{#1} \Bigr\rangle$}
 \def\stk#1{\begin{tabular}[c]{c}#1\end{tabular}}
 %
-\newbox\Rimdemobox
-\def\Rimdemo#1{\par\bigskip\toks0={#1}
-  \setbox\Rimdemobox=\vbox\bgroup\hsize=24pc\scriptsize}
-\def\enddemo{\egroup\noindent\fbox{\parbox{355pt}{%
-  \vspace{1ex}
-  {\tt\begin{tabular}{l}\the\toks0\end{tabular}\par}
-  \vspace{1ex}
-  \makebox[355pt]{\hfill\fbox{\fbox{\box\Rimdemobox}}\hskip1ex}\vspace{1ex}}}}
-%
 \def\asisbox#1#2{\setbox#1=\vbox\bgroup\hsize#2}
 \def\asistopbox#1#2{\setbox#1=\vtop\bgroup\hsize#2}
 \def\endasisbox{\egroup}
@@ -30,6 +21,9 @@
 \def\List{\list{}{\leftmargin2\leftmargini
       \def\makelabel##1{\bf##1\hfill}}}
 \let\endList\endlist
+
+\usepackage{a4wide}
+\usepackage[colorlinks,allcolors=blue]{hyperref}
 %
 %
 \raggedbottom
@@ -72,7 +66,7 @@
   You are assumed to be able to access the computer of your choice,
   and be able to edit text files.
   Chapter~\ref{pi-chapter}, which discusses the program interface, assumes
-  you are familiar with fortran-77.}
+  you are familiar with \textsc{Fortran-77}.}
 
 %
 % no warranty
@@ -127,8 +121,8 @@ functionality, and reliability in all implementations.
 \I{relational database}
 A relational database may be thought of as a collection of
 one or more tables.  These tables (also called <relations> in
-database terminology) consist of rows (<tuples>) and
-columns (<attributes>).
+database terminology) consist of rows (\emph{tuples}) and
+columns (\emph{attributes}).
 This book will use the terms table,
 row, and column.\footnote{The term `column' is also used for
 the columns of a matrix.  This may cause hesitation, but
@@ -140,12 +134,12 @@ The vectors, matrices, and character strings may be of fixed
 or variable length.
  
 A table is defined with a fixed number and sequence
-of columns.  The "conductors" table in
+of columns.  The \verb|conductors| table in
 figure \ref{Sample-conductor}, for example,
-is defined with four columns: "Atomic\_No.", an integer;
-"symbol", a fixed length character string;
-"resistivity", a double precision real number;
-and "name", a variable length character string.
+is defined with four columns: \verb|Atomic_No.|, an integer;
+\verb|symbol|, a fixed length character string;
+\verb|resistivity|, a double precision real number;
+and \verb|name|, a variable length character string.
 As data are added to, deleted from, or changed in the
 table the number and sequence of rows will vary, but
 the number and sequence of the columns will remain the same.
@@ -202,10 +196,8 @@ database access.  It uses keywords and an ``English'' syntax
 to construct database commands.  For example,
  
 \begin{verbatim}
- 
      select symbol, resistivity from conductors where
          resistivity lt 14;
- 
 \end{verbatim}
  
 \noindent
@@ -227,10 +219,8 @@ SQL command above,\footnote{The `comment' {\tt  *(set continue=null)}
  the analogous, normal Rim command is
  
 \begin{verbatim}
- 
-     select symbol  resistivity from conductors where   +
+     select symbol  resistivity from conductors where
          resistivity lt 14
- 
 \end{verbatim}
  
 \noindent
@@ -281,10 +271,10 @@ algebra commands.
  
  
 \section{Program Language Interface}
-\I{fortran}
+\I{Fortran}
 Rim provides a convenient function interface
 for users who need to access a Rim database from
-within their programs.  The interface provides one Fortran-77 function
+within their programs.  The interface provides one \textsc{Fortran-77} function
 the program to issue Rim commands and another
 function transfers data between Rim and the user's program.
 Chapter \ref{pi-chapter} describes the Rim program interface
@@ -312,7 +302,7 @@ That program was brought
 to the University of Washington and further developed
 as UWRIM\I{UWRIM}, a CDC Cyber program.
 The present program has been rewritten in completely portable
-fortran-77 code.  The new code includes new functionality
+\textsc{Fortran-77} code.  The new code includes new functionality
 and a more ``SQL-like'' command language.
 Some capabilities of UWRIM are no longer supported.
  
@@ -331,23 +321,25 @@ and supplementary information such as passwords.
  
 \I{Rim name}
 Many elements of a Rim database are identified by a name:
-  the database name,
-  owner and table passwords,
-  table names, and
-  column names.
+\begin{itemize}
+  \item  the database name,
+  \item  owner and table passwords,
+  \item  table names, and
+  \item column names.
+\end{itemize}
 These names consist of one to sixteen
 characters (letters, digits, and the underscore are allowed).
 They may contain both upper and lower case letters but Rim
 will always disregard the case of letters when comparing the names.
-`"conductors"' and `"Conductors"' are valid names.  They are also
-identical.  `"my text"' is not a valid name because
+`\verb|conductors|' and `\verb|Conductors|' are valid names.  They are also
+identical.  `\verb!my text!' is not a valid name because
 a space is not allowed.
  
 \section{Columns}
 \I{column}
 A column in a Rim database identifies both a particular
 column of a table and the type of data contained in that
-column.  The column "symbol" in the Sample database
+column.  The column \verb!symbol! in the Sample database
 (figure~\ref{Sample} on page~\pageref{Sample}),
 for example, identifies particular
 columns in the ``conductors'', ``measures'', and ``notes'' tables.
@@ -422,10 +414,10 @@ A link is a logical connection between
 each row of a source table and a unique
 row of a destination table.
 It is most commonly used to associate an identifier,
-"tech\_id" in the "measurements" table of
+\verb!tech_id! in the \verb!measurements! table of
 figure~\ref{Sample}, for example,
 with information about that identifier---a row in the
-"technicians" table in this case.
+\verb!technicians! table in this case.
  
 \section{Passwords}
 \I{password}
@@ -436,30 +428,29 @@ by the operating system.}
 Rim provides three levels of password protection:
  
 \begin{List}
-\item[owner password,] specified by the "define owner" sub-command,
+\item[owner password,] specified by the \verb!define owner! sub-command,
 restricts access to database modification commands and to protected
 tables.
-Users who have not entered the owner password ("user" command)
+Users who have not entered the owner password (\verb!user! command)
 are unable to modify the database and are required to
 enter the appropriate table password for access to
 protected tables.
-Users who have correctly entered the owner password ("user" command)
+Users who have correctly entered the owner password (\verb!user! command)
 have unrestricted access to the database.
 \item[table read password,]
-specified by the "define passwords" sub-command,
+specified by the \verb!define passwords! sub-command,
 prevents unauthorized users from reading the protected table.
 Permission to read is granted only to those users who have entered
 either the owner password or the table's read password.
 \item[table modify password,] also
-specified by the "define passwords" sub-com\-mand,
+specified by the \verb!define passwords! sub-com\-mand,
 prevents unauthorized users from modifying the protected table.
 Permission to modify is granted only to those users who have entered
 either the owner password or the table's modify password.
- 
 \end{List}
  
 See section \ref{ocmd-section} and \ref{ucmd-section} for
-complete descriptions of the "owner" and "user" commands.
+complete descriptions of the \verb!owner! and \verb!user! commands.
  
 \section{Keys}
 \I{key}
@@ -484,9 +475,9 @@ Occasionally a partial row must be added to a table.
 This partial row will have data for some columns but
 will not have data for others.  Rim provides two distinct
 missing values, distinguished by their codes:
-`"-MV-"', for `missing value',
-and `"-NA-"' for ``not applicable'' value.
-The "conductors" table of the Sample database (page~\pageref{Sample})
+`\verb!-MV-!', for `missing value',
+and `\verb!-NA-!' for ``not applicable'' value.
+The \verb!conductors! table of the Sample database (page~\pageref{Sample})
 contains one missing value and two values that are not applicable.
  
 \section{Where is it?}
@@ -509,7 +500,7 @@ edited.
  
  
 %  <<<<<< Commands >>>>>>>>>>
- 
+
 \chapter{Using Rim}
 \label{cmd-chapter}
 This chapter describes the command language of Rim.
@@ -523,13 +514,15 @@ keywords and qualifiers (table names, column names, data values,
 filenames, etc.).
 Input is free format with one or more spaces delimiting
 the items.
-A trailing plus sign ("+") continues a command on
+A trailing plus sign (\verb!+!) continues a command on
 the next line.
  
 In addition to the space and plus, these characters have
 special meaning to Rim.
+
 {\tt (~)~[~]~,~;~:~\char`\<~\char`~@~\%~= 
 \rm and sometimes \tt ' \char`\"}
+
 You must enclose these characters in quotes 
 (either {\tt\char`\'}---{\tt\char`\'} or
 {\tt\char`\"}---{\tt\char`\"}) to enter them as text.
@@ -541,19 +534,19 @@ describe the syntax of Rim commands.
  
 \medskip
 \begin{quote}
-    {\centering \fbox{"Bold text"}\par}
+    {\centering \fbox{ |Bold text|} \par}
   \nopagebreak \medskip
   indicates that you must type the command or keyword
   exactly as shown.  Except that you may abbreviate keywords
   to three characters. For example,
-  "sel" is a suitable abbreviation for "select".
+  \verb!sel! is a suitable abbreviation for \verb!select!.
  
   \bigskip
  
-     {\centering \fbox{<Italic text>}\par}
+     {\centering \fbox{\emph{Italic text}}\par}
   \nopagebreak \medskip
   indicates that you must enter the name of something
-  For example, if <table> is specified,
+  For example, if \emph{table} is specified,
   you must supply the name of a specific table.
  
   \bigskip
@@ -1276,8 +1269,9 @@ from the main table (as indicated on the "from" clause) or may
 be from a linked\I{link} table.
 In its simplest form a column specification is just a list of columns.
  
-\Rimdemo{select id m_date from measures}
+
 \begin{verbatim}
+select id m_date from measures
  id     M_date
  -----  --------
      5  88-01-21
@@ -1287,7 +1281,6 @@ In its simplest form a column specification is just a list of columns.
     22  88-02-22
      5  88-03-04
 \end{verbatim}
-%\enddemo
  
 \subsubsection{Including columns from linked tables}
 %
@@ -1297,9 +1290,9 @@ the link name first, followed by a colon and then the column name.
 <link\_name>:<column\_name>
 where <column\_name> refers to a column in the linked table.
  
- 
-\Rimdemo{select symbol id M_t:name M_date from measures}
+
  \begin{verbatim}
+select symbol id M_t:name M_date from measures
  symbol    id     name          M_date
  --------  -----  ------------  --------
  Cu            5  John Jones    88-01-21
@@ -1309,7 +1302,6 @@ where <column\_name> refers to a column in the linked table.
  Cu           22  Jim Smith     88-02-22
  Fe            5  John Jones    88-03-04
  \end{verbatim}
- %\enddemo
  
  
 \subsubsection{Specifying formats}
@@ -1331,9 +1323,9 @@ and may set them with the "set" command (page \pageref{set}).
 \I{show@"show"}\I{set@"set"}
  
 \label{sel-dem1}
-\Rimdemo{select symbol id@i4 M\_t:name  +\\
-  m\_date@'dd-mmm-yy' from measures}
 \begin{verbatim}
+  select symbol id@i4 M_t:name
+  m_date@'dd-mmm-yy' from measures
  symbol    id    name          M-date
  --------  ----  ------------  ---------
  Cu           5  John Jones    21-JAN-88
@@ -1343,7 +1335,6 @@ and may set them with the "set" command (page \pageref{set}).
  Cu          22  Jim Smith     22-FEB-88
  Fe           5  John Jones    04-MAR-88
 \end{verbatim}
-%\enddemo
  
  
 \subsubsection{Specifying titles}
@@ -1353,9 +1344,9 @@ Rim's default. After the column name type a percent sign and the title.
 <column\_name>"\%"<title>
 <Title> should be enclosed in quotes.
  
-\Rimdemo{select symbol id\%'Tech id' M_t:name  +\\
-  \qquad  m_date@'dd-mmm-yy'\%'Measure date' from measures}
 \begin{verbatim}
+select symbol id\%'Tech id' M_t:name  
+    m_date@'dd-mmm-yy'\%'Measure date' from measures
  symbol    Tech id  name          Measure date
  --------  -------  ------------  ------------
  Cu            5    John Jones    21-JAN-88
@@ -1365,7 +1356,6 @@ Rim's default. After the column name type a percent sign and the title.
  Cu           22    Jim Smith     22-FEB-88
  Fe            5    John Jones    04-MAR-88
 \end{verbatim}
-%\enddemo
  
 \subsubsection{Summing columns}
 \I{sum}
@@ -1379,8 +1369,8 @@ to use for an example.
 \I{*}
 You may select all columns of a table, with the default formats
 and titles, with an asterisk ("*") in place of the column specifications.
-\Rimdemo{select * from measures}
 \begin{verbatim}
+select * from measures
  symbol    id     M_date    M_time   resistivity
  --------  -----  --------  -------  ------------
  Cu            5  88-01-21  08:10     11.900
@@ -1390,7 +1380,6 @@ and titles, with an asterisk ("*") in place of the column specifications.
  Cu           22  88-02-22  08:48     12.500
  Fe            5  88-03-04  15:33     19.400
 \end{verbatim}
-%\enddemo
  
 \subsection{Function specifications}
 \I{functions}
@@ -1405,17 +1394,16 @@ each with an obvious functionality.
 Only one detail column may be specified.  If it is omitted
 the selection will produce a single tally for the table.
 Functions will always completely disregard any missing values.
- 
-\Rimdemo{select symbol m_c:name num(resistivity) + \\
-  \qquad  ave(resistivity@f9.2)  from measures}
+
 \begin{verbatim}
+  select symbol m_c:name num(resistivity)
+      ave(resistivity@f9.2)  from measures
  symbol    name          NUM(resistivity )  AVE(resistivity )
  --------  ------------  -----------------  -----------------
  Al        Aluminum             2               13.65
  Cu        Copper               3               12.27
  Fe        Iron                 1               19.40
 \end{verbatim}
-%%\enddemo
  
 \subsection{Where clause}
 %
@@ -1436,7 +1424,7 @@ The "where" clause consists of
                 <column> <test>
   where <op> and <test> are described in figure~\ref{op-test},
  
-%\begin{figure}[p]
+\begin{figure}[p]
   \begin{center}
   \begin{tabular}{ccp{19pc}}
     op & alt& $V=A\;op\;B$\\
@@ -1478,9 +1466,9 @@ The "where" clause consists of
  is "case respect" which says that upper case letters
  do \underline{not} match lower case letters.
 \end{description}
-%\caption{"where"\ clause comparisons}
+\caption{"where"\ clause comparisons}
 \label{op-test}
-%\end{figure}
+\end{figure}
  
  \item[boolean operators] which combine comparisons
    <comparison> "and" <comparison> \\
@@ -1497,17 +1485,16 @@ The "where" clause consists of
         $C_2\; op_b\; C_3$, then $ C_1\; op_a$
      \end{tabular}
 \end{List}
- 
-\Rimdemo{select symbol m_c:name resistivity@f7.2 from measures +\\
-  \qquad where symbol='Cu'}
+
 \begin{verbatim}
+select symbol m_c:name resistivity@f7.2 from measures
+    where symbol='Cu'
  symbol    name          resistivity
  --------  ------------  ------------
  Cu        Copper          11.90
  Cu        Copper          12.40
  Cu        Copper          12.50
 \end{verbatim}
-%\enddemo
  
 \subsection{Sort clause}
 %
@@ -1526,9 +1513,9 @@ the second is the secondary sort column; etc.
 A "sort" clause may not be specified with a function "select"---the
 independent column is necessarily the sort column.
  
-\Rimdemo{select symbol m_c:name resistivity from measures +\\
-  \qquad sort by symbol}
 \begin{verbatim}
+select symbol m_c:name resistivity from measures
+    sort by symbol
  symbol    name          resistivity
  --------  ------------  ------------
  Al        Aluminum       13.000
@@ -1538,7 +1525,6 @@ independent column is necessarily the sort column.
  Cu        Copper         12.500
  Fe        Iron           19.400
 \end{verbatim}
-%\enddemo
 \I{select@"select"|)}
  
 \section{Making Retrievals Faster---"Keys"}
@@ -1565,8 +1551,8 @@ Build a key for a column with this command.
 Usually, columns that are targets of links will be
 keyed columns.
 The Sample database should have these columns keyed:
-"\tt build key for symbol in conductors"\\
-             "\tt build key for id     in techs     "
+" build key for symbol in conductors"\\
+             "build key for id     in techs     "
  
 In addition,
 if the "notes" table becomes large, it might be reasonable
@@ -1631,7 +1617,6 @@ To reload your database:
 \item Backup and purge the database files.
 \item Input the text file to Rim to rebuild the database.
 \end{enumerate}
- 
  
  
 \section{Making new tables from old - relational algebra}
@@ -1742,8 +1727,8 @@ On systems which commonly use two-part filenames an extension
 will be assumed if it is not specified.
 Consult Appendix~\ref{UCS-systems} to
 see if Rim will assume an extension for your output files.
- 
- 
+
+
 \section{Showing and setting Rim's parameters}
 %
 \subsection{Showing}
@@ -1909,7 +1894,7 @@ and <option> is one of the following.
            The default is a semicolon (";").
 \end{description}
 For example,
-"\tt *(set del=/) *(set con=null)"
+" *(set del=/) *(set con=null)"
 indicates that the virgule (/) will separate fields and that all
 commands will end only at semicolons.
  
@@ -1971,15 +1956,15 @@ where
 Here is an example which illustrates macro usage.
  
 Define the macro "person" with the command
-"\tt macro person = 'id@i4 m\_t:name'"
+"macro person = 'id@i4 m\_t:name'"
 Then you can use the name "person" in selection commands, such as
 this example.\footnote{Compare this to the command on
 page~\pageref{sel-dem1}.}
  
 \I{select}
-\Rimdemo{select symbol person +\\
- \qquad m_date@'dd-mmm-yy' from measures}
 \begin{verbatim}
+  select symbol person 
+      m_date@'dd-mmm-yy' from measures
  symbol    id    name          M-date
  --------  ----  ------------  ---------
  Cu           5  John Jones    21-JAN-88
@@ -1989,10 +1974,9 @@ page~\pageref{sel-dem1}.}
  Cu          22  Jim Smith     22-FEB-88
  Fe           5  John Jones    04-MAR-88
 \end{verbatim}
-%\enddemo
  
 Rim has interpreted "person" to mean
-"\tt id@i4 m\_to\_t:name".
+"id@i4 m\_to\_t:name".
  
 \section{Macros with Arguments}
 The "person" macro in the previous example provides a convenience,
@@ -2006,8 +1990,8 @@ with arguments.
 The following example demonstrates such a macro.
  
 Define the macro "rename" by the command
-"\tt macro rename = 'change name to \char`\"' 2 '\char`\"\ in techs ' +"\\
-   \qquad "\tt 'where id = ' 1 "
+"macro rename = 'change name to \char`\"' 2 '\char`\"\ in techs ' +"\\
+   \qquad " 'where id = ' 1 "
 \label{rename-def}
  
 With this definition
@@ -2020,10 +2004,10 @@ you can use the new `command' "rename"%
    is typed in full.}
 to change names in
 the "techs" table. For example,
-"\tt rename 5 'John A. Jones' "
+" rename 5 'John A. Jones' "
 which Rim will interpret as
-"\tt change name to \char`\"John A. Jones\char`\"\ in techs +"\\
-   \qquad "\tt where id = 5 "
+" change name to \char`\"John A. Jones\char`\"\ in techs +"\\
+   \qquad " where id = 5 "
  
 \section{Macro expansion}
 The macro definition text consists of text fields
@@ -2035,11 +2019,11 @@ in the definition are replaced by corresponding argument
 fields following the macro's name in the input.
 No spaces are added between fields in the definition text.
 For example, with the definition
-"\tt macro alfa = 'abc ' 2 ' def' 1 '; xxx'"
+" macro alfa = 'abc ' 2 ' def' 1 '; xxx'"
 the input
-"\tt select alfa this that from ..."
+" select alfa this that from ..."
 is interpreted by Rim as
-"\tt select abc that defthis; xxx from ..."
+" select abc that defthis; xxx from ..."
  
 Note that there were no spaces between `"def"' and the argument number ("1").
 If you want separation spaces around the arguments, as with argument
@@ -2049,9 +2033,9 @@ Note also that this macro ("alfa") contained an end-of-line character
 (";").  Macros may expand into several Rim commands.
  
 If the "alfa" macro had been invoked with fewer arguments, for example,
-"\tt select alfa this"
+" select alfa this"
 it would be interpreted by Rim as
-"\tt select abc  defthis; xxx from ..."
+" select abc  defthis; xxx from ..."
 The unused arguments are simply ignored.
  
 A more sophisticated macro example is discussed
@@ -2066,7 +2050,7 @@ comment command ("*").  For example, assuming the "rename"
 definition on page~\pageref{rename-def}, you could enter
 "set echo"\\"* rename x Anyone"
 and Rim would echo
-"\tt change name to Anyone in techs where id = x "
+" change name to Anyone in techs where id = x "
    
 
 You can also look at any or all of your macro definitions
@@ -2085,9 +2069,7 @@ Clearing macros recovers macro definition space.
 %  <<<<< Report Writer >>>>>>>>>>
 %
 \def\demobreak{\par\pagebreak[3]\bigskip}
-\def\Rimdisp{\setbox\Rimdemobox=\vbox\bgroup\hsize=29pc\scriptsize}
-\def\enddisp{\egroup\noindent
-  \makebox[\textwidth]{\fbox{\fbox{\box\Rimdemobox}}}}
+
 %
 \chapter{Printing Reports}
 %
@@ -2139,7 +2121,6 @@ report
 end report
 \end{verbatim}
  
-\Rimdisp
 \begin{verbatim}
  symbol   date         resistivity
  
@@ -2150,7 +2131,6 @@ end report
  Cu       88/02/22     12.50
  Fe       88/03/04     19.40
 \end{verbatim}
-\enddisp
  
 Notice first that the report definition consists of blocks,
 which begin with a `<command>' and end with `"end" <command>'.
@@ -2341,7 +2321,7 @@ end report
 \demobreak
 produces this report
  
-\Rimdisp
+
 \begin{verbatim}
       5        88/01/21  Spilled coffee on
      Cu        09:03     sample.  Expect
@@ -2355,7 +2335,6 @@ produces this report
                          Recommend addition
                          of cream and sugar.
 \end{verbatim}
-\enddisp
 \label{para-demo}
  
  
@@ -2400,7 +2379,7 @@ end report
 \demobreak
 produces the following report
  
-\Rimdisp
+
 \begin{verbatim}
     5     John Jones
  
@@ -2414,7 +2393,6 @@ produces the following report
      Al        88/02/10   14.30
  
 \end{verbatim}
-\enddisp
  
 \section{Headers and footers}
 %
@@ -2484,7 +2462,6 @@ end report
 \demobreak
 produces the following report
  
-\Rimdisp
 \begin{verbatim}
    Id     Name                                              Page:     1
  
@@ -2503,7 +2480,6 @@ produces the following report
      Al        88/02/10   13.00
      Al        88/02/10   14.30
 \end{verbatim}
-\enddisp
  
  
  
@@ -2601,8 +2577,7 @@ end report
 \end{verbatim}
  
 prints the following report
- 
-\Rimdisp
+
 \begin{verbatim}
      Resistance measurements by conductor                   Page:     1
  
@@ -2644,7 +2619,6 @@ prints the following report
           No measurements taken
  
 \end{verbatim}
-\enddisp
  
 \section{Repeating statements---"while"}
 %
@@ -2709,7 +2683,7 @@ end report
 prints the following three-page report.
  
 \label{while-rpt}
-\Rimdisp
+
 \begin{verbatim}
      5    John Jones
  
@@ -2768,7 +2742,6 @@ prints the following three-page report.
           ------  --------  -----  -----------
  
 \end{verbatim}
-\enddisp
  
 \section{Procedures}
 %
@@ -2851,18 +2824,18 @@ One way to do this would be to use
 two macros: "\_count" and "\_where".
 Then
 change line~3 of the report to
-"\tt select from techs \_where"
+" select from techs \_where"
 and change line~12 to
-"\tt while loop \char` \_count"
+" while loop \char` \_count"
  
 Define these macros before running the report.
 For example,
-"\tt macro \_count = 10; macro \_where = ' '"\\
-  "\tt input forms"
+" macro \_count = 10; macro \_where = ' '"\\
+  " input forms"
 or
-"\tt macro \_count = 7;"\\
-  "\tt macro \_where = 'where position = \char`\"Tech 1\char`\"'"\\
-  "\tt input forms"
+" macro \_count = 7;"\\
+  " macro \_where = 'where position = \char`\"Tech 1\char`\"'"\\
+  " input forms"
  
 \medskip
  
@@ -2870,14 +2843,14 @@ You can make this operation much more friendly through the use
 of this "run" macro.%
 \footnote{You might want to put this macro definition in your
   login or database initialization files.}
-"\tt macro run = +"\\
-  "\tt\qquad 'macro arg\_1 = \char`\"' 2 '\char`\";' + "\\
-  "\tt\qquad 'macro arg\_2 = \char`\"' 3 '\char`\";' + "\\
-  "\tt\qquad 'macro arg\_3 = \char`\"' 4 '\char`\";' + "\\
-  "\tt\qquad 'input ' 1"
+" macro run = +"\\
+  "\qquad 'macro arg\_1 = \char`\"' 2 '\char`\";' + "\\
+  "\qquad 'macro arg\_2 = \char`\"' 3 '\char`\";' + "\\
+  "\qquad 'macro arg\_3 = \char`\"' 4 '\char`\";' + "\\
+  "\qquad 'input ' 1"
  
 Here is what happens when you type
-"\tt run forms 5 'where position like \char`\"Tech*\char`\"' "
+" run forms 5 'where position like \char`\"Tech*\char`\"' "
 \begin{enumerate}
 \item The macro "arg\_1" is defined to be `{\tt5}'.
 \item The macro "arg\_2" is defined to be
@@ -2931,13 +2904,13 @@ to produce the output shown on page~\pageref{while-rpt}.
 \chapter{Using Rim with a programming language}
 %
 \label{pi-chapter}
-\I{fortran|(}
+\I{Fortran|(}
 This chapter described the programming language interface
 available to Rim users.
-Rim is written in fortran-77, and the descriptions in this
-chapter use fortran-77 terminology.  However, you may
+Rim is written in \textsc{Fortran-77}, and the descriptions in this
+chapter use \textsc{Fortran-77} terminology.  However, you may
 invoke Rim functions from any language that can
-call fortran-77 function subroutines.
+call \textsc{Fortran-77} function subroutines.
  
 This interface is very simple---there is a function subroutine
 to execute Rim commands, and another function subroutine
@@ -2970,68 +2943,68 @@ of the "/RIMSTP/" common block.
    INTEGER HXFLAG
 \end{verbatim}
  
-% \begin{figure}[p]
-% \centering
-% \begin{tabular}{rl}
-%  -1& no more data available for retrieval                  \\
-%   0& ok--operation successful                              \\
-%   1& table not found                                       \\
-%   2& no database is open                                   \\
-%   3& column not found                                      \\
-%   4& syntax error in command                               \\
-%   5& table already exists                                  \\
-%   6& HXFLAG interrupt                                      \\
-%   7& invalid name                                          \\
-%   8& no authority for operation                            \\
-%   9& no permission on a table                              \\
-%  10& files do not contain a Rim database        \\
-%  12& files incompletely updated (not fatal)       \\
-%  13& database is attached in read only mode                \\
-%  14& database is being updated                             \\
-%  15& tuple too long                                        \\
-%  16& database has not been opened                          \\
-%  20& undefined table                                    \\
-%  30& undefined column                                   \\
-%  40& where clause too complex                           \\
-%  42& unrecognized comparison operator                      \\
-%  43& `like' only available for text columns           \\
-%  45& unrecognized logical operator                          \\
-%  46& compared columns must be the same type/length      \\
-%  47& lists are valid only for eq and ne                    \\
-%  50& "select" not called                                     \\
-%  60& "get" not called                                      \\
-%  70& multiple table index out of range                \\
-%  80& variable length columns may not be sorted          \\
-%  81& the number of sorted columns is too large          \\
-%  89& sort system error                                     \\
-%  90& unauthorized table access                          \\
-%  91& table already exists                               \\
-%  92& bad column type                                    \\
-%  93& bad column length                                  \\
-%  94& too many or two few columns                        \\
-%  95& row too big to define                                 \\
-% 100& illegal variable length row definition (load/put)     \\
-% \end{tabular}
-% \caption{{\tt RMSTAT} error codes}
-% \label{rmstat}
-% \end{figure}
+\begin{figure}[p]
+\centering
+\begin{tabular}{rl}
+ -1& no more data available for retrieval                  \\
+  0& ok--operation successful                              \\
+  1& table not found                                       \\
+  2& no database is open                                   \\
+  3& column not found                                      \\
+  4& syntax error in command                               \\
+  5& table already exists                                  \\
+  6& HXFLAG interrupt                                      \\
+  7& invalid name                                          \\
+  8& no authority for operation                            \\
+  9& no permission on a table                              \\
+ 10& files do not contain a Rim database        \\
+ 12& files incompletely updated (not fatal)       \\
+ 13& database is attached in read only mode                \\
+ 14& database is being updated                             \\
+ 15& tuple too long                                        \\
+ 16& database has not been opened                          \\
+ 20& undefined table                                    \\
+ 30& undefined column                                   \\
+ 40& where clause too complex                           \\
+ 42& unrecognized comparison operator                      \\
+ 43& `like' only available for text columns           \\
+ 45& unrecognized logical operator                          \\
+ 46& compared columns must be the same type/length      \\
+ 47& lists are valid only for eq and ne                    \\
+ 50& "select" not called                                     \\
+ 60& "get" not called                                      \\
+ 70& multiple table index out of range                \\
+ 80& variable length columns may not be sorted          \\
+ 81& the number of sorted columns is too large          \\
+ 89& sort system error                                     \\
+ 90& unauthorized table access                          \\
+ 91& table already exists                               \\
+ 92& bad column type                                    \\
+ 93& bad column length                                  \\
+ 94& too many or two few columns                        \\
+ 95& row too big to define                                 \\
+100& illegal variable length row definition (load/put)     \\
+\end{tabular}
+\caption{{\tt RMSTAT} error codes}
+\label{rmstat}
+\end{figure}
  
-% \begin{figure}[t]
-% \centering
-% \begin{tabular}{rl}
-% 1001& buffer size problem -- BLKCHG,BLKDEF                 \\
-% 1002& undefined block -- BLKLOC                            \\
-% 1003& cannot find a larger b-tree value -- BTADD,PUTDAT    \\
-% 1004& cannot find b-tree block -- BTPUT                    \\
-% 21xx& random file error xx on file1                        \\
-% 22xx& random file error xx on file2                        \\
-% 23xx& random file error xx on file3  \\
-% 3000& sort error - no buffer available \\
-% 31xx& sort error - xx on file open
-% \end{tabular}
-% \caption{{\tt RMSTAT} error codes indicating Rim internal errors.}
-% \label{rmstat-system}
-% \end{figure}
+\begin{figure}[t]
+\centering
+\begin{tabular}{rl}
+1001& buffer size problem -- BLKCHG,BLKDEF                 \\
+1002& undefined block -- BLKLOC                            \\
+1003& cannot find a larger b-tree value -- BTADD,PUTDAT    \\
+1004& cannot find b-tree block -- BTPUT                    \\
+21xx& random file error xx on file1                        \\
+22xx& random file error xx on file2                        \\
+23xx& random file error xx on file3  \\
+3000& sort error - no buffer available \\
+31xx& sort error - xx on file open
+\end{tabular}
+\caption{{\tt RMSTAT} error codes indicating Rim internal errors.}
+\label{rmstat-system}
+\end{figure}
  
 Users of the program interface may independently access several
 tables simultaneously.  An indexing integer specifies which
@@ -3064,7 +3037,7 @@ you can include
   IF (.NOT.RIM(0,'user metals')) <ditto>
 \end{verbatim}
  
-in your fortran program.
+in your \textsc{Fortran} program.
  
 \section{Transferring data}
 %
@@ -3296,32 +3269,32 @@ via the "RIM" function.
 Now you can "load" rows into this table with the
 "RIMDM" function.
  
-% \begin{figure}
-%   %\let\bf\tt
-% $\vdots$\\
-%     "IF (.NOT.RIM(1,'open example')) GOTO "<error>\\
-%     $\vdots$\\
-%     "IF (.NOT.RIM(1," \\
-%        \llap{"1"}
-%        "'select from conductors sort by symbol')) GOTO "<error>\\
-%     \\
-%     \llap{<label>\ \ }"IF (RIMDM(1,'get',TUPLE)) THEN"  \\
-%     "~~~"$\vdots$\\
-%     "~~~IF (<modifying>) THEN"\\
-%     "~~~~~~IF (.NOT.RIMDM(1,'put',TUPLE)) GOTO "<error>\\
-%     "~~~ELSE IF (<deleting>) THEN "\\
-%     "~~~~~~IF (.NOT.RIMDM(1,'del',TUPLE)) GOTO "<error>\\
-%     "~~~ENDIF"\\
-%     "~~~GOTO "<label>\\
-%     "ELSE" \\
-%     "~~~IF (RMSTAT.NE.-1) GOTO "<error>\\
-%     "ENDIF"
-%     $\vdots$
-% \caption{Sample data retrieval with update}
-% \label{pi-ret}
-% \end{figure}
+\begin{figure}
+  %\let\bf\tt
+$\vdots$\\
+    "IF (.NOT.RIM(1,'open example')) GOTO "<error>\\
+    $\vdots$\\
+    "IF (.NOT.RIM(1," \\
+       \llap{"1"}
+       "'select from conductors sort by symbol')) GOTO "<error>\\
+    \\
+    \llap{<label>\ \ }"IF (RIMDM(1,'get',TUPLE)) THEN"  \\
+    "~~~"$\vdots$\\
+    "~~~IF (<modifying>) THEN"\\
+    "~~~~~~IF (.NOT.RIMDM(1,'put',TUPLE)) GOTO "<error>\\
+    "~~~ELSE IF (<deleting>) THEN "\\
+    "~~~~~~IF (.NOT.RIMDM(1,'del',TUPLE)) GOTO "<error>\\
+    "~~~ENDIF"\\
+    "~~~GOTO "<label>\\
+    "ELSE" \\
+    "~~~IF (RMSTAT.NE.-1) GOTO "<error>\\
+    "ENDIF"
+    $\vdots$
+\caption{Sample data retrieval with update}
+\label{pi-ret}
+\end{figure}
  
-\I{fortran|)}
+\I{Fortran|)}
  
  
 % <<<<<< Appendix A >>>>>>>>
@@ -3368,10 +3341,10 @@ output files.
 Database files have the extensions ".rimdb1", ".rimdb2", and ".rimdb3".
  
  
-\subsection{Using the fortran interface}
+\subsection{Using the \textsc{Fortran} interface}
 %
-\I{fortran}
-To load fortran programs with the Rim interface include the
+\I{Fortran}
+To load \textsc{Fortran} programs with the Rim interface include the
 "rimlib.a" library with the "-lrim" option
 in your "ld" or "f77" command.
  
@@ -3422,10 +3395,10 @@ VMS Rim assumes an extension of ".rim" for input files and
 Database files have the extensions ".rimdb1", ".rimdb2", and ".rimdb3".
  
  
-\subsection{Using the fortran interface}
+\subsection{Using the \textsc{Fortran} interface}
 %
-\I{fortran}
-To load fortran programs with the Rim interface, include the
+\I{Fortran}
+To load \textsc{Fortran} programs with the Rim interface, include the
 library
 "\$\$rim:rimlib/lib"
 in your link command.
@@ -3477,10 +3450,10 @@ CMS Rim assumes a file type  of "rim" for input files and
 "rimlist" for output files.
 Database files have the types "rimdb1", "rimdb2", and "rimdb3".
  
-\subsection{Using the fortran interface}
+\subsection{Using the \textsc{Fortran} interface}
 %
-\I{fortran}
-To load fortran programs with the Rim interface, include the
+\I{Fortran}
+To load \textsc{Fortran} programs with the Rim interface, include the
 libraries RIMLIB and UTILITY
 in your GLOBAL TXTLIB command.
 RIMLIB and this sample loader EXEC (RIMLOAD EXEC) may be
