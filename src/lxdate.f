@@ -1,4 +1,7 @@
       LOGICAL FUNCTION LXDATE(I,JDAT,FMT,TYP)
+
+      USE DateTime, only : JULDAT
+      
       INCLUDE 'syspar.inc'
 C
 C  RETURN THE DATE FROM THE ITH ITEM.
@@ -8,7 +11,6 @@ C     FMT IS DATE-FORMAT INTEGER
 C     LXDATE IS TRUE IF ALL OK
 C     TYP IS DATA TYPE
 C
-      LOGICAL JULDAT
       INCLUDE 'ascpar.inc'
       INCLUDE 'tokens.inc'
       INCLUDE 'rmatts.inc'

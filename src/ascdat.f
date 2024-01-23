@@ -1,4 +1,7 @@
       SUBROUTINE ASCDAT(STR,SC,L,JDAT,DFMT,TYP)
+
+      USE DateTime, only : DATJUL
+
       INCLUDE 'syspar.inc'
 C
 C     CONVERT A DATE INTEGER TO ASCII-TEXT

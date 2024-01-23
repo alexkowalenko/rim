@@ -11,13 +11,13 @@ blkext.f blkloc.f blkmov.f blknxt.f blkup.f
 btadd.f btget.f btinit.f btlki.f btlkr.f
 btmove.f btput.f btrep.f btsert.f
 build.f change.f chgdat.f chgpsw.f chkatt.f
-chkfil.f chkrel.f chrasc.f chtype.f datjul.f dbdefn.f
+chkfil.f chkrel.f chrasc.f chtype.f dbdefn.f
 dbload.f dbopcl.f dbopen.f deldat.f deldup.f delete.f
 delrow.f dmsg.f dtfenc.f dtfspl.f dtor.f eq.f eqkeyw.f eqtok.f
 f1clo.f f1opn.f f2clo.f f2opn.f f3clo.f f3opn.f filch.f fmtdec.f
 getdat.f getkca.f gett.f gtsort.f
 htoi.f iexp.f imsg.f isect.f itoa.f itoh.f
-join.f joirel.f juldat.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
+join.f joirel.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
 lfind.f lkstr.f lnkadd.f lnkget.f lnkpag.f lnkput.f loadfm.f
 loadit.f loadmv.f locase.f locatt.f locboo.f loclnk.f locmac.f
 locprm.f locrel.f locvar.f lodele.f lodlnk.f lodpas.f lodrec.f
@@ -52,11 +52,11 @@ adddat.f ascan.f ascchr.f ascdat.f asctxt.f atoi.f ator.f
  blkloc.f blkmov.f blknxt.f blkup.f btadd.f btget.f btinit.f
  btlki.f btlkr.f btmove.f btput.f btrep.f btsert.f build.f
  change.f chgdat.f chgpsw.f chkatt.f chkfil.f chkrel.f chrasc.f
- chtype.f datjul.f dbdefn.f dbload.f dbopcl.f dbopen.f deldat.f
+ chtype.f dbdefn.f dbload.f dbopcl.f dbopen.f deldat.f
  deldup.f delete.f delrow.f dtfenc.f dtfspl.f dtor.f eq.f eqkeyw.f
  eqtok.f filch.f fmtdec.f f1clo.f f1opn.f f2clo.f f2opn.f
  f3clo.f f3opn.f getdat.f getkca.f gett.f gtsort.f
- htoi.f iexp.f isect.f itoa.f itoh.f join.f joirel.f juldat.f
+ htoi.f iexp.f isect.f itoa.f itoh.f join.f joirel.f
  kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f lfind.f lkstr.f locase.f
  locatt.f locboo.f locmac.f locprm.f locrel.f lodele.f lodpas.f
  lodrec.f lodrel.f lstrel.f lstrng.f lxcmnt.f lxdate.f lxedit.f
