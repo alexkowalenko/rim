@@ -1,4 +1,7 @@
       SUBROUTINE RMZIP(*)
+
+      USE System, only : SYSCMD
+
       INCLUDE 'syspar.inc'
 C
 C  PURPOSE:  PROCESS ZIP COMMAND  (CALL SYSTEM FUNCTION)

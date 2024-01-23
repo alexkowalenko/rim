@@ -1,4 +1,7 @@
       SUBROUTINE LODREC
+
+      USE System, only : SYSEXI, SYSTRP
+      
       INCLUDE 'syspar.inc'
 C
 C  SUBROUTINE TO READ A FREE-FIELD FORMAT INPUT RECORD.

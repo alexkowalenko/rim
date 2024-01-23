@@ -1,6 +1,7 @@
       PROGRAM MAIN
 
       USE DateTime, only: RMTIME, RMDATE
+      USE System, only: SYSEXI
       
       INCLUDE 'syspar.inc'
 C

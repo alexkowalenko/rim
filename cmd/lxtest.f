@@ -1,4 +1,7 @@
       PROGRAM MAIN
+
+      USE System, only: SYSEXI
+      
       INCLUDE 'syspar.inc'
 C
 C     TEST LXL ROUTINES

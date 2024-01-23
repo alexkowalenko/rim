@@ -18,6 +18,7 @@ C
 C------------------------------------------------------------
 
       USE DateTime, only: RMTIME, RMDATE
+      USE System, only: SYSEXI, SYSTRP
 
       INCLUDE 'syspar.inc'
       INCLUDE 'ascpar.inc'

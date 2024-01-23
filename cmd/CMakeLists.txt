@@ -20,15 +20,15 @@ target_link_libraries(rime
 
 target_link_libraries(rimh
      PRIVATE
-     rimlib)
+     rimintlib rimlib)
 
 target_link_libraries(lxtest
     PRIVATE
-    rimintlib)
+    rimintlib system)
 
 target_link_libraries(rmtest
     PRIVATE
-    rimlib)
+    rimlib system)
 
 install(TARGETS rim DESTINATION bin)
 

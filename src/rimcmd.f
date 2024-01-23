@@ -1,4 +1,7 @@
       SUBROUTINE RIMCMD
+
+      USE System, only : SYSCOM
+
       INCLUDE 'syspar.inc'
 C
 C     RIM COMMAND DISPATCHER
@@ -121,7 +124,7 @@ C
 C
 C     UNRECOGNISED COMMAND - POSSIBLY SYSTEM DEPENDENT
 C
-      CALL SYSCOM(*100)
+      CALL SYSCOM()
 C
 800   CALL MSG('EU', KWS(1),'+')
       CALL MSG(' L',' IS NOT A RIM COMMAND.',' ')
