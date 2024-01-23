@@ -12,10 +12,10 @@ exit
 * CHECK:  list 
 * CHECK:   Table name         rows  last modified
 * CHECK:   ---------------- ------  ------------ 
-* CHECK:   techs                 3  01/23/**
-* CHECK:   conductors            5  01/23/**
-* CHECK:   measures              6  01/23/**
-* CHECK:   notes                 2  01/23/**
+* CHECK:   techs                 3  
+* CHECK:   conductors            5  
+* CHECK:   measures              6  
+* CHECK:   notes                 2  
 * CHECK:  exit 
 * CHECK: End rim execution
  

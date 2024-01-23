@@ -19,11 +19,11 @@ MODULE DateTime
       !  PARAMETERS:
       !     TIM-----THE CURRENT TIME
       !
-      integer :: t(3)
+      integer :: t(8)
 
-      ! itime is a GNU Fortran instrinsic, a portable definition is in time_date.c
-      CALL itime(T)
-      RMTIME = t(1)*3600 + t(2)*60 + t(3)
+      ! Fortran 90 Standard
+      CALL date_and_time(VALUES=t)
+      RMTIME = t(5)*3600 + t(6)*60 + t(7)
       RETURN
     END FUNCTION RMTIME
 
@@ -38,12 +38,12 @@ MODULE DateTime
       !  PARAMETERS:
       !     DAT-----THE CURRENT DATE
       !
-      integer :: d(3)
+      integer :: d(8)
       LOGICAL X
       
-      ! idate is a GNU Fortran instrinsic, a portable definition is in time_date.c
-      CALL idate(d)
-      X = JULDAT(d(1),d(2),d(3),RMDATE)
+      ! Fortran 90 Standard
+      CALL date_and_time(VALUES=d)
+      X = JULDAT(d(3),d(2),d(1),RMDATE)
       RETURN
     END FUNCTION RMDATE
 

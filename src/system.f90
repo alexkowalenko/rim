@@ -73,9 +73,8 @@ MODULE System
     
     
     SUBROUTINE UNIXTRP
-      !INCLUDE '../src/flags.inc'
-      COMMON /RIMSTP/ HXFLAG
-      INTEGER :: HXFLAG
+      INCLUDE 'syspar.inc'
+      INCLUDE 'flags.inc'
     
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
     

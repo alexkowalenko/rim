@@ -22,6 +22,9 @@ endif()
 
 set(FVERSION "-std=legacy") # -std=f95, f2003, f2008, gnu, legacy
 set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} ${FVERSION}")
+# Put the Fortran module files into the build directory,
+# also that cmd executables can find them
+set(CMAKE_Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/src)
 
 add_subdirectory(src)
 add_subdirectory(cmd)

@@ -8,8 +8,8 @@ C     (GET DIRECTORY AND FILENAME FROM COMMAND LINE)
 C
 C     DBX = POINTER IN TOKENS TO DATABASE NAME
 C
-      INCLUDE '../src/tokens.inc'
-      INCLUDE '../src/cflags.inc'
+      INCLUDE 'tokens.inc'
+      INCLUDE 'cflags.inc'
       COMMON /SYSEXT/ DBDRF
       CHARACTER*(ZFNAML) DBDRF
  

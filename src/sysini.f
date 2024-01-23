@@ -35,7 +35,7 @@ C        INPUT IS FILE
       ENDIF
  
 C     Look for setup file ( ~/.rimrc )
-      call getenv('HOME',home)
+      call get_environment_variable('HOME', home) ! Fortran 2003
       do 100 i = 1, zfnaml
       bp = i
 100   if (home(i:i).eq.' ') goto 110
