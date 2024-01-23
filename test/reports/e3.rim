@@ -1,3 +1,7 @@
+* RUN: rm -f sample.rimdb*
+* RUN: %rim %sample
+* RUN: %rim %s | FileCheck %s
+open sample
 report                                                                          
   select from techs                                                             
     print                                                                       
@@ -17,3 +21,16 @@ report
     end select                                                                  
   end select                                                                    
 end report                                                                      
+exit
+* CHECK: Compilation complete
+* CHECK-NEXT:   5    John Jones
+* CHECK:    Cu        88/01/21   11.90
+* CHECK:    Cu        88/01/21   12.40
+* CHECK:    Fe        88/03/04   19.40
+* CHECK:   22    Jim Smith
+* CHECK:    Cu        88/02/22   12.50
+* CHECK:   35    Joe Jackson
+* CHECK:    Al        88/02/10   13.00
+* CHECK:    Al        88/02/10   14.30
+* CHECK: Report complete
+* CHECK: End rim execution

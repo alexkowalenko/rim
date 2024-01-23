@@ -18,3 +18,5 @@ config.pipefail = False
 # Substitutions
 
 config.substitutions.append(('%rim', os.path.join(config.tools_root, 'rim')))
+config.substitutions.append(
+    ('%sample', '@CMAKE_CURRENT_SOURCE_DIR@/sample/sample.rim'))

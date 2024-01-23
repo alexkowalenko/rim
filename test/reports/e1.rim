@@ -1,3 +1,7 @@
+* RUN: rm -f sample.rimdb*
+* RUN: %rim %sample
+* RUN: %rim %s | FileCheck %s
+open sample
 report                                                                          
   select from measures sort by symbol                                           
     print                                                                       
@@ -12,4 +16,21 @@ report
       1 1 symbol a8                                                             
     end print                                                                   
   end select                                                                    
-end report                                                                      
+end report
+exit
+* CHECK: Compilation complete
+* CHECK-NEXT: Al
+* CHECK-NEXT: Al
+* CHECK-NEXT: Cu
+* CHECK-NEXT: Cu
+* CHECK-NEXT: Cu
+* CHECK-NEXT: Fe
+* CHECK-NEXT: *****
+* CHECK-NEXT: Al
+* CHECK-NEXT: Al
+* CHECK-NEXT: Cu
+* CHECK-NEXT: Cu
+* CHECK-NEXT: Cu
+* CHECK-NEXT: Fe
+* CHECK-NEXT: Report complete
+* CHECK-NEXT: End rim execution

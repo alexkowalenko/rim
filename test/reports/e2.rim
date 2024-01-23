@@ -1,3 +1,7 @@
+* RUN: rm -f sample.rimdb*
+* RUN: %rim %sample
+* RUN: %rim %s | FileCheck %s
+open sample
 report                                                                          
   select from notes *(sort by M_date M_time )                                   
     print                                                                       
@@ -10,3 +14,18 @@ report
     end print                                                                   
   end select                                                                    
 end report                                                                      
+exit
+* CHECK: Compilation complete
+* CHECK:            5  88/01/21  Spilled coffee on
+* CHECK-NEXT:     Cu           09:03  sample.  Expect
+* CHECK-NEXT:                         higher readings due
+* CHECK-NEXT:                         to poor electrical
+* CHECK-NEXT:                         contact.
+  
+* CHECK:           22  88/02/22  Sample seems
+* CHECK-NEXT:     Cu           09:20  contaminated with
+* CHECK-NEXT:                         bitter deposit.
+* CHECK-NEXT:                         Recommend addition
+* CHECK-NEXT:                         of cream and sugar.
+* CHECK: Report complete
+* CHECK: End rim execution

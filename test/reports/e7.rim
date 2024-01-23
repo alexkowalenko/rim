@@ -1,3 +1,5 @@
+* RUN: %rim %s | FileCheck %s
+open sample
 report                                                                          
   i      = 1                                                                    
   r real = .111111                                                              
@@ -13,3 +15,16 @@ report
     end                                                                         
   end                                                                           
 end                                                                             
+exit
+* CHECK: Compilation complete
+* CHECK:    2       .222222                   .22222222222222225408
+* CHECK:    3       .333333                   .33333333333333336064
+* CHECK:    4       .444444                   .44444444444444450816
+* CHECK:    5       .555555                   .55555555555555557376
+* CHECK:    6       .666666                   .66666666666666672128
+* CHECK:    7       .777777                   .77777777777777786880
+* CHECK:    8       .888888                   .88888888888888901632
+* CHECK:    9       .999999                  1.00000000000000022204
+* CHECK:   10      1.111110                  1.11111111111111137280
+* CHECK: Report complete
+* CHECK: End rim execution

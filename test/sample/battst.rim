@@ -1,0 +1,21 @@
+* RUN: rm -f sample.rimdb*
+* RUN: %rim %sample
+* RUN: %rim %s | FileCheck %s
+echo
+*( batch test)
+open sample
+list
+exit
+* CHECK: UW RIM (V.1.24  08/03/90)
+* CHECK:  open sample 
+* CHECK: Database 'sample' is open.
+* CHECK:  list 
+* CHECK:   Table name         rows  last modified
+* CHECK:   ---------------- ------  ------------ 
+* CHECK:   techs                 3  01/23/**
+* CHECK:   conductors            5  01/23/**
+* CHECK:   measures              6  01/23/**
+* CHECK:   notes                 2  01/23/**
+* CHECK:  exit 
+* CHECK: End rim execution
+ 

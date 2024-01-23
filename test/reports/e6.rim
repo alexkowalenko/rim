@@ -1,3 +1,7 @@
+* RUN: rm -f sample.rimdb*
+* RUN: %rim %sample
+* RUN: %rim %s | FileCheck %s
+open sample
 *( data entry forms )                                                           
 report                                                                          
   select from techs                                                             
@@ -20,3 +24,14 @@ report
     newpage                                                                     
   end select                                                                    
 end report                                                                      
+exit
+* CHECK: Compilation complete
+* CHECK:5    John Jones
+ 
+ 
+* CHECK:         symbol    date    time   resistivity
+ 
+* CHECK:     1
+* CHECK:         ------  --------  -----  -----------
+* CHECK: Report complete
+* CHECK: End rim execution

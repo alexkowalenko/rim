@@ -1,4 +1,8 @@
+* RUN: rm -f sample.rimdb*
+* RUN: %rim %sample
+* RUN: %rim %s | FileCheck %s
 *(    Rim report of resistance measurements by conductor )                      
+open sample
 report                                                                          
                                                                                 
   header                                                                        
@@ -58,3 +62,42 @@ report
   end select                                                                    
                                                                                 
 end report                                                                      
+exit
+* CHECK: Compilation complete
+* CHECK: Cu         29  Copper             .12
+ 
+* CHECK:        id   date               resistivity
+* CHECK:     -----  --------            -----------
+* CHECK:         5  88/01/21             11.90
+* CHECK:         5  88/01/21             12.40
+* CHECK:        22  88/02/22             12.50
+ 
+* CHECK:          Measured resistivity = 12.27
+ 
+* CHECK: Al         13  Aluminum           .18
+ 
+* CHECK:        id   date               resistivity
+* CHECK:     -----  --------            -----------
+* CHECK:        35  88/02/10             13.00
+* CHECK:        35  88/02/10             14.30
+ 
+* CHECK:          Measured resistivity = 13.65
+ 
+* CHECK: Fe         26  Iron               .24
+ 
+* CHECK:        id   date               resistivity
+* CHECK:     -----  --------            -----------
+* CHECK:         5  88/03/04             19.40
+ 
+* CHECK:          Measured resistivity = 19.40
+ 
+* CHECK: LB       -MV-  Bernstein         -MV-
+ 
+* CHECK:          No measurements taken
+ 
+* CHECK: U          92  Uranium            .44
+ 
+* CHECK:          No measurements taken
+* CHECK: Report complete
+* CHECK: End rim execution
+
