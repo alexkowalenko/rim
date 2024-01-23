@@ -1,0 +1,20 @@
+import os
+import lit.formats
+
+config.src_root = r'@CMAKE_CURRENT_SOURCE_DIR@'
+config.bin_root = r'@CMAKE_INSTALL_PREFIX@/bin'
+config.tools_root = r'@CMAKE_CURRENT_SOURCE_DIR@/../bin'
+
+config.output = r'@CMAKE_CURRENT_BINARY_DIR@'
+
+config.test_exec_root = r'/tmp'
+
+config.test_format = lit.formats.ShTest(True)
+
+config.suffixes = ['.rim']
+
+config.pipefail = False
+
+# Substitutions
+
+config.substitutions.append(('%rim', os.path.join(config.tools_root, 'rim')))

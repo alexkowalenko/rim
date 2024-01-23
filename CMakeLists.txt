@@ -25,3 +25,9 @@ set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} ${FVERSION}")
 
 add_subdirectory(src)
 add_subdirectory(cmd)
+
+enable_testing()
+add_subdirectory(test)
+
+# install
+set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR})

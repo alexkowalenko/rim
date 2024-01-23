@@ -1,3 +1,6 @@
+ * RUN: rm -f sample.rimdb*
+ * RUN: %rim %s | FileCheck %s
+ *
  *(unload of SAMPLE at 08/15/88  14:17:43)
  *(set con=+)
  *(set end=null)
@@ -56,3 +59,15 @@ ings due to poor electrical contact.'
  End
  *(set end=;)
  Exit
+* CHECK: UW RIM (V.1.24  08/03/90)
+* CHECK-NEXT: Begin definitions for new database: sample          
+* CHECK-NEXT: Database definitions completed.
+* CHECK-NEXT: Loading table 'techs'
+* CHECK-NEXT: End data loading
+* CHECK-NEXT: Loading table 'conductors'
+* CHECK-NEXT: End data loading
+* CHECK-NEXT: Loading table 'measures'
+* CHECK-NEXT: End data loading
+* CHECK-NEXT: Loading table 'notes'
+* CHECK-NEXT: End data loading
+* CHECK-NEXT: End rim execution

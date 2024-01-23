@@ -30,3 +30,5 @@ target_link_libraries(rmtest
     PRIVATE
     rimlib)
 
+install(TARGETS rim DESTINATION bin)
+
