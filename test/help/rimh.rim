@@ -1,0 +1,77 @@
+ * RUN: rm -f rim_help.rimdb*
+ * RUN: cp %help_file .
+ * RUN: %rim %s
+ * RUN: %rimh | FileCheck %s
+ *
+ define rim_help
+ owner rim
+ 
+ attributes
+ comkey    text          3   *(command keyword)
+ subkey    text          3   *(sub-command keyword)
+ comtxt    text       var    *(text line of help text)
+ 
+ *(There is no explicit sequencing for the text records
+   belonging to a specific command and sub-command.
+   They are retrieved as they were loaded.)
+ 
+ relations
+ help_text     with comkey subkey comtxt
+ end
+ exit
+* CHECK: Database 'rim_help' is open.
+* CHECK:  MACRO: SYN 
+* CHECK:  MACRO: FMT 
+* CHECK:  MACRO: WHE 
+* CHECK:  MACRO: SOR 
+* CHECK:  MACRO: TO  
+* CHECK:  COMMAND:          
+* CHECK:  COMMAND: *        
+* CHECK:  COMMAND: BUI  KEY 
+* CHECK:  COMMAND: CHA      
+* CHECK: COMMAND: CHA  OWN 
+* CHECK: COMMAND: CHA  MPW 
+* CHECK: COMMAND: CHA  RPW 
+* CHECK: COMMAND: CLO      
+* CHECK: COMMAND: DEF      
+* CHECK: COMMAND: DEF  OWN 
+* CHECK: COMMAND: DEF  COL 
+* CHECK: COMMAND: DEF  TAB 
+* CHECK: COMMAND: DEF  LIN 
+* CHECK: COMMAND: DEF  PAS 
+* CHECK: COMMAND: EXI      
+* CHECK: COMMAND: EXH      
+* CHECK: COMMAND: HEL      
+* CHECK: COMMAND: INT      
+* CHECK: COMMAND: JOI      
+* CHECK: COMMAND: LIS      
+* CHECK: COMMAND: LOA      
+* CHECK: COMMAND: MAC      
+* CHECK: COMMAND: NEW      
+* CHECK: COMMAND: OPE      
+* CHECK: COMMAND: PRO      
+* CHECK: COMMAND: QUI      
+* CHECK: COMMAND: REF      
+* CHECK: COMMAND: REN  COL 
+* CHECK: COMMAND: REN  LIN 
+* CHECK: COMMAND: REN  TAB 
+* CHECK: COMMAND: REP      
+* CHECK: COMMAND: REP  FOO 
+* CHECK: COMMAND: REP  HEA 
+* CHECK: COMMAND: REP  IF  
+* CHECK: COMMAND: REP  NEW 
+* CHECK: COMMAND: REP  PRI 
+* CHECK: COMMAND: REP  PRO 
+* CHECK: COMMAND: REP  SEL 
+* CHECK: COMMAND: REP  WHI 
+* CHECK: COMMAND: REP  VAR 
+* CHECK: COMMAND: SEL      
+* CHECK: COMMAND: SET      
+* CHECK: COMMAND: SHO      
+* CHECK: COMMAND: SUB      
+* CHECK: COMMAND: TYP      
+* CHECK: COMMAND: UNI      
+* CHECK: COMMAND: UNL      
+ EOF ON UNIT 2
+* CHECK:  BUILDING KEY FOR COMKEY
+* CHECK: Build key completed.

@@ -143,6 +143,8 @@ C
 900   IF (RIM(1,'CLOSE')) CALL EXIT(1)
       STOP
       END
+      
+
       FUNCTION GETLIN(COM)
       INCLUDE 'syspar.inc'
 C
@@ -174,6 +176,7 @@ C
 1000  FORMAT(' EOF ON UNIT 2')
       RETURN
       END
+
       FUNCTION KEY3(SUB)
       INCLUDE 'syspar.inc'
 C
@@ -206,6 +209,7 @@ C
 100   CONTINUE
 900   RETURN
       END
+
       SUBROUTINE LODROW(LINE,NC)
       INCLUDE 'syspar.inc'
 C

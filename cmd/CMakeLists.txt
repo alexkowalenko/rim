@@ -31,4 +31,4 @@ target_link_libraries(rmtest
     rimlib system)
 
 install(TARGETS rim DESTINATION bin)
-
+install(TARGETS rimh DESTINATION bin)

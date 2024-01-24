@@ -1,0 +1,22 @@
+ * RUN: rm -f rim_help.rimdb*
+ * RUN: %rim %s | FileCheck %s
+ define rim_help
+ owner rim
+ 
+ attributes
+ comkey    text          3   *(command keyword)
+ subkey    text          3   *(sub-command keyword)
+ comtxt    text       var    *(text line of help text)
+ 
+ *(There is no explicit sequencing for the text records
+   belonging to a specific command and sub-command.
+   They are retrieved as they were loaded.)
+ 
+ relations
+ help_text     with comkey subkey comtxt
+ end
+ exit
+* CHECK: UW RIM (V.1.24  08/03/90)
+* CHECK: Begin definitions for new database: rim_help        
+* CHECK: Database definitions completed.
+* CHECK: End rim execution

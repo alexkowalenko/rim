@@ -18,5 +18,8 @@ config.pipefail = False
 # Substitutions
 
 config.substitutions.append(('%rim', os.path.join(config.tools_root, 'rim')))
+config.substitutions.append(('%rimh', os.path.join(config.tools_root, 'rimh')))
 config.substitutions.append(
     ('%sample', '@CMAKE_CURRENT_SOURCE_DIR@/sample/sample.rim'))
+config.substitutions.append(
+    ('%help_file', '@CMAKE_CURRENT_SOURCE_DIR@/../etc/rim_help.data'))
