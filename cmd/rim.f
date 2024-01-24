@@ -18,7 +18,7 @@ C
 C------------------------------------------------------------
 
       USE DateTime, only: RMTIME, RMDATE
-      USE System, only: SYSEXI, SYSTRP
+      USE System, only: SystemExit, SystemTrap, SystemInitialise
 
       INCLUDE 'syspar.inc'
       INCLUDE 'ascpar.inc'
@@ -46,7 +46,7 @@ C
 C     (OPENS ZNINT FOR INPUT AND ZNOUT FOR OUTPUT)
 C     (MAY ALSO AFFECT BATCH, CONNI, CONNO, AND OTHER VARIABLES)
 C
-      CALL SYSINI
+      CALL SystemInitialise
 C
 C  PRINT THE RIM EXECUTION HEADER
 C
@@ -65,7 +65,7 @@ C
 C
 C  SET THE TRAPS FOR RECOVERING ERRORS.
 C
-      CALL SYSTRP('SET')
+      CALL SystemTrap('SET')
 C
 C  CALL COMMAND INTERPRETER
 C
@@ -87,11 +87,11 @@ C
       CALL MSG(' ','  ','+')
       CALL DMSG(TTIM,0,' ',KZTIME)
 C
-      CALL SYSTRP('CLEAR')
+      CALL SystemTrap('CLEAR')
 C
 C  POSSIBLE SYSTEM DEPENDANT EXIT ROUTINE
 C
-      CALL SYSEXI
+      CALL SystemExit
 C
       CALL EXIT(0)
       END

@@ -1,7 +1,7 @@
       PROGRAM MAIN
 
       USE DateTime, only: RMTIME, RMDATE
-      USE System, only: SYSEXI
+      USE System, only: SystemExit, SystemInitialise, SYSDBG, SYSDBN
       
       INCLUDE 'syspar.inc'
 C
@@ -67,7 +67,7 @@ C     DATA RLEN /ZF1,ZF2,ZF3/
  
       CALL RMCONS
       CALL RMINIT
-      CALL SYSINI
+      CALL SystemInitialise
 C     DON'T USE THE INIT FILE
       IF (NINT.NE.ZNINT) CALL SETIN(ZTRMIN)
 C
@@ -494,7 +494,7 @@ C
 C
 C  POSSIBLE SYSTEM DEPENDANT EXIT ROUTINE
 C
-      CALL SYSEXI
+      CALL SystemExit
 C
       CALL EXIT(0)
       END

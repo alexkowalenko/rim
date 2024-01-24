@@ -1,4 +1,7 @@
       SUBROUTINE DBOPCL(*,MODE)
+
+      USE System, only : SYSDBG, SYSDBN
+
       INCLUDE 'syspar.inc'
 C
 C     OPEN/CLOSE A DATABASE

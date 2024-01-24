@@ -1,6 +1,6 @@
       SUBROUTINE RMZIP(*)
 
-      USE System, only : SYSCMD
+      USE System, only : SystemCommand
 
       INCLUDE 'syspar.inc'
 C
@@ -31,7 +31,7 @@ C     CLOSE THE DATABASE IN CASE OF NO RETURN
 C
       SAVDF = DFLAG
       IF (SAVDF) CALL RMCLOS
-      CALL SYSCMD(CCARD,IERR)
+      CALL SystemCommand(CCARD,IERR)
       IF (SAVDF) CALL DBOPEN(DBFNAM,.FALSE.)
       CALL MSG(' ','RETURN FROM SYSTEM',' ')
       IF (IERR.NE.0) THEN

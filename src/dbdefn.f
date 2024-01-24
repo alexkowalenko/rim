@@ -1,6 +1,7 @@
       SUBROUTINE DBDEFN(*)
 
       USE DateTime, only : RMDATE
+      USE System, only: SYSDBG
       
       INCLUDE 'syspar.inc'
 C

@@ -1,6 +1,6 @@
       SUBROUTINE LODREC
 
-      USE System, only : SYSEXI, SYSTRP
+      USE System, only : SystemExit, SystemTrap
       
       INCLUDE 'syspar.inc'
 C
@@ -79,8 +79,8 @@ C
          ELSE IF (BATCH .AND. NINT.EQ.ZNINT) THEN
             CALL RMCLOS
             CALL MSG('E','EOF REACHED ON THE BATCH INPUT FILE',' ')
-            CALL SYSTRP('CLEAR')
-            CALL SYSEXI
+            CALL SystemTrap('CLEAR')
+            CALL SystemExit
             CALL EXIT(1)
          ELSE
             ITEMS = 2

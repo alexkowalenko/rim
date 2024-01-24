@@ -1,6 +1,7 @@
       SUBROUTINE DBOPEN(NEWNAM,NEWOK)
 
       USE DateTime, only: RMTIME, RMDATE
+      USE System, only: SYSDBN
       
       INCLUDE 'syspar.inc'
 C

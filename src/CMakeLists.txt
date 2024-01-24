@@ -38,8 +38,7 @@ selwhr.f setin.f setout.f sgtlnk.f sort.f strasc.f strmov.f
 subtrc.f swcon.f swcost.f swfilo.f swflfs.f swhart.f swhrtd.f swhrti.f
 swhrtr.f swicst.f swidcp.f swiicp.f swinpo.f swircp.f switcp.f swshel.f
 swsink.f swsmfl.f swsmvl.f swunlo.f swunvl.f swvacp.f swvlfs.f
-swvllo.f sysdbg.f sysdbn.f
-sysini.f tioclo.f tioin.f tioopn.f tioout.f tokdsp.f toktyp.f
+swvllo.f tioclo.f tioin.f tioopn.f tioout.f tokdsp.f toktyp.f
 toled.f toler.f tuplrc.f typer.f undata.f undef.f union.f
 unload.f unpass.f upcase.f varadd.f warn.f whetol.f
 wheval.f whrnam.f xhibit.f zeroit.f zmove.f
@@ -74,8 +73,7 @@ adddat.f ascan.f ascchr.f ascdat.f asctxt.f atoi.f ator.f
  subtrc.f swcon.f swcost.f swfilo.f swflfs.f swhart.f swhrtd.f 
  swhrti.f swhrtr.f swicst.f swidcp.f swiicp.f swinpo.f swircp.f 
  switcp.f swshel.f swsink.f swsmfl.f swsmvl.f swunlo.f swunvl.f 
- swvacp.f swvlfs.f swvllo.f sysdbg.f sysdbn.f 
- tokdsp.f toktyp.f toled.f toler.f tuplrc.f typer.f 
+ swvacp.f swvlfs.f swvllo.f tokdsp.f toktyp.f toled.f toler.f tuplrc.f typer.f 
  union.f upcase.f whetol.f wheval.f 
  whrnam.f xhibit.f zeroit.f zmove.f
  datetime.f90)

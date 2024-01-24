@@ -1,6 +1,6 @@
       PROGRAM MAIN
 
-      USE System, only: SYSEXI
+      USE System, only: SystemExit, SystemInitialise
       
       INCLUDE 'syspar.inc'
 C
@@ -18,7 +18,7 @@ C
       CALL RMCONS
       CALL RMINIT
       CALL LXINIT
-      CALL SYSINI
+      CALL SystemInitialise
 C     DON'T USE THE INIT FILE
       IF (NINT.NE.ZNINT) CALL SETIN(ZTRMIN)
       ECHO = .TRUE.
@@ -49,6 +49,6 @@ C
       ENDIF
       GOTO 10
 C
-900   CALL SYSEXI
+900   CALL SystemExit
       CALL EXIT(0)
       END
