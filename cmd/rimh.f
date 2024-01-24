@@ -32,10 +32,10 @@ C     '.' = BEGIN NEW COMMAND OR SUBCOMMAND
 C     '&' = BEGIN MACRO DEFINITION
 C     '=' = COPY MACRO TEXT
 C
-      INCLUDE '../src/ascpar.inc'
-      INCLUDE '../src/flags.inc'
-      INCLUDE '../src/rimcom.inc'
-      INCLUDE '../src/dclar1.inc'
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'flags.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'dclar1.inc'
       LOGICAL RIM
 C
       PARAMETER (NW = 80/ZCW)

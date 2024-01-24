@@ -1,5 +1,5 @@
 MODULE System
-  implicit none
+  INCLUDE 'syspar.inc'
   private
   
   public SystemExit
@@ -10,6 +10,9 @@ MODULE System
   public SystemInitialise
   public SYSDBG
   public SYSDBN
+
+  ! Local defitions
+  CHARACTER*(ZFNAML), private :: DBDRF
 
   contains
 
@@ -76,7 +79,6 @@ MODULE System
     
     
     SUBROUTINE UNIXTRP
-      INCLUDE 'syspar.inc'
       INCLUDE 'flags.inc'
     
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
@@ -89,7 +91,6 @@ MODULE System
 
     
     SUBROUTINE SystemInitialise
-      INCLUDE 'syspar.inc'
       !
       ! ***UNIX SYSTEM DEPENDENT ROUTINE ***
       !
@@ -100,7 +101,7 @@ MODULE System
       !
       ! GET FILENAME FROM COMMAND LINE
       !
-      CHARACTER*(ZFNAML) FNAME,home
+      CHARACTER*(ZFNAML) :: FNAME, home
       LOGICAL :: CHKFIL
       double precision :: d0
     
@@ -136,8 +137,7 @@ MODULE System
     END SUBROUTINE SystemInitialise
 
 
-    SUBROUTINE SYSDBG(DBX,STATUS) 
-      INCLUDE 'syspar.inc'
+    SUBROUTINE SYSDBG(DBX,STATUS)
       !
       ! ***UNIX SYSTEM DEPENDENT ROUTINE ***
       !
@@ -152,8 +152,6 @@ MODULE System
       INTEGER, intent(in) :: DBX
       INTEGER, intent(out) :: STATUS
 
-      COMMON /SYSEXT/ DBDRF
-      CHARACTER*(ZFNAML) DBDRF
       INTEGER, PARAMETER :: RSBCH=93, COLCH=58
     
       STATUS = 0
@@ -178,7 +176,6 @@ MODULE System
 
 
     SUBROUTINE SYSDBN(DBN,F1N,F2N,F3N,FXN)
-      INCLUDE 'syspar.inc'
       !
       ! ***UNIX SYSTEM DEPENDENT ROUTINE ***
       !
@@ -195,11 +192,8 @@ MODULE System
     
       INCLUDE 'ascpar.inc'
       INCLUDE 'flags.inc'
-      !
-      COMMON /SYSEXT/ DBDRF
-      CHARACTER*(ZFNAML) DBDRF
     
-      CHARACTER*(ZFNAML) CDBN, xdbn
+      CHARACTER*(ZFNAML) :: CDBN, xdbn
       !
       ! Use name from DBDRF unless help DB open
       !
