@@ -594,8 +594,8 @@ select index@i2 name from conductor
 select * from conductor
 \end{verbatim}
  
-Of course the "[<col>]" and
-"[<col>,<row>]" are valid only for vector and matrix
+Of course the \verb![col]! and
+\verb![<col>,<row>]! are valid only for vector and matrix
 columns, respectively.
  
  
@@ -604,14 +604,24 @@ columns, respectively.
 Rim supplies online help text which describes the
 syntax and functionality of commands,
  typing conventions, and also provides general information about Rim.
+
 Enter
+\begin{verse}
 \verb!help!
+\end{verse}
+
 to view an introduction to Rim and a list of Rim commands.
+
 Enter
+\begin{verse}
 \verb!help typing!
+\end{verse}
 to see help text about Rim's command and data entry conventions.
+
 Enter
-\verb!help! \opt{<command> \opt{<sub-command>}}
+\begin{verse}
+\verb!help! \opt{\emph{command} \opt{\emph{sub-command}}}
+\end{verse}
 to see help text related to a specific Rim command.
  
 \section{Including comments in Rim commands}
@@ -619,8 +629,10 @@ to see help text related to a specific Rim command.
 \I{comments}
 You may include a comment nearly anywhere in your Rim input
 by enclosing it in `{\tt*(}' and `{\tt )}'.
-
+end{verse}
+\begin{verse}
 part of command  "*({\em This is a comment})"  rest of command
+\end{verse}
 
 You may not put comments in quoted text strings or in formatted
 input data.
@@ -654,27 +666,26 @@ in figure \ref{define}.
  
 \begin{figure}[htp]
   \verb!define! <filename> \opt{file parameters}\\
-   \opt{"name" <name>}\\
-   \opt{"owner" <password>}\\
-   \Opt{\begin{tabular}{l}"columns"\\
+   \opt{name <name>}\\
+   \opt{owner <password>}\\
+   \Opt{\begin{tabular}{l}columns\\
                <column definitions>\end{tabular}}\\
-   \Opt{\begin{tabular}{l}"tables"\\
+   \Opt{\begin{tabular}{l}tables\\
                <table definitions>\end{tabular}}\\
-   \Opt{\begin{tabular}{l}"links"\\
+   \Opt{\begin{tabular}{l}links\\
                <link definitions>\end{tabular}}\\
-   \Opt{\begin{tabular}{l}"passwords"\\
+   \Opt{\begin{tabular}{l}passwords\\
                <password definitions>\end{tabular}}\\
-   "end"
- 
+   \verb!end!
 \caption[Table definition block]
- {The block of commands that begin with {\bf define} and end with
-   {\bf end} define or modify the definition of a database.}
+ {The block of commands that begin with {\tt define} and end with
+ {\tt end} define or modify the definition of a database.}
 \label{define}
 \end{figure}
  
 \subsubsection{Beginning the definition}
 %
-\verb!"define! \opt{<filename> \opt{<parameters>}}
+\verb!define! \opt{<filename> \opt{<parameters>}}
 \I{define@"define"}
 begins definition of a new database if the files do not exist, or
 begins modification of an existing database if the files do exist.
@@ -723,11 +734,14 @@ Enter the define command
 \I{define!columns@"columns"}
 \I{columns@"columns"}
 to begin entry of column definitions.
-All entries until the next "define" subcommand
+All entries until the next \verb!define! subcommand
 are column definitions.
+
 There are four styles of column definition lines.
 They have the general syntax
-<name> <type> \opt{<length>} \opt{"format" <format>}
+\begin{verse}
+<name> <type> \opt{<length>} \opt{format <format>}
+\end{verse}
 where <format> is the optional, default format for the column.
 Table \ref{formats} shows the syntax of format specifications.
 \I{format}
@@ -740,14 +754,14 @@ Table \ref{formats} shows the syntax of format specifications.
      Syntax&
      Definitions\\
      \hline
-     <text> & "A"<xx>&
+     <text> & \verb!A!<xx>&
             <xx> = field width for formatted input and output.
             Output text longer than <xx> characters will be continued
             on subsequent lines.  Input text longer than <xx>
             characters will be truncated.\\
      \stk{<int> \\ <real>} &
-       \stk{\opt{<r>}"I"<n>\opt{"."<d>} \\
-          \opt{<r>}"F"<n>\opt{"."<d>} }&
+       \stk{\opt{<r>}I<n>\opt{"."<d>} \\
+          \opt{<r>}F<n>\opt{"."<d>} }&
           \hangindent24pt\hangafter1
        <r> = repeat count for vector and matrix output.
             Output longer than <r> numbers will be paragraphed.
@@ -775,75 +789,90 @@ Table \ref{formats} shows the syntax of format specifications.
  
  
 Define a text column with
+\begin{verse}
 \emph{name}
-             "text"
-             \stk{<\#chars> \\ "var"}
-             \opt{"format" <format>}
-            
-where "var" indicates a variable length string.
+             \verb!text!
+             \stk{<\#chars> \\ var}
+             \opt{format <format>}
+\end{verse}
+where \verb!var! indicates a variable length string.
 Table \ref{formats} shows the syntax of format specifications.
  
-Define a scaler column with
+Define a scalar column with
+\begin{verse}
 \emph{name}
-             \stk{"int"\\"real"\\"double"\\"date"\\"time"}
-             \opt{"format" <format>}
- 
+             \stk{int\\real\\double\\date\\time}
+             \opt{format <format>}
+\end{verse}
+
 Define a vector column with
+\begin{verse}  
 \emph{name}
-             \stk{"ivec"\\"rvec"\\"dvec"}
-             \stk{<\#cols> \\ "var"}
-             \opt{"format" <format>}
-            
-where "var" indicates a variable length vector.
+             \stk{ivec\\rvec\\dvec}
+             \stk{<\#cols> \\ var}
+             \opt{format <format>}
+\end{verse}
+where \verb!var! indicates a variable length vector.
  
 Define a matrix column with
+\begin{verse}
 \emph{name}
-             \stk{"imat"\\"rmat"\\"dmat"}
-             \stk{<\#rows>", "<\#cols> \\ <\#rows>", var" \\ "var, var"}
-             \opt{"format" <format>}
-            
-where "var" indicates a variable length matrix row or column.
+             \stk{imat\\rmat\\dmat}
+             \stk{<\#rows>, <\#cols> \\ <\#rows>, var \\ var, var}
+             \opt{format <format>}
+            \end{verse}            
+where \verb!var! indicates a variable length matrix row or column.
  
  
 \subsubsection{Entering table definitions}
 %
 Enter the define command
+\begin{verse}
 \verb|tables|
 \I{define!tables@"tables"}
 \I{tables@"tables"}
+\end{verse}
 to begin entry of table definitions.
-All entries until the next "define" subcommand
+All entries until the next \verb!define! subcommand
 are table definitions.
 Each entry contains a table name followed by a list of columns
-<name> "with" <column> \opt{<column> \opt{\ldots}}
+\begin{verse}
+<name> \verb!with! <column> \opt{<column> \opt{\ldots}}
+\end{verse}
 where each <column> has been defined in the
-"columns" section or already exists in the database.
+\verb!columns! section or already exists in the database.
  
 \subsubsection{Specifying links between tables}
 %
 Enter the define command
+\begin{verse}
 \verb|links|
 \I{define!links@"links"}
 \I{links@"links"}
+\end{verse}
 to begin entry of link definitions.
-All entries until the next "define" subcommand
+All entries until the next \verb!define! subcommand
 are link definitions.
 Each has the following syntax.
-<link name> "from" <att1> "in" <rel1> "to" <att2> "in" <rel2>
+\begin{verse}
+<link name> \verb!from! <att1> \verb!in! <rel1> \verb!to! <att2> \verb!in! <rel2>
+\end{verse}
 where the value of column <att1> in table <rel1>
 will be used to find a unique row of table <rel2>,
 where <att2> = <att1>.
  
  
-Links are used by the "select" command.
+Links are used by the \verb!select! command.
  
  
 \subsubsection{Ending database definitions}
 %
 Enter the define command
+\begin{verse}
 \verb|end| \opt{define}
 \I{define!end@"end"}
 \I{end@"end"}
+\end{verse}
 to end database definition and returns to normal Rim command
 processing with the newly defined database open.
  
