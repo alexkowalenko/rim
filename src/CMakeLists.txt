@@ -2,6 +2,8 @@
 # CMakeLists.txt libraries
 #
 
+set(CMAKE_Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/src)
+
 add_library(rimintlib STATIC
 adddat.f amsg.f ascan.f ascchr.f ascdat.f
 asctxt.f atoi.f ator.f attadd.f attdel.f attget.f
@@ -38,12 +40,13 @@ selwhr.f setin.f setout.f sgtlnk.f sort.f strasc.f strmov.f
 subtrc.f swcon.f swcost.f swfilo.f swflfs.f swhart.f swhrtd.f swhrti.f
 swhrtr.f swicst.f swidcp.f swiicp.f swinpo.f swircp.f switcp.f swshel.f
 swsink.f swsmfl.f swsmvl.f swunlo.f swunvl.f swvacp.f swvlfs.f
-swvllo.f tioclo.f tioin.f tioopn.f tioout.f tokdsp.f toktyp.f
+swvllo.f tokdsp.f toktyp.f
 toled.f toler.f tuplrc.f typer.f undata.f undef.f union.f
 unload.f unpass.f upcase.f varadd.f warn.f whetol.f
 wheval.f whrnam.f xhibit.f zeroit.f zmove.f
 datetime.f90
 system.f90
+textfiles.f90
 )
 
 add_library(rimlib STATIC

@@ -12,7 +12,7 @@ MODULE System
   public SYSDBN
 
   ! Local defitions
-  CHARACTER*(ZFNAML), private :: DBDRF
+  CHARACTER(ZFNAML), private :: DBDRF
 
   contains
 
@@ -101,7 +101,7 @@ MODULE System
       !
       ! GET FILENAME FROM COMMAND LINE
       !
-      CHARACTER*(ZFNAML) :: FNAME, home
+      CHARACTER(ZFNAML) :: FNAME, home
       LOGICAL :: CHKFIL
       double precision :: d0
     
@@ -193,7 +193,7 @@ MODULE System
       INCLUDE 'ascpar.inc'
       INCLUDE 'flags.inc'
     
-      CHARACTER*(ZFNAML) :: CDBN, xdbn
+      CHARACTER(ZFNAML) :: CDBN, xdbn
       !
       ! Use name from DBDRF unless help DB open
       !
