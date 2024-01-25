@@ -882,16 +882,22 @@ defined the tables in the sample database.
  
 \subsection{Changing names}
 \I{rename@"rename"}
-You can change the name of a table or column with the "rename" command.
+You can change the name of a table or column with the \verb|rename| command.
 To rename a table
 enter
-\verb|rename| table <table> to <new\_name>"
+\begin{verse}
+\verb|rename| table <table> to <new\_name>
+\end{verse}
 To rename a link
 enter
-\verb|rename| link <link> to <new\_name>"
+\begin{verse}
+\verb|rename| link <link> to <new\_name>
+\end{verse}
 To rename a column
 enter
+\begin{verse}
 \verb|rename| \opt{"column"} <column> "to" <new\_name> \opt{"in" <table>}
+\end{verse}
 If a table name is given, the
 column is renamed only in that table. Otherwise the column is
 renamed in all tables.
@@ -899,8 +905,10 @@ renamed in all tables.
 \subsection{Changing a default format}
 \I{reformat@"reformat"}
 \I{format}
-You can change the default format of a column with the "reformat" command.
-"reformat" <column> "to" <format> \opt{"in" <table>}
+You can change the default format of a column with the \verb!reformat! command.
+\begin{verse}
+  \verb!reformat! <column> \verb!to! <format> \opt{"in" <table>}
+\end{verse}
 changes the default format for the specified column.
 If a table name if given, the
 format is changed only in that table. Otherwise it
@@ -908,9 +916,11 @@ is changed in all tables.
  
 \subsection{Removing tables and links}
 %
-You can remove a table or link from the database with the "remove" command.
+You can remove a table or link from the database with the \verb!remove! command.
 \I{remove table@"remove table"}
+\begin{verse}
 \verb|remove| \opt{"table"} <table\_name>
+\end{verse}
 removes the specified table.  All data rows contained in the
 table will be lost.  Any links to or from the table
 will also be removed.
@@ -919,9 +929,11 @@ confirmation before removing a table.
  
 Removes a link with the command
 \I{remove link@"remove link"}
+\begin{verse}
 \verb|remove| link" <link\_name>
- 
-\subsection{Defining the "Sample"\ database}
+\end{verse}
+
+\subsection{Defining the {\tt sample} database}
 \I{Sample}
 Figure~\ref{Sample} on page~\pageref{Sample} shows an example
 database that is used
@@ -949,7 +961,7 @@ shows the input that was used to modify the Sample database.
   \end{tabular}
  
   \smallskip
-          {<conductors> table }
+          {\verb!conductors! table }
  
   \bigskip
   \begin{tabular}[t]{|r|l|l|l|}
@@ -965,7 +977,7 @@ shows the input that was used to modify the Sample database.
   \end{tabular}
  
   \smallskip
-          {<Techs> table }
+          {\verb!techs! table }
  
   \bigskip
   \begin{tabular}[t]{|l|r|l|l|r|}
@@ -986,7 +998,7 @@ shows the input that was used to modify the Sample database.
   \end{tabular}
  
   \medskip
-          {<measures> table }
+          {\verb!measures! table }
  
   \bigskip
   \begin{tabular}[t]{|l|r|l|l|p{2.0in}|}
@@ -1005,7 +1017,7 @@ shows the input that was used to modify the Sample database.
   \end{tabular}
  
   \smallskip
-          {<notes> table }
+          {\verb!notes! table }
 \end{center}
 \caption[The Sample database]
   {The Sample database used by all the example commands
@@ -1060,27 +1072,31 @@ end
 \section{Accessing a database}
 %
 \I{open@"open"}
-\subsection{"open"}
+\subsection{{\tt open}}
 You access an existing database by opening it with this command
-\verb|open <name>|
+\begin{verse}
+\verb|open| <name>
+\end{verse}
 Some systems allow you to specify file pathnames or
 directory names to locate the database files.
 Consult Appendix~\ref{UCS-systems} for details.
  
 When Rim opens a database it also looks for an input
 file with the same name as the database and with an extension
-of ".rim".  If this file exists it is assumed to contain
+of \verb!.rim!.  If this file exists it is assumed to contain
 Rim commands and will be input automatically.
 \I{initialization}
 This initialization file is commonly used to load
 database specific macros (See chapter~\ref{mac-chapter}).
  
 \I{close@"close"}
-\subsection{"close"}
+\subsection{{\tt close}}
 Rim will close an open database as it exits, but you
 may also manually close it at any time with the close
 command
-\verb|close|
+\begin{verse}
+  \verb|close|
+\end{verse}
  
  
 \section{Loading tables}
@@ -1097,7 +1113,7 @@ You can load data rows into tables from two types of sources.
      the columns of the table; and
   \item each input record must exactly fill a table row (The
      input record may, of course, span several lines if each
-     is continued with a "+").
+     is continued with a \verb!+!).
   \end{itemize}
 \item[Fixed-format] is the form of most computer generated data.
   In fixed-format sources:
@@ -1111,7 +1127,7 @@ You can load data rows into tables from two types of sources.
      affect the length of variable length text columns;
   \item data on the input records need not be in the same order as
      the columns of the table;
-  \item each row may span several records (The "+" is not applicable);
+  \item each row may span several records (The \verb!+! is not applicable);
   \item some columns of the input records may be ignored;   and
   \item some rows of the table may not be filled (These will become
      ``missing values'').
@@ -1128,15 +1144,18 @@ or the modify password (MPW) for the table you are loading.
 \I{load@"load"}
 This form will load data either from the terminal
 or from a file.  The command block
+\begin{verse}
 \verb|load| <table>\\
-      <data records>\\
-      "end" \opt{"load"}
-
+      \qquad <data records>\\
+\verb!end! \opt{"load"}
+\end{verse}
 loads the data records into the specified table.
  
 If the data records are in a file, use the command
-"load" <table> "from" <filename>
-to load the table.  In this case the trailing "end" is optional.
+\begin{verse}
+  \verb|load| <table> \verb!from! <filename>
+\end{verse}
+to load the table.  In this case the trailing \verb!end! is optional.
 Rim will assume the end if it reaches the end-of-file.
 See the notes on filenames in appendix \ref{UCS-systems}.
 Figure \ref{Sample-loadf} shows the input that loaded
@@ -1192,17 +1211,18 @@ Fixed-format loading requires a format definition block
 that describes the position and format of each
 column to be loaded.
 It is also usually in a file and looks like
+\begin{verse}
 \verb|format|\\
-    <line> <position> <column\_name> <format>\\
-    \vdots\\
-    "end" \opt{"format"}
+    \qquad <line> <position> <column\_name> <format>\\
+    \qquad \vdots\\
+    \verb!end! \opt{"format"}
+\end{verse}
 where <line> is 1 for the first input record of a row, 2 for
 the next input record, etc.
 <Position> is the starting character position in the record
 for the data.  Data formats are described in figure \ref{formats}.
-You may enter a null field ("' '") in place of the <column\_name> and 
+You may enter a null field (\verb!' '!) in place of the <column\_name> and 
 <format> to cause Rim to skip an input line.
- 
  
 \begin{figure}[tp]
  
@@ -1257,36 +1277,41 @@ end
 \end{figure}
  
 Begin formatted loading with
-"load" <table> "from" <data\_file> "using" <format\_file>
+\begin{verse}
+\verb|load| <table> \verb|from| <data\_file> \verb|using| <format\_file>
+\end{verse}
 where the data is in file <data\_file> and the format block
-is in file <format\_file>. The latter may be ``"terminal"''
+is in file <format\_file>. The latter may be ``\verb|terminal|''
 if you want to enter the format block online.
 If both filenames are the same Rim will first read the
 format and then the data from the same file.
 See the notes on filenames in appendix \ref{UCS-systems}.
  
 Figure \ref{Sample-loadfx} shows an the input that loaded
-the "measures" table.
+the \verb|measures| table.
 \I{load@"load"|)}
  
  
-\section{Retrieving data---"select"}
+\section{Retrieving data---{\tt select}}
 %
 \I{select@"select"|}
 This section shows you how to retrieve data stored in
 your database.
-The "select" command, which has many clauses and optional forms,
+The \verb|select| command, which has many clauses and optional forms,
 is the easiest way to look at your data.
 If you need more flexibility, or more complicated reports,
 you should use the report writer (Chapter~\ref{report-writer}).
-The "select" command has the general format
-"select" <column specifications> + \\
+
+The \verb|select|command has the general format
+\begin{verse}
+  \verb|select| <column specifications> + \\
   \qquad \opt{"from" <relation>} + \\
   \qquad \opt{<where clause>} + \\
   \qquad \opt{<sort clause>} + \\
   \qquad \opt{"to" <filename>}
+\end{verse}
 where the last three clauses are optional.
-If you omit the "from" clause Rim will use the most recently
+If you omit the \verb|from| clause Rim will use the most recently
 accessed table.  If there is no such table
 Rim will report an error.
  
@@ -1294,7 +1319,7 @@ Rim will report an error.
 %
 This is a list of the columns to display, along with an optional
 description of how to display them.  The column may be either
-from the main table (as indicated on the "from" clause) or may
+from the main table (as indicated on the \verb|from| clause) or may
 be from a linked\I{link} table.
 In its simplest form a column specification is just a list of columns.
  
@@ -1316,7 +1341,9 @@ select id m_date from measures
 \I{link}
 If the column to be displayed is in a linked table, specify
 the link name first, followed by a colon and then the column name.
+\begin{verse}
 <link\_name>:<column\_name>
+\end{verse}
 where <column\_name> refers to a column in the linked table.
  
 
@@ -1337,18 +1364,20 @@ select symbol id M_t:name M_date from measures
 \I{format}
 \label{format-spec}
 You may specify a format for each column if you don't want to use
-Rim's default. After the column name type an ``at'' sign ("@") and the format.
-<column\_name>"@"<format>
+Rim's default. After the column name type an ``at'' sign (\verb!@!) and the format.
+\begin{verse}
+<column\_name>\verb!@!<format>
+\end{verse}
 The format syntax is described in figure \ref{formats}.
  
  
 If you do not specify a format Rim will use a default
-for the column---as specified either by "define" commands or by the
+for the column---as specified either by \verb!define! commands or by the
 \I{define@"define"}\I{reformat@"reformat"}
-"reformat" command.  If neither of those was specified Rim will
+\verb!reformat! command.  If neither of those was specified Rim will
 use a default format according to the column type.
-You may display these defaults with the "show" command (page \pageref{show})
-and may set them with the "set" command (page \pageref{set}).
+You may display these defaults with the \verb!show! command (page \pageref{show})
+and may set them with the \verb!set! command (page \pageref{set}).
 \I{show@"show"}\I{set@"set"}
  
 \label{sel-dem1}
@@ -1370,12 +1399,14 @@ and may set them with the "set" command (page \pageref{set}).
 \I{title}
 You may specify the title for each column if you don't want to use
 Rim's default. After the column name type a percent sign and the title.
-<column\_name>"\%"<title>
-<Title> should be enclosed in quotes.
+\begin{verse}
+<column\_name>"\verb!%!"<title>
+\end{verse}
+<title> should be enclosed in quotes.
  
 \begin{verbatim}
 select symbol id\%'Tech id' M_t:name  
-    m_date@'dd-mmm-yy'\%'Measure date' from measures
+    m_date@'dd-mmm-yy'%'Measure date' from measures
  symbol    Tech id  name          Measure date
  --------  -------  ------------  ------------
  Cu            5    John Jones    21-JAN-88
@@ -1389,7 +1420,9 @@ select symbol id\%'Tech id' M_t:name
 \subsubsection{Summing columns}
 \I{sum}
 You may total a column by following it with an equal sign and an `S'.
-<column\_name>"=S"
+\begin{verse}
+<column\_name>\verb!=S!
+\end{verse}
 sums the column.
 There is no useful summation in the Sample database
 to use for an example.
@@ -1397,7 +1430,7 @@ to use for an example.
 \subsection{Selecting all columns}
 \I{*}
 You may select all columns of a table, with the default formats
-and titles, with an asterisk ("*") in place of the column specifications.
+and titles, with an asterisk (\verb!*!) in place of the column specifications.
 \begin{verbatim}
 select * from measures
  symbol    id     M_date    M_time   resistivity
@@ -1414,11 +1447,13 @@ select * from measures
 \I{functions}
 Rather than selecting individual rows from a table, you can
 have Rim perform simple tallies on columns.
-The general form of the function "select" is
-"select" \opt{<column>} <function>"("<column> \opt{\ldots}")"
-   \opt{\ldots} "from" <table>
+The general form of the function \verb!select! is
+\begin{verse}
+\verb!select! \opt{<column>} <function>\verb!(!<column> \opt{\ldots}\verb!)!
+   \qquad \opt{\ldots} \verb!from! <table>
+\end{verse}
 where the functions may be
-"num()  sum()  ave()  max()  " or " min()"
+\verb!num()  sum()  ave()  max()! or \verb!select!min()!
 each with an obvious functionality.
 Only one detail column may be specified.  If it is omitted
 the selection will produce a single tally for the table.
@@ -1438,19 +1473,23 @@ Functions will always completely disregard any missing values.
 %
 \I{where@<where clause>}
 \label{where-clause}
-The "where" clause acts as a filter which passes only
+The \verb!where! clause acts as a filter which passes only
 those rows that pass the clause criteria.
 For example,
-"select" <columns> "from measures where symbol='Cu'"
+\begin{verse}
+\verb!select! <columns> \verb!from measures where symbol='Cu'!
+\end{verse}
 selects only the measurements of copper (Cu) and ignores
 the other rows.
-The "where" clause consists of
+The \verb!where! clause consists of
  
 \begin{List}
  \item[comparisons] of the form
-   <column> <op> <value>\\
-                <column> <op> <column>\\
-                <column> <test>
+ \begin{itemize}
+  \item <column> <op> <value>
+  \item <column> <op> <column>
+  \item <column> <test>
+  \end{itemize}
   where <op> and <test> are described in figure~\ref{op-test},
  
 \begin{figure}[p]
@@ -1477,7 +1516,7 @@ The "where" clause consists of
    \end{center}
  
  \I{like}\I{text matching}
- \begin{description}
+ \begin{List}
  \item[1)] The "like" comparison
     is for strings only.  The strings are compared
     character-by-character, however
@@ -1494,15 +1533,17 @@ The "where" clause consists of
  and lower case letters match one another.  The default
  is "case respect" which says that upper case letters
  do \underline{not} match lower case letters.
-\end{description}
+\end{List}
 \caption{"where"\ clause comparisons}
 \label{op-test}
 \end{figure}
  
  \item[boolean operators] which combine comparisons
-   <comparison> "and" <comparison> \\
-                <comparison> "or " <comparison> \\
-           \phantom{<comparison>} "not" <comparison>
+ \begin{itemize}
+  \item <comparison> \verb!and! <comparison> 
+  \item <comparison> \verb!or ! <comparison>
+  \item \phantom{<comparison>} \verb!not! <comparison>
+  \end{itemize}
  
  \item[parentheses] which specify the precedence
    of the boolean operations
@@ -1529,17 +1570,19 @@ select symbol m_c:name resistivity@f7.2 from measures
 %
 \I{sort@<sort clause>}
 \label{sort-clause}
-The "sort" clause specifies the sort order of the displayed
+The \verb!sort! clause specifies the sort order of the displayed
 rows.
 It's form is
-"sort" \opt{"by"}
-  <column> \Opt{\stk{"=A"\\"=D"}} \opt{\ldots}
-where "=A" indicates an ascending sort order (the default)
-and "=D" indicates a descending sort order.
+\begin{verse}
+\verb!sort! \opt{"by"}
+  <column> \Opt{\stk{=A\\=D}} \opt{\ldots}
+\end{verse}
+where \verb!=A! indicates an ascending sort order (the default)
+and \verb!=D! indicates a descending sort order.
 The first column in the clause is the primary sort column;
 the second is the secondary sort column; etc.
  
-A "sort" clause may not be specified with a function "select"---the
+A \verb!sort! clause may not be specified with a function \verb!select!---the
 independent column is necessarily the sort column.
  
 \begin{verbatim}
@@ -1556,7 +1599,7 @@ select symbol m_c:name resistivity from measures
 \end{verbatim}
 \I{select@"select"|)}
  
-\section{Making Retrievals Faster---"Keys"}
+\section{Making Retrievals Faster--- Keys}
 %
 \I{key|(}
 This section shows you how to speed up your data retrievals
