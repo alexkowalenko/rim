@@ -6,7 +6,7 @@ cmake_minimum_required(VERSION 3.20)
 
 set(AX_LLVM /opt/homebrew/Cellar/llvm/18.0.0)
 #set(CMAKE_Fortran_COMPILER ${AX_LLVM}/bin/flang-new -L/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib)
-set(CMAKE_Fortran_COMPILER "C:/Program\ Files\ (x86)/Intel/oneAPI/compiler/latest/bin/ifx.exe")
+#set(CMAKE_Fortran_COMPILER "C:/Program\ Files\ (x86)/Intel/oneAPI/compiler/latest/bin/ifx.exe")
 set(CMAKE_Fortran_PREPROCESS_SOURCE OFF)
 
 set(CMAKE_BUILD_TYPE Debug)
@@ -22,7 +22,7 @@ if(EXISTS "${LOC_PATH}")
     message(FATAL_ERROR "You cannot build in a source directory (or any directory with a CMakeLists.txt file). Please make a build subdirectory. Feel free to remove CMakeCache.txt and CMakeFiles.")
 endif()
 
-#set(FVERSION "-std=legacy") # -std=f95, f2003, f2008, gnu, legacy
+set(FVERSION "-std=legacy") # -std=f95, f2003, f2008, gnu, legacy
 set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} ${FVERSION}")
 # Put the Fortran module files into the build directory,
 # also that cmd executables can find them

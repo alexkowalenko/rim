@@ -1,15 +1,15 @@
-C
-C  *** DCLAR1 ***
-C
-C  RELATION NAMES ---
-C
+!
+!  *** DCLAR1 ***
+!
+!  RELATION NAMES ---
+!
       INTEGER RNAME(Z)
       INTEGER RNAME1(Z)
       INTEGER RNAME2(Z)
       INTEGER RNAME3(Z)
-C
-C  ATTRIBUTE NAMES ---
-C
+!
+!  ATTRIBUTE NAMES ---
+!
       INTEGER ANAME(Z)
       INTEGER ANAME1(Z)
       INTEGER ANAME2(Z)

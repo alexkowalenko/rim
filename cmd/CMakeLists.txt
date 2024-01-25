@@ -5,10 +5,10 @@
 include_directories(../src)
 
 add_executable(rim rim.f90)
-add_executable(rime rime.f)
-add_executable(rimh rimh.f)
+add_executable(rime rime.f90)
+add_executable(rimh rimh.f90)
 add_executable(lxtest lxtest.f90)
-add_executable(rmtest rmtest.f)
+add_executable(rmtest rmtest.f90)
 
 target_link_libraries(rim
      PRIVATE
