@@ -24,4 +24,5 @@ lit.site.cfg.py
 *.pdf
 
 .vscode/*
+.vs/*
 
