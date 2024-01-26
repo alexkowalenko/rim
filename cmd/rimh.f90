@@ -147,6 +147,9 @@ PROGRAM MAIN
 CONTAINS
 
    FUNCTION GETLIN(COM)
+
+      USE Text, only : ASCCHR
+
       INCLUDE 'syspar.inc'
       !
       ! GET A LINE OF TEXT
@@ -184,6 +187,8 @@ CONTAINS
 
 
    FUNCTION KEY3(SUB)
+      USE Text, only : UPCASE
+
       INCLUDE 'syspar.inc'
       !
       ! GET FIRST THREE CHARS OF FIRST WORD

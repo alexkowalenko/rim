@@ -1,5 +1,6 @@
       SUBROUTINE F1OPN(RIMDB1)
 
+         USE Text, only : ASCTXT
          USE Utils, only : ZEROIT, ZMOVE
 
          INCLUDE 'syspar.inc'

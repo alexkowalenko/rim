@@ -1,6 +1,7 @@
       SUBROUTINE PGCOMP
 
          USE DateTime, only: RMTIME, RMDATE
+         USE Text, only : ASCTXT
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

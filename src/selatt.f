@@ -1,5 +1,6 @@
       FUNCTION SELATT(FTOK,NTOK)
 
+         USE Text, only : ASCCHR, ASCTXT
          USE Utils, only : ZMOVE, HTOI, ITOH
 
          INCLUDE 'syspar.inc'

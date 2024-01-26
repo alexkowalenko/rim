@@ -8,6 +8,7 @@ C
 C------------------------------------------------------------
 C
 
+         USE Text, only : ASCCHR, ASCTXT
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

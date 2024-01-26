@@ -89,6 +89,9 @@ CONTAINS
 
 
    SUBROUTINE TIOIN(FILE,TEXT,LEN,EOF)
+
+      USE Text, only : ASCCHR
+
       INCLUDE 'syspar.inc'
       !
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
@@ -111,7 +114,6 @@ CONTAINS
       INCLUDE 'prom.inc'
       !
       CHARACTER(ZCARDL) :: INCARD
-      INTEGER :: ASCCHR
       !
       !  READ A CARD FROM THE CURRENT FILE.
       !

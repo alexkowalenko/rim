@@ -1,5 +1,8 @@
       SUBROUTINE MSGCMV(MTEXT,CTYPE)
-      INCLUDE 'syspar.inc'
+
+         USE Text, only : ASCCHR
+
+         INCLUDE 'syspar.inc'
 C
 C  ROUTINE TO ADD CHARS TO THE OUTPUT LINE
 C
@@ -13,29 +16,29 @@ C                 'F' - LOWERCASE ALL BUT FIRST CHARACTER
 C                 'L' - LOWERCASE
 C                 OTHER - SAME AS 'L'
 C
-      CHARACTER*(*) MTEXT
-      CHARACTER*(*) CTYPE
+         CHARACTER*(*) MTEXT
+         CHARACTER*(*) CTYPE
 C
-      INCLUDE 'ascpar.inc'
-      INCLUDE 'files.inc'
-      INCLUDE 'msgcom.inc'
+         INCLUDE 'ascpar.inc'
+         INCLUDE 'files.inc'
+         INCLUDE 'msgcom.inc'
 C
-      LOGICAL UCASE, FCHAR
+         LOGICAL UCASE, FCHAR
 C
-      UCASE = .FALSE.
-      FCHAR = .FALSE.
-      L = LEN(MTEXT)
-      IF (CTYPE.EQ.'F') FCHAR = .TRUE.
-      IF (CTYPE.EQ.'U') UCASE = .TRUE.
+         UCASE = .FALSE.
+         FCHAR = .FALSE.
+         L = LEN(MTEXT)
+         IF (CTYPE.EQ.'F') FCHAR = .TRUE.
+         IF (CTYPE.EQ.'U') UCASE = .TRUE.
 C
-      DO 100 I = 1, L
-      IF (FCHAR .OR. UCASE) THEN
-         CALL PUTT(MSGREC,MSGPTR+I,ASCCHR(MTEXT(I:I)))
-      ELSE
-         CALL PUTT(MSGREC,MSGPTR+I,LOCASE(ASCCHR(MTEXT(I:I))))
-      ENDIF
-      IF (FCHAR .AND. (MTEXT(I:I).NE.' ')) FCHAR = .FALSE.
-100   CONTINUE
-      MSGPTR = MSGPTR + L
-      RETURN
+         DO 100 I = 1, L
+            IF (FCHAR .OR. UCASE) THEN
+               CALL PUTT(MSGREC,MSGPTR+I,ASCCHR(MTEXT(I:I)))
+            ELSE
+               CALL PUTT(MSGREC,MSGPTR+I,LOCASE(ASCCHR(MTEXT(I:I))))
+            ENDIF
+            IF (FCHAR .AND. (MTEXT(I:I).NE.' ')) FCHAR = .FALSE.
+  100    CONTINUE
+         MSGPTR = MSGPTR + L
+         RETURN
       END

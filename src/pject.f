@@ -62,7 +62,8 @@ C       RNAME1 DOES NOT EXIST
 C
 C
          IF(.NOT.TOKTYP(2,KXNAME)) THEN
-            CALL WARN(7,ASCTXT(IDP(2)),0)
+            !CALL WARN(7,ASCTXT(IDP(2)),0) ! ASCTXT is a subroutine ???
+            CALL WARN(7, KXNAME, 0)
             GO TO 999
          ENDIF
          CALL LXSREC(2,RNAME2,ZC)
