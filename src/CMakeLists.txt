@@ -43,10 +43,11 @@ swsink.f swsmfl.f swsmvl.f swunlo.f swunvl.f swvacp.f swvlfs.f
 swvllo.f tokdsp.f toktyp.f
 toled.f toler.f tuplrc.f typer.f undata.f undef.f union.f
 unload.f unpass.f upcase.f varadd.f warn.f whetol.f
-wheval.f whrnam.f xhibit.f zeroit.f zmove.f
+wheval.f whrnam.f xhibit.f
 datetime.f90
 system.f90
 textfiles.f90
+utils.f90
 )
 
 add_library(rimlib STATIC
@@ -78,7 +79,8 @@ adddat.f ascan.f ascchr.f ascdat.f asctxt.f atoi.f ator.f
  switcp.f swshel.f swsink.f swsmfl.f swsmvl.f swunlo.f swunvl.f 
  swvacp.f swvlfs.f swvllo.f tokdsp.f toktyp.f toled.f toler.f tuplrc.f typer.f 
  union.f upcase.f whetol.f wheval.f 
- whrnam.f xhibit.f zeroit.f zmove.f
- datetime.f90)
+ whrnam.f xhibit.f
+ datetime.f90
+ utils.f90)
 
  add_library(system STATIC system.f90)

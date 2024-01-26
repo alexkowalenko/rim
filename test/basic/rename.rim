@@ -1,0 +1,41 @@
+* RUN: rm -f sample.rimdb*
+* RUN: %rim %sample
+* RUN: %rim %s | FileCheck %s
+echo
+*( batch test)
+open sample
+rename table techs to tech
+rename link M_C to M_X
+rename column symbol to sym
+list
+list conductors
+close
+exit
+* CHECK: UW RIM (V.1.24  08/03/90)
+* CHECK:  open sample 
+* CHECK: Database 'sample' is open.
+* CHECK: rename table techs to tech
+* CHECK: rename link M_C to M_X
+* CHECK: Link 'M_C' has been renamed to 'M_X'
+* CHECK: Column 'symbol' renamed to 'sym',
+* CHECK:  list 
+* CHECK:   Table name         rows  last modified
+* CHECK:   ---------------- ------  ------------ 
+* CHECK:   tech                  3  
+* CHECK:   conductors            5  
+* CHECK:   measures              6  
+* CHECK:   notes                 2
+* CHECK:  list conductors
+* CHECK:      Database : sample             read password : none    last mod :
+* CHECK:         Table : conductors       modify password : none 
+* CHECK:  Name              type      length     format     key
+* CHECK:  ----------------  ---- ------------- -----------  ---
+* CHECK:  sym               text    8 chars                     
+* CHECK:  at_no             int     1 words    i4               
+* CHECK:  resistivity       doub    1 words    f10.6            
+* CHECK:  name              text      var      a12              
+* CHECK:  Link M_X from measures(sym) to conductors(sym)
+* CHECK:  Link C_notes from conductors(sym) to notes(sym)
+* CHECK:    Current number of rows =     5
+* CHECK: End rim execution
+ 

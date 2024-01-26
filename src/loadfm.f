@@ -1,6 +1,7 @@
       SUBROUTINE LOADFM(MAT,ATT,FOR,NFOR)
 
          USE TextFiles, only : TIOIN
+         USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'
 C
@@ -215,7 +216,7 @@ C
                MAT(COLUMN) = ENDCOL
                NCOLT = ENDCOL + 1
                CALL PARVAL(J,MAT(ENDCOL+2),ATTYPE,ATTWDS,ATTCHA,NCOLT,
-     +        IERR)
+     +         IERR)
                IF(IERR.NE.0) IRR=1
                MAT(ENDCOL) = ATTWDS
                MAT(ENDCOL+1) = ATTCHA

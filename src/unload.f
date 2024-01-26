@@ -1,7 +1,8 @@
       SUBROUTINE UNLOAD(*)
 
       USE DateTime, only: RMTIME, RMDATE
-
+      USE Utils, only : ZMOVE
+      
       INCLUDE 'syspar.inc'
 C
 C     UNLOAD DATABASE SCHEMA, DATA, OR BOTH

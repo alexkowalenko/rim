@@ -886,17 +886,17 @@ You can change the name of a table or column with the \verb|rename| command.
 To rename a table
 enter
 \begin{verse}
-\verb|rename| table <table> to <new\_name>
+\verb|rename table| <table> \verb!to! <new\_name>
 \end{verse}
 To rename a link
 enter
 \begin{verse}
-\verb|rename| link <link> to <new\_name>
+\verb|rename link| <link> \verb!to! <new\_name>
 \end{verse}
 To rename a column
 enter
 \begin{verse}
-\verb|rename| \opt{"column"} <column> "to" <new\_name> \opt{"in" <table>}
+\verb|rename| \opt{column} <column> \verb!to! <new\_name> \opt{in <table>}
 \end{verse}
 If a table name is given, the
 column is renamed only in that table. Otherwise the column is
@@ -1618,56 +1618,66 @@ the table and then build any useful keys.
 %
 \I{build key@"build key"}
 Build a key for a column with this command.
-"build key for" <column> "in" <table>
- 
+\begin{verse}
+\verb!build key for! <column> \verb!in! <table>
+\end{verse}
 Usually, columns that are targets of links will be
 keyed columns.
 The Sample database should have these columns keyed:
-" build key for symbol in conductors"\\
-             "build key for id     in techs     "
- 
+\begin{verbatim}
+build key for symbol in conductors
+build key for id     in techs
+\end{verbatim}
+
 In addition,
-if the "notes" table becomes large, it might be reasonable
-to build keys for both "symbol" and "id" in "notes".
+if the \verb!notes!" table becomes large, it might be reasonable
+to build keys for both \verb!symbol! and \verb!id! in \verb!notes!.
  
 \subsection{Removing keys}
 %
 \I{remove key@"remove key"}
 Remove a key for a column with this command.
-"remove key for" <column> "in" <table>
+\begin{verse}
+  \verb!remove key for! <column> \verb!in! <table>
+\end{verse}
 \I{key|)}
- 
  
 \section{Changing data values}
 %
 \I{change@"change"}
 This section shows you how to change the data values in your tables.
 Use the change command:
-"change" <column> "to" <new\_value> "in" <table>
-           "where" <where\_clause>
+\begin{verse}
+\verb!change! <column> \verb!to! <new\_value> \verb!in! <table>
+    \qquad  \verb!where! <where\_clause>
+\end{verse}
 which changes the value of <column> to <new\_value> for every
-row of <table> that satisfies the "where" clause.
+row of <table> that satisfies the \verb!where! clause.
  
 \section{Deleting data rows}
 %
 \I{delete rows@"delete rows"}
 This section shows you how to delete rows from your tables.
 Use the delete command:
-"delete rows from " <table> "where" <where\_clause>
+\begin{verse}
+\verb!delete rows from! <table> \verb!where! <where\_clause>
+\end{verse}
 which deletes all rows in <table> that
-satisfy the "where" clause.
+satisfy the \verb!where! clause.
  
 \section{Unloading your database}
 %
 \I{unload@"unload"}
 If you want to transfer your database to another computer (which
 supports Rim), or if you want to save it in a system-inde\-pend\-ent
-form you can "unload" it to a text file.  You may unload
+form you can \verb!unload! it to a text file.  You may unload
 all or selected tables, and either
 the definitions, the data, both, or the passwords.
 Use the command
-"unload" \Opt{\stk{"all"\\"definitions"\\"data"\\"passwords"}}
-   \opt{<table> ...} \opt{"to" <filename>}
+\begin{verse}
+  \verb!unload! \Opt{\stk{all\\definitions\\data\\passwords}} \\
+   \qquad \opt{<table> ...} \opt{to <filename>}
+  \end{verse}
 to unload your database.  The default is to unload both definitions
 and data (all) and to unload all tables.
 The unloaded file is in normal text format with lines no longer
@@ -1702,7 +1712,7 @@ relational algebra commands.
 \subsection{Union}
 %
 \I{union@"union"}
-The "union" command creates a new table which contains all
+The \verb!union! command creates a new table which contains all
 or selected columns from two source tables.  The resultant
 table contains all rows from each source table.
 When rows from the two tables
@@ -1711,62 +1721,74 @@ When rows from the two tables do not
 match in all common columns, a resultant row is created
 for each source row, with missing values filling out the rows.
 \I{missing value}
-"union" <table-1> "with" <table-2> "forming" <table-3> "+"\\
-  \qquad  \opt{"using" <column-1> <column-2> \ldots }
+\begin{verse}
+  \verb!union! <table-1> \verb!with! <table-2> \verb!forming! <table-3> \verb!+!\\
+  \qquad  \opt{using <column-1> <column-2> \ldots }
+\end{verse}
 creates <table-3> from the union of <table-1> and <table-2>.
- 
+
 \subsection{Intersection}
 %
 \I{intersection@"intersection"}
-The "intersection" command creates a new table which contains all
+The \verb!intersection! command creates a new table which contains all
 or selected columns from two source tables.  The resultant
 table contains only those rows from each source table
 which
 match in all common columns.
-"intersect" <table-1> "with" <table-2> "forming" <table-3> "+"\\
-  \qquad  \opt{"using" <column-1> <column-2> \ldots }
+\begin{verse}
+  \verb!intersect! <table-1> \verb!with! <table-2> \verb!forming! <table-3> \verb!+!\\
+  \qquad  \opt{using <column-1> <column-2> \ldots }
+\end{verse}
 creates <table-3> from the intersection of <table-1> and <table-2>.
  
 \subsection{Subtraction}
 %
 \I{subtract@"subtract"}
-The "subtract" command creates a new table which contains all
+The \verb!subtract! command creates a new table which contains all
 or selected columns from two source tables.  The resultant
 table contains only those rows from the second table
 which
 do not match all common columns of the first table.
-"subtract" <table-1> "from" <table-2> "forming" <table-3> "+"\\
-  \qquad  \opt{"using" <column-1> <column-2> \ldots }
+\begin{verse}
+  \verb!subtract! <table-1> \verb!from! <table-2> \verb!forming! <table-3> \verb!+!\\
+  \qquad  \opt{using <column-1> <column-2> \ldots }
+\end{verse}
 creates <table-3> from the subtraction of <table-1> from <table-2>.
  
 \subsection{Join}
 %
 \I{join@"join"}
-The "join" command creates a new table which contains all
+The \verb!join! command creates a new table which contains all
 columns from two source tables.  The resultant
 table contains rows from each source table
 where specified columns match according to the specified comparison.
-"join" <table-1> "using" <column-1>
-    "with" <table-2> "using" <column-2> "+"\\
-  \qquad  "forming" <table-3>
-    "where" <comparison> 
+\begin{verse}
+  \verb!join! <table-1> \verb!using! <column-1>
+    \verb!with! <table-2> \verb!using! <column-2> \verb!+!\\
+  \qquad  \verb!forming! <table-3>
+    \verb!where! <comparison> 
+  \end{verse}
 creates <table-3> from the join of <table-1> and <table-2>.
 Each combination of rows where
-<column-1> in <table-1> \qquad <comparison> \qquad <column-2> in <table-2>
+\begin{verse}
+<column-1> \verb!in! <table-1> \qquad <comparison> \qquad <column-2> \verb!in! <table-2>
+\end{verse}
 is true, creates a row in <table-3>.
  
 \subsection{Projection}
 %
 \I{project@"project"}
-The "project" command creates a new table which contains all
+The \verb!project! command creates a new table which contains all
 or selected columns from a source table.  The resultant
 table contains all or selected rows from the source table.
-"project" <table-1> "from" <table-2>
-  \opt{"using" <column-1> <column-2> \ldots } "+"\\
- \qquad   "where" <conditions> 
+\begin{verse}
+  \verb!project! <table-1> \verb!from! <table-2>
+  \opt{using <column-1> <column-2> \ldots } \verb!+!\\
+ \qquad   \verb!where! <conditions> 
+\end{verse}
 creates <table-1> from <table-2>.
-<table-1> contains selected columns ("using") and the
-selected rows ("where") of <table-2>.
+<table-1> contains selected columns (\verb!using!) and the
+selected rows (\verb!where!) of <table-2>.
 %
 \I{algebra|)}
  
@@ -1779,21 +1801,25 @@ selected rows ("where") of <table-2>.
 Rim normally read commands from your terminal and writes back
 to your terminal.  You can tell Rim to read from a file by
 entering the command
-\opt{"set"} "input" <filename>
+\begin{verse}
+\opt{set} \verb!input! <filename>
+\end{verse}
 where <filename> identifies the file to read.  It is specified
 in the standard format for your system.
 On systems which commonly use two-part filenames an extension
 will be assumed if it is not specified.
 Consult Appendix~\ref{UCS-systems} to
 see if Rim will assume an extension for your input files.
-An `end-of-file' generates an automatic "end" command.
+An `end-of-file' generates an automatic \verb!end! command.
  
 \I{set!output@"output"}
 \I{output@"output"}
 \I{filename}
 You can redirect Rim's terminal output to a file by
 entering the command
-\opt{"set"} "output" <filename>
+\begin{verse}
+\opt{set} \verb!output! <filename>
+\end{verse}
 where <filename> identifies the file to write to.
 On systems which commonly use two-part filenames an extension
 will be assumed if it is not specified.
@@ -1808,15 +1834,18 @@ Rim is governed by many parameters.  Many of these represent
 fixed limits.  You can see what these limits are with
 this command
 \I{show@"show"}
-"show limits"
- 
+\begin{verse}
+\verb!show limits!
+\end{verse}
 You have direct control over many other parameters.
 You can see these with
 this command
-"show"
+\begin{verse}
+  \verb!show!
+  \end{verse}
 \label{show}
  
-You can also use the "show" command to view macro definitions
+You can also use the \verb!show! command to view macro definitions
 (see section~\ref{show-mac} on page~\pageref{show-mac}).
  
 \subsection{Setting}
@@ -1825,7 +1854,9 @@ The parameters you may set are:
 \label{set}
 \I{set!name@"name"}
 \I{database name}
-"set name" <new name>
+\begin{verse}
+  \verb!set name! <new name>
+\end{verse}
 sets the database name to <new name>.
 This is a permanent change to the database.
 %
@@ -1838,50 +1869,62 @@ This is a permanent change to the database.
 \label{ucmd-section}
 \I{set!user@"user"}
 \I{user@"user"}
-\opt{"Set"} "user" <password>
+\begin{verse}
+\opt{set} \verb!user! <password>
+\end{verse}
 sets the user password.
 %
 \label{echo-mode}
 \I{set!echo@"echo"}
 \I{echo@"echo"}
-\opt{"Set"} "echo" \Opt{\stk{"on"\\"off"}}
+\begin{verse}
+\opt{set} \verb!echo! \Opt{\stk{on\\off}}
+\end{verse}
 sets the command echo mode.  When echoing is on, all commands
 are `echoed' to the terminal, or to the report file if
 output has been redirected.
 %
 \I{set!case@"case"}
 \I{text matching}
-"Set case" \stk{"ignore"\\"respect"}
+\begin{verse}
+\verb!Set case! \stk{ignore\\respect}
+\end{verse}
 sets the case mode for text matching.
-If case is "ignore",
+If case is \verb!ignore!,
 lower and upper case letters will match.
-If case is "respect",
+If case is \verb!respect!,
 lower and upper case letters will not match.
 %
 \I{set!single@"single arbchar"}
 \I{text matching}
-"Set single arbchar" <character>
-sets the `single' wild-card character for "like" string matching.
+\begin{verse}
+  \verb!set single arbchar! <character>
+\end{verse}
+sets the `single' wild-card character for \verb!like! string matching.
 Occurrences of <character> in the template string will match
 any single character in the target string.
-The default value for this character is a question mark ("?").
+The default value for this character is a question mark (\verb!?!).
 %
 \I{set!multiple@"multiple arbchar"}
 \I{text matching}
-"Set multiple arbchar" <character>
-sets the `multiple' wild-card character for "like" string matching.
+\begin{verse}
+  \verb!set multiple arbchar! <character>
+\end{verse}
+sets the `multiple' wild-card character for \verb!like!" string matching.
 Occurrences of <character> in the template string will match
 any number of characters (including none) in the target string.
-The default value for this character is an asterisk ("*").
+The default value for this character is an asterisk (\verb!*!).
 %
 \I{set!mv@"MV"}
 \I{mv@"MV"}
 \I{missing value}
-"Set MV" <string>
-sets the "MV" missing value string for data input and output.
-"MV" missing values will appear in reports as <string>.
+\begin{verse}
+  \verb!set MV! <string>
+\end{verse}
+sets the \verb!MV! missing value string for data input and output.
+\verb!MV! missing values will appear in reports as <string>.
 Occurrences of <string> in input data will load the corresponding
-column with a type "MV" missing value.
+column with a type \verb!MV! missing value.
 If the <string> is blank, any blank input field will
 be assigned the MV missing value.
 The default value for MV is `{\tt-MV-}'.
@@ -1891,32 +1934,41 @@ The default value for MV is `{\tt-MV-}'.
 \I{set!na@"NA"}
 \I{na@"NA"}
 \I{missing value}
-"Set NA" <string>
-sets the "NA" missing value string for data input and output.
-"NA" missing values will appear in reports as <string>.
+\begin{verse}
+  \verb!set NA! <string>
+\end{verse}
+sets the \verb!NA! missing value string for data input and output.
+\verb!NA! missing values will appear in reports as <string>.
 Occurrences of <string> in input data will load the corresponding
-column with a type "NA" missing value.
+column with a type \verb!NA! missing value.
 If the <string> is blank, any blank input field will
 be assigned the NA missing value.
 The default value for NA is `{\tt-NA-}'.
 %
 \I{set!formats@<formats>}
 \I{format}
-"Set" \stk{"integer"\\"real"\\"date"\\"time"}
- "format" <format>
+\begin{verse}
+  \verb!set! \stk{integer\\real\\date\\time} \verb!format! <format>
+\end{verse}
 sets the default format for the selected item.
 %
 \I{set!terminal width@"terminal width"}
-"Set terminal width" <number>
+\begin{verse}
+  \verb!set terminal width! <number>
+\end{verse}
 sets the width of the terminal to <number> characters.
 Lines output to the terminal will not be longer than this value.
 %
 \I{set!report width@"report width"}
-"Set report width" <number>
+\begin{verse}
+  \verb!set report width! <number>
+\end{verse}
 sets the maximum width of reports to <number> characters.
 \I{set!report height@"report height"}
 \label{set-height}
-"Set report height" <number>
+\begin{verse}
+  \verb!set report height! <number>
+\end{verse}
 sets the page height for reports to <number> lines.
 If <number> is zero, there will be no pagination---%
 no headers, no footers, and no forms control.
@@ -1925,7 +1977,9 @@ no headers, no footers, and no forms control.
 \label{set-trace}
 You can maintain a log of your commands by "tracing" them to
 a file.
-"Set trace" \stk{\opt{"to" <file>}\\"off"}
+\begin{verse}
+  \verb!set trace! \stk{\opt{to <file>}\\off}
+\end{verse}
 turns tracing on or off.\footnote{Tracing is actually a more
 robust feature than is described here.  Is is used to
 diagnose Rim problems.  See the {\it Rim Installers Manual}
@@ -1943,13 +1997,15 @@ You may also change some of the rules Rim uses to parse your
 input.  Since you must be able to enter special characters,
 Rim requires you to put these commands inside `comments'.
 The parsing options are specified as
-"*(set " <option>"="<character> ")"
-where the <character> is any character or "null",
+\begin{verse}
+\verb!*(set ! <option>\verb!=!<character> \verb!)!
+\end{verse}
+where the <character> is any character or \verb!null!,
 and <option> is one of the following.
-\begin{description}
+\begin{List}
 \item[del] sets the alternate field delimiter (other than space).
            If it is set to null, space is the only delimiter.
-           The default is a comma (",").
+           The default is a comma (\verb!,!).
  
 \item[con] \I{continuation}
            sets the line continuation character.  When this character
@@ -1957,16 +2013,15 @@ and <option> is one of the following.
            is continued on the next line.
            If it is set to null, all lines are continued and
            a command ends only at the "end" character.
-           The default is a plus ("+").
+           The default is a plus (\verb!+!).
 \item[end] sets the end of command character.  Where this character
            appears in the input line the command is completed.
            The next command may follow on the same line.
            If it is set to null, all commands must end at the
            end of a line.
-           The default is a semicolon (";").
-\end{description}
-For example,
-" *(set del=/) *(set con=null)"
+           The default is a semicolon (\verb!;!).
+\end{List}
+For example, \verb!*(set del=/) *(set con=null)!
 indicates that the virgule (/) will separate fields and that all
 commands will end only at semicolons.
  
@@ -1979,24 +2034,24 @@ You may want to recall, edit, and reuse a previous command,
 either to fix an error or to add or delete parameters.
 Or you may want to use an old command as a basis for
 construction of a new command.  Entry of a single
-"r"
+\verb!r!
 on the command line will recall the most recently entered
 command {\em line} for edit and execution.
  
 When the recalled command is displayed, you may
  
 \begin{itemize}
-\item enter another `"r"' to recall the next most recent command,
+\item enter another `\verb!r!' to recall the next most recent command,
 \item enter \fbox{\small return} to execute the command, or
 \item edit the command.  Characters typed replace corresponding
   characters in the command, except that
  
   \begin{description}
   \item[<space>] retains a character,
-  \item["\tt \#"] deletes a letter,
+  \item[\tt \#] deletes a letter,
   \item["\tt \char`"] begins insertion of characters,
-  \item["\tt >"] ends insertion of characters, and
-  \item["\tt !"] truncates the line.
+  \item[\tt >] ends insertion of characters, and
+  \item[\tt !] truncates the line.
   \end{description}
  
   The edited command will be displayed and you may make further
@@ -2017,19 +2072,23 @@ replaces the name with the macro's definition.
  
 Define a macro with the command
 \I{macro@"macro"}
-"macro <name> = <definition>"
+\begin{verse}
+  \verb!macro! <name> = <definition> \\
 where
  \begin{tabular}{lcl}
    <name> &=& name of the macro\\
    <definition> &=& replacement text
    \end{tabular}
- 
+  \end{verse}
 \section{Simple macros}
 Here is an example which illustrates macro usage.
  
-Define the macro "person" with the command
-"macro person = 'id@i4 m\_t:name'"
-Then you can use the name "person" in selection commands, such as
+Define the macro \verb!person! with the command
+\begin{verbatim}
+  macro person = 'id@i4 m_t:name'
+\end{verbatim}
+
+Then you can use the name \verb!person! in selection commands, such as
 this example.\footnote{Compare this to the command on
 page~\pageref{sel-dem1}.}
  
@@ -2047,11 +2106,11 @@ page~\pageref{sel-dem1}.}
  Fe           5  John Jones    04-MAR-88
 \end{verbatim}
  
-Rim has interpreted "person" to mean
-"id@i4 m\_to\_t:name".
+Rim has interpreted \verb!person! to mean
+\verb!id@i4 m\_to\_t:name!.
  
 \section{Macros with Arguments}
-The "person" macro in the previous example provides a convenience,
+The \verb!person! macro in the previous example provides a convenience,
 but has limited utility.  The macro's meaning never changes.
 Often you want a slightly different meaning
 each time the macro is invoked.
@@ -2061,25 +2120,31 @@ with arguments.
 \I{argument}
 The following example demonstrates such a macro.
  
-Define the macro "rename" by the command
-"macro rename = 'change name to \char`\"' 2 '\char`\"\ in techs ' +"\\
-   \qquad " 'where id = ' 1 "
+Define the macro \verb!rename! by the command
+\begin{verbatim}
+macro rename = 'change name to "' 2 '" in techs ' +
+   ' where id = ' 1 "
+\end{verbatim}
 \label{rename-def}
  
 With this definition
-you can use the new `command' "rename"%
+you can use the new `command' \verb!rename!
    \footnote{ Even with the above definition of the macro
-   {\bf rename}, you can
-    still use Rim's {\bf rename} command to rename tables, links, or
+   {\tt rename}, you can
+    still use Rim's {\tt rename} command to rename tables, links, or
    columns.  You just have to abbreviate the command.
    Rim will only recognize a macro when its name
    is typed in full.}
 to change names in
-the "techs" table. For example,
-" rename 5 'John A. Jones' "
+the \verb!techs! table. For example,
+\begin{verbatim}
+  rename 5 'John A. Jones' 
+\end{verbatim}
 which Rim will interpret as
-" change name to \char`\"John A. Jones\char`\"\ in techs +"\\
-   \qquad " where id = 5 "
+\begin{verbatim}
+  change name to "John A. Jones" in techs +
+    where id = 5 
+\end{verbatim}
  
 \section{Macro expansion}
 The macro definition text consists of text fields
@@ -2091,23 +2156,33 @@ in the definition are replaced by corresponding argument
 fields following the macro's name in the input.
 No spaces are added between fields in the definition text.
 For example, with the definition
-" macro alfa = 'abc ' 2 ' def' 1 '; xxx'"
+\begin{verbatim}
+macro alfa = 'abc ' 2 ' def' 1 '; xxx'
+\end{verbatim}
 the input
-" select alfa this that from ..."
+\begin{verbatim}
+select alfa this that from ...
+\end{verbatim}
 is interpreted by Rim as
-" select abc that defthis; xxx from ..."
- 
-Note that there were no spaces between `"def"' and the argument number ("1").
+\begin{verbatim}
+select abc that defthis; xxx from ...
+\end{verbatim}
+
+Note that there were no spaces between `\verb!def!' and the argument number (\verb!1!).
 If you want separation spaces around the arguments, as with argument
-"2" here, you must put them in.
+\verb!2! here, you must put them in.
  
-Note also that this macro ("alfa") contained an end-of-line character
-(";").  Macros may expand into several Rim commands.
+Note also that this macro (\verb!alfa!) contained an end-of-line character
+(\verb!;!).  Macros may expand into several Rim commands.
  
-If the "alfa" macro had been invoked with fewer arguments, for example,
-" select alfa this"
+If the \verb!alfa! macro had been invoked with fewer arguments, for example,
+\begin{verbatim}
+select alfa this
+\end{verbatim}
 it would be interpreted by Rim as
-" select abc  defthis; xxx from ..."
+\begin{verbatim}
+select abc  defthis; xxx from ...
+\end{verbatim}
 The unused arguments are simply ignored.
  
 A more sophisticated macro example is discussed
@@ -2115,27 +2190,36 @@ in the report writing chapter, on page~\pageref{run-mac}.
  
 \section{Looking at your macro definitions}
 \label{show-mac}
-Macros are expanded prior to being "echo"d---assuming "echo"
+Macros are expanded prior to being \verb!echo!d---assuming \verb!echo!
 has been set.
-You can look at the expansion of any macro by "echo"ing a
-comment command ("*").  For example, assuming the "rename" 
+You can look at the expansion of any macro by \verb!echo!ing a
+comment command (\verb!*!).  For example, assuming the \verb!rename! 
 definition on page~\pageref{rename-def}, you could enter
-"set echo"\\"* rename x Anyone"
+\begin{verbatim}
+set echo
+* rename x Anyone
+\end{verbatim}
 and Rim would echo
-" change name to Anyone in techs where id = x "
+\begin{verbatim}
+change name to Anyone in techs where id = x
+\end{verbatim}
    
 
 You can also look at any or all of your macro definitions
-with this "show" command
-"show macro \opt{<name>}"
+with this \verb!show! command
+\begin{verse}
+  \verb!show macro! \opt{<name>}
+\end{verse}
 If <name> is given, only that macro will be displayed.
  
 \section{Clearing macro definitions}
 You clear (delete) a macro definition with the command
-"macro <name> clear"
+\begin{verse}
+  \verb!macro! <name> \verb!clear!
+\end{verse}
 Clearing macros recovers macro definition space.
 \I{macros|)}
- 
+
  
 %
 %  <<<<< Report Writer >>>>>>>>>>
@@ -2158,7 +2242,7 @@ in the database.
 Before learning to use the report writer you should be
 familiar with the Rim commands described in the previous chapter.
 In particular, you must
-thoroughly understand the "select" command.
+thoroughly understand the \verb!select! command.
  
 \section{How a report is generated}
 %
@@ -2166,7 +2250,7 @@ A Rim report is the product of several commands, which are first
 `compiled' by Rim and then `executed' as a block to produce the report.
 You therefore rarely actually type report writing commands
 directly into Rim.  Instead, you should enter them into a separate
-text file---using the local system editor---and then "input" them
+text file---using the local system editor---and then \verb!input! them
 to produce the report.
 \I{input@"input"}
  
@@ -2205,17 +2289,17 @@ end report
 \end{verbatim}
  
 Notice first that the report definition consists of blocks,
-which begin with a `<command>' and end with `"end" <command>'.
+which begin with a `<command>' and end with `\verb!end! <command>'.
 The indentation is intended to accentuate this block structure
 and you are advised to follow this practice in your own reports.
  
  
-In this example, the "select" block identifies the rows and sort
+In this example, the \verb!select! block identifies the rows and sort
 order of the rows of the
-<measures> table that are to be extracted (this example selects all rows).
-The "print" block
+\verb!measures! table that are to be extracted (this example selects all rows).
+The \verb!print! block
 describes the actual format of data on the report.
-The "report" block contains the entire report definition.
+The \verb!report! block contains the entire report definition.
  
 \smallskip
 \I{statement}
@@ -2229,17 +2313,18 @@ The report writer allows you to define variables, assign values to
 them, and use them much like columns of a table.
 \I{assignment statement}
 The assignment statement
-<variable> \Opt{\stk{"int"\\"real"\\"double"\\"date"\\"time"\ \# >}} "="
-     <expression>
+\begin{verse}
+<variable> \Opt{\stk{int\\real\\double\\date\\time\\ \# >}} \verb!=! <expression>
+\end{verse}
 defines <variable> (if it hasn't yet been defined), gives it
-a type ("int" is the default, <\#> is the length of a text variable),
+a type (\verb!int! is the default, \verb!#! is the length of a text variable),
 and assigns it the value of <expression>.
 Variable names are similar to column names.
  
 \I{expression}
 The <expression> is any rational (to Rim) combination of values,
 table columns, and variables connected by the
-mathematical operators "+", "-", "*", and "/", with parenthesis
+mathematical operators \verb!+!, \verb!-!, \verb!*!, and \verb!/!, with parenthesis
 allowed to specify operator precedence.
 This is much like the assignment statement of any common programming
 language. For example,
@@ -2255,9 +2340,9 @@ are valid assignment statements.  These rules govern
 expressions.
  
 \begin{enumerate}
-\item Text data may be concatenated with the + operator.
+\item Text data may be concatenated with the \verb!+! operator.
 \item Vector and matrix elements may be specified
-   by <name>"("<item>")" or <name>"("<row> <column>")"
+   by <name>\verb!(!<item>\verb!)! or <name>\verb!(!<row> <column>\verb!)!
    in standard Rim fashion.
       \I{vector}\I{matrix}
 \item If both operands are integers, the arithmetic
@@ -2266,7 +2351,7 @@ expressions.
    and the resultant will be double precision.
 \item The default operator precedence is left to right
    in all cases.  For example,
-   "a+b*c" \qquad $\equiv$ \qquad  "(a+b)*c".
+   \verb!a+b*c! $\equiv$ \verb!(a+b)*c!.
 \item When a real value is converted to an integer, the value is truncated.
       \I{real}\I{integer}
 \item String values are either padded with blanks or truncated
@@ -2278,57 +2363,63 @@ expressions.
       \I{missing value}
 \item There are four pre-defined variables:
 \begin{List}
-  \item["page\_number"] -- the number of the current page,
+  \item[page\_number] -- the number of the current page,
       \I{page\_number@"page\_number"}
-  \item["line\_number"] -- the number of the current line,
+  \item[line\_number] -- the number of the current line,
       \I{line\_number@"line\_number"}
-  \item["report\_date"] -- the date at the start of report execution, and
+  \item[report\_date] -- the date at the start of report execution, and
       \I{report\_date@"report\_date"}
-  \item["report\_time"] -- the time at the start of report execution.
+  \item[report\_time] -- the time at the start of report execution.
       \I{report\_time@"report\_time"}
 \end{List}
 \end{enumerate}
  
-\section{"report"}
+\section{\tt report}
 %
 \I{report statement}
 The report block defines the entire report.
-"report"\\ \quad\vdots\\"end" \opt{"report"}
+\begin{verse}
+  \verb!report!\\ \quad\vdots\\
+  \verb!end! \opt{"report"}
+\end{verse}
  When Rim sees the
-"report" statement, it begins compiling the report.  When
-it sees the "end report" statement, it begins to process the stored commands.
+ \verb!report! statement, it begins compiling the report.  When
+it sees the \verb!end report! statement, it begins to process the stored commands.
 Any error during the compilation phase will terminate compilation
 and the report will not be printed.
  
  
-\section{"select"}
+\section{\tt select}
 %
 \I{select statement}
 The selection block identifies a table, selection criteria for
 selecting rows from that table, and a sort order for row selection.
-The "select" statement is very similar to Rim's "select" command
-except that it contains only the "from", "where", and "sort" clauses.
-"select from" <table> \opt{"where" <criteria>}
-  \opt{"sort" \opt{"by"} <sort order>} \\
-  \quad\vdots\\"end" \opt{"select"}
+The \verb!report! statement is very similar to Rim's \verb!report! command
+except that it contains only the \verb!from!, \verb!where!, and \verb!sort! clauses.
+\begin{verse}
+  \verb!select from! <table> \opt{where <criteria>}
+  \opt{sort \opt{by} <sort order>} \\
+  \quad\vdots\\
+  \verb!end! \opt{"select"}
+\end{verse}
 where
 \begin{List}
 \item[<table>] may be any table in your currently open database,
 \I{table}
-\item["where ..."] is a normal, valid Rim "where" clause
+\item[where ...] is a normal, valid Rim \verb!where! clause
 (see section~\ref{where-clause}) that may also contain variable
 names in addition to values and column names from <table>, and
 \I{where@<where clause>}
-\item["sort ..."] is a normal, valid Rim "sort" clause
+\item[sort ...] is a normal, valid Rim \verb!sort! clause
 (see section~\ref{sort-clause}).
 \I{sort@<sort clause>}
 \end{List}
  
 All statements within the selection block,
-which may include other "select" statements,
+which may include other \verb!select! statements,
 will be processed for each row of <table>
-that passes the "where" criteria.  Rows are retrieved
-and processed in the order specified by the "sort" clause.
+that passes the \verb!where! criteria.  Rows are retrieved
+and processed in the order specified by the \verb!sort! clause.
 For example, the statements
  
 \begin{verbatim}
@@ -2339,21 +2430,22 @@ For example, the statements
       .
    end select
 \end{verbatim}
- 
 selects all measurements from the day before the report date.
  
  
-\section{"print"}
+\section{\tt print}
 %
 \I{print statement}
 Data are actually printed on the report by print blocks.
 Print blocks specify the data to be printed, their formats,
 and their positions within the block.
-"print"\\
-  <line> <position> \stk{<column> \ variable>} <format> \\
+\begin{verse}
+  \verb!print!\\
+  <line> <position> \stk{<column> \ <variable>} <format> \\
   <line> <position> <text\_string>\\
-    \vdots\\
-  "end" \opt{"print"}
+    $\vdots$\\
+  \verb!end! \opt{"print"}
+\end{verse}
 Each print block produces a specific number of lines---which is at least
 the maximum of the <line> values, but may be greater if an item is paragraphed.
  
@@ -2475,25 +2567,28 @@ A footer is text printed at the bottom of each page of a report.
 They are printed if, and only if,
 the report height parameter is non-zero and
 the header (or footer) block has been `executed'.
-Following are definitions of the "header" and "footer" blocks.
- 
-"header"\\
+Following are definitions of the \verb!header! and \verb!footer! blocks.
+\begin{verse}
+  \verb!header!\\
   <line> <position> <text\_string>\\
   <line> <position> <variable> <format>\\
   \qquad  \vdots\\
-  "end" \opt{"header"}
+  \verb!end! \opt{"header"}
+\end{verse}
 and
-"footer"\\
+\begin{verse}
+  \verb!footer!\\
   <line> <position> <text\_string>\\
   <line> <position> <variable> <format>\\
   \qquad  \vdots\\
-  "end" \opt{"footer"}
+  \verb!end! \opt{"footer"}
+\end{verse}
 <Line>, <position>, and <format> have the same meaning
 as in the print blocks.
  
 \I{set!report height@"report height"}
 The report height (see pg.~\pageref{set-height}) refers to
-a number of lines of "print"ed lines.  It does not
+a number of lines of \verb!print!ed lines.  It does not
 include header or footer text.
  
 \demobreak
@@ -2555,33 +2650,35 @@ produces the following report
  
  
  
-\section{Conditional processing---"if"}
+\section{Conditional processing--- {\tt if}}
 %
 \I{if statement}
 \I{else statement}
 You may want to vary the content or format of your report
 based on actual data in table columns (or variables).
-To do so, use "if" statements.
-"if" <test>\\
+To do so, use \verb!if! statements.
+\begin{verse}
+  \verb!if! <test>\\
   --- statements executed if <test> is true ---\\
-  "else"\\
+  \verb!else!\\
   --- statements executed if <test> is false ---\\
-  "end" \opt{"if"}
+  \verb!end! \opt{if}
+\end{verse}
 where
 \begin{List}
-\item[<test>] is a normal "where" clause (without the
+\item[<test>] is a normal \verb!where! clause (without the
 ``where'').  It may contain columns from the current table,
 variables, and values.
 \end{List}
  
 The <test> is evaluated.
 If it is true,
-the statements following "if" are executed and the statements
-following "else" are skipped.
+the statements following \verb!if! are executed and the statements
+following \verb!else! are skipped.
 If it is false,
-the statements following "if" are skipped and the statements
-following "else" are executed.
-The "else" and following statements are optional.
+the statements following \verb!if! are skipped and the statements
+following \verb!else! are executed.
+The \verb!else! and following statements are optional.
  
 \demobreak
 This report program
@@ -2692,42 +2789,46 @@ prints the following report
  
 \end{verbatim}
  
-\section{Repeating statements---"while"}
+\section{Repeating statements--- {\tt while}}
 %
 \I{while statement}
 \I{looping}
-You have already seen an implicit looping mechanism---the "select"
+You have already seen an implicit looping mechanism---the \verb!select!"
 block.  Statements inside are executed once for each selected row.
-The report writer also contains an explicit loop---the "while" block.
-"while" <test>\\
+The report writer also contains an explicit loop---the \verb!while! block.
+\begin{verse}
+  \verb!while! <test>\\
   --- statements executed if <test> is true ---\\
-  "end" \opt{"while"}
+  \verb!end! \opt{"while"}
+\end{verse}
 where
 \begin{List}
-\item[<test>] is, as with "if", a normal
-"where" clause conditions (without the
+\item[<test>] is, as with \verb!if!, a normal
+\verb!where! clause conditions (without the
 ``where'').  They may contain columns from the current table,
 variables, and values.
 \end{List}
  
 The <test> is evaluated.
 If it is `true',
-the statements inside the "while" block are executed and the <test>
+the statements inside the \verb!while! block are executed and the <test>
 is re-evaluated. As long as <test> is `true' the statements will
 continue to be executed.  As soon as <test> is evaluated `false',
-the "while" block is exited and processing continues
-with the statement following "end while" statement.
+the \verb!while! block is exited and processing continues
+with the statement following \verb!end while! statement.
  
 \section{Forcing a new page}
 %
 \I{newpage statement}
 Use the
-"newpage"
+\begin{verse}
+  \verb!newpage!
+\end{verse}
 statement to end the current page.
  
 \demobreak
-This report program, demonstrating the "while" block
-and the "newpage" statement,
+This report program, demonstrating the\verb!while! block
+and the \verb!newpage! statement,
 \label{while-inp}
 \begin{verbatim}
 *( data entry forms )
@@ -2820,9 +2921,11 @@ prints the following three-page report.
 \I{procedures}
 A procedure allows you to define and
 invoke a group of statements by name.
-"procedure" <name> \opt{"using" <table>}\\
- \qquad\vdots\\
- "end" \opt{"procedure"}
+\begin{verse}
+  \verb!procedure! <name> \opt{using <table>}\\
+  \qquad\vdots\\
+  \verb!end! \opt{"procedure"}
+\end{verse}
 defines <name> as a procedure.  Whenever the statement
 <name>
 is encountered, Rim will execute all the statements of the
@@ -2830,11 +2933,11 @@ procedure.
 A procedure cannot have the same name as a variable.
  
 If a procedure contains column names from a table,
-that table must be identified by the "using" clause.
+that table must be identified by the \verb!using! clause.
  
  
 \demobreak
-This example defines a procedure called "spacer", which prints a blank
+This example defines a procedure called \verb!spacer!, which prints a blank
 line after a paragraphed item.
 It is an alternate form of an earlier example and
 its output is shown on
@@ -2861,24 +2964,24 @@ end report
 \end{verbatim}
  
  
- 
- 
 \section{Setting parameters}
 %
 \I{set statement}
 The report writer allows you to alter some of Rim's parameters
 during execution of the report program.
-Use the "set" statement, which is identical to the
-"set" command.  The statements you may use are
-"set case" \stk{"ignore"\\"respect"}
-"set" \stk{"input"\\"output"} <filename>
-"set report" \stk{"width"\\"height"} <count>
+Use the \verb!set! statement, which is identical to the
+\verb!set! command.  The statements you may use are
+\begin{verse}
+  \verb!set case! \stk{ignore\\respect} \\
+  \verb!set! \stk{input\\output} <filename> \\
+  \verb!set report! \stk{width\\height} <count>
+\end{verse}
 which all have the same functionality as the analogous Rim commands.
 Remember they take effect when they are executed, not when
 they are compiled.
  
  
-\section{A `"run"' command}
+\section{A `{\tt run}' command}
 \I{run@"run"}
 \I{macros}
 \label{run-mac}
@@ -2893,48 +2996,57 @@ an arbitrary number of lines per person, and
 to report for only selected persons.
  
 One way to do this would be to use
-two macros: "\_count" and "\_where".
+two macros: \verb!_count! and \verb!_where!.
 Then
 change line~3 of the report to
-" select from techs \_where"
+\verb!select from techs _where!
 and change line~12 to
-" while loop \char` \_count"
+\verb!while loop <  _count!"
  
 Define these macros before running the report.
 For example,
-" macro \_count = 10; macro \_where = ' '"\\
-  " input forms"
+\begin{verbatim}
+  macro \_count = 10; macro _where = ' '
+  input forms
+\end{verbatim}
 or
-" macro \_count = 7;"\\
-  " macro \_where = 'where position = \char`\"Tech 1\char`\"'"\\
-  " input forms"
+\begin{verbatim}
+  macro _count = 7;
+  macro _where = 'where position = "Tech 1"'
+  input forms
+\end{verbatim}
  
 \medskip
  
 You can make this operation much more friendly through the use
-of this "run" macro.%
+of this \verb!run! macro.%
 \footnote{You might want to put this macro definition in your
   login or database initialization files.}
-" macro run = +"\\
-  "\qquad 'macro arg\_1 = \char`\"' 2 '\char`\";' + "\\
-  "\qquad 'macro arg\_2 = \char`\"' 3 '\char`\";' + "\\
-  "\qquad 'macro arg\_3 = \char`\"' 4 '\char`\";' + "\\
-  "\qquad 'input ' 1"
- 
+
+\begin{verbatim}
+  macro run = +
+      'macro arg_1 = "' 2 '";' + 
+      'macro arg_2 = "' 3 '";' + 
+      'macro arg_3 = "' 4 '";' +
+      'input ' 1
+\end{verbatim}
+
 Here is what happens when you type
-" run forms 5 'where position like \char`\"Tech*\char`\"' "
+\begin{verbatim}
+    run forms 5 'where position like "Tech*"'
+\end{verbatim}
+
 \begin{enumerate}
-\item The macro "arg\_1" is defined to be `{\tt5}'.
-\item The macro "arg\_2" is defined to be
+\item The macro \verb!arg_1! is defined to be `{\tt5}'.
+\item The macro \verb!arg_2! is defined to be
       `{\tt where position like \char`\"Tech*\char`\"}'.
-\item The macro "arg\_3" is undefined.
+\item The macro \verb!arg_3! is undefined.
 \item The file `forms'\footnote{Some systems may add an
 extension to this name.} is input.
- 
 \end{enumerate}
  
-Of course, the report program on file "forms" must be aware of
-this "run" invocation.  It should be written as follows.
+Of course, the report program on file \verb!forms! must be aware of
+this \verb!run! invocation.  It should be written as follows.
  
 \demobreak
 \begin{verbatim}
@@ -2990,25 +3102,25 @@ to transfer data.
  
 \I{rimcom@"/RIMCOM/"} \I{rmstat@"RMSTAT"}
 When Rim detects an error it posts the error number in
-the integer variable "RMSTAT", the only element
-of the "/RIMCOM/" common block.
+the integer variable \verb!RMSTAT!, the only element
+of the \verb!/RIMCOM/! common block.
  
 \begin{verbatim}
    COMMON /RIMCOM/ RMSTAT
    INTEGER RMSTAT
 \end{verbatim}
  
-If no error occurs, "RMSTAT" will be zero.
-Table \ref{rmstat} lists the "RMSTAT" error codes.
-Table \ref{rmstat-system} lists "RMSTAT" error codes that
+If no error occurs, \verb!RMSTAT! will be zero.
+Table \ref{rmstat} lists the \verb!RMSTAT! error codes.
+Table \ref{rmstat-system} lists \verb!RMSTAT! error codes that
 indicate Rim internal errors and should not be encountered.
 Normally a status of 0 is good, a status greater than 0 is bad, and
 a negative status means there are no more rows to retrieve.
  
 \I{rimstp@"/RIMSTP/"} \I{hxflag@"HXFLAG"}
 Programs may interrupt Rim's processing by setting
-the integer variable "HXFLAG", the only element
-of the "/RIMSTP/" common block.
+the integer variable \verb!HXFLAG!, the only element
+of the \verb!/RIMSTP/! common block.
  
 \begin{verbatim}
    COMMON /RIMSTP/ HXFLAG
@@ -3091,16 +3203,22 @@ The index has a range of 1--10 (ZPIMAX).
 %
 \I{rim@"RIM"}
 The logical function
-"RIM(" <index>, <command> ")"
+\begin{verse}
+    \verb!RIM(!<index>, <command>\verb!)!
+\end{verse}
+
 where
-<index> is the integer table index,\\
-       <command> is a string containing a Rim command.
-returns a value of true if the command is executed successfully,
+\begin{List}
+  \item[<index>] is the integer table index,
+  \item[<command>] is a string containing a Rim command.
+\end{List}
+
+Returns a value of true if the command is executed successfully,
 and false if there has been an error.  In the latter case
-"RMSTAT" will contain the error number.
+\verb!RMSTAT!  will contain the error number.
  
-For example, to open the "Sample" database and enter the
-user password of "metals"\footnote{Our Sample database
+For example, to open the \verb!Sample! database and enter the
+user password of \verb!metals!\footnote{Our Sample database
 as described in this reference had no password.}
 you can include
  
@@ -3115,16 +3233,20 @@ in your \textsc{Fortran} program.
 %
 \I{rimdm@"RIMDM"}
 The logical function
-"RIMDM(" <index>, <command>, <tuple> ")"
+\begin{verse}
+  \verb!RIMDM(!<index>, <command>, <tuple>\verb!)!
+\end{verse}
 where
-<index> is the integer table index,\\
-       <command> is a string containing a Rim data-movement command, and\\
-       <tuple> is the integer array containing the data to be transferred.
+\begin{List}
+  \item[<index>] is the integer table index,
+  \item[<command>] is a string containing a Rim data-movement command, and
+  \item[ <tuple>] is the integer array containing the data to be transferred.
+\end{List}
 returns a value of `true' if the command is executed successfully,
 and `false' if there has been an error.  In the latter case
-"RMSTAT" will contain the error number.
+\verb!RMSTAT!  will contain the error number.
 You must have executed a Rim `table-selection' command
-(presently only "select" and "load")
+(presently only \verb!select! and \verb!load!)
 before issuing a data-movement command.
  
 The data-movement commands are:
@@ -3135,11 +3257,10 @@ Command&
 Description&
 \multicolumn{2}{l}{Prerequisite}\\
 \hline
-"get"& Retrieves the next row from the table.& "select"&("RIM")\\
-"put"& Replaces the current row into the table.& "get"&("RIMDM")\\
-"del"& Deletes the current row from the table.& "get"&("RIMDM")\\
-"load"& Loads a new row at the end of the current table.&
-                "load"&("RIM")
+\verb!get! & Retrieves the next row from the table.& \verb!select!&(\verb!RIM!)\\
+\verb!put!& Replaces the current row into the table.& \verb!get!&(\verb!RIMDM!)\\
+\verb!del!& Deletes the current row from the table.& \verb!get!&(\verb!RIMDM!)\\
+\verb!load!& Loads a new row at the end of the current table.& \verb!load!&(\verb!RIM!)
 \end{tabular}
  
 \medskip
@@ -3151,9 +3272,9 @@ The word `tuple' is used to mean an array containing a row of table data.
 Most columns are located sequentially in the tuple and
 occupy a fixed number of words depending on the column's type.
 Integers occupy one word per number.  Double precision numbers
-occupy two words per number.  Text is packed {\small CPW}
-characters per word, where {\small CPW} is a machine dependent
-parameter.  On 32-bit machines $\mbox{\small CPW}=4$. We will
+occupy two words per number.  Text is packed {\tt CPW}
+characters per word, where {\tt CPW} is a machine dependent
+parameter.  On 32-bit machines $\mbox{\tt CPW}=4$. We will
 assume the value of 4 in this discussion.
 A tuple containing an integer (value <i>), a 10-character text item
 (value <text>),
@@ -3268,13 +3389,17 @@ Before you can use these in your program you must convert them
 to characters in character variables.
 The subroutine
 \I{strasc@"STRASC"}
-"CALL STRASC(" <string>, <tuple> "("<pos>")", <len> ")"
-converts a text column at <tuple>"("pos")" of length <len> characters
-into a character string in <string>, type CHARACTER.
+\begin{verse}
+  \verb!CALL STRASC(!<string>, <tuple> \verb!(!<pos>\verb!)!, <len> \verb!)!
+\end{verse}
+converts a text column at <tuple>(pos) of length <len> characters
+into a character string in <string>, type \verb!CHARACTER!.
  
 To move characters back into the tuple use the inverse subroutine
 \I{asctxt@"ASCTXT"}
-"CALL ASCTXT(" <tuple>"("<pos>")," <len>, <string> ")"
+\begin{verse}
+  \verb!CALL ASCTXT(!<tuple>(<pos>), <len>, <string> \verb!)!
+\end{verse}
 which moves the characters in <string> into the tuple at <pos>,
 length <len>.
  
@@ -3287,12 +3412,17 @@ the algorithm of Tantzen.\footnote{Collected Algorithms of
 the ACM, 199, R. Tantzen.}
 Use the subroutine
 \I{datjul@"DATJUL"}
-"CALL DATJUL(" <day>, <month>, <year>, <Julian> ")"
+
+\begin{verse}
+  \verb!CALL DATJUL(!<day>, <month>, <year>, <Julian> \verb!)!
+\end{verse}
 to convert a Julian integer into day, month, and year integers.
  
 Use the inverse subroutine
 \I{juldat@"JULDAT"}
-"CALL JULDAT( <day>, <month>, <year>, <Julian> )"
+\begin{verse}
+  \verb!CALL JULDAT(! <day>, <month>, <year>, <Julian> \verb!)!
+\end{verse}
 to convert the day, month, and year into a Julian integer.
  
 \subsubsection{Time columns}
@@ -3308,8 +3438,8 @@ There are no subroutines provided to facilitate conversion.
 %
 \I{missing value}
 A ``missing value'' is indicated by the integer value
-ZIMISS (2147483647) and a ``not applicable'' value
-is indicated by the integer value ZINAPP (2147483646).
+\verb!ZIMISS! (2147483647) and a ``not applicable'' value
+is indicated by the integer value \verb!ZINAPP! (2147483646).
 \I{MV}\I{NA}
  
 \subsection{Retrieving the rows of a table}
@@ -3317,55 +3447,58 @@ is indicated by the integer value ZINAPP (2147483646).
 \I{select@"select"}
 Open the database and set the password, if one is required, and then
 issue the select command
-"select from" <table> \\
-    \qquad \opt{"where" <where clause>} \\
-    \qquad \opt{"sort" \opt{"by"} <sort clause>}
-via the "RIM" function.
+\begin{verse}
+  \verb!select from! <table> \\
+    \qquad \opt{where <where clause>} \\
+    \qquad \opt{sort \opt{by} <sort clause>}
+\end{verse}
+via the \verb!RIM! function.
 No column list is allowed as Rim always transfers complete rows.
  
-Now you can "get" rows from this table, modify them
-and "put" them back, or "del"ete them.
+Now you can \verb!get! rows from this table, modify them
+and \verb!put! them back, or \verb!del!ete them.
 A prototype retrieval loop is illustrated in Figure \ref{pi-ret}.
 Note that the character variables must be unpacked from the integer
-tuple array with "STRASC" and must be replaced with "ASCTXT".
+tuple array with \verb!STRASC! and must be replaced with \verb!ASCTXT!.
  
- 
+
 \subsection{Loading data into a table}
 %
 \I{load@"load"}
 Open the database and set the password, if one is required, and then
 issue the load command
-"load" <table>
-via the "RIM" function.
+\begin{verse}
+  \verb!load! <table>
+\end{verse}
+via the \verb!RIM! function.
  
-Now you can "load" rows into this table with the
-"RIMDM" function.
+Now you can \verb!load! rows into this table with the
+\verb!RIMDM! function.
  
 \begin{figure}
   %\let\bf\tt
 $\vdots$\\
-    "IF (.NOT.RIM(1,'open example')) GOTO "<error>\\
+    \verb!IF (.NOT.RIM(1,'open example')) GOTO !<error>\\
     $\vdots$\\
-    "IF (.NOT.RIM(1," \\
-       \llap{"1"}
-       "'select from conductors sort by symbol')) GOTO "<error>\\
+    \verb!IF (.NOT.RIM(1,! \\
+       \llap{\tt 1}
+       \verb!'select from conductors sort by symbol')) GOTO !<error>\\
     \\
-    \llap{<label>\ \ }"IF (RIMDM(1,'get',TUPLE)) THEN"  \\
-    "~~~"$\vdots$\\
-    "~~~IF (<modifying>) THEN"\\
-    "~~~~~~IF (.NOT.RIMDM(1,'put',TUPLE)) GOTO "<error>\\
-    "~~~ELSE IF (<deleting>) THEN "\\
-    "~~~~~~IF (.NOT.RIMDM(1,'del',TUPLE)) GOTO "<error>\\
-    "~~~ENDIF"\\
-    "~~~GOTO "<label>\\
-    "ELSE" \\
-    "~~~IF (RMSTAT.NE.-1) GOTO "<error>\\
-    "ENDIF"
+    \llap{<label>\ \ }\verb!IF (RIMDM(1,'get',TUPLE)) THEN!  \\
+    ~~~$\vdots$\\
+    ~~~\verb!IF (!<modifying>\verb!) THEN!\\
+    ~~~~~~\verb!IF (.NOT.RIMDM(1,'put',TUPLE)) GOTO !<error>\\
+    ~~~\verb!ELSE IF (!<deleting>\verb!) THEN !\\
+    ~~~~~~\verb!IF (.NOT.RIMDM(1,'del',TUPLE)) GOTO !<error>\\
+    ~~~\verb!ENDIF!\\
+    ~~~\verb!GOTO !<label>\\
+    \verb!ELSE! \\
+    ~~~\verb!IF (RMSTAT.NE.-1) GOTO !<error>\\
+    \verb!ENDIF! \\
     $\vdots$
 \caption{Sample data retrieval with update}
 \label{pi-ret}
 \end{figure}
- 
 \I{Fortran|)}
  
  
@@ -3387,14 +3520,18 @@ computers.
  
 \subsection{Running Rim}
 Start Rim with the command
-\% "rim" 
+\begin{verse}
+  \verb!% rim! 
+\end{verse}
 \I{initialization}
-If the initialization file ".rimrc" exists in your home directory, it will
+If the initialization file \verb!.rimrc! exists in your home directory, it will
 be input when Rim starts.
  
 You can also run Rim in a batch mode by specifying an input file.
 To do this start Rim with the command
-\% "rim" <input\_file>
+\begin{verse}
+  \verb!% rim! <input\_file>
+\end{verse}
 Rim will process the <input\_file> and will not communicate
 with your terminal.
  
@@ -3403,22 +3540,24 @@ with your terminal.
 \I{filename}
 Filenames, and the database name, may include directory information.
 For example,
-"open 'user/elsewhere/hisdb'"
-opens the database "hisdb" on the directory "user/elsewhere".
+\begin{verbatim}
+  open 'user/elsewhere/hisdb'
+\end{verbatim}
+opens the database \verb!hisdb! on the directory \verb!user/elsewhere!.
 The name must be enclosed in quotes only if it
 contains special characters.
  
 UNIX Rim does not assume any extensions for either input or
 output files.
-Database files have the extensions ".rimdb1", ".rimdb2", and ".rimdb3".
+Database files have the extensions \verb!.rimdb1!, \verb!.rimdb2!, and \verb!.rimdb3!.
  
  
 \subsection{Using the \textsc{Fortran} interface}
 %
 \I{Fortran}
 To load \textsc{Fortran} programs with the Rim interface include the
-"rimlib.a" library with the "-lrim" option
-in your "ld" or "f77" command.
+\verb!rimlib.a! library with the \verb!-lrim! option
+in your \verb!ld! or \verb!f77! command.
  
  
 \subsection{Executing shell commands within Rim}
@@ -3427,7 +3566,9 @@ in your "ld" or "f77" command.
 \I{system@"system"}
 UNIX Rim allows you to execute shell
 commands by
-"system" <command>
+\begin{verse}
+  \verb!system! <command>
+\end{verse}
 where <command> will normally be a quoted string.
 Rim closes your database prior to executing
 the system command so your data should be OK even if you
@@ -3441,14 +3582,18 @@ cannot return.
  
 \subsection{Running Rim}
 Start Rim with the command
-\$ "rim" 
+\begin{verbatim}
+  $ rim 
+\end{verbatim}
 \I{initialization}
-If the initialization file "login.rim" exists in your login directory, it will
+If the initialization file \verb!login.rim! exists in your login directory, it will
 be input when Rim starts.
  
 You can also run Rim in a batch mode by specifying an input file.
 To do this start Rim with the command
-\$ "rim" <input\_file>
+\begin{verse}
+  \verb!$ rim! <input\_file>
+\end{verse}
 Rim will process the <input\_file> and will not communicate
 with your terminal.
  
@@ -3457,22 +3602,23 @@ with your terminal.
 \I{filename}
 Filenames, and the database name, may include directory information.
 For example,
-"open '[zz99.elsewhere]hisdb'"
-opens the database "hisdb" on the directory "[zz99.elsewhere]".
+\begin{verbatim}
+  open '[zz99.elsewhere]hisdb'
+\end{verbatim}
+opens the database \verb!hisdb! on the directory \verb![zz99.elsewhere]!.
 The name must be enclosed in quotes only if it
 contains special characters.
  
-VMS Rim assumes an extension of ".rim" for input files and
-".lis" for output files.
-Database files have the extensions ".rimdb1", ".rimdb2", and ".rimdb3".
+VMS Rim assumes an extension of \verb!.rim! for input files and
+\verb!.lis! for output files.
+Database files have the extensions \verb!.rimdb1!, \verb!.rimdb2!, and \verb!.rimdb3!.
  
  
 \subsection{Using the \textsc{Fortran} interface}
 %
 \I{Fortran}
 To load \textsc{Fortran} programs with the Rim interface, include the
-library
-"\$\$rim:rimlib/lib"
+library \verb!$$rim:rimlib/lib!
 in your link command.
  
 \section{Using Rim with IBM VM/CMS}
@@ -3481,13 +3627,17 @@ in your link command.
 \I{Running Rim}
  
 \subsection{Running Rim}
-Before running Rim you must run "setup" to access the appropriate disks.
-"setup rim"
+Before running Rim you must run \verb!setup! to access the appropriate disks.
+\begin{verbatim}
+  setup rim
+\end{verbatim}
  
 Start Rim with the command
-"rim" 
+\begin{verbatim}
+  rim
+\end{verbatim}
 \I{initialization}
-If the initialization file "profile rim" exists, it will
+If the initialization file \verb!profile rim! exists, it will
 be input when Rim starts.
  
 You can also run Rim in a batch mode by specifying an input file.
@@ -3498,37 +3648,41 @@ with your terminal.
  
  
 Then start Rim with the command
-"rim" <input\_file>
+\begin{verse}
+  \verb!$ rim! <input\_file>
+\end{verse}
 and Rim will read the <input\_file> if it is given.
 <input\_file> may contain a type and mode.
  
-You use "setup" only once per session.  It may be included in your
-"profile exec" file.
+You use \verb!setup!" only once per session.  It may be included in your
+\verb!profile exec! file.
  
 \subsection{Identifying files}
 %
 \I{filename}
 Filenames may include types and modes and may use spaces or periods
 as delimiters.
-"'file type m'" and "file.type.m"
+\verb!'file type m'! and \verb!file.type.m!
 are equivalent.
  
 The database specification may include a mode letter.
 For example,
-"open hisdb c"
-opens the database "hisdb" on the disk "c".
+\begin{verbatim}
+  open hisdb c
+\end{verbatim} 
+opens the database \verb!hisdb! on the disk \verb!c!.
  
-CMS Rim assumes a file type  of "rim" for input files and
-"rimlist" for output files.
-Database files have the types "rimdb1", "rimdb2", and "rimdb3".
+CMS Rim assumes a file type  of \verb!rim! for input files and
+\verb!rimlist! for output files.
+Database files have the types \verb!rimdb1!, \verb!rimdb2!, and \verb!rimdb3!.
  
 \subsection{Using the \textsc{Fortran} interface}
 %
 \I{Fortran}
 To load \textsc{Fortran} programs with the Rim interface, include the
-libraries RIMLIB and UTILITY
-in your GLOBAL TXTLIB command.
-RIMLIB and this sample loader EXEC (RIMLOAD EXEC) may be
+libraries \verb!RIMLIB! and \verb!UTILITY!
+in your GLOBAL \verb!TXTLIB! command.
+\verb!RIMLIB! and this sample loader \verb!EXEC (RIMLOAD EXEC)! may be
 found on the Rim disk.
  
 \begin{verbatim}
@@ -3545,9 +3699,11 @@ exit
 \I{system@"system"}
 CMS Rim allows you to execute \underline{selected} CMS or
 CP commands by
-"system" <command>
+\begin{verse}
+  \verb!system! <command>
+\end{verse}
 where <command> will normally be a quoted string.
-You can run XEDIT and most EXECs, but you cannot run other
+You can run \verb!XEDIT! and most \verb!EXEC!s, but you cannot run other
 programs.  Rim closes your database prior to executing
 the system command so your data should be OK even if you
 cannot return.
@@ -3555,7 +3711,7 @@ cannot return.
 \medskip
  
 Since Rim will read from the program stack you can write
-`Rim EXECs' which build and execute Rim commands.
+`Rim \verb!EXEC!s' which build and execute Rim commands.
 One example of this capability is an interactive
 data loader for the "notes" table.
 %
@@ -3578,12 +3734,12 @@ queue "system 'exec l_notes'"
 exit
 \end{verbatim}
 \caption{Sample VM/CMS Rim EXEC}
-{This EXEC, named ``L\_NOTES EXEC'' will
+{This {\tt EXEC}, named ``{\tt L\_NOTES EXEC}'' will
 interactively load the notes table of the Sample relation.\par}
 \label{CMS-exec}
 \end{figure}
 %
-Figure \ref{CMS-exec} shows the EXEC which reads the data,    formats
+Figure \ref{CMS-exec} shows the \verb!EXEC! which reads the data,    formats
 a load command, and returns it to Rim for execution. It also
 stacks a command to re-execute itself unless it has been given
 a null response.

@@ -1,26 +1,28 @@
       SUBROUTINE BLKDWN
+
+         USE Utils, only : ZEROIT
 C
 C  GO TO THE NEXT LOWER BLOCK SET.
 C
-      INCLUDE 'syspar.inc'
-      INCLUDE 'buffer.inc'
-      INCLUDE 'incore.inc'
-      INCLUDE 'f2com.inc'
-      CALL BLKCLN
-      DO 107 II=10,20
-107   CALL BLKCLR(II)
- 
-      IF (NEXT .LT. 69+1) GOTO 900
+         INCLUDE 'syspar.inc'
+         INCLUDE 'buffer.inc'
+         INCLUDE 'incore.inc'
+         INCLUDE 'f2com.inc'
+         CALL BLKCLN
+         DO 107 II=10,20
+  107    CALL BLKCLR(II)
+
+         IF (NEXT .LT. 69+1) GOTO 900
 C
 C  GET THE OLD BLOCK SET INFO.
-      IB = NEXT - 69
-      IN = NEXT - 7
-      CALL BLKMOV(BLOCKS,BUFFER(IB),63)
-      CALL BLKMOV(CURBLK,BUFFER(IB+63),3)
-      CALL BLKMOV(MODFLG,BUFFER(IB+66),3)
-      NUMBL = BUFFER(IN)
-      CALL ZEROIT(BUFFER(IB),69)
-      NEXT = IB
-900   CONTINUE
-      RETURN
+         IB = NEXT - 69
+         IN = NEXT - 7
+         CALL BLKMOV(BLOCKS,BUFFER(IB),63)
+         CALL BLKMOV(CURBLK,BUFFER(IB+63),3)
+         CALL BLKMOV(MODFLG,BUFFER(IB+66),3)
+         NUMBL = BUFFER(IN)
+         CALL ZEROIT(BUFFER(IB),69)
+         NEXT = IB
+  900    CONTINUE
+         RETURN
       END
