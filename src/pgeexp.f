@@ -1,5 +1,6 @@
       FUNCTION PGEEXP(VP,TP)
 
+         USE, intrinsic :: iso_fortran_env
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
@@ -25,7 +26,7 @@ C
          PARAMETER (VOP=1,MOP=2)
 
          INTEGER VSTK(20), VSTKTP(20), VAL, IVAL(2)
-         DOUBLE PRECISION RVSTK(20), RVAL, DVAL
+         REAL(real64) :: RVSTK(20), RVAL, DVAL
          EQUIVALENCE (DVAL,IVAL(1))
 
 

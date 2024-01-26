@@ -1,41 +1,42 @@
 MODULE System
-  INCLUDE 'syspar.inc'
-  private
-  
-  public SystemExit
-  public SystemDelete
-  public SystemCommand
-  public SYSCOM
-  public SystemTrap
-  public SystemInitialise
-  public SYSDBG
-  public SYSDBN
+   INCLUDE 'syspar.inc'
+   private
 
-  ! Local defitions
-  CHARACTER(ZFNAML), private :: DBDRF
+   public SystemExit
+   public SystemDelete
+   public SystemCommand
+   public SYSCOM
+   public SystemTrap
+   public SystemInitialise
+   public SYSDBG
+   public SYSDBN
+   public CHKFIL
 
-  contains
+   ! Local defitions
+   CHARACTER(ZFNAML), private :: DBDRF
 
-    SUBROUTINE SystemExit
+contains
+
+   SUBROUTINE SystemExit
       ! Final callback before exiting
       RETURN
-    END SUBROUTINE SystemExit
+   END SUBROUTINE SystemExit
 
 
-    SUBROUTINE SystemDelete(FNAM)
+   SUBROUTINE SystemDelete(FNAM)
       !
       ! **UNIX SYSTEM DEPENDENT ROUTINE
       !
       ! DELETE A FILE BY NAME
       !
       CHARACTER(len=*), intent(in) :: FNAM
-    
+
       ! Not needed if rioopn creates scratch files
       RETURN
-    END SUBROUTINE SystemDelete
+   END SUBROUTINE SystemDelete
 
 
-    SUBROUTINE SystemCommand(CMD,ERR)
+   SUBROUTINE SystemCommand(CMD,ERR)
       !
       ! ***UNIX SYSTEM DEPENDENT ROUTINE ***
       !
@@ -47,10 +48,10 @@ MODULE System
       call EXECUTE_COMMAND_LINE(cmd, exitstat=err)
       !
       RETURN
-    END SUBROUTINE SystemCommand
+   END SUBROUTINE SystemCommand
 
 
-    SUBROUTINE SYSCOM()
+   SUBROUTINE SYSCOM()
       !
       ! ***UNIX SYSTEM DEPENDENT ROUTINE ***
       !
@@ -58,39 +59,39 @@ MODULE System
       !
       !CCCC CALL MSG(' ','SYSCOM',' ')
       RETURN
-    END SUBROUTINE SYSCOM
+   END SUBROUTINE SYSCOM
 
 
-    SUBROUTINE SystemTrap(mode)
+   SUBROUTINE SystemTrap(mode)
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
-    
+
       ! CATCH SYSTEM INTERRUPTS (CTRL-C)
-    
+
       character(len=*), intent(in) :: mode
 
       integer :: TTSTAT = 0
-    
+
       ! THE MESSAGES SHOULD NEVER PRINT
-    
+
       !  TTSTAT = signal(2,UNIXTRP,-1)
       IF (TTSTAT.lt.0) PRINT *, 'CTRL-C handling error ',TTSTAT
       RETURN
-    END SUBROUTINE SystemTrap
-    
-    
-    SUBROUTINE UNIXTRP
+   END SUBROUTINE SystemTrap
+
+
+   SUBROUTINE UNIXTRP
       INCLUDE 'flags.inc'
-    
+
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
-    
+
       ! CATCH SYSTEM INTERRUPTS (CTRL-C) (PART 2)
-    
+
       HXFLAG = 1
       RETURN
-    END SUBROUTINE UNIXTRP
+   END SUBROUTINE UNIXTRP
 
-    
-    SUBROUTINE SystemInitialise
+
+   SUBROUTINE SystemInitialise
       !
       ! ***UNIX SYSTEM DEPENDENT ROUTINE ***
       !
@@ -102,15 +103,15 @@ MODULE System
       ! GET FILENAME FROM COMMAND LINE
       !
       CHARACTER(ZFNAML) :: FNAME, home
-      LOGICAL :: CHKFIL
+      LOGICAL :: rw
       double precision :: d0
-    
+
       ! ignore any possible float overflows
       d0 = 0
       !---- call trpfpe(0,d0)
-    
+
       na = iargc()
-    
+
       IF (na.gt.0) THEN
          ! INPUT IS FILE
          call getarg(1,fname)
@@ -124,20 +125,20 @@ MODULE System
          conno = .false.
          prmpt = .false.
       ENDIF
-    
+
       ! Look for setup file ( ~/.rimrc )
       call get_environment_variable('HOME', home) ! Fortran 2003
       do i = 1, zfnaml
-      bp = i
-        if (home(i:i).eq.' ') exit
+         bp = i
+         if (home(i:i).eq.' ') exit
       end do
       home(bp:zfnaml) = '/.rimrc'
-      IF (CHKFIL(home,rw))  call setin(home)
+      IF (CHKFIL(home, rw))  call setin(home)
       RETURN
-    END SUBROUTINE SystemInitialise
+   END SUBROUTINE SystemInitialise
 
 
-    SUBROUTINE SYSDBG(DBX,STATUS)
+   SUBROUTINE SYSDBG(DBX,STATUS)
       !
       ! ***UNIX SYSTEM DEPENDENT ROUTINE ***
       !
@@ -153,29 +154,29 @@ MODULE System
       INTEGER, intent(out) :: STATUS
 
       INTEGER, PARAMETER :: RSBCH=93, COLCH=58
-    
+
       STATUS = 0
-       ! DBDIR = ' '
+      ! DBDIR = ' '
       IF (ITEMS.NE.DBX) GOTO 800
-    
+
       ! note dbdrf contains both dir and name
       CALL STRASC(DBDRF,ASCREC(IDP(DBX)),IDL(DBX))
-    
+
       ! Extract the actual filename from the input. ie remove dir
-    
+
       ! look for '/'
       P = ASCAN(ASCREC,1,IDL(DBX),RSBCH,.TRUE.)
       IF (P.LE.0) P = ASCAN(ASCREC,1,IDL(DBX),COLCH,.TRUE.)
       DBFNAM = DBDRF(P+1:ZFNAML)
-    
+
       RETURN
-    800   STATUS = 1
+800   STATUS = 1
       CALL WARN(4,0,0)
       RETURN
-    END SUBROUTINE SYSDBG
+   END SUBROUTINE SYSDBG
 
 
-    SUBROUTINE SYSDBN(DBN,F1N,F2N,F3N,FXN)
+   SUBROUTINE SYSDBN(DBN,F1N,F2N,F3N,FXN)
       !
       ! ***UNIX SYSTEM DEPENDENT ROUTINE ***
       !
@@ -186,40 +187,57 @@ MODULE System
       !    F2N  =  File 2 name
       !    F3N  =  File 3 name
       !    FXN  =  Setup file name
-    
+
       CHARACTER*(*), intent(in) :: DBN
       CHARACTER*(*), intent(out) :: F1N,F2N,F3N,FXN
-    
+
       INCLUDE 'ascpar.inc'
       INCLUDE 'flags.inc'
-    
+
       CHARACTER(ZFNAML) :: CDBN, xdbn
       !
       ! Use name from DBDRF unless help DB open
       !
       xdbn = DBN
-    
+
       ! IF (LIBFLG.EQ.0) THEN
       !    CDBN = DBDRF
       ! ELSE
       !    CDBN = '/usr/local/lib/' // xdbn
       ! ENDIF
       CDBN = DBDRF ! Always current directory
-    
+
       DO I = 1,ZFNAML
-      IF (CDBN(I:I).EQ.' ') GOTO 12
-        L = I
+         IF (CDBN(I:I).EQ.' ') GOTO 12
+         L = I
       END DO
       L = ZFNAML
-    12   CONTINUE
-    
+12    CONTINUE
+
       F1N = CDBN(1:L) // '.rimdb1'
       F2N = CDBN(1:L) // '.rimdb2'
       F3N = CDBN(1:L) // '.rimdb3'
       FXN = CDBN(1:L) // '.rim'
-    
+
       STATUS = 0
       RETURN
-    END SUBROUTINE SYSDBN
+   END SUBROUTINE SYSDBN
+
+
+   LOGICAL FUNCTION CHKFIL(FNAME,RW)
+      implicit none
+      !
+      ! **UNIX SYSTEM DEPENDENT INTERNAL ROUTINE **
+      !
+      ! CHECK FOR A FILE'S EXISTANCE AND READ/WRITE PERMISSION
+      !
+      CHARACTER(len=*), intent(in) :: FNAME
+      LOGICAL, intent(out) :: RW
+      !
+      inquire(FILE=fname,EXIST=rw)
+      chkfil = rw
+      RW = .TRUE.
+      RETURN
+   END FUNCTION CHKFIL
 
 END MODULE System

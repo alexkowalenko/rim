@@ -1,5 +1,6 @@
       SUBROUTINE RMHELP(*)
 
+         USE, intrinsic :: iso_fortran_env
          USE Text, only: ASCTXT
 
          INCLUDE 'syspar.inc'
@@ -31,7 +32,7 @@ C
 
          COMMON /SAVDB/STOL,SSAVE,SPCENT,SRUCK
          LOGICAL SSAVE,SPCENT,SRUCK
-         DOUBLE PRECISION STOL
+         REAL(real64) :: STOL
 C
 C
 C     CLOSE AND SAVE THE CURRENT DATA BASE AND OPEN HELP DATABASE

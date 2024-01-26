@@ -1,0 +1,30 @@
+* RUN: rm -f sample.rimdb*
+* RUN: %rim %sample
+* RUN: %rim %s | FileCheck %s
+echo
+*( batch test)
+open sample
+select resistivity from conductors
+select ave(resistivity) from conductors
+close
+exit
+* CHECK: UW RIM (V.1.24  08/03/90)
+* CHECK:  open sample 
+* CHECK: Database 'sample' is open.
+* CHECK: select resistivity from conductors
+* CHECK: Table: conductors
+* CHECK: resistivity
+* CHECK: ------------
+* CHECK:    .120000
+* CHECK:    .180000
+* CHECK:    .240000
+* CHECK:       -MV-
+* CHECK:    .440000
+* CHECK:         5 rows selected.
+* CHECK: Table: conductors
+* CHECK: AVE(resistivity )
+* CHECK: -----------------
+* CHECK:    .245000
+* CHECK:         5 rows selected.
+* CHECK: End rim execution
+ 

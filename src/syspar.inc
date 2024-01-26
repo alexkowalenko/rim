@@ -7,6 +7,9 @@
 !        ALL VARIABLES ARE TYPE INTEGER UNLESS OTHERWISE SPECIFIED
 !
 !
+
+      USE, intrinsic :: iso_fortran_env
+      
       IMPLICIT INTEGER (A-Z)
 !
 !     ------------- WORD AND NAME LENGTH -------------

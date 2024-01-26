@@ -8,5 +8,6 @@ endmacro()
 
 xtest_add_test(sample)
 xtest_add_test(basic)
+xtest_add_test(select)
 xtest_add_test(reports)
 xtest_add_test(help)
