@@ -7,21 +7,8 @@
 %
 \documentclass[11pt,a4paper]{report}
 
-\def\opt#1{$\langle \mbox{#1} \rangle$}
-\def\Opt#1{$\Bigl\langle \mbox{#1} \Bigr\rangle$}
-\def\stk#1{\begin{tabular}[c]{c}#1\end{tabular}}
-%
-\def\record{%
-  \begin{tabular}{cllp{16pc}}
-   item& Fortran& length& field\\
-    \#&  name&    (words)& contents\\
-    \noalign{\smallskip}}
-\def\endrecord{\end{tabular}}
-\def\List{\list{}{\leftmargin2\leftmargini
-      \def\makelabel##1{\bf##1\hfill}}}
-\let\endList\endlist
-%
-\usepackage{a4wide}
+\usepackage{common}
+
 \usepackage[colorlinks,allcolors=blue]{hyperref}
 
 
@@ -61,7 +48,7 @@
 the files of a Rim database.
 It is intended to assist programmers who are installing
 Rim or making modifications to it.
-You are assumed to be familiar with Fortran-77 and
+You are assumed to be familiar with \FortranF\ and
 with the tools that are necessary to edit, compile, load,
 and install products on your system.
 You are also assumed to be familiar with the
@@ -83,11 +70,11 @@ the Academic Computing Service's relation database program.
 It includes descriptions of the program, data, and files.
 You are assumed to have a working knowledge of Rim---as
 described in the Rim Reference Manual, and a knowledge
-of Fortran~77.
+of \FortranF.
  
 \section{Programming conventions}
  
-Rim is written entirely in Fortran~77.  Of its few
+Rim is written entirely in \FortranF.  Of its few
 hundred subroutines, only 20 are `system dependent'
 and have to be edited or rewritten for each operating system.
 A list of these appears in table \ref{sysdep}.
@@ -100,7 +87,7 @@ via `include' statements, having the form
 
 \begin{tabular}{ll}
   \verb|INCLUDE '|\emph{FILENAME}\verb|.DCK'| & on the VAX/VMS version, and\\
-  \verb|INCLUDE (|\emph{FILENAME}\verb|)"| & on the IBM/CMS version, and\\
+  \verb|INCLUDE (|\emph{FILENAME}\verb|)| & on the IBM/CMS version, and\\
   \verb|INCLUDE '|\emph{filename}\verb|.d'| & on the UNIX version.
 \end{tabular}
 

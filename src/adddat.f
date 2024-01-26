@@ -1,6 +1,6 @@
       SUBROUTINE ADDDAT(INDEX,ID,ARRAY,LENGTH)
 
-         USE Utils, only : ZEROIT
+         USE Utils, only : ZEROIT, HTOI, ITOH
 C
 C     ADD A TUPLE TO THE DATA FILE
 C

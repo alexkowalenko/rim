@@ -1,6 +1,6 @@
       LOGICAL FUNCTION VARADD()
 
-         USE Utils, only : ZMOVE
+         USE Utils, only : ZMOVE, HTOI
 
          INCLUDE 'syspar.inc'
 C

@@ -1,6 +1,6 @@
       FUNCTION SELATT(FTOK,NTOK)
 
-         USE Utils, only : ZMOVE
+         USE Utils, only : ZMOVE, HTOI, ITOH
 
          INCLUDE 'syspar.inc'
 C
@@ -397,7 +397,7 @@ C
 C
 C     ISSUE CORRECT MODIFIER SYNTAX
 C
- 8080    CALL MSG('E', 
+ 8080    CALL MSG('E',
      +            'COLUMN MODIFIERS ARE: =S, @FORMAT, AND %TITLE',' ')
          GO TO 9000
 C

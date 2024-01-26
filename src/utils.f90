@@ -5,6 +5,8 @@ MODULE Utils
    public ZEROIT
    public NULLIT
    public ZMOVE
+   public NDIGIT
+   public HTOI, ITOH
 
 contains
 
@@ -66,5 +68,58 @@ contains
       END DO
       RETURN
    END SUBROUTINE ZMOVE
+
+
+   INTEGER FUNCTION NDIGIT(INT)
+      implicit none
+      !
+      ! RETURN THE NUMBER OF DIGITS IN INT
+      !
+      INTEGER, intent(in) :: INT
+
+      INTEGER :: ABS
+
+      NDIGIT = 0
+      ABS = INT
+      IF (INT.LT.0) THEN
+         ABS = 0 - INT
+         NDIGIT = 1
+      ENDIF
+100   NDIGIT = NDIGIT + 1
+      ABS = ABS/10
+      IF (ABS.GT.0) GOTO 100
+      RETURN
+   END FUNCTION NDIGIT
+
+
+   SUBROUTINE HTOI(I,J,K)
+      INCLUDE 'syspar.inc'
+      !
+      !  PURPOSE:   PACK I AND J INTO K
+      !
+      !  OFFSET I BY MULTIPLYING BY ZHTOI
+      !
+      INTEGER, intent(in) :: I,J
+      INTEGER, intent(out) :: K
+
+      K = J + (ZHTOI * I)
+      RETURN
+   END SUBROUTINE HTOI
+
+
+   SUBROUTINE ITOH(I,J,K)
+      INCLUDE 'syspar.inc'
+      !
+      !  PURPOSE:   UNPACK I AND J FROM K
+      !
+      !  I WAS MULTIPLIED BY ZHTOI
+      !
+      INTEGER, intent(out) :: I,J
+      INTEGER, intent(in) :: K
+
+      I = K / ZHTOI
+      J = K - (ZHTOI * I)
+      RETURN
+   END SUBROUTINE ITOH
 
 END MODULE Utils

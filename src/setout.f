@@ -1,6 +1,7 @@
       SUBROUTINE SETOUT(UN,UNF,FILE,STAT)
 
          USE TextFiles, only : TIOOPN, TIOCLO
+         USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
 C

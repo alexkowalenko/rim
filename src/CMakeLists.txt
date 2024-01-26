@@ -18,14 +18,14 @@ dbload.f dbopcl.f dbopen.f deldat.f deldup.f delete.f
 delrow.f dmsg.f dtfenc.f dtfspl.f dtor.f eq.f eqkeyw.f eqtok.f
 f1clo.f f1opn.f f2clo.f f2opn.f f3clo.f f3opn.f filch.f fmtdec.f
 getdat.f getkca.f gett.f gtsort.f
-htoi.f iexp.f imsg.f isect.f itoa.f itoh.f
+iexp.f imsg.f isect.f itoa.f
 join.f joirel.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
 lfind.f lkstr.f lnkadd.f lnkget.f lnkpag.f lnkput.f loadfm.f
 loadit.f loadmv.f locase.f locatt.f locboo.f loclnk.f locmac.f
 locprm.f locrel.f locvar.f lodele.f lodlnk.f lodpas.f lodrec.f
 lodrel.f lstrel.f lstrng.f lxcmnt.f lxdate.f lxedit.f lxfmt.f
 lxinit.f lxlenw.f lxsrec.f lxwrec.f macdef.f macexp.f motscn.f
-msg.f msgcmv.f ndigit.f ne.f nxtchr.f nxtchx.f
+msg.f msgcmv.f ne.f nxtchr.f nxtchx.f
 nxtcrd.f nxttok.f parse.f parval.f pgbres.f pgbsto.f pgcexp.f
 pgcomp.f pgcprt.f pgeexp.f pgeprt.f pgexec.f pgstor.f
 pject.f prckey.f prjtup.f prmset.f prompt.f ptrs.f putdat.f putt.f
@@ -61,12 +61,12 @@ adddat.f ascan.f ascchr.f ascdat.f asctxt.f atoi.f ator.f
  deldup.f delete.f delrow.f dtfenc.f dtfspl.f dtor.f eq.f eqkeyw.f
  eqtok.f filch.f fmtdec.f f1clo.f f1opn.f f2clo.f f2opn.f
  f3clo.f f3opn.f getdat.f getkca.f gett.f gtsort.f
- htoi.f iexp.f isect.f itoa.f itoh.f join.f joirel.f
+ iexp.f isect.f itoa.f join.f joirel.f
  kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f lfind.f lkstr.f locase.f
  locatt.f locboo.f locmac.f locprm.f locrel.f lodele.f lodpas.f
  lodrec.f lodrel.f lstrel.f lstrng.f lxcmnt.f lxdate.f lxedit.f
  lxfmt.f lxinit.f lxlenw.f lxsrec.f lxwrec.f macdef.f macexp.f
- motscn.f ndigit.f ne.f nxtchr.f nxtchx.f nxttok.f
+ motscn.f ne.f nxtchr.f nxtchx.f nxttok.f
  parse.f parval.f pilib.f pilibx.f pject.f prckey.f prjtup.f
  ptrs.f putdat.f putt.f reladd.f relget.f relpag.f relput.f remkey.f
  remrel.f reuse.f rformt.f rioclo.f rioin.f rioopn.f rioout.f

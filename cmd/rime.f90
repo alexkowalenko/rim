@@ -2,7 +2,7 @@ PROGRAM MAIN
 
    USE DateTime, only: RMTIME, RMDATE
    USE System, only: SystemExit, SystemInitialise, SYSDBG, SYSDBN
-   USE Utils, only : ZMOVE
+   USE Utils, only : ZMOVE, HTOI, ITOH
 
    INCLUDE 'syspar.inc'
    !

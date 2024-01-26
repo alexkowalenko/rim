@@ -1,0 +1,22 @@
+* RUN: rm -f sample.rimdb*
+* RUN: %rim %sample
+* RUN: %rim %s | FileCheck %s
+echo
+*( batch test)
+open sample
+reformat resistivity to f2.3
+list conductors
+close
+exit
+* CHECK: UW RIM (V.1.24  08/03/90)
+* CHECK:  open sample 
+* CHECK: Database 'sample' is open.
+* CHECK: reformat resistivity to f2.3
+* CHECK:  list conductors
+* CHECK:      Database : sample             read password : none    last mod :
+* CHECK:         Table : conductors       modify password : none 
+* CHECK:  Name              type      length     format     key
+* CHECK:  ----------------  ---- ------------- -----------  ---  
+* CHECK:  resistivity       doub    1 words    f2.3
+* CHECK: End rim execution
+ 

@@ -1,5 +1,8 @@
       SUBROUTINE ITOA(STRING,SC,FMT,INT,IERR)
-      INCLUDE 'syspar.inc'
+
+         USE Utils, only : NDIGIT
+
+         INCLUDE 'syspar.inc'
 C
 C     THIS ROUTINE CONVERTS AN INTEGER (INT) TO ASCII-TEXT (STRING)
 C     IF THE INTEGER WILL NOT FIT, STRING IS
@@ -11,39 +14,39 @@ C     FMT ......FORMAT CODE (TOTAL WIDTH + 100*DECIMAL + 10000*REPEAT)
 C     INT.......INTEGER TO CONVERT.
 C     IERR......0 IF INT FITS, 1 OTHERWISE
 C
-      INCLUDE 'ascpar.inc'
-      INCLUDE 'lxlcom.inc'
+         INCLUDE 'ascpar.inc'
+         INCLUDE 'lxlcom.inc'
 C
-      IERR = 0
-      S = SC - 1
+         IERR = 0
+         S = SC - 1
 C
-      F = MOD(FMT,10000)
-      N = ABS(INT)
-      NC = MOD(F,100)
-      CALL FILCH(STRING,SC,NC,ABLANK)
-      D = F / 100
-      DP = NC - D
-      MINL = NDIGIT(N)
-      IF (D.NE.0) MINL = MINL + 1
-      IF (INT.LT.0) MINL = MINL + 1
+         F = MOD(FMT,10000)
+         N = ABS(INT)
+         NC = MOD(F,100)
+         CALL FILCH(STRING,SC,NC,ABLANK)
+         D = F / 100
+         DP = NC - D
+         MINL = NDIGIT(N)
+         IF (D.NE.0) MINL = MINL + 1
+         IF (INT.LT.0) MINL = MINL + 1
 C
-      L = NC
-      IF (L.LT.MINL) GOTO 800
-100   CALL PUTT(STRING,S+L,MOD(N,10)+U0)
-      L = L-1
-      N = N/10
-      IF (L.EQ.DP) THEN
-         CALL PUTT(STRING,S+L,DECIM)
+         L = NC
+         IF (L.LT.MINL) GOTO 800
+  100    CALL PUTT(STRING,S+L,MOD(N,10)+U0)
          L = L-1
-      ENDIF
-      IF (N.GT.0 .OR. DP.LT.L) GOTO 100
+         N = N/10
+         IF (L.EQ.DP) THEN
+            CALL PUTT(STRING,S+L,DECIM)
+            L = L-1
+         ENDIF
+         IF (N.GT.0 .OR. DP.LT.L) GOTO 100
 C
-      IF (INT.LT.0) CALL PUTT(STRING,S+L,MNSIGN)
-      RETURN
- 
+         IF (INT.LT.0) CALL PUTT(STRING,S+L,MNSIGN)
+         RETURN
+
 C     NUMBER TOO BIG
- 
-800   CALL FILCH(STRING,SC,NC,ASSTAR)
-      IERR = 1
-      RETURN
+
+  800    CALL FILCH(STRING,SC,NC,ASSTAR)
+         IERR = 1
+         RETURN
       END

@@ -1,0 +1,37 @@
+%
+%
+%
+
+\def\opt#1{$\langle \mbox{#1} \rangle$}
+\def\Opt#1{$\Bigl\langle \mbox{#1} \Bigr\rangle$}
+\def\stk#1{\begin{tabular}[c]{c}#1\end{tabular}}
+
+%
+\def\asisbox#1#2{\setbox#1=\vbox\bgroup\hsize#2}
+\def\asistopbox#1#2{\setbox#1=\vtop\bgroup\hsize#2}
+\def\endasisbox{\egroup}
+
+
+\def\record{%
+  \begin{tabular}{cllp{16pc}}
+   item& Fortran& length& field\\
+    \#&  name&    (words)& contents\\
+    \noalign{\smallskip}}
+\def\endrecord{\end{tabular}}
+
+\def\List{\list{}{\leftmargin2\leftmargini
+      \def\makelabel##1{\bf##1\hfill}}}
+\let\endList\endlist
+
+
+\def\UCS{University Computing Services}
+\def\I{\index}
+
+\def\FortranF{\textsc{Fortran}~77}
+\def\Fortran{\textsc{Fortran}}
+
+\usepackage{a4wide}
+
+\raggedbottom
+\predisplaypenalty 10000
+\textfloatsep 30pt

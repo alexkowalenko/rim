@@ -1,6 +1,6 @@
       FUNCTION LOCVAR(ANAME)
 
-         USE Utils, only : ZMOVE
+         USE Utils, only : ZMOVE, ITOH
 
          INCLUDE 'syspar.inc'
 C

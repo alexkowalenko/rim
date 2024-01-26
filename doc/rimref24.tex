@@ -6,29 +6,10 @@
 %   permission notice and the notice defined in \UCScopytext below.
 %
 \documentclass[11pt,a4paper]{report}
-%
-\def\opt#1{$\langle \mbox{#1} \rangle$}
-\def\Opt#1{$\Bigl\langle \mbox{#1} \Bigr\rangle$}
-\def\stk#1{\begin{tabular}[c]{c}#1\end{tabular}}
-%
-\def\asisbox#1#2{\setbox#1=\vbox\bgroup\hsize#2}
-\def\asistopbox#1#2{\setbox#1=\vtop\bgroup\hsize#2}
-\def\endasisbox{\egroup}
 
-\def\UCS{University Computing Services}
-\def\I{\index}
+\usepackage{common}
 
-\def\List{\list{}{\leftmargin2\leftmargini
-      \def\makelabel##1{\bf##1\hfill}}}
-\let\endList\endlist
-
-\usepackage{a4wide}
 \usepackage[colorlinks,allcolors=blue]{hyperref}
-%
-%
-\raggedbottom
-\predisplaypenalty 10000
-\textfloatsep 30pt
 %
 %
 
@@ -66,7 +47,7 @@
   You are assumed to be able to access the computer of your choice,
   and be able to edit text files.
   Chapter~\ref{pi-chapter}, which discusses the program interface, assumes
-  you are familiar with \textsc{Fortran-77}.}
+  you are familiar with \FortranF.}
 
 %
 % no warranty
@@ -274,7 +255,7 @@ algebra commands.
 \I{Fortran}
 Rim provides a convenient function interface
 for users who need to access a Rim database from
-within their programs.  The interface provides one \textsc{Fortran-77} function
+within their programs.  The interface provides one \FortranF\ function
 the program to issue Rim commands and another
 function transfers data between Rim and the user's program.
 Chapter \ref{pi-chapter} describes the Rim program interface
@@ -302,7 +283,7 @@ That program was brought
 to the University of Washington and further developed
 as UWRIM\I{UWRIM}, a CDC Cyber program.
 The present program has been rewritten in completely portable
-\textsc{Fortran-77} code.  The new code includes new functionality
+\FortranF\ code.  The new code includes new functionality
 and a more ``SQL-like'' command language.
 Some capabilities of UWRIM are no longer supported.
  
@@ -907,7 +888,7 @@ renamed in all tables.
 \I{format}
 You can change the default format of a column with the \verb!reformat! command.
 \begin{verse}
-  \verb!reformat! <column> \verb!to! <format> \opt{"in" <table>}
+  \verb!reformat! <column> \verb!to! <format> \opt{in <table>}
 \end{verse}
 changes the default format for the specified column.
 If a table name if given, the
@@ -919,7 +900,7 @@ is changed in all tables.
 You can remove a table or link from the database with the \verb!remove! command.
 \I{remove table@"remove table"}
 \begin{verse}
-\verb|remove| \opt{"table"} <table\_name>
+\verb|remove| \opt{table} <table\_name>
 \end{verse}
 removes the specified table.  All data rows contained in the
 table will be lost.  Any links to or from the table
@@ -930,7 +911,7 @@ confirmation before removing a table.
 Removes a link with the command
 \I{remove link@"remove link"}
 \begin{verse}
-\verb|remove| link" <link\_name>
+\verb|remove link| <link\_name>
 \end{verse}
 
 \subsection{Defining the {\tt sample} database}
@@ -3091,10 +3072,10 @@ to produce the output shown on page~\pageref{while-rpt}.
 \I{Fortran|(}
 This chapter described the programming language interface
 available to Rim users.
-Rim is written in \textsc{Fortran-77}, and the descriptions in this
-chapter use \textsc{Fortran-77} terminology.  However, you may
+Rim is written in \FortranF, and the descriptions in this
+chapter use \FortranF\ terminology.  However, you may
 invoke Rim functions from any language that can
-call \textsc{Fortran-77} function subroutines.
+call \FortranF\ function subroutines.
  
 This interface is very simple---there is a function subroutine
 to execute Rim commands, and another function subroutine
@@ -3227,7 +3208,7 @@ you can include
   IF (.NOT.RIM(0,'user metals')) <ditto>
 \end{verbatim}
  
-in your \textsc{Fortran} program.
+in your \Fortran\ program.
  
 \section{Transferring data}
 %
@@ -3552,10 +3533,10 @@ output files.
 Database files have the extensions \verb!.rimdb1!, \verb!.rimdb2!, and \verb!.rimdb3!.
  
  
-\subsection{Using the \textsc{Fortran} interface}
+\subsection{Using the \Fortran\ interface}
 %
 \I{Fortran}
-To load \textsc{Fortran} programs with the Rim interface include the
+To load \Fortran\ programs with the Rim interface include the
 \verb!rimlib.a! library with the \verb!-lrim! option
 in your \verb!ld! or \verb!f77! command.
  
@@ -3614,10 +3595,10 @@ VMS Rim assumes an extension of \verb!.rim! for input files and
 Database files have the extensions \verb!.rimdb1!, \verb!.rimdb2!, and \verb!.rimdb3!.
  
  
-\subsection{Using the \textsc{Fortran} interface}
+\subsection{Using the \Fortran\ interface}
 %
 \I{Fortran}
-To load \textsc{Fortran} programs with the Rim interface, include the
+To load \Fortran\ programs with the Rim interface, include the
 library \verb!$$rim:rimlib/lib!
 in your link command.
  
@@ -3676,10 +3657,10 @@ CMS Rim assumes a file type  of \verb!rim! for input files and
 \verb!rimlist! for output files.
 Database files have the types \verb!rimdb1!, \verb!rimdb2!, and \verb!rimdb3!.
  
-\subsection{Using the \textsc{Fortran} interface}
+\subsection{Using the \Fortran\ interface}
 %
 \I{Fortran}
-To load \textsc{Fortran} programs with the Rim interface, include the
+To load \Fortran\ programs with the Rim interface, include the
 libraries \verb!RIMLIB! and \verb!UTILITY!
 in your GLOBAL \verb!TXTLIB! command.
 \verb!RIMLIB! and this sample loader \verb!EXEC (RIMLOAD EXEC)! may be

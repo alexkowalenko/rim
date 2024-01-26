@@ -1,0 +1,26 @@
+* RUN: rm -f sample.rimdb*
+* RUN: %rim %sample
+* RUN: %rim %s | FileCheck %s
+echo
+*( batch test)
+open sample
+remove table techs
+remove link M_C
+list
+close
+exit
+* CHECK: UW RIM (V.1.24  08/03/90)
+* CHECK-NEXT:  open sample 
+* CHECK: Database 'sample' is open.
+* CHECK: remove table techs
+* CHECK: Table 'techs' has been removed from the database. 
+* CHECK: remove link M_C
+* CHECK: Link 'M_C' has been removed.
+* CHECK:  list 
+* CHECK:   Table name         rows  last modified
+* CHECK:   ---------------- ------  ------------ 
+* CHECK:   conductors            5  
+* CHECK:   measures              6  
+* CHECK:   notes                 2
+* CHECK: End rim execution
+ 
