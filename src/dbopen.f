@@ -1,6 +1,7 @@
       SUBROUTINE DBOPEN(NEWNAM,NEWOK)
 
          USE DateTime, only: RMTIME, RMDATE
+         USE RandomFiles, only: RIOCLO
          USE System, only: SYSDBN, CHKFIL
 
          INCLUDE 'syspar.inc'

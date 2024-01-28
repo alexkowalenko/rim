@@ -1,6 +1,7 @@
 PROGRAM MAIN
 
    USE DateTime, only: RMTIME, RMDATE
+   USE RandomFiles, only : RIOOPN, RIOCLO, RIOIN, RIOOUT
    USE System, only: SystemExit, SystemInitialise, SYSDBG, SYSDBN
    USE Utils, only : ZMOVE, HTOI, ITOH
 

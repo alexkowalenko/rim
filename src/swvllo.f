@@ -1,5 +1,8 @@
       SUBROUTINE SWVLLO(BUFFER,LREC,NREC,INFIL,OUTFIL,NI)
-      INCLUDE 'syspar.inc'
+
+         USE RandomFiles, only: RIOOUT
+
+         INCLUDE 'syspar.inc'
 C
 C  PURPOSE  LOADING PASS FOR OUT-OF-CORE SORT
 C           OF VARIABLE LENGTH TUPLES
@@ -36,7 +39,7 @@ C            WORD 4FF = TUPLES IN SORTED ORDER
 C
 C  NI         NUMBER OF CHAINS GENERATED
 C
-      INTEGER BUFFER(1)
+         INTEGER BUFFER(1)
 C
 C  DEFINITION OF LOCAL VARIABLES
 C  FIRST AN EXPLANATION OF HOW BUFFER IS USED
@@ -58,99 +61,99 @@ C  I10 NUMBER OF OUTPUT RECORDS CURRENTLY WRITTEN
 C      IN CHAIN
 C  I11 LENGTH OF TUPLE IN INPUT AREA
 C
-      INCLUDE 'srtcom.inc'
-      I1 = LTUMAX + LREC
-      LTUM = LTUMAX - 1
-      I2 = I1
-      I33 = NREC*(LREC - 3)
-      I3 = I33
-      I4 = I1 + I3
-      I5 = I4
-      I6 = 0
-      NI = 0
-      ILAST = 0
-   10 CONTINUE
+         INCLUDE 'srtcom.inc'
+         I1 = LTUMAX + LREC
+         LTUM = LTUMAX - 1
+         I2 = I1
+         I33 = NREC*(LREC - 3)
+         I3 = I33
+         I4 = I1 + I3
+         I5 = I4
+         I6 = 0
+         NI = 0
+         ILAST = 0
+   10    CONTINUE
 C
 C  FILL TUPLE AREA
 C
-      I6 = I6 + 1
-      IF(I6 .GT. NSORT) GO TO 100
-      READ(INFIL) I11,(BUFFER(K),K=1,I11)
-   12 CONTINUE
-      IF(I11 .GE. I3) GO TO 20
-      DO 15 J2=1,I11
-   15 BUFFER(I2+J2) = BUFFER(J2)
-      BUFFER(I2) = I11
-      BUFFER(I5) = I2 + 1
-      I2 = I2 + I11 + 1
-      I5 = I5 + 1
-      I3 = I3 - I11 - 1
-      GO TO 10
-   20 CONTINUE
+         I6 = I6 + 1
+         IF(I6 .GT. NSORT) GO TO 100
+         READ(INFIL) I11,(BUFFER(K),K=1,I11)
+   12    CONTINUE
+         IF(I11 .GE. I3) GO TO 20
+         DO 15 J2=1,I11
+   15    BUFFER(I2+J2) = BUFFER(J2)
+         BUFFER(I2) = I11
+         BUFFER(I5) = I2 + 1
+         I2 = I2 + I11 + 1
+         I5 = I5 + 1
+         I3 = I3 - I11 - 1
+         GO TO 10
+   20    CONTINUE
 C
 C  TUPLE AREA FULL,OR NO
 C  MORE TUPLES ON INPUT FILE
 C  SORT,UNLOAD
 C
-      CALL SWICST(BUFFER,BUFFER(I4),I5-I4)
-      NI = NI + 1
-      BUFFER(LTUM+2) = NI
-      J1 = I4
-      I10 = 0
-   25 I9 = 0
-      I8 = LTUM + 4
-   30 CONTINUE
-      J2 = BUFFER(J1) - 1
-      J3 = BUFFER(J2)
-      IF(J3+I8 .GE. I1) GO TO 50
-      DO 40 J4=1,J3
-   40 BUFFER(I8+J4) = BUFFER(J2+J4)
-      I9 = I9 + 1
-      J1 = J1 + 1
-      BUFFER(I8) = J3
-      I8 = I8 + J3 + 1
-      IF(J1 .LT. I5) GO TO 30
-      BUFFER(LTUM+2) = -NI
-   50 CONTINUE
+         CALL SWICST(BUFFER,BUFFER(I4),I5-I4)
+         NI = NI + 1
+         BUFFER(LTUM+2) = NI
+         J1 = I4
+         I10 = 0
+   25    I9 = 0
+         I8 = LTUM + 4
+   30    CONTINUE
+         J2 = BUFFER(J1) - 1
+         J3 = BUFFER(J2)
+         IF(J3+I8 .GE. I1) GO TO 50
+         DO 40 J4=1,J3
+   40    BUFFER(I8+J4) = BUFFER(J2+J4)
+         I9 = I9 + 1
+         J1 = J1 + 1
+         BUFFER(I8) = J3
+         I8 = I8 + J3 + 1
+         IF(J1 .LT. I5) GO TO 30
+         BUFFER(LTUM+2) = -NI
+   50    CONTINUE
 C
 C  WRITE OUTPUT BUFFER
 C
-      BUFFER(LTUM+1) = I9
-      I10 = I10 + 1
-      IF(I10 .EQ. NREC .AND. ILAST .EQ. 0) BUFFER(LTUM+2) = -NI
-      BUFFER(LTUM+3) = I10
-      CALL RIOOUT(OUTFIL,0,BUFFER(LTUM+1),LREC,IOS)
-      IF(BUFFER(LTUM+2).GT.0) GO TO 25
+         BUFFER(LTUM+1) = I9
+         I10 = I10 + 1
+         IF(I10 .EQ. NREC .AND. ILAST .EQ. 0) BUFFER(LTUM+2) = -NI
+         BUFFER(LTUM+3) = I10
+         CALL RIOOUT(OUTFIL,0,BUFFER(LTUM+1),LREC,IOS)
+         IF(BUFFER(LTUM+2).GT.0) GO TO 25
 C
 C  SHUFFLE TUPLE AREA IF REQUIRED
 C
-      I2 = I1
-      I3 = I33
-      I55 = I5
-      I5 = I4
-      IF(J1 .LT. I55) GO TO 60
-      IF(ILAST .EQ. 0) GO TO 12
-      RETURN
-   60 CONTINUE
-      NUM = I55 - J1
-      CALL SWSHEL(BUFFER(J1),NUM)
-   65 CONTINUE
-      J2 = BUFFER(J1) - 1
-      J3 = BUFFER(J2)
-      DO 70 J4=1,J3
-   70 BUFFER(I2+J4) = BUFFER(J2+J4)
-      BUFFER(I2) = J3
-      BUFFER(I5) = I2 + 1
-      I2 = I2 + J3 + 1
-      I5 = I5 + 1
-      I3 = I3 - J3 - 1
-      J1 = J1 + 1
-      IF(J1 .LT. I55) GO TO 65
-      GO TO 12
-  100 CONTINUE
+         I2 = I1
+         I3 = I33
+         I55 = I5
+         I5 = I4
+         IF(J1 .LT. I55) GO TO 60
+         IF(ILAST .EQ. 0) GO TO 12
+         RETURN
+   60    CONTINUE
+         NUM = I55 - J1
+         CALL SWSHEL(BUFFER(J1),NUM)
+   65    CONTINUE
+         J2 = BUFFER(J1) - 1
+         J3 = BUFFER(J2)
+         DO 70 J4=1,J3
+   70    BUFFER(I2+J4) = BUFFER(J2+J4)
+         BUFFER(I2) = J3
+         BUFFER(I5) = I2 + 1
+         I2 = I2 + J3 + 1
+         I5 = I5 + 1
+         I3 = I3 - J3 - 1
+         J1 = J1 + 1
+         IF(J1 .LT. I55) GO TO 65
+         GO TO 12
+  100    CONTINUE
 C
 C  ALL TUPLES READ FROM INFIL
 C
-      ILAST = 1
-      GO TO 20
+         ILAST = 1
+         GO TO 20
       END

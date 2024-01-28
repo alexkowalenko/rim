@@ -1,5 +1,6 @@
       SUBROUTINE F1OPN(RIMDB1)
 
+         USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
          USE Text, only : ASCTXT
          USE Utils, only : ZEROIT, ZMOVE
 

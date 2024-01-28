@@ -1,5 +1,6 @@
       SUBROUTINE F3OPN(RIMDB3)
 
+         USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
          USE Utils, only : ZEROIT, ZMOVE
 
          INCLUDE 'syspar.inc'

@@ -1,5 +1,6 @@
       SUBROUTINE BTGET(ID,NSTRT)
 
+         USE RandomFiles, only : RIOIN, RIOOUT
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'

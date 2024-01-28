@@ -1,5 +1,6 @@
       SUBROUTINE LNKPAG(THEROW)
 
+         USE RandomFiles, only: RIOIN, RIOOUT
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'

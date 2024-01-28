@@ -1,8 +1,9 @@
       SUBROUTINE SWVLFS(INFIL,OUTFIL,BUFFER,LBUF,LPRU,DPRU)
 
-      USE System, only : SystemDelete
+         USE RandomFiles, only : RIOOPN, RIOCLO
+         USE System, only : SystemDelete
 
-      INCLUDE 'syspar.inc'
+         INCLUDE 'syspar.inc'
 C
 C  PURPOSE  DRIVER FOR OUT-OF-CORE SORT
 C           OF VARIABLE LENGTH TUPLES
@@ -74,73 +75,73 @@ C  COST   COST OF OPTIMUM SORT STRATEGY
 C  NRECS  NO OF PAGES ON RANDOM SCRATCH FILE
 C  LREC   LENGTH OF RANDOM FILE PAGE
 C
-      INCLUDE 'srtcom.inc'
-      INCLUDE 'rimcom.inc'
-      DIMENSION BUFFER(1)
-      INTEGER DPRU
-      INTEGER CHAIN1,OUTREC
-      INTEGER TUPL
-      LOGICAL SWITCH
-      REAL COST , A1
+         INCLUDE 'srtcom.inc'
+         INCLUDE 'rimcom.inc'
+         DIMENSION BUFFER(1)
+         INTEGER DPRU
+         INTEGER CHAIN1,OUTREC
+         INTEGER TUPL
+         LOGICAL SWITCH
+         REAL COST , A1
 C
-      LREC = 0
-      I6 = 0
-      I1 = 2*LPRU
-      I11 = 2*DPRU
-      TUPL = LTUPLE/NSORT
-      DO 100 I=2,9
-      I1 = I1 + LPRU
-      I11 = I11 + DPRU
-      I10 = LPRU*((LBUF-I11)/I1) + DPRU
-      IF(I10 .LT. LTUMAX+2) GO TO 110
-      I8 = (I10 - 2 - TUPL/2) / TUPL
-      IF(I8 .EQ. 0) I8 = 1
-      I2 = (LTUMIN*(LBUF-LTUMAX-I10))/((LTUMIN+1)*(I10-2))
+         LREC = 0
+         I6 = 0
+         I1 = 2*LPRU
+         I11 = 2*DPRU
+         TUPL = LTUPLE/NSORT
+         DO 100 I=2,9
+            I1 = I1 + LPRU
+            I11 = I11 + DPRU
+            I10 = LPRU*((LBUF-I11)/I1) + DPRU
+            IF(I10 .LT. LTUMAX+2) GO TO 110
+            I8 = (I10 - 2 - TUPL/2) / TUPL
+            IF(I8 .EQ. 0) I8 = 1
+            I2 = (LTUMIN*(LBUF-LTUMAX-I10))/((LTUMIN+1)*(I10-2))
 C
 C  I2 IS NO OF INCORE BLOCKS IN
 C     INITIAL PASS
 C
-      I9 =(NSORT+I8-1)/I8
-      I3 = 1
-      I4 = I2
-   10 CONTINUE
-      I5 = I4
-      I4 = I4*I + I5
-      IF (I4 .GE. I9) GO TO 20
-      I4 = I4 - I5
-      I3 = I3 + 1
-      GO TO 10
-   20 CONTINUE
+            I9 =(NSORT+I8-1)/I8
+            I3 = 1
+            I4 = I2
+   10       CONTINUE
+            I5 = I4
+            I4 = I4*I + I5
+            IF (I4 .GE. I9) GO TO 20
+            I4 = I4 - I5
+            I3 = I3 + 1
+            GO TO 10
+   20       CONTINUE
 C
-      CALL SWCOST(I3,I9,I10,I,A1)
-      IF(I6 .GT. 0) GO TO 30
-      GO TO 35
-   30 CONTINUE
-      IF(A1 .GE. COST) GO TO 90
-   35 COST = A1
-      I7 = I2
-      I6 = I
-      LREC = I10
-   90 CONTINUE
-      IF(I3 .EQ. 1) GO TO 110
-  100 CONTINUE
-  110 CONTINUE
-      IF (LREC.LE.0) THEN
-         RMSTAT = 3000
-         GOTO 999
-      ENDIF
+            CALL SWCOST(I3,I9,I10,I,A1)
+            IF(I6 .GT. 0) GO TO 30
+            GO TO 35
+   30       CONTINUE
+            IF(A1 .GE. COST) GO TO 90
+   35       COST = A1
+            I7 = I2
+            I6 = I
+            LREC = I10
+   90       CONTINUE
+            IF(I3 .EQ. 1) GO TO 110
+  100    CONTINUE
+  110    CONTINUE
+         IF (LREC.LE.0) THEN
+            RMSTAT = 3000
+            GOTO 999
+         ENDIF
 C
 C  OPTIMUM SORT STRATEGY DETERMINED
 C
 C  OPEN SORT SCRATCH FILES
 C
-      CALL SystemDelete(ZCSRT1)
-      CALL SystemDelete(ZCSRT2)
-      CALL RIOOPN(ZCSRT1,ZNSRT1,LREC,IOS)
-      IF (IOS.NE.0) GOTO 998
-      CALL RIOOPN(ZCSRT2,ZNSRT2,LREC,IOS)
-      IF (IOS.NE.0) GOTO 998
-      CALL SWVLLO(BUFFER,LREC,I7,INFIL,ZNSRT1,NI)
+         CALL SystemDelete(ZCSRT1)
+         CALL SystemDelete(ZCSRT2)
+         CALL RIOOPN(ZCSRT1,ZNSRT1,LREC,IOS)
+         IF (IOS.NE.0) GOTO 998
+         CALL RIOOPN(ZCSRT2,ZNSRT2,LREC,IOS)
+         IF (IOS.NE.0) GOTO 998
+         CALL SWVLLO(BUFFER,LREC,I7,INFIL,ZNSRT1,NI)
 C
 C     NPASS IS THE NUMBER OF RANDOM TO RANDOM MERGES
 C     NI IS THE NUMBER OF CHAINS ON THE INPUT FILE
@@ -148,61 +149,61 @@ C     NO IS THE NUMBER OF CHAINS ON THE OUTPUT FILE
 C     NCHAIN IS THE NUMBER OF CHAINS TO MERGE
 C     LCHAIN IS THE NUMBER OF PAGES PER INPUT CHAIN
 C
-      LCHAIN = I7
-      NCHAIN = I6
-      NO = NI
-      SWITCH = .TRUE.
+         LCHAIN = I7
+         NCHAIN = I6
+         NO = NI
+         SWITCH = .TRUE.
 C
 C     OUTER LOOP ON THE NUMBER OF PASSES
-      IF(NI .LE. I6) GO TO 250
-  130 CONTINUE
-      NI = NO
-      NO = (NI-1)/NCHAIN
-      NO = NO + 1
-      SWITCH = .NOT. SWITCH
-      IF(SWITCH) CALL SystemDelete(ZCSRT1)
-      IF(SWITCH) CALL RIOOPN(ZCSRT1,ZNSRT1,LREC,IOS)
-      IF (IOS.NE.0) GOTO 998
-      IF(.NOT.SWITCH) CALL SystemDelete(ZCSRT2)
-      IF(.NOT.SWITCH) CALL RIOOPN(ZCSRT2,ZNSRT2,LREC,IOS)
-      IF (IOS.NE.0) GOTO 998
-      INC = LCHAIN*NCHAIN
+         IF(NI .LE. I6) GO TO 250
+  130    CONTINUE
+         NI = NO
+         NO = (NI-1)/NCHAIN
+         NO = NO + 1
+         SWITCH = .NOT. SWITCH
+         IF(SWITCH) CALL SystemDelete(ZCSRT1)
+         IF(SWITCH) CALL RIOOPN(ZCSRT1,ZNSRT1,LREC,IOS)
+         IF (IOS.NE.0) GOTO 998
+         IF(.NOT.SWITCH) CALL SystemDelete(ZCSRT2)
+         IF(.NOT.SWITCH) CALL RIOOPN(ZCSRT2,ZNSRT2,LREC,IOS)
+         IF (IOS.NE.0) GOTO 998
+         INC = LCHAIN*NCHAIN
 C
 C     INNER LOOP ON NUMBER OF OUTPUT CHAINS
 C
-      INCH = 1
-      DO 150 J=1,NO
-      CHAIN1 = (J-1)*INC + 1
-      OUTREC = 0
-      NCH = NCHAIN
-      IF(J.EQ.NO) NCH = NI - (NO-1)*NCHAIN
-      IF(SWITCH) CALL SWSMVL(BUFFER,CHAIN1,NCH,LCHAIN,OUTREC,J,
-     X       INCH,LREC,ZNSRT2,ZNSRT1)
-      IF(.NOT.SWITCH) CALL SWSMVL(BUFFER,CHAIN1,NCH,LCHAIN,OUTREC,J,
-     X       INCH,LREC,ZNSRT1,ZNSRT2)
-      INCH = INCH + NCH
-  150 CONTINUE
-      LCHAIN = LCHAIN * NCHAIN
-      IF(NO .GT. I6+1) GO TO 130
-  250 CONTINUE
+         INCH = 1
+         DO 150 J=1,NO
+            CHAIN1 = (J-1)*INC + 1
+            OUTREC = 0
+            NCH = NCHAIN
+            IF(J.EQ.NO) NCH = NI - (NO-1)*NCHAIN
+            IF(SWITCH) CALL SWSMVL(BUFFER,CHAIN1,NCH,LCHAIN,OUTREC,J,
+     X             INCH,LREC,ZNSRT2,ZNSRT1)
+            IF(.NOT.SWITCH) CALL SWSMVL(BUFFER,CHAIN1,NCH,LCHAIN,OUTREC,J,
+     X             INCH,LREC,ZNSRT1,ZNSRT2)
+            INCH = INCH + NCH
+  150    CONTINUE
+         LCHAIN = LCHAIN * NCHAIN
+         IF(NO .GT. I6+1) GO TO 130
+  250    CONTINUE
 C
 C     CALL SWUNVL TO CREATE OUTPUT SEQUENTIAL FILE
 C
-      CHAIN1 = 1
-      NCH = NO
-      INCH = 1
-      IF(SWITCH) CALL SWUNVL(BUFFER,CHAIN1,NCH,LCHAIN,
-     X      INCH,LREC,ZNSRT1,OUTFIL)
-      IF(.NOT.SWITCH) CALL SWUNVL(BUFFER,CHAIN1,NCH,LCHAIN,
-     X      INCH,LREC,ZNSRT2,OUTFIL)
+         CHAIN1 = 1
+         NCH = NO
+         INCH = 1
+         IF(SWITCH) CALL SWUNVL(BUFFER,CHAIN1,NCH,LCHAIN,
+     X         INCH,LREC,ZNSRT1,OUTFIL)
+         IF(.NOT.SWITCH) CALL SWUNVL(BUFFER,CHAIN1,NCH,LCHAIN,
+     X         INCH,LREC,ZNSRT2,OUTFIL)
 C
 C     RETURN THE SCRATCH RANDOM FILES
 C
-      CALL SystemDelete(ZCSRT1)
-      CALL SystemDelete(ZCSRT2)
-      GOTO 999
- 
-998   RMSTAT = 3000 + IOS
- 
-999   RETURN
+         CALL SystemDelete(ZCSRT1)
+         CALL SystemDelete(ZCSRT2)
+         GOTO 999
+
+  998    RMSTAT = 3000 + IOS
+
+  999    RETURN
       END

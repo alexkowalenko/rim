@@ -1,5 +1,6 @@
       SUBROUTINE GETDAT(INDEX,ID,LOCTUP,LENGTH)
 
+         USE RandomFiles, only: RIOIN, RIOOUT
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

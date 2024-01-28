@@ -1,5 +1,6 @@
       SUBROUTINE F2CLO
 
+         USE RandomFiles, only : RIOCLO, RIOIN, RIOOUT
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

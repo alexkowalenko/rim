@@ -1,5 +1,6 @@
       SUBROUTINE DELDAT(INDEX,ID)
 
+         USE RandomFiles, only : RIOIN, RIOOUT
          USE Utils, only : HTOI, ITOH
 
          INCLUDE 'syspar.inc'

@@ -1,5 +1,6 @@
       SUBROUTINE PUTDAT(INDEX,ID,ARRAY,LENGTH)
 
+         USE RandomFiles, only: RIOIN, RIOOUT
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

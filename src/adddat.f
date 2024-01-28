@@ -1,5 +1,6 @@
       SUBROUTINE ADDDAT(INDEX,ID,ARRAY,LENGTH)
 
+         USE RandomFiles, only : RIOIN, RIOOUT
          USE Utils, only : ZEROIT, HTOI, ITOH
 C
 C     ADD A TUPLE TO THE DATA FILE
