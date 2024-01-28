@@ -42,7 +42,7 @@ CONTAINS
 
 
    SUBROUTINE ASCTXT(ATXT,LTXT,CSTR)
-      INCLUDE 'syspar.inc'
+      USE Parameters, only : Z
       !
       ! RETURN THE ASCII-TEXT EQUIVALENT OF CSTR
       !

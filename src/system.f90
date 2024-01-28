@@ -1,5 +1,11 @@
 MODULE System
-   INCLUDE 'syspar.inc'
+
+   USE, intrinsic :: iso_fortran_env
+
+   USE Parameters
+
+   IMPLICIT NONE
+
    private
 
    public SystemExit
@@ -104,7 +110,8 @@ contains
       !
       CHARACTER(ZFNAML) :: FNAME, home
       LOGICAL :: rw
-      double precision :: d0
+      REAL(real64) :: d0
+      INTEGER :: na, ERR, i, bp
 
       ! ignore any possible float overflows
       d0 = 0
@@ -154,6 +161,8 @@ contains
       INTEGER, intent(out) :: STATUS
 
       INTEGER, PARAMETER :: RSBCH=93, COLCH=58
+      INTEGER :: P
+      INTEGER :: ASCAN ! Function
 
       STATUS = 0
       ! DBDIR = ' '
@@ -195,6 +204,7 @@ contains
       INCLUDE 'flags.inc'
 
       CHARACTER(ZFNAML) :: CDBN, xdbn
+      INTEGER :: I, L, STATUS
       !
       ! Use name from DBDRF unless help DB open
       !

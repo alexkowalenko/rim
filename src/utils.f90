@@ -31,7 +31,7 @@ contains
 
 
    SUBROUTINE NULLIT(WORD1)
-      INCLUDE 'syspar.inc'
+      USE Parameters, only : Z, NULL
       !
       !  PURPOSE:   COPIES NULL TO WORD1
       !
@@ -50,7 +50,7 @@ contains
 
 
    SUBROUTINE ZMOVE(WORD1,WORD2)
-      INCLUDE 'syspar.inc'
+      USE Parameters, only : Z
       !
       !  PURPOSE:   COPIES WORD2 TO WORD1
       !
@@ -71,7 +71,6 @@ contains
 
 
    INTEGER FUNCTION NDIGIT(INT)
-      implicit none
       !
       ! RETURN THE NUMBER OF DIGITS IN INT
       !
@@ -93,13 +92,13 @@ contains
 
 
    SUBROUTINE HTOI(I,J,K)
-      INCLUDE 'syspar.inc'
+      USE Parameters, only : ZHTOI
       !
       !  PURPOSE:   PACK I AND J INTO K
       !
       !  OFFSET I BY MULTIPLYING BY ZHTOI
       !
-      INTEGER, intent(in) :: I,J
+      INTEGER, intent(in) :: I, J
       INTEGER, intent(out) :: K
 
       K = J + (ZHTOI * I)
@@ -108,13 +107,13 @@ contains
 
 
    SUBROUTINE ITOH(I,J,K)
-      INCLUDE 'syspar.inc'
+      USE Parameters, only : ZHTOI
       !
       !  PURPOSE:   UNPACK I AND J FROM K
       !
       !  I WAS MULTIPLIED BY ZHTOI
       !
-      INTEGER, intent(out) :: I,J
+      INTEGER, intent(out) :: I, J
       INTEGER, intent(in) :: K
 
       I = K / ZHTOI

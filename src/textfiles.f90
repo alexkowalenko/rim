@@ -10,7 +10,7 @@ MODULE TextFiles
 CONTAINS
 
    SUBROUTINE TIOOPN(FILE,UNIT,MODE,ERR)
-      INCLUDE 'syspar.inc'
+      USE Parameters, only : zfnaml, Z
       !
       ! ***UNIX SYSTEM DEPENDENT ROUTINE ***
       !
@@ -90,9 +90,9 @@ CONTAINS
 
    SUBROUTINE TIOIN(FILE,TEXT,LEN,EOF)
 
+      USE Parameters, only: ZCARDL, Z
       USE Text, only : ASCCHR
 
-      INCLUDE 'syspar.inc'
       !
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
       !
@@ -114,6 +114,7 @@ CONTAINS
       INCLUDE 'prom.inc'
       !
       CHARACTER(ZCARDL) :: INCARD
+      INTEGER :: I
       !
       !  READ A CARD FROM THE CURRENT FILE.
       !
@@ -144,7 +145,7 @@ CONTAINS
 
 
    SUBROUTINE TIOOUT(FILE,TEXT,LEN,IERR)
-      INCLUDE 'syspar.inc'
+      USE Parameters, only : ZPRINL, znint
       !
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
       !
@@ -166,6 +167,7 @@ CONTAINS
 
       CHARACTER(len=1) :: CHRASC, ffchar
       CHARACTER(ZPRINL) :: OULINE
+      INTEGER L, I, CH
       !
       FFCHAR = ' '
       IF (FFFLAG.NE.0) THEN

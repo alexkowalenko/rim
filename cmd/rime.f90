@@ -1,11 +1,13 @@
 PROGRAM MAIN
 
+   USE, intrinsic :: iso_fortran_env
+
+   USE Parameters
    USE DateTime, only: RMTIME, RMDATE
    USE RandomFiles, only : RIOOPN, RIOCLO, RIOIN, RIOOUT
    USE System, only: SystemExit, SystemInitialise, SYSDBG, SYSDBN
    USE Utils, only : ZMOVE, HTOI, ITOH
 
-   INCLUDE 'syspar.inc'
    !
    !  ****************************************************************
    !
@@ -13,6 +15,9 @@ PROGRAM MAIN
    !
    ! BY JIM FOX, UNIV OF WASHINGTON (ACS)
    !
+
+   IMPLICIT NONE
+
    INCLUDE 'ascpar.inc'
    INCLUDE 'tokens.inc'
    INCLUDE 'rmatts.inc'
@@ -26,13 +31,21 @@ PROGRAM MAIN
    CHARACTER (ZFNAML) :: RIMDB1,RIMDB2,RIMDB3,RIMDBX
    !
    COMMON /GRIMEX/ CURF, CURR, CUREL(Z), IOS, FILBUF(4096), UNIT(3), RLEN(3)
+   INTEGER :: CURF, CURR, CUREL, IOS, FILBUF, UNIT, RLEN
    !
    INTEGER :: RBUF(5), DW(2)
    INTEGER :: F1HDR(ZF1HDR), F2HDR(ZF2HDR), F3HDR(ZF3HDR)
    EQUIVALENCE (F1,UNIT(1)),(F2,UNIT(2)),(F3,UNIT(3))
+   INTEGER :: F1, F2, F3
    CHARACTER(len=40) :: ERRFIL
    CHARACTER(len=6) :: F1TXT(10),F2TXT(8),F3TXT(11)
    CHARACTER(len=6) :: RELTXT(10),ATTTXT(8),LNKTXT(6)
+
+   INTEGER :: D, D1, D2, FMT, FMTLEN, H1, H2, NEWR
+   INTEGER :: NW, NXTAR, NXTLR, NXTRR, NXTUP, R, RW, STAT, STTUP, SW, W
+   INTEGER :: TDAY, TTIM
+   INTEGER :: NUMOPN = 0
+
    !
    ! LABELS FOR DISPLAYS
 
@@ -62,7 +75,6 @@ PROGRAM MAIN
    RLEN(2) = ZF2
    RLEN(3) = ZF3
 
-   NUMOPN = 0
    BATCH = .FALSE.
    ECHO = .FALSE.
 

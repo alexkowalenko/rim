@@ -1,5 +1,8 @@
 PROGRAM MAIN
-   INCLUDE 'syspar.inc'
+   USE Parameters
+
+   IMPLICIT NONE
+
    !
    ! TEST THE FORTRAN INTERFACE OF RIM
    !

@@ -12,7 +12,7 @@ MODULE RandomFiles
 contains
 
    SUBROUTINE RIOOPN(FNAME,FILE,NWDS,IOS)
-      INCLUDE 'syspar.inc'
+      USE Parameters, only : znsrt1, znsrt2, ZNFIL1, ZCW
       !
       ! *** UNIX SYSTEM DEPENDENT ROUTINE ***
       !
@@ -28,6 +28,8 @@ contains
       INTEGER, intent(in) :: FILE
       INTEGER, intent(in) :: NWDS
       INTEGER, intent(out) :: IOS
+
+      INTEGER IUN
 
       ! Ignore names for scratch files
       if (file.eq.znsrt1 .or. file.eq.znsrt2) then
@@ -57,7 +59,7 @@ contains
 
 
    SUBROUTINE RIOIN(FILE,RECORD,BUFFER,NWDS,IOS)
-      INCLUDE 'syspar.inc'
+      USE Parameters, only : ZNFIL1, Z
       !
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
       !
@@ -76,6 +78,8 @@ contains
       INTEGER, intent(in) :: NWDS
       INTEGER, intent(out) :: IOS
 
+      INTEGER :: I, IUN
+
       INCLUDE 'flags.inc'
 
       READ(FILE,REC=RECORD,IOSTAT=IOS) (BUFFER(I),I=1,NWDS)
@@ -91,9 +95,9 @@ contains
       RETURN
    END SUBROUTINE RIOIN
 
-   
+
    SUBROUTINE RIOOUT(FILE,RECORD,BUFFER,NWDS,IOS)
-      INCLUDE 'syspar.inc'
+      USE Parameters, only : ZNFIL1, Z
       !
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
       !
@@ -112,6 +116,8 @@ contains
       INTEGER :: BUFFER(1)
       INTEGER, intent(in) :: NWDS
       INTEGER, intent(out) :: IOS
+
+      INTEGER :: IUN, I, N, IPOS
 
       IUN = FILE - ZNFIL1 + 1
       IF(RECORD.NE.0) THEN
