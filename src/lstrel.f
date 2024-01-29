@@ -1,5 +1,6 @@
       SUBROUTINE LSTREL(*)
 
+         USE Globals, only : DFLAG, DBNAME, USERID, OWNER
          USE DateTime, only: RMTIME, RMDATE
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
@@ -11,7 +12,6 @@ C
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tuplel.inc'

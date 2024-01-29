@@ -11,7 +11,6 @@ C     INDCUR: MULTIPLE RELATION POSITION INDICATOR
 C
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'vardat.inc'

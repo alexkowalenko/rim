@@ -1,5 +1,6 @@
       SUBROUTINE DBLOAD(*)
 
+         USE Globals, only : DFLAG, DMFLAG, PIFLAG
          USE Text, only : BLANK
          USE DateTime, only : RMDATE
 
@@ -16,7 +17,6 @@ C     :  LOAD REL_NAME <FROM FILE_NAME> <USING FILENAME>
          INCLUDE 'tupler.inc'
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'prom.inc'
 C

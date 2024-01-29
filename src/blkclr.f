@@ -1,5 +1,6 @@
       SUBROUTINE BLKCLR(IND)
 
+         USE Globals, only : TRACE
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'
@@ -11,7 +12,6 @@ C     IND-----BLOCK INDEX
 
          INCLUDE 'incore.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'flags.inc'
 C
 C     TRACING
          IF (TRACE.GE.11) THEN

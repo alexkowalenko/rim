@@ -1,6 +1,8 @@
       SUBROUTINE RMHELP(*)
 
          USE, intrinsic :: iso_fortran_env
+
+         USE Globals, only : LIBFLG, TOL, HXFLAG, PCENT, RUCK
          USE Text, only: ASCTXT
 
          INCLUDE 'syspar.inc'
@@ -22,7 +24,6 @@ C
          INCLUDE 'tokens.inc'
          INCLUDE 'files.inc'
          INCLUDE 'cflags.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'buffer.inc'

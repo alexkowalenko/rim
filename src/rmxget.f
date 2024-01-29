@@ -14,7 +14,6 @@ C         TUPLE---USER ARRAY TO HOLD ONE COMPLETE TUPLE
       INCLUDE 'rimptr.inc'
       INCLUDE 'buffer.inc'
       INCLUDE 'tupler.inc'
-      INCLUDE 'flags.inc'
       INCLUDE 'picom.inc'
 C
       INTEGER TUPLE(1)

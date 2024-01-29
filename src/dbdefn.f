@@ -1,5 +1,6 @@
       SUBROUTINE DBDEFN(*)
 
+         USE Globals, only : DFLAG, USERID, OWNER, DBNAME, IFMOD
          USE DateTime, only : RMDATE
          USE System, only: SYSDBG
          USE Utils, only : ZMOVE
@@ -16,7 +17,6 @@ C
          INCLUDE 'ascpar.inc'
          INCLUDE 'tokens.inc'
          INCLUDE 'rimcom.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'cflags.inc'
          INCLUDE 'files.inc'
          INCLUDE 'prom.inc'

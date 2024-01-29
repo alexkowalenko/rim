@@ -1,5 +1,6 @@
       SUBROUTINE GETDAT(INDEX,ID,LOCTUP,LENGTH)
 
+         USE Globals, only : TRACE
          USE RandomFiles, only: RIOIN, RIOOUT
          USE Utils, only : ITOH
 
@@ -12,7 +13,6 @@ C         INDEX---BLOCK REFERENCE NUMBER
 C         ID------PACKED ID WORD WITH START,PRU
 C         LOCTUP--OFFSET IN BUFFER FOR THE TUPLE
 C         LENGTH---LENGTH OF THE TUPLE
-         INCLUDE 'flags.inc'
          INCLUDE 'f2com.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'

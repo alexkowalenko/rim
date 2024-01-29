@@ -1,5 +1,6 @@
       SUBROUTINE RMXPUT(INDPTR,TUPLE)
 
+         USE Globals, only:  DBDATE
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -14,7 +15,6 @@ C
          INCLUDE 'keydat.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'vardat.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'rimptr.inc'

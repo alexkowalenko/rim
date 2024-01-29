@@ -11,7 +11,6 @@ C
 C     PTR-- ADDRESS OF SELCOM SAVE BLOCK
 
          INCLUDE 'ascpar.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'tupler.inc'

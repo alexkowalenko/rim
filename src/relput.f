@@ -1,5 +1,6 @@
       SUBROUTINE RELPUT
 
+         USE Globals, only : IFMOD
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -7,7 +8,6 @@ C
 C  PURPOSE:   REPLACE THE CURRENT TUPLE FROM THE RELTBL RELATION
 C             BASED ON CONDITIONS SET UP IN LOCREL
 C
-         INCLUDE 'flags.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'reltbl.inc'
 C

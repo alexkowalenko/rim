@@ -11,6 +11,7 @@ CONTAINS
 
    SUBROUTINE TIOOPN(FILE,UNIT,MODE,ERR)
       USE Parameters, only : zfnaml, Z
+      USE Globals, only : INLINE
       !
       ! ***UNIX SYSTEM DEPENDENT ROUTINE ***
       !
@@ -25,7 +26,6 @@ CONTAINS
       INTEGER, intent(in) :: UNIT
       INTEGER, intent(out) :: ERR
       !
-      INCLUDE 'flags.inc'
 
       character(zfnaml) ffile
       LOGICAL :: EXI
@@ -91,6 +91,7 @@ CONTAINS
    SUBROUTINE TIOIN(FILE,TEXT,LEN,EOF)
 
       USE Parameters, only: ZCARDL, Z
+      USE Globals, only : INLINE
       USE Text, only : ASCCHR
 
       !
@@ -110,7 +111,6 @@ CONTAINS
       INTEGER, intent(out) :: LEN
       INTEGER, intent(out) :: EOF
 
-      INCLUDE 'flags.inc'
       INCLUDE 'prom.inc'
       !
       CHARACTER(ZCARDL) :: INCARD

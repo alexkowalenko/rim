@@ -2,6 +2,7 @@
 
          USE, intrinsic :: iso_fortran_env
 
+         USE Globals, only : MRINDX, HXFLAG
          USE Text, only : FILCH, ABLANK
 
          INCLUDE 'syspar.inc'
@@ -9,7 +10,6 @@ C
 C     REPORT SELECTED DATA
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'tupler.inc'

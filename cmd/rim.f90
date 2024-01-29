@@ -19,6 +19,7 @@ PROGRAM MAIN
 
 
    USE Parameters
+   USE Globals, only : KDBVER
    USE DateTime, only: RMTIME, RMDATE
    USE System, only: SystemExit, SystemTrap, SystemInitialise
 
@@ -26,7 +27,6 @@ PROGRAM MAIN
 
    INCLUDE 'ascpar.inc'
    INCLUDE 'rmatts.inc'
-   INCLUDE 'flags.inc'
    INCLUDE 'files.inc'
    INCLUDE 'prom.inc'
    !

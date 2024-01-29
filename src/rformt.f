@@ -1,5 +1,6 @@
       SUBROUTINE RFORMT(*)
 
+         USE Globals, only : DFLAG
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
@@ -10,7 +11,6 @@ C     REFORMAT AN ATTRIBUTE
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'tokens.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'files.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'dclar1.inc'

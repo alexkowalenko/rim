@@ -1,5 +1,6 @@
       SUBROUTINE DELDAT(INDEX,ID)
 
+         USE Globals, only : IFMOD
          USE RandomFiles, only : RIOIN, RIOOUT
          USE Utils, only : HTOI, ITOH
 
@@ -13,7 +14,6 @@ C         ID------PACKED ID WORD WITH OFFSET,IOBN
          INCLUDE 'f2com.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'flags.inc'
 C
          INTEGER OFFSET
 C

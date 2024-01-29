@@ -1,5 +1,6 @@
       SUBROUTINE F3OPN(RIMDB3)
 
+         USE Globals, only : DBNAME, OWNER
          USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
          USE Utils, only : ZEROIT, ZMOVE
 
@@ -12,7 +13,6 @@ C          RIMDB3----NAME OF THE FILE TO USE FOR FILE 3
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'f3com.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'btbuf.inc'
          INCLUDE 'start.inc'
          INCLUDE 'rimcom.inc'

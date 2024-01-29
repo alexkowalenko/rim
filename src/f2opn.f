@@ -1,5 +1,6 @@
       SUBROUTINE F2OPN(RIMDB2)
 
+         USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME
          USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
          USE Utils, only : ZEROIT, ZMOVE
 
@@ -12,7 +13,6 @@ C        RIMDB2-----NAME OF THE FILE TO USE FOR FILE 2
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'f2com.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'rimcom.inc'
 

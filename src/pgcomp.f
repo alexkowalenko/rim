@@ -1,5 +1,6 @@
       SUBROUTINE PGCOMP
 
+         USE Globals, only: PGVARS, INLINE, PGFLAG
          USE DateTime, only: RMTIME, RMDATE
          USE Text, only : ASCTXT
          USE Utils, only : ZMOVE
@@ -22,7 +23,6 @@ C
          INCLUDE 'whcom.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'files.inc'
          INCLUDE 'srtcom.inc'
          INCLUDE 'f2com.inc'

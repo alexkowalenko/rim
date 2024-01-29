@@ -1,5 +1,6 @@
       SUBROUTINE PUTDAT(INDEX,ID,ARRAY,LENGTH)
 
+         USE Globals, only : IFMOD
          USE RandomFiles, only: RIOIN, RIOOUT
          USE Utils, only : ITOH
 
@@ -15,7 +16,6 @@ C         LENGTH--LENGTH OF THE TUPLE
          INCLUDE 'f2com.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'flags.inc'
 C
          INTEGER OFFSET
          INTEGER ARRAY(1)

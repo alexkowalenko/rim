@@ -1,5 +1,6 @@
       SUBROUTINE BLKDEF(IND,NROWS,NCOLS)
 
+         USE Globals, only : TRACE
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'
@@ -13,7 +14,6 @@ C              NCOLS---NUMBER OF COLUMNS
          INCLUDE 'incore.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'flags.inc'
 C
 C     TRACING
          IF (TRACE.GE.9) THEN

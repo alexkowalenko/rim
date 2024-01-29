@@ -1,5 +1,6 @@
       SUBROUTINE RMXLOD(INDPTR,TUPLE)
 
+         USE Globals, only : DBDATE
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -15,7 +16,6 @@ C         TUPLE---USER ARRAY WITH REPLACEMENT TUPLE
          INCLUDE 'vardat.inc'
          INCLUDE 'keydat.inc'
          INCLUDE 'ascpar.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'rmatts.inc'

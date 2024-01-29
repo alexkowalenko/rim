@@ -149,6 +149,7 @@ contains
    SUBROUTINE ASCDAT(STR,SC,L,JDAT,DFMT,TYP)
 
       USE Parameters
+      USE Globals, only : KMSSVL, KRMDTF, KRMTMF, KMSSVT, KNAPVT, KNAPVL
       USE Text, only : FILCH, ABLANK
 
       !
@@ -166,9 +167,7 @@ contains
       INTEGER, intent(out) :: STR(1)
       INTEGER, intent(in) :: SC, L, JDAT, DFMT, TYP
       !
-      INCLUDE 'ascpar.inc'
       INCLUDE 'rmatts.inc'
-      INCLUDE 'flags.inc'
       !
       INTEGER, PARAMETER :: U0=48,U9=57,PLUS=43,MINUS=45,DECIM=46,COLON=58
       INTEGER :: S, FMT, ASC, DP, ML, MP, YL, YP, DD, MM , YY, ERR

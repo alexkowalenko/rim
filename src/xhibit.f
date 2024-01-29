@@ -1,5 +1,6 @@
       SUBROUTINE XHIBIT(*)
 
+         USE Globals, only : DFLAG, USERID, OWNER
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -10,7 +11,6 @@ C
          INCLUDE 'tokens.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'files.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'buffer.inc'
 C
          LOGICAL EQ

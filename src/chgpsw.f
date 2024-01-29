@@ -1,5 +1,6 @@
       SUBROUTINE CHGPSW(*)
 
+         USE Globals, only : DFLAG, USERID, OWNER, IFMOD
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -9,7 +10,6 @@ C
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'tokens.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'files.inc'
 C
          LOGICAL EQKEYW

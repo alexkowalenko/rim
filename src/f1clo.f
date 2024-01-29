@@ -1,5 +1,6 @@
       SUBROUTINE F1CLO
 
+         USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER
          USE RandomFiles, only : RIOCLO, RIOOUT
          USE Utils, only : ZEROIT, ZMOVE
 
@@ -13,7 +14,6 @@ C
          INCLUDE 'attble.inc'
          INCLUDE 'reltbl.inc'
          INCLUDE 'lnktbl.inc'
-         INCLUDE 'flags.inc'
          COMMON /USAGE/ CPTTD,CPSTRT,KUSAGE(20)
          INCLUDE 'dstats.inc'
 C

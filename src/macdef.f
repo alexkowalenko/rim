@@ -17,7 +17,6 @@ C
          INCLUDE 'ascpar.inc'
          INCLUDE 'tokens.inc'
          INCLUDE 'lxlcom.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'maccom.inc'
 
          LOGICAL EQKEYW

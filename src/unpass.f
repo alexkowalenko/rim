@@ -1,5 +1,6 @@
       SUBROUTINE UNPASS(ALL,IRCNTR,IDAY,MODE,LHASH,ATREL)
 
+         USE Globals, only : DBNAME, USERID
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
@@ -17,7 +18,6 @@ C
          INCLUDE 'ascpar.inc'
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplel.inc'

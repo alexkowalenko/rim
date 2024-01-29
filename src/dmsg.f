@@ -14,7 +14,6 @@ C         TYP-----TYPE (KZDATE / KZTIME)
 C
          CHARACTER*1 MCONT
 C
-         INCLUDE 'flags.inc'
          INCLUDE 'files.inc'
          INCLUDE 'msgcom.inc'
          INCLUDE 'rmatts.inc'

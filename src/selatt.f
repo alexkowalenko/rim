@@ -1,5 +1,6 @@
       FUNCTION SELATT(FTOK,NTOK)
 
+         USE Globals, only : KRMDTF, KRMTMF, KRMINF, KRMRNF
          USE Text, only : ASCCHR, ASCTXT, FILCH, BLANK, ABLANK
          USE Utils, only : ZMOVE, HTOI, ITOH
 
@@ -10,7 +11,6 @@ C
          LOGICAL SELATT
 
          INCLUDE 'ascpar.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'tokens.inc'
          INCLUDE 'lxlcom.inc'
          INCLUDE 'rmatts.inc'

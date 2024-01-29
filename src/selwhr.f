@@ -1,5 +1,6 @@
       FUNCTION SELWHR(ST,NT)
 
+         USE Globals, only : CASEIG, TRACE
          USE Utils, only : HTOI, ITOH
 
          INCLUDE 'syspar.inc'
@@ -13,7 +14,6 @@ C
          LOGICAL SELWHR
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'tokens.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'

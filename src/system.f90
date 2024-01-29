@@ -86,7 +86,7 @@ contains
 
 
    SUBROUTINE UNIXTRP
-      INCLUDE 'flags.inc'
+      USE Globals, only : HXFLAG
 
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
 
@@ -201,7 +201,6 @@ contains
       CHARACTER*(*), intent(out) :: F1N,F2N,F3N,FXN
 
       INCLUDE 'ascpar.inc'
-      INCLUDE 'flags.inc'
 
       CHARACTER(ZFNAML) :: CDBN, xdbn
       INTEGER :: I, L, STATUS

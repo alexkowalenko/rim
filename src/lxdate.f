@@ -1,5 +1,6 @@
       LOGICAL FUNCTION LXDATE(I,JDAT,FMT,TYP)
 
+         USE Globals, only : KRMTMF
          USE DateTime, only : JULDAT, ASMTXT
 
          INCLUDE 'syspar.inc'
@@ -14,7 +15,6 @@ C
          INCLUDE 'ascpar.inc'
          INCLUDE 'tokens.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'flags.inc'
          LOGICAL ATOI
 C
          LXDATE = .FALSE.

@@ -8,13 +8,16 @@ C
 C------------------------------------------------------------
 C
 
+         USE Globals, only : KMSSVT, KNAPVT, USERID, USERID, TRACE,
+     +   ARBCHS, ARBCHM, KRMDTF, KRMTMF, KRMINF, KRMRNF, KMSSVL, KNAPVL,
+     +   MRINDX, LIBFLG, PGVARS, KRMRMF, KRMDMF, TOL, HXFLAG, DFLAG,
+     +   DMFLAG, CASEIG, PGFLAG, IFMOD, PCENT, RUCK, PIFLAG
          USE DateTime, only : DateTime_Initialise
          USE Text, only : Text_Initialise, ASCCHR, ASCTXT
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
          INCLUDE 'ascpar.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'files.inc'
          INCLUDE 'cards.inc'
          INCLUDE 'msgcom.inc'

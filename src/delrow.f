@@ -1,5 +1,6 @@
       SUBROUTINE DELROW(*)
 
+         USE Globals, only : DFLAG, DMFLAG, DBNAME
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -13,7 +14,6 @@ C
          INCLUDE 'tupler.inc'
          INCLUDE 'attble.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'flags.inc'
          LOGICAL EQKEYW
          LOGICAL NE
          LOGICAL EQ

@@ -1,5 +1,6 @@
       SUBROUTINE RNAMEL(*)
 
+         USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -11,7 +12,6 @@ C
          INCLUDE 'tokens.inc'
          INCLUDE 'tuplel.inc'
          INCLUDE 'lnktbl.inc'
-         INCLUDE 'flags.inc'
          LOGICAL EQKEYW
          LOGICAL NE
          LOGICAL EQ

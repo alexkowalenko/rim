@@ -37,7 +37,6 @@ PROGRAM MAIN
    ! '=' = COPY MACRO TEXT
    !
    INCLUDE 'ascpar.inc'
-   INCLUDE 'flags.inc'
    INCLUDE 'rimcom.inc'
    INCLUDE 'dclar1.inc'
    LOGICAL :: RIM

@@ -1,5 +1,6 @@
       SUBROUTINE REMKEY(*)
 
+         USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -14,7 +15,6 @@ C     :  REMOVE KEY FOR ATTRIBUTE IN RELATION
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'attble.inc'
-         INCLUDE 'flags.inc'
          LOGICAL EQKEYW
          LOGICAL NE
          LOGICAL EQ

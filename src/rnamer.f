@@ -1,5 +1,6 @@
       SUBROUTINE RNAMER(*)
 
+         USE Globals, only : DFLAG
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
@@ -12,7 +13,6 @@ C
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'rimcom.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'files.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tuplel.inc'

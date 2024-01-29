@@ -1,5 +1,6 @@
       SUBROUTINE LNKPUT(STATUS)
 
+         USE Globals, only : IFMOD
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -8,7 +9,6 @@ C     REPLACE THE CURRENT LINK TUPLE INTO /LNKTBL/
 C
 C         STATUS--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
 
-         INCLUDE 'flags.inc'
          INCLUDE 'tuplel.inc'
          INCLUDE 'lnktbl.inc'
 C

@@ -1,5 +1,9 @@
       SUBROUTINE KMPARD(VALUE1,VALUE2,LEN,NK,OK)
+
          USE, intrinsic :: iso_fortran_env
+
+         USE Globals, only : PCENT, TOL
+
          INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE COMPARES VALUE1 AND VALUE2 TO SEE IF THEY MEET THE
@@ -13,7 +17,6 @@ C         NK------NUMBER FOR COMPARISON TYPE
 C         OK------.FALSE. COMING IN, .TRUE. GOING OUT IF THE CONDITIONS
 C                 ARE MET
 C
-         INCLUDE 'flags.inc'
          REAL(real64) :: TOLL
          REAL(real64) :: VALUE1(1),VALUE2(1)
          LOGICAL OK

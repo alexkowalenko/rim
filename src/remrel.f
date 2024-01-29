@@ -1,6 +1,6 @@
       SUBROUTINE REMREL(*)
 
-         USE Text, only : BLANK
+         USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
 
          INCLUDE 'syspar.inc'
 C
@@ -13,7 +13,6 @@ C
          INCLUDE 'tupler.inc'
          INCLUDE 'reltbl.inc'
          INCLUDE 'attble.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'files.inc'
          INCLUDE 'rmatts.inc'
 C

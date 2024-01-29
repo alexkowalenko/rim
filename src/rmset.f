@@ -1,5 +1,8 @@
       SUBROUTINE RMSET(*)
 
+         USE Globals, only : DBNAME, USERID, CASEIG, TRACE, ARBCHS,
+     +   ARBCHM, KRMDTF, KRMTMF, KRMINF, KRMRNF, KMSSVL, KMSSVT,
+     +   KNAPVL, KNAPVT, IFMOD
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
@@ -10,7 +13,6 @@ C
          INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'tokens.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'files.inc'
 C
          LOGICAL EQKEYW

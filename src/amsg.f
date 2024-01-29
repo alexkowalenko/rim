@@ -22,7 +22,6 @@ C-----------------------------------------
          CHARACTER*1 MCONT
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'files.inc'
          INCLUDE 'msgcom.inc'
          LOGICAL DTB

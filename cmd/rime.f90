@@ -3,6 +3,7 @@ PROGRAM MAIN
    USE, intrinsic :: iso_fortran_env
 
    USE Parameters
+   USE Globals, only: KRMRNF
    USE DateTime, only: RMTIME, RMDATE
    USE RandomFiles, only : RIOOPN, RIOCLO, RIOIN, RIOOUT
    USE System, only: SystemExit, SystemInitialise, SYSDBG, SYSDBN
@@ -21,7 +22,6 @@ PROGRAM MAIN
    INCLUDE 'ascpar.inc'
    INCLUDE 'tokens.inc'
    INCLUDE 'rmatts.inc'
-   INCLUDE 'flags.inc'
    INCLUDE 'cflags.inc'
    INCLUDE 'rimcom.inc'
    INCLUDE 'files.inc'

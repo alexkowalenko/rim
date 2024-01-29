@@ -60,6 +60,7 @@ contains
 
    SUBROUTINE RIOIN(FILE,RECORD,BUFFER,NWDS,IOS)
       USE Parameters, only : ZNFIL1, Z
+      USE Globals, only : TRACE
       !
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
       !
@@ -80,8 +81,6 @@ contains
 
       INTEGER :: I, IUN
 
-      INCLUDE 'flags.inc'
-
       READ(FILE,REC=RECORD,IOSTAT=IOS) (BUFFER(I),I=1,NWDS)
       IUN = FILE - ZNFIL1 + 1
       IRECPS(IUN) = RECORD
@@ -98,6 +97,7 @@ contains
 
    SUBROUTINE RIOOUT(FILE,RECORD,BUFFER,NWDS,IOS)
       USE Parameters, only : ZNFIL1, Z
+      USE Globals, only : TRACE
       !
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
       !
@@ -110,7 +110,6 @@ contains
       !     NWDS----NUMBER OF WORDS PER BUFFER
       !     IOS-----STATUS VARIABLE - 0 MEANS SUCCESS, ELSE TILT
       !
-      INCLUDE 'flags.inc'
       INTEGER, intent(in) :: FILE
       INTEGER, intent(in) :: RECORD
       INTEGER :: BUFFER(1)

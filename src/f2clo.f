@@ -1,5 +1,6 @@
       SUBROUTINE F2CLO
 
+         USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER
          USE RandomFiles, only : RIOCLO, RIOIN, RIOOUT
          USE Utils, only : ZMOVE
 
@@ -11,7 +12,6 @@ C
          INCLUDE 'f2com.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'flags.inc'
 C
 C  SEQUENCE THROUGH THE BUFFERS LOOKING FOR WRITE FLAGS.
 C

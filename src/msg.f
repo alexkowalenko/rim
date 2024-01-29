@@ -1,8 +1,9 @@
       SUBROUTINE MSG(MTYPE,MTEXT,MCONT)
 
-      USE DateTime, only: RMTIME, RMDATE
+         USE Globals, only : PGFLAG
+         USE DateTime, only: RMTIME, RMDATE
 
-      INCLUDE 'syspar.inc'
+         INCLUDE 'syspar.inc'
 C
 C  ROUTINE TO FORMAT AND PRINT MESSAGES
 C
@@ -28,69 +29,68 @@ C     MCONT---IF NON-BLANK MESSAGE CONTINUES ON NEXT CALL
 C
 C     MTYPE IS IGNORED IF THE MESSAGE BUFFER IS NOT EMPTY
 C
-      CHARACTER*(*) MTYPE
-      CHARACTER*(*) MTEXT
-      CHARACTER*(1) MCONT
+         CHARACTER*(*) MTYPE
+         CHARACTER*(*) MTEXT
+         CHARACTER*(1) MCONT
 C
-      INCLUDE 'rmatts.inc'
-      INCLUDE 'files.inc'
-      INCLUDE 'flags.inc'
-      INCLUDE 'msgcom.inc'
-      INCLUDE 'cards.inc'
+         INCLUDE 'rmatts.inc'
+         INCLUDE 'files.inc'
+         INCLUDE 'msgcom.inc'
+         INCLUDE 'cards.inc'
 C
-      CHARACTER*1 CTYPE, MTYPE1
+         CHARACTER*1 CTYPE, MTYPE1
 C
 C     SETUP CASE CONVERSION CODE (FOR MESSAGE PRETTY PRINTING)
 C
-      CTYPE = ' '
-      IF (LEN(MTYPE).GE.2) CTYPE = MTYPE(2:2)
-      IF (CTYPE.EQ.' ') THEN
-         IF (MSGPTR.EQ.0) THEN
-            CTYPE = 'F'
-         ELSE
-            CTYPE = 'L'
+         CTYPE = ' '
+         IF (LEN(MTYPE).GE.2) CTYPE = MTYPE(2:2)
+         IF (CTYPE.EQ.' ') THEN
+            IF (MSGPTR.EQ.0) THEN
+               CTYPE = 'F'
+            ELSE
+               CTYPE = 'L'
+            ENDIF
          ENDIF
-      ENDIF
 C
 C     CHECK MTYPE IF NO MESSAGE PENDING
 C
-      IF (MSGPTR.EQ.0) THEN
-         MTYPE1 = MTYPE(1:1)
-         IF ( (MTYPE1.EQ.'E' .OR. MTYPE1.EQ.'W') .AND.
-     1        (.NOT. (CONNI .OR. ECHO .OR. PGFLAG))) THEN
+         IF (MSGPTR.EQ.0) THEN
+            MTYPE1 = MTYPE(1:1)
+            IF ( (MTYPE1.EQ.'E' .OR. MTYPE1.EQ.'W') .AND.
+     1           (.NOT. (CONNI .OR. ECHO .OR. PGFLAG))) THEN
 C           IDENTIFY THE INPUT LINE
-            CALL MSGCMV('LINE:','F')
-            CALL IMSG(INLINE,6,' ')
-         ENDIF
-         IF (MTYPE1.EQ.'E') THEN
-            CALL MSGCMV('YOUR REQUEST CANNOT BE COMPLETED.','F')
-            MSUNIT = NOUT
-            CALL AMSG(L,0,' ')
+               CALL MSGCMV('LINE:','F')
+               CALL IMSG(INLINE,6,' ')
+            ENDIF
+            IF (MTYPE1.EQ.'E') THEN
+               CALL MSGCMV('YOUR REQUEST CANNOT BE COMPLETED.','F')
+               MSUNIT = NOUT
+               CALL AMSG(L,0,' ')
 C--------   STOP INPUT FROM FILE ON ERROR
 C--------   CALL SETIN(ZTRMIN)
+            ENDIF
+            IF (MTYPE1.EQ.'W') CALL MSGCMV('* ','F')
+            MSUNIT = NOUT
+            IF (MTYPE1.EQ.'R') MSUNIT = NOUTR
+            IF (MTYPE1.EQ.'L') MSUNIT = NOUTL
+            IF (MTYPE1.EQ.'T') THEN
+               MSUNIT = NOUTT
+               CALL MSGCMV('* ','U')
+               TDAY = RMDATE()
+               TTIM = RMTIME()
+               CALL DMSG(TDAY,0,'+',KZDATE)
+               CALL MSGCMV(' ','U')
+               CALL DMSG(TTIM,0,'+',KZTIME)
+               CALL MSGCMV('* ','U')
+            ENDIF
          ENDIF
-         IF (MTYPE1.EQ.'W') CALL MSGCMV('* ','F')
-         MSUNIT = NOUT
-         IF (MTYPE1.EQ.'R') MSUNIT = NOUTR
-         IF (MTYPE1.EQ.'L') MSUNIT = NOUTL
-         IF (MTYPE1.EQ.'T') THEN
-            MSUNIT = NOUTT
-            CALL MSGCMV('* ','U')
-            TDAY = RMDATE()
-            TTIM = RMTIME()
-            CALL DMSG(TDAY,0,'+',KZDATE)
-            CALL MSGCMV(' ','U')
-            CALL DMSG(TTIM,0,'+',KZTIME)
-            CALL MSGCMV('* ','U')
-         ENDIF
-      ENDIF
 C
-      L = LEN(MTEXT)
-      IF (L+MSGPTR.GT.ZPRINL) L = ZPRINL - MSGPTR
-      IF (L.GT.0) CALL MSGCMV(MTEXT(1:L),CTYPE)
+         L = LEN(MTEXT)
+         IF (L+MSGPTR.GT.ZPRINL) L = ZPRINL - MSGPTR
+         IF (L.GT.0) CALL MSGCMV(MTEXT(1:L),CTYPE)
 C
 C     PRINT IF NO CONTINUATION
 C
-900   IF (MCONT.NE.'+') CALL AMSG(L,0,MCONT)
-      RETURN
+  900    IF (MCONT.NE.'+') CALL AMSG(L,0,MCONT)
+         RETURN
       END

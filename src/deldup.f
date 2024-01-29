@@ -1,5 +1,6 @@
       SUBROUTINE DELDUP(*)
 
+         USE Globals, only : DFLAG
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -20,7 +21,6 @@ C
          INCLUDE 'rimptr.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'rimcom.inc'

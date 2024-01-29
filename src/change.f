@@ -19,7 +19,6 @@ C         NTUP----SCRATCH ARRAY FOR A TUPLE
          INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'files.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'start.inc'

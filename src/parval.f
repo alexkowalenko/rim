@@ -28,7 +28,6 @@ C
          INCLUDE 'ascpar.inc'
          INCLUDE 'tokens.inc'
          INCLUDE 'lxlcom.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'files.inc'
          INCLUDE 'tuplea.inc'

@@ -1,5 +1,6 @@
       LOGICAL FUNCTION LOADMV(CCOL,CLEN)
 
+         USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
          USE Text, only : BLANK, ABLANK
          USE Utils, only : ZMOVE
 
@@ -14,7 +15,6 @@ C
          INCLUDE 'ascpar.inc'
          INCLUDE 'tokens.inc'
          INCLUDE 'cards.inc'
-         INCLUDE 'flags.inc'
 C
 C  DECLARATION STATEMENTS
 C

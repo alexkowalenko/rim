@@ -1,7 +1,9 @@
       SUBROUTINE UNDATA(ALL,IRCNTR,IDAY,MODE,LHASH,ATDATA)
 
-         USE DateTime, only : ASCDAT
+         USE Globals, only : USERID, KRMDTF, KRMINF, KRMRNF, KMSSVL,
+     +   KMSSVT, KNAPVL, KNAPVT
          USE Text, only : BLANK, ABLANK
+         USE DateTime, only : ASCDAT
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -20,7 +22,6 @@ C
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'rimcom.inc'

@@ -1,7 +1,8 @@
       SUBROUTINE SELPUT(VAL,TYP,FMT,START,STRING)
 
+         USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT, KRMRMF,
+     +   KRMDMF
          USE Text, only : BLANK
-
          USE Utils, only : NDIGIT
 
          INCLUDE 'syspar.inc'
@@ -14,7 +15,6 @@ C     START -- STARTING PLACE IN STRING
 C     STRING - PLACE TO PUT TEXT
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'rmatts.inc'
 C
          INTEGER IV(2)

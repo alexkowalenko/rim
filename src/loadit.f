@@ -1,5 +1,6 @@
       SUBROUTINE LOADIT(MAT,ATT)
 
+         USE Globals, only: HXFLAG
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'
@@ -17,7 +18,6 @@ C
          INCLUDE 'start.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
-         INCLUDE 'flags.inc'
 C
          INTEGER COLUMN
          LOGICAL EQKEYW

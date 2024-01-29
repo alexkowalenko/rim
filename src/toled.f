@@ -2,6 +2,8 @@
 
          USE, intrinsic :: iso_fortran_env
 
+         USE Globals, only : PCENT, TOL
+
          INCLUDE 'syspar.inc'
 C
 C     THIS ROUTINE APPLIES A TOLERANCE TO A DOUBLE ROUTINE
@@ -9,7 +11,6 @@ C
 C     K IS LOCBOO VALUE
 C     V(N) IS DOUBLE ARRAY
 C
-         INCLUDE 'flags.inc'
          REAL(real64) :: V(N)
          REAL(real64) :: X
 

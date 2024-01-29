@@ -1,5 +1,6 @@
       SUBROUTINE PGEXEC
 
+         USE Globals, only : TRACE, MRINDX, HXFLAG, CASEIG, PGFLAG
          USE Text, only : FILCH, ABLANK
          USE Utils, only : ZMOVE
 
@@ -9,7 +10,6 @@ C
 C     EXECUTE A RIM PROGRAM
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'cflags.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'buffer.inc'

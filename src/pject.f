@@ -1,5 +1,6 @@
       SUBROUTINE PJECT(*)
 
+         USE Globals, only : DFLAG, DMFLAG
          USE DateTime, only : RMDATE
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
@@ -20,7 +21,6 @@ C
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'rimcom.inc'
-         INCLUDE 'flags.inc'
 C
 C
          INTEGER STATUS

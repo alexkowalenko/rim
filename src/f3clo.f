@@ -1,5 +1,6 @@
       SUBROUTINE F3CLO
 
+         USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER
          USE RandomFiles, only : RIOCLO, RIOOUT
          USE Utils, only : ZEROIT, ZMOVE
 
@@ -11,7 +12,6 @@ C
          INCLUDE 'f3com.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'btbuf.inc'
-         INCLUDE 'flags.inc'
 C
 C  SEQUENCE THROUGH THE INCORE BLOCKS LOOKING FOR WRITE FLAGS.
 C

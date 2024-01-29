@@ -1,5 +1,6 @@
       SUBROUTINE LNKADD
 
+         USE Globals, only : IFMOD
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -9,7 +10,6 @@ C
          INCLUDE 'tuplel.inc'
          INCLUDE 'lnktbl.inc'
          INCLUDE 'f1com.inc'
-         INCLUDE 'flags.inc'
 C
 C  GET THE PAGE FOR ADDING NEW TUPLES.
 C

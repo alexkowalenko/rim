@@ -1,5 +1,6 @@
       SUBROUTINE TUPLRC(OPCODE,*)
 
+         USE Globals, only : DFLAG, DMFLAG
          USE DateTime, only : RMDATE
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
@@ -23,7 +24,6 @@ C
          INCLUDE 'ascpar.inc'
          INCLUDE 'tokens.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'

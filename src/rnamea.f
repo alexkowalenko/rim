@@ -1,5 +1,6 @@
       SUBROUTINE RNAMEA(*)
 
+         USE Globals, only : DFLAG, USERID, USERID
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
@@ -11,7 +12,6 @@ C     : RENAME <COLUMN> NAME TO NEW_NAME <IN TABLE>
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'tokens.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'files.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tuplel.inc'

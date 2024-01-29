@@ -1,5 +1,6 @@
       SUBROUTINE ATTPUT(STATUS)
 
+        USE Globals, only : IFMOD
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -9,7 +10,6 @@ C             BASED ON CONDITIONS SET UP IN LOCATT AND ATTGET
 C
 C  PARAMETERS:
 C         STATUS--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
-         INCLUDE 'flags.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'attble.inc'
          INTEGER STATUS

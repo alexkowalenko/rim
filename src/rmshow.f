@@ -1,5 +1,8 @@
       SUBROUTINE RMSHOW(*)
 
+         USE Globals, only : DFLAG, DBNAME, USERID, CASEIG, ARBCHS,
+     +   ARBCHM, KRMDTF, KRMTMF, KRMINF, KRMRNF, KMSSVL, KMSSVT, KNAPVL,
+     +   KNAPVT
          USE DateTime, only: RMTIME, RMDATE
          USE Text, only : BLANK
          USE Utils, only : NDIGIT
@@ -11,7 +14,6 @@ C
          INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'tokens.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'files.inc'
          INCLUDE 'msgcom.inc'
          INCLUDE 'lxlcom.inc'

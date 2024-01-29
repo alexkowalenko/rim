@@ -11,6 +11,7 @@ C              EOR--- <0  INDICATES ERROR
 C
 C     TOKEN IS PUT INTO /TOKENS/ AT ITEMS+1
 C
+         USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
          USE Text, only : UPCASE, BLANK, ABLANK
 
          INCLUDE 'syspar.inc'
@@ -21,7 +22,6 @@ C
          INCLUDE 'lxlcom.inc'
          INCLUDE 'tokens.inc'
          INCLUDE 'cards.inc'
-         INCLUDE 'flags.inc'
 C
          INTEGER ASCHR
          LOGICAL TXTONL,KWSOK,KNMOK

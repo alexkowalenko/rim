@@ -1,5 +1,8 @@
       SUBROUTINE CHKREL (PERM,MODE,ISTAT,NAMUSR)
-      INCLUDE 'syspar.inc'
+
+         USE Globals, only : OWNER
+
+         INCLUDE 'syspar.inc'
 C
 C     CHECKS PERMISSION TO SEE IF USER CAN UNLOAD THIS
 C     RELATION.  PERM SET TO TRUE IF USER CAN.
@@ -13,28 +16,27 @@ C  OUTPUT:
 C            PERM-------TRUE IF USER HAS PERMISSION TO UNLOAD
 C                       FALSE OTHERWISE
 C
-      INTEGER ISTAT
-      LOGICAL PERM
-      CHARACTER*(*) MODE
+         INTEGER ISTAT
+         LOGICAL PERM
+         CHARACTER*(*) MODE
 C
-      INCLUDE 'tupler.inc'
-      INCLUDE 'flags.inc'
-      INTEGER NAMUSR(Z)
-      LOGICAL EQ
- 
-      PERM = .TRUE.
-      CALL RELGET (ISTAT)
-      IF (ISTAT .NE. 0) GO TO 10
+         INCLUDE 'tupler.inc'
+         INTEGER NAMUSR(Z)
+         LOGICAL EQ
+
+         PERM = .TRUE.
+         CALL RELGET (ISTAT)
+         IF (ISTAT .NE. 0) GO TO 10
 C
 C  CHECK FOR OWNER
 C
-      IF(EQ(OWNER,NAMUSR)) GO TO 20
+         IF(EQ(OWNER,NAMUSR)) GO TO 20
 C
 C  CHECK FOR MODIFY PASSWORD
 C
-      IF (EQ(MPW,NONE) .OR. EQ(MPW,NAMUSR)) GO TO 20
+         IF (EQ(MPW,NONE) .OR. EQ(MPW,NAMUSR)) GO TO 20
 C
-10    PERM = .FALSE.
+   10    PERM = .FALSE.
 C
-20    RETURN
+   20    RETURN
       END

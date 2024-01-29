@@ -1,5 +1,6 @@
       SUBROUTINE WHETOL
 
+         USE Globals, only: TOL
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
@@ -11,7 +12,6 @@ C     ROW.  EQ AND NE WILL BE DONE IN KOMPAR.
 C
          INCLUDE 'rmatts.inc'
          INCLUDE 'whcom.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'rimptr.inc'
          IF(TOL.EQ.0.) RETURN
          IF(NBOO.EQ.0) RETURN

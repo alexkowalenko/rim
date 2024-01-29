@@ -1,5 +1,6 @@
       SUBROUTINE SORT(NKSORT)
 
+         USE Globals, only : PGFLAG, MRINDX
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -18,7 +19,6 @@ C     SORT MAY BE CALLED WITH NSOVAR=0 TO COPY THE SELECTED
 C     TUPLES TO UNIT=ZNSRT (PASS-THRU SORT)
 C
          INCLUDE 'rimptr.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'srtcom.inc'
          INCLUDE 'rimcom.inc'

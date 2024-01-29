@@ -1,5 +1,6 @@
       SUBROUTINE RMLOOK(MAT,INDEX,IFLAG,LENGTH)
 
+         USE Globals, only : TRACE, HXFLAG
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
@@ -21,7 +22,6 @@ C         LENGTH--LENGTH OF TUPLE IN WORDS
          INCLUDE 'whcom.inc'
          INCLUDE 'start.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'flags.inc'
 C
          DIMENSION MAT(1)
          LOGICAL EQTEST, WHEVAL

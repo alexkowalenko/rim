@@ -45,6 +45,7 @@ toled.f toler.f tuplrc.f typer.f undata.f undef.f union.f
 unload.f unpass.f varadd.f warn.f whetol.f
 wheval.f whrnam.f xhibit.f
 datetime.f90
+globals.f90
 randomfiles.f90
 system.f90
 text.f90
@@ -83,6 +84,7 @@ adddat.f ascan.f atoi.f ator.f
  union.f whetol.f wheval.f 
  whrnam.f xhibit.f
  datetime.f90
+ globals.f90
  randomfiles.f90
  text.f90
  utils.f90)

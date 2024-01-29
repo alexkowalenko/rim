@@ -13,7 +13,6 @@ C
          INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'tuplea.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'pgmcom.inc'
 C
   100    IF (PGVPTR+2+Z+ATTWDS.GT.PGVMAX) THEN

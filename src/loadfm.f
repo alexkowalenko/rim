@@ -25,7 +25,6 @@ C
          INCLUDE 'cards.inc'
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'start.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'rmatts.inc'

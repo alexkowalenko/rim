@@ -1,5 +1,6 @@
       LOGICAL FUNCTION WHEVAL(ITUP)
 
+         USE Globals, only : TOL
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
@@ -17,7 +18,6 @@ C
          INCLUDE 'whcom.inc'
          INCLUDE 'start.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'pgmcom.inc'
 C
          LOGICAL OK,BTEST

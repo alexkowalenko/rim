@@ -1,5 +1,6 @@
       INTEGER FUNCTION SWITCP(I1,I2,LEN)
 
+         USE Globals, only : CASEIG
          USE Text, only : UPCASE
 
          INCLUDE 'syspar.inc'
@@ -9,8 +10,6 @@ C
 C     IF I1 = I2 THEN SET SWITCP ZERO
 C     IF I1 > I2 THEN SET SWITCP NEG
 C     IF I1 < I2 THEN SET SWITCP POS
-C
-         INCLUDE 'flags.inc'
 C
          IF (LEN.EQ.0) GOTO 15
          NC = LEN*ZCW

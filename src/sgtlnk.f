@@ -12,7 +12,6 @@ C     LP = POINTER TO LINKED TUPLE IN BUFFER
 C     RETURNS TRUE IF LINKED TUPLE FOUND
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'tupler.inc'

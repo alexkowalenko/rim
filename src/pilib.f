@@ -1,5 +1,6 @@
       FUNCTION RIM(IND,COM)
 
+         USE Globals, only : KDBVER, MRINDX, PIFLAG
          USE Text, only : ASCTXT
          USE System, only : SYSCOM
 
@@ -18,7 +19,6 @@ C
          INCLUDE 'tokens.inc'
          INCLUDE 'cards.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'files.inc'
@@ -156,7 +156,10 @@ C
          ENDIF
          RETURN
       END
+
+
       FUNCTION RIMDM(IND,COM,TUPLE)
+         USE Globals, only : DFLAG, DMFLAG
          INCLUDE 'syspar.inc'
 C
 C     RIM FORTRAN INTERFACE (DATA MOVEMENT)
@@ -176,7 +179,6 @@ C
          INCLUDE 'ascpar.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'
-         INCLUDE 'flags.inc'
 C
          CHARACTER*1 OP
 C

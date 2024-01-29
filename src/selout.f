@@ -1,7 +1,7 @@
       SUBROUTINE SELOUT(MAT,IATT,ADONE)
 
+         USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
          USE Text, only : BLANK, ABLANK
-
          USE DateTime, only : ASCDAT
          USE Text, only : FILCH
          USE Utils, only : ITOH
@@ -16,7 +16,6 @@ C     ADONE.....SET TO .TRUE. IF NO PARAGRAPHING LEFT
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'lxlcom.inc'
-         INCLUDE 'flags.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'selcom.inc'
 C
