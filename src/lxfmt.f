@@ -1,6 +1,6 @@
       SUBROUTINE LXFMT(I,TYP,FMT,LEN)
 
-         USE Text, only : UPCASE
+         USE Text, only : UPCASE, ATOI
 
          INCLUDE 'syspar.inc'
 C
@@ -18,7 +18,7 @@ C
          CHARACTER*1 FC
          CHARACTER*12 CFMT
 C
-         LOGICAL T, ATOI
+         LOGICAL T
 C
          FMT = 0
 C     ALLOW FORMAT TO BE TEXT-ONLY STRING

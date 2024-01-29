@@ -2,6 +2,7 @@
 
          USE Globals, only : KRMTMF
          USE DateTime, only : JULDAT, ASMTXT
+         USE Text, only : ATOI
 
          INCLUDE 'syspar.inc'
 C
@@ -15,7 +16,6 @@ C
          INCLUDE 'ascpar.inc'
          INCLUDE 'tokens.inc'
          INCLUDE 'rmatts.inc'
-         LOGICAL ATOI
 C
          LXDATE = .FALSE.
 C

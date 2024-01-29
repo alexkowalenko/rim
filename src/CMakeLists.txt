@@ -6,7 +6,7 @@
 
 add_library(rimintlib STATIC
 adddat.f amsg.f ascan.f asctxt.f
-atoi.f ator.f attadd.f attdel.f attget.f
+ator.f attadd.f attdel.f attget.f
 attnew.f attpag.f attput.f
 blkchg.f blkcln.f blkclr.f blkdef.f blkdsp.f blkdwn.f
 blkext.f blkloc.f blkmov.f blknxt.f blkup.f
@@ -18,7 +18,7 @@ dbload.f dbopcl.f dbopen.f deldat.f deldup.f delete.f
 delrow.f dmsg.f dtfenc.f dtfspl.f dtor.f eq.f eqkeyw.f eqtok.f
 f1clo.f f1opn.f f2clo.f f2opn.f f3clo.f f3opn.f fmtdec.f
 getdat.f getkca.f gett.f gtsort.f
-iexp.f imsg.f isect.f itoa.f
+iexp.f imsg.f isect.f
 join.f joirel.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
 lfind.f lkstr.f lnkadd.f lnkget.f lnkpag.f lnkput.f loadfm.f
 loadit.f loadmv.f locase.f locatt.f locboo.f loclnk.f locmac.f
@@ -54,7 +54,7 @@ utils.f90
 )
 
 add_library(rimlib STATIC
-adddat.f ascan.f atoi.f ator.f
+adddat.f ascan.f ator.f
  attadd.f attdel.f attget.f attnew.f attpag.f attput.f
  blkchg.f blkcln.f blkclr.f blkdef.f blkdsp.f blkdwn.f blkext.f
  blkloc.f blkmov.f blknxt.f blkup.f btadd.f btget.f btinit.f
@@ -64,7 +64,7 @@ adddat.f ascan.f atoi.f ator.f
  deldup.f delete.f delrow.f dtfenc.f dtfspl.f dtor.f eq.f eqkeyw.f
  eqtok.f fmtdec.f f1clo.f f1opn.f f2clo.f f2opn.f
  f3clo.f f3opn.f getdat.f getkca.f gett.f gtsort.f
- iexp.f isect.f itoa.f join.f joirel.f
+ iexp.f isect.f join.f joirel.f
  kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f lfind.f lkstr.f locase.f
  locatt.f locboo.f locmac.f locprm.f locrel.f lodele.f lodpas.f
  lodrec.f lodrel.f lstrel.f lstrng.f lxcmnt.f lxdate.f lxedit.f

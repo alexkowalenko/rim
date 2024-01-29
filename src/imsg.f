@@ -1,5 +1,6 @@
       SUBROUTINE IMSG(NUM,NUMC,MCONT)
 
+         USE Text, only : ITOA
          USE Utils, only : NDIGIT
 
          INCLUDE 'syspar.inc'

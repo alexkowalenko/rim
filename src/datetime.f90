@@ -150,7 +150,7 @@ contains
 
       USE Parameters
       USE Globals, only : KMSSVL, KRMDTF, KRMTMF, KMSSVT, KNAPVT, KNAPVL
-      USE Text, only : FILCH, ABLANK
+      USE Text, only : FILCH, ABLANK, ITOA
 
       !
       ! CONVERT A DATE INTEGER TO ASCII-TEXT

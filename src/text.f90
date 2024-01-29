@@ -10,6 +10,7 @@ MODULE Text
    public ASCCHR
    public ASCTXT
    public FILCH
+   public ATOI, ITOA
 
    INTEGER, public :: ABLANK, BLANK(Z)
    !     ABLANK --- A ASCII-CHAR BLANK
@@ -103,5 +104,103 @@ CONTAINS
       END DO
       RETURN
    END SUBROUTINE FILCH
+
+
+   LOGICAL FUNCTION ATOI(ASTR,SC,NC,VAL)
+      implicit none
+      !
+      ! CONVERT ASCII-TEXT TO INTEGER AND RETURN TRUE IF OK
+      !
+      ! SC -- STARTING CHAR IN ASTR
+      ! NC -- NUMBER OF CHARS
+      INTEGER, intent(in) :: ASTR(*), SC, NC
+      INTEGER, intent(out) :: VAL
+      !
+      INCLUDE 'lxlcom.inc'
+
+      INTEGER :: SGN, I, A
+      !
+      VAL = 0
+      SGN = 1
+      DO I = 1, NC
+         CALL GETT(ASTR,SC+I-1,A)
+         IF (A.EQ.ASPACE) THEN
+            GOTO 100
+         ELSE IF (A.EQ.MNSIGN) THEN
+            SGN = -1
+         ELSE IF (A.GE.U0 .AND. A.LE.U9) THEN
+            VAL = VAL*10 + A - U0
+         ELSE
+            ATOI = .FALSE.
+            VAL = 0
+            RETURN
+         ENDIF
+100      CONTINUE
+      END DO
+      VAL = VAL * SGN
+      ATOI = .TRUE.
+      RETURN
+   END FUNCTION ATOI
+
+
+   SUBROUTINE ITOA(STRING,SC,FMT,INT,IERR)
+
+      USE Parameters, only : Z
+      USE Utils, only : NDIGIT
+
+      implicit none
+      !
+      ! THIS ROUTINE CONVERTS AN INTEGER (INT) TO ASCII-TEXT (STRING)
+      ! IF THE INTEGER WILL NOT FIT, STRING IS
+      ! STARRED AND IERR IS RETURNED NON-ZERO.
+      !
+      ! STRING....REPOSITORY FOR TEXT OF INT
+      ! SC .......STARTING CHARACTER POS
+      ! FMT ......FORMAT CODE (TOTAL WIDTH + 100*DECIMAL + 10000*REPEAT)
+      ! INT.......INTEGER TO CONVERT.
+      ! IERR......0 IF INT FITS, 1 OTHERWISE
+      !
+      INCLUDE 'lxlcom.inc'
+
+      INTEGER, intent(out) :: STRING(*), IERR
+      INTEGER, intent(in) :: SC, FMT, INT
+
+      INTEGER :: S, F, N, NC, D, DP, MINL, L
+
+      !
+      IERR = 0
+      S = SC - 1
+      !
+      F = MOD(FMT,10000)
+      N = ABS(INT)
+      NC = MOD(F,100)
+      CALL FILCH(STRING,SC,NC,ABLANK)
+      D = F / 100
+      DP = NC - D
+      MINL = NDIGIT(N)
+      IF (D.NE.0) MINL = MINL + 1
+      IF (INT.LT.0) MINL = MINL + 1
+      !
+      L = NC
+      IF (L.LT.MINL) GOTO 800
+100   CALL PUTT(STRING,S+L,MOD(N,10)+U0)
+      L = L-1
+      N = N/10
+      IF (L.EQ.DP) THEN
+         CALL PUTT(STRING,S+L,DECIM)
+         L = L-1
+      ENDIF
+      IF (N.GT.0 .OR. DP.LT.L) GOTO 100
+      !
+      IF (INT.LT.0) CALL PUTT(STRING,S+L,MNSIGN)
+      RETURN
+
+      ! NUMBER TOO BIG
+
+800   CALL FILCH(STRING,SC,NC,ASSTAR)
+      IERR = 1
+      RETURN
+   END SUBROUTINE ITOA
+
 
 END MODULE Text

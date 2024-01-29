@@ -2,7 +2,7 @@
 
          USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT, KRMRMF,
      +   KRMDMF
-         USE Text, only : BLANK
+         USE Text, only : BLANK, ITOA
          USE Utils, only : NDIGIT
 
          INCLUDE 'syspar.inc'
@@ -16,6 +16,8 @@ C     STRING - PLACE TO PUT TEXT
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
+         INTEGER :: FMT
+         INTEGER :: STRING(*)
 C
          INTEGER IV(2)
 C
