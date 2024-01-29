@@ -1,6 +1,7 @@
       SUBROUTINE LSTREL(*)
 
          USE DateTime, only: RMTIME, RMDATE
+         USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

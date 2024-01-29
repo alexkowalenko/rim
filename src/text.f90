@@ -1,13 +1,32 @@
 MODULE Text
+
+   USE Parameters, only : Z
+
    implicit none
    private
 
+   public Text_Initialise
    public UPCASE
    public ASCCHR
    public ASCTXT
    public FILCH
 
+   INTEGER, public :: ABLANK, BLANK(Z)
+   !     ABLANK --- A ASCII-CHAR BLANK
+   !     BLANK ---- ASCII-TEXT (Z) BLANKS
+
 CONTAINS
+
+   SUBROUTINE Text_Initialise()
+      USE Parameters, only : ZC
+      INTEGER :: I
+
+      ABLANK = ASCCHR(' ')
+      DO I = 1, ZC
+         CALL PUTT(BLANK,I,ABLANK)
+      END DO
+   END SUBROUTINE Text_Initialise
+
 
    INTEGER FUNCTION UPCASE(ASCHR)
       !

@@ -1,7 +1,7 @@
       SUBROUTINE ITOA(STRING,SC,FMT,INT,IERR)
 
          USE Utils, only : NDIGIT
-         USE Text, only : FILCH
+         USE Text, only : FILCH, ABLANK
 
          INCLUDE 'syspar.inc'
 C

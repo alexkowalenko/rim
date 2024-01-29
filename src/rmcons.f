@@ -8,7 +8,8 @@ C
 C------------------------------------------------------------
 C
 
-         USE Text, only : ASCCHR, ASCTXT
+         USE DateTime, only : DateTime_Initialise
+         USE Text, only : Text_Initialise, ASCCHR, ASCTXT
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -21,15 +22,9 @@ C
          INCLUDE 'prom.inc'
          INCLUDE 'maccom.inc'
 C
-         CHARACTER*3 MONTHS(12)
-         DATA MONTHS /'JAN','FEB','MAR','APR','MAY','JUN',
-     X     'JUL','AUG','SEP','OCT','NOV','DEC'/
-C
 C     /ASCPAR/
 C
-         ABLANK = ASCCHR(' ')
-         DO 20  I = 1, ZC
-   20    CALL PUTT(BLANK,I,ABLANK)
+         CALL Text_Initialise
 C
          CALL ASCTXT(KDBHDR,ZC,'RIM DATABASE')
          CALL ASCTXT(NONE,ZC,' ')
@@ -38,9 +33,7 @@ C
          KNAPVL = 4
          CALL ASCTXT(KNAPVT,ZC,'-NA-')
 C
-         DO 50 I = 1, 12
-            ASMTXT(I) = 0
-   50    CALL ASCTXT(ASMTXT(I),3,MONTHS(I))
+         CALL DateTime_Initialise
 C
 C     HELP TEXT NAMES
          CALL ASCTXT(KZHPDB,ZC,'RIM_HELP')

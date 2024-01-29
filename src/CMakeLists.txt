@@ -5,7 +5,7 @@
 #set(CMAKE_Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/src)
 
 add_library(rimintlib STATIC
-adddat.f amsg.f ascan.f asctxt.f ascdat.f
+adddat.f amsg.f ascan.f asctxt.f
 atoi.f ator.f attadd.f attdel.f attget.f
 attnew.f attpag.f attput.f
 blkchg.f blkcln.f blkclr.f blkdef.f blkdsp.f blkdwn.f
@@ -53,7 +53,7 @@ utils.f90
 )
 
 add_library(rimlib STATIC
-adddat.f ascan.f ascdat.f atoi.f ator.f
+adddat.f ascan.f atoi.f ator.f
  attadd.f attdel.f attget.f attnew.f attpag.f attput.f
  blkchg.f blkcln.f blkclr.f blkdef.f blkdsp.f blkdwn.f blkext.f
  blkloc.f blkmov.f blknxt.f blkup.f btadd.f btget.f btinit.f

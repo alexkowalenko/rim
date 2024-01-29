@@ -1,5 +1,7 @@
       SUBROUTINE SELPUT(VAL,TYP,FMT,START,STRING)
 
+         USE Text, only : BLANK
+
          USE Utils, only : NDIGIT
 
          INCLUDE 'syspar.inc'

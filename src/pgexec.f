@@ -1,6 +1,6 @@
       SUBROUTINE PGEXEC
 
-         USE Text, only : FILCH
+         USE Text, only : FILCH, ABLANK
          USE Utils, only : ZMOVE
 
 

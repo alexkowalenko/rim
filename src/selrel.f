@@ -1,5 +1,6 @@
       FUNCTION SELREL(FTOK,NTOK)
 
+         USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

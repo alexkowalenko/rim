@@ -1,5 +1,6 @@
       LOGICAL FUNCTION LOADMV(CCOL,CLEN)
 
+         USE Text, only : BLANK, ABLANK
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

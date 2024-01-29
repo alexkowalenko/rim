@@ -1,6 +1,6 @@
       LOGICAL FUNCTION VARADD()
 
-         USE Text, only : FILCH
+         USE Text, only : FILCH, ABLANK
          USE Utils, only : ZMOVE, HTOI
 
          INCLUDE 'syspar.inc'

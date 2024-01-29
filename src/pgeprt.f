@@ -3,7 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE Parameters
-         USE Text, only : FILCH
+         USE Text, only : FILCH, ABLANK
 
 C
 C     EXECUTE HEAD/FOOT PRINT

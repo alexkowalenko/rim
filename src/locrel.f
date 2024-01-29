@@ -1,5 +1,6 @@
       FUNCTION LOCREL(RNAME)
 
+         USE Text, only : BLANK
          USE Utils, only : ZMOVE, NULLIT
 
          INCLUDE 'syspar.inc'

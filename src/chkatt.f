@@ -1,6 +1,7 @@
       SUBROUTINE CHKATT(TMPA,NUMELE,ERROR)
 
          USE DateTime, only : RMDATE
+         USE Text, only: BLANK
          USE Utils, only : ZMOVE, ITOH
 
          INCLUDE 'syspar.inc'

@@ -1,6 +1,6 @@
       SUBROUTINE ASCTXTX(ATXT,LTXT,CSTR)
 
-         USE Text, only : ASCCHR
+         USE Text, only : ASCCHR, ABLANK
 
          INCLUDE 'syspar.inc'
 C

@@ -2,7 +2,7 @@
 
          USE, intrinsic :: iso_fortran_env
 
-         USE Text, only : FILCH
+         USE Text, only : FILCH, ABLANK
 
          INCLUDE 'syspar.inc'
 C

@@ -1,5 +1,6 @@
       FUNCTION LOCATT(ANAME,RNAME)
 
+         USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

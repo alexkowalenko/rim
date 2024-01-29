@@ -1,6 +1,6 @@
       SUBROUTINE LXEDIT
 
-         USE Text, only : UPCASE
+         USE Text, only : UPCASE, ABLANK
          USE TextFiles, only : TIOIN
 
          INCLUDE 'syspar.inc'

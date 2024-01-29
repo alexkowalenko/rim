@@ -1,6 +1,7 @@
       SUBROUTINE RMSHOW(*)
 
          USE DateTime, only: RMTIME, RMDATE
+         USE Text, only : BLANK
          USE Utils, only : NDIGIT
 
          INCLUDE 'syspar.inc'

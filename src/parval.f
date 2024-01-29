@@ -1,5 +1,9 @@
       SUBROUTINE PARVAL(ID,MAT,ATYPE,NWORDS,ROW,NCOLT,IERR)
+
          USE, intrinsic :: iso_fortran_env
+
+         USE Text, only : BLANK
+
          INCLUDE 'syspar.inc'
 C
 C     THIS ROUTINE PARSES A VALUE SPECIFICATION AND STORES THE

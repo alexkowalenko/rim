@@ -1,5 +1,7 @@
       SUBROUTINE UNDATA(ALL,IRCNTR,IDAY,MODE,LHASH,ATDATA)
 
+         USE DateTime, only : ASCDAT
+         USE Text, only : BLANK, ABLANK
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

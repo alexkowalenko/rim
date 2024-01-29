@@ -1,5 +1,6 @@
       SUBROUTINE RMINIT
 
+         USE Text, only : BLANK
          USE Utils, only : ZEROIT, ZMOVE
 
          INCLUDE 'syspar.inc'

@@ -155,7 +155,7 @@ CONTAINS
 
    FUNCTION GETLIN(COM)
 
-      USE Text, only : ASCCHR
+      USE Text, only : ASCCHR, BLANK
 
       INCLUDE 'syspar.inc'
       !
@@ -194,7 +194,7 @@ CONTAINS
 
 
    FUNCTION KEY3(SUB)
-      USE Text, only : UPCASE
+      USE Text, only : UPCASE, BLANK, ABLANK
 
       INCLUDE 'syspar.inc'
       !
@@ -230,19 +230,21 @@ CONTAINS
 
 
    SUBROUTINE LODROW(LINE,NC)
-      INCLUDE 'syspar.inc'
+      USE Text, only : ABLANK
       !
       ! WRITE A LINE TO DB
       !
       INCLUDE 'rimcom.inc'
       LOGICAL :: RIMDM
       !
-      INTEGER :: LINE(NW)
+      INTEGER, intent(in) :: LINE(NW)
+      INTEGER, intent(in) :: NC
 
       ! DATA TO HOLD THE TEXT TUPLES
-      PARAMETER (TPL=3+NW+2)
-      PARAMETER (TXTSRT=4)
+      INTEGER, PARAMETER :: TPL=3+NW+2
+      INTEGER, PARAMETER :: TXTSRT=4
       COMMON /TUP/ TUPLE(TPL)
+      INTEGER :: TUPLE
 
       DO I = 1, NW
          TUPLE(TXTSRT+1+I) = LINE(I)

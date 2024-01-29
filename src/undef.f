@@ -1,5 +1,6 @@
       SUBROUTINE UNDEF(ALL,IRCNTR,IDAY,MODE,LHASH,ATREL)
 
+         USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

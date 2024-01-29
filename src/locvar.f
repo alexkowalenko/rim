@@ -1,5 +1,6 @@
       FUNCTION LOCVAR(ANAME)
 
+         USE Text, only : BLANK
          USE Utils, only : ZMOVE, ITOH
 
          INCLUDE 'syspar.inc'

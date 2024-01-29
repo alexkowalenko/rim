@@ -11,7 +11,7 @@ C              EOR--- <0  INDICATES ERROR
 C
 C     TOKEN IS PUT INTO /TOKENS/ AT ITEMS+1
 C
-         USE Text, only : UPCASE
+         USE Text, only : UPCASE, BLANK, ABLANK
 
          INCLUDE 'syspar.inc'
 

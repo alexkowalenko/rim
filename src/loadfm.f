@@ -1,6 +1,7 @@
       SUBROUTINE LOADFM(MAT,ATT,FOR,NFOR)
 
          USE TextFiles, only : TIOIN
+         USE Text, only : ABLANK
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'

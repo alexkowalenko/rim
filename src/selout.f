@@ -1,5 +1,8 @@
       SUBROUTINE SELOUT(MAT,IATT,ADONE)
 
+         USE Text, only : BLANK, ABLANK
+
+         USE DateTime, only : ASCDAT
          USE Text, only : FILCH
          USE Utils, only : ITOH
 

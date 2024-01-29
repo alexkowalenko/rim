@@ -1,6 +1,7 @@
       SUBROUTINE JOIREL(*)
 
          USE DateTime, only : RMDATE
+         USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

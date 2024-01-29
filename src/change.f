@@ -1,5 +1,6 @@
       SUBROUTINE CHANGE(MAT,NVAL,IFLAG,NTUP)
 
+         USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

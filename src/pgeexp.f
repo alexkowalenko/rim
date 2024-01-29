@@ -1,6 +1,8 @@
       FUNCTION PGEEXP(VP,TP)
 
          USE, intrinsic :: iso_fortran_env
+
+         USE Text, only : BLANK
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

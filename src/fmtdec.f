@@ -1,5 +1,6 @@
       SUBROUTINE FMTDEC(DTFINT,TYPE,DTFASC,DTFASL)
 
+         USE Text, only : ABLANK
          USE Utils, only : NDIGIT
 
          INCLUDE 'syspar.inc'
