@@ -1,6 +1,6 @@
 MODULE Globals
 
-   USE Parameters, only : Z
+   USE Parameters, only : Z, ZFNAML
 
    implicit none
    private
@@ -63,5 +63,10 @@ MODULE Globals
    !         INLINE--INPUT LINE NUMBER IN CURRENT FILE
    !         KRMRMF--MAX PRECISION REAL FORMAT
    !         KRMDMF--MAX PRECISION DOUBLE FORMAT
+
+   CHARACTER(len=ZFNAML), public :: DBFNAM
+   !
+   !     DBFNAM  - FILENAME OF ACTIVE DATABASE
+   !
 
 END MODULE Globals

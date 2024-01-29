@@ -1,7 +1,7 @@
       SUBROUTINE F1OPN(RIMDB1)
 
          USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, DFLAG,
-     +   DMFLAG
+     +   DMFLAG, DBFNAM
          USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
          USE Text, only : ASCTXT
          USE Utils, only : ZEROIT, ZMOVE
@@ -19,7 +19,6 @@ C
          INCLUDE 'attble.inc'
          INCLUDE 'reltbl.inc'
          INCLUDE 'lnktbl.inc'
-         INCLUDE 'cflags.inc'
 
          LOGICAL NE
          COMMON /USAGE/ CPTTD,CPSTRT,KUSAGE(20)

@@ -1,6 +1,6 @@
       SUBROUTINE DBOPCL(*,MODE)
 
-         USE Globals, only : DFLAG, DBNAME
+         USE Globals, only : DFLAG, DBNAME, DBFNAM
          USE System, only : SYSDBG, SYSDBN, CHKFIL
 
          INCLUDE 'syspar.inc'
@@ -9,7 +9,6 @@ C     OPEN/CLOSE A DATABASE
 C
          CHARACTER*(*) MODE
 C
-         INCLUDE 'cflags.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'tokens.inc'
 

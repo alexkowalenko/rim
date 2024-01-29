@@ -2,7 +2,7 @@
 
          USE, intrinsic :: iso_fortran_env
 
-         USE Globals, only : LIBFLG, TOL, HXFLAG, PCENT, RUCK
+         USE Globals, only : LIBFLG, TOL, HXFLAG, PCENT, RUCK, DBFNAM
          USE Text, only: ASCTXT
 
          INCLUDE 'syspar.inc'
@@ -23,7 +23,6 @@ C
          INCLUDE 'rmatts.inc'
          INCLUDE 'tokens.inc'
          INCLUDE 'files.inc'
-         INCLUDE 'cflags.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'buffer.inc'

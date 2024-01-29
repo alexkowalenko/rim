@@ -146,6 +146,7 @@ contains
 
 
    SUBROUTINE SYSDBG(DBX,STATUS)
+      USE Globals, only: DBFNAM
       !
       ! ***UNIX SYSTEM DEPENDENT ROUTINE ***
       !
@@ -155,7 +156,6 @@ contains
       ! DBX = POINTER IN TOKENS TO DATABASE NAME
       !
       INCLUDE 'tokens.inc'
-      INCLUDE 'cflags.inc'
 
       INTEGER, intent(in) :: DBX
       INTEGER, intent(out) :: STATUS

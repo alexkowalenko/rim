@@ -1,13 +1,12 @@
       SUBROUTINE RMZIP(*)
 
-         USE Globals, only : DFLAG
+         USE Globals, only : DFLAG, DBFNAM
          USE System, only : SystemCommand
 
          INCLUDE 'syspar.inc'
 C
 C  PURPOSE:  PROCESS ZIP COMMAND  (CALL SYSTEM FUNCTION)
 C
-         INCLUDE 'cflags.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'tokens.inc'
          INCLUDE 'cards.inc'
