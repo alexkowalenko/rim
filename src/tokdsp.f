@@ -5,12 +5,14 @@
          USE Parameters
          USE Text, only : FILCH, ABLANK
 
+         implicit none
+
 C
 C     DISPLAY /TOKENS/ COMMON
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'tokens.inc'
-         INTEGER :: RTXT(ZPRINW)
+         INTEGER :: RTXT(ZPRINW), I, RF, N, ERR
+         INTEGER :: IEXP ! Function
 C
          CALL MSG(' ',' /TOKENS/ ',' ')
          DO 100 I = 1, ITEMS
@@ -35,8 +37,8 @@ C
             CALL IMSG(RF,4,'+')
             CALL MSG(' ',')=','+')
             CALL FILCH(RTXT,1,ZPRINL,ABLANK)
-            CALL RTOA(RTXT,1,RF,IDR(I),ERR)
-            CALL RTOA(RTXT,40,-RF,IDR(I),ERR)
+            CALL RTOA(RTXT,1, RF, IDR(I), ERR)
+            CALL RTOA(RTXT,40,-RF, IDR(I), ERR)
             CALL AMSG(RTXT,-79,' ')
             CALL MSG(' ','[','+')
             CALL AMSG(ASCREC(IDP(I)),IDL(I),'+')

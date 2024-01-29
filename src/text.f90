@@ -11,6 +11,7 @@ MODULE Text
    public ASCTXT
    public FILCH
    public ATOI, ITOA
+   public ATOR
 
    INTEGER, public :: ABLANK, BLANK(Z)
    !     ABLANK --- A ASCII-CHAR BLANK
@@ -201,6 +202,87 @@ CONTAINS
       IERR = 1
       RETURN
    END SUBROUTINE ITOA
+
+
+   LOGICAL FUNCTION ATOR(ASTR,SC,NC,VAL)
+
+      USE, intrinsic :: iso_fortran_env
+
+      implicit none
+      !
+      ! CONVERT ASCII-TEXT TO DP AND RETURN TRUE IF OK
+      !
+      ! SC -- STARTING CHAR IN ASTR
+      ! NC -- NUMBER OF CHARS
+      !
+      INCLUDE 'lxlcom.inc'
+
+      INTEGER, intent(in) :: ASTR(*), SC, NC
+      REAL(real64), intent(out) :: VAL
+
+      REAL :: DFAC, EXP
+      REAL(real64) :: V
+      INTEGER :: A, SVAL, SEXP, IFAC, MODE, I
+      !
+      ATOR = .FALSE.
+      VAL = 0.0
+      EXP = 0.0
+      SVAL = 1
+      SEXP = 1
+      IFAC = 10
+      DFAC = 1.0
+      !
+      MODE = 0
+      DO I = 1, NC
+         CALL GETT(ASTR,SC+I-1,A)
+         IF (A.EQ.ASPACE) GOTO 100
+         !
+         !
+         IF (MODE.EQ.0) THEN
+            ! VALUE PART OF THE NUMBER
+            IF (A.EQ.PLSIGN) THEN
+               SVAL = 1
+            ELSE IF (A.EQ.MNSIGN) THEN
+               SVAL = -1
+            ELSE IF (A.EQ.DECIM) THEN
+               IFAC = 1
+               DFAC = 10.0
+            ELSE IF (A.EQ.UECH .OR. A.EQ.LECH) THEN
+               MODE = 1
+            ELSE IF (A.GE.U0 .AND. A.LE.U9) THEN
+               V   = FLOAT(A-U0)
+               IF (IFAC.NE.1) THEN
+                  VAL = VAL*IFAC
+               ELSE
+                  V   = V / DFAC
+                  DFAC = DFAC * 10.0
+               ENDIF
+               VAL = VAL + V
+            ELSE
+               VAL = 0.0
+               RETURN
+            ENDIF
+         ELSE
+            ! EXPONENT
+            IF (A.EQ.PLSIGN) THEN
+               SEXP = 1
+            ELSE IF (A.EQ.MNSIGN) THEN
+               SEXP = -1
+            ELSE IF (A.GE.U0 .AND. A.LE.U9) THEN
+               V   = FLOAT(A-U0)
+               EXP = EXP*10 + V
+            ELSE
+               VAL = 0.0
+               RETURN
+            ENDIF
+         ENDIF
+100      CONTINUE
+      END DO
+      VAL = VAL * SVAL
+      IF (EXP.NE.0.0) VAL = VAL * (10.0**(EXP*SEXP))
+      ATOR = .TRUE.
+      RETURN
+   END FUNCTION ATOR
 
 
 END MODULE Text

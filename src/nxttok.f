@@ -12,7 +12,7 @@ C
 C     TOKEN IS PUT INTO /TOKENS/ AT ITEMS+1
 C
          USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
-         USE Text, only : UPCASE, BLANK, ABLANK, ATOI
+         USE Text, only : UPCASE, BLANK, ABLANK, ATOI, ATOR
 
          INCLUDE 'syspar.inc'
 
@@ -25,7 +25,7 @@ C
 C
          INTEGER ASCHR
          LOGICAL TXTONL,KWSOK,KNMOK
-         LOGICAL CHTYPE, ATOR, EQ
+         LOGICAL CHTYPE, EQ
          CHARACTER*1 CHRASC
          INTEGER NULLBF(Z)
 C

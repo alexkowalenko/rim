@@ -1,7 +1,7 @@
       SUBROUTINE LOADFM(MAT,ATT,FOR,NFOR)
 
          USE TextFiles, only : TIOIN
-         USE Text, only : ABLANK, ATOI
+         USE Text, only : ABLANK, ATOI, ATOR
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'
@@ -38,7 +38,6 @@ C
          INTEGER MAT(MAXCOL), ATT(ZTUPAL,1), FOR(6,1)
          LOGICAL LOADMV
          LOGICAL EQ, NE
-         LOGICAL ATOR
 C
 C     LOOP ON FORMAT
 C
