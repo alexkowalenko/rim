@@ -1,6 +1,8 @@
       SUBROUTINE PGEXEC
 
+         USE Text, only : FILCH
          USE Utils, only : ZMOVE
+
 
          INCLUDE 'syspar.inc'
 C
@@ -193,7 +195,7 @@ C
             CALL PGEPRT(HDRPTR)
          ENDIF
 
-         CALL FILCH(LINE,1,UPRINL,BLANK)
+         CALL FILCH(LINE,1,UPRINL,ABLANK)
 
          DO 1240 I = 1, NUMATT
             IF (LIN1(I).GT.L) THEN
@@ -233,7 +235,7 @@ C        OUTPUT FIXED TEXT
 
          MSUNIT = NOUTR
          CALL AMSG(LINE,-UPRINL,' ')
-         CALL FILCH(LINE,1,UPRINL,BLANK)
+         CALL FILCH(LINE,1,UPRINL,ABLANK)
          BUFFER(RLNPTR) = BUFFER(RLNPTR) + 1
 
          IF (ULPP.GT.0 .AND. BUFFER(RLNPTR).GE.ULPP) THEN

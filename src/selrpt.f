@@ -2,6 +2,8 @@
 
          USE, intrinsic :: iso_fortran_env
 
+         USE Text, only : FILCH
+
          INCLUDE 'syspar.inc'
 C
 C     REPORT SELECTED DATA
@@ -33,7 +35,7 @@ C
          NUMSEL = 0
          OKLINE = .TRUE.
          SLVMHD = .TRUE.
-         CALL FILCH(LINE,1,UPRINL,BLANK)
+         CALL FILCH(LINE,1,UPRINL,ABLANK)
          DO 20 I = 1, ZMSEL
             CNT(I) = 0
             SUM(1,I) = 0
@@ -75,7 +77,7 @@ C     ALDONE WILL BE TRUE WHEN ALL PARAGRAPHING IS COMPLETED
          ALDONE = .FALSE.
 C
    70    ALDONE = .TRUE.
-         CALL FILCH(LINE,1,UPRINL,BLANK)
+         CALL FILCH(LINE,1,UPRINL,ABLANK)
 C
 C     LOOP ON ATTRIBUTES
 C
@@ -220,7 +222,7 @@ C
 
             ENDIF
             OKLINE = .TRUE.
-            CALL FILCH(LINE,1,UPRINL,BLANK)
+            CALL FILCH(LINE,1,UPRINL,ABLANK)
             DO 620 I = 1, ZMSEL
                CNT(I) = 0
                SUM(1,I) = ZIMISS

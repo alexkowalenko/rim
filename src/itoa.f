@@ -1,6 +1,7 @@
       SUBROUTINE ITOA(STRING,SC,FMT,INT,IERR)
 
          USE Utils, only : NDIGIT
+         USE Text, only : FILCH
 
          INCLUDE 'syspar.inc'
 C
@@ -16,6 +17,8 @@ C     IERR......0 IF INT FITS, 1 OTHERWISE
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'lxlcom.inc'
+
+         INTEGER, intent(out) :: STRING(*)
 C
          IERR = 0
          S = SC - 1

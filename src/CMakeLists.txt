@@ -2,7 +2,7 @@
 # CMakeLists.txt libraries
 #
 
-set(CMAKE_Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/src)
+#set(CMAKE_Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/src)
 
 add_library(rimintlib STATIC
 adddat.f amsg.f ascan.f asctxt.f ascdat.f
@@ -16,7 +16,7 @@ build.f change.f chgdat.f chgpsw.f chkatt.f
 chkrel.f chrasc.f chtype.f dbdefn.f
 dbload.f dbopcl.f dbopen.f deldat.f deldup.f delete.f
 delrow.f dmsg.f dtfenc.f dtfspl.f dtor.f eq.f eqkeyw.f eqtok.f
-f1clo.f f1opn.f f2clo.f f2opn.f f3clo.f f3opn.f filch.f fmtdec.f
+f1clo.f f1opn.f f2clo.f f2opn.f f3clo.f f3opn.f fmtdec.f
 getdat.f getkca.f gett.f gtsort.f
 iexp.f imsg.f isect.f itoa.f
 join.f joirel.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
@@ -61,7 +61,7 @@ adddat.f ascan.f ascdat.f atoi.f ator.f
  change.f chgdat.f chgpsw.f chkatt.f chkrel.f chrasc.f
  chtype.f dbdefn.f dbload.f dbopcl.f dbopen.f deldat.f
  deldup.f delete.f delrow.f dtfenc.f dtfspl.f dtor.f eq.f eqkeyw.f
- eqtok.f filch.f fmtdec.f f1clo.f f1opn.f f2clo.f f2opn.f
+ eqtok.f fmtdec.f f1clo.f f1opn.f f2clo.f f2opn.f
  f3clo.f f3opn.f getdat.f getkca.f gett.f gtsort.f
  iexp.f isect.f itoa.f join.f joirel.f
  kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f lfind.f lkstr.f locase.f

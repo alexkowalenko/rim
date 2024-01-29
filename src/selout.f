@@ -1,5 +1,6 @@
       SUBROUTINE SELOUT(MAT,IATT,ADONE)
 
+         USE Text, only : FILCH
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

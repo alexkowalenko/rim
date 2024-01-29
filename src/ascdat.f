@@ -1,6 +1,7 @@
       SUBROUTINE ASCDAT(STR,SC,L,JDAT,DFMT,TYP)
 
          USE DateTime, only : DATJUL
+         USE Text, only : FILCH
 
          INCLUDE 'syspar.inc'
 C

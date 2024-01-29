@@ -1093,7 +1093,7 @@ This form will load data either from the terminal
 or from a file.  The command block
 \<"load" <table>\\
       <data records>\\
-      "end" \opt{"load"}\>
+      "end" \opt{load}\>
 loads the data records into the specified table.
  
 If the data records are in a file, use the command
@@ -1157,7 +1157,7 @@ It is also usually in a file and looks like
 \<"format"\\
     <line> <position> <column_name> <format>\\
     \vdots\\
-    "end" \opt{"format"}\>
+    "end" \opt{format}\>
 where <line> is 1 for the first input record of a row, 2 for
 the next input record, etc.
 <Position> is the starting character position in the record
@@ -1243,10 +1243,10 @@ If you need more flexibility, or more complicated reports,
 you should use the report writer (Chapter~\ref{report-writer}).
 The "select" command has the general format
 \<"select" <column specifications> + \\
-  \qquad \opt{"from" <relation>} + \\
+  \qquad \opt{from <relation>} + \\
   \qquad \opt{<where clause>} + \\
   \qquad \opt{<sort clause>} + \\
-  \qquad \opt{"to" <filename>}\>
+  \qquad \opt{to <filename>}\>
 where the last three clauses are optional.
 If you omit the "from" clause Rim will use the most recently
 accessed table.  If there is no such table

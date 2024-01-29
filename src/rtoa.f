@@ -2,6 +2,8 @@
 
          USE, intrinsic :: iso_fortran_env
 
+         USE Text, only : FILCH
+
          INCLUDE 'syspar.inc'
 C
 C     CONVERT A REAL (RNUM) TO ASCII-TEXT (STRING)
@@ -14,6 +16,7 @@ C     FMT ......FORMAT (LENGTH + 100*DECIMAL PLACES + 10000*REPEAT)
 C     RNUM......VALUE TO CONVERT.
 C     IERR......0 IF VAL FITS, 1 OTHERWISE
 C
+         INTEGER, intent(out) :: STRING(*)
          REAL(real64) :: RNUM
 C
          INCLUDE 'ascpar.inc'

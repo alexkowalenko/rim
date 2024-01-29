@@ -5,6 +5,7 @@ MODULE Text
    public UPCASE
    public ASCCHR
    public ASCTXT
+   public FILCH
 
 CONTAINS
 
@@ -67,5 +68,21 @@ CONTAINS
       END DO
       RETURN
    END SUBROUTINE ASCTXT
+
+
+   SUBROUTINE FILCH(ASC,ST,NC,CH)
+      INTEGER, intent(out) :: ASC(*)
+      INTEGER, intent(in) :: ST, NC, CH
+      !
+      ! FILL ASC (ASCII-TEXT) WITH CH (ASCII-CHAR)
+      ! ST IS START IN ASC, NC IS NUMBER OF CHARS
+      !
+      INTEGER :: I
+
+      DO I = ST,ST+NC-1
+         CALL PUTT(ASC,I,CH)
+      END DO
+      RETURN
+   END SUBROUTINE FILCH
 
 END MODULE Text
