@@ -3,6 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE Globals, only : MRINDX, HXFLAG
+         USE Maths, only : RTOD
          USE Text, only : FILCH, ABLANK
 
          INCLUDE 'syspar.inc'

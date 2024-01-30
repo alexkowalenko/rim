@@ -1,5 +1,6 @@
       SUBROUTINE BTADD(VALU,IPTR,TYPE)
 
+         USE Maths, only : DTOR
          USE Utils, only : HTOI, ITOH
 
          INCLUDE 'syspar.inc'

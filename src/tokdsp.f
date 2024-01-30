@@ -3,6 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE Parameters
+         USE Maths, only : IEXP
          USE Text, only : FILCH, ABLANK
 
          implicit none
@@ -12,7 +13,6 @@ C     DISPLAY /TOKENS/ COMMON
 C
          INCLUDE 'tokens.inc'
          INTEGER :: RTXT(ZPRINW), I, RF, N, ERR
-         INTEGER :: IEXP ! Function
 C
          CALL MSG(' ',' /TOKENS/ ',' ')
          DO 100 I = 1, ITEMS

@@ -14,10 +14,9 @@ btmove.f btput.f btrep.f btsert.f
 build.f change.f chgdat.f chgpsw.f chkatt.f
 chkrel.f chrasc.f chtype.f dbdefn.f
 dbload.f dbopcl.f dbopen.f deldat.f deldup.f delete.f
-delrow.f dmsg.f dtfenc.f dtfspl.f dtor.f eq.f eqkeyw.f eqtok.f
+delrow.f dmsg.f dtfenc.f dtfspl.f eq.f eqkeyw.f eqtok.f
 f1clo.f f1opn.f f2clo.f f2opn.f f3clo.f f3opn.f fmtdec.f
-getdat.f getkca.f gett.f gtsort.f
-iexp.f imsg.f isect.f
+getdat.f getkca.f gett.f gtsort.f imsg.f isect.f
 join.f joirel.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
 lfind.f lkstr.f lnkadd.f lnkget.f lnkpag.f lnkput.f loadfm.f
 loadit.f loadmv.f locatt.f locboo.f loclnk.f locmac.f
@@ -30,10 +29,9 @@ pgcomp.f pgcprt.f pgeexp.f pgeprt.f pgexec.f pgstor.f
 pject.f prckey.f prjtup.f prmset.f prompt.f ptrs.f putdat.f putt.f
 reladd.f relget.f relpag.f relput.f remkey.f remlnk.f remrel.f
 report.f reuse.f rformt.f rimcmd.f
-ritoa.f rmclos.f rmcons.f rmhelp.f rminit.f
+rmclos.f rmcons.f rmhelp.f rminit.f
 rmlook.f rmpii.f rmqery.f rmres.f rmsav.f rmset.f rmshow.f
-rmtypt.f rmvarc.f rmzip.f rnamea.f rnamel.f rnamer.f
-roun.f rtoa.f rtod.f
+rmtypt.f rmvarc.f rmzip.f rnamea.f rnamel.f rnamer.f roun.f rtoa.f
 selatt.f select.f selout.f selput.f selrel.f selrpt.f selsrt.f
 selwhr.f setin.f setout.f sgtlnk.f sort.f strasc.f strmov.f
 subtrc.f swcon.f swcost.f swfilo.f swflfs.f swhart.f swhrtd.f swhrti.f
@@ -45,6 +43,7 @@ unload.f unpass.f varadd.f warn.f whetol.f
 wheval.f whrnam.f xhibit.f
 datetime.f90
 globals.f90
+maths.f90
 randomfiles.f90
 system.f90
 text.f90
@@ -59,10 +58,10 @@ adddat.f ascan.f attadd.f attdel.f attget.f attnew.f attpag.f attput.f
  btlki.f btlkr.f btmove.f btput.f btrep.f btsert.f build.f
  change.f chgdat.f chgpsw.f chkatt.f chkrel.f chrasc.f
  chtype.f dbdefn.f dbload.f dbopcl.f dbopen.f deldat.f
- deldup.f delete.f delrow.f dtfenc.f dtfspl.f dtor.f eq.f eqkeyw.f
+ deldup.f delete.f delrow.f dtfenc.f dtfspl.f eq.f eqkeyw.f
  eqtok.f fmtdec.f f1clo.f f1opn.f f2clo.f f2opn.f
  f3clo.f f3opn.f getdat.f getkca.f gett.f gtsort.f
- iexp.f isect.f join.f joirel.f
+ isect.f join.f joirel.f
  kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f lfind.f lkstr.f
  locatt.f locboo.f locmac.f locprm.f locrel.f lodele.f lodpas.f
  lodrec.f lodrel.f lstrel.f lstrng.f lxcmnt.f lxdate.f lxedit.f
@@ -70,11 +69,10 @@ adddat.f ascan.f attadd.f attdel.f attget.f attnew.f attpag.f attput.f
  motscn.f ne.f nxtchr.f nxtchx.f nxttok.f
  parse.f parval.f pilib.f pilibx.f pject.f prckey.f prjtup.f
  ptrs.f putdat.f putt.f reladd.f relget.f relpag.f relput.f remkey.f
- remrel.f reuse.f rformt.f
- ritoa.f rmclos.f rmcons.f rminit.f rmlook.f rmpii.f
+ remrel.f reuse.f rformt.f rmclos.f rmcons.f rminit.f rmlook.f rmpii.f
  rmqery.f rmres.f rmsav.f rmset.f rmtypt.f rmvarc.f
  rmxdel.f rmxget.f rmxlod.f rmxput.f rnamea.f rnamer.f roun.f
- rtoa.f rtod.f selrel.f selsrt.f selwhr.f sort.f strasc.f strmov.f 
+ rtoa.f selrel.f selsrt.f selwhr.f sort.f strasc.f strmov.f 
  subtrc.f swcon.f swcost.f swfilo.f swflfs.f swhart.f swhrtd.f 
  swhrti.f swhrtr.f swicst.f swidcp.f swiicp.f swinpo.f swircp.f 
  switcp.f swshel.f swsink.f swsmfl.f swsmvl.f swunlo.f swunvl.f 
@@ -83,6 +81,7 @@ adddat.f ascan.f attadd.f attdel.f attget.f attnew.f attpag.f attput.f
  whrnam.f xhibit.f
  datetime.f90
  globals.f90
+ maths.f90
  randomfiles.f90
  text.f90
  utils.f90)

@@ -1,5 +1,7 @@
 MODULE Text
 
+   USE, intrinsic :: iso_fortran_env
+
    USE Parameters, only : Z
 
    implicit none
@@ -12,6 +14,7 @@ MODULE Text
    public FILCH
    public ATOI, ITOA
    public ATOR
+   public RITOA
 
    INTEGER, public :: ABLANK, BLANK(Z)
    !     ABLANK --- A ASCII-CHAR BLANK
@@ -301,5 +304,55 @@ CONTAINS
       RETURN
    END FUNCTION ATOR
 
+
+   SUBROUTINE RITOA(STRING,SC,LEN,RINT,REM,IERR)
+      USE Maths, only : IEXP
+      !
+      ! CONVERT THE INTEGER PARTOF A DOUBLE (RINT) TO ASCII-TEXT (STRING)
+      ! IF IT WILL NOT FIT RETURN IERR > 0
+      !
+      ! STRING....REPOSITORY FOR TEXT OF INT
+      ! SC .......STARTING CHARACTER POS
+      ! LEN ......LENGHT OF STRING
+      ! RINT......REAL TO CONVERT (MAY BE LARGER THAN MAX INT)
+      ! REM ......DECIMAL PART OF RINT
+      ! IERR......0 IF RINT FITS, 1 OTHERWISE
+      !
+
+      INTEGER, intent(out) :: STRING(*)
+      INTEGER, intent(in) :: SC, LEN
+      REAL(real64), intent(in) :: RINT
+      REAL(real64), intent(out) :: REM
+      INTEGER, intent(out) :: IERR
+
+      INCLUDE 'lxlcom.inc'
+
+      REAL(real64) :: R
+      INTEGER :: I, DG, S, E, IN
+      !
+      IERR = 0
+      R = DABS(RINT)
+      DG = IEXP(R)
+      IF (DG.GT.LEN) GOTO 800
+      S = SC + LEN - DG - 1
+      IF (RINT.LT.0) THEN
+         IF (S.LT.SC) GOTO 800
+         CALL PUTT(STRING,S,MNSIGN)
+      ENDIF
+      !
+      DO I = 1, DG
+         E = DG - I
+         IN = R / (10.0D0**E)
+         IF (IN.GT.9) IN = 9
+         CALL PUTT(STRING,S+I,IN+U0)
+         R = R - IN*(10.0D0**E)
+      END DO
+      REM = R
+      RETURN
+
+      ! NUMBER TOO BIG
+800   IERR = 1
+      RETURN
+   END SUBROUTINE RITOA
 
 END MODULE Text
