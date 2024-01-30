@@ -1,6 +1,6 @@
       SUBROUTINE MSGCMV(MTEXT,CTYPE)
 
-         USE Text, only : ASCCHR
+         USE Text, only : ASCCHR, LOCASE
 
          INCLUDE 'syspar.inc'
 C

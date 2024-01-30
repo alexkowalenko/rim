@@ -20,7 +20,7 @@ getdat.f getkca.f gett.f gtsort.f
 iexp.f imsg.f isect.f
 join.f joirel.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
 lfind.f lkstr.f lnkadd.f lnkget.f lnkpag.f lnkput.f loadfm.f
-loadit.f loadmv.f locase.f locatt.f locboo.f loclnk.f locmac.f
+loadit.f loadmv.f locatt.f locboo.f loclnk.f locmac.f
 locprm.f locrel.f locvar.f lodele.f lodlnk.f lodpas.f lodrec.f
 lodrel.f lstrel.f lstrng.f lxcmnt.f lxdate.f lxedit.f lxfmt.f
 lxinit.f lxlenw.f lxsrec.f lxwrec.f macdef.f macexp.f motscn.f
@@ -63,7 +63,7 @@ adddat.f ascan.f attadd.f attdel.f attget.f attnew.f attpag.f attput.f
  eqtok.f fmtdec.f f1clo.f f1opn.f f2clo.f f2opn.f
  f3clo.f f3opn.f getdat.f getkca.f gett.f gtsort.f
  iexp.f isect.f join.f joirel.f
- kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f lfind.f lkstr.f locase.f
+ kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f lfind.f lkstr.f
  locatt.f locboo.f locmac.f locprm.f locrel.f lodele.f lodpas.f
  lodrec.f lodrel.f lstrel.f lstrng.f lxcmnt.f lxdate.f lxedit.f
  lxfmt.f lxinit.f lxlenw.f lxsrec.f lxwrec.f macdef.f macexp.f

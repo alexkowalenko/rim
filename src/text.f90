@@ -6,7 +6,7 @@ MODULE Text
    private
 
    public Text_Initialise
-   public UPCASE
+   public UPCASE, LOCASE
    public ASCCHR
    public ASCTXT
    public FILCH
@@ -46,6 +46,23 @@ CONTAINS
       ENDIF
       RETURN
    END FUNCTION UPCASE
+
+
+   INTEGER FUNCTION LOCASE(ASCHR)
+      !
+      ! RETURN THE LOWER CASE EQUIVALENT OF ASCHR (ASCII-CHAR)
+      !
+      INTEGER, intent(in) :: ASCHR
+      INTEGER, PARAMETER :: UA=65,UZ=90,OFF=97-65
+      !
+      !
+      IF (ASCHR.LT.UA .OR. ASCHR.GT.UZ) THEN
+         LOCASE = ASCHR
+      ELSE
+         LOCASE = ASCHR + OFF
+      ENDIF
+      RETURN
+   END FUNCTION LOCASE
 
 
    INTEGER FUNCTION ASCCHR(CH)

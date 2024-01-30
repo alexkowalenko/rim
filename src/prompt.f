@@ -1,6 +1,6 @@
       SUBROUTINE PROMPT(PTXT)
 
-         USE Text, only : ABLANK
+         USE Text, only : ABLANK, LOCASE
 
          INCLUDE 'syspar.inc'
 C

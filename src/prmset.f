@@ -1,6 +1,6 @@
       SUBROUTINE PRMSET(MODE,PR)
 
-         USE Text, only : ASCCHR
+         USE Text, only : ASCCHR, LOCASE
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
