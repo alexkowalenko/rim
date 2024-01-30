@@ -1,4 +1,4 @@
-      SUBROUTINE RTOA(STRING,SC,FMT,RNUM,IERR)
+      SUBROUTINE RTOA_X(STRING,SC,FMT,RNUM,IERR)
 
          USE, intrinsic :: iso_fortran_env
 

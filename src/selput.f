@@ -37,11 +37,11 @@ C
             IF (VAL.EQ.ZIMISS .OR. VAL.EQ.ZINAPP) GOTO 8000
             IF (TYP.EQ.KZDOUB) THEN
                IF (FMT.EQ.0) FMT = KRMDMF
-               CALL RTOA(STRING,START,FMT,VAL,IERR)
+               CALL RTOA_X(STRING,START,FMT,VAL,IERR)
             ELSE
                IF (FMT.EQ.0) FMT = KRMRMF
                CALL RTOD(IV,VAL)
-               CALL RTOA(STRING,START,FMT,IV,IERR)
+               CALL RTOA_X(STRING,START,FMT,IV,IERR)
             ENDIF
          ENDIF
          GOTO 9999

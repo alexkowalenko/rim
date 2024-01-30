@@ -4,7 +4,7 @@
 
          USE Parameters
          USE Maths, only : IEXP
-         USE Text, only : FILCH, ABLANK
+         USE Text, only : FILCH, ABLANK, RTOA
 
          implicit none
 
