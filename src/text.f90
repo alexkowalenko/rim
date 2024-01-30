@@ -9,7 +9,7 @@ MODULE Text
 
    public Text_Initialise
    public UPCASE, LOCASE
-   public ASCCHR
+   public ASCCHR, CHRASC
    public ASCTXT
    public FILCH
    public ATOI, ITOA
@@ -81,6 +81,20 @@ CONTAINS
       IF (ASCCHR.EQ.9) ASCCHR = 32
       RETURN
    END FUNCTION ASCCHR
+
+
+   FUNCTION CHRASC(ASCHR)
+      !
+      !     **UNIX SYSTEM DEPENDENT INTERNAL ROUTINE **
+      !
+      !     RETURN THE CHARACTER EQUIVALENT OF ASCHR (ASCII-CHAR)
+      !
+      CHARACTER(len=1) CHRASC
+      INTEGER ASCHR
+      !
+      CHRASC = CHAR(ASCHR)
+      RETURN
+   END
 
 
    SUBROUTINE ASCTXT(ATXT,LTXT,CSTR)

@@ -242,18 +242,24 @@ C
          ENDIF
          RETURN
       END
+
+      
       SUBROUTINE TXTASC(STR,ASC,NC)
-         INCLUDE 'syspar.inc'
+         USE Text, only: CHRASC
 C
 C     RETURN THE CHARACTER EQUIVALENT OF ASC (ASCII-TEXT, LENGTH NC)
 C     (LIKE STRASC BUT WITHOUT UPPER CASE TRANSLATION)
 C
-         CHARACTER*(*) STR
-         CHARACTER*1 CHRASC
+         CHARACTER*(*), intent(out) :: STR
+         INTEGER, intent(in) :: ASC(*)
+         INTEGER, intent(in) :: NC
+
+         INTEGER :: CH
 C
          STR = ' '
-         DO 100 I = 1, MIN(NC,LEN(STR))
+         DO I = 1, MIN(NC,LEN(STR))
             CALL GETT(ASC,I,CH)
-  100    STR(I:I) = CHRASC(CH)
+            STR(I:I) = CHRASC(CH)
+         END DO
          RETURN
       END

@@ -1,4 +1,7 @@
-# RIM: Relational DBMS in FORTRAN 77
+# RIM: Relational DBMS in FORTRAN 2018
+
+This is a port and refactor to Fortran 2018 of the Fortran 77 code.
+
 RIM (*Relational Information Management*) is a relational database management
 package, originally written in FORTRAN 66 for CDC Cyber, UNIVAC, DEC VAX, and
 PRIME. This version of RIM is a descendent of the Boeing Computer Services

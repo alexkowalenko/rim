@@ -70,7 +70,6 @@ CONTAINS
 
 
    SUBROUTINE TIOCLO(FILE,UNIT,MODE)
-      implicit none
       !
       ! ***UNIX SYSTEM DEPENDENT ROUTINE ***
       !
@@ -146,6 +145,7 @@ CONTAINS
 
    SUBROUTINE TIOOUT(FILE,TEXT,LEN,IERR)
       USE Parameters, only : ZPRINL, znint
+      USE Text, only: CHRASC
       !
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
       !
@@ -165,7 +165,7 @@ CONTAINS
 
       INCLUDE 'files.inc'
 
-      CHARACTER(len=1) :: CHRASC, ffchar
+      CHARACTER(len=1) :: ffchar
       CHARACTER(ZPRINL) :: OULINE
       INTEGER L, I, CH
       !

@@ -1,6 +1,6 @@
       SUBROUTINE LXFMT(I,TYP,FMT,LEN)
 
-         USE Text, only : UPCASE, ATOI
+         USE Text, only : UPCASE, ATOI, CHRASC
 
          INCLUDE 'syspar.inc'
 C
@@ -14,7 +14,6 @@ C
          INCLUDE 'tokens.inc'
          INCLUDE 'rmatts.inc'
 C
-         CHARACTER*1 CHRASC
          CHARACTER*1 FC
          CHARACTER*12 CFMT
 C

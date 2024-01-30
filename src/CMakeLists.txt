@@ -12,7 +12,7 @@ blkext.f blkloc.f blkmov.f blknxt.f blkup.f
 btadd.f btget.f btinit.f btlki.f btlkr.f
 btmove.f btput.f btrep.f btsert.f
 build.f change.f chgdat.f chgpsw.f chkatt.f
-chkrel.f chrasc.f chtype.f dbdefn.f
+chkrel.f chtype.f dbdefn.f
 dbload.f dbopcl.f dbopen.f deldat.f deldup.f delete.f
 delrow.f dmsg.f dtfenc.f dtfspl.f eq.f eqkeyw.f eqtok.f
 f1clo.f f1opn.f f2clo.f f2opn.f f3clo.f f3opn.f fmtdec.f
@@ -56,7 +56,7 @@ adddat.f ascan.f attadd.f attdel.f attget.f attnew.f attpag.f attput.f
  blkchg.f blkcln.f blkclr.f blkdef.f blkdsp.f blkdwn.f blkext.f
  blkloc.f blkmov.f blknxt.f blkup.f btadd.f btget.f btinit.f
  btlki.f btlkr.f btmove.f btput.f btrep.f btsert.f build.f
- change.f chgdat.f chgpsw.f chkatt.f chkrel.f chrasc.f
+ change.f chgdat.f chgpsw.f chkatt.f chkrel.f
  chtype.f dbdefn.f dbload.f dbopcl.f dbopen.f deldat.f
  deldup.f delete.f delrow.f dtfenc.f dtfspl.f eq.f eqkeyw.f
  eqtok.f fmtdec.f f1clo.f f1opn.f f2clo.f f2opn.f

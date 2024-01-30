@@ -1,6 +1,6 @@
       SUBROUTINE PROMPT(PTXT)
 
-         USE Text, only : ABLANK, LOCASE
+         USE Text, only : ABLANK, LOCASE, CHRASC
 
          INCLUDE 'syspar.inc'
 C
@@ -11,7 +11,6 @@ C
          INCLUDE 'ascpar.inc'
          INCLUDE 'msgcom.inc'
          INCLUDE 'files.inc'
-         character*1 chrasc
 
          character*(zc) p
 
