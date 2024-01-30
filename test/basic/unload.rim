@@ -1,0 +1,41 @@
+* RUN: rm -f sample.rimdb*
+* RUN: %rim %sample
+* RUN: %rim %s | FileCheck %s
+echo
+*( batch test)
+open sample
+unload measures
+close
+exit
+* CHECK: UW RIM (V.1.24  08/03/90)
+* CHECK:  open sample 
+* CHECK: Database 'sample' is open.
+* CHECK: *(unload of sample at
+* CHECK: *(set con=+)
+* CHECK: *(set end=null)
+* CHECK: Define sample          
+* CHECK: Attributes
+* CHECK:  symbol text 8 
+* CHECK:  id int  1 format 'i5'
+* CHECK:  M_date date 1 format 'yy-mm-dd'
+* CHECK:  M_time time 1 format 'hh:mm'
+* CHECK:  resistivity doub 1 format 'f10.6'
+* CHECK: Relations
+* CHECK:  measures with symbol id M_date M_time resistivity 
+* CHECK: End
+* CHECK: Set integer format 'i8'
+* CHECK: Set real format 'f8.2'
+* CHECK: Set date format 'mm/dd/yy'
+* CHECK: Set mv '-MV-'
+* CHECK: Set na '-NA-'
+* CHECK: Load measures        
+* CHECK: 'Cu' 5 '88-01-21' '08:10'  1.19000000000000E+01 
+* CHECK: 'Cu' 5 '88-01-21' '10:32'  1.24000000000000E+01 
+* CHECK: 'Al' 35 '88-02-10' '13:45'  1.30000000000000E+01 
+* CHECK: 'Al' 35 '88-02-10' '09:34'  1.43000000000000E+01 
+* CHECK: 'Cu' 22 '88-02-22' '08:48'  1.25000000000000E+01 
+* CHECK: 'Fe' 5 '88-03-04' '15:33'  1.94000000000000E+01 
+* CHECK: End
+* CHECK: *(set end=;)
+* CHECK: Exit
+ 
