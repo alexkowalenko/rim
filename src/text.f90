@@ -12,6 +12,7 @@ MODULE Text
    public ASCCHR, CHRASC
    public ASCTXT
    public FILCH
+   public STRASC
    public ATOI, ITOA
    public ATOR, RTOA
    public RITOA
@@ -139,6 +140,30 @@ CONTAINS
       END DO
       RETURN
    END SUBROUTINE FILCH
+
+   SUBROUTINE STRASC(STR,ASC,NC)
+      !
+      ! RETURN THE STRING EQUIVALENT OF ASC (ASCII-TEXT, LENGTH NC)
+
+      ! UNIX version does not uppercase the result.  This routine
+      ! is used to make filenames and system commands.  These are
+      ! uniformly uppercase on many machines, but are mixed case
+      ! on UNIX.
+
+      !
+      CHARACTER(len=*), intent(out) :: STR
+      INTEGER, intent(in) :: ASC(*)
+      INTEGER, intent(in) :: NC
+      !
+      INTEGER :: I, CH
+
+      STR = ' '
+      DO I = 1, MIN(NC,LEN(STR))
+         CALL GETT(ASC,I,CH)
+         STR(I:I) = CHRASC(CH)
+      END DO
+      RETURN
+   END SUBROUTINE STRASC
 
 
    LOGICAL FUNCTION ATOI(ASTR,SC,NC,VAL)

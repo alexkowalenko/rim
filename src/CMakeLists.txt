@@ -33,7 +33,7 @@ rmclos.f rmcons.f rmhelp.f rminit.f
 rmlook.f rmpii.f rmqery.f rmres.f rmsav.f rmset.f rmshow.f
 rmtypt.f rmvarc.f rmzip.f rnamea.f rnamel.f rnamer.f roun.f rtoa.f
 selatt.f select.f selout.f selput.f selrel.f selrpt.f selsrt.f
-selwhr.f setin.f setout.f sgtlnk.f sort.f strasc.f strmov.f
+selwhr.f setin.f setout.f sgtlnk.f sort.f strmov.f
 subtrc.f swcon.f swcost.f swfilo.f swflfs.f swhart.f swhrtd.f swhrti.f
 swhrtr.f swicst.f swidcp.f swiicp.f swinpo.f swircp.f switcp.f swshel.f
 swsink.f swsmfl.f swsmvl.f swunlo.f swunvl.f swvacp.f swvlfs.f
@@ -72,7 +72,7 @@ adddat.f ascan.f attadd.f attdel.f attget.f attnew.f attpag.f attput.f
  remrel.f reuse.f rformt.f rmclos.f rmcons.f rminit.f rmlook.f rmpii.f
  rmqery.f rmres.f rmsav.f rmset.f rmtypt.f rmvarc.f
  rmxdel.f rmxget.f rmxlod.f rmxput.f rnamea.f rnamer.f roun.f
- rtoa.f selrel.f selsrt.f selwhr.f sort.f strasc.f strmov.f 
+ rtoa.f selrel.f selsrt.f selwhr.f sort.f strmov.f 
  subtrc.f swcon.f swcost.f swfilo.f swflfs.f swhart.f swhrtd.f 
  swhrti.f swhrtr.f swicst.f swidcp.f swiicp.f swinpo.f swircp.f 
  switcp.f swshel.f swsink.f swsmfl.f swsmvl.f swunlo.f swunvl.f 

@@ -1,6 +1,7 @@
       SUBROUTINE RMZIP(*)
 
          USE Globals, only : DFLAG, DBFNAM
+         USE Text, only : STRASC
          USE System, only : SystemCommand
 
          INCLUDE 'syspar.inc'
@@ -11,11 +12,8 @@ C
          INCLUDE 'tokens.inc'
          INCLUDE 'cards.inc'
 C
-         CHARACTER*1 CHRASC
-C
          CHARACTER*80 CCARD
          LOGICAL SAVDF
-         LOGICAL EQKEYW
 C
          IF (ITEMS.LT.2) GOTO 910
 

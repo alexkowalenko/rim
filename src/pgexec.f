@@ -2,7 +2,7 @@
 
          USE Globals, only : TRACE, MRINDX, HXFLAG, CASEIG, PGFLAG,
      +   DBFNAM
-         USE Text, only : FILCH, ABLANK
+         USE Text, only : FILCH, ABLANK, STRASC
          USE Utils, only : ZMOVE
 
 

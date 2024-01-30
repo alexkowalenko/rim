@@ -1,7 +1,7 @@
       SUBROUTINE DBLOAD(*)
 
          USE Globals, only : DFLAG, DMFLAG, PIFLAG
-         USE Text, only : BLANK
+         USE Text, only : BLANK, STRASC
          USE DateTime, only : RMDATE
 
          INCLUDE 'syspar.inc'

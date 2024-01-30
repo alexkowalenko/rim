@@ -2,6 +2,7 @@
 
          USE Globals, only : DFLAG, DBNAME, USERID, OWNER
          USE DateTime, only: RMTIME, RMDATE
+         USE Text, only : STRASC
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

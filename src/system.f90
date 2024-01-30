@@ -147,6 +147,7 @@ contains
 
    SUBROUTINE SYSDBG(DBX,STATUS)
       USE Globals, only: DBFNAM
+      USE Text, only: STRASC
       !
       ! ***UNIX SYSTEM DEPENDENT ROUTINE ***
       !

@@ -1,6 +1,7 @@
       SUBROUTINE REPORT(*)
 
          USE Globals, only : DFLAG
+         USE Text, only : STRASC
 
          INCLUDE 'syspar.inc'
 C
