@@ -2,6 +2,7 @@
 
          USE Globals, only : DFLAG, DBNAME, USERID, OWNER
          USE DateTime, only: RMTIME, RMDATE
+         USE Message, only : WARN
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
@@ -32,7 +33,7 @@ C
 C     CHECK FOR A DATABASE
 C
          IF (.NOT.DFLAG) THEN
-            CALL WARN(2,0,0)
+            CALL WARN(2)
             GOTO 999
          ENDIF
 C
@@ -47,7 +48,7 @@ C
          ENDIF
 C
          IF(ITEMS.GT.2) THEN
-            CALL WARN(4,0,0)
+            CALL WARN(4)
             GOTO 999
          ENDIF
          IF(ITEMS.EQ.2) GO TO 1000
@@ -56,7 +57,7 @@ C   LISTREL (WITH NO RELATION SPECIFIED)
 C
   100    CALL RELGET(STATUS)
          IF(STATUS.NE.0) THEN
-            IF (NP.EQ.0) CALL WARN(8,0,0)
+            IF (NP.EQ.0) CALL WARN(8)
             GOTO 999
          ENDIF
 C
@@ -109,7 +110,7 @@ C
  1100    IF(ALLREL) THEN
             CALL RELGET(STATUS)
             IF((NREL.EQ.0).AND.(STATUS.NE.0)) THEN
-               CALL WARN(8,0,0)
+               CALL WARN(8)
                GOTO 999
             ENDIF
             IF(STATUS.NE.0) GO TO 999
@@ -122,7 +123,7 @@ C
          IF(EQ(RPW,USERID)) GO TO 1300
          IF(EQ(MPW,USERID)) GO TO 1300
          IF(ALLREL) GO TO 1100
-         CALL WARN(8,0,0)
+         CALL WARN(8)
          GO TO 999
  1300    CONTINUE
 C

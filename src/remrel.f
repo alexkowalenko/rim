@@ -1,6 +1,7 @@
       SUBROUTINE REMREL(*)
 
          USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
+         USE Message, only: WARN
 
          INCLUDE 'syspar.inc'
 C
@@ -24,21 +25,21 @@ C
 C     CHECK FOR A DATABASE
 C
          IF (.NOT.DFLAG) THEN
-            CALL WARN(2,0,0)
+            CALL WARN(2)
             GOTO 999
          ENDIF
 C
 C     MAKE SURE THE DATABASE MAY BE MODIFIED
 C
          IF(.NOT.DMFLAG) THEN
-            CALL WARN(RMSTAT,DBNAME,0)
+            CALL WARN(RMSTAT,DBNAME)
             GO TO 999
          ENDIF
 C
 C     ONLY THE OWNER CAN DO THIS
 C
          IF (NE(OWNER,USERID)) THEN
-            CALL WARN(8,0,0)
+            CALL WARN(8)
             GOTO 999
          ENDIF
 C
@@ -46,7 +47,7 @@ C
          IF (EQKEYW(2,'TABLE')) R = 3
 
          IF(ITEMS.NE.R) THEN
-            CALL WARN(4,0,0)
+            CALL WARN(4)
             GOTO 999
          ENDIF
          CALL LXSREC(R,RNAME,ZC)
@@ -55,7 +56,7 @@ C  FIND THE RELATION NAME IN THE RELATION TABLE.
 C
          I = LOCREL(RNAME)
          IF(I.NE.0) THEN
-            CALL WARN(1,RNAME,0)
+            CALL WARN(1,RNAME)
             GOTO 999
          ENDIF
 C

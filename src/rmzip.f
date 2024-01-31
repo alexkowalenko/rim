@@ -1,6 +1,7 @@
       SUBROUTINE RMZIP(*)
 
          USE Globals, only : DFLAG, DBFNAM
+         USE Message, only: WARN
          USE Text, only : STRASC
          USE System, only : SystemCommand
 
@@ -37,7 +38,7 @@ C
          ENDIF
          GOTO 999
 C
-  910    CALL WARN(4,0,0)
+  910    CALL WARN(4)
          GOTO 999
 C
   999    RETURN 1

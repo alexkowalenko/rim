@@ -1,6 +1,7 @@
       SUBROUTINE RFORMT(*)
 
          USE Globals, only : DFLAG
+         USE Message, only: WARN
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
@@ -21,7 +22,7 @@ C
 C     CHECK FOR A DATABASE
 C
          IF (.NOT.DFLAG) THEN
-            CALL WARN(2,0,0)
+            CALL WARN(2)
             GOTO 999
          ENDIF
 C
@@ -31,7 +32,7 @@ C
          IF((ITEMS.GT.4).AND.(.NOT.EQKEYW(5,'IN'))) GO TO 900
          IF((ITEMS.NE.4).AND.(ITEMS.NE.6)) GO TO 900
          IF( .NOT.TOKTYP(2,KXNAME) ) THEN
-            CALL WARN(7,ASCREC(IDP(2)),0)
+            CALL WARN(7,ASCREC(IDP(2)))
             GOTO 999
          ENDIF
          CALL LXSREC(2,ANAME1,ZC)
@@ -92,7 +93,7 @@ C
 C
 C     BAD SYNTAX
 C
-  900    CALL WARN(4,0,0)
+  900    CALL WARN(4)
          GO TO 999
 C
 C     ANAME1 NOT THERE
@@ -100,7 +101,7 @@ C
   910    CALL WARN(3,ANAME1,RNAME1)
          GO TO 999
 C
-  930    CALL WARN(8,0,0)
+  930    CALL WARN(8)
          GO TO 999
 C
 C     ALL DONE

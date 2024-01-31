@@ -2,6 +2,7 @@
 
          USE Globals, only: PGVARS, INLINE, PGFLAG
          USE DateTime, only: RMTIME, RMDATE
+         USE Message, only : WARN
          USE Text, only : ASCTXT
          USE Utils, only : ZMOVE
 
@@ -141,7 +142,7 @@ C
 C
          SC = PARSE(QKEYS,QKEYL,QPTRS)
          IF (SC.NE.2) THEN
-            CALL WARN(4,0,0)
+            CALL WARN(4)
             GOTO 9000
          ENDIF
          JW = QPTRS(1,2)
@@ -495,7 +496,7 @@ C
  8000    CALL MSG('E','YOUR PROGRAM IS TOO LARGE',' ')
          GOTO 9000
 
- 8100    CALL WARN(4,0,0)
+ 8100    CALL WARN(4)
          GOTO 9000
 
 C     ERROR EXIT

@@ -1,5 +1,6 @@
       SUBROUTINE CHANGE(MAT,NVAL,IFLAG,NTUP)
 
+         USE Message, only : WARN
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
@@ -323,7 +324,7 @@ C     ERRORS ----------------------------------
 C
 C  TUPLE LENGTH EXCCEDS MAXCOL
 C
- 8100    CALL WARN(15,0,0)
+ 8100    CALL WARN(15)
          GO TO 9999
 C
  8150    CALL MSG('E','A VECTOR OR MATRIX ELEMENT IS SPECIFIED ' //

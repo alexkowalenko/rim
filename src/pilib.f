@@ -242,24 +242,3 @@ C
          ENDIF
          RETURN
       END
-
-      
-      SUBROUTINE TXTASC(STR,ASC,NC)
-         USE Text, only: CHRASC
-C
-C     RETURN THE CHARACTER EQUIVALENT OF ASC (ASCII-TEXT, LENGTH NC)
-C     (LIKE STRASC BUT WITHOUT UPPER CASE TRANSLATION)
-C
-         CHARACTER*(*), intent(out) :: STR
-         INTEGER, intent(in) :: ASC(*)
-         INTEGER, intent(in) :: NC
-
-         INTEGER :: CH
-C
-         STR = ' '
-         DO I = 1, MIN(NC,LEN(STR))
-            CALL GETT(ASC,I,CH)
-            STR(I:I) = CHRASC(CH)
-         END DO
-         RETURN
-      END

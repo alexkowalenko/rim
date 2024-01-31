@@ -1,6 +1,7 @@
       SUBROUTINE CHGPSW(*)
 
          USE Globals, only : DFLAG, USERID, OWNER, IFMOD
+         USE Message, only : WARN
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -14,12 +15,13 @@ C
 C
          LOGICAL EQKEYW
          LOGICAL NE
+         INTEGER :: RNAME(Z)
 C
 C
 C     CHECK FOR A DATABASE
 C
          IF (.NOT.DFLAG) THEN
-            CALL WARN(2,0,0)
+            CALL WARN(2)
             GOTO 999
          ENDIF
 C
@@ -27,7 +29,7 @@ C
 C     CHECK FOR PERMISSION
 C
          IF (NE(OWNER,USERID)) THEN
-            CALL WARN(8,0,0)
+            CALL WARN(8)
             GOTO 999
          ENDIF
 C
@@ -48,7 +50,7 @@ C
             CALL LXSREC(6,RNAME,ZC)
             I = LOCREL(RNAME)
             IF(I.NE.0) THEN
-               CALL WARN(1,RNAME,0)
+               CALL WARN(1,RNAME)
                GO TO 999
             ENDIF
             L = LOCPRM(RNAME,2)
@@ -71,7 +73,7 @@ C     ERRORS
 C
   800    CALL WARN(4,BLANK,BLANK)
          GOTO 999
-  810    CALL WARN(7,ASCREC(IDP(4)),0)
+  810    CALL WARN(7,ASCREC(IDP(4)))
          GOTO 999
 C
 C---- EXIT

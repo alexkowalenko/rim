@@ -2,6 +2,7 @@
 
          USE Globals, only : TRACE, MRINDX, HXFLAG, CASEIG, PGFLAG,
      +   DBFNAM
+         USE Message, only : WARN
          USE Text, only : FILCH, ABLANK, STRASC
          USE Utils, only : ZMOVE
 
@@ -62,7 +63,7 @@ C
 C     POSSIBLE SYSTEM INTERRUPTION
 C
          IF (HXFLAG.NE.0) THEN
-            CALL WARN(6,0,0)
+            CALL WARN(6)
             GOTO 9000
          ENDIF
 C

@@ -1,6 +1,7 @@
       SUBROUTINE SELECT(*)
 
          USE Globals, only : DFLAG
+         USE Message, only: WARN
          USE Text, only : STRASC
 
          INCLUDE 'syspar.inc'
@@ -33,7 +34,7 @@ C
 C     CHECK FOR A DATABASE
 C
          IF (.NOT.DFLAG) THEN
-            CALL WARN(2,0,0)
+            CALL WARN(2)
             GOTO 999
          ENDIF
 C
@@ -49,7 +50,7 @@ C
          SC = PARSE(QKEYS,QKEYL,QPTRS)
 CCC   CALL BLKDSP('QUERY PARSE',QPTRS(1,1),'IIIIIIII')
          IF (SC.LT.3) THEN
-            CALL WARN(4,0,0)
+            CALL WARN(4)
             GOTO 999
          ENDIF
          J = QPTRS(1,1)

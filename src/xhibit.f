@@ -1,6 +1,7 @@
       SUBROUTINE XHIBIT(*)
 
          USE Globals, only : DFLAG, USERID, OWNER
+         USE Message, only: WARN
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -20,7 +21,7 @@ C
 C     CHECK FOR A DATABASE
 C
          IF (.NOT.DFLAG) THEN
-            CALL WARN(2,0,0)
+            CALL WARN(2)
             GOTO 999
          ENDIF
 C

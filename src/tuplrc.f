@@ -2,6 +2,7 @@
 
          USE Globals, only : DFLAG, DMFLAG
          USE DateTime, only : RMDATE
+         USE Message, only: WARN
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
@@ -45,14 +46,14 @@ C
 C     CHECK FOR A DATABASE
 C
          IF (.NOT.DFLAG) THEN
-            CALL WARN(2,0,0)
+            CALL WARN(2)
             GOTO 999
          ENDIF
 C
 C     MAKE SURE THE DATABASE MAY BE MODIFIED
 C
          IF(.NOT.DMFLAG) THEN
-            CALL WARN(8,0,0)
+            CALL WARN(8)
             GO TO 999
          ENDIF
 C
@@ -85,7 +86,7 @@ C
          I = LOCREL(RNAME1)
          IF(I.NE.0) THEN
 C        MISSING FIRST RELATION.
-            CALL WARN(1,RNAME1,0)
+            CALL WARN(1,RNAME1)
             GO TO 999
          ENDIF
 C
@@ -93,7 +94,7 @@ C  SAVE DATA ABOUT RELATION 1
 C
          I1 = LOCPRM(RNAME1,1)
          IF(I1.NE.0) THEN
-            CALL WARN(9,RNAME1,0)
+            CALL WARN(9,RNAME1)
             GO TO 999
          ENDIF
          NCOL1 = NCOL
@@ -104,7 +105,7 @@ C
          I = LOCREL(RNAME2)
          IF(I.NE.0) THEN
 C  MISSING SECOND RELATION.
-            CALL WARN(1,RNAME2,0)
+            CALL WARN(1,RNAME2)
             GO TO 999
          ENDIF
 C
@@ -112,7 +113,7 @@ C  SAVE DATA ABOUT RELATION 2
 C
          I2 = LOCPRM(RNAME2,1)
          IF(I2.NE.0) THEN
-            CALL WARN(9,RNAME2,0)
+            CALL WARN(9,RNAME2)
             GO TO 999
          ENDIF
          NCOL2 = NCOL
@@ -125,7 +126,7 @@ C
 C  CHECK FOR LEGAL RNAME3
 C
          IF(.NOT.TOKTYP(6,KXNAME)) THEN
-            CALL WARN(7,ASCREC(IDP(6)),0)
+            CALL WARN(7,ASCREC(IDP(6)))
             GO TO 999
          ENDIF
 C
@@ -134,7 +135,7 @@ C
          CALL LXSREC(6,RNAME3,ZC)
          I = LOCREL(RNAME3)
          IF(I.EQ.0) THEN
-            CALL WARN(5,RNAME3,0)
+            CALL WARN(5,RNAME3)
             GO TO 999
          ENDIF
 C
@@ -414,12 +415,12 @@ C
 C
 C  SYNTAX ERROR
 C
-  900    CALL WARN(4,0,0)
+  900    CALL WARN(4)
 C
 C
 C  TUPLE LENGTH EXCEEDS MAXCOL
 C
-  910    CALL WARN(15,0,0)
+  910    CALL WARN(15)
 C
 C     DONE
 C

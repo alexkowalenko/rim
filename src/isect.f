@@ -1,6 +1,7 @@
       SUBROUTINE ISECT(RNAME1,RNAME3,MATN3,NCOL3,NATT3,PTABLE,
      XKEYCOL,KEYTYP)
 
+         USE Message, only : WARN
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
@@ -186,7 +187,7 @@ C  TUPLE LENGTH EXCEEDS MAXCOL
 C
   950    CONTINUE
          IERR = 1
-         CALL WARN(15,0,0)
+         CALL WARN(15)
 C
 C  ALL DONE.
 C

@@ -2,6 +2,7 @@
 
          USE Globals, only : DFLAG, DBNAME, USERID, OWNER
          USE DateTime, only: RMTIME, RMDATE
+         USE Message, only: WARN
          USE Text, only : STRASC
          USE Utils, only : ZMOVE
 
@@ -35,7 +36,7 @@ C
 C     CHECK FOR A DATABASE
 C
          IF (.NOT.DFLAG) THEN
-            CALL WARN(2,0,0)
+            CALL WARN(2)
             GOTO 999
          ENDIF
 C
@@ -111,7 +112,7 @@ C
          IERR = 0
          IN = LOCREL (RNAME)
          IF (IN .NE. 0) THEN
-            CALL WARN(1,RNAME,0)
+            CALL WARN(1,RNAME)
             RMSTAT = 2
             IERR = 1
          ENDIF
@@ -120,7 +121,7 @@ C  CALL CHKREL TO CHECK PASSWORD PERMISSION ON THE UNLOAD
 C
          CALL CHKREL (PERM,MODE,ISTAT,USERID)
          IF (.NOT.PERM) THEN
-            CALL WARN(9,RNAME,0)
+            CALL WARN(9,RNAME)
             RMSTAT = 9
             IERR = 1
             GO TO 350
@@ -196,13 +197,13 @@ C
 C
 C  ERROR FOR UNLOADING ALL OF THE DATA
 C
-  800    CALL WARN(8,0,0)
+  800    CALL WARN(8)
          RMSTAT = 9
          GO TO 999
 C
 C  INCORRECT SYNTAX ERROR MESSAGE
 C
-  900    CALL WARN(4,0,0)
+  900    CALL WARN(4)
          RMSTAT = 4
 C
 C  CLEAN UP AND END

@@ -1,5 +1,6 @@
       SUBROUTINE LODLNK
 
+         USE Message, only : WARN
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -30,7 +31,7 @@ C
      1       .NOT.EQKEYW(4,'IN')   .OR.
      1       .NOT.EQKEYW(6,'TO')   .OR.
      1       .NOT.EQKEYW(8,'IN')) THEN
-            CALL WARN(4,0,0)
+            CALL WARN(4)
             GOTO 800
          ENDIF
 C

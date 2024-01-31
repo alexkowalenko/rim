@@ -1,0 +1,7 @@
+* RUN: %rim %s | FileCheck %s
+list
+exit
+* CHECK: UW RIM (V.1.24  08/03/90)
+* CHECK: Your request cannot be completed.
+* CHECK: No database is open.
+ 

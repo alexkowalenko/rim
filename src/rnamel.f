@@ -1,6 +1,7 @@
       SUBROUTINE RNAMEL(*)
 
          USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER
+         USE Message, only: WARN
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -22,27 +23,27 @@ C
 C     CHECK FOR A DATABASE
 C
          IF (.NOT.DFLAG) THEN
-            CALL WARN(2,0,0)
+            CALL WARN(2)
             GOTO 999
          ENDIF
 C
 C     MAKE SURE THE DATABASE MAY BE MODIFIED
 C
          IF(.NOT.DMFLAG) THEN
-            CALL WARN(RMSTAT,DBNAME,0)
+            CALL WARN(RMSTAT,DBNAME)
             GO TO 999
          ENDIF
 C
 C     ONLY THE OWNER CAN DO THIS
 C
          IF (NE(OWNER,USERID)) THEN
-            CALL WARN(8,0,0)
+            CALL WARN(8)
             GOTO 999
          ENDIF
 C
          IF(ITEMS.NE.5) GO TO 999
          IF (.NOT.EQKEYW(4,'TO'))  THEN
-            CALL WARN(4,0,0)
+            CALL WARN(4)
             GOTO 999
          ENDIF
 

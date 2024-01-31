@@ -1,5 +1,6 @@
       SUBROUTINE LODPAS(ERROR)
 
+         USE Message, only : WARN
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
@@ -69,7 +70,7 @@ C
   500    CALL RELGET(ISTAT)
          IF(ISTAT.NE.0) GO TO 100
          IF(.NOT.TOKTYP(ITEMS,KXNAME)) THEN
-            CALL WARN(7,ASCREC(IDP(ITEMS)),0)
+            CALL WARN(7,ASCREC(IDP(ITEMS)))
             ERROR = ERROR + 1
             GO TO 100
          ENDIF
@@ -84,7 +85,7 @@ C
 C
 C     SYNTAX ERROR
 C
-  700    CALL WARN(4,0,0)
+  700    CALL WARN(4)
          GOTO 100
 C
 C  END PASSWORD PROCESSING.

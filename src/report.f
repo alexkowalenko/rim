@@ -1,6 +1,7 @@
       SUBROUTINE REPORT(*)
 
          USE Globals, only : DFLAG
+         USE Message, only: WARN
          USE Text, only : STRASC
 
          INCLUDE 'syspar.inc'
@@ -18,7 +19,7 @@ C
 C     CHECK FOR A DATABASE
 C
          IF (.NOT.DFLAG) THEN
-            CALL WARN(2,0,0)
+            CALL WARN(2)
             GOTO 999
          ENDIF
 C
@@ -26,7 +27,7 @@ C     CHECK FOR OUTPUT FILE
 C
          IF (ITEMS.GT.1) THEN
             IF (ITEMS.NE.3 .OR. .NOT.EQKEYW(2,'TO')) THEN
-               CALL WARN(4,0,0)
+               CALL WARN(4)
                GOTO 999
             ENDIF
             CALL STRASC(FN,ASCREC(IDP(3)),IDL(3))

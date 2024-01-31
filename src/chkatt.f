@@ -1,6 +1,7 @@
       SUBROUTINE CHKATT(TMPA,NUMELE,ERROR)
 
          USE DateTime, only : RMDATE
+         USE Message, only : WARN
          USE Text, only: BLANK
          USE Utils, only : ZMOVE, ITOH
 
@@ -74,7 +75,7 @@ C
   600    CONTINUE
          IF(IFLAG.EQ.1) GO TO 999
          IF(NCOLS.GT.MAXCOL) THEN
-            CALL WARN(15,0,0)
+            CALL WARN(15)
             ERROR = ERROR + 1
             GO TO 999
          ENDIF

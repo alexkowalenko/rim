@@ -1,5 +1,6 @@
       SUBROUTINE LODELE(NUMELE)
 
+         USE Message, only : WARN
          USE Utils, only : HTOI
 
          INCLUDE 'syspar.inc'
@@ -50,7 +51,7 @@ C  MAKE SURE THAT THE ATTRIBUTE NAME IS VALID
 C
          IF(.NOT.TOKTYP(1,KXNAME)) THEN
             CALL LXSREC(1,ANAME,ZC)
-            CALL WARN(7,ANAME,0)
+            CALL WARN(7,ANAME)
             GO TO 800
          ENDIF
 C
@@ -71,7 +72,7 @@ C
          IF(LTEMS.EQ.2) GO TO 700
          IF(LTEMS.EQ.3) GO TO 500
          IF(LTEMS.EQ.4) GO TO 600
-         CALL WARN(4,0,0)
+         CALL WARN(4)
          GO TO 800
 C
 C  ITEMS = 3.

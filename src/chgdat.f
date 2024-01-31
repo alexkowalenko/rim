@@ -1,6 +1,7 @@
       SUBROUTINE CHGDAT(*)
 
          USE Globals, only : DFLAG
+         USE Message, only : WARN
          USE DateTime, only : RMDATE
 
          INCLUDE 'syspar.inc'
@@ -36,7 +37,7 @@ C
 C     CHECK FOR A DATABASE
 C
          IF (.NOT.DFLAG) THEN
-            CALL WARN(2,0,0)
+            CALL WARN(2)
             GOTO 999
          ENDIF
 C
@@ -61,7 +62,7 @@ CCC   CALL BLKDSP('QUERY SELREL (TUPLER)',NAME,'ZZZZIIIII')
          CALL RELGET(STATUS)
          I = LOCPRM(NAME,2)
          IF (I.NE.0) THEN
-            CALL WARN(8,0,0)
+            CALL WARN(8)
             GOTO 999
          ENDIF
 C

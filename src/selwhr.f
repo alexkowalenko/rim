@@ -1,6 +1,7 @@
       FUNCTION SELWHR(ST,NT)
 
          USE Globals, only : CASEIG, TRACE
+         USE Message, only: WARN
          USE Utils, only : HTOI, ITOH
 
          INCLUDE 'syspar.inc'

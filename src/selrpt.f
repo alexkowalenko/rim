@@ -4,6 +4,7 @@
 
          USE Globals, only : MRINDX, HXFLAG
          USE Maths, only : RTOD
+         USE Message, only: WARN
          USE Text, only : FILCH, ABLANK
 
          INCLUDE 'syspar.inc'
@@ -308,7 +309,7 @@ C
 C
 C     INTERRUPTION
 C
- 9998    CALL WARN(6,0,0)
+ 9998    CALL WARN(6)
          IF (NS.EQ.1) THEN
             CALL BLKCLR(1)
             CLOSE (UNIT=ZNSRT+MRINDX,STATUS='DELETE')

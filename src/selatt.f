@@ -1,6 +1,7 @@
       FUNCTION SELATT(FTOK,NTOK)
 
          USE Globals, only : KRMDTF, KRMTMF, KRMINF, KRMRNF
+         USE Message, only: WARN
          USE Text, only : ASCCHR, ASCTXT, FILCH, BLANK, ABLANK
          USE Utils, only : ZMOVE, HTOI, ITOH
 

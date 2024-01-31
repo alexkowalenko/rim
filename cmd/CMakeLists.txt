@@ -12,23 +12,23 @@ add_executable(rmtest rmtest.f90)
 
 target_link_libraries(rim
      PRIVATE
-     rimintlib)
+     rimcommon rimextlib)
 
 target_link_libraries(rime
      PRIVATE
-     rimintlib)
+     rimcommon rimextlib)
 
 target_link_libraries(rimh
      PRIVATE
-     rimintlib rimlib)
+     rimcommon rimlib system)
 
 target_link_libraries(lxtest
     PRIVATE
-    rimintlib system)
+    rimcommon rimlib system)
 
 target_link_libraries(rmtest
     PRIVATE
-    rimlib system)
+    rimcommon rimlib system)
 
 install(TARGETS rim DESTINATION bin)
 install(TARGETS rimh DESTINATION bin)

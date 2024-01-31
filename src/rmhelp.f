@@ -3,6 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE Globals, only : LIBFLG, TOL, HXFLAG, PCENT, RUCK, DBFNAM
+         USE Message, only: WARN
          USE Text, only: ASCTXT
 
          INCLUDE 'syspar.inc'
@@ -99,7 +100,7 @@ C
 C     POSSIBLE USER INTERRUPTION
 C
          IF (HXFLAG.NE.0) THEN
-            CALL WARN(6,0,0)
+            CALL WARN(6)
             GOTO 900
          ENDIF
          IF (BUFFER(ITUP+SKCOL-1).NE.SUBKEY) GOTO 100

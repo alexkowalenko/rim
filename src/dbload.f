@@ -1,6 +1,7 @@
       SUBROUTINE DBLOAD(*)
 
          USE Globals, only : DFLAG, DMFLAG, PIFLAG
+         USE Message, only : WARN
          USE Text, only : BLANK, STRASC
          USE DateTime, only : RMDATE
 
@@ -34,14 +35,14 @@ C
 C     CHECK FOR A DATABASE
 C
          IF (.NOT.DFLAG) THEN
-            CALL WARN(2,0,0)
+            CALL WARN(2)
             GOTO 999
          ENDIF
 C
 C  MAKE SURE THE DATABASE CAN BE MODIFIED
 C
          IF (.NOT.DMFLAG) THEN
-            CALL WARN(8,0,0)
+            CALL WARN(8)
             GO TO 999
          ENDIF
 C
@@ -55,7 +56,7 @@ C
          JU = QPTRS(1,2)
          IF ( (JI.NE.0 .AND. QPTRS(2,1).NE.2) .OR.
      1        (JU.NE.0 .AND. QPTRS(2,2).NE.2)) THEN
-            CALL WARN(4,0,0)
+            CALL WARN(4)
             GOTO 999
          ENDIF
 C
@@ -71,7 +72,7 @@ C  CHECK FOR AUTHORITY.
 C
          L = LOCPRM(RNAME,2)
          IF(L.NE.0) THEN
-            CALL WARN(9,RNAME,0)
+            CALL WARN(9,RNAME)
             GO TO 999
          ENDIF
 C
@@ -223,7 +224,7 @@ C
          GOTO 999
 C
 C     UNRECOGNIZED RELATION NAME.
-  850    CALL WARN(1,RNAME,0)
+  850    CALL WARN(1,RNAME)
 C
   999    RETURN 1
       END

@@ -2,6 +2,7 @@
 
          USE Globals, only : DFLAG, USERID, OWNER, DBNAME, IFMOD, DBFNAM
          USE DateTime, only : RMDATE
+         USE Message, only : WARN
          USE System, only: SYSDBG
          USE Utils, only : ZMOVE
 
@@ -46,7 +47,7 @@ C        CHECK THE DATABASE AND OPEN IT
 C
             CALL DBOPEN (DBFNAM,.TRUE.)
             IF((RMSTAT.NE.15).AND.(RMSTAT.NE.0)) THEN
-               CALL WARN(RMSTAT,0,0)
+               CALL WARN(RMSTAT)
                GO TO 999
             ENDIF
          ELSE
@@ -54,7 +55,7 @@ C
 C     USE CURRENT DATABASE
 C
             IF (.NOT.DFLAG) THEN
-               CALL WARN(2,0,0)
+               CALL WARN(2)
                GOTO 999
             ENDIF
          ENDIF
@@ -86,7 +87,7 @@ C
 C
 C  ERROR.
 C
-         CALL WARN(4,0,0)
+         CALL WARN(4)
          GO TO 300
 C
 C  PROCESS ATTRIBUTES.
@@ -144,7 +145,7 @@ C
          DFLAG = .TRUE.
          IFMOD = .TRUE.
          CALL DBOPEN (DBFNAM,.FALSE.)
-         IF(RMSTAT.NE.0) CALL WARN(RMSTAT,0,0)
+         IF(RMSTAT.NE.0) CALL WARN(RMSTAT)
 C
 C
 C RESET THE PROMPT CHARACTER TO R

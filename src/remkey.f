@@ -1,6 +1,7 @@
       SUBROUTINE REMKEY(*)
 
          USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER
+         USE Message, only: WARN
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -25,21 +26,21 @@ C
 C     CHECK FOR A DATABASE
 C
          IF (.NOT.DFLAG) THEN
-            CALL WARN(2,0,0)
+            CALL WARN(2)
             GOTO 999
          ENDIF
 C
 C     MAKE SURE THE DATABASE MAY BE MODIFIED
 C
          IF(.NOT.DMFLAG) THEN
-            CALL WARN(RMSTAT,DBNAME,0)
+            CALL WARN(RMSTAT,DBNAME)
             GO TO 999
          ENDIF
 C
 C     ONLY THE OWNER CAN DO THIS
 C
          IF (NE(OWNER,USERID)) THEN
-            CALL WARN(8,0,0)
+            CALL WARN(8)
             GOTO 999
          ENDIF
 C
@@ -48,7 +49,7 @@ C
          IF(ITEMS.NE.6 .OR. .NOT.EQKEYW(3,'FOR') .OR.
      X      .NOT.EQKEYW(5,'IN') .OR.
      X      .NOT.TOKTYP(3,KXNAME) .OR. .NOT.TOKTYP(6,KXNAME)) THEN
-            CALL WARN(4,0,0)
+            CALL WARN(4)
             GOTO 999
          ENDIF
 C

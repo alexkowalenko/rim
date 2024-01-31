@@ -1,6 +1,7 @@
       SUBROUTINE REMLNK(*)
 
          USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
+         USE Message, only: WARN
 
          INCLUDE 'syspar.inc'
 C
@@ -21,21 +22,21 @@ C
 C     CHECK FOR A DATABASE
 C
          IF (.NOT.DFLAG) THEN
-            CALL WARN(2,0,0)
+            CALL WARN(2)
             GOTO 999
          ENDIF
 C
 C     MAKE SURE THE DATABASE MAY BE MODIFIED
 C
          IF(.NOT.DMFLAG) THEN
-            CALL WARN(RMSTAT,DBNAME,0)
+            CALL WARN(RMSTAT,DBNAME)
             GO TO 999
          ENDIF
 C
 C     ONLY THE OWNER CAN DO THIS
 C
          IF (NE(OWNER,USERID)) THEN
-            CALL WARN(8,0,0)
+            CALL WARN(8)
             GOTO 999
          ENDIF
 C

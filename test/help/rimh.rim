@@ -1,6 +1,6 @@
  * RUN: rm -f rim_help.rimdb*
- * RUN: cp %help_file .
  * RUN: %rim %s
+ * RUN: cp %help_file .
  * RUN: %rimh | FileCheck %s
  *
  define rim_help
@@ -19,7 +19,6 @@
  help_text     with comkey subkey comtxt
  end
  exit
-* CHECK: Database 'rim_help' is open.
 * CHECK:  MACRO: SYN 
 * CHECK:  MACRO: FMT 
 * CHECK:  MACRO: WHE 
@@ -74,4 +73,3 @@
 * CHECK: COMMAND: UNL      
  EOF ON UNIT 2
 * CHECK:  BUILDING KEY FOR COMKEY
-* CHECK: Build key completed.

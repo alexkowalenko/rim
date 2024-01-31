@@ -1,6 +1,7 @@
       SUBROUTINE LOADIT(MAT,ATT)
 
          USE Globals, only: HXFLAG
+         USE Message, only : WARN
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'
@@ -32,7 +33,7 @@ C
 C     POSSIBLE SYSTEM INTERRUPTION
 C
          IF (HXFLAG.NE.0) THEN
-            CALL WARN(6,0,0)
+            CALL WARN(6)
             GOTO 900
          ENDIF
 C

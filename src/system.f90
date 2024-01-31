@@ -147,6 +147,7 @@ contains
 
    SUBROUTINE SYSDBG(DBX,STATUS)
       USE Globals, only: DBFNAM
+      USE Message, only: WARN
       USE Text, only: STRASC
       !
       ! ***UNIX SYSTEM DEPENDENT ROUTINE ***
@@ -181,7 +182,7 @@ contains
 
       RETURN
 800   STATUS = 1
-      CALL WARN(4,0,0)
+      CALL WARN(4)
       RETURN
    END SUBROUTINE SYSDBG
 

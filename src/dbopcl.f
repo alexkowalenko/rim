@@ -1,6 +1,7 @@
       SUBROUTINE DBOPCL(*,MODE)
 
          USE Globals, only : DFLAG, DBNAME, DBFNAM
+         USE Message, only : WARN
          USE System, only : SYSDBG, SYSDBN, CHKFIL
 
          INCLUDE 'syspar.inc'
@@ -19,7 +20,7 @@ C
             CALL SYSDBG(2,DBSTAT)
             IF(DBSTAT.NE.0) GO TO 900
             CALL DBOPEN(DBFNAM,.FALSE.)
-            IF(RMSTAT.NE.0) CALL WARN(RMSTAT,0,0)
+            IF(RMSTAT.NE.0) CALL WARN(RMSTAT)
             IF (DFLAG) THEN
                CALL MSG(' ','DATABASE ''','+')
                CALL AMSG(DBNAME,-ZC,'+')

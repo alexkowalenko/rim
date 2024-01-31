@@ -1,6 +1,7 @@
       FUNCTION SELREL(FTOK,NTOK)
 
-         USE Text, only : BLANK
+         USE Message, only: WARN
+         USE Text, only : BLANK         
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -32,7 +33,7 @@ C
             CALL LXSREC(FTOK+1,RNAME,ZC)
          ENDIF
          IF (EQ(RNAME,BLANK)) THEN
-            CALL WARN(4,0,0)
+            CALL WARN(4)
             GOTO 900
          ENDIF
 
@@ -44,7 +45,7 @@ C
 C
 C        UNRECOGNIZED RELATION NAME.
 C
-            CALL WARN(1,RNAME,0)
+            CALL WARN(1,RNAME)
             GO TO 900
          ENDIF
 C
@@ -52,7 +53,7 @@ C  CHECK FOR READ PERMISSION.
 C
          L = LOCPRM(NAME,1)
          IF(L.NE.0) THEN
-            CALL WARN(9,NAME,0)
+            CALL WARN(9,NAME)
             GO TO 900
          ENDIF
 C

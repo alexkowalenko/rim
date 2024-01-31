@@ -1,6 +1,7 @@
       SUBROUTINE BUILD(*)
 
          USE Globals, only : DFLAG
+         USE Message, only : WARN
 
          INCLUDE 'syspar.inc'
 C
@@ -28,7 +29,7 @@ C
 C     CHECK FOR A DATABASE
 C
          IF (.NOT.DFLAG) THEN
-            CALL WARN(2,0,0)
+            CALL WARN(2)
             GOTO 999
          ENDIF
 C
@@ -45,14 +46,14 @@ C
          CALL LXSREC(6,RNAME,ZC)
          CALL LXSREC(4,ANAME,ZC)
          IF(LOCREL(RNAME).NE.0) THEN
-            CALL WARN(1,RNAME,0)
+            CALL WARN(1,RNAME)
             GO TO 999
          ENDIF
 C
 C  CHECK FOR MODIFY PERMISSION.
 C
          IF(LOCPRM(RNAME,2).NE.0) THEN
-            CALL WARN(9,RNAME,0)
+            CALL WARN(9,RNAME)
             GO TO 999
          ENDIF
 C
@@ -150,7 +151,7 @@ C
 C
 C  SYNTAX ERROR.
 C
-  950    CALL WARN(4,0,0)
+  950    CALL WARN(4)
 C
 C  RETURN
 C

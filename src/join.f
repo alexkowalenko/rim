@@ -1,6 +1,7 @@
       SUBROUTINE JOIN(RNAME1,RNAME3,MATN3,NCOL3,NATT3,PTABLE,
      XKEYCOL,KEYTYP)
 
+         USE Message, only : WARN
          USE Utils, only : HTOI, ITOH
 
          INCLUDE 'syspar.inc'
@@ -154,7 +155,7 @@ C
 C  TUPLE LENGTH EXCEEDS MAXCOL
 C
   950    IERR = 1
-         CALL WARN(15,0,0)
+         CALL WARN(15)
 C
 C  ALL DONE.
 C

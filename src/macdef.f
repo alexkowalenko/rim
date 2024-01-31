@@ -1,4 +1,7 @@
       SUBROUTINE MACDEF(*)
+
+         USE Message, only : WARN
+
 C
 C     COMMAND ROUTINE TO DEFINE A MACRO
 C
@@ -87,7 +90,7 @@ C     CALL PUTT(MACTXT(WP),PTR,ABLANK)
          MACNTX = WP + (PTR-1)/ZCW + 1
          GOTO 9000
 
- 8000    CALL WARN(4,0,0)
+ 8000    CALL WARN(4)
          GOTO 9000
  8200    CALL MSG('E','TOO MUCH MACRO TEXT',' ')
 

@@ -2,6 +2,7 @@
 
          USE Globals, only : DFLAG, DMFLAG
          USE DateTime, only : RMDATE
+         USE Message, only : WARN
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
@@ -27,20 +28,21 @@ C
          LOGICAL EQKEYW
          INTEGER ATNCOL
          LOGICAL PJALL
+         INTEGER :: TEMP(Z)
          INCLUDE 'dclar1.inc'
 C
 C
 C     CHECK FOR A DATABASE
 C
          IF (.NOT.DFLAG) THEN
-            CALL WARN(2,0,0)
+            CALL WARN(2)
             GOTO 999
          ENDIF
 C
 C     MAKE SURE THE DATABASE MAY BE MODIFIED
 C
          IF(.NOT.DMFLAG) THEN
-            CALL WARN(8,0,0)
+            CALL WARN(8)
             GO TO 999
          ENDIF
 C
@@ -57,21 +59,22 @@ C
          LENF = NCOL
          IF(I.NE.0) THEN
 C       RNAME1 DOES NOT EXIST
-            CALL WARN(1,RNAME1,0)
+            CALL WARN(1,RNAME1)
             GO TO 999
          ENDIF
 C
 C
          IF(.NOT.TOKTYP(2,KXNAME)) THEN
             !CALL WARN(7,ASCTXT(IDP(2)),0) ! ASCTXT is a subroutine ???
-            CALL WARN(7, KXNAME, 0)
+            TEMP(1) = KXNAME
+            CALL WARN(7, TEMP)
             GO TO 999
          ENDIF
          CALL LXSREC(2,RNAME2,ZC)
          I = LOCREL(RNAME2)
          IF(I.EQ.0) THEN
 C       DUPLICATE RELATION NAME ENCOUNTERED
-            CALL WARN(5,RNAME2,0)
+            CALL WARN(5,RNAME2)
             GO TO 999
          ENDIF
 C
@@ -80,7 +83,7 @@ C
          I = LOCREL(RNAME1)
          I = LOCPRM(RNAME1,1)
          IF(I.NE.0) THEN
-            CALL WARN(9,RNAME1,0)
+            CALL WARN(9,RNAME1)
             GO TO 999
          ENDIF
          NS = 0

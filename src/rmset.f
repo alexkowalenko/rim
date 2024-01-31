@@ -3,6 +3,8 @@
          USE Globals, only : DBNAME, USERID, CASEIG, TRACE, ARBCHS,
      +   ARBCHM, KRMDTF, KRMTMF, KRMINF, KRMRNF, KMSSVL, KMSSVT,
      +   KNAPVL, KNAPVT, IFMOD
+         
+         USE Message, only: WARN
          USE Text, only : BLANK, STRASC
          USE Utils, only : ZMOVE
 
@@ -61,7 +63,7 @@ C
             ELSE IF (EQKEYW(OP+1,'RESPECT')) THEN
                CASEIG = .FALSE.
             ELSE
-               CALL WARN(4,0,0)
+               CALL WARN(4)
             ENDIF
             GOTO 900
          ENDIF
@@ -221,7 +223,7 @@ C
 C
 C---- ERRORS
 C
-  800    CALL WARN(4,0,0)
+  800    CALL WARN(4)
          GOTO 900
 C
   810    CALL MSG('E','THE MAXIMUM WIDTH IS ','+')

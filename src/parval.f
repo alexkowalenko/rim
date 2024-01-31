@@ -3,6 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE Maths, only : DTOR
+         USE Message, only : WARN
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -279,7 +280,7 @@ C
          IERR = 3
          GO TO 9999
 C
- 8300    CALL WARN(15,0,0)
+ 8300    CALL WARN(15)
          IERR = 2
          GO TO 9999
 C

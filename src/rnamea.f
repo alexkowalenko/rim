@@ -1,6 +1,7 @@
       SUBROUTINE RNAMEA(*)
 
          USE Globals, only : DFLAG, USERID, USERID
+         USE Message, only: WARN
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
@@ -23,7 +24,7 @@ C
 C     CHECK FOR A DATABASE
 C
          IF (.NOT.DFLAG) THEN
-            CALL WARN(2,0,0)
+            CALL WARN(2)
             GOTO 999
          ENDIF
 C
@@ -35,11 +36,11 @@ C
          IF((ITEMS.GT.2+STOK).AND.(.NOT.EQKEYW(3+STOK,'IN'))) GO TO 900
          IF((ITEMS.NE.2+STOK).AND.(ITEMS.NE.4+STOK)) GO TO 900
          IF( .NOT.TOKTYP(STOK,KXNAME) ) THEN
-            CALL WARN(7,ASCREC(IDP(STOK)),0)
+            CALL WARN(7,ASCREC(IDP(STOK)))
             GOTO 999
          ENDIF
          IF( .NOT.TOKTYP(2+STOK,KXNAME) ) THEN
-            CALL WARN(7,ASCREC(IDP(2+STOK)),0)
+            CALL WARN(7,ASCREC(IDP(2+STOK)))
             GOTO 999
          ENDIF
          CALL LXSREC(STOK,ANAME1,ZC)
@@ -139,7 +140,7 @@ C
 C
 C     BAD SYNTAX
 C
-  900    CALL WARN(4,0,0)
+  900    CALL WARN(4)
          GO TO 999
 C
 C     ANAME1 NOT THERE
@@ -156,7 +157,7 @@ C
          CALL MSG(' ','''.',' ')
          GO TO 999
 C
-  930    CALL WARN(8,0,0)
+  930    CALL WARN(8)
          GO TO 999
 C
 C     ALL DONE
