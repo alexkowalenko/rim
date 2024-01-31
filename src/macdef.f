@@ -1,6 +1,7 @@
       SUBROUTINE MACDEF(*)
 
          USE Message, only : WARN
+         USE Text, only : STRMOV
 
 C
 C     COMMAND ROUTINE TO DEFINE A MACRO

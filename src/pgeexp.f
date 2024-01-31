@@ -3,7 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE Maths, only : DTOR, RTOD
-         USE Text, only : BLANK
+         USE Text, only : BLANK, STRMOV
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

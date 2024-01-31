@@ -8,15 +8,12 @@ C
 C------------------------------------------------------------
 C
 
-         USE Globals, only : KMSSVT, KNAPVT, USERID, USERID, TRACE,
-     +   ARBCHS, ARBCHM, KRMDTF, KRMTMF, KRMINF, KRMRNF, KMSSVL, KNAPVL,
-     +   MRINDX, LIBFLG, PGVARS, KRMRMF, KRMDMF, TOL, HXFLAG, DFLAG,
-     +   DMFLAG, CASEIG, PGFLAG, IFMOD, PCENT, RUCK, PIFLAG
+         USE Parameters
+         USE Globals, only : USERID, KRMDTF, KRMTMF
+         USE Globals, only : Globals_Initialise => Initialise
          USE DateTime, only : DateTime_Initialise
-         USE Text, only : Text_Initialise, ASCCHR, ASCTXT
-         USE Utils, only : ZMOVE
+         USE Text, only : Text_Initialise, ASCTXT
 
-         INCLUDE 'syspar.inc'
          INCLUDE 'ascpar.inc'
          INCLUDE 'files.inc'
          INCLUDE 'cards.inc'
@@ -26,15 +23,11 @@ C
          INCLUDE 'maccom.inc'
 C
 C     /ASCPAR/
-C
          CALL Text_Initialise
 C
+
          CALL ASCTXT(KDBHDR,ZC,'RIM DATABASE')
-         CALL ASCTXT(NONE,ZC,' ')
-         KMSSVL = 4
-         CALL ASCTXT(KMSSVT,ZC,'-MV-')
-         KNAPVL = 4
-         CALL ASCTXT(KNAPVT,ZC,'-NA-')
+         CALL Globals_Initialise
 C
          CALL DateTime_Initialise
 C
@@ -72,29 +65,8 @@ C     /CARDS/
          LXEOC = 0
 
 C     /FLAGS/
-         DFLAG = .FALSE.
-         DMFLAG = .FALSE.
-         CALL ZMOVE(USERID,NONE)
-         IFMOD = .FALSE.
-         TOL = 0.
-         PCENT = .FALSE.
-         RUCK = .TRUE.
-         TRACE = 0
-         CASEIG = .FALSE.
-         ARBCHS = ASCCHR('?')
-         ARBCHM = ASCCHR('*')
          CALL DTFENC(KZDATE,KRMDTF,'MM/DD/YY')
          CALL DTFENC(KZTIME,KRMTMF,'HH:MM:SS')
-         KRMINF = 8
-         KRMRNF = 8 + 100*2
-         KRMRMF = -(15 + 100*8)
-         KRMDMF = -(21 + 100*14)
-         HXFLAG = 0
-         PIFLAG = .FALSE.
-         MRINDX = 0
-         LIBFLG = 0
-         PGVARS = 500
-         PGFLAG = .FALSE.
 
 C     /LXLCOM/
          CALL LXINIT

@@ -5,9 +5,10 @@ PROGRAM MAIN
    USE Parameters
    USE Globals, only: KRMRNF, DBFNAM
    USE DateTime, only: RMTIME, RMDATE
-   USE RandomFiles, only : RIOOPN, RIOCLO, RIOIN, RIOOUT
+   USE RandomFiles, only: RIOOPN, RIOCLO, RIOIN, RIOOUT
    USE System, only: SystemExit, SystemInitialise, SYSDBG, SYSDBN
-   USE Utils, only : ZMOVE, HTOI, ITOH
+   USE Text, only: STRMOV
+   USE Utils, only: ZMOVE, HTOI, ITOH
 
    !
    !  ****************************************************************

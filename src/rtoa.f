@@ -2,7 +2,7 @@
 
          USE, intrinsic :: iso_fortran_env
 
-         USE Maths, only : IEXP
+         USE Maths, only : IEXP, ROUND
          USE Text, only : FILCH, ABLANK, ITOA, RITOA
 
          INCLUDE 'syspar.inc'
@@ -43,7 +43,7 @@ C
 C
 C     F FORMAT
 C
-            CALL ROUN(RNUM,D,REAL)
+            CALL ROUND(RNUM,D,REAL)
             R = REAL
             IL = L - D - 1
    91       CALL RITOA(STRING,SC,IL,R,POINT,IERR)
@@ -75,7 +75,7 @@ C        FIND THE INTEGER AND THE EXPONENT
 C
             IE = IEXP(RNUM)
             RR = ABS(RNUM)/(10.0D0**IE)
-            CALL ROUN(RR,D,RR)
+            CALL ROUND(RR,D,RR)
             IE = IE - 1
             ESGN = PLSIGN
             IF (IE.LT.0) THEN

@@ -1,6 +1,6 @@
       SUBROUTINE MACEXP(M)
 
-         USE Text, only : ABLANK
+         USE Text, only : ABLANK, STRMOV
 
 C
 C --- TEXT PARSING ROUTINE

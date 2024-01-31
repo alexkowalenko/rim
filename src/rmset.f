@@ -3,9 +3,9 @@
          USE Globals, only : DBNAME, USERID, CASEIG, TRACE, ARBCHS,
      +   ARBCHM, KRMDTF, KRMTMF, KRMINF, KRMRNF, KMSSVL, KMSSVT,
      +   KNAPVL, KNAPVT, IFMOD
-         
+
          USE Message, only: WARN
-         USE Text, only : BLANK, STRASC
+         USE Text, only : BLANK, STRASC, NONE
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

@@ -1,5 +1,5 @@
       SUBROUTINE NXTTOK(EOR)
-         USE Text, only : CHRASC
+         USE Text, only : CHRASC, ASCAN
 C
 C --- TEXT PARSING ROUTINE
 C

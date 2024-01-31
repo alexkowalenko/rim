@@ -2,7 +2,7 @@
 
          USE Globals, only : DFLAG, USERID, OWNER
          USE Message, only: WARN
-         USE Text, only : BLANK
+         USE Text, only : BLANK, NONE
 
          INCLUDE 'syspar.inc'
 C

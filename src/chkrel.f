@@ -1,6 +1,7 @@
       SUBROUTINE CHKREL (PERM,MODE,ISTAT,NAMUSR)
 
          USE Globals, only : OWNER
+         USE Text, only : NONE
 
          INCLUDE 'syspar.inc'
 C

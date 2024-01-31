@@ -1,9 +1,11 @@
 MODULE Globals
 
-   USE Parameters, only : Z, ZFNAML
+   USE Parameters, only : Z, ZC, ZFNAML
 
    implicit none
    private
+
+   public Initialise
 
    !  *** / F L A G S / ***
    !
@@ -68,5 +70,40 @@ MODULE Globals
    !
    !     DBFNAM  - FILENAME OF ACTIVE DATABASE
    !
+
+contains
+
+   SUBROUTINE Initialise
+
+      USE Text, only: NONE, ASCCHR, ASCTXT
+      USE Utils, only: ZMOVE
+
+      KMSSVL = 4
+      CALL ASCTXT(KMSSVT,ZC,'-MV-')
+      KNAPVL = 4
+      CALL ASCTXT(KNAPVT,ZC,'-NA-')
+
+      DFLAG = .FALSE.
+      DMFLAG = .FALSE.
+      CALL ZMOVE(USERID,NONE)
+      IFMOD = .FALSE.
+      TOL = 0.
+      PCENT = .FALSE.
+      RUCK = .TRUE.
+      TRACE = 0
+      CASEIG = .FALSE.
+      ARBCHS = ASCCHR('?')
+      ARBCHM = ASCCHR('*')
+      KRMINF = 8
+      KRMRNF = 8 + 100*2
+      KRMRMF = -(15 + 100*8)
+      KRMDMF = -(21 + 100*14)
+      HXFLAG = 0
+      PIFLAG = .FALSE.
+      MRINDX = 0
+      LIBFLG = 0
+      PGVARS = 500
+      PGFLAG = .FALSE.
+   END SUBROUTINE Initialise
 
 END MODULE Globals

@@ -2,7 +2,7 @@
 
          USE Globals, only : USERID, KRMDTF, KRMINF, KRMRNF, KMSSVL,
      +   KMSSVT, KNAPVL, KNAPVT
-         USE Text, only : BLANK, ABLANK
+         USE Text, only : BLANK, ABLANK, ASCAN, STRMOV, NONE
          USE DateTime, only : ASCDAT
          USE Utils, only : ZMOVE
 

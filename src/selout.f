@@ -1,8 +1,8 @@
       SUBROUTINE SELOUT(MAT,IATT,ADONE)
 
          USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
-         USE Text, only : BLANK, ABLANK, ITOA
          USE DateTime, only : ASCDAT
+         USE Text, only : BLANK, ABLANK, ITOA, ASCAN, STRMOV
          USE Text, only : FILCH
          USE Utils, only : ITOH
 

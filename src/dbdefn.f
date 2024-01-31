@@ -4,6 +4,7 @@
          USE DateTime, only : RMDATE
          USE Message, only : WARN
          USE System, only: SYSDBG
+         USE Text, only : NONE
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

@@ -5,7 +5,7 @@
 #set(CMAKE_Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/src)
 
 add_library(rimcommon STATIC
-    adddat.f ascan.f
+    adddat.f
     attadd.f attdel.f attget.f attnew.f attpag.f attput.f
     blkchg.f blkcln.f blkclr.f blkdef.f blkdsp.f blkdwn.f blkext.f
     blkloc.f blkmov.f blknxt.f blkup.f
@@ -32,10 +32,9 @@ add_library(rimcommon STATIC
     putdat.f putt.f ptrs.f 
     reladd.f relget.f relpag.f relput.f remkey.f remlnk.f  remrel.f reuse.f rformt.f
     rmclos.f rmcons.f rminit.f rmlook.f rmpii.f rmqery.f rmres.f rmsav.f rmset.f rmtypt.f rmvarc.f
-    rnamea.f  rnamel.f rnamer.f roun.f rtoa.f
+    rnamea.f  rnamel.f rnamer.f rtoa.f
     selrel.f selrpt.f selsrt.f selwhr.f
-    sort.f strmov.f 
-    subtrc.f swcon.f swcost.f
+    sort.f subtrc.f swcon.f swcost.f
     swfilo.f swflfs.f 
     swhart.f swhrtd.f swhrti.f swhrtr.f 
     swicst.f swidcp.f swiicp.f swinpo.f swircp.f switcp.f 

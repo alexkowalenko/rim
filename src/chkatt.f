@@ -2,7 +2,7 @@
 
          USE DateTime, only : RMDATE
          USE Message, only : WARN
-         USE Text, only: BLANK
+         USE Text, only: BLANK, NONE
          USE Utils, only : ZMOVE, ITOH
 
          INCLUDE 'syspar.inc'

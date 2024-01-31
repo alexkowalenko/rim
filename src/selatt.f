@@ -2,7 +2,7 @@
 
          USE Globals, only : KRMDTF, KRMTMF, KRMINF, KRMRNF
          USE Message, only: WARN
-         USE Text, only : ASCCHR, ASCTXT, FILCH, BLANK, ABLANK
+         USE Text, only : ASCCHR, ASCTXT, FILCH, BLANK, ABLANK, STRMOV
          USE Utils, only : ZMOVE, HTOI, ITOH
 
          INCLUDE 'syspar.inc'

@@ -1,6 +1,6 @@
       SUBROUTINE LXSREC(I,STRING,NUMC)
 
-         USE Text, only : BLANK, ABLANK
+         USE Text, only : BLANK, ABLANK, STRMOV
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

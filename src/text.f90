@@ -16,10 +16,14 @@ MODULE Text
    public ATOI, ITOA
    public ATOR, RTOA
    public RITOA
+   public ASCAN
+   public STRMOV
 
    INTEGER, public :: ABLANK, BLANK(Z)
    !     ABLANK --- A ASCII-CHAR BLANK
    !     BLANK ---- ASCII-TEXT (Z) BLANKS
+   INTEGER, public :: NONE(Z)
+   !     NONE ----- PASSWORD FOR 'NO PASSWORD'
 
 CONTAINS
 
@@ -31,6 +35,7 @@ CONTAINS
       DO I = 1, ZC
          CALL PUTT(BLANK,I,ABLANK)
       END DO
+      CALL ASCTXT(NONE,ZC,' ')
    END SUBROUTINE Text_Initialise
 
 
@@ -264,10 +269,6 @@ CONTAINS
 
 
    LOGICAL FUNCTION ATOR(ASTR,SC,NC,VAL)
-
-      USE, intrinsic :: iso_fortran_env
-
-      implicit none
       !
       ! CONVERT ASCII-TEXT TO DP AND RETURN TRUE IF OK
       !
@@ -397,7 +398,7 @@ CONTAINS
 
    SUBROUTINE RTOA(STRING,SC,FMT,RNUM,IERR)
 
-      USE Maths, only : IEXP
+      USE Maths, only : IEXP, ROUND
 
       !
       ! CONVERT A REAL (RNUM) TO ASCII-TEXT (STRING)
@@ -440,7 +441,7 @@ CONTAINS
          !
          ! F FORMAT
          !
-         CALL ROUN(RNUM,D,REAL)
+         CALL ROUND(RNUM,D,REAL)
          R = REAL
          IL = L - D - 1
          CALL RITOA(STRING,SC,IL,R,POINT,IERR)
@@ -472,7 +473,7 @@ CONTAINS
          !
          IE = IEXP(RNUM)
          RR = ABS(RNUM)/(10.0D0**IE)
-         CALL ROUN(RR,D,RR)
+         CALL ROUND(RR,D,RR)
          IE = IE - 1
          ESGN = PLSIGN
          IF (IE.LT.0) THEN
@@ -513,5 +514,70 @@ CONTAINS
 9999  CONTINUE
       RETURN
    END SUBROUTINE RTOA
+
+
+   INTEGER FUNCTION ASCAN(STRING,SC,NC,ACHR,COMP)
+      !
+      ! LOOKS FOR ACHR IN STRING FROM SC FOR NC CHARACTERS
+      ! STRING IS ASCII-TEXT
+      ! NC<0 MEANS SCAN RIGHT TO LEFT
+      !
+      ! STRING....ASCII-TEXT TO SCAN
+      ! SC .......LEFTMOST CHARACTER TO CHECK
+      ! NC .......NUMBER OF CHARACTERS
+      ! ACHR......ASCII-CHAR TO LOOK FOR
+      ! COMP......TRUE TO LOOK FOR CHAR EQUAL
+      !           FALSE TO LOOK FOR CHAR NOT EQUAL
+      !
+      INTEGER, intent(in) :: STRING(*)
+      INTEGER, intent(in) :: SC, NC, ACHR
+      LOGICAL, intent(in) :: COMP
+
+      INTEGER ST, EN, IC, I, TCHR
+
+      IF (NC.EQ.0) GOTO 110
+      IF (NC.GT.0) THEN
+         ST = SC
+         EN = ST + NC - 1
+         IC = 1
+      ELSE
+         ST = SC - NC - 1
+         EN = SC
+         IC = -1
+      ENDIF
+      !
+      DO I = ST,EN,IC
+         CALL GETT(STRING,I,TCHR)
+         ASCAN = I
+         IF (COMP .AND. TCHR.EQ.ACHR) GOTO 200
+         IF ((.NOT.COMP) .AND. TCHR.NE.ACHR) GOTO 200
+      END DO
+110   ASCAN = 0
+200   RETURN
+   END FUNCTION ASCAN
+
+
+   SUBROUTINE STRMOV(FTXT,FPOS,NUMC,TTXT,TPOS)
+      implicit none
+      INTEGER, intent(in) :: FTXT(*), FPOS
+      INTEGER, intent(out) :: TTXT(*)
+      INTEGER, intent(in) :: TPOS, NUMC
+
+      INTEGER :: I, A
+      !
+      !
+      !  MOVE NUMC ASCII-CHARS FROM FTXT(FPOS) -> TTXT(TPOS)               .
+      !
+      ! IF (FPOS < 0 .OR. NUMC <= 0 .OR. TPOS < 0) THEN
+      !    write(*,*) "Return"
+      !    RETURN
+      ! END IF
+      DO I = 1, NUMC
+         CALL GETT(FTXT,FPOS+I-1,A)
+         CALL PUTT(TTXT,TPOS+I-1,A)
+      END DO
+      RETURN
+   END SUBROUTINE STRMOV
+
 
 END MODULE Text

@@ -2,7 +2,7 @@
 
          USE Globals, only : KRMTMF
          USE DateTime, only : JULDAT, ASMTXT
-         USE Text, only : ATOI
+         USE Text, only : ATOI, STRMOV
 
          INCLUDE 'syspar.inc'
 C
@@ -16,6 +16,8 @@ C
          INCLUDE 'ascpar.inc'
          INCLUDE 'tokens.inc'
          INCLUDE 'rmatts.inc'
+
+         INTEGER :: AM(1)
 C
          LXDATE = .FALSE.
 C
@@ -36,11 +38,11 @@ C
             IF (.NOT.ATOI(ASCREC(IDP(I)),DP,2,DD)) RETURN
          ENDIF
          IF (ML.EQ.3) THEN
-            AM = 0
+            AM(1) = 0
             CALL STRMOV(ASCREC(IDP(I)),MP,3,AM,1)
             DO 200 J = 1, 12
                MM = J
-  200       IF (AM.EQ.ASMTXT(J)) GOTO 210
+  200       IF (AM(1).EQ.ASMTXT(J)) GOTO 210
             RETURN
          ELSE
             IF(.NOT.ATOI(ASCREC(IDP(I)),MP,ML,MM)) RETURN

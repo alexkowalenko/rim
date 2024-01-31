@@ -1,0 +1,10 @@
+* RUN: rm -f sample.rimdb*
+* RUN: %rim %sample
+* RUN: %rim %s | FileCheck %s
+open sample
+delete rows from conductors where symbol="Cu"
+close
+exit
+* CHECK: Database 'sample' is open.
+* CHECK:         1 rows were deleted.
+ 

@@ -7,6 +7,7 @@ MODULE Maths
 
    public IEXP
    public DTOR, RTOD
+   public ROUND
 
 contains
 
@@ -72,6 +73,28 @@ contains
       D(2) = ID(2)
       RETURN
    END SUBROUTINE RTOD
+
+
+   SUBROUTINE ROUND(REAL,ND,RO)
+      USE, intrinsic :: iso_fortran_env
+      !
+      ! RETURN A ROUNDED VERSION OF THE REAL NUMBER
+      ! ACCURATE TO ND PLACES.
+      !
+
+      REAL(real64), intent(in) :: REAL
+      INTEGER, intent(in) :: ND
+      REAL(real64), intent(out) :: RO
+
+      REAL(real64) :: V
+
+      RO = REAL
+      IF(REAL.EQ.0.) RETURN
+      V = .5
+      IF(REAL.LT.0.) V = -.5
+      RO = REAL + V*(10.0D0**(0-ND))
+      RETURN
+   END SUBROUTINE ROUND
 
 END MODULE Maths
 

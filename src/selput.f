@@ -3,7 +3,7 @@
          USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT, KRMRMF,
      +   KRMDMF
          USE Maths, only : RTOD
-         USE Text, only : BLANK, ITOA
+         USE Text, only : BLANK, ITOA, STRMOV
          USE Utils, only : NDIGIT
 
          INCLUDE 'syspar.inc'

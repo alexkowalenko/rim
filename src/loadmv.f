@@ -1,7 +1,7 @@
       LOGICAL FUNCTION LOADMV(CCOL,CLEN)
 
          USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
-         USE Text, only : BLANK, ABLANK
+         USE Text, only : BLANK, ABLANK, ASCAN, STRMOV
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

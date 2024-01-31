@@ -3,7 +3,7 @@
          USE Globals, only : TRACE, MRINDX, HXFLAG, CASEIG, PGFLAG,
      +   DBFNAM
          USE Message, only : WARN
-         USE Text, only : FILCH, ABLANK, STRASC
+         USE Text, only : FILCH, ABLANK, STRASC, STRMOV
          USE Utils, only : ZMOVE
 
 

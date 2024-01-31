@@ -148,7 +148,7 @@ contains
    SUBROUTINE SYSDBG(DBX,STATUS)
       USE Globals, only: DBFNAM
       USE Message, only: WARN
-      USE Text, only: STRASC
+      USE Text, only: STRASC, ASCAN
       !
       ! ***UNIX SYSTEM DEPENDENT ROUTINE ***
       !
@@ -164,7 +164,6 @@ contains
 
       INTEGER, PARAMETER :: RSBCH=93, COLCH=58
       INTEGER :: P
-      INTEGER :: ASCAN ! Function
 
       STATUS = 0
       ! DBDIR = ' '

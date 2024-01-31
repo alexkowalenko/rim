@@ -1,6 +1,6 @@
       SUBROUTINE AMSG(MTEXT,NUMC,MCONT)
 
-         USE Text, only : ABLANK
+         USE Text, only : ABLANK, STRMOV
          USE TextFiles, only : TIOOUT
 
          INCLUDE 'syspar.inc'

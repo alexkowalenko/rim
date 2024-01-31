@@ -3,7 +3,7 @@
          USE Globals, only : DFLAG, DBNAME, USERID, OWNER
          USE DateTime, only: RMTIME, RMDATE
          USE Message, only : WARN
-         USE Text, only : BLANK
+         USE Text, only : BLANK, NONE
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
