@@ -9,7 +9,6 @@ C------------------------------------------------------------
 C
 
          USE Parameters
-         USE Globals, only : USERID, KRMDTF, KRMTMF
          USE Globals, only : Globals_Initialise => Initialise
          USE DateTime, only : DateTime_Initialise, DTFENC
          USE Text, only : Text_Initialise, ASCTXT
@@ -63,10 +62,6 @@ C     /CARDS/
          DO 200 I = 1, ZCARDN
   200    CRDRLL(I) = 0
          LXEOC = 0
-
-C     /FLAGS/
-         CALL DTFENC(KZDATE,KRMDTF,'MM/DD/YY')
-         CALL DTFENC(KZTIME,KRMTMF,'HH:MM:SS')
 
 C     /LXLCOM/
          CALL LXINIT

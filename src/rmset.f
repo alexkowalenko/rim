@@ -1,9 +1,10 @@
       SUBROUTINE RMSET(*)
 
          USE Globals, only : DBNAME, USERID, CASEIG, TRACE, ARBCHS,
-     +   ARBCHM, KRMDTF, KRMTMF, KRMINF, KRMRNF, KMSSVL, KMSSVT,
+     +   ARBCHM, KRMINF, KRMRNF, KMSSVL, KMSSVT,
      +   KNAPVL, KNAPVT, IFMOD
 
+         USE DateTime, only: KRMDTF, KRMTMF
          USE Message, only: WARN
          USE Text, only : BLANK, STRASC, NONE
          USE Utils, only : ZMOVE

@@ -87,7 +87,7 @@ C
          CALL ATTGET(ISTAT)
          SKCOL = ATTCOL
          IF (ITEMS.LT.3) KWS(3) = ' '
-         CALL ASCTXTX(SUBKEY,ZCW,KWS(3)(1:3))
+         CALL ASCTXT(KZHPSK,ZCW,KWS(3)(1:3))
 C
 C     LOOP THRU RECORDS AND DISPLAY
 C
@@ -103,7 +103,7 @@ C
             CALL WARN(6)
             GOTO 900
          ENDIF
-         IF (BUFFER(ITUP+SKCOL-1).NE.SUBKEY) GOTO 100
+         IF (BUFFER(ITUP+SKCOL-1).NE.KZHPSK(1)) GOTO 100
          NLINES = NLINES + 1
          ITEXT = ITUP + BUFFER(ITUP+2)
          NC = BUFFER(ITEXT)

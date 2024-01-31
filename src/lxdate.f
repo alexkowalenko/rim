@@ -1,7 +1,6 @@
       LOGICAL FUNCTION LXDATE(I,JDAT,FMT,TYP)
 
-         USE Globals, only : KRMTMF
-         USE DateTime, only : JULDAT, ASMTXT, DTFSPL
+         USE DateTime, only : JULDAT, ASMTXT, DTFSPL, KRMTMF
          USE Text, only : ATOI, STRMOV
 
          INCLUDE 'syspar.inc'

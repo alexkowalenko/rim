@@ -1,9 +1,9 @@
       SUBROUTINE RMSHOW(*)
 
          USE Globals, only : DFLAG, DBNAME, USERID, CASEIG, ARBCHS,
-     +   ARBCHM, KRMDTF, KRMTMF, KRMINF, KRMRNF, KMSSVL, KMSSVT, KNAPVL,
+     +   ARBCHM, KRMINF, KRMRNF, KMSSVL, KMSSVT, KNAPVL,
      +   KNAPVT
-         USE DateTime, only: RMTIME, RMDATE
+         USE DateTime, only: RMTIME, RMDATE, KRMDTF, KRMTMF
          USE Text, only : BLANK
          USE Utils, only : NDIGIT
 

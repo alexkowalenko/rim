@@ -1,7 +1,7 @@
       FUNCTION SELATT(FTOK,NTOK)
 
-         USE Globals, only : KRMDTF, KRMTMF, KRMINF, KRMRNF
-         USE DateTime, only : DTFSPL
+         USE Globals, only :  KRMINF, KRMRNF
+         USE DateTime, only : DTFSPL, KRMDTF, KRMTMF
          USE Message, only: WARN
          USE Text, only : ASCCHR, ASCTXT, FILCH, BLANK, ABLANK, STRMOV
          USE Utils, only : ZMOVE, HTOI, ITOH

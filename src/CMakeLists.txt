@@ -54,8 +54,7 @@ add_library(rimcommon STATIC
 )
 
 add_library(rimextlib STATIC
-    amsg.f asctxt.f 
-    dmsg.f imsg.f
+    amsg.f dmsg.f imsg.f
     lnkadd.f lnkget.f lnkpag.f lnkput.f loadfm.f
     loadit.f loadmv.f 
     loclnk.f locvar.f lodlnk.f  

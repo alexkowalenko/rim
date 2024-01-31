@@ -15,20 +15,27 @@ MODULE DateTime
    !
    !     ASMTXT  -- ASCII-TEXT OF MONTH NAMES (3-CHARS)
    !
+   INTEGER, public :: KRMDTF, KRMTMF
+   !         KRMDTF--DEFAULT DATE FORMAT
+   !         KRMDTF--DEFAULT TIME FORMAT
 
 contains
 
    SUBROUTINE DateTime_Initialise()
+      USE Parameters
       USE Text, only : ASCTXT
-      CHARACTER*3 :: MONTHS(12)
+      CHARACTER(len=3) :: MONTHS(12) = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
       INTEGER :: I
 
-      MONTHS = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
+      INCLUDE 'rmatts.inc'
 
       DO I = 1, 12
          ASMTXT(I) = 0
          CALL ASCTXT(ASMTXT(I),3,MONTHS(I))
       END DO
+
+      CALL DTFENC(KZDATE, KRMDTF, 'DD/MM/YYYY')
+      CALL DTFENC(KZTIME, KRMTMF, 'HH:MM:SS')
    END SUBROUTINE DateTime_Initialise
 
 
@@ -151,7 +158,7 @@ contains
    SUBROUTINE ASCDAT(STR,SC,L,JDAT,DFMT,TYP)
 
       USE Parameters
-      USE Globals, only : KMSSVL, KRMDTF, KRMTMF, KMSSVT, KNAPVT, KNAPVL
+      USE Globals, only : KMSSVL, KMSSVT, KNAPVT, KNAPVL
       USE Text, only : FILCH, ABLANK, ITOA, STRMOV
 
       !
@@ -350,7 +357,6 @@ contains
       !
       ! OFFSETS FOR DATA PACKING
       !
-      USE Globals, only : KRMDTF
 
       INTEGER :: L,DP,MP,ML,YP,YL,SC,DTFINT
       INTEGER, PARAMETER :: T1=12, T2=12**2, T3=12**3, T4=12**4, T5=12**5

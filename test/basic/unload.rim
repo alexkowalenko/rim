@@ -25,7 +25,7 @@ exit
 * CHECK: End
 * CHECK: Set integer format 'i8'
 * CHECK: Set real format 'f8.2'
-* CHECK: Set date format 'mm/dd/yy'
+* CHECK: Set date format 'dd/mm/yyyy'
 * CHECK: Set mv '-MV-'
 * CHECK: Set na '-NA-'
 * CHECK: Load measures        

@@ -1,6 +1,6 @@
       FUNCTION PGCEXP(ST,NT)
 
-         USE Globals, only : KRMDTF, KRMTMF
+         USE DateTime, only : KRMDTF, KRMTMF
 
          INCLUDE 'syspar.inc'
 C

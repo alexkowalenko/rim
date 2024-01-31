@@ -1,9 +1,9 @@
       SUBROUTINE UNDATA(ALL,IRCNTR,MODE,LHASH,ATDATA)
 
-         USE Globals, only : USERID, KRMDTF, KRMINF, KRMRNF, KMSSVL,
+         USE Globals, only : USERID, KRMINF, KRMRNF, KMSSVL,
      +   KMSSVT, KNAPVL, KNAPVT
          USE Text, only : BLANK, ABLANK, ASCAN, STRMOV, NONE
-         USE DateTime, only : ASCDAT
+         USE DateTime, only : ASCDAT, KRMDTF
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
