@@ -8,6 +8,8 @@ MODULE DateTime
    public JULDAT
    public DATJUL
    public ASCDAT
+   public DTFENC
+   public DTFSPL
 
    INTEGER, public :: ASMTXT(12)
    !
@@ -245,5 +247,147 @@ contains
 800   RETURN
    END SUBROUTINE ASCDAT
 
+
+   SUBROUTINE DTFENC(TYP,DTFINT,DTFCHR)
+      USE Parameters
+      USE Text, only : ASCCHR
+      !
+      ! ENCODE A DATE/TIME FORMAT STRING INTO AN INTEGER
+      !
+      ! MAX STRING LENGTH IS 12 CHARS
+      ! DATE DAY FIELD AND TIME SECONDS FIELD ARE OPTIONAL
+      !
+      INTEGER, intent(in) :: TYP
+      INTEGER, intent(out) :: DTFINT
+      CHARACTER(len=*), intent(in) :: DTFCHR
+      !
+      INCLUDE 'rmatts.inc'
+      !
+      ! OFFSETS FOR DATA PACKING
+      !
+      INTEGER, PARAMETER :: T1=12, T2=12**2, T3=12**3, T4=12**4, T5=12**5
+      INTEGER, PARAMETER :: TA=128
+      CHARACTER(len=1) :: SC
+      INTEGER :: DP, ML, MP, YL, YP, I, L, SP, HP
+      !
+      IF (TYP.EQ.KZTIME) GOTO 500
+      !
+      ! DATE FORMAT
+      !
+      ! DAY
+      DP = INDEX(DTFCHR,'DD')
+      !
+      ! MONTH
+      ML = 3
+      MP = INDEX(DTFCHR,'MMM')
+      IF (MP.EQ.0) THEN
+         ML = 2
+         MP = INDEX(DTFCHR,'MM')
+      ENDIF
+      !
+      ! YEAR
+      YL = 4
+      YP = INDEX(DTFCHR,'YYYY')
+      IF (YP.EQ.0) THEN
+         YL = 2
+         YP = INDEX(DTFCHR,'YY')
+      ENDIF
+      !
+      ! LOOK FOR SEPERATION CHAR
+      !
+      DO I = 1, LEN(DTFCHR)
+         SC = DTFCHR(I:I)
+         IF (SC.NE.'Y' .AND. SC.NE.'M' .AND. SC.NE.'D') GOTO 110
+      END DO
+      SC = ' '
+110   CONTINUE
+      !
+      ! CHECK VALIDITY
+      !
+      DTFINT = 0
+      IF (MP.EQ.0 .OR. YP.EQ.0) RETURN
+      L = LEN(DTFCHR)
+      DTFINT = (L*T5 + DP*T4 + MP*T3 + ML*T2 + YP*T1 + YL)*TA &
+         + ASCCHR(SC)
+      GOTO 900
+      !
+      ! TIME FORMAT
+      !
+      ! SECOND
+500   SP = INDEX(DTFCHR,'SS')
+      !
+      ! MINUTE
+      MP = INDEX(DTFCHR,'MM')
+      !
+      ! HOUR
+      HP = INDEX(DTFCHR,'HH')
+      !
+      ! LOOK FOR SEPERATION CHAR
+      !
+      DO I = 1, LEN(DTFCHR)
+         SC = DTFCHR(I:I)
+         IF (SC.NE.'H' .AND. SC.NE.'M' .AND. SC.NE.'S') GOTO 610
+      END DO
+      SC = ' '
+610   CONTINUE
+      !
+      ! CHECK VALIDITY
+      !
+      DTFINT = 0
+      IF (MP.EQ.0 .OR. HP.EQ.0) RETURN
+      L = LEN(DTFCHR)
+      DTFINT = (L*T5 + SP*T4 + MP*T3 + HP*T1)*TA &
+         + ASCCHR(SC)
+      !
+900   RETURN
+   END SUBROUTINE DTFENC
+
+
+   SUBROUTINE DTFSPL(L,DP,MP,ML,YP,YL,SC,DTFINT)
+      !
+      ! SPLIT A DATE-TIME FORMAT INTEGER INTO COMPONENTS
+      !
+      !
+      ! OFFSETS FOR DATA PACKING
+      !
+      USE Globals, only : KRMDTF
+
+      INTEGER :: L,DP,MP,ML,YP,YL,SC,DTFINT
+      INTEGER, PARAMETER :: T1=12, T2=12**2, T3=12**3, T4=12**4, T5=12**5
+      INTEGER, PARAMETER :: TA=128
+
+      INTEGER :: I
+      !
+      ! USE DEFAULT DATE SPECIFICATION IF NONE GIVEN
+      !
+      I = DTFINT
+      IF (I.EQ.0) I = KRMDTF
+      !
+      I = I/TA
+      !
+      ! LENGTH
+      L = I/T5
+      I = I - L*T5
+      !
+      ! DAY
+      DP = I/T4
+      I = I - DP*T4
+      !
+      ! MONTH
+      MP = I/T3
+      I = I - MP*T3
+      ML = I/T2
+      I = I - ML*T2
+      !
+      ! YEAR
+      YP = I/T1
+      I = I - YP*T1
+      YL = I
+      !
+      ! SEPERATION CHAR
+      SC = MOD(DTFINT,TA)
+      !
+      RETURN
+   END SUBROUTINE DTFSPL
 
 END MODULE DateTime

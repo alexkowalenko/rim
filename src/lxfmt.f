@@ -1,5 +1,6 @@
       SUBROUTINE LXFMT(I,TYP,FMT,LEN)
 
+         USE DateTime, only: DTFENC
          USE Text, only : UPCASE, ATOI, CHRASC
 
          INCLUDE 'syspar.inc'

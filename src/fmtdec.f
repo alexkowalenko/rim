@@ -1,5 +1,6 @@
       SUBROUTINE FMTDEC(DTFINT,TYPE,DTFASC,DTFASL)
 
+         USE DateTime, only : DTFSPL
          USE Text, only : ABLANK, ITOA
          USE Utils, only : NDIGIT
 

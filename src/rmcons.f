@@ -11,7 +11,7 @@ C
          USE Parameters
          USE Globals, only : USERID, KRMDTF, KRMTMF
          USE Globals, only : Globals_Initialise => Initialise
-         USE DateTime, only : DateTime_Initialise
+         USE DateTime, only : DateTime_Initialise, DTFENC
          USE Text, only : Text_Initialise, ASCTXT
 
          INCLUDE 'ascpar.inc'

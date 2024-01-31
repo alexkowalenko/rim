@@ -8,6 +8,7 @@ MODULE Maths
    public IEXP
    public DTOR, RTOD
    public ROUND
+   public TOLER, TOLED
 
 contains
 
@@ -95,6 +96,73 @@ contains
       RO = REAL + V*(10.0D0**(0-ND))
       RETURN
    END SUBROUTINE ROUND
+
+
+   SUBROUTINE TOLER(K,VI,N)
+      !
+      ! THIS ROUTINE APPLIES A TOLERANCE TO A REAL ROUTINE
+      !
+      ! K IS LOCBOO VALUE
+      ! V(N) IS REAL ARRAY
+      !
+      USE Globals, only : PCENT, TOL
+
+      INTEGER, intent(in) :: K, N
+      INTEGER, intent(inout) :: VI(N)
+
+      REAL :: V(N)
+
+      REAL :: X
+      INTEGER :: I
+
+      V = transfer(VI, V, N) ! Convert int to real array
+
+      X = TOL
+      IF(K.GT.5) X = -TOL
+      IF(PCENT) GO TO 50
+      DO I=1,N
+         V(I) = V(I) - X
+      END DO
+      RETURN
+50    CONTINUE
+      DO I=1,N
+         V(I) = V(I)*(1.-X)
+      END DO
+      RETURN
+   END SUBROUTINE TOLER
+
+
+   SUBROUTINE TOLED(K,VI,N)
+      !
+      ! THIS ROUTINE APPLIES A TOLERANCE TO A DOUBLE ROUTINE
+      !
+      ! K IS LOCBOO VALUE
+      ! V(N) IS DOUBLE ARRAY
+      !
+      USE Globals, only : PCENT, TOL
+      INTEGER, intent(in) :: K, N
+      INTEGER, intent(inout) :: VI(N)
+
+      REAL(real64) :: V(N)
+
+      REAL(real64) :: X
+      INTEGER :: I
+
+      V = transfer(VI, V, N) ! Convert int to real64 array
+
+      X = TOL
+      IF(K.GT.5) X = -X
+      IF(PCENT) GO TO 50
+      DO I=1,N
+         V(I) = V(I) - X
+      END DO
+      RETURN
+50    CONTINUE
+      DO I=1,N
+         V(I) = V(I)*(1.-X)
+      END DO
+      RETURN
+   END SUBROUTINE TOLED
 
 END MODULE Maths
 
