@@ -30,6 +30,7 @@ PROGRAM MAIN
    !
 10 CALL LODREC
    IF (KWS(1).EQ.'END') GOTO 900
+   IF (KWS(1).EQ.'*') GOTO 10 ! Ignore * for test suite
    !
    CALL TOKDSP
    !

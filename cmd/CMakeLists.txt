@@ -24,7 +24,7 @@ target_link_libraries(rimh
 
 target_link_libraries(lxtest
     PRIVATE
-    rimcommon rimlib system)
+    rimcommon rimextlib)
 
 target_link_libraries(rmtest
     PRIVATE
@@ -32,3 +32,4 @@ target_link_libraries(rmtest
 
 install(TARGETS rim DESTINATION bin)
 install(TARGETS rimh DESTINATION bin)
+install(TARGETS lxtest DESTINATION bin)

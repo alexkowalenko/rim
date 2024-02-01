@@ -26,8 +26,6 @@ C
          INCLUDE 'files.inc'
          INCLUDE 'maccom.inc'
 C
-         CHARACTER*1 CHRASC
-C
 C     CHECK FOR ACTIVE MACRO TEXT
 C
          IF (MACWPT.LT.MACWPZ) THEN
