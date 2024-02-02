@@ -5,6 +5,7 @@
 #set(CMAKE_Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/src)
 
 add_library(rimcommon STATIC
+    parameters.f90
     adddat.f
     attadd.f attdel.f attget.f attnew.f attpag.f attput.f
     blkchg.f blkcln.f blkclr.f blkdef.f blkdsp.f blkdwn.f blkext.f
@@ -49,7 +50,9 @@ add_library(rimcommon STATIC
     maths.f90
     message.f90
     randomfiles.f90
+    system.f90
     text.f90
+    textfiles.f90
     utils.f90
 )
 
@@ -68,7 +71,6 @@ add_library(rimextlib STATIC
     setin.f setout.f sgtlnk.f 
     undata.f undef.f unload.f unpass.f 
     system.f90
-    textfiles.f90
 )
 
 add_library(rimlib STATIC

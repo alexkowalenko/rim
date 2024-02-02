@@ -9,9 +9,12 @@ C------------------------------------------------------------
 C
 
          USE Parameters
+         USE Globals, only: KMSSVL, KMSSVT, KNAPVL, KNAPVT, USERID
+         USE Globals, only: ARBCHS, ARBCHM, USERID
          USE Globals, only : Globals_Initialise => Initialise
          USE DateTime, only : DateTime_Initialise, DTFENC
-         USE Text, only : Text_Initialise, ASCTXT
+         USE Text, only : Text_Initialise, ASCTXT, ASCCHR, NONE
+         USE Utils, only : ZMOVE
 
          INCLUDE 'ascpar.inc'
          INCLUDE 'files.inc'
@@ -27,6 +30,14 @@ C
 
          CALL ASCTXT(KDBHDR,ZC,'RIM DATABASE')
          CALL Globals_Initialise
+
+         KMSSVL = 4
+         CALL ASCTXT(KMSSVT,ZC,'-MV-')
+         KNAPVL = 4
+         CALL ASCTXT(KNAPVT,ZC,'-NA-')
+         CALL ZMOVE(USERID,NONE)
+         ARBCHS = ASCCHR('?')
+         ARBCHM = ASCCHR('*')
 C
          CALL DateTime_Initialise
 C

@@ -72,26 +72,15 @@ MODULE Globals
 contains
 
    SUBROUTINE Initialise
-
-      USE Text, only: NONE, ASCCHR, ASCTXT
-      USE Utils, only: ZMOVE
-
-      KMSSVL = 4
-      CALL ASCTXT(KMSSVT,ZC,'-MV-')
-      KNAPVL = 4
-      CALL ASCTXT(KNAPVT,ZC,'-NA-')
-
+      ! Can't use any modules, as this module with Paramaters is the first compiled
       DFLAG = .FALSE.
       DMFLAG = .FALSE.
-      CALL ZMOVE(USERID,NONE)
       IFMOD = .FALSE.
       TOL = 0.
       PCENT = .FALSE.
       RUCK = .TRUE.
       TRACE = 0
       CASEIG = .FALSE.
-      ARBCHS = ASCCHR('?')
-      ARBCHM = ASCCHR('*')
       KRMINF = 8
       KRMRNF = 8 + 100*2
       KRMRMF = -(15 + 100*8)
