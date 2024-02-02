@@ -1,6 +1,7 @@
       FUNCTION SELWHR(ST,NT)
 
          USE Globals, only : CASEIG, TRACE
+         USE Lexer, only: KXTEXT, KXNAME
          USE Message, only: WARN
          USE Utils, only : HTOI, ITOH
 

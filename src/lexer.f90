@@ -36,6 +36,28 @@ MODULE Lexer
 !         ASLXEX--RECALL EDIT - END LINE (!)
 !         ASLXES--RECALL EDIT - SKIP CHAR (#)
 
+
+!  *** / T O K E N S / ***
+!
+!  CONTAINS INPUT RECORD AS TOKENS
+!
+!     EACH TOKEN MAY BE ONE OR MORE OF THE FOLLOWING
+!
+!          KXNULL - NULL (TYPE = 0)
+!          KXTEXT - TEXT
+!          KXINT  - INTEGER
+!          KXREAL - REAL
+!          KXKEYW - KEYWORD
+!          KXNAME - NAME
+!
+   INTEGER, PARAMETER, public :: KXNULL=0 ! Not used
+   INTEGER, PARAMETER, public  :: KXTEXT=1
+   INTEGER, PARAMETER, public  :: KXINT=2
+   INTEGER, PARAMETER, public  :: KXREAL=4
+   INTEGER, PARAMETER, public  :: KXKEYW=8
+   INTEGER, PARAMETER, public  :: KXNAME=16
+!
+
    public Initialise
 
 contains

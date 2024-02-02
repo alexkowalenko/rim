@@ -1,5 +1,6 @@
       SUBROUTINE LOADFM(MAT,ATT,FOR,NFOR)
 
+         USE Lexer, only: KXTEXT, KXINT, KXREAL
          USE TextFiles, only : TIOIN
          USE Text, only : ABLANK, ATOI, ATOR, ASCAN, STRMOV
          USE Utils, only : ZEROIT

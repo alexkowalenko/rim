@@ -1,6 +1,7 @@
       SUBROUTINE RNAMEA(*)
 
          USE Globals, only : DFLAG, USERID, USERID
+         Use Lexer, only: KXNAME
          USE Message, only: WARN
          USE Text, only : BLANK
          USE Utils, only : ZMOVE

@@ -1,5 +1,6 @@
       LOGICAL FUNCTION GETKCA(PTABLE,NATT,RNAME,REQKCA)
 
+         USE Lexer, only : KXKEYW, KXNAME
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

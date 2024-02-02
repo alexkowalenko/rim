@@ -2,7 +2,7 @@
 
          USE Globals, only : KDBVER, MRINDX, PIFLAG
          USE Text, only : ASCTXT
-         USE Lexer, only : Lexer_Initialise => Initialise
+         USE Lexer, only : Lexer_Initialise => Initialise, KXKEYW
          USE System, only : SYSCOM
 
          INCLUDE 'syspar.inc'

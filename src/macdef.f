@@ -1,5 +1,6 @@
       SUBROUTINE MACDEF(*)
 
+         Use Lexer, only: KXNAME
          USE Message, only : WARN
          USE Text, only : STRMOV
 

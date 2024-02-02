@@ -1,4 +1,5 @@
       SUBROUTINE NXTTOK(EOR)
+         USE Lexer, only: KXTEXT, KXINT, KXREAL, KXKEYW, KXNAME
          USE Text, only : CHRASC, ASCAN
          USE Lexer, only : ASCOM, ASQUO, SQUOTE, DQUOTE
 C

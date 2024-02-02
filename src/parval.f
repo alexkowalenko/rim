@@ -2,6 +2,7 @@
 
          USE, intrinsic :: iso_fortran_env
 
+         USE Lexer, only: KXTEXT, KXINT, KXREAL
          USE Maths, only : DTOR
          USE Message, only : WARN
          USE Text, only : BLANK

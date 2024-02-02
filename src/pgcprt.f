@@ -1,4 +1,7 @@
       LOGICAL FUNCTION PGCPRT(BLKTYP,MAXLIN)
+
+         USE Lexer, only : KXNAME
+
          INCLUDE 'syspar.inc'
 C
 C     COMPILE A PRINT CLAUSE

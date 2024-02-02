@@ -1,6 +1,7 @@
       SUBROUTINE REMKEY(*)
 
          USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER
+         Use Lexer, only: KXNAME
          USE Message, only: WARN
          USE Text, only : BLANK
 

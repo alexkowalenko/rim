@@ -2,6 +2,7 @@
 
          USE Globals, only: PGVARS, INLINE, PGFLAG
          USE DateTime, only: RMTIME, RMDATE
+         USE Lexer, only: KXINT
          USE Message, only : WARN
          USE Text, only : ASCTXT
          USE Utils, only : ZMOVE
