@@ -1,0 +1,11 @@
+* RUN: %lxtest %s| FileCheck %s
+*
+3.14159
+end
+* CHECK: *
+* CHECK: 3.14159 
+* CHECK: /tokens/ 
+* CHECK: Item:   1 type=  29 length=   7 kws= :3.14159       :
+* CHECK: Int=         0
+* CHECK: Real( 613)= 3.141590                               3.141590E+00
+* CHECK: [3.14159]

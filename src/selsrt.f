@@ -1,6 +1,7 @@
       FUNCTION SELSRT(FTOK,NTOK)
 
          USE Message, only: WARN
+         Use Lexer, only: EQSIGN
 
          INCLUDE 'syspar.inc'
 C
@@ -13,7 +14,6 @@ C
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'tokens.inc'
-         INCLUDE 'lxlcom.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimptr.inc'

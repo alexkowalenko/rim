@@ -4,6 +4,7 @@
      +   KMSSVT, KNAPVL, KNAPVT
          USE Text, only : BLANK, ABLANK, ASCAN, STRMOV, NONE
          USE DateTime, only : ASCDAT, KRMDTF
+         USE Lexer, only : SQUOTE
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -27,7 +28,6 @@ C
          INCLUDE 'rimcom.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
-         INCLUDE 'lxlcom.inc'
          INCLUDE 'msgcom.inc'
          INCLUDE 'dclar1.inc'
          INCLUDE 'dclar3.inc'

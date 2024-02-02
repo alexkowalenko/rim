@@ -5,6 +5,8 @@
          USE Message, only: WARN
          USE Text, only : ASCCHR, ASCTXT, FILCH, BLANK, ABLANK, STRMOV
          USE Utils, only : ZMOVE, HTOI, ITOH
+         USE Lexer, only : ASLPAR, ASRPAR, ATSIGN, PCSIGN, EQSIGN
+         USE Lexer, only : ASCOLN, ASSTAR
 
          INCLUDE 'syspar.inc'
 C
@@ -14,7 +16,6 @@ C
 
          INCLUDE 'ascpar.inc'
          INCLUDE 'tokens.inc'
-         INCLUDE 'lxlcom.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'

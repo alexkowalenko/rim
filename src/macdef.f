@@ -20,7 +20,6 @@ C
          INCLUDE 'syspar.inc'
          INCLUDE 'ascpar.inc'
          INCLUDE 'tokens.inc'
-         INCLUDE 'lxlcom.inc'
          INCLUDE 'maccom.inc'
 
          LOGICAL EQKEYW

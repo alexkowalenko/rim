@@ -1,0 +1,11 @@
+* RUN: %lxtest %s| FileCheck %s
+*
+"hello"
+end
+* CHECK: *
+* CHECK: 'hello' 
+* CHECK: /tokens/ 
+* CHECK: Item:   1 type=  1 length=   5 kws= :       :
+* CHECK: Int=         0
+* CHECK: Real( 103)=0.0                                    ***
+* CHECK: [hello]

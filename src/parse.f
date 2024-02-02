@@ -17,7 +17,6 @@ C
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'tokens.inc'
-         INCLUDE 'lxlcom.inc'
          INCLUDE 'rmatts.inc'
 C
 C

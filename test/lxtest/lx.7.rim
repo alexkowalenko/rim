@@ -1,0 +1,23 @@
+* RUN: %lxtest %s| FileCheck %s
+*
+select * from techs
+end
+* CHECK: *
+* CHECK: select * from techs 
+* CHECK: /tokens/ 
+* CHECK: Item:   1 type=  25 length=   6 kws= :SELECT      :
+* CHECK: Int=         0
+* CHECK: Real( 103)=0.0                                    ***
+* CHECK: [select]
+* CHECK: Item:   2 type=  25 length=   1 kws= :*       :
+* CHECK: Int=         0
+* CHECK: Real( 103)=0.0                                    ***
+* CHECK: [*]
+* CHECK: Item:   3 type=  25 length=   4 kws= :FROM       :
+* CHECK: Int=         0
+* CHECK: Real( 103)=0.0                                    ***
+* CHECK: [from]
+* CHECK: Item:   4 type=  25 length=   5 kws= :TECHS       :
+* CHECK: Int=         0
+* CHECK: Real( 103)=0.0                                    ***
+* CHECK: [techs]

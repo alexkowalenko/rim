@@ -13,6 +13,7 @@ C
          USE Globals, only: ARBCHS, ARBCHM, USERID
          USE Globals, only : Globals_Initialise => Initialise
          USE DateTime, only : DateTime_Initialise, DTFENC
+         USE Lexer, only : Lexer_Initialise => Initialise
          USE Text, only : Text_Initialise, ASCTXT, ASCCHR, NONE
          USE Utils, only : ZMOVE
 
@@ -75,7 +76,7 @@ C     /CARDS/
          LXEOC = 0
 
 C     /LXLCOM/
-         CALL LXINIT
+         CALL Lexer_Initialise
 
 C     /PROM/
          PRMPT = .TRUE.

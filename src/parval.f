@@ -29,7 +29,6 @@ C              INPUT- -1 PUT NULL INTO MAT
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'tokens.inc'
-         INCLUDE 'lxlcom.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'files.inc'
          INCLUDE 'tuplea.inc'

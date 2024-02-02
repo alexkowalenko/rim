@@ -23,7 +23,6 @@ C
          INCLUDE 'whcom.inc'
          INCLUDE 'files.inc'
          INCLUDE 'rimptr.inc'
-         INCLUDE 'lxlcom.inc'
          INCLUDE 'pgmcom.inc'
          INCLUDE 'ptrcom.inc'
 C

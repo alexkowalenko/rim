@@ -1,6 +1,7 @@
       INTEGER FUNCTION NXTCHR(TXTONL)
 
          USE Text, only : ABLANK
+         USE Lexer, only : ASSEMI, ASPLUS
 
 C
 C --- TEXT PARSING ROUTINE
@@ -20,7 +21,6 @@ C
          LOGICAL TXTONL
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'lxlcom.inc'
          INCLUDE 'tokens.inc'
          INCLUDE 'cards.inc'
          INCLUDE 'files.inc'

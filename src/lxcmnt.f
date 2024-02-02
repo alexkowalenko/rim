@@ -1,4 +1,6 @@
       SUBROUTINE LXCMNT(EOR)
+         USE Lexer, only : ASBLK, ASCOM, ASSEMI
+
          INCLUDE 'syspar.inc'
 C
 C     REMOVE A COMMENT FROM THE INPUT TOKEN STREAM
@@ -11,7 +13,6 @@ C     ON EXIT:    ITEMS = ITEMS - 2
 C
          INCLUDE 'files.inc'
          INCLUDE 'tokens.inc'
-         INCLUDE 'lxlcom.inc'
 C
          CHARACTER*(ZKEYWL) OPT
 C

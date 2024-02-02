@@ -3,6 +3,7 @@
          USE DateTime, only : DTFSPL
          USE Text, only : ABLANK, ITOA
          USE Utils, only : NDIGIT
+         USE Lexer, only : DECIM
 
          INCLUDE 'syspar.inc'
 C
@@ -17,7 +18,6 @@ C
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'lxlcom.inc'
 C
 C     OFFSETS FOR DATA PACKING FOR DATE TYPES
 C

@@ -113,15 +113,17 @@ contains
       REAL(real64) :: d0
       INTEGER :: na, ERR, i, bp
 
+      INTRINSIC command_argument_count, get_command_argument, get_environment_variable
+
       ! ignore any possible float overflows
       d0 = 0
       !---- call trpfpe(0,d0)
 
-      na = iargc()
+      na = command_argument_count()
 
       IF (na.gt.0) THEN
          ! INPUT IS FILE
-         call getarg(1,fname)
+         call get_command_argument(1,fname)
          OPEN(UNIT=ZNINT,FILE=FNAME,STATUS='OLD',IOSTAT=ERR)
          IF (ERR.NE.0) THEN
             CALL MSG(' ','COULD NOT OPEN FILE: ' // FNAME,' ')

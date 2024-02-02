@@ -2,6 +2,7 @@
 
          USE Globals, only : TRACE
          USE System, only : SystemExit, SystemTrap
+         USE Lexer, only : EQSIGN, GTSIGN
 
          INCLUDE 'syspar.inc'
 C
@@ -10,7 +11,6 @@ C
 C
          INCLUDE 'files.inc'
          INCLUDE 'tokens.inc'
-         INCLUDE 'lxlcom.inc'
          INCLUDE 'maccom.inc'
 C
          LOGICAL EQKEYW

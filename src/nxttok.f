@@ -1,5 +1,6 @@
       SUBROUTINE NXTTOK(EOR)
          USE Text, only : CHRASC, ASCAN
+         USE Lexer, only : ASCOM, ASQUO, SQUOTE, DQUOTE
 C
 C --- TEXT PARSING ROUTINE
 C
@@ -14,13 +15,13 @@ C     TOKEN IS PUT INTO /TOKENS/ AT ITEMS+1
 C
          USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
          USE Text, only : UPCASE, BLANK, ABLANK, ATOI, ATOR
+         USE Lexer, only : ASBLK
 
          INCLUDE 'syspar.inc'
 
          INTEGER EOR
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'lxlcom.inc'
          INCLUDE 'tokens.inc'
          INCLUDE 'cards.inc'
 C

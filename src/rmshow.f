@@ -16,7 +16,6 @@ C
          INCLUDE 'tokens.inc'
          INCLUDE 'files.inc'
          INCLUDE 'msgcom.inc'
-         INCLUDE 'lxlcom.inc'
          INCLUDE 'maccom.inc'
          INCLUDE 'tupler.inc'
 

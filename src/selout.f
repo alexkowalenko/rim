@@ -4,6 +4,7 @@
          USE DateTime, only : ASCDAT
          USE Text, only : BLANK, ABLANK, ITOA, ASCAN, STRMOV
          USE Text, only : FILCH
+         USE Lexer, only : ASSTAR
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
@@ -15,7 +16,6 @@ C     IATT......ATTRIBUTE NUMBER IN SELCOM
 C     ADONE.....SET TO .TRUE. IF NO PARAGRAPHING LEFT
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'lxlcom.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'selcom.inc'
 C

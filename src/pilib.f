@@ -2,6 +2,7 @@
 
          USE Globals, only : KDBVER, MRINDX, PIFLAG
          USE Text, only : ASCTXT
+         USE Lexer, only : Lexer_Initialise => Initialise
          USE System, only : SYSCOM
 
          INCLUDE 'syspar.inc'
@@ -41,7 +42,7 @@ C
             CONNI = .FALSE.
             CONNO = .FALSE.
             CALL RMINIT
-            CALL LXINIT
+            CALL Lexer_Initialise
             INITFL = 1
          ENDIF
 C

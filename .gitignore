@@ -10,6 +10,7 @@ build
 bin
 lit.site.cfg.py
 *.mod
+*.smod
 *.rimdb1
 *.rimdb2
 *.rimdb3

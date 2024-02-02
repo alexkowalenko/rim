@@ -2,13 +2,13 @@
 
          USE Text, only : UPCASE, ABLANK
          USE TextFiles, only : TIOIN
+         USE Lexer, only : ASRCLL, ASLXEI, ASLXEE, ASLXEX, ASLXES
 
          INCLUDE 'syspar.inc'
 C
 C     RECALL AND EDIT AN INPUT LINE OR COMMAND
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'lxlcom.inc'
          INCLUDE 'cards.inc'
          INCLUDE 'files.inc'
          INCLUDE 'prom.inc'

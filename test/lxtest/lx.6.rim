@@ -1,0 +1,11 @@
+* RUN: %lxtest %s| FileCheck %s
+*
+-
+end
+* CHECK: *
+* CHECK: -
+* CHECK: /tokens/ 
+* CHECK: Item:   1 type=  31 length=   1 kws= :-       :
+* CHECK: Int=         0
+* CHECK: Real( 103)=0.0                                    ***
+* CHECK: [-]

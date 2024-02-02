@@ -4,6 +4,7 @@
 
          USE Maths, only : IEXP, ROUND
          USE Text, only : FILCH, ABLANK, ITOA, RITOA
+         USE Lexer, only : PLSIGN, MNSIGN, DECIM, ASSTAR, UECH, U0
 
          INCLUDE 'syspar.inc'
 C
@@ -21,7 +22,6 @@ C
          REAL(real64) :: RNUM
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'lxlcom.inc'
          LOGICAL FFMT
 C
          REAL(real64) :: R,RR,REAL,POINT,RREM

@@ -81,7 +81,8 @@ CONTAINS
       ! RETURN THE ASCII-CHAR EQUIVALENT OF CH
       !
       CHARACTER(len=1), intent(in) :: CH
-      !
+      INTRINSIC ICHAR
+
       ASCCHR = ICHAR(CH)
       ! Convert tab (9) to space (32)
       IF (ASCCHR.EQ.9) ASCCHR = 32
@@ -97,7 +98,8 @@ CONTAINS
       !
       CHARACTER(len=1) CHRASC
       INTEGER ASCHR
-      !
+      INTRINSIC CHAR
+
       CHRASC = CHAR(ASCHR)
       RETURN
    END
@@ -172,7 +174,7 @@ CONTAINS
 
 
    LOGICAL FUNCTION ATOI(ASTR,SC,NC,VAL)
-      implicit none
+      USE Lexer, only : U9, U0, MNSIGN, ASPACE
       !
       ! CONVERT ASCII-TEXT TO INTEGER AND RETURN TRUE IF OK
       !
@@ -180,8 +182,6 @@ CONTAINS
       ! NC -- NUMBER OF CHARS
       INTEGER, intent(in) :: ASTR(*), SC, NC
       INTEGER, intent(out) :: VAL
-      !
-      INCLUDE 'lxlcom.inc'
 
       INTEGER :: SGN, I, A
       !
@@ -209,9 +209,9 @@ CONTAINS
 
 
    SUBROUTINE ITOA(STRING,SC,FMT,INT,IERR)
-
       USE Parameters, only : Z
       USE Utils, only : NDIGIT
+      Use Lexer, only : U0, MNSIGN, DECIM, ASSTAR
 
       implicit none
       !
@@ -225,7 +225,6 @@ CONTAINS
       ! INT.......INTEGER TO CONVERT.
       ! IERR......0 IF INT FITS, 1 OTHERWISE
       !
-      INCLUDE 'lxlcom.inc'
 
       INTEGER, intent(out) :: STRING(*), IERR
       INTEGER, intent(in) :: SC, FMT, INT
@@ -269,13 +268,13 @@ CONTAINS
 
 
    LOGICAL FUNCTION ATOR(ASTR,SC,NC,VAL)
+      USE Lexer, only : UECH, U9, U0, PLSIGN, MNSIGN, LECH, DECIM, ASPACE
       !
       ! CONVERT ASCII-TEXT TO DP AND RETURN TRUE IF OK
       !
       ! SC -- STARTING CHAR IN ASTR
       ! NC -- NUMBER OF CHARS
       !
-      INCLUDE 'lxlcom.inc'
 
       INTEGER, intent(in) :: ASTR(*), SC, NC
       REAL(real64), intent(out) :: VAL
@@ -347,6 +346,7 @@ CONTAINS
 
    SUBROUTINE RITOA(STRING,SC,LEN,RINT,REM,IERR)
       USE Maths, only : IEXP
+      USE Lexer, only : U0, MNSIGN
       !
       ! CONVERT THE INTEGER PARTOF A DOUBLE (RINT) TO ASCII-TEXT (STRING)
       ! IF IT WILL NOT FIT RETURN IERR > 0
@@ -364,8 +364,6 @@ CONTAINS
       REAL(real64), intent(in) :: RINT
       REAL(real64), intent(out) :: REM
       INTEGER, intent(out) :: IERR
-
-      INCLUDE 'lxlcom.inc'
 
       REAL(real64) :: R
       INTEGER :: I, DG, S, E, IN
@@ -399,6 +397,7 @@ CONTAINS
    SUBROUTINE RTOA(STRING,SC,FMT,RNUM,IERR)
 
       USE Maths, only : IEXP, ROUND
+      USE Lexer, only : U0, MNSIGN, PLSIGN, UECH, ASSTAR, DECIM
 
       !
       ! CONVERT A REAL (RNUM) TO ASCII-TEXT (STRING)
@@ -418,7 +417,6 @@ CONTAINS
       INTEGER, intent(out) :: IERR
       !
       INCLUDE 'ascpar.inc'
-      INCLUDE 'lxlcom.inc'
 
       LOGICAL :: FFMT
       REAL(real64) :: R,RR,REAL,POINT,RREM

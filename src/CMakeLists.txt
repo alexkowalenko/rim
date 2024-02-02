@@ -24,7 +24,8 @@ add_library(rimcommon STATIC
     locatt.f locboo.f
     locmac.f locprm.f locrel.f
     lodele.f lodpas.f lodrec.f lodrel.f
-    lstrel.f lstrng.f lxcmnt.f lxdate.f lxedit.f lxfmt.f lxinit.f lxlenw.f lxsrec.f lxwrec.f
+    lstrel.f lstrng.f 
+    lxcmnt.f lxdate.f lxedit.f lxfmt.f lxlenw.f lxsrec.f lxwrec.f
     macdef.f macexp.f motscn.f
     ne.f nxtchr.f nxtchx.f nxttok.f
     parse.f parval.f
@@ -49,6 +50,7 @@ add_library(rimcommon STATIC
     globals.f90
     maths.f90
     message.f90
+    lexer.f90
     randomfiles.f90
     system.f90
     text.f90
