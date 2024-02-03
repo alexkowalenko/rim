@@ -1,5 +1,6 @@
       SUBROUTINE CHANGE(MAT,NVAL,IFLAG,NTUP)
 
+         USE Lexer, only : KWS
          USE Message, only : WARN
          USE Text, only : BLANK
          USE Utils, only : ZMOVE

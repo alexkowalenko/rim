@@ -1,6 +1,6 @@
       SUBROUTINE LODPAS(ERROR)
 
-         Use Lexer, only: KXNAME, TOKTYP
+         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP
          USE Message, only : WARN
          USE Text, only : BLANK
          USE Utils, only : ZMOVE

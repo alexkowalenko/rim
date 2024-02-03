@@ -4,7 +4,7 @@ PROGRAM MAIN
 
    USE Parameters
    USE System, only: SystemExit, SystemInitialise
-   USE Lexer, only : Lexer_Initialise => Initialise
+   USE Lexer, only : Lexer_Initialise => Initialise, KWS
 
    IMPLICIT NONE
    !

@@ -1,7 +1,7 @@
       SUBROUTINE CHGPSW(*)
 
          USE Globals, only : DFLAG, USERID, OWNER, IFMOD
-         Use Lexer, only: KXNAME, TOKTYP
+         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP
          USE Message, only : WARN
          USE Text, only : BLANK
 

@@ -5,7 +5,7 @@ PROGRAM MAIN
    USE Parameters
    USE Globals, only: KRMRNF, DBFNAM
    USE DateTime, only: RMTIME, RMDATE
-   USE Lexer, only: KXINT, KXKEYW, TOKTYP
+   USE Lexer, only: KXINT, KXKEYW, TOKTYP, ASCREC, IDP, IDL, KWS
    USE RandomFiles, only: RIOOPN, RIOCLO, RIOIN, RIOOUT
    USE System, only: SystemExit, SystemInitialise, SYSDBG, SYSDBN
    USE Text, only: STRMOV

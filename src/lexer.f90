@@ -1,6 +1,6 @@
 MODULE Lexer
 
-   USE Parameters, only : ZMTOK
+   USE Parameters, only : ZMTOK, ZMASC, ZKEYWL
    implicit none
    private
 
@@ -71,7 +71,15 @@ MODULE Lexer
    !COMMON /TOKENC/ KWS(ZMTOK)
    !CHARACTER*(ZKEYWL) :: KWS
 
+   INTEGER, public :: ASCREC(ZMASC)
+   INTEGER, public :: ASCNXT
+
+   INTEGER, public :: IDP(ZMTOK)
+   INTEGER, public :: IDL(ZMTOK)
    INTEGER, public :: IDT(ZMTOK)
+
+   CHARACTER(len=ZKEYWL), public :: KWS(ZMTOK)
+   INTEGER, public :: ITEMS
 
    !
    !  VARIABLE DEFINITIONS:
@@ -91,6 +99,7 @@ MODULE Lexer
 
    public Initialise
    public TOKTYP !     TOKTYP CHECKS A TOKEN FOR A TYPE MATCH
+   public EQTOK
 
 contains
 
@@ -130,6 +139,30 @@ contains
       ENDIF
       RETURN
    END FUNCTION TOKTYP
+
+
+   LOGICAL FUNCTION EQTOK(I,ASCHR)
+      !
+      ! THIS FUNCTION COMPARES ASCHR WITH ITEM I OF THE
+      ! COMMAND TOKEN LIST
+      !
+      ! INPUT - I........ITEM NUMBER
+      !         ASCHR....ASCII-CHAR
+      ! OUTPUT- EQTOK ....TRUE. IFF
+      !               A. ITEM I IS TEXT OF LENGTH 1
+      !               B. ITEM I EQUALS ASCHR
+      !
+      INTEGER, intent(in) :: I, ASCHR
+
+      INTEGER :: A
+
+      EQTOK = .FALSE.
+      IF (IDL(I).NE.1) RETURN
+      CALL GETT(ASCREC(IDP(I)),1,A)
+      IF (A.NE.ASCHR) RETURN
+      EQTOK = .TRUE.
+      RETURN
+   END FUNCTION EQTOK
 
 
 END MODULE Lexer

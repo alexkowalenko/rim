@@ -1,9 +1,4 @@
       SUBROUTINE MACDEF(*)
-
-         Use Lexer, only: KXNAME, TOKTYP
-         USE Message, only : WARN
-         USE Text, only : STRMOV
-
 C
 C     COMMAND ROUTINE TO DEFINE A MACRO
 C
@@ -14,8 +9,9 @@ C     *  =  RETURN STATEMENT
 C
 C-----------------------------------------------------
 C
-
-         USE Text, only : BLANK, ABLANK
+         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS
+         USE Message, only : WARN
+         USE Text, only : STRMOV, BLANK, ABLANK
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

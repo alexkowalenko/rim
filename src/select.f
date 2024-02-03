@@ -1,6 +1,7 @@
       SUBROUTINE SELECT(*)
 
          USE Globals, only : DFLAG
+         USE Lexer, only : ASCREC, IDP, IDL, KWS
          USE Message, only: WARN
          USE Text, only : STRASC
 

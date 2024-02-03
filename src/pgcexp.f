@@ -1,8 +1,9 @@
       FUNCTION PGCEXP(ST,NT)
 
-         USE DateTime, only : KRMDTF, KRMTMF
-         USE Lexer, only : ASLPAR, ASRPAR, MNSIGN, PLSIGN, TMSIGN
-         USE Lexer, only : DVSIGN, KXINT, KXREAL, KXNAME, TOKTYP
+         USE DateTime, only: KRMDTF, KRMTMF
+         USE Lexer, only: ASLPAR, ASRPAR, MNSIGN, PLSIGN, TMSIGN, IDP
+         USE Lexer, only: DVSIGN, KXINT, KXREAL, KXNAME, TOKTYP, ASCREC
+         USE Lexer, only: IDL, EQTOK
 
          INCLUDE 'syspar.inc'
 C
@@ -23,7 +24,7 @@ C
          INCLUDE 'expcom.inc'
 C
          CHARACTER*(ZKEYWL) KOMPAR
-         LOGICAL EQKEYW, EQTOK, PGSTOR
+         LOGICAL EQKEYW, PGSTOR
          INCLUDE 'dclar1.inc'
          LOGICAL LXDATE
 

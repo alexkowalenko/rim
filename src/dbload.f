@@ -1,7 +1,7 @@
       SUBROUTINE DBLOAD(*)
 
          USE Globals, only : DFLAG, DMFLAG, PIFLAG
-         Use Lexer, only: KXNAME, TOKTYP
+         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS
          USE Message, only : WARN
          USE Text, only : BLANK, STRASC
          USE DateTime, only : RMDATE

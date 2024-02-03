@@ -1,6 +1,7 @@
       SUBROUTINE BUILD(*)
 
          USE Globals, only : DFLAG
+         USE Lexer, only : KWS
          USE Message, only : WARN
 
          INCLUDE 'syspar.inc'

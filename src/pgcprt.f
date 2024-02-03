@@ -1,6 +1,6 @@
       LOGICAL FUNCTION PGCPRT(BLKTYP,MAXLIN)
 
-         USE Lexer, only : KXNAME, TOKTYP
+         USE Lexer, only : KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS
 
          INCLUDE 'syspar.inc'
 C

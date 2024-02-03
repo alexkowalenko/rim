@@ -5,8 +5,8 @@
          USE Message, only: WARN
          USE Text, only : ASCCHR, ASCTXT, FILCH, BLANK, ABLANK, STRMOV
          USE Utils, only : ZMOVE, HTOI, ITOH
-         USE Lexer, only : ASLPAR, ASRPAR, ATSIGN, PCSIGN, EQSIGN
-         USE Lexer, only : ASCOLN, ASSTAR
+         USE Lexer, only : ASLPAR, ASRPAR, ATSIGN, PCSIGN, EQSIGN, KWS
+         USE Lexer, only : ASCOLN, ASSTAR, IDL, EQTOK
 
          INCLUDE 'syspar.inc'
 C
@@ -24,7 +24,7 @@ C
          INCLUDE 'selcom.inc'
          INCLUDE 'srtcom.inc'
 
-         LOGICAL EQKEYW,END,ALLATT,EQTOK
+         LOGICAL EQKEYW,END,ALLATT
          LOGICAL EQ,NE
          INTEGER STATUS
          INCLUDE 'dclar1.inc'

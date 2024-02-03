@@ -2,6 +2,7 @@
 
          USE Globals, only : DFLAG, DBNAME, USERID, OWNER
          USE DateTime, only: RMTIME, RMDATE
+         USE Lexer, only : ASCREC, IDP, IDL, KWS
          USE Message, only: WARN
          USE Text, only : STRASC
          USE Utils, only : ZMOVE

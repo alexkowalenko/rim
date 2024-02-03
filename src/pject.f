@@ -2,7 +2,7 @@
 
          USE Globals, only : DFLAG, DMFLAG
          USE DateTime, only : RMDATE
-         Use Lexer, only: KXNAME, TOKTYP
+         Use Lexer, only: KXNAME, TOKTYP, IDP
          USE Message, only : WARN
          USE Text, only : BLANK
          USE Utils, only : ZMOVE

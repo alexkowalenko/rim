@@ -1,5 +1,6 @@
       LOGICAL FUNCTION LXDATE(I,JDAT,FMT,TYP)
 
+         USE Lexer, only : ASCREC, IDP
          USE DateTime, only : JULDAT, ASMTXT, DTFSPL, KRMTMF
          USE Text, only : ATOI, STRMOV
 

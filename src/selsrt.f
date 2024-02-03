@@ -1,7 +1,7 @@
       FUNCTION SELSRT(FTOK,NTOK)
 
          USE Message, only: WARN
-         Use Lexer, only: EQSIGN
+         Use Lexer, only: EQSIGN, EQTOK, KWS
 
          INCLUDE 'syspar.inc'
 C
@@ -22,7 +22,7 @@ C
          INCLUDE 'files.inc'
          INCLUDE 'srtcom.inc'
          INCLUDE 'dclar1.inc'
-         LOGICAL EQKEYW,SAORD, EQTOK
+         LOGICAL EQKEYW,SAORD
 C
 C     *********************************************** S T A R T
 C

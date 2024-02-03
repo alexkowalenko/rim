@@ -1,5 +1,6 @@
       SUBROUTINE LXFMT(I,TYP,FMT,LEN)
 
+         USE Lexer, only: ASCREC, IDP, IDL
          USE DateTime, only: DTFENC
          USE Text, only : UPCASE, ATOI, CHRASC
 
