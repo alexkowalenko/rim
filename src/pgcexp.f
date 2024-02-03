@@ -24,7 +24,7 @@ C
          INCLUDE 'expcom.inc'
 C
          CHARACTER*(ZKEYWL) KOMPAR
-         LOGICAL EQKEYW, PGSTOR
+         LOGICAL PGSTOR
          INCLUDE 'dclar1.inc'
          LOGICAL LXDATE
 

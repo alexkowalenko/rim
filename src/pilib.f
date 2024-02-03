@@ -3,7 +3,7 @@
          USE Globals, only : KDBVER, MRINDX, PIFLAG
          USE Text, only : ASCTXT
          USE Lexer, only : Lexer_Initialise => Initialise, KXKEYW
-         USE Lexer, only : TOKTYP
+         USE Lexer, only : TOKTYP, ITEMS, EQKEYW
          USE System, only : SYSCOM
 
          INCLUDE 'syspar.inc'
@@ -24,8 +24,6 @@ C
          INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'files.inc'
-C
-         LOGICAL EQKEYW
 C
          DATA INITFL /0/
 C

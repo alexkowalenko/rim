@@ -5,7 +5,8 @@
      +   KNAPVL, KNAPVT, IFMOD
 
          USE DateTime, only: KRMDTF, KRMTMF
-         USE Lexer, only: KXINT, TOKTYP, ASCREC, IDP, IDL, KWS
+         USE Lexer, only: KXINT, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS
+         USE Lexer, only: EQKEYW
          USE Message, only: WARN
          USE Text, only : BLANK, STRASC, NONE
          USE Utils, only : ZMOVE
@@ -19,7 +20,6 @@ C
          INCLUDE 'tokens.inc'
          INCLUDE 'files.inc'
 C
-         LOGICAL EQKEYW
          CHARACTER*(ZFNAML) FN
 C
 C     DO WHATEVER

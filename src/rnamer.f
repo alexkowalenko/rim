@@ -1,7 +1,7 @@
       SUBROUTINE RNAMER(*)
 
          USE Globals, only : DFLAG
-         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP
+         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
          USE Message, only: WARN
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
@@ -21,7 +21,6 @@ C
          INCLUDE 'tupler.inc'
          INCLUDE 'attble.inc'
          INCLUDE 'dclar1.inc'
-         LOGICAL EQKEYW
          LOGICAL NE,EQ
 C
 C

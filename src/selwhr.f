@@ -2,6 +2,7 @@
 
          USE Globals, only : CASEIG, TRACE
          USE Lexer, only: KXTEXT, KXNAME, TOKTYP, IDL, EQTOK, KWS
+         USE Lexer, only: EQKEYW
          USE Message, only: WARN
          USE Utils, only : HTOI, ITOH
 
@@ -29,7 +30,6 @@ C
 C
          CHARACTER*(ZKEYWL) KOMPAR
          CHARACTER*3 KMM
-         LOGICAL EQKEYW
          INCLUDE 'dclar1.inc'
          LOGICAL VLIST
          INTEGER OPLIST(2*ZMWHR)

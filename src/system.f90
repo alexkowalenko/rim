@@ -149,7 +149,7 @@ contains
 
    SUBROUTINE SYSDBG(DBX,STATUS)
       USE Globals, only: DBFNAM
-      USE Lexer, only : ASCREC, IDP, IDL
+      USE Lexer, only : ASCREC, IDP, IDL, ITEMS
       USE Message, only: WARN
       USE Text, only: STRASC, ASCAN
       !

@@ -1,6 +1,7 @@
       SUBROUTINE REMLNK(*)
 
          USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
+         USE Lexer, only : ITEMS
          USE Message, only: WARN
 
          INCLUDE 'syspar.inc'
@@ -12,7 +13,6 @@ C
          INCLUDE 'tokens.inc'
          INCLUDE 'tuplel.inc'
          INCLUDE 'lnktbl.inc'
-         LOGICAL EQKEYW
          LOGICAL NE
          LOGICAL EQ
          INCLUDE 'rmatts.inc'

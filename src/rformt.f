@@ -1,7 +1,7 @@
       SUBROUTINE RFORMT(*)
 
          USE Globals, only : DFLAG
-         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP
+         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
          USE Message, only: WARN
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
@@ -17,7 +17,7 @@ C
          INCLUDE 'tuplea.inc'
          INCLUDE 'dclar1.inc'
          INCLUDE 'rimcom.inc'
-         LOGICAL NE,EQ,EQKEYW
+         LOGICAL NE,EQ
 C
 C
 C     CHECK FOR A DATABASE

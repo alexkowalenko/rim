@@ -1,6 +1,6 @@
       SUBROUTINE LODLNK
 
-         Use Lexer, only: KXNAME, TOKTYP
+         Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW
          USE Message, only : WARN
          USE Utils, only : ZMOVE
 
@@ -15,7 +15,6 @@ C
          INCLUDE 'files.inc'
          INCLUDE 'tuplel.inc'
 C
-         LOGICAL EQKEYW
          INCLUDE 'dclar1.inc'
          INTEGER LKNAM(Z)
 C

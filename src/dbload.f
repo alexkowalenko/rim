@@ -1,7 +1,7 @@
       SUBROUTINE DBLOAD(*)
 
          USE Globals, only : DFLAG, DMFLAG, PIFLAG
-         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS
+         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, EQKEYW
          USE Message, only : WARN
          USE Text, only : BLANK, STRASC
          USE DateTime, only : RMDATE
@@ -21,8 +21,6 @@ C     :  LOAD REL_NAME <FROM FILE_NAME> <USING FILENAME>
          INCLUDE 'buffer.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'prom.inc'
-C
-         LOGICAL EQKEYW
          INCLUDE 'dclar1.inc'
          CHARACTER*(ZFNAML) FN, DFN
 C

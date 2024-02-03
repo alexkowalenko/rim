@@ -4,7 +4,7 @@ PROGRAM MAIN
 
    USE Parameters
    USE System, only: SystemExit, SystemInitialise
-   USE Lexer, only : Lexer_Initialise => Initialise, KWS
+   USE Lexer, only : Lexer_Initialise => Initialise, KWS, EQKEYW
 
    IMPLICIT NONE
    !
@@ -15,7 +15,6 @@ PROGRAM MAIN
    INCLUDE 'files.inc'
    INCLUDE 'rmatts.inc'
    !
-   LOGICAL :: EQKEYW
    INTEGER :: FMT, LEN, TYP
    !
    CHARACTER(len=1) :: FC

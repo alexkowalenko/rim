@@ -3,7 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE Globals, only: LIBFLG, TOL, HXFLAG, PCENT, RUCK, DBFNAM
-         USE Lexer, only: KWS
+         USE Lexer, only: KWS, ITEMS
          USE Message, only: WARN
          USE Text, only: ASCTXT
 

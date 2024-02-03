@@ -23,7 +23,6 @@ C
          INCLUDE 'files.inc'
          INCLUDE 'srtcom.inc'
 C
-         LOGICAL EQKEYW
          LOGICAL SELREL, SELWHR, SELSRT
 C
          CHARACTER*(*) QCOM

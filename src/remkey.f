@@ -1,7 +1,7 @@
       SUBROUTINE REMKEY(*)
 
          USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER
-         Use Lexer, only: KXNAME, TOKTYP
+         Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW
          USE Message, only: WARN
          USE Text, only : BLANK
 
@@ -17,7 +17,6 @@ C     :  REMOVE KEY FOR ATTRIBUTE IN RELATION
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'attble.inc'
-         LOGICAL EQKEYW
          LOGICAL NE
          LOGICAL EQ
          INCLUDE 'dclar1.inc'

@@ -1,6 +1,6 @@
       SUBROUTINE LODPAS(ERROR)
 
-         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP
+         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
          USE Message, only : WARN
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
@@ -22,7 +22,6 @@ C
          INCLUDE 'tupler.inc'
          INCLUDE 'files.inc'
          INTEGER ERROR
-         LOGICAL EQKEYW
          INCLUDE 'dclar1.inc'
          INCLUDE 'dclar3.inc'
 C

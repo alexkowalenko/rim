@@ -2,7 +2,7 @@
 
          USE Globals, only : TRACE
          USE Lexer, only: KXTEXT, KXNAME, IDT, TOKTYP, ASCREC, ASCNXT
-         USE Lexer, only: IDP, IDL, KWS
+         USE Lexer, only: IDP, IDL, KWS, ITEMS, EQKEYW
          USE System, only : SystemExit, SystemTrap
          USE Lexer, only : EQSIGN, GTSIGN
 
@@ -15,7 +15,6 @@ C
          INCLUDE 'tokens.inc'
          INCLUDE 'maccom.inc'
 C
-         LOGICAL EQKEYW
          CHARACTER*2 PKW
          INTEGER MACTST(Z)
 C

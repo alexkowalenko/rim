@@ -1,7 +1,7 @@
       SUBROUTINE DELROW(*)
 
          USE Globals, only : DFLAG, DMFLAG, DBNAME
-         Use Lexer, only: KXNAME, TOKTYP
+         Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW
          USE Message, only : WARN
          USE Text, only : BLANK
 
@@ -16,7 +16,6 @@ C
          INCLUDE 'tupler.inc'
          INCLUDE 'attble.inc'
          INCLUDE 'buffer.inc'
-         LOGICAL EQKEYW
          LOGICAL NE
          LOGICAL EQ
          LOGICAL SELWHR

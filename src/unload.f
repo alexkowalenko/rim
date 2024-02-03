@@ -2,7 +2,7 @@
 
          USE Globals, only : DFLAG, DBNAME, USERID, OWNER
          USE DateTime, only: RMTIME, RMDATE
-         USE Lexer, only : ASCREC, IDP, IDL, KWS
+         USE Lexer, only : ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW
          USE Message, only: WARN
          USE Text, only : STRASC
          USE Utils, only : ZMOVE
@@ -23,7 +23,7 @@ C
          CHARACTER*3 MODE
          CHARACTER*(ZFNAML) FN
          EQUIVALENCE (BUFFER(1),IREL(1,1))
-         LOGICAL ALL,PERM,LHASH, EQ, NE, EQKEYW
+         LOGICAL ALL,PERM,LHASH, EQ, NE
          DATA NWORDS /2500/
 C
 C

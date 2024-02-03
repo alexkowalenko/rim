@@ -2,7 +2,7 @@
 
          USE Globals, only : DFLAG, DMFLAG
          USE DateTime, only : RMDATE
-         Use Lexer, only: KXNAME, TOKTYP, IDP
+         Use Lexer, only: KXNAME, TOKTYP, IDP, ITEMS, EQKEYW
          USE Message, only : WARN
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
@@ -26,7 +26,6 @@ C
 C
 C
          INTEGER STATUS
-         LOGICAL EQKEYW
          INTEGER ATNCOL
          LOGICAL PJALL
          INTEGER :: TEMP(Z)

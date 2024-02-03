@@ -15,7 +15,7 @@ add_library(rimcommon STATIC
     change.f chgdat.f chgpsw.f chkatt.f chkrel.f chtype.f
     dbdefn.f dbload.f dbopcl.f dbopen.f deldat.f 
     deldup.f delete.f delrow.f
-    eq.f eqkeyw.f
+    eq.f
     f1clo.f f1opn.f f2clo.f f2opn.f f3clo.f f3opn.f  fmtdec.f
     getdat.f getkca.f gett.f gtsort.f
     isect.f

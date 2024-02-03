@@ -5,7 +5,7 @@ PROGRAM MAIN
    USE Parameters
    USE Globals, only: KRMRNF, DBFNAM
    USE DateTime, only: RMTIME, RMDATE
-   USE Lexer, only: KXINT, KXKEYW, TOKTYP, ASCREC, IDP, IDL, KWS
+   USE Lexer, only: KXINT, KXKEYW, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW
    USE RandomFiles, only: RIOOPN, RIOCLO, RIOIN, RIOOUT
    USE System, only: SystemExit, SystemInitialise, SYSDBG, SYSDBN
    USE Text, only: STRMOV
@@ -28,7 +28,6 @@ PROGRAM MAIN
    INCLUDE 'files.inc'
    INCLUDE 'prom.inc'
    !
-   LOGICAL :: EQKEYW
    CHARACTER (ZFNAML) :: RIMDB1,RIMDB2,RIMDB3,RIMDBX
    !
    COMMON /GRIMEX/ CURF, CURR, CUREL(Z), IOS, FILBUF(4096), UNIT(3), RLEN(3)

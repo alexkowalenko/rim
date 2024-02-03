@@ -3,6 +3,7 @@
          USE Globals, only : DFLAG, DBNAME, USERID, CASEIG, ARBCHS,
      +   ARBCHM, KRMINF, KRMRNF, KMSSVL, KMSSVT, KNAPVL,
      +   KNAPVT
+         USE Lexer, only: ITEMS, EQKEYW
          USE DateTime, only: RMTIME, RMDATE, KRMDTF, KRMTMF
          USE Text, only : BLANK
          USE Utils, only : NDIGIT
@@ -20,7 +21,7 @@ C
          INCLUDE 'tupler.inc'
 
          LOGICAL Q
-         LOGICAL EQKEYW, NE
+         LOGICAL NE
          INTEGER FMTSTR(Z), SMAC(Z)
 
          IF (EQKEYW(2,'LIMITS')) GOTO 400

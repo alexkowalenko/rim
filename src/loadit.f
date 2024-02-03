@@ -1,6 +1,7 @@
       SUBROUTINE LOADIT(MAT,ATT)
 
          USE Globals, only: HXFLAG
+         USE Lexer, only: ITEMS, EQKEYW
          USE Message, only : WARN
          USE Utils, only : ZEROIT
 
@@ -21,7 +22,6 @@ C
          INCLUDE 'tupler.inc'
 C
          INTEGER COLUMN
-         LOGICAL EQKEYW
          INTEGER ENDCOL
          INTEGER MAT(1)
          INTEGER ATT(ZTUPAL,1)

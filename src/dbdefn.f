@@ -2,6 +2,7 @@
 
          USE Globals, only : DFLAG, USERID, OWNER, DBNAME, IFMOD, DBFNAM
          USE DateTime, only : RMDATE
+         USE Lexer, only: ITEMS, EQKEYW
          USE Message, only : WARN
          USE System, only: SYSDBG
          USE Text, only : NONE
@@ -22,7 +23,6 @@ C
          INCLUDE 'files.inc'
          INCLUDE 'prom.inc'
 C
-         LOGICAL EQKEYW
          LOGICAL EQ, NE
          INTEGER NAMOWN(Z)
 C

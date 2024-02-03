@@ -1,7 +1,7 @@
       SUBROUTINE RIMCMD
 
          USE Globals, only: HXFLAG
-         USE Lexer, only: KXKEYW, TOKTYP, KWS
+         USE Lexer, only: KXKEYW, TOKTYP, KWS, ITEMS, EQKEYW
          USE System, only : SYSCOM
 
          INCLUDE 'syspar.inc'
@@ -15,7 +15,7 @@ C
          INCLUDE 'rimcom.inc'
          INCLUDE 'files.inc'
 C
-         LOGICAL EQKEYW, SELREL
+         LOGICAL SELREL
 C
 
 C     -----------------------------------------------------

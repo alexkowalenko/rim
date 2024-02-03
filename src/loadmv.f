@@ -1,7 +1,7 @@
       LOGICAL FUNCTION LOADMV(CCOL,CLEN)
 
          USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
-         USE Lexer, only: KXTEXT, KXINT, KXREAL, IDT
+         USE Lexer, only: KXTEXT, KXINT, KXREAL, IDT, ITEMS
          USE Text, only : BLANK, ABLANK, ASCAN, STRMOV
          USE Utils, only : ZMOVE
 

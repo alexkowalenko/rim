@@ -1,7 +1,7 @@
       SUBROUTINE BUILD(*)
 
          USE Globals, only : DFLAG
-         USE Lexer, only : KWS
+         USE Lexer, only : KWS, ITEMS
          USE Message, only : WARN
 
          INCLUDE 'syspar.inc'
@@ -23,8 +23,6 @@ C
          INCLUDE 'srtcom.inc'
          INCLUDE 'dclar1.inc'
          INTEGER COLUMN
-C
-         LOGICAL EQKEYW
 C
 C
 C     CHECK FOR A DATABASE

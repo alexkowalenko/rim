@@ -100,6 +100,7 @@ MODULE Lexer
    public Initialise
    public TOKTYP !     TOKTYP CHECKS A TOKEN FOR A TYPE MATCH
    public EQTOK
+   public EQKEYW
 
 contains
 
@@ -120,7 +121,7 @@ contains
    END
 
 
-   LOGICAL FUNCTION TOKTYP(I,TYPE)
+   LOGICAL FUNCTION TOKTYP(I, TYPE)
       !
       ! THIS FUNCTION CHECKS IF THE I'TH TOKEN IS OF TYPE 'TYPE'
       !
@@ -141,7 +142,7 @@ contains
    END FUNCTION TOKTYP
 
 
-   LOGICAL FUNCTION EQTOK(I,ASCHR)
+   LOGICAL FUNCTION EQTOK(I, ASCHR)
       !
       ! THIS FUNCTION COMPARES ASCHR WITH ITEM I OF THE
       ! COMMAND TOKEN LIST
@@ -163,6 +164,42 @@ contains
       EQTOK = .TRUE.
       RETURN
    END FUNCTION EQTOK
+
+
+   LOGICAL FUNCTION EQKEYW(I, KEYW)
+
+      !
+      ! THIS FUNCTION COMPARES KEYW WITH ITEM I OF THE
+      ! COMMAND TOKEN LIST
+      !
+      ! INPUT - I........ITEM NUMBER
+      !         KEYW.....STRING WITH KEYWORD IN IT
+      ! OUTPUT- EQKEYW....TRUE. IFF
+      !                         A. ITEM I IS TEXT
+      !                     AND B. NUMBER OF CHARACTERS IN ITEM I
+      !                            IS GE MIN(3,LEN) AND LE LEN.
+      !                     AND C. ITEM IT MATCHES KEYWORD TO MINIMUM
+      !                            OF 8 AND THE NUMBER OF CHARACTERS
+      !                            IN ITEM I.
+      !
+      INTEGER, intent(in) :: I
+      CHARACTER(len=*), intent(in) :: KEYW
+
+      INTEGER :: L, N, MIN
+      INTRINSIC LEN
+
+      L = LEN(KEYW)
+      EQKEYW = .FALSE.
+      IF(I.GT.ITEMS) GO TO 1000
+      IF(.NOT.TOKTYP(I,KXKEYW)) GO TO 1000
+      N = IDL(I)
+      MIN = 3
+      IF(L.LT.MIN) MIN = L
+      IF(N.LT.MIN) N = MIN
+      IF(N.GT.L) GO TO 1000
+      IF (KWS(I)(1:N).EQ.KEYW(1:N)) EQKEYW = .TRUE.
+1000  RETURN
+   END FUNCTION EQKEYW
 
 
 END MODULE Lexer

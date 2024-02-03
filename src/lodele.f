@@ -1,6 +1,6 @@
       SUBROUTINE LODELE(NUMELE)
 
-         USE Lexer, only : KXINT, KXNAME, TOKTYP
+         USE Lexer, only : KXINT, KXNAME, TOKTYP, ITEMS, EQKEYW
          USE Message, only : WARN
          USE Utils, only : HTOI
 
@@ -21,7 +21,6 @@ C     TEMPORARY ATTRIBUTE STORAGE
          INCLUDE 'tmpa.inc'
 C
          INCLUDE 'dclar1.inc'
-         LOGICAL EQKEYW
 C
 C  READ AN ELEMENT RECORD.
 C

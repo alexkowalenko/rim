@@ -1,7 +1,7 @@
       SUBROUTINE REMREL(*)
 
          USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
-         USE Lexer, only: KWS
+         USE Lexer, only: KWS, ITEMS, EQKEYW
          USE Message, only: WARN
 
          INCLUDE 'syspar.inc'
@@ -18,7 +18,6 @@ C
          INCLUDE 'files.inc'
          INCLUDE 'rmatts.inc'
 C
-         LOGICAL EQKEYW
          LOGICAL NE
          LOGICAL EQ
          INCLUDE 'dclar1.inc'

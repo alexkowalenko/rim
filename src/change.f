@@ -32,7 +32,6 @@ C
          DIMENSION NVAL(2), NTUP(1)
          LOGICAL NE, EQ
          LOGICAL SINGLE
-         LOGICAL EQKEYW
          INCLUDE 'dclar1.inc'
 C
 C     DEFINITION OF SOME LOCAL VARIABLES :

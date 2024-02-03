@@ -1,7 +1,8 @@
       SUBROUTINE JOIREL(*)
 
          USE Globals, only : DFLAG, DMFLAG
-         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, KWS
+         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, KWS, ITEMS
+         Use Lexer, only: EQKEYW
          USE DateTime, only : RMDATE
          USE Message, only : WARN
          USE Text, only : BLANK, NONE
@@ -31,7 +32,6 @@ C
          INTEGER PTABLE
          LOGICAL EQ
          LOGICAL NE
-         LOGICAL EQKEYW
          INCLUDE 'dclar1.inc'
          INCLUDE 'dclar3.inc'
 C  LOCAL ARRAYS AND VARIABLES :

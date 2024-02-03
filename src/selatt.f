@@ -24,7 +24,7 @@ C
          INCLUDE 'selcom.inc'
          INCLUDE 'srtcom.inc'
 
-         LOGICAL EQKEYW,END,ALLATT
+         LOGICAL END,ALLATT
          LOGICAL EQ,NE
          INTEGER STATUS
          INCLUDE 'dclar1.inc'

@@ -1,7 +1,7 @@
       SUBROUTINE REPORT(*)
 
          USE Globals, only : DFLAG
-         USE Lexer, only : ASCREC, IDP, IDL, KWS
+         USE Lexer, only : ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW
          USE Message, only: WARN
          USE Text, only : STRASC
 
@@ -15,7 +15,7 @@ C
          INCLUDE 'files.inc'
 C
          CHARACTER*(ZFNAML) FN
-         LOGICAL OUTFIL, EQKEYW
+         LOGICAL OUTFIL
 C
 C     CHECK FOR A DATABASE
 C

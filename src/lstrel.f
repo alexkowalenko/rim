@@ -2,6 +2,7 @@
 
          USE Globals, only : DFLAG, DBNAME, USERID, OWNER
          USE DateTime, only: RMTIME, RMDATE
+         USE Lexer, only: ITEMS, EQKEYW
          USE Message, only : WARN
          USE Text, only : BLANK, NONE
          USE Utils, only : ZMOVE
@@ -22,7 +23,6 @@ C
          INTEGER STATUS
          LOGICAL EQ
          LOGICAL NE
-         LOGICAL EQKEYW
          LOGICAL ALLREL
          CHARACTER*4 KEY,CRPW,CMPW
          INTEGER FMTSTR(3)

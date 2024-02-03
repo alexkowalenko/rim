@@ -21,7 +21,6 @@ C
          INCLUDE 'srtcom.inc'
          INCLUDE 'buffer.inc'
 C
-         LOGICAL EQKEYW
          LOGICAL SELREL, SELATT, SELWHR
          INCLUDE 'dclar1.inc'
 C

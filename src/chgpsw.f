@@ -1,7 +1,7 @@
       SUBROUTINE CHGPSW(*)
 
          USE Globals, only : DFLAG, USERID, OWNER, IFMOD
-         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP
+         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
          USE Message, only : WARN
          USE Text, only : BLANK
 
@@ -14,7 +14,6 @@ C
          INCLUDE 'tokens.inc'
          INCLUDE 'files.inc'
 C
-         LOGICAL EQKEYW
          LOGICAL NE
          INTEGER :: RNAME(Z)
 C

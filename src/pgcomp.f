@@ -2,7 +2,7 @@
 
          USE Globals, only: PGVARS, INLINE, PGFLAG
          USE DateTime, only: RMTIME, RMDATE
-         USE Lexer, only: KXINT, TOKTYP, KWS
+         USE Lexer, only: KXINT, TOKTYP, KWS, ITEMS, EQKEYW
          USE Message, only : WARN
          USE Text, only : ASCTXT
          USE Utils, only : ZMOVE
@@ -32,7 +32,7 @@ C
          INCLUDE 'expcom.inc'
 
          INCLUDE 'dclar1.inc'
-         LOGICAL EQKEYW, PGSTOR, PGBSTO
+         LOGICAL PGSTOR, PGBSTO
          LOGICAL SELREL, SELWHR, SELSRT
          LOGICAL VARADD, PGCEXP, PGCPRT
          INTEGER OP(ZPGLVL), RELSAV(Z,ZPGLVL)

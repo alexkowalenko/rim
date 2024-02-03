@@ -1,6 +1,6 @@
       SUBROUTINE MACEXP(M)
 
-         USE Lexer, only : ASCREC, IDP, IDL
+         USE Lexer, only : ASCREC, IDP, IDL, ITEMS
          USE Text, only : ABLANK, STRMOV
 
 C

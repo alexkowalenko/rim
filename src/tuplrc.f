@@ -2,7 +2,7 @@
 
          USE Globals, only : DFLAG, DMFLAG
          USE DateTime, only : RMDATE
-         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP
+         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
          USE Message, only: WARN
          USE Text, only : BLANK, NONE
          USE Utils, only : ZMOVE
@@ -38,7 +38,6 @@ C
          INTEGER PTABLE
          LOGICAL EQ
          LOGICAL NE
-         LOGICAL EQKEYW
          LOGICAL GETKCA, REQKCA
          INCLUDE 'dclar1.inc'
          INCLUDE 'dclar3.inc'

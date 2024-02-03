@@ -1,6 +1,7 @@
       SUBROUTINE RNAMEL(*)
 
-         USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER
+         USE Globals, only: DFLAG, DMFLAG, DBNAME, USERID, OWNER
+         USE Lexer, only: ITEMS, EQKEYW
          USE Message, only: WARN
          USE Utils, only : ZMOVE
 
@@ -13,7 +14,6 @@ C
          INCLUDE 'tokens.inc'
          INCLUDE 'tuplel.inc'
          INCLUDE 'lnktbl.inc'
-         LOGICAL EQKEYW
          LOGICAL NE
          LOGICAL EQ
          INCLUDE 'rmatts.inc'

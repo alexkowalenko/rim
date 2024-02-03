@@ -1,6 +1,7 @@
       LOGICAL FUNCTION PGCPRT(BLKTYP,MAXLIN)
 
-         USE Lexer, only : KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS
+         USE Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS
+         USE Lexer, only: EQKEYW
 
          INCLUDE 'syspar.inc'
 C
@@ -24,7 +25,7 @@ C
 C
          INCLUDE 'pgmcom.inc'
 
-         LOGICAL EQKEYW, PGSTOR
+         LOGICAL PGSTOR
 C
 C
          NUMATT = 0

@@ -1,6 +1,6 @@
       SUBROUTINE LODREL(NUMELE)
 
-         Use Lexer, only: KXNAME, TOKTYP
+         Use Lexer, only: KXNAME, TOKTYP, ITEMS
          USE Message, only : WARN
 
          INCLUDE 'syspar.inc'
@@ -13,7 +13,6 @@ C
          INCLUDE 'buffer.inc'
          INCLUDE 'files.inc'
 C
-         LOGICAL EQKEYW
          INCLUDE 'dclar1.inc'
 C
 C  READ RELATION DATA.

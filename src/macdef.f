@@ -9,7 +9,8 @@ C     *  =  RETURN STATEMENT
 C
 C-----------------------------------------------------
 C
-         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS
+         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS
+         Use Lexer, only: EQKEYW
          USE Message, only : WARN
          USE Text, only : STRMOV, BLANK, ABLANK
          USE Utils, only : ZMOVE
@@ -19,7 +20,6 @@ C
          INCLUDE 'tokens.inc'
          INCLUDE 'maccom.inc'
 
-         LOGICAL EQKEYW
          INTEGER MAC(Z)
 
          IF (ITEMS.LT.3) GOTO 8000
