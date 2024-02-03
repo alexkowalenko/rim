@@ -1,6 +1,6 @@
       SUBROUTINE LXSREC(I,STRING,NUMC)
 
-         USE Lexer, only: KXTEXT
+         USE Lexer, only: KXTEXT, TOKTYP
          USE Text, only : BLANK, ABLANK, STRMOV
          USE Utils, only : ZMOVE
 

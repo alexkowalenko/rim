@@ -5,7 +5,7 @@
      +   KNAPVL, KNAPVT, IFMOD
 
          USE DateTime, only: KRMDTF, KRMTMF
-         USE Lexer, only: KXINT
+         USE Lexer, only: KXINT, TOKTYP
          USE Message, only: WARN
          USE Text, only : BLANK, STRASC, NONE
          USE Utils, only : ZMOVE

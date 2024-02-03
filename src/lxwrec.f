@@ -1,6 +1,6 @@
       FUNCTION LXWREC(I,J)
 
-         USE Lexer, only: KXTEXT
+         USE Lexer, only: KXTEXT, IDT, TOKTYP
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'

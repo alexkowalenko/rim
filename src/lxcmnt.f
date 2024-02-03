@@ -1,5 +1,5 @@
       SUBROUTINE LXCMNT(EOR)
-         USE Lexer, only : ASBLK, ASCOM, ASSEMI, KXKEYW
+         USE Lexer, only : ASBLK, ASCOM, ASSEMI, KXKEYW, TOKTYP
 
          INCLUDE 'syspar.inc'
 C

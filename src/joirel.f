@@ -1,7 +1,7 @@
       SUBROUTINE JOIREL(*)
 
          USE Globals, only : DFLAG, DMFLAG
-         Use Lexer, only: KXNAME
+         Use Lexer, only: KXNAME, TOKTYP
          USE DateTime, only : RMDATE
          USE Message, only : WARN
          USE Text, only : BLANK, NONE

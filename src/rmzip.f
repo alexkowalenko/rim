@@ -1,7 +1,7 @@
       SUBROUTINE RMZIP(*)
 
          USE Globals, only : DFLAG, DBFNAM
-         USE Lexer, only: KXTEXT
+         USE Lexer, only: KXTEXT, TOKTYP
          USE Message, only: WARN
          USE Text, only : STRASC
          USE System, only : SystemCommand

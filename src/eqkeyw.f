@@ -1,6 +1,6 @@
       LOGICAL FUNCTION EQKEYW(I,KEYW)
 
-         USE Lexer, only : KXKEYW
+         USE Lexer, only : KXKEYW, TOKTYP
 
          INCLUDE 'syspar.inc'
 C

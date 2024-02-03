@@ -1,7 +1,7 @@
       SUBROUTINE RIMCMD
 
          USE Globals, only: HXFLAG
-         USE Lexer, only: KXKEYW
+         USE Lexer, only: KXKEYW, TOKTYP
          USE System, only : SYSCOM
 
          INCLUDE 'syspar.inc'

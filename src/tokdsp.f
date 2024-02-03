@@ -3,6 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE Parameters
+         USE Lexer, only : IDT
          USE Maths, only : IEXP
          USE Text, only : FILCH, ABLANK, RTOA
 

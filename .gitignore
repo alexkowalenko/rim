@@ -23,6 +23,10 @@ lit.site.cfg.py
 *.out
 *.toc
 *.pdf
+*.ilg
+*.ind
+
+gss
 
 .vscode/*
 .vs/*

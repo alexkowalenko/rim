@@ -1,7 +1,7 @@
       SUBROUTINE LODREC
 
          USE Globals, only : TRACE
-         USE Lexer, only: KXTEXT, KXNAME
+         USE Lexer, only: KXTEXT, KXNAME, IDT, TOKTYP
          USE System, only : SystemExit, SystemTrap
          USE Lexer, only : EQSIGN, GTSIGN
 

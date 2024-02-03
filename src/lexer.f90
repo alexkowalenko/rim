@@ -1,4 +1,6 @@
 MODULE Lexer
+
+   USE Parameters, only : ZMTOK
    implicit none
    private
 
@@ -56,9 +58,39 @@ MODULE Lexer
    INTEGER, PARAMETER, public  :: KXREAL=4
    INTEGER, PARAMETER, public  :: KXKEYW=8
    INTEGER, PARAMETER, public  :: KXNAME=16
-!
+
+   !
+   !  *** / T O K E N S / ***
+   !
+   !  CONTAINS INPUT RECORD AS TOKENS
+   !
+   !COMMON /TOKENS/ ASCREC(ZMASC),IDT(ZMTOK),IDP(ZMTOK)
+   !COMMON /TOKENS1/ IDL(ZMTOK),IDI(ZMTOK),IDR(ZMTOK),ASCNXT,ITEMS
+   !INTEGER :: ASCREC, ASCNXT, IDL, IDI, IDP, IDT, ITEMS
+   !REAL(real64) :: IDR
+   !COMMON /TOKENC/ KWS(ZMTOK)
+   !CHARACTER*(ZKEYWL) :: KWS
+
+   INTEGER, public :: IDT(ZMTOK)
+
+   !
+   !  VARIABLE DEFINITIONS:
+   !         ASCREC--ARRAY OF TOKENS AS ASCII-TEXT
+   !         IDT-----ARRAY OF TYPE IDENTIFIERS FOR EACH TOKEN
+   !         IDP-----ARRAY OF POINTERS TO REC
+   !         IDL-----ARRAY OF LENGTHS FOR CHARACTER DATA
+   !         IDI-----ARRAY OF TOKENS AS INTEGERS (OR ASCII-CHAR SYMBOLS)
+   !         IDR-----ARRAY OF TOKENS AS REALS
+   !         ASCNXT--NEXT AVAILABLE SPOT IN ASCREC
+   !         ITEMS---NUMBER OF TOKENS
+   !         KWS-----ARRAY OF TOKENS AS KEYWORDS (UPPER CASE CHAR)
+   !
+   !     TOKTYP CHECKS A TOKEN FOR A TYPE MATCH
+   ! LOGICAL TOKTYP
+
 
    public Initialise
+   public TOKTYP !     TOKTYP CHECKS A TOKEN FOR A TYPE MATCH
 
 contains
 
@@ -77,6 +109,27 @@ contains
       ASSEMI = ICHAR(';')
       RETURN
    END
+
+
+   LOGICAL FUNCTION TOKTYP(I,TYPE)
+      !
+      ! THIS FUNCTION CHECKS IF THE I'TH TOKEN IS OF TYPE 'TYPE'
+      !
+      ! INPUT - I........ITEM NUMBER
+      !         TYPE.....TYPE TO MATCH
+      ! OUTPUT- TOKTYP ...TRUE IF THE ITEM CAN BE OF TYPE 'TYPE'
+      !
+      INTEGER, intent(in) :: I, TYPE
+
+      !
+      ! FOR SUN FORTRAN I REPLACED IAND WINT AND
+      IF (AND(IDT(I),TYPE).NE.0) THEN
+         TOKTYP = .TRUE.
+      ELSE
+         TOKTYP = .FALSE.
+      ENDIF
+      RETURN
+   END FUNCTION TOKTYP
 
 
 END MODULE Lexer

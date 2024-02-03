@@ -1,6 +1,6 @@
       SUBROUTINE LODREL(NUMELE)
 
-         Use Lexer, only: KXNAME
+         Use Lexer, only: KXNAME, TOKTYP
          USE Message, only : WARN
 
          INCLUDE 'syspar.inc'

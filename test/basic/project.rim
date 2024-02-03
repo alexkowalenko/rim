@@ -1,0 +1,19 @@
+* RUN: rm -f sample.rimdb*
+* RUN: %rim %sample
+* RUN: %rim %s | FileCheck %s
+open sample
+project names from conductors using symbol name
+select * from names
+exit
+* CHECK: Database 'sample' is open.
+* CHECK: Project completed,     5 rows generated.
+* CHECK: Table: names
+* CHECK: symbol    name
+* CHECK: --------  ------------
+* CHECK: Cu        Copper
+* CHECK: Al        Aluminum
+* CHECK: Fe        Iron
+* CHECK: LB        Bernstein
+* CHECK: U         Uranium
+* CHECK:         5 rows selected.
+ 

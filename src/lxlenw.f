@@ -1,6 +1,6 @@
       FUNCTION LXLENW(I)
 
-         USE Lexer, only: KXTEXT
+         USE Lexer, only: KXTEXT, TOKTYP
 
          INCLUDE 'syspar.inc'
 C

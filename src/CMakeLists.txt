@@ -42,7 +42,7 @@ add_library(rimcommon STATIC
     swshel.f swsink.f swsmfl.f swsmvl.f 
     swunlo.f swunvl.f 
     swvacp.f swvlfs.f swvllo.f 
-    tokdsp.f toktyp.f tuplrc.f typer.f 
+    tokdsp.f tuplrc.f typer.f 
     union.f
     varadd.f 
     whetol.f wheval.f whrnam.f xhibit.f
