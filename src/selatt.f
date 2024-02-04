@@ -4,6 +4,7 @@
          USE DateTime, only : DTFSPL, KRMDTF, KRMTMF
          USE Message, only: WARN
          USE Text, only : ASCCHR, ASCTXT, FILCH, BLANK, ABLANK, STRMOV
+         USE Text, only : LSTRNG
          USE Utils, only : ZMOVE, HTOI, ITOH
          USE Lexer, only : ASLPAR, ASRPAR, ATSIGN, PCSIGN, EQSIGN, KWS
          USE Lexer, only : ASCOLN, ASSTAR, IDL, EQTOK

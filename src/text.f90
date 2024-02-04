@@ -18,6 +18,8 @@ MODULE Text
    public RITOA
    public ASCAN
    public STRMOV
+   public LSTRNG
+   public LKSTR
 
    INTEGER, public :: ABLANK, BLANK(Z)
    !     ABLANK --- A ASCII-CHAR BLANK
@@ -577,5 +579,144 @@ CONTAINS
       RETURN
    END SUBROUTINE STRMOV
 
+
+   INTEGER FUNCTION LSTRNG(S1,I1,N1,S2,I2,N2)
+      !
+      !    SCANS FOR A CHARACTER STRING IN  S1 THAT MATCHES THE
+      !    CHARACTER STRING  S2
+      ! (BOTH STRINGS ARE ASCII-TEXT)
+      !
+      !    S1 - STRING TO SEARCH
+      !    I1 - FIRST CHAR OF S1 TO CHECK
+      !    N1 - NUMBER OF CHARACTERS IN S1 TO CHECK
+      !    S2 - STRING TO MATCH
+      !    I2 - FIRST CHAR OF S2 TO MATCH
+      !    N2 - NUMBER OF CHARACTERS IN S2 TO MATCH
+      !
+      !    LSTRNG = CHARACTER POS OF STRING MATCH
+      !    LSTRNG = 0 IF THE STRING WAS NOT FOUND
+      !
+      !
+      ! THE ARBITRARY CHAR (ARBCHS) MATCHES ANY CHARACTER
+      ! CASE IGNORE (CASEIG) MATCHES UPPER AND LOWER CASE
+      !
+      USE Globals, only : CASEIG, ARBCHS
+
+      INTEGER, intent(in) :: S1(*), S2(*)
+      INTEGER, intent(in) :: I1, I2, N1, N2
+
+      INTEGER :: A21, A1, I, J, A2X, A1X
+
+      IF (N1.LT.N2) GOTO 999
+      !
+      CALL GETT(S2,I2,A21)
+      DO I = I1, I1 + N1 - N2
+         IF (A21.NE.ARBCHS) THEN
+            CALL GETT(S1,I,A1)
+            IF (CASEIG) THEN
+               A1 = UPCASE(A1)
+               A21 = UPCASE(A21)
+            ENDIF
+            IF (A1.NE.A21) GOTO 200
+         ENDIF
+         ! FIRST CHAR MATCH FOUND
+         DO J = 1, N2 - 1
+            CALL GETT(S2,I2+J,A2X)
+            IF (A2X.NE.ARBCHS) THEN
+               CALL GETT(S1,I+J,A1X)
+               IF (CASEIG) THEN
+                  A1X = UPCASE(A1X)
+                  A2X = UPCASE(A2X)
+               ENDIF
+               IF (A1X.NE.A2X) GOTO 200
+            ENDIF
+         END DO
+         ! FOUND
+         LSTRNG = I
+         RETURN
+200      CONTINUE
+      END DO
+      ! NOT FOUND
+999   LSTRNG = 0
+      RETURN
+   END FUNCTION LSTRNG
+
+
+   LOGICAL FUNCTION LKSTR(DS,DL,MS,ML)
+      !
+      ! SCANS FOR A CHARACTER STRING IN DS THAT IS 'LIKE' THE
+      ! CHARACTER STRING MS. MS MAY CONTAIN 'WILD-CARD' CHARACTERS.
+      ! (BOTH STRINGS ARE ASCII-TEXT)
+      !
+      !    DS - DESTINATION STRING
+      !    DL - THE NUMBER OF CHARACTERS IN DS
+      !    MS - STRING TO MATCH (CONTAINS WILD-CARD CHARS)
+      !    ML - THE NUMBER OF CHARACTERS IN MS
+      !
+      !    LSTRNG = TRUE IF MATCH FOUND
+      !
+
+      USE Globals, only : ARBCHM
+
+      INTEGER, intent(in) :: DS(*), MS(*)
+      INTEGER, intent(in) :: DL, ML
+      !
+      ! WILD-CARD CHARS: ARBCHS - MATCH SINGLE ARBITRARY CHARACTER
+      !                  ARBCHM - MATCH MULTIPLE ARBITRARY CHARACTERS
+      !
+      !
+      ! LOOK FOR EACH SUBSTRING OF MS IN DS
+      !
+
+      INTEGER :: SMP, SML, SDL, SDP, A
+
+      INTEGER :: DP = 1
+      INTEGER :: MP = 0
+      !
+100   SMP = MP + 1
+110   MP = MP + 1
+      IF (MP.GT.ML) GOTO 200
+      CALL GETT(MS,MP,A)
+      IF (A.EQ.ARBCHM) GOTO 200
+      GOTO 110
+      !
+      ! SUBSTRING OF MS FOUND (START=SMP, END=MP-1)
+      !
+200   SML = MP - SMP
+      IF (SML.EQ.0) GOTO 300
+      !
+      ! CHECK FOR STARTING AND ENDING STRINGS (SMP=1 OR MP>ML)
+      !
+      IF (SMP.EQ.1) THEN
+         IF (MP.GT.ML .AND. DL.NE.ML) GOTO 800
+         SDL = SML
+      ELSE
+         IF (MP.GT.ML) DP = DL - SML + 1
+         SDL = DL - DP + 1
+      ENDIF
+      IF (DP.LE.0) GOTO 800
+      IF (DP.GT.DL) GOTO 800
+      IF (DP+SDL-1.GT.DL) GOTO 800
+      !
+      ! LOOK FOR THE SUBSTRING
+      !
+      SDP = LSTRNG(DS,DP,SDL,MS,SMP,SML)
+      IF (SDP.LE.0) GOTO 800
+      !
+      ! SUBSTRING FOUND IN DS
+      !
+      DP = SDP + SML
+300   IF (MP.LE.ML) GOTO 100
+      !
+      ! MATCH
+      !
+      LKSTR = .TRUE.
+      RETURN
+      !
+      ! NO MATCH
+      !
+800   LKSTR = .FALSE.
+      RETURN
+   END FUNCTION LKSTR
 
 END MODULE Text

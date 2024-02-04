@@ -1,6 +1,7 @@
       LOGICAL FUNCTION WHEVAL(ITUP)
 
          USE Globals, only : TOL
+         USE Text, only: LKSTR
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
@@ -21,7 +22,7 @@ C
          INCLUDE 'pgmcom.inc'
 C
          LOGICAL OK,BTEST
-         LOGICAL EQTEST, LKSTR
+         LOGICAL EQTEST
          LOGICAL VSTK(20), LVALS(ZMWHR)
 
 C     FIND ALL LOGICAL VALUES AND DO BOOLEANS

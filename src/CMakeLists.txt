@@ -20,11 +20,11 @@ add_library(rimcommon STATIC
     getdat.f getkca.f gett.f gtsort.f
     isect.f
     join.f joirel.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
-    lfind.f lkstr.f
+    lfind.f
     locatt.f locboo.f
     locmac.f locprm.f locrel.f
     lodele.f lodpas.f lodrec.f lodrel.f
-    lstrel.f lstrng.f 
+    lstrel.f
     lxcmnt.f lxdate.f lxedit.f lxfmt.f lxlenw.f lxsrec.f lxwrec.f
     macdef.f macexp.f motscn.f
     ne.f nxtchr.f nxtchx.f nxttok.f90
