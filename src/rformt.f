@@ -12,7 +12,6 @@ C
 C     REFORMAT AN ATTRIBUTE
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'files.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'dclar1.inc'

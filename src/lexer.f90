@@ -1,5 +1,7 @@
 MODULE Lexer
 
+   USE, intrinsic :: iso_fortran_env
+
    USE Parameters, only : ZMTOK, ZMASC, ZKEYWL
    implicit none
    private
@@ -64,19 +66,14 @@ MODULE Lexer
    !
    !  CONTAINS INPUT RECORD AS TOKENS
    !
-   !COMMON /TOKENS/ ASCREC(ZMASC),IDT(ZMTOK),IDP(ZMTOK)
-   !COMMON /TOKENS1/ IDL(ZMTOK),IDI(ZMTOK),IDR(ZMTOK),ASCNXT,ITEMS
-   !INTEGER :: ASCREC, ASCNXT, IDL, IDI, IDP, IDT, ITEMS
-   !REAL(real64) :: IDR
-   !COMMON /TOKENC/ KWS(ZMTOK)
-   !CHARACTER*(ZKEYWL) :: KWS
-
    INTEGER, public :: ASCREC(ZMASC)
    INTEGER, public :: ASCNXT
 
    INTEGER, public :: IDP(ZMTOK)
    INTEGER, public :: IDL(ZMTOK)
    INTEGER, public :: IDT(ZMTOK)
+   INTEGER, public :: IDI(ZMTOK)
+   REAL(real64), public :: IDR(ZMTOK)
 
    CHARACTER(len=ZKEYWL), public :: KWS(ZMTOK)
    INTEGER, public :: ITEMS

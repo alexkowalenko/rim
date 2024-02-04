@@ -7,7 +7,7 @@
          USE Text, only : LSTRNG
          USE Utils, only : ZMOVE, HTOI, ITOH
          USE Lexer, only : ASLPAR, ASRPAR, ATSIGN, PCSIGN, EQSIGN, KWS
-         USE Lexer, only : ASCOLN, ASSTAR, IDL, EQTOK
+         USE Lexer, only : ASCOLN, ASSTAR, IDL, EQTOK, IDI
 
          INCLUDE 'syspar.inc'
 C
@@ -16,7 +16,6 @@ C
          LOGICAL SELATT
 
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'

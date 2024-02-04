@@ -10,7 +10,6 @@ C  PURPOSE:  BUILD A KEY INDEX FOR AN ATTRIBUTE IN A RELATION
 C
 C SYNTAX:  BUILD KEY FOR <ATTRIBUTE> IN <RELATION>
 C
-         INCLUDE 'tokens.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'tuplea.inc'

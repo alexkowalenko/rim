@@ -23,7 +23,6 @@ C     THE HELP DATA BASE IS CLOSED AND THE USERS DATA BASE IS REOPENED.
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'files.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'

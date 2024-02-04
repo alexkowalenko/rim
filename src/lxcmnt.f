@@ -13,7 +13,6 @@ C
 C     ON EXIT:    ITEMS = ITEMS - 2
 C
          INCLUDE 'files.inc'
-         INCLUDE 'tokens.inc'
 C
          CHARACTER*(ZKEYWL) OPT
 C

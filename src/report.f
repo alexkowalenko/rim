@@ -10,7 +10,6 @@ C
 C     PROCESS REPORT COMMAND
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'files.inc'
 C

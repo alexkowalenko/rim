@@ -1,7 +1,7 @@
       LOGICAL FUNCTION LOADMV(CCOL,CLEN)
 
          USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
-         USE Lexer, only: KXTEXT, KXINT, KXREAL, IDT, ITEMS
+         USE Lexer, only: KXTEXT, KXINT, KXREAL, IDT, ITEMS, IDI
          USE Text, only : BLANK, ABLANK, ASCAN, STRMOV
          USE Utils, only : ZMOVE
 
@@ -14,7 +14,6 @@ C         CCOL----STARTING COLUMN
 C         CLEN----LENGTH
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'cards.inc'
 C
 C  DECLARATION STATEMENTS

@@ -20,7 +20,6 @@ C
 C  JOIN REL1 USING ATT1 WITH REL2 USING ATT2 FORMING REL3 WHERE EQ
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'

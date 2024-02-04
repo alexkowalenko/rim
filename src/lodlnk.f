@@ -10,7 +10,6 @@ C     LOADS LINK DEFINITIONS.
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'files.inc'
          INCLUDE 'tuplel.inc'

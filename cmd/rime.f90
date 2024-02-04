@@ -5,7 +5,7 @@ PROGRAM MAIN
    USE Parameters
    USE Globals, only: KRMRNF, DBFNAM
    USE DateTime, only: RMTIME, RMDATE
-   USE Lexer, only: KXINT, KXKEYW, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW
+   USE Lexer, only: KXINT, KXKEYW, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW, IDI
    USE RandomFiles, only: RIOOPN, RIOCLO, RIOIN, RIOOUT
    USE System, only: SystemExit, SystemInitialise, SYSDBG, SYSDBN
    USE Text, only: STRMOV
@@ -22,7 +22,6 @@ PROGRAM MAIN
    IMPLICIT NONE
 
    INCLUDE 'ascpar.inc'
-   INCLUDE 'tokens.inc'
    INCLUDE 'rmatts.inc'
    INCLUDE 'rimcom.inc'
    INCLUDE 'files.inc'
@@ -534,7 +533,6 @@ CONTAINS
       !
       ! RIME SUBROUTINE - LOOKUP ATTRIBUTE BY NAME
       !
-      INCLUDE 'tokens.inc'
       INCLUDE 'dclar1.inc'
       LOGICAL :: EQ,NE
       !

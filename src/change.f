@@ -1,6 +1,6 @@
       SUBROUTINE CHANGE(MAT,NVAL,IFLAG,NTUP)
 
-         USE Lexer, only : KWS
+         USE Lexer, only : KWS, IDI
          USE Message, only : WARN
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
@@ -17,7 +17,6 @@ C                       0 : EXPRESSION CHANGE
 C         NTUP----SCRATCH ARRAY FOR A TUPLE
          INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'files.inc'

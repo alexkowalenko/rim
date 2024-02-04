@@ -18,7 +18,6 @@ C
          CHARACTER*(*) COM
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'cards.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'

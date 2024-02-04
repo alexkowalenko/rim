@@ -17,7 +17,6 @@ C              3. WHEN DONE RESET RSTART AND NTUPLE, PRINT MESSAGE,
 C                  AND RETURN
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'f2com.inc'
          INCLUDE 'start.inc'
          INCLUDE 'rimptr.inc'

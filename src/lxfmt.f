@@ -13,7 +13,6 @@ C     TYP IS THE DATA TYPE
 C     FMT IS THE ENCODED FORMAT
 C     LEN IS THE LENGTH OF THE DATA AS FORMATTED
 C
-         INCLUDE 'tokens.inc'
          INCLUDE 'rmatts.inc'
 C
          CHARACTER*1 FC

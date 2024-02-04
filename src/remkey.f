@@ -13,7 +13,6 @@ C     :  REMOVE KEY FOR ATTRIBUTE IN RELATION
 
          INCLUDE 'ascpar.inc'
          INCLUDE 'rimcom.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'attble.inc'

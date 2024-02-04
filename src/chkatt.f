@@ -14,7 +14,6 @@ C
 C  PARAMETERS:
 C         TMPA----SCRATCH ARRAY WITH NEW ATTRIBUTE NAMES
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'tmpa.inc'
 C
 C         NUMELE--THE NUMBER OF ATTRIBUTES IN TMPA

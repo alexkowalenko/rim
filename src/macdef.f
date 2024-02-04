@@ -10,14 +10,13 @@ C
 C-----------------------------------------------------
 C
          Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS
-         Use Lexer, only: EQKEYW
+         Use Lexer, only: EQKEYW, IDI
          USE Message, only : WARN
          USE Text, only : STRMOV, BLANK, ABLANK
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'maccom.inc'
 
          INTEGER MAC(Z)

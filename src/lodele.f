@@ -1,6 +1,6 @@
       SUBROUTINE LODELE(NUMELE)
 
-         USE Lexer, only : KXINT, KXNAME, TOKTYP, ITEMS, EQKEYW
+         USE Lexer, only : KXINT, KXNAME, TOKTYP, ITEMS, EQKEYW, IDI
          USE Message, only : WARN
          USE Utils, only : HTOI
 
@@ -12,7 +12,6 @@ C  PARAMETERS:
 C         NUMELE--NUMBER OF NEWLY DEFINED ATTRIBUTES
 C
          INCLUDE 'rmatts.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'files.inc'
          INCLUDE 'ascpar.inc'

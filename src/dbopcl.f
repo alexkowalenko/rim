@@ -11,7 +11,6 @@ C
          CHARACTER*(*) MODE
 C
          INCLUDE 'rimcom.inc'
-         INCLUDE 'tokens.inc'
 
          CHARACTER*(ZFNAML) F1N,F2N,F3N,FSET
          LOGICAL RW

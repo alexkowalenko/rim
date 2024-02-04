@@ -18,7 +18,6 @@ C
          INTEGER KEYPTR(2,1)
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'rmatts.inc'
 C
 C

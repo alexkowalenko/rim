@@ -6,7 +6,7 @@
 
          USE DateTime, only: KRMDTF, KRMTMF
          USE Lexer, only: KXINT, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS
-         USE Lexer, only: EQKEYW
+         USE Lexer, only: EQKEYW, IDI
          USE Message, only: WARN
          USE Text, only : BLANK, STRASC, NONE
          USE Utils, only : ZMOVE
@@ -17,7 +17,6 @@ C  PURPOSE:  SET A PARAMETER
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'files.inc'
 C
          CHARACTER*(ZFNAML) FN

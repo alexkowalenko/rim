@@ -10,7 +10,6 @@ PROGRAM MAIN
    !
    ! TEST LXL ROUTINES
    !
-   INCLUDE 'tokens.inc'
    INCLUDE 'cards.inc'
    INCLUDE 'files.inc'
    INCLUDE 'rmatts.inc'

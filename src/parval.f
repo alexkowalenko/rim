@@ -3,7 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE Lexer, only: KXTEXT, KXINT, KXREAL, TOKTYP, IDP, IDL, KWS
-         USE Lexer, only: ITEMS
+         USE Lexer, only: ITEMS, IDI, IDR
          USE Maths, only : DTOR
          USE Message, only : WARN
          USE Text, only : BLANK
@@ -30,7 +30,6 @@ C                      3 IF PAREN MISMATCH
 C              INPUT- -1 PUT NULL INTO MAT
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'files.inc'
          INCLUDE 'tuplea.inc'

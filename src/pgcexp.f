@@ -3,7 +3,7 @@
          USE DateTime, only: KRMDTF, KRMTMF
          USE Lexer, only: ASLPAR, ASRPAR, MNSIGN, PLSIGN, TMSIGN, IDP
          USE Lexer, only: DVSIGN, KXINT, KXREAL, KXNAME, TOKTYP, ASCREC
-         USE Lexer, only: IDL, EQTOK
+         USE Lexer, only: IDL, EQTOK, IDI, IDR
 
          INCLUDE 'syspar.inc'
 C
@@ -15,7 +15,6 @@ C
          LOGICAL PGCEXP
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'

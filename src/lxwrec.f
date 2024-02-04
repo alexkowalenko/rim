@@ -8,7 +8,6 @@ C
 C  RETURN THE JTH WORD OF THE ITH ITEM OF TEXT.
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
 C
          LXWREC = BLANK(1)
          IF(TOKTYP(IDT(I),KXTEXT)) THEN

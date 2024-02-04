@@ -417,8 +417,6 @@ CONTAINS
       INTEGER, intent(in) :: FMT
       REAL(real64), intent(in) :: RNUM
       INTEGER, intent(out) :: IERR
-      !
-      INCLUDE 'ascpar.inc'
 
       LOGICAL :: FFMT
       REAL(real64) :: R,RR,REAL,POINT,RREM

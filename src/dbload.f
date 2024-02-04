@@ -1,7 +1,8 @@
       SUBROUTINE DBLOAD(*)
 
          USE Globals, only : DFLAG, DMFLAG, PIFLAG
-         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, EQKEYW
+         Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS
+         USE Lexer, only: EQKEYW, IDI
          USE Message, only : WARN
          USE Text, only : BLANK, STRASC
          USE DateTime, only : RMDATE
@@ -14,7 +15,6 @@ C
 C     :  LOAD REL_NAME <FROM FILE_NAME> <USING FILENAME>
 
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'files.inc'

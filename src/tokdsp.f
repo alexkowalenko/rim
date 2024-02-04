@@ -3,7 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE Parameters
-         USE Lexer, only : IDT, ASCREC, IDP, IDL, KWS, ITEMS
+         USE Lexer, only : IDT, ASCREC, IDP, IDL, KWS, ITEMS, IDI, IDR
          USE Maths, only : IEXP
          USE Text, only : FILCH, ABLANK, RTOA
 
@@ -12,7 +12,6 @@
 C
 C     DISPLAY /TOKENS/ COMMON
 C
-         INCLUDE 'tokens.inc'
          INTEGER :: RTXT(ZPRINW), I, RF, N, ERR
 C
          CALL MSG(' ',' /TOKENS/ ',' ')

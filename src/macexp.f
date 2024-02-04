@@ -12,7 +12,6 @@ C-----------------------------------------------------
 C
          INCLUDE 'syspar.inc'
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'cards.inc'
          INCLUDE 'maccom.inc'
 

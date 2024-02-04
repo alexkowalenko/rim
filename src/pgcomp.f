@@ -2,7 +2,7 @@
 
          USE Globals, only: PGVARS, INLINE, PGFLAG
          USE DateTime, only: RMTIME, RMDATE
-         USE Lexer, only: KXINT, TOKTYP, KWS, ITEMS, EQKEYW
+         USE Lexer, only: KXINT, TOKTYP, KWS, ITEMS, EQKEYW, IDI
          USE Message, only : WARN
          USE Text, only : ASCTXT
          USE Utils, only : ZMOVE
@@ -15,7 +15,6 @@ C     THE PROGRAM IS COMPILED AND STORED IN /BUFFER/ IN BLOCK6.
 C     VARIABLES ARE ALSO STORED IN /BUFFER/ IN BLOCK5.
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'

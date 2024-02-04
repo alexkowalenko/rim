@@ -1,7 +1,7 @@
       LOGICAL FUNCTION PGCPRT(BLKTYP,MAXLIN)
 
          USE Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS
-         USE Lexer, only: EQKEYW
+         USE Lexer, only: EQKEYW, IDI
 
          INCLUDE 'syspar.inc'
 C
@@ -13,7 +13,6 @@ C
          CHARACTER*(6) BLKTYP
 
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'

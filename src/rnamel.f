@@ -11,7 +11,6 @@ C     RENAME A LINK IN THE DATABASE
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'rimcom.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'tuplel.inc'
          INCLUDE 'lnktbl.inc'
          LOGICAL NE

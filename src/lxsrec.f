@@ -10,7 +10,6 @@ C
 C  MOVE NUMC ASCII-CHARS FROM THE ITH ITEM.                   .
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INTEGER STRING(Z)
 C
 C  BLANK FILL FIRST.

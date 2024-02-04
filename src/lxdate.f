@@ -1,6 +1,6 @@
       LOGICAL FUNCTION LXDATE(I,JDAT,FMT,TYP)
 
-         USE Lexer, only : ASCREC, IDP
+         USE Lexer, only : ASCREC, IDP, IDI
          USE DateTime, only : JULDAT, ASMTXT, DTFSPL, KRMTMF
          USE Text, only : ATOI, STRMOV
 
@@ -14,7 +14,6 @@ C     LXDATE IS TRUE IF ALL OK
 C     TYP IS DATA TYPE
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'rmatts.inc'
 
          INTEGER :: AM(1)

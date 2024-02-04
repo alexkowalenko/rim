@@ -14,7 +14,6 @@ C     SHOW PARAMETER VALUES
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'files.inc'
          INCLUDE 'msgcom.inc'
          INCLUDE 'maccom.inc'

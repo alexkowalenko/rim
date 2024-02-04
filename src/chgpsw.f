@@ -11,7 +11,6 @@ C     CHANGE A PASSWORD
 C
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'files.inc'
 C
          LOGICAL NE

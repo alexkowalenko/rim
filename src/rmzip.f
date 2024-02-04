@@ -11,7 +11,6 @@ C
 C  PURPOSE:  PROCESS ZIP COMMAND  (CALL SYSTEM FUNCTION)
 C
          INCLUDE 'rmatts.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'cards.inc'
 C
          CHARACTER*80 CCARD

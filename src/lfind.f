@@ -13,7 +13,6 @@ C     NUM-----NUMBER OF TOKENS TO CHECK
 C     KEY ----KEYWORD TO LOOK FOR
 C
 C
-         INCLUDE 'tokens.inc'
 
          CHARACTER*(*) KEY
          NEND = ITEM1 + NUM - 1

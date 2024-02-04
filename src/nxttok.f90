@@ -1,7 +1,7 @@
       SUBROUTINE NXTTOK(EOR)
          USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
          USE Lexer, only: KXTEXT, KXINT, KXREAL, KXKEYW, KXNAME, IDT, ASCREC, ASCOM, ASQUO, SQUOTE, DQUOTE, ASBLK, ASCNXT, IDP
-         USE Lexer, only: IDL, KWS, ITEMS
+         USE Lexer, only: IDL, KWS, ITEMS, IDI, IDR
          USE Text, only : CHRASC, ASCAN, UPCASE, BLANK, ABLANK, ATOI, ATOR
 !
 ! --- TEXT PARSING ROUTINE
@@ -20,7 +20,6 @@
          INTEGER EOR
 !
          INCLUDE 'ascpar.inc'
-         INCLUDE 'tokens.inc'
          INCLUDE 'cards.inc'
 !
          INTEGER ASCHR
