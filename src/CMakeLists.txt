@@ -30,8 +30,8 @@ add_library(rimcommon STATIC
     pject.f prckey.f prjtup.f
     putdat.f putt.f ptrs.f 
     reladd.f relget.f relpag.f relput.f remkey.f remlnk.f remrel.f rformt.f
-    rmclos.f rmcons.f rminit.f rmlook.f rmpii.f rmqery.f rmres.f rmsav.f rmset.f rmtypt.f rmvarc.f
-    rnamea.f  rnamel.f rnamer.f rtoa.f
+    rmclos.f rmlook.f rmpii.f rmqery.f rmres.f rmsav.f rmset.f rmtypt.f rmvarc.f
+    rnamea.f rnamel.f rnamer.f rtoa.f
     selrel.f selrpt.f selsrt.f selwhr.f
     sort.f subtrc.f swcon.f swcost.f
     swfilo.f swflfs.f 

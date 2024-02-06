@@ -4,7 +4,7 @@
          USE Text, only : ASCTXT
          USE Lexer, only : Lexer_Initialise => Initialise, KXKEYW
          USE Lexer, only : TOKTYP, ITEMS, EQKEYW
-         USE Rim, only : RMSTAT
+         USE Rim, only : RMSTAT, RMCONS, RMINIT
          USE System, only : SYSCOM
 
          INCLUDE 'syspar.inc'
