@@ -1,6 +1,8 @@
       SUBROUTINE ADDDAT(INDEX,ID,ARRAY,LENGTH)
 
          USE Globals, only : IFMOD
+         USE Files, only: FILE2, LENBF2, LF2REC, LF2WRD, CURBLK
+         USE Files, only: MODFLG
          USE RandomFiles, only : RIOIN, RIOOUT
          USE Utils, only : ZEROIT, HTOI, ITOH
 C
@@ -14,7 +16,6 @@ C         LENGTH  = LENGTH OF THE TUPLE
 C
 
          INCLUDE 'syspar.inc'
-         INCLUDE 'f2com.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
 C

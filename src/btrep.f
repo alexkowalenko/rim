@@ -1,5 +1,6 @@
       SUBROUTINE BTREP(VALU,IPTR,IPTRO,TYPE)
 
+         USE Files, only : LENBF3
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
@@ -20,7 +21,6 @@ C
 C  DECLARATIVES
 C
          INCLUDE 'rmatts.inc'
-         INCLUDE 'f3com.inc'
          INCLUDE 'ascpar.inc'
          INCLUDE 'btbuf.inc'
          INCLUDE 'start.inc'

@@ -1,5 +1,6 @@
       SUBROUTINE BTPUT(ID)
 
+         USE Files, only : NUMIC, ICORE
          USE Globals, only : IFMOD
 
          INCLUDE 'syspar.inc'
@@ -8,7 +9,6 @@ C  PURPOSE:    TURN ON THE WRITE FLAG ON THE INDICATED BLOCK
 C
 C  PARAMETERS
 C     INPUT:   ID------RECORD NUMBER
-         INCLUDE 'f3com.inc'
          INCLUDE 'rimcom.inc'
 C
 C  LOOK FOR THIS BLOCK IN CORE.

@@ -4,7 +4,7 @@ C  PURPOSE:   CLOSE A RIM DATABASE.
 C
 
          USE Globals, only : DFLAG, IFMOD, DBDATE, DBTIME
-         USE Files, only : F1CLO
+         USE Files, only : F1CLO, F2CLO, F3CLO
          USE DateTime, only: RMTIME, RMDATE
 
          INCLUDE 'syspar.inc'

@@ -25,7 +25,6 @@ C
          INCLUDE 'tupler.inc'
          INCLUDE 'files.inc'
          INCLUDE 'srtcom.inc'
-         INCLUDE 'f2com.inc'
 C
          INCLUDE 'pgmcom.inc'
          INCLUDE 'expcom.inc'

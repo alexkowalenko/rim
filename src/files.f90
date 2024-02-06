@@ -1,4 +1,6 @@
 MODULE Files
+   USE Parameters, only : ZICBL
+
    implicit none
    private
 
@@ -11,10 +13,45 @@ MODULE Files
    !     CRREC---CURRENT RELATION RECORD
    !     CLREC---CURRENT LINK RECORD
 
+   INTEGER, public :: FILE2, LENBF2,LF2REC,LF2WRD
+   INTEGER, public ::  CURBLK(3), MODFLG(3)
+   !
+   !  VARIABLE DEFINITIONS:
+   !         FILE2---UNIT FOR FILE2 - THE DATA FILE
+   !         LENBF2--LENGTH OF BLOCKS ON FILE2
+   !         LF2REC--NEXT AVAILABLE RECORD ON FILE2
+   !         LF2WRD--NEXT AVAILABLE WORD IN LF2REC
+   !         CURBLK--CURRENT RECORDS IN CORE
+   !         MODFLG--NON-ZERO FLAG INDICATES RECORD IN CORE HAS MODS
+
+   INTEGER, public ::  FILE3,LENBF3,LF3REC,MOTREC,MOTADD,LAST,NUMIC,MAXIC,ICORE(3,ZICBL)
+   !
+   !  VARIABLE DEFINITIONS:
+   !         FILE3---UNIT FOR FILE3 - THE B-TREE FILE
+   !         LENBF3--LENGTH OF BLOCKS ON FILE3
+   !         LF3REC--NEXT AVAILABLE RECORD ON FILE3
+   !         MOTREC--LAST RECORD USED FOR MULTIPLE OCCURRENCE TABLE
+   !         MOTADD--LAST WORD USED IN THAT RECORD
+   !         LF3RCH--START OF FREE RECORD CHAIN
+   !         LF3MCH--START OF FREE MOT CHAIN
+   !         LAST----LAST RECORD REQUESTED
+   !         NUMIC---CURRENT NUMBER OF INCORE BLOCKS
+   !         MAXIC---MAXIMUM NUMBER OF INCORE BLOCKS POSSIBLE
+   !         ICORE---ARRAY OF INCORE BLOCK DATA
+   !             ROW 1 - NUMBER OF USES
+   !             ROW 2 - WRITE FLAG (1=YES, 0=NO)
+   !             ROW 3 - CORRESPONDING RECORD NUMBER
+
    ! FILE1 private common
    INTEGER :: CPTTD,KUSAGE(20)
 
+   ! FILE3 private common
+   INTEGER :: LF3RCH, LF3MCH
+
    public F1OPN, F1CLO
+   public F2OPN, F2CLO
+   public F3OPN, F3CLO
+   public REUSE
 
 CONTAINS
 
@@ -225,5 +262,322 @@ CONTAINS
       CALL RIOCLO(FILE1)
       RETURN
    END SUBROUTINE F1CLO
+
+   SUBROUTINE F2OPN(RIMDB2)
+
+      USE Parameters
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME
+      USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
+      USE Utils, only : ZEROIT, ZMOVE
+
+
+      CHARACTER*(ZFNAML), intent(in) :: RIMDB2
+      !
+      !  PURPOSE:    OPEN A DATA RANDOM IO PAGING FILE - FILE 2
+      !
+      !  PARAMETERS:
+      !    RIMDB2-----NAME OF THE FILE TO USE FOR FILE 2
+      !
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'rimcom.inc'
+
+      INTEGER :: IOS, KQ1, KQ0
+      LOGICAL :: NE
+
+      !
+      !  OPEN UP THE PAGED DATA FILE.
+      !
+      CALL RIOOPN(RIMDB2,FILE2,LENBF2,IOS)
+      !
+      !---  CALL MSG(' ','F2OPN: ' // RIMDB2,'+')
+      !---  CALL IMSG(FILE2,3,'+')
+      !---  CALL IMSG(IOS,5,' ')
+      IF(IOS.NE.0) RMSTAT = 2200 + IOS
+      !
+      !  SEE IF THE FILE EXISTS YET. IF SO, READ CONTROL DATA.
+      !
+      CALL BLKDEF(1,LENBF2,1)
+      KQ1 = BLKLOC(1)
+      KQ0 = KQ1 - 1
+      CALL RIOIN(FILE2,1,BUFFER(KQ1),LENBF2,IOS)
+      IF(IOS.NE.0) GO TO 100
+      IF(NE(KDBHDR,BUFFER(KQ0 + ZFXHID))) GO TO 8000
+      IF(NE(OWNER,BUFFER(KQ0 + ZFXHOW))) GO TO 8000
+      !C    IF(DBDATE.NE.BUFFER(KQ0 + ZFXHDT)) GO TO 8000
+      !C    IF(DBTIME.NE.BUFFER(KQ0 + ZFXHTM)) GO TO 8000
+      GO TO 10
+      !
+      !  CONTROL VALUES DO NOT MATCH.
+      !
+8000  CONTINUE
+      RMSTAT = 12
+10    CONTINUE
+      LF2REC = BUFFER(KQ0 + ZF2HLR)
+      LF2WRD = BUFFER(KQ0 + ZF2HNW)
+      GO TO 200
+      !
+      !  INITIALIZE THE CONTROL VARIABLES.
+      !
+100   CONTINUE
+      LF2REC = 1
+      LF2WRD = 20
+      !
+      !  WRITE OUT THE CONTROL BLOCK FOR THE FIRST TIME.
+      !
+      CALL ZEROIT(BUFFER(KQ1),LENBF2)
+      CALL ZMOVE(BUFFER(KQ0 + ZFXHDB),DBNAME)
+      CALL ZMOVE(BUFFER(KQ0 + ZFXHID),KDBHDR)
+      CALL ZMOVE(BUFFER(KQ0 + ZFXHOW),OWNER )
+      BUFFER(KQ0 + ZFXHDT) = DBDATE
+      BUFFER(KQ0 + ZFXHTM) = DBTIME
+      BUFFER(KQ0 + ZF2HLR) = LF2REC
+      BUFFER(KQ0 + ZF2HNW) = LF2WRD
+      CALL RIOOUT(FILE2,0,BUFFER(KQ1),LENBF2,IOS)
+      IF(IOS.NE.0) RMSTAT = 2200 + IOS
+200   CONTINUE
+      !
+      !  INITIALIZE THE CONTROL BLOCKS.
+      !
+      CURBLK(1) = 1
+      CURBLK(2) = 0
+      CURBLK(3) = 0
+      CALL ZEROIT(MODFLG,3)
+      RETURN
+   END SUBROUTINE F2OPN
+
+
+   SUBROUTINE F2CLO
+      USE Parameters
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER
+      USE RandomFiles, only : RIOCLO, RIOIN, RIOOUT
+      USE Utils, only : ZMOVE
+
+      !
+      !  PURPOSE:    CLOSE THE DATA RANDOM IO FILE - FILE 2
+      !
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'buffer.inc'
+
+
+      INTEGER :: REC1, NUMB, IOS, KQ1, KQ0
+
+      !
+      !  SEQUENCE THROUGH THE BUFFERS LOOKING FOR WRITE FLAGS.
+      !
+      REC1 = 0
+      DO NUMB=1,4
+         IF(NUMB.EQ.4) GO TO 100
+         IF(CURBLK(NUMB).EQ.1) GO TO 100
+         IF(MODFLG(NUMB).EQ.0) GO TO 400
+         !
+         !  WRITE IT OUT.
+         !
+         KQ1 = BLKLOC(NUMB)
+         CALL RIOOUT(FILE2,CURBLK(NUMB),BUFFER(KQ1),LENBF2,IOS)
+         IF(IOS.NE.0) RMSTAT = 2200 + IOS
+         MODFLG(NUMB) = 0
+         CURBLK(NUMB) = 0
+         CALL BLKCLR(NUMB)
+         GO TO 400
+100      CONTINUE
+         IF(REC1.EQ.1) GO TO 400
+         IF(NUMB.NE.4) GO TO 200
+         !
+         !  READ IN THE CONTROL BLOCK FIRST.
+         !
+         CALL BLKCHG(1,LENBF2,1)
+         KQ1 = BLKLOC(1)
+         CALL RIOIN(FILE2,1,BUFFER(KQ1),LENBF2,IOS)
+         IF(IOS.NE.0) RMSTAT = 2200 + IOS
+         GO TO 300
+         !
+         !  WRITE OUT THE CONTROL BLOCK.
+         !
+200      CONTINUE
+         KQ1 = BLKLOC(NUMB)
+300      CONTINUE
+         KQ0 = KQ1 - 1
+         CALL ZMOVE(BUFFER(KQ0 + ZFXHDB),DBNAME)
+         CALL ZMOVE(BUFFER(KQ0 + ZFXHID),KDBHDR)
+         CALL ZMOVE(BUFFER(KQ0 + ZFXHOW),OWNER )
+         BUFFER(KQ0 + ZFXHVS) = KDBVER
+         BUFFER(KQ0 + ZFXHDT) = DBDATE
+         BUFFER(KQ0 + ZFXHTM) = DBTIME
+         BUFFER(KQ0 + ZF2HLR) = LF2REC
+         BUFFER(KQ0 + ZF2HNW) = LF2WRD
+         CALL RIOOUT(FILE2,1,BUFFER(KQ1),LENBF2,IOS)
+         IF(IOS.NE.0) RMSTAT = 2200 + IOS
+         REC1 = 1
+         IF(NUMB.EQ.4) GO TO 400
+         MODFLG(NUMB) = 0
+         CURBLK(NUMB) = 0
+400      CONTINUE
+      END DO
+      !
+      ! SYSTEM DEPENDENT CLOSE ROUTINE
+      !
+      CALL RIOCLO(FILE2)
+      RETURN
+   END SUBROUTINE F2CLO
+
+
+   SUBROUTINE F3OPN(RIMDB3)
+      USE Parameters
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME
+      USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
+      USE Utils, only : ZEROIT, ZMOVE
+
+      !
+      !  PURPOSE:    OPEN A B-TREE RANDOM IO PAGING FILE - FILE 3
+      !
+      !  PARAMETERS:
+      !      RIMDB3----NAME OF THE FILE TO USE FOR FILE 3
+      !
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'btbuf.inc'
+      INCLUDE 'start.inc'
+      INCLUDE 'rimcom.inc'
+
+      CHARACTER*(ZFNAML), intent(in) :: RIMDB3
+
+      INTEGER :: IOS
+      LOGICAL :: NE
+
+      !
+      !  OPEN UP THE BTREE AND MOT FILE.
+      !
+      CALL RIOOPN(RIMDB3,FILE3,LENBF3,IOS)
+      !
+      !---  CALL MSG(' ','F3OPN: ' // RIMDB3,'+')
+      !---  CALL IMSG(FILE3,3,'+')
+      !---  CALL IMSG(IOS,5,' ')
+      IF(IOS.NE.0) RMSTAT = 2300 + IOS
+      !
+      !  SEE IF THE FILE EXISTS YET. IF SO, READ CONTROL DATA.
+      !
+      CALL RIOIN(FILE3,1,CORE,LENBF3,IOS)
+      IF(IOS.NE.0) GO TO 100
+      IF(NE(KDBHDR,CORE(ZFXHID))) GO TO 8000
+      IF(NE(OWNER,CORE(ZFXHOW))) GO TO 8000
+      !C    IF(DBDATE.EQ.CORE(ZFXHDT))) GO TO 8000
+      !C    IF(DBTIME.NE.CORE(ZFXGTM))) GO TO 8000
+      GO TO 10
+      !
+      !  CONTROL VALUES DO NOT MATCH.
+      !
+8000  CONTINUE
+      RMSTAT = 12
+10    CONTINUE
+      LF3REC = CORE(ZF3HLR)
+      MOTREC = CORE(ZF3HMO)
+      MOTADD = CORE(ZF3HNM)
+      LF3RCH = CORE(ZF3HRC)
+      LF3MCH = CORE(ZF3HMC)
+      GO TO 200
+      !
+      !  INITIALIZE THE CONTROL VARIABLES.
+      !
+100   CONTINUE
+      START = 0
+      LF3REC = 2
+      MOTREC = 0
+      MOTADD = LENBF3 + 1
+      LF3RCH = 0
+      LF3MCH = 0
+      !
+      !  WRITE OUT THE CONTROL BLOCK FOR THE FIRST TIME.
+      !
+      CALL ZEROIT(CORE,LENBF3)
+      CALL ZMOVE(CORE(ZFXHDB),DBNAME)
+      CALL ZMOVE(CORE(ZFXHID),KDBHDR)
+      CALL ZMOVE(CORE(ZFXHOW),OWNER )
+      CORE(ZFXHDT) = DBDATE
+      CORE(ZFXHTM) = DBTIME
+      CORE(ZF3HLR) = LF3REC
+      CORE(ZF3HMO) = MOTREC
+      CORE(ZF3HNM) = MOTADD
+      CORE(ZF3HRC) = LF3RCH
+      CORE(ZF3HMC) = LF3MCH
+      CALL RIOOUT(FILE3,0,CORE,LENBF3,IOS)
+      IF(IOS.NE.0) RMSTAT = 2300 + IOS
+200   CONTINUE
+      !
+      !  INITIALIZE THE TREE COMMON BLOCK.
+      !
+      NUMIC = 0
+      LAST = 0
+      CALL ZEROIT(ICORE(1,1),3*ZICBL)
+      RETURN
+   END SUBROUTINE F3OPN
+
+
+   SUBROUTINE F3CLO
+
+      USE Parameters
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER
+      USE RandomFiles, only : RIOCLO, RIOOUT
+      USE Utils, only : ZEROIT, ZMOVE
+
+      !
+      !  PURPOSE:    CLOSE THE B-TREE RANDOM IO FILE - FILE 3
+      !
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'btbuf.inc'
+
+      INTEGER :: NUMB, ISTRT, IOS
+
+      !
+      !  SEQUENCE THROUGH THE INCORE BLOCKS LOOKING FOR WRITE FLAGS.
+      !
+      DO NUMB=1,NUMIC
+         IF(ICORE(2,NUMB).EQ.0) GO TO 100
+         !
+         !  WRITE IT OUT.
+         !
+         ISTRT = (NUMB-1) * LENBF3 + 1
+         CALL RIOOUT(FILE3,ICORE(3,NUMB),CORE(ISTRT),LENBF3,IOS)
+         IF(IOS.NE.0) RMSTAT = 2300 + IOS
+100      CONTINUE
+      END DO
+      !
+      !  WRITE OUT THE CONTROL BLOCK.
+      !
+      CALL ZEROIT(CORE,LENBF3)
+      CALL ZMOVE(CORE(ZFXHDB),DBNAME)
+      CALL ZMOVE(CORE(ZFXHID),KDBHDR)
+      CALL ZMOVE(CORE(ZFXHOW),OWNER )
+      CORE(ZFXHVS) = KDBVER
+      CORE(ZFXHDT) = DBDATE
+      CORE(ZFXHTM) = DBTIME
+      CORE(ZF3HLR) = LF3REC
+      CORE(ZF3HMO) = MOTREC
+      CORE(ZF3HNM) = MOTADD
+      CORE(ZF3HRC) = LF3RCH
+      CORE(ZF3HMC) = LF3MCH
+      CALL RIOOUT(FILE3,1,CORE,LENBF3,IOS)
+      IF(IOS.NE.0) RMSTAT = 2300 + IOS
+      !
+      ! SYSTEM DEPENDENT CLOSE ROUTINE
+      !
+      CALL RIOCLO(FILE3)
+      RETURN
+   END SUBROUTINE F3CLO
+
+
+   SUBROUTINE REUSE
+      !
+      !  PURPOSE:    RESET THE USAGE FLAGS TO OFF IN THE ICORE FLAGS
+      !
+      INTEGER :: NUMB
+
+      DO NUMB=1,NUMIC
+         ICORE(1,NUMB) = 0
+      END DO
+      RETURN
+   END SUBROUTINE REUSE
+
 
 END MODULE Files

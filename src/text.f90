@@ -668,9 +668,11 @@ CONTAINS
 
       INTEGER :: SMP, SML, SDL, SDP, A
 
-      INTEGER :: DP = 1
-      INTEGER :: MP = 0
+      INTEGER :: DP
+      INTEGER :: MP
       !
+      DP = 1
+      MP = 1
 100   SMP = MP + 1
 110   MP = MP + 1
       IF (MP.GT.ML) GOTO 200

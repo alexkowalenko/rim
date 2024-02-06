@@ -1,6 +1,8 @@
       SUBROUTINE RMINIT
 
-         USE Files, only : FILE1, LENBF1, LF1REC, CAREC, CRREC, CLREC
+         USE Files, only: FILE1, LENBF1, LF1REC, CAREC, CRREC, CLREC
+         USE Files, only: FILE2, LENBF2, CURBLK, MODFLG, FILE3, LENBF3
+         USE Files, only: MAXIC
          USE Text, only : BLANK
          USE Utils, only : ZEROIT, ZMOVE
 
@@ -9,8 +11,6 @@ C
 C     RUN-TIME INITIALIZATION (CALLED WHEN DATABASE IS OPENED)
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'f2com.inc'
-         INCLUDE 'f3com.inc'
          INCLUDE 'incore.inc'
          INCLUDE 'reltbl.inc'
          INCLUDE 'tupler.inc'

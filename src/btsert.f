@@ -1,5 +1,6 @@
       SUBROUTINE BTSERT(VAL,IP,STACK,SP,LOC,IN)
 
+         USE Files, only : LENBF3, LAST, LF3REC, REUSE
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'
@@ -11,7 +12,6 @@ C         BTGET---PAGING ROUTINE
 C         BTPUT---PAGING ROUTINE
 C         BTMOVE--MOVES DATA BETWEEN AREAS
 C
-         INCLUDE 'f3com.inc'
          INCLUDE 'btbuf.inc'
          INCLUDE 'start.inc'
          INTEGER VALT

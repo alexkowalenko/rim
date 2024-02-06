@@ -1,6 +1,7 @@
       SUBROUTINE BLKUP
 
-         USE Utils, only : ZEROIT
+         USE FIles, only: CURBLK, MODFLG
+         USE Utils, only: ZEROIT
 
          INCLUDE 'syspar.inc'
 C
@@ -10,8 +11,6 @@ C
          INCLUDE 'buffer.inc'
          INCLUDE 'incore.inc'
          INCLUDE 'rimcom.inc'
-C
-         INCLUDE 'f2com.inc'
 C  ASSUME WE ARE GOING TO RUN OUT OF SPACE.
          ISTAT = RMSTAT
          RMSTAT = 1001

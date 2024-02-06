@@ -1,5 +1,6 @@
       SUBROUTINE BLKCLN
 
+         USE Files, only : FILE2, LENBF2, CURBLK, MODFLG
          USE RandomFiles, only : RIOOUT
 
          INCLUDE 'syspar.inc'
@@ -9,7 +10,6 @@ C
 C  PARAMETERS -- NONE
 C
          INCLUDE 'incore.inc'
-         INCLUDE 'f2com.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'rimcom.inc'
 C

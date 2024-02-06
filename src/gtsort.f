@@ -21,7 +21,6 @@ C
          INCLUDE 'whcom.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'f2com.inc'
 C
          INCLUDE 'rimptr.inc'
          DIMENSION MAT(1)

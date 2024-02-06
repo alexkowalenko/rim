@@ -1,5 +1,6 @@
       SUBROUTINE BTADD(VALU,IPTR,TYPE)
 
+         USE Files, only : LENBF3, MOTREC, MOTADD, LF3REC
          USE Maths, only : DTOR
          USE Utils, only : HTOI, ITOH
 
@@ -19,7 +20,6 @@ C         BTPUT---PAGING ROUTINE
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'f3com.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'btbuf.inc'
          INCLUDE 'start.inc'

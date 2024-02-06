@@ -1,6 +1,7 @@
       SUBROUTINE PUTDAT(INDEX,ID,ARRAY,LENGTH)
 
          USE Globals, only : IFMOD
+         USE Files, only : FILE2, LENBF2, CURBLK, MODFLG
          USE RandomFiles, only: RIOIN, RIOOUT
          USE Utils, only : ITOH
 
@@ -13,7 +14,6 @@ C         INDEX---BLOCK REFERENCE NUMBER
 C         ID------PACKED ID WORD WITH OFFSET,IOBN
 C         ARRAY---ARRAY TO RECEIVE THE TUPLE
 C         LENGTH--LENGTH OF THE TUPLE
-         INCLUDE 'f2com.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
 C

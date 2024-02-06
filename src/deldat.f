@@ -1,6 +1,7 @@
       SUBROUTINE DELDAT(INDEX,ID)
 
          USE Globals, only : IFMOD
+         USE Files, only : FILE2, LENBF2, CURBLK, MODFLG
          USE RandomFiles, only : RIOIN, RIOOUT
          USE Utils, only : HTOI, ITOH
 
@@ -11,7 +12,6 @@ C
 C  PARAMETERS:
 C         INDEX---BLOCK REFERENCE NUMBER
 C         ID------PACKED ID WORD WITH OFFSET,IOBN
-         INCLUDE 'f2com.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
 C

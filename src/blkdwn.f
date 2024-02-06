@@ -1,5 +1,6 @@
       SUBROUTINE BLKDWN
 
+         USE Files, only : CURBLK, MODFLG
          USE Utils, only : ZEROIT
 C
 C  GO TO THE NEXT LOWER BLOCK SET.
@@ -7,7 +8,6 @@ C
          INCLUDE 'syspar.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'incore.inc'
-         INCLUDE 'f2com.inc'
          CALL BLKCLN
          DO 107 II=10,20
   107    CALL BLKCLR(II)

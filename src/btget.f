@@ -1,5 +1,7 @@
       SUBROUTINE BTGET(ID,NSTRT)
 
+         USE Files, only: FILE3, LENBF3, LAST, NUMIC, MAXIC, ICORE
+         USE Files, only: LF3REC
          USE RandomFiles, only : RIOIN, RIOOUT
          USE Utils, only : ZEROIT
 
@@ -13,7 +15,6 @@ C     OUTPUT:  NSTRT---BUFFER INDEX FOR REQUESTED NODE
 C
          INCLUDE 'btbuf.inc'
          INCLUDE 'rimcom.inc'
-         INCLUDE 'f3com.inc'
 C
 C  SEE IF THE BLOCK IS IN CORE.
 C
