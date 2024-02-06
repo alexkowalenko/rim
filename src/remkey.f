@@ -3,6 +3,7 @@
          USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER
          Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
          USE Message, only: WARN
+         USE Rim, only : RMSTAT
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -11,7 +12,6 @@ C     REMOVE A KEY (MAKE ATTRIBUTE NON-KEYED)
 C
 C     :  REMOVE KEY FOR ATTRIBUTE IN RELATION
 
-         INCLUDE 'rimcom.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'attble.inc'

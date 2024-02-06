@@ -26,7 +26,6 @@ C
 C
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimptr.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'files.inc'

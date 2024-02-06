@@ -4,6 +4,7 @@
          USE Lexer, only: KXTEXT, KXNAME, TOKTYP, IDL, EQTOK, KWS
          USE Lexer, only: EQKEYW, LXLENW, LXSREC
          USE Message, only: WARN
+         USE Rim, only : RMSTAT
          USE Utils, only : HTOI, ITOH
 
          INCLUDE 'syspar.inc'
@@ -17,7 +18,6 @@ C
          LOGICAL SELWHR
 C
          INCLUDE 'rmatts.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'whcom.inc'

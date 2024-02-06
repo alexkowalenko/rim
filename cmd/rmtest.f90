@@ -1,5 +1,6 @@
 PROGRAM MAIN
    USE Parameters
+   USE Rim, only : RMSTAT
 
    IMPLICIT NONE
 
@@ -14,7 +15,6 @@ PROGRAM MAIN
    INTEGER :: BUF(LBUF)
    CHARACTER(len=1) :: OP
    !
-   INCLUDE 'rimcom.inc'
    !
    NAMELIST /BREAK/ OP, BUF
    !

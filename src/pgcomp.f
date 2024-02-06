@@ -4,6 +4,7 @@
          USE DateTime, only: RMTIME, RMDATE
          USE Lexer, only: KXINT, TOKTYP, KWS, ITEMS, EQKEYW, IDI, LXSREC
          USE Message, only : WARN
+         USE Rim, only : RMSTAT
          USE Text, only : ASCTXT
          USE Utils, only : ZMOVE
 
@@ -16,7 +17,6 @@ C     VARIABLES ARE ALSO STORED IN /BUFFER/ IN BLOCK5.
 C
          INCLUDE 'selcom.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'whcom.inc'

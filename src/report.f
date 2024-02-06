@@ -3,13 +3,13 @@
          USE Globals, only : DFLAG
          USE Lexer, only : ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW
          USE Message, only: WARN
+         USE Rim, only : RMSTAT
          USE Text, only : STRASC
 
          INCLUDE 'syspar.inc'
 C
 C     PROCESS REPORT COMMAND
 C
-         INCLUDE 'rimcom.inc'
          INCLUDE 'files.inc'
 C
          CHARACTER*(ZFNAML) FN

@@ -2,6 +2,7 @@
      X  KEYCOL,KEYTYP,UPASS)
 
          USE Message, only: WARN
+         USE Rim, only : RMSTAT
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
@@ -28,7 +29,6 @@ C                              (RNAME = RNAME2) (EXCLUDE MATCHES)
          INCLUDE 'files.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'rimptr.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'dclar1.inc'

@@ -9,7 +9,6 @@ C     ADD A VARIABLE TO THE VAR LIST
 C
 C
          INCLUDE 'incore.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'pgmcom.inc'

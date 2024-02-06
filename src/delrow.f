@@ -3,13 +3,13 @@
          USE Globals, only : DFLAG, DMFLAG, DBNAME
          Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
          USE Message, only : WARN
+         USE Rim, only : RMSTAT
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
 C
 C     DELETE ROWS FROM A RELATION
 C
-         INCLUDE 'rimcom.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'attble.inc'

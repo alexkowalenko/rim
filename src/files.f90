@@ -59,6 +59,7 @@ CONTAINS
       USE Parameters
       USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, DFLAG, DMFLAG, DBFNAM, KDBHDR
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
+      USE Rim, only : RMSTAT
       USE Text, only : ASCTXT
       USE Utils, only : ZEROIT, ZMOVE
 
@@ -70,7 +71,6 @@ CONTAINS
       !  PARAMETERS:
       !     RIMDB1--NAME OF THE FILE TO USE FOR FILE1
       !
-      INCLUDE 'rimcom.inc'
       INCLUDE 'attble.inc'
       INCLUDE 'reltbl.inc'
       INCLUDE 'lnktbl.inc'
@@ -187,13 +187,13 @@ CONTAINS
    SUBROUTINE F1CLO
       USE Parameters
       USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR
+      USE Rim, only : RMSTAT
       USE RandomFiles, only : RIOCLO, RIOOUT
       USE Utils, only : ZEROIT, ZMOVE
 
       !
       !  PURPOSE:   CLOSE THE RIM DIRECTORY FILE - FILE 1
       !
-      INCLUDE 'rimcom.inc'
       INCLUDE 'attble.inc'
       INCLUDE 'reltbl.inc'
       INCLUDE 'lnktbl.inc'
@@ -266,6 +266,7 @@ CONTAINS
       USE Parameters
       USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBHDR
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
+      USE Rim, only : RMSTAT
       USE Utils, only : ZEROIT, ZMOVE
 
 
@@ -277,7 +278,6 @@ CONTAINS
       !    RIMDB2-----NAME OF THE FILE TO USE FOR FILE 2
       !
       INCLUDE 'buffer.inc'
-      INCLUDE 'rimcom.inc'
 
       INTEGER :: IOS, KQ1, KQ0
       LOGICAL :: NE
@@ -348,12 +348,12 @@ CONTAINS
       USE Parameters
       USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR
       USE RandomFiles, only : RIOCLO, RIOIN, RIOOUT
+      USE Rim, only : RMSTAT
       USE Utils, only : ZMOVE
 
       !
       !  PURPOSE:    CLOSE THE DATA RANDOM IO FILE - FILE 2
       !
-      INCLUDE 'rimcom.inc'
       INCLUDE 'buffer.inc'
 
 
@@ -423,6 +423,7 @@ CONTAINS
       USE Parameters
       USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBHDR
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
+      USE Rim, only : RMSTAT
       USE Utils, only : ZEROIT, ZMOVE
 
       !
@@ -433,7 +434,6 @@ CONTAINS
       !
       INCLUDE 'btbuf.inc'
       INCLUDE 'start.inc'
-      INCLUDE 'rimcom.inc'
 
       CHARACTER*(ZFNAML), intent(in) :: RIMDB3
 
@@ -512,12 +512,12 @@ CONTAINS
       USE Parameters
       USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR
       USE RandomFiles, only : RIOCLO, RIOOUT
+      USE Rim, only : RMSTAT
       USE Utils, only : ZEROIT, ZMOVE
 
       !
       !  PURPOSE:    CLOSE THE B-TREE RANDOM IO FILE - FILE 3
       !
-      INCLUDE 'rimcom.inc'
       INCLUDE 'btbuf.inc'
 
       INTEGER :: NUMB, ISTRT, IOS

@@ -1,6 +1,7 @@
       SUBROUTINE RMVARC(CTYP,TUPVAL)
 
          USE Text, only : BLANK
+         USE Rim, only : RMSTAT
 C
 C     FORTRAN INTERFACE SUBROUTINE
 C
@@ -27,7 +28,6 @@ C           TUPVAL---ARRAY CONTAINING THE TUPLE VALUES
 C
          INCLUDE 'rmatts.inc'
          INCLUDE 'vardat.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
 C

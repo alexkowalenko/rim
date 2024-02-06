@@ -16,7 +16,6 @@ C     PTR-- ADDRESS OF SELCOM SAVE BLOCK
          INCLUDE 'tuplea.inc'
          INCLUDE 'tuplel.inc'
          INCLUDE 'files.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'srtcom.inc'

@@ -2,6 +2,7 @@
 
          USE Lexer, only : KXKEYW, KXNAME, IDT, ASCREC, IDP, IDL, KWS
          USE Lexer, only : ITEMS
+         USE Rim, only : RMSTAT
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

@@ -22,7 +22,6 @@ PROGRAM MAIN
    IMPLICIT NONE
 
    INCLUDE 'rmatts.inc'
-   INCLUDE 'rimcom.inc'
    INCLUDE 'files.inc'
    INCLUDE 'prom.inc'
    !

@@ -2,14 +2,18 @@
 
          USE Files, only : NUMIC, ICORE
          USE Globals, only : IFMOD
+         USE Rim, only : RMSTAT
 
-         INCLUDE 'syspar.inc'
+         implicit none
+
+         INTEGER, intent(in) :: ID
+
+         INTEGER :: NUMB
 C
 C  PURPOSE:    TURN ON THE WRITE FLAG ON THE INDICATED BLOCK
 C
 C  PARAMETERS
 C     INPUT:   ID------RECORD NUMBER
-         INCLUDE 'rimcom.inc'
 C
 C  LOOK FOR THIS BLOCK IN CORE.
 C

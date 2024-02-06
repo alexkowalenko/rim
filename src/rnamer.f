@@ -13,7 +13,6 @@ C     SUBROUTINE TO RENAME A RELATION
 C
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimptr.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'files.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tuplel.inc'

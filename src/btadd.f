@@ -2,6 +2,7 @@
 
          USE Files, only : LENBF3, MOTREC, MOTADD, LF3REC
          USE Maths, only : DTOR
+         USE Rim, only : RMSTAT
          USE Utils, only : HTOI, ITOH
 
          INCLUDE 'syspar.inc'
@@ -19,7 +20,6 @@ C         BTSERT--USED TO INSERT VALUES IN A BTREE
 C         BTPUT---PAGING ROUTINE
 C
          INCLUDE 'rmatts.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'btbuf.inc'
          INCLUDE 'start.inc'
          INCLUDE 'stack.inc'

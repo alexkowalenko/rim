@@ -10,6 +10,7 @@ contains
 
       USE Parameters, only : Z, ZC
       USE GLobals, only: HXFLAG
+      USE Rim, only : RMSTAT
 
       !
       !  PURPOSE:   GENERAL PURPOSE ERROR PRINT ROUTINE
@@ -19,7 +20,6 @@ contains
       !         TEXT1----OPTIONAL ASCII-TEXT
       !         TEXT2----OPTIONAL ASCII-TEXT
       !
-      INCLUDE 'rimcom.inc'
 
       INTEGER, intent(in) :: W
       INTEGER, intent(in), optional :: TEXT1(*), TEXT2(*)

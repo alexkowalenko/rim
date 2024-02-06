@@ -1,18 +1,19 @@
       SUBROUTINE DBOPCL(*,MODE)
 
+         USE Parameters, only: ZFNAML, ZC
          USE Globals, only : DFLAG, DBNAME, DBFNAM
          USE Message, only : WARN
+         USE Rim, only : RMSTAT
          USE System, only : SYSDBG, SYSDBN, CHKFIL
-
-         INCLUDE 'syspar.inc'
 C
 C     OPEN/CLOSE A DATABASE
 C
-         CHARACTER*(*) MODE
-C
-         INCLUDE 'rimcom.inc'
+         implicit none
+
+         CHARACTER*(*), intent(in) ::  MODE
 
          CHARACTER*(ZFNAML) F1N,F2N,F3N,FSET
+         INTEGER :: DBSTAT
          LOGICAL RW
 C
          IF (MODE.EQ.'OPEN') THEN

@@ -1,6 +1,7 @@
       SUBROUTINE RMXLOD(INDPTR,TUPLE)
 
          USE Globals, only : DBDATE
+         USE Rim, only : RMSTAT
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -12,7 +13,6 @@ C         INDPTR--INDEX TO SAVE BLOCK
 C         TUPLE---USER ARRAY WITH REPLACEMENT TUPLE
          INTEGER TUPLE(1)
 
-         INCLUDE 'rimcom.inc'
          INCLUDE 'vardat.inc'
          INCLUDE 'keydat.inc'
          INCLUDE 'rimptr.inc'

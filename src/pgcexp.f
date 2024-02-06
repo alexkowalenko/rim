@@ -4,6 +4,8 @@
          USE Lexer, only: ASLPAR, ASRPAR, MNSIGN, PLSIGN, TMSIGN, IDP
          USE Lexer, only: DVSIGN, KXINT, KXREAL, KXNAME, TOKTYP, ASCREC
          USE Lexer, only: IDL, EQTOK, IDI, IDR, LXLENW, LXSREC
+         USE Rim, only : RMSTAT
+
 
          INCLUDE 'syspar.inc'
 C
@@ -15,7 +17,6 @@ C
          LOGICAL PGCEXP
 C
          INCLUDE 'rmatts.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'pgmcom.inc'

@@ -1,6 +1,7 @@
       SUBROUTINE RMQERY(*,QCOM)
 
          USE Globals, only : DFLAG, MRINDX
+         USE Rim, only : RMSTAT
 
          INCLUDE 'syspar.inc'
 C
@@ -13,7 +14,6 @@ C
 C
          INCLUDE 'selcom.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'tuplea.inc'

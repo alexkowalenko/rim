@@ -1,6 +1,7 @@
       SUBROUTINE RMSAV(INDPTR)
 
          USE Globals, only : TRACE
+         USE Rim, only : RMSTAT
 
          INCLUDE 'syspar.inc'
 C
@@ -11,7 +12,6 @@ C  PARAMETERS:
 C     INPUT:  INDPTR--INDEX TO SAVE BLOCK (RANGE OF 1 TO ZPIMAX)
          INCLUDE 'keydat.inc'
          INCLUDE 'srtcom.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'vardat.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'

@@ -3,6 +3,7 @@
          USE Globals, only : DFLAG
          USE Lexer, only : KWS, ITEMS, LXSREC
          USE Message, only : WARN
+         USE Rim, only : RMSTAT
 
          INCLUDE 'syspar.inc'
 C
@@ -17,7 +18,6 @@ C
          INCLUDE 'buffer.inc'
          INCLUDE 'start.inc'
          INCLUDE 'files.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'srtcom.inc'
          INCLUDE 'dclar1.inc'

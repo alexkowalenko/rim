@@ -15,7 +15,6 @@ C
          INCLUDE 'files.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'dclar1.inc'
-         INCLUDE 'rimcom.inc'
          LOGICAL NE,EQ
 C
 C

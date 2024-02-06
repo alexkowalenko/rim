@@ -1,6 +1,7 @@
       SUBROUTINE BLKCHG(IND,NROWS,NCOLS)
 
          USE Globals, only : TRACE
+         USE Rim, only : RMSTAT
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'
@@ -12,7 +13,6 @@ C     INPUT:   IND-----BLOCK INDEX
 C              NROWS---NUMBER OF ROWS
 C              NCOLS---NUMBER OF COLUMNS
          INCLUDE 'incore.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
 C
 C     TRACING

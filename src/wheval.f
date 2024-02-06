@@ -13,7 +13,6 @@ C     RETURNS THE VALUE OF THE WHERE CLAUSE
 C
 
          INCLUDE 'rmatts.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'start.inc'

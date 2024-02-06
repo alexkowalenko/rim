@@ -3,13 +3,13 @@
          USE Globals, only: DFLAG, DMFLAG, DBNAME, USERID, OWNER
          USE Lexer, only: ITEMS, EQKEYW, LXSREC
          USE Message, only: WARN
+         USE Rim, only : RMSTAT
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
 C
 C     RENAME A LINK IN THE DATABASE
 C
-         INCLUDE 'rimcom.inc'
          INCLUDE 'tuplel.inc'
          INCLUDE 'lnktbl.inc'
          LOGICAL NE

@@ -14,7 +14,6 @@ C
 
          INCLUDE 'selcom.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'tuplea.inc'

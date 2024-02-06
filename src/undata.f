@@ -5,6 +5,7 @@
          USE Text, only : BLANK, ABLANK, ASCAN, STRMOV, NONE
          USE DateTime, only : ASCDAT, KRMDTF
          USE Lexer, only : SQUOTE
+         USE Rim, only : RMSTAT
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -24,7 +25,6 @@ C
          INCLUDE 'rmatts.inc'
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'msgcom.inc'

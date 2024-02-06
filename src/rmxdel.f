@@ -1,6 +1,7 @@
       SUBROUTINE RMXDEL(INDPTR)
 
          USE Text, only : BLANK
+         USE Rim, only : RMSTAT
 
          INCLUDE 'syspar.inc'
 C
@@ -9,7 +10,6 @@ C
 C  PARAMETERS:
 C         INDPTR--INDEX TO SAVE BLOCK (RANGE OF 1 TO 9)
          INCLUDE 'keydat.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'rimptr.inc'

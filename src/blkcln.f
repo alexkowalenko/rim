@@ -2,6 +2,7 @@
 
          USE Files, only : FILE2, LENBF2, CURBLK, MODFLG
          USE RandomFiles, only : RIOOUT
+         USE Rim, only : RMSTAT
 
          INCLUDE 'syspar.inc'
 C
@@ -11,7 +12,6 @@ C  PARAMETERS -- NONE
 C
          INCLUDE 'incore.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'rimcom.inc'
 C
 C  WRITE OUT ANY PAGES THAT HAVE BEEN MODIFIED
 C

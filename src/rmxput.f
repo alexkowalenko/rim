@@ -1,6 +1,7 @@
       SUBROUTINE RMXPUT(INDPTR,TUPLE)
 
          USE Globals, only:  DBDATE
+         USE Rim, only : RMSTAT
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -12,7 +13,6 @@ C         INDPTR--INDEX TO SAVE BLOCK
 C         TUPLE---USER ARRAY WITH REPLACEMENT TUPLE
 C
          INCLUDE 'keydat.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'vardat.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'

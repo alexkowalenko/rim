@@ -5,6 +5,7 @@
          USE Lexer, only : ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW, LFIND
          USE Lexer, only : LXSREC
          USE Message, only: WARN
+         USE Rim, only : RMSTAT
          USE Text, only : STRASC
          USE Utils, only : ZMOVE
 
@@ -15,7 +16,6 @@ C
          INCLUDE 'rmatts.inc'
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'dclar1.inc'
          INTEGER IREL(Z,1)

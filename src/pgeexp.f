@@ -4,6 +4,7 @@
 
          USE Maths, only : DTOR, RTOD
          USE Text, only : BLANK, STRMOV
+         USE Rim, only : RMSTAT
          USE Utils, only : ITOH
          USE Lexer, only : PLSIGN, MNSIGN, TMSIGN, DVSIGN
 
@@ -17,7 +18,6 @@ C
          LOGICAL PGEEXP
 C
          INCLUDE 'rmatts.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'expcom.inc'

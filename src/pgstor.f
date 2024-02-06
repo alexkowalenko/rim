@@ -1,4 +1,5 @@
       LOGICAL FUNCTION PGSTOR(PGM,LPGM)
+         USE Rim, only : RMSTAT
          INCLUDE 'syspar.inc'
 C
 C     STORE PART OF A PROGRAM
@@ -8,7 +9,6 @@ C              LPGM----LENGTH OF PGM
 C              IF LPGM<0 THEN ALLOCATE ENSURE SPACE ONLY
 C
          INCLUDE 'incore.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'pgmcom.inc'
 C

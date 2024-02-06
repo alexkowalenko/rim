@@ -1,4 +1,5 @@
       INTEGER FUNCTION BLKLOC(IND)
+         USE Rim, only : RMSTAT
          INCLUDE 'syspar.inc'
 C
 C  PURPOSE:    RETURN THE STARTING ADDRESS FOR THE REQUESTED BLOCK
@@ -9,7 +10,6 @@ C     OUTPUT:  BLKLOC--ADDRESS OF 1,1 ENTRY FOR THE BLOCK
 
 
          INCLUDE 'incore.inc'
-         INCLUDE 'rimcom.inc'
 C
 C     TRACING
 CCC   IF (TRACE.GT.20) THEN

@@ -2,6 +2,7 @@
 
          USE Files, only : FILE1, LENBF1, LF1REC, CAREC
          USE RandomFiles, only : RIOIN, RIOOUT
+         USE Rim, only : RMSTAT
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'
@@ -12,7 +13,6 @@ C  PARAMETERS:
 C         THEROW--INPUT - ROW WANTED
 C                 OUTPUT - ACTUAL ROW TO USE IN THE BUFFER
          INCLUDE 'attble.inc'
-         INCLUDE 'rimcom.inc'
          INTEGER THEROW
 C
 C  TURN THE REQUESTED ROW INTO A RECORD AND OFFSET.

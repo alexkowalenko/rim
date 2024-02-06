@@ -1,6 +1,7 @@
       SUBROUTINE RMLOOK(MAT,INDEX,IFLAG,LENGTH)
 
          USE Globals, only : TRACE, HXFLAG
+         USE Rim, only : RMSTAT
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
@@ -16,7 +17,6 @@ C         IFLAG---0 IFF TUPLE IS RETURNED
 C                 ELSE POINTER TO TUPLE IS RETURNED IN MAT
 C         LENGTH--LENGTH OF TUPLE IN WORDS
          INCLUDE 'rmatts.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'start.inc'

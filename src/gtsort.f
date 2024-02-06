@@ -1,6 +1,7 @@
       SUBROUTINE GTSORT(MAT,INDEX,IFLAG,LENGTH)
 
          USE Globals, only : MRINDX
+         USE Rim, only : RMSTAT
 
          INCLUDE 'syspar.inc'
 C
@@ -18,7 +19,6 @@ C            LENGTH--LENGTH OF TUPLE IN WORDS
 C
          INCLUDE 'srtcom.inc'
          INCLUDE 'whcom.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
 C
          INCLUDE 'rimptr.inc'

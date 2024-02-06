@@ -1,6 +1,7 @@
       FUNCTION LOCPRM(RNAME,JCODE)
 
          USE Globals, only : USERID, OWNER
+         USE Rim, only : RMSTAT
          USE Text, only : NONE
          INCLUDE 'syspar.inc'
 C
@@ -13,7 +14,6 @@ C                 1 FOR READ
 C                 2 FOR MODIFY
 C         LOCPRM--O FOR OK, 1 FOR NO-WAY
 
-         INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'
          LOGICAL EQ,NE
          INCLUDE 'dclar1.inc'

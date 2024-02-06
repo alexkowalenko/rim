@@ -1,5 +1,6 @@
       LOGICAL FUNCTION SGTLNK(I,MP,LP)
 
+         USE Rim, only : RMSTAT
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -17,7 +18,6 @@ C
          INCLUDE 'tuplea.inc'
          INCLUDE 'tuplel.inc'
          INCLUDE 'files.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'whcom.inc'

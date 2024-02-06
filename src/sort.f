@@ -1,6 +1,7 @@
       SUBROUTINE SORT(NKSORT)
 
          USE Globals, only : PGFLAG, MRINDX
+         USE Rim, only : RMSTAT
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -21,7 +22,6 @@ C
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'srtcom.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'tuplea.inc'

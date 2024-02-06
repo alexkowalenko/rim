@@ -3,6 +3,7 @@
          USE Globals, only : DFLAG
          USE Lexer, only : ASCREC, IDP, IDL, KWS
          USE Message, only: WARN
+         USE Rim, only : RMSTAT
          USE Text, only : STRASC
 
          INCLUDE 'syspar.inc'
@@ -11,7 +12,6 @@ C     PROCESS SELECT COMMAND
 C
          INCLUDE 'selcom.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'tuplea.inc'

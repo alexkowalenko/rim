@@ -28,7 +28,6 @@ C
          INCLUDE 'start.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'dclar1.inc'

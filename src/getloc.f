@@ -1,4 +1,5 @@
       SUBROUTINE GETLOC (INDPTR,NAMREL,LOCID)
+            USE Rim, only : RMSTAT
       INCLUDE 'syspar.inc'
 C     PURPOSE: GETS THE RSTART VALUE FOR THE INDICATED RELATION
 C              EQUIVALENT TO A RMFIND FOR A RANDOM READ OF A RELATION
@@ -11,7 +12,6 @@ C
 C      ====>   RIC JOHNSTON ACC UW 85/01/04
 C
 C==================================================
-      INCLUDE 'rimcom.inc'
       INCLUDE 'tupler.inc'
       CALL RMFIND(INDPTR,NAMREL)
       LOCID = 0

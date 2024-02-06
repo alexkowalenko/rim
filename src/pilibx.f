@@ -1,119 +1,145 @@
       SUBROUTINE AMSG(MTEXT,NUMC,MCONT)
-      INCLUDE 'syspar.inc'
+         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
-      CHARACTER*(*) MCONT
-      RETURN
+         CHARACTER*(*) MCONT
+         RETURN
       END
+
+
       SUBROUTINE DMSG(JDAT,DFMT,MCONT)
-      INCLUDE 'syspar.inc'
+         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
-      CHARACTER*(*) MCONT
-      RETURN
+         CHARACTER*(*) MCONT
+         RETURN
       END
+
+
       SUBROUTINE IMSG(NUM,NUMC,MCONT)
-      INCLUDE 'syspar.inc'
+         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
-      CHARACTER*(*) MCONT
-      RETURN
+         CHARACTER*(*) MCONT
+         RETURN
       END
+
+
       SUBROUTINE MSG(MTYPE,MTEXT,MCONT)
-      INCLUDE 'syspar.inc'
+         USE Rim, only : RMSTAT
+         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
 C     IF THIS IS ERROR MESSAGE AND RMSTAT <> 0 THEN SET RMSTAT
 C
-      CHARACTER*(*) MTYPE, MTEXT, MCONT
+         CHARACTER*(*) MTYPE, MTEXT, MCONT
 C
-      INCLUDE 'rimcom.inc'
-C
-      IF (MTYPE(1:1).EQ.'E' .AND. RMSTAT.EQ.0) RMSTAT = 999
-      RETURN
+         IF (MTYPE(1:1).EQ.'E' .AND. RMSTAT.EQ.0) RMSTAT = 999
+         RETURN
       END
+
+
       SUBROUTINE MSGCMV(MTEXT,CTYPE)
-      INCLUDE 'syspar.inc'
+         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
-      CHARACTER*(*) CTYPE, MTEXT
-      RETURN
+         CHARACTER*(*) CTYPE, MTEXT
+         RETURN
       END
+
+
       SUBROUTINE NXTCRD(EOF)
-      INCLUDE 'syspar.inc'
+         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
-      RETURN
+         RETURN
       END
+
+
       SUBROUTINE PROMPT(PTXT)
-      INCLUDE 'syspar.inc'
+         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
-      RETURN
+         RETURN
       END
+
+
       SUBROUTINE SETIN(FILE)
-      INCLUDE 'syspar.inc'
+         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
-      CHARACTER*(*) FILE
-      RETURN
+         CHARACTER*(*) FILE
+         RETURN
       END
+
+
       SUBROUTINE SETOUT(UN,UNF,FILE,STAT)
-      INCLUDE 'syspar.inc'
+         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
-      CHARACTER*(*) FILE
-      RETURN
+         CHARACTER*(*) FILE
+         RETURN
       END
+
+
       SUBROUTINE WARN(W,TEXT1,TEXT2)
-      INCLUDE 'syspar.inc'
+         USE Rim, only : RMSTAT
+         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
-      INCLUDE 'rimcom.inc'
-C
-      IF (RMSTAT.EQ.0) RMSTAT = W
-      RETURN
+         IF (RMSTAT.EQ.0) RMSTAT = W
+         RETURN
       END
+
+
       SUBROUTINE PRMSET(MODE,PR)
-      INCLUDE 'syspar.inc'
+         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
-      CHARACTER*(*) MODE, PR
+         CHARACTER*(*) MODE, PR
 C
-      RETURN
+         RETURN
       END
+
+
       SUBROUTINE LOADIT(MAT,ATT)
-      INCLUDE 'syspar.inc'
+         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
-      RETURN
+         RETURN
       END
       SUBROUTINE LOADFM(MAT,ATT)
-      INCLUDE 'syspar.inc'
+         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
-      RETURN
+         RETURN
       END
+
+
       INTEGER FUNCTION LOCVAR(I)
-      LOCVAR = 1
-      RETURN
+         LOCVAR = 1
+         RETURN
       END
+
+
       SUBROUTINE SYSEXI
-      RETURN
+         RETURN
       END
+
+
       SUBROUTINE SYSTRP(I)
-      RETURN
+         RETURN
       END

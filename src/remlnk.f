@@ -3,12 +3,12 @@
          USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
          USE Lexer, only : ITEMS, LXSREC, LXSREC
          USE Message, only: WARN
+         USE Rim, only : RMSTAT
 
          INCLUDE 'syspar.inc'
 C
 C     REMOVE A LINK FROM THE DATABASE
 C
-         INCLUDE 'rimcom.inc'
          INCLUDE 'tuplel.inc'
          INCLUDE 'lnktbl.inc'
          LOGICAL NE

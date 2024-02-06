@@ -1,6 +1,7 @@
       SUBROUTINE SUBTRC(RNAME2,RNAME3,MATN3,NCOL3,NATT3,PTABLE,
      XKEYCOL,KEYTYP)
 
+         USE Rim, only : RMSTAT
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
@@ -22,7 +23,6 @@ C         KEYTYP--ATTRIBUTE TYPE OF MATN1 USED FOR KEY VALUES
          INCLUDE 'files.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'rimptr.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'dclar1.inc'

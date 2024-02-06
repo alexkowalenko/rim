@@ -51,6 +51,7 @@ add_library(rimcommon STATIC
     message.f90
     lexer.f90
     randomfiles.f90
+    rim.f90
     system.f90
     text.f90
     textfiles.f90

@@ -6,9 +6,9 @@ C
          USE Globals, only : DFLAG, IFMOD, DBDATE, DBTIME
          USE Files, only : F1CLO, F2CLO, F3CLO
          USE DateTime, only: RMTIME, RMDATE
+         USE Rim, only : RMSTAT
 
-         INCLUDE 'syspar.inc'
-         INCLUDE 'rimcom.inc'
+         implicit none
 C
 C
 C  DO NOT CLOSE THE DATABASE IF THERE WERE NO MODIFICATIONS

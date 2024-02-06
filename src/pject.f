@@ -5,6 +5,7 @@
          Use Lexer, only: KXNAME, TOKTYP, IDP, ITEMS, EQKEYW, LFIND
          Use Lexer, only: LXSREC
          USE Message, only : WARN
+         USE Rim, only : RMSTAT
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
 
@@ -21,7 +22,6 @@ C
          INCLUDE 'tuplea.inc'
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'rimcom.inc'
 C
 C
          INTEGER STATUS

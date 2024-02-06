@@ -17,7 +17,6 @@ C
          INCLUDE 'tuplea.inc'
          INCLUDE 'tuplel.inc'
          INCLUDE 'dclar1.inc'
-         INCLUDE 'rimcom.inc'
          LOGICAL NE,EQ
 C
 C

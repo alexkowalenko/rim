@@ -18,7 +18,6 @@ C     :  LOAD REL_NAME <FROM FILE_NAME> <USING FILENAME>
          INCLUDE 'tupler.inc'
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'prom.inc'
          INCLUDE 'dclar1.inc'
          CHARACTER*(ZFNAML) FN, DFN

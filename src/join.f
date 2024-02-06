@@ -2,6 +2,7 @@
      XKEYCOL,KEYTYP)
 
          USE Message, only : WARN
+         USE Rim, only : RMSTAT
          USE Utils, only : HTOI, ITOH
 
          INCLUDE 'syspar.inc'
@@ -20,7 +21,6 @@ C         KEYTYP--ATTRIBUTE TYPE OF MATN1 USED FOR KEY VALUES
          INCLUDE 'files.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'rimptr.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'dclar1.inc'

@@ -6,6 +6,7 @@
          USE Globals, only: KZHPSK, KZHPRL, KZHPKY, DFLAG
          USE Lexer, only: KWS, ITEMS
          USE Message, only: WARN
+         USE Rim, only : RMSTAT
          USE Text, only: ASCTXT
 
          INCLUDE 'syspar.inc'
@@ -24,7 +25,6 @@ C     THE HELP DATA BASE IS CLOSED AND THE USERS DATA BASE IS REOPENED.
 C
          INCLUDE 'rmatts.inc'
          INCLUDE 'files.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'whcom.inc'

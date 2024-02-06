@@ -3,6 +3,7 @@
          USE Globals, only : DFLAG
          USE Lexer, only : ITEMS, LFIND, LXSREC
          USE Message, only : WARN
+         USE Rim, only : RMSTAT
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -22,7 +23,6 @@ C
          INCLUDE 'tuplea.inc'
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'srtcom.inc'
          INCLUDE 'whcom.inc'
 C

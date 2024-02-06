@@ -1,6 +1,7 @@
       SUBROUTINE SWFLFS(INFIL,OUTFIL,BUFFER,LBUF,LPRU,DPRU)
 
          USE RandomFiles, only : RIOOPN, RIOCLO
+         USE Rim, only : RMSTAT
          USE System, only : SystemDelete
 
          INCLUDE 'syspar.inc'
@@ -84,7 +85,6 @@ C         WRITE AND ONE COMPLETE READ
 C         OF WHOLE RANDOM FILES
 C
          INCLUDE 'srtcom.inc'
-         INCLUDE 'rimcom.inc'
          INTEGER BUFFER(1)
          INTEGER CHAIN1,OUTREC
          LOGICAL SWITCH

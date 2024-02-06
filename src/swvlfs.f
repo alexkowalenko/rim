@@ -1,6 +1,7 @@
       SUBROUTINE SWVLFS(INFIL,OUTFIL,BUFFER,LBUF,LPRU,DPRU)
 
          USE RandomFiles, only : RIOOPN, RIOCLO
+         USE Rim, only : RMSTAT
          USE System, only : SystemDelete
 
          INCLUDE 'syspar.inc'
@@ -76,7 +77,6 @@ C  NRECS  NO OF PAGES ON RANDOM SCRATCH FILE
 C  LREC   LENGTH OF RANDOM FILE PAGE
 C
          INCLUDE 'srtcom.inc'
-         INCLUDE 'rimcom.inc'
          DIMENSION BUFFER(1)
          INTEGER DPRU
          INTEGER CHAIN1,OUTREC

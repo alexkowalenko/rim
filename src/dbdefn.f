@@ -4,6 +4,7 @@
          USE DateTime, only : RMDATE
          USE Lexer, only: ITEMS, EQKEYW, LXSREC
          USE Message, only : WARN
+         USE Rim, only : RMSTAT
          USE System, only: SYSDBG
          USE Text, only : NONE
          USE Utils, only : ZMOVE
@@ -17,7 +18,6 @@ C           <COMMANDS>
 C           END
 C
 C
-         INCLUDE 'rimcom.inc'
          INCLUDE 'files.inc'
          INCLUDE 'prom.inc'
 C

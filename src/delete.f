@@ -1,5 +1,6 @@
       SUBROUTINE DELETE(MAT)
 
+         USE Rim, only : RMSTAT
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
@@ -11,7 +12,6 @@ C         MAT-----ARRAY TO HOLD ONE TUPLE
          INCLUDE 'start.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'files.inc'
          INTEGER COLUMN

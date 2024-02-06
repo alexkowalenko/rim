@@ -4,6 +4,7 @@
          USE Files, only: FILE1, F1OPN, FILE2, F2OPN, FILE3, F3OPN
          USE DateTime, only: RMTIME, RMDATE
          USE RandomFiles, only: RIOCLO
+         USE Rim, only : RMSTAT
          USE System, only: SYSDBN, CHKFIL
 
          INCLUDE 'syspar.inc'
@@ -15,7 +16,6 @@ C     NEWOK = .TRUE. IF THE DB MAY BE CREATED
 C
          CHARACTER*(*) NEWNAM
          LOGICAL NEWOK
-         INCLUDE 'rimcom.inc'
          INCLUDE 'attble.inc'
 C
          LOGICAL RW

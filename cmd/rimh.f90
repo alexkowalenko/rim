@@ -2,6 +2,7 @@ PROGRAM MAIN
 
    USE Parameters
    USE Text, only : STRASC
+   USE Rim, only : RMSTAT
 
    IMPLICIT NONE
 
@@ -37,7 +38,6 @@ PROGRAM MAIN
    ! '&' = BEGIN MACRO DEFINITION
    ! '=' = COPY MACRO TEXT
    !
-   INCLUDE 'rimcom.inc'
    INCLUDE 'dclar1.inc'
    LOGICAL :: RIM
    INTEGER :: I, MACIDX, PTR, SUB
@@ -232,7 +232,6 @@ CONTAINS
       !
       ! WRITE A LINE TO DB
       !
-      INCLUDE 'rimcom.inc'
       LOGICAL :: RIMDM
       !
       INTEGER, intent(in) :: LINE(NW)

@@ -4,6 +4,7 @@
          USE Text, only : ASCTXT
          USE Lexer, only : Lexer_Initialise => Initialise, KXKEYW
          USE Lexer, only : TOKTYP, ITEMS, EQKEYW
+         USE Rim, only : RMSTAT
          USE System, only : SYSCOM
 
          INCLUDE 'syspar.inc'
@@ -19,7 +20,6 @@ C
 C
          INCLUDE 'cards.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'files.inc'
 C
@@ -158,6 +158,7 @@ C
 
       FUNCTION RIMDM(IND,COM,TUPLE)
          USE Globals, only : DFLAG, DMFLAG
+         USE Rim, only : RMSTAT
          INCLUDE 'syspar.inc'
 C
 C     RIM FORTRAN INTERFACE (DATA MOVEMENT)
@@ -174,7 +175,6 @@ C
          CHARACTER*(*) COM
          INTEGER TUPLE(1)
 C
-         INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'
 C
          CHARACTER*1 OP

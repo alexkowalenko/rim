@@ -1,6 +1,7 @@
       SUBROUTINE RMPII
 
          USE Text, only : BLANK
+         USE Rim, only : RMSTAT
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -14,7 +15,6 @@ C
          INCLUDE 'tuplea.inc'
          INCLUDE 'vardat.inc'
          INCLUDE 'keydat.inc'
-         INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'
 C
          LOGICAL EQ

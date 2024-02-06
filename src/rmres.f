@@ -1,6 +1,7 @@
       SUBROUTINE RMRES(INDPTR)
 
          USE Globals, only : TRACE
+         USE Rim, only : RMSTAT
 
          INCLUDE 'syspar.inc'
 C
@@ -9,7 +10,6 @@ C             MULTIPLE PROGRAM INTERFACE.
 C
 C  PARAMETERS:
 C     INPUT:  INDPTR--INDEX TO SAVE BLOCK (RANGE OF 0 TO ZPIMAX)
-         INCLUDE 'rimcom.inc'
          INCLUDE 'vardat.inc'
          INCLUDE 'keydat.inc'
          INCLUDE 'tuplea.inc'

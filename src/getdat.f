@@ -3,6 +3,7 @@
          USE Globals, only : TRACE
          USE Files, only : FILE2, LENBF2, LF2REC, CURBLK, MODFLG
          USE RandomFiles, only: RIOIN, RIOOUT
+         USE Rim, only : RMSTAT
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
@@ -14,7 +15,6 @@ C         INDEX---BLOCK REFERENCE NUMBER
 C         ID------PACKED ID WORD WITH START,PRU
 C         LOCTUP--OFFSET IN BUFFER FOR THE TUPLE
 C         LENGTH---LENGTH OF THE TUPLE
-         INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'rimptr.inc'
 C
