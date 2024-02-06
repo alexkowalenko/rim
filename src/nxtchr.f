@@ -20,7 +20,6 @@ C
 
          LOGICAL TXTONL
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'cards.inc'
          INCLUDE 'files.inc'
          INCLUDE 'maccom.inc'

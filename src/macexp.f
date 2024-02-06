@@ -11,7 +11,6 @@ C
 C-----------------------------------------------------
 C
          INCLUDE 'syspar.inc'
-         INCLUDE 'ascpar.inc'
          INCLUDE 'cards.inc'
          INCLUDE 'maccom.inc'
 

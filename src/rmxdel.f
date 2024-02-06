@@ -10,7 +10,6 @@ C  PARAMETERS:
 C         INDPTR--INDEX TO SAVE BLOCK (RANGE OF 1 TO 9)
          INCLUDE 'keydat.inc'
          INCLUDE 'rimcom.inc'
-         INCLUDE 'ascpar.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'rimptr.inc'

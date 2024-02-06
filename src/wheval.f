@@ -12,7 +12,6 @@ C     ITUP-----POINTER TO TUPLE
 C     RETURNS THE VALUE OF THE WHERE CLAUSE
 C
 
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'

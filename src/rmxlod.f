@@ -15,7 +15,6 @@ C         TUPLE---USER ARRAY WITH REPLACEMENT TUPLE
          INCLUDE 'rimcom.inc'
          INCLUDE 'vardat.inc'
          INCLUDE 'keydat.inc'
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'rmatts.inc'

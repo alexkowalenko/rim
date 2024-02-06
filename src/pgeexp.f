@@ -16,7 +16,6 @@ C     RETURNS TRUE IF EVALUATION OK
 C
          LOGICAL PGEEXP
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'

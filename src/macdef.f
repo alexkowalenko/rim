@@ -16,7 +16,6 @@ C
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
-         INCLUDE 'ascpar.inc'
          INCLUDE 'maccom.inc'
 
          INTEGER MAC(Z)

@@ -13,7 +13,6 @@ C     RENAME AN ATTRIBUTE
 C
 C     : RENAME <COLUMN> NAME TO NEW_NAME <IN TABLE>
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'files.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tuplel.inc'

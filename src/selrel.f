@@ -16,7 +16,6 @@ C                 NTOK = 0 USES PRIOR VALUE
 C
          LOGICAL SELREL
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'dclar1.inc'

@@ -14,7 +14,6 @@ C  RIM DATA BASE.
 C
 C     :  LOAD REL_NAME <FROM FILE_NAME> <USING FILENAME>
 
-         INCLUDE 'ascpar.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'files.inc'

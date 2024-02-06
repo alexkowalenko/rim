@@ -21,7 +21,6 @@ C
 C  DECLARATIVES
 C
          INCLUDE 'rmatts.inc'
-         INCLUDE 'ascpar.inc'
          INCLUDE 'btbuf.inc'
          INCLUDE 'start.inc'
          INCLUDE 'stack.inc'

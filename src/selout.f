@@ -15,7 +15,6 @@ C     MAT.......DATA FOR THIS ATTRIBUTE
 C     IATT......ATTRIBUTE NUMBER IN SELCOM
 C     ADONE.....SET TO .TRUE. IF NO PARAGRAPHING LEFT
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'selcom.inc'
 C

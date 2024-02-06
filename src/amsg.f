@@ -21,7 +21,6 @@ C-----------------------------------------
          INTEGER NUMC
          CHARACTER*1 MCONT
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'files.inc'
          INCLUDE 'msgcom.inc'
          LOGICAL DTB

@@ -11,7 +11,6 @@
 C
 C     REPORT SELECTED DATA
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'tupler.inc'

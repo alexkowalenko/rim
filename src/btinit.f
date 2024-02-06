@@ -6,7 +6,6 @@ C
 C  PARAMETERS:
 C         START---NEW RECORD USED FOR THIS BTREE
 C
-      INCLUDE 'ascpar.inc'
       INCLUDE 'btbuf.inc'
 C
       INTEGER START

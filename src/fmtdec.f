@@ -16,7 +16,6 @@ C     DTFASL = LENGTH OF DTFASC
 C
          INTEGER DTFASC(1)
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
 C
 C     OFFSETS FOR DATA PACKING FOR DATE TYPES

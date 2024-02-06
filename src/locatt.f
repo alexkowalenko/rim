@@ -14,7 +14,6 @@ C         RNAME---NAME OF RELATION OR BLANKS
 C         LOCATT--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
          INCLUDE 'attble.inc'
          INCLUDE 'start.inc'
-         INCLUDE 'ascpar.inc'
          LOGICAL EQ
          LOGICAL NE
          INCLUDE 'dclar1.inc'

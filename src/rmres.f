@@ -9,7 +9,6 @@ C             MULTIPLE PROGRAM INTERFACE.
 C
 C  PARAMETERS:
 C     INPUT:  INDPTR--INDEX TO SAVE BLOCK (RANGE OF 0 TO ZPIMAX)
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'vardat.inc'
          INCLUDE 'keydat.inc'

@@ -11,13 +11,14 @@ C
          USE Parameters
          USE Globals, only: KMSSVL, KMSSVT, KNAPVL, KNAPVT, USERID
          USE Globals, only: ARBCHS, ARBCHM, USERID
+         USE Globals, only: KZHPDB, KZHPRL, KZHPKY, KZHPSK, KZHPTX
+         USE Globals, only: KDBHDR
          USE Globals, only : Globals_Initialise => Initialise
          USE DateTime, only : DateTime_Initialise, DTFENC
          USE Lexer, only : Lexer_Initialise => Initialise
          USE Text, only : Text_Initialise, ASCTXT, ASCCHR, NONE
          USE Utils, only : ZMOVE
 
-         INCLUDE 'ascpar.inc'
          INCLUDE 'files.inc'
          INCLUDE 'cards.inc'
          INCLUDE 'msgcom.inc'

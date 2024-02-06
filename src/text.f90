@@ -120,7 +120,6 @@ CONTAINS
       INTEGER, intent(in) :: LTXT
       CHARACTER(len=*), intent(in) :: CSTR
       !
-      INCLUDE 'ascpar.inc'
       INTEGER :: L, I
       !
       L = LEN(CSTR)

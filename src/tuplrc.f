@@ -24,7 +24,6 @@ C
          PARAMETER (OPIS=1, OPUN=2, OPSB=3)
 C
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'rimcom.inc'

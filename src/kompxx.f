@@ -14,7 +14,6 @@ C                 ARE MET
 C         TYPE----TYPE OF VALUES BEING COMPARED
 C
       INCLUDE 'rmatts.inc'
-      INCLUDE 'ascpar.inc'
 C
       INTEGER VALUE1(1)
       INTEGER VALUE2(1)

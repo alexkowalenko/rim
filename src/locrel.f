@@ -12,7 +12,6 @@ C         RNAME---NAME OF RELATION OR BLANK
 C         LOCREL--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
          INCLUDE 'reltbl.inc'
          INCLUDE 'tupler.inc'
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rimptr.inc'
          LOGICAL EQ
          INCLUDE 'dclar1.inc'

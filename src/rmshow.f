@@ -12,7 +12,6 @@
 C
 C     SHOW PARAMETER VALUES
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'files.inc'
          INCLUDE 'msgcom.inc'

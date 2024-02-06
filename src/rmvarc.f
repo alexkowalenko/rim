@@ -25,7 +25,6 @@ C           CTYP-----CONVERSION TYPE - -1 = INTERNAL TO USER
 C                                      +1 = USER TO INTERNAL
 C           TUPVAL---ARRAY CONTAINING THE TUPLE VALUES
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'vardat.inc'
          INCLUDE 'rimcom.inc'

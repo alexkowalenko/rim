@@ -11,7 +11,6 @@
 C
 C     EXECUTE A RIM PROGRAM
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'tupler.inc'

@@ -9,7 +9,6 @@
 C
 C     PROCESS CHANGE DATA COMMAND
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'

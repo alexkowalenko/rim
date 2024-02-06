@@ -11,7 +11,6 @@ C     REMOVE A KEY (MAKE ATTRIBUTE NON-KEYED)
 C
 C     :  REMOVE KEY FOR ATTRIBUTE IN RELATION
 
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'

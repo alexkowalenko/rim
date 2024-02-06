@@ -16,7 +16,6 @@ C                    1 IF THE BUFFER POINTER IS RETURNED IN MAT
 C                   -1 OPEN THE SORT FILE AND INITIALIZE
 C            LENGTH--LENGTH OF TUPLE IN WORDS
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'srtcom.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'rimcom.inc'

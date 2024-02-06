@@ -12,7 +12,6 @@ C     NTOK IS THE NUMBER OF SORT TOKENS
 C
          LOGICAL SELSRT
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimptr.inc'

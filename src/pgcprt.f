@@ -12,7 +12,6 @@ C     MAXLIN = NUMBER OF LINES IN THE BLOCK
 C
          CHARACTER*(6) BLKTYP
 
-         INCLUDE 'ascpar.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'

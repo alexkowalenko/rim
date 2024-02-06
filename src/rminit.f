@@ -10,7 +10,6 @@
 C
 C     RUN-TIME INITIALIZATION (CALLED WHEN DATABASE IS OPENED)
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'incore.inc'
          INCLUDE 'reltbl.inc'
          INCLUDE 'tupler.inc'

@@ -15,7 +15,6 @@ C         INDEX---PAGE BUFFER TO USE
 C         IFLAG---0 IFF TUPLE IS RETURNED
 C                 ELSE POINTER TO TUPLE IS RETURNED IN MAT
 C         LENGTH--LENGTH OF TUPLE IN WORDS
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'

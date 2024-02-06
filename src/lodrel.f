@@ -7,7 +7,6 @@
 C
 C     LOAD THE RELATION DESCRIPTION
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'files.inc'

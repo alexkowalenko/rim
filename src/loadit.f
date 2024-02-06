@@ -14,7 +14,6 @@ C  PARAMETERS:
 C         MAT-----SCRATCH ARRAY FOR BUILDING TUPLES
 C         ATT-----ARRAY OF TUPLEA VALUES
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'files.inc'
          INCLUDE 'start.inc'
          INCLUDE 'tuplea.inc'

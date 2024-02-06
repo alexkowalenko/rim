@@ -8,7 +8,6 @@ C
 C     ADD A VARIABLE TO THE VAR LIST
 C
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'incore.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'buffer.inc'

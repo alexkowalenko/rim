@@ -21,7 +21,6 @@ C          NAMDB--------NAMDB FOR DEFINE.
 C
          CHARACTER*(*) MODE
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'

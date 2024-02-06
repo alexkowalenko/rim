@@ -15,7 +15,6 @@ C         LOCPRM--O FOR OK, 1 FOR NO-WAY
 
          INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'
-         INCLUDE 'ascpar.inc'
          LOGICAL EQ,NE
          INCLUDE 'dclar1.inc'
 C

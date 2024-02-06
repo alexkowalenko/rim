@@ -17,7 +17,6 @@ C
          CHARACTER*(ZKEYWL) KEYLST(1)
          INTEGER KEYPTR(2,1)
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
 C
 C

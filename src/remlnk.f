@@ -8,7 +8,6 @@
 C
 C     REMOVE A LINK FROM THE DATABASE
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'tuplel.inc'
          INCLUDE 'lnktbl.inc'

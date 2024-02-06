@@ -10,7 +10,6 @@ C
 C     PARAMETERS:
 C         LKNAME---NAME OF RELATION OR BLANK
 C         LOCLNK--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
-         INCLUDE 'ascpar.inc'
          INCLUDE 'lnktbl.inc'
          INCLUDE 'tuplel.inc'
          INCLUDE 'rimptr.inc'

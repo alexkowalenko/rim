@@ -57,8 +57,7 @@ CONTAINS
 
    SUBROUTINE F1OPN(RIMDB1)
       USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, DFLAG, &
-         DMFLAG, DBFNAM
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, DFLAG, DMFLAG, DBFNAM, KDBHDR
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
       USE Text, only : ASCTXT
       USE Utils, only : ZEROIT, ZMOVE
@@ -71,7 +70,6 @@ CONTAINS
       !  PARAMETERS:
       !     RIMDB1--NAME OF THE FILE TO USE FOR FILE1
       !
-      INCLUDE 'ascpar.inc'
       INCLUDE 'rimcom.inc'
       INCLUDE 'attble.inc'
       INCLUDE 'reltbl.inc'
@@ -188,14 +186,13 @@ CONTAINS
 
    SUBROUTINE F1CLO
       USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR
       USE RandomFiles, only : RIOCLO, RIOOUT
       USE Utils, only : ZEROIT, ZMOVE
 
       !
       !  PURPOSE:   CLOSE THE RIM DIRECTORY FILE - FILE 1
       !
-      INCLUDE 'ascpar.inc'
       INCLUDE 'rimcom.inc'
       INCLUDE 'attble.inc'
       INCLUDE 'reltbl.inc'
@@ -263,10 +260,11 @@ CONTAINS
       RETURN
    END SUBROUTINE F1CLO
 
+
    SUBROUTINE F2OPN(RIMDB2)
 
       USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBHDR
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
       USE Utils, only : ZEROIT, ZMOVE
 
@@ -278,7 +276,6 @@ CONTAINS
       !  PARAMETERS:
       !    RIMDB2-----NAME OF THE FILE TO USE FOR FILE 2
       !
-      INCLUDE 'ascpar.inc'
       INCLUDE 'buffer.inc'
       INCLUDE 'rimcom.inc'
 
@@ -349,14 +346,13 @@ CONTAINS
 
    SUBROUTINE F2CLO
       USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR
       USE RandomFiles, only : RIOCLO, RIOIN, RIOOUT
       USE Utils, only : ZMOVE
 
       !
       !  PURPOSE:    CLOSE THE DATA RANDOM IO FILE - FILE 2
       !
-      INCLUDE 'ascpar.inc'
       INCLUDE 'rimcom.inc'
       INCLUDE 'buffer.inc'
 
@@ -425,7 +421,7 @@ CONTAINS
 
    SUBROUTINE F3OPN(RIMDB3)
       USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBHDR
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
       USE Utils, only : ZEROIT, ZMOVE
 
@@ -435,7 +431,6 @@ CONTAINS
       !  PARAMETERS:
       !      RIMDB3----NAME OF THE FILE TO USE FOR FILE 3
       !
-      INCLUDE 'ascpar.inc'
       INCLUDE 'btbuf.inc'
       INCLUDE 'start.inc'
       INCLUDE 'rimcom.inc'
@@ -514,16 +509,14 @@ CONTAINS
 
 
    SUBROUTINE F3CLO
-
       USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR
       USE RandomFiles, only : RIOCLO, RIOOUT
       USE Utils, only : ZEROIT, ZMOVE
 
       !
       !  PURPOSE:    CLOSE THE B-TREE RANDOM IO FILE - FILE 3
       !
-      INCLUDE 'ascpar.inc'
       INCLUDE 'rimcom.inc'
       INCLUDE 'btbuf.inc'
 

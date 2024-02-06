@@ -8,7 +8,6 @@ C  PARAMETERS:
 C         INDPTR--INDEX TO SAVE BLOCK
 C         TUPLE---USER ARRAY TO HOLD ONE COMPLETE TUPLE
  
-      INCLUDE 'ascpar.inc'
       INCLUDE 'rimcom.inc'
       INCLUDE 'vardat.inc'
       INCLUDE 'rimptr.inc'

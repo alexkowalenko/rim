@@ -29,7 +29,6 @@ C                      2 IF COUNT MISMATCH
 C                      3 IF PAREN MISMATCH
 C              INPUT- -1 PUT NULL INTO MAT
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'files.inc'
          INCLUDE 'tuplea.inc'

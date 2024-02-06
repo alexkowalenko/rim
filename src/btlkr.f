@@ -13,7 +13,6 @@ C
 C  SUBROUTINES USED
 C         BTGET---PAGING ROUTINE
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'btbuf.inc'
          INCLUDE 'start.inc'
 C

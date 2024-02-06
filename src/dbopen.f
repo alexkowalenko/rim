@@ -17,7 +17,6 @@ C
          LOGICAL NEWOK
          INCLUDE 'rimcom.inc'
          INCLUDE 'attble.inc'
-         INCLUDE 'ascpar.inc'
 C
          LOGICAL RW
          CHARACTER*(ZFNAML) RIMDB1,RIMDB2,RIMDB3,RIMDBX

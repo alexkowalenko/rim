@@ -25,7 +25,6 @@ PROGRAM MAIN
 
    IMPLICIT NONE
 
-   INCLUDE 'ascpar.inc'
    INCLUDE 'rmatts.inc'
    INCLUDE 'files.inc'
    INCLUDE 'prom.inc'

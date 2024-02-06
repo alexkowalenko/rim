@@ -3,7 +3,6 @@
 C
 C     SETUP A WHERE CLAUSE TO MATCH AN ATTRIBUTE NAME
 C
-      INCLUDE 'ascpar.inc'
       INCLUDE 'whcom.inc'
       INCLUDE 'rmatts.inc'
 C

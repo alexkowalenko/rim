@@ -14,7 +14,6 @@ C         NT------NUMBER OF TOKENS
 C
          LOGICAL PGCEXP
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'

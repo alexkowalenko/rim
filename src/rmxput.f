@@ -11,7 +11,6 @@ C  PARAMETERS:
 C         INDPTR--INDEX TO SAVE BLOCK
 C         TUPLE---USER ARRAY WITH REPLACEMENT TUPLE
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'keydat.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'vardat.inc'

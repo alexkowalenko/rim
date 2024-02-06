@@ -18,7 +18,6 @@ C             WPW FOR <REL> IS <PASSWORD>
 C
 C             <REL> CAN BE * FOR ALL RELATIONS
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'files.inc'
          INTEGER ERROR

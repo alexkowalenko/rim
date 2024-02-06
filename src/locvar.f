@@ -11,7 +11,6 @@ C         ANAME---NAME OF VARIABLE
 C         LOCVAR--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
 
          INCLUDE 'tuplea.inc'
-         INCLUDE 'ascpar.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'pgmcom.inc'
          LOGICAL EQ

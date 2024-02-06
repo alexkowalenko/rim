@@ -11,7 +11,6 @@ C
 C     CHANGE A PASSWORD
 C
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'files.inc'
          INCLUDE 'tupler.inc'
 C

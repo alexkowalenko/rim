@@ -8,7 +8,6 @@ C  THIS ROUTINE PROCESSES A DELETE IN RIM.
 C
 C  PARAMETERS
 C         MAT-----ARRAY TO HOLD ONE TUPLE
-         INCLUDE 'ascpar.inc'
          INCLUDE 'start.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'

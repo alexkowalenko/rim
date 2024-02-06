@@ -23,7 +23,6 @@ C
          INCLUDE 'srtcom.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'files.inc'
-         INCLUDE 'ascpar.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'

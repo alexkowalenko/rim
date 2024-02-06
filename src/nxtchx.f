@@ -9,7 +9,6 @@ C     PARAMETERS
 C              CH  =  CHARACTER TO REPLACE
 C
       INCLUDE 'syspar.inc'
-      INCLUDE 'ascpar.inc'
       INCLUDE 'cards.inc'
       INCLUDE 'maccom.inc'
 C

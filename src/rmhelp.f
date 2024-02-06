@@ -3,6 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE Globals, only: LIBFLG, TOL, HXFLAG, PCENT, RUCK, DBFNAM
+         USE Globals, only: KZHPSK, KZHPRL, KZHPKY, DFLAG
          USE Lexer, only: KWS, ITEMS
          USE Message, only: WARN
          USE Text, only: ASCTXT
@@ -21,7 +22,6 @@ C     THE USERS DATA BASE FILE IS CLOSED AND THE HELP FILES OPENED.
 C     AFTER PROCESSING HELP COMMANDS,
 C     THE HELP DATA BASE IS CLOSED AND THE USERS DATA BASE IS REOPENED.
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'files.inc'
          INCLUDE 'rimcom.inc'

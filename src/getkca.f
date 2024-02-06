@@ -21,7 +21,6 @@ C       GETKCA RETURNS TRUE IF A KEYED COMMON ATTRIBUTE WAS FOUND
 C
          LOGICAL REQKCA
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'dclar1.inc'

@@ -19,7 +19,6 @@ C
          CHARACTER*(*) MTEXT
          CHARACTER*(*) CTYPE
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'files.inc'
          INCLUDE 'msgcom.inc'
 C

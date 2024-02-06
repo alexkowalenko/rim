@@ -17,7 +17,6 @@ C
          LOGICAL RIM
          CHARACTER*(*) COM
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'cards.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'
@@ -175,7 +174,6 @@ C
          CHARACTER*(*) COM
          INTEGER TUPLE(1)
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'tupler.inc'
 C

@@ -10,7 +10,6 @@ C             BASED ON CONDITIONS SET UP IN LOCATT
 C
 C  PARAMETERS:
 C         STATUS--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
-         INCLUDE 'ascpar.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'attble.inc'
          LOGICAL EQ

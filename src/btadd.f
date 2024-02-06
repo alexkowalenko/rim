@@ -18,7 +18,6 @@ C         BTGET---PAGING ROUTINE
 C         BTSERT--USED TO INSERT VALUES IN A BTREE
 C         BTPUT---PAGING ROUTINE
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'btbuf.inc'

@@ -15,7 +15,6 @@ C     PARSE ATTRIBUTE SELECT ATTRIBUTE LIST
 C
          LOGICAL SELATT
 
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'

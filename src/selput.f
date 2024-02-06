@@ -15,7 +15,6 @@ C     FMT ---- FORMAT TO USE
 C     START -- STARTING PLACE IN STRING
 C     STRING - PLACE TO PUT TEXT
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INTEGER :: FMT
          INTEGER :: STRING(*)

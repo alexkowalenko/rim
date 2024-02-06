@@ -14,7 +14,6 @@ C
 C     THE PROGRAM IS COMPILED AND STORED IN /BUFFER/ IN BLOCK6.
 C     VARIABLES ARE ALSO STORED IN /BUFFER/ IN BLOCK5.
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'

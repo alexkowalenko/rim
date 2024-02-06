@@ -14,7 +14,6 @@ C
       INCLUDE 'tupler.inc'
       INCLUDE 'tuplea.inc'
       INCLUDE 'start.inc'
-      INCLUDE 'ascpar.inc'
       INCLUDE 'rimptr.inc'
       CHARACTER*(*) IWORD
       INTEGER COLUMN

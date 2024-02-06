@@ -8,7 +8,6 @@
 C
 C     REMOVE A RELATION FROM THE DATABASE
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'

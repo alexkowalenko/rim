@@ -8,7 +8,6 @@
 C
 C     RECALL AND EDIT AN INPUT LINE OR COMMAND
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'cards.inc'
          INCLUDE 'files.inc'
          INCLUDE 'prom.inc'

@@ -11,7 +11,6 @@ C
 C     ALSO NO SORTING (9/28/89)
 C
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'

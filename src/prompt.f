@@ -8,7 +8,6 @@ C     **UNIX SYSTEM DEPENDENT INTERNAL ROUTINE **
 C
 C     ISSUE TERMINAL PROMPT
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'msgcom.inc'
          INCLUDE 'files.inc'
 

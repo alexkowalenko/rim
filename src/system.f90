@@ -203,8 +203,6 @@ contains
       CHARACTER*(*), intent(in) :: DBN
       CHARACTER*(*), intent(out) :: F1N,F2N,F3N,FXN
 
-      INCLUDE 'ascpar.inc'
-
       CHARACTER(ZFNAML) :: CDBN, xdbn
       INTEGER :: I, L, STATUS
       !

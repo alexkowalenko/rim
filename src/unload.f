@@ -12,7 +12,6 @@
 C
 C     UNLOAD DATABASE SCHEMA, DATA, OR BOTH
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'

@@ -15,7 +15,6 @@ C         'XDIGIT' - (0-9, PLUS, MINUS, DECIMAL, 'E')
 C         'DELIMIT'- (DELIMITERS)
 C
          CHARACTER*(*) TYPE
-         INCLUDE 'ascpar.inc'
 C
 C
          IF (TYPE.EQ.'LETTER') THEN

@@ -21,7 +21,6 @@ C
          INTEGER, intent(out) :: STRING(*)
          REAL(real64) :: RNUM
 C
-         INCLUDE 'ascpar.inc'
          LOGICAL FFMT
 C
          REAL(real64) :: R,RR,REAL,POINT,RREM

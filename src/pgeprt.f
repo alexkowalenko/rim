@@ -10,7 +10,6 @@ C     EXECUTE HEAD/FOOT PRINT
 C
 C     PTR-- ADDRESS OF SELCOM SAVE BLOCK
 
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'tupler.inc'

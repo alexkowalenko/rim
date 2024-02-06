@@ -18,7 +18,6 @@ C
 
 
          INCLUDE 'rmatts.inc'
-         INCLUDE 'ascpar.inc'
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'tuplea.inc'

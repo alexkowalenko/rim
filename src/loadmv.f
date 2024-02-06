@@ -13,7 +13,6 @@ C  PARAMETERS:
 C         CCOL----STARTING COLUMN
 C         CLEN----LENGTH
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'cards.inc'
 C
 C  DECLARATION STATEMENTS

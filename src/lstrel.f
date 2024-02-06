@@ -1,6 +1,6 @@
       SUBROUTINE LSTREL(*)
 
-         USE Globals, only : DFLAG, DBNAME, USERID, OWNER
+         USE Globals, only : DFLAG, DBNAME, USERID, OWNER, KARRC, KARDT
          USE DateTime, only: RMTIME, RMDATE
          USE Lexer, only: ITEMS, EQKEYW, LXSREC
          USE Message, only : WARN
@@ -12,7 +12,6 @@ C
 C     SUMMARIZE THE USERS DEFINITION OF A RELATION
 C
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'

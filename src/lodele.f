@@ -15,7 +15,6 @@ C
          INCLUDE 'rmatts.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'files.inc'
-         INCLUDE 'ascpar.inc'
 C
 C     TEMPORARY ATTRIBUTE STORAGE
          INCLUDE 'tmpa.inc'

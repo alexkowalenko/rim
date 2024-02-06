@@ -16,7 +16,6 @@ C                      DUPLICATES
 C              3. WHEN DONE RESET RSTART AND NTUPLE, PRINT MESSAGE,
 C                  AND RETURN
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'start.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'tupler.inc'

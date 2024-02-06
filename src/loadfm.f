@@ -22,7 +22,6 @@ C            5) FORMAT
 C            6) ITEM POSITION (LOADFM CALCULATES THIS)
 C         NFOR----NUMBER OF ITEMS IN FOR
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'cards.inc'
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'

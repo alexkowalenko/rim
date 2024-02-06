@@ -13,7 +13,6 @@ C     FMT IS DATE-FORMAT INTEGER
 C     LXDATE IS TRUE IF ALL OK
 C     TYP IS DATA TYPE
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
 
          INTEGER :: AM(1)

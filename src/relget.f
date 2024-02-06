@@ -9,7 +9,6 @@ C  PURPOSE:   GET THE NEXT TUPLE IN THE RELTBL RELATION
 C
 C  PARAMETERS:
 C         STATUS--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
-         INCLUDE 'ascpar.inc'
          INCLUDE 'reltbl.inc'
          INCLUDE 'tupler.inc'
          INTEGER STATUS

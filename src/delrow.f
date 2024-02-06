@@ -9,7 +9,6 @@
 C
 C     DELETE ROWS FROM A RELATION
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'

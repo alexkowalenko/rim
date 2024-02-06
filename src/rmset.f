@@ -15,7 +15,6 @@
 C
 C  PURPOSE:  SET A PARAMETER
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'files.inc'
 C

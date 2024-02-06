@@ -11,7 +11,6 @@
 C
 C     SUBROUTINE TO RENAME A RELATION
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'rimcom.inc'

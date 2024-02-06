@@ -37,7 +37,6 @@ PROGRAM MAIN
    ! '&' = BEGIN MACRO DEFINITION
    ! '=' = COPY MACRO TEXT
    !
-   INCLUDE 'ascpar.inc'
    INCLUDE 'rimcom.inc'
    INCLUDE 'dclar1.inc'
    LOGICAL :: RIM
@@ -163,7 +162,6 @@ CONTAINS
       ! GET A LINE OF TEXT
       !
       CHARACTER*1 COM
-      INCLUDE 'ascpar.inc'
 
       COMMON /LINE/ UNIT, LINE(NW), LINEL, EOF
       CHARACTER(len=80) :: CLINE
@@ -202,7 +200,6 @@ CONTAINS
       ! GET FIRST THREE CHARS OF FIRST WORD
       ! GET FIRST THREE CHARS OF SECOND WORD TO SUB
       !
-      INCLUDE 'ascpar.inc'
 
       COMMON /LINE/ UNIT, LINE(NW), LINEL, EOF
       !

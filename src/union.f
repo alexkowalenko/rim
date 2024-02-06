@@ -24,7 +24,6 @@ C                 1 = 2ND PASS (SOURCE RELATION = RNAME1)
 C                              (RNAME = RNAME2) (EXCLUDE MATCHES)
 
 
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'files.inc'
          INCLUDE 'tupler.inc'

@@ -15,7 +15,6 @@ C
 C     PROJECT RNAME2 FROM RNAME1 USING ATTR1 ATTR2...ATTRN
 C       ... WHERE CONDITION
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'tupler.inc'

@@ -15,7 +15,6 @@ C         NVAL----SCRATCH ARRAY FOR A TUPLE
 C        IFLAG---OUTPUT 1 : NON EXPRESSION CHANGE
 C                       0 : EXPRESSION CHANGE
 C         NTUP----SCRATCH ARRAY FOR A TUPLE
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'rimptr.inc'

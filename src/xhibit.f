@@ -9,7 +9,6 @@
 C
 C     LIST ALL RELATIONS HAVING SELECTED ATTRIBUTES.
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'

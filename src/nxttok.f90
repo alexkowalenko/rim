@@ -19,7 +19,6 @@
 
          INTEGER EOR
 !
-         INCLUDE 'ascpar.inc'
          INCLUDE 'cards.inc'
 !
          INTEGER ASCHR

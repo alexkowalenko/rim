@@ -9,7 +9,6 @@ C
 C     RIM COMMAND DISPATCHER
 C
 C
-         INCLUDE 'ascpar.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimcom.inc'
          INCLUDE 'files.inc'
