@@ -1,6 +1,7 @@
       SUBROUTINE RELADD
 
          USE Globals, only : IFMOD
+         USE Files, only : LF1REC
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -9,7 +10,6 @@ C  PURPOSE:   ADD A NEW TUPLE TO THE RELTBL RELATION
 C
          INCLUDE 'tupler.inc'
          INCLUDE 'reltbl.inc'
-         INCLUDE 'f1com.inc'
 C
 C  GET THE PAGE FOR ADDING NEW TUPLES.
 C

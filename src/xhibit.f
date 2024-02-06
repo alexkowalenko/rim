@@ -1,7 +1,7 @@
       SUBROUTINE XHIBIT(*)
 
          USE Globals, only : DFLAG, USERID, OWNER
-         USE Lexer, only: ITEMS
+         USE Lexer, only: ITEMS, LXSREC
          USE Message, only: WARN
          USE Text, only : BLANK, NONE
 

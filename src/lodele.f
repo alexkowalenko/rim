@@ -1,6 +1,7 @@
       SUBROUTINE LODELE(NUMELE)
 
          USE Lexer, only : KXINT, KXNAME, TOKTYP, ITEMS, EQKEYW, IDI
+         USE Lexer, only : LFIND, LXSREC
          USE Message, only : WARN
          USE Utils, only : HTOI
 

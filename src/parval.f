@@ -3,7 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE Lexer, only: KXTEXT, KXINT, KXREAL, TOKTYP, IDP, IDL, KWS
-         USE Lexer, only: ITEMS, IDI, IDR
+         USE Lexer, only: ITEMS, IDI, IDR, LFIND, LXLENW, LXSREC
          USE Maths, only : DTOR
          USE Message, only : WARN
          USE Text, only : BLANK

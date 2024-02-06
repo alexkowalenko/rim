@@ -7,7 +7,7 @@
          USE Text, only : LSTRNG
          USE Utils, only : ZMOVE, HTOI, ITOH
          USE Lexer, only : ASLPAR, ASRPAR, ATSIGN, PCSIGN, EQSIGN, KWS
-         USE Lexer, only : ASCOLN, ASSTAR, IDL, EQTOK, IDI
+         USE Lexer, only : ASCOLN, ASSTAR, IDL, EQTOK, IDI, LXSREC
 
          INCLUDE 'syspar.inc'
 C

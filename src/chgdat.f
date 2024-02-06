@@ -1,6 +1,7 @@
       SUBROUTINE CHGDAT(*)
 
          USE Globals, only : DFLAG
+         USE Lexer, only : LXSREC
          USE Message, only : WARN
          USE DateTime, only : RMDATE
 

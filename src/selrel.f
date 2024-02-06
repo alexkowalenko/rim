@@ -1,6 +1,7 @@
       FUNCTION SELREL(FTOK,NTOK)
 
          USE Message, only: WARN
+         USE Lexer, only: LXSREC
          USE Text, only : BLANK         
          USE Utils, only : ZMOVE
 

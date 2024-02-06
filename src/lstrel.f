@@ -2,7 +2,7 @@
 
          USE Globals, only : DFLAG, DBNAME, USERID, OWNER
          USE DateTime, only: RMTIME, RMDATE
-         USE Lexer, only: ITEMS, EQKEYW
+         USE Lexer, only: ITEMS, EQKEYW, LXSREC
          USE Message, only : WARN
          USE Text, only : BLANK, NONE
          USE Utils, only : ZMOVE

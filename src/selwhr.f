@@ -2,7 +2,7 @@
 
          USE Globals, only : CASEIG, TRACE
          USE Lexer, only: KXTEXT, KXNAME, TOKTYP, IDL, EQTOK, KWS
-         USE Lexer, only: EQKEYW
+         USE Lexer, only: EQKEYW, LXLENW, LXSREC
          USE Message, only: WARN
          USE Utils, only : HTOI, ITOH
 

@@ -1,7 +1,7 @@
       SUBROUTINE CHKATT(TMPA,NUMELE,ERROR)
 
          USE DateTime, only : RMDATE
-         USE Lexer, only : ITEMS
+         USE Lexer, only : ITEMS, LXSREC
          USE Message, only : WARN
          USE Text, only: BLANK, NONE
          USE Utils, only : ZMOVE, ITOH

@@ -1,7 +1,7 @@
       SUBROUTINE DELROW(*)
 
          USE Globals, only : DFLAG, DMFLAG, DBNAME
-         Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW
+         Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
          USE Message, only : WARN
          USE Text, only : BLANK
 

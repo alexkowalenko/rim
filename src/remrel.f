@@ -1,7 +1,7 @@
       SUBROUTINE REMREL(*)
 
          USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
-         USE Lexer, only: KWS, ITEMS, EQKEYW
+         USE Lexer, only: KWS, ITEMS, EQKEYW, LXSREC
          USE Message, only: WARN
 
          INCLUDE 'syspar.inc'

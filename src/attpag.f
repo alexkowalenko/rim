@@ -1,5 +1,6 @@
       SUBROUTINE ATTPAG(THEROW)
 
+         USE Files, only : FILE1, LENBF1, LF1REC, CAREC
          USE RandomFiles, only : RIOIN, RIOOUT
          USE Utils, only : ZEROIT
 
@@ -12,7 +13,6 @@ C         THEROW--INPUT - ROW WANTED
 C                 OUTPUT - ACTUAL ROW TO USE IN THE BUFFER
          INCLUDE 'attble.inc'
          INCLUDE 'rimcom.inc'
-         INCLUDE 'f1com.inc'
          INTEGER THEROW
 C
 C  TURN THE REQUESTED ROW INTO A RECORD AND OFFSET.

@@ -2,7 +2,7 @@ MODULE Lexer
 
    USE, intrinsic :: iso_fortran_env
 
-   USE Parameters, only : ZMTOK, ZMASC, ZKEYWL
+   USE Parameters, only : ZMTOK, ZMASC, ZKEYWL, ZCW, Z, ZC
    implicit none
    private
 
@@ -98,6 +98,9 @@ MODULE Lexer
    public TOKTYP !     TOKTYP CHECKS A TOKEN FOR A TYPE MATCH
    public EQTOK
    public EQKEYW
+   public LFIND
+   public LXLENW
+   public LXSREC
 
 contains
 
@@ -164,7 +167,6 @@ contains
 
 
    LOGICAL FUNCTION EQKEYW(I, KEYW)
-
       !
       ! THIS FUNCTION COMPARES KEYW WITH ITEM I OF THE
       ! COMMAND TOKEN LIST
@@ -198,5 +200,81 @@ contains
 1000  RETURN
    END FUNCTION EQKEYW
 
+
+   INTEGER FUNCTION LFIND(ITEM1,NUM,KEY)
+      !
+      ! THIS ROUTINE LOOKS FOR A KEYWORD IN THE COMMAND TOKEN
+      ! RECORD.  IT RETURNS 0 IF NOT FOUND AND THE ITEM
+      ! NUMBER IF FOUND.
+      !
+      ! ITEM1---FIRST TOKEN TO CHECK
+      ! NUM-----NUMBER OF TOKENS TO CHECK
+      ! KEY ----KEYWORD TO LOOK FOR
+      !
+      !
+      INTEGER, intent(in) :: ITEM1, NUM
+      CHARACTER(len=*), intent(in) :: KEY
+
+      INTEGER :: NEND, J
+
+      NEND = ITEM1 + NUM - 1
+      IF (NEND.GT.ITEMS) NEND = ITEMS
+      DO J=ITEM1,NEND
+         IF(EQKEYW(J,KEY)) GO TO 20
+      END DO
+      J = 0
+20    CONTINUE
+      LFIND = J
+      RETURN
+   END FUNCTION LFIND
+
+
+   INTEGER FUNCTION LXLENW(I)
+      !
+      !  RETURN THE LENGTH IN WORDS FOR THE ITH ITEM.
+      !
+      INTEGER, intent(in) :: I
+
+      LXLENW = 1
+      IF (TOKTYP(I,KXTEXT)) LXLENW = (IDL(I) - 1) / ZCW + 1
+      RETURN
+   END FUNCTION LXLENW
+
+
+   SUBROUTINE LXSREC(I,STRING,NUMC)
+      !
+      !
+      !  MOVE NUMC ASCII-CHARS FROM THE ITH ITEM.                   .
+      !
+      USE Text, only : BLANK, ABLANK, STRMOV
+      USE Utils, only : ZMOVE
+
+      INTEGER, intent(in) :: I, NUMC
+      INTEGER :: STRING(Z)
+
+      INTEGER :: J, K, NUM
+
+      !
+      !  BLANK FILL FIRST.
+      !
+      IF (NUMC.EQ.ZC) THEN
+         CALL ZMOVE(STRING,BLANK)
+      ELSE
+         DO J=1,NUMC
+            CALL PUTT(STRING,J,ABLANK)
+         END DO
+      ENDIF
+      !
+      !  MOVE THE TEXT.
+      !
+      IF(TOKTYP(I,KXTEXT)) THEN
+         K = IDP(I)
+         NUM = IDL(I)
+         IF(NUM.LE.0) RETURN
+         IF(NUMC.LT.NUM) NUM = NUMC
+         CALL STRMOV(ASCREC(K),1,NUM,STRING,1)
+      ENDIF
+      RETURN
+   END SUBROUTINE LXSREC
 
 END MODULE Lexer

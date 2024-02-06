@@ -1,5 +1,6 @@
       SUBROUTINE ATTADD
 
+         USE Files, only : LF1REC
          USE Globals, only : IFMOD
          USE Utils, only : ZMOVE
 
@@ -9,7 +10,6 @@ C  PURPOSE:   ADD A NEW TUPLE TO THE ATTRIBUTE RELATION
 C
          INCLUDE 'tuplea.inc'
          INCLUDE 'attble.inc'
-         INCLUDE 'f1com.inc'
 C
 C  GET THE PAGE FOR ADDING NEW TUPLES.
 C

@@ -2,6 +2,7 @@
 
          USE Globals, only : DFLAG, USERID, OWNER, IFMOD
          Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
+         USE Lexer, only: LXSREC
          USE Message, only : WARN
          USE Text, only : BLANK
 
@@ -12,6 +13,7 @@ C
 C
          INCLUDE 'ascpar.inc'
          INCLUDE 'files.inc'
+         INCLUDE 'tupler.inc'
 C
          LOGICAL NE
          INTEGER :: RNAME(Z)

@@ -1,7 +1,7 @@
       SUBROUTINE DELDUP(*)
 
          USE Globals, only : DFLAG
-         USE Lexer, only : ITEMS
+         USE Lexer, only : ITEMS, LFIND, LXSREC
          USE Message, only : WARN
          USE Text, only : BLANK
 

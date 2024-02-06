@@ -1,7 +1,7 @@
       SUBROUTINE RNAMEL(*)
 
          USE Globals, only: DFLAG, DMFLAG, DBNAME, USERID, OWNER
-         USE Lexer, only: ITEMS, EQKEYW
+         USE Lexer, only: ITEMS, EQKEYW, LXSREC
          USE Message, only: WARN
          USE Utils, only : ZMOVE
 

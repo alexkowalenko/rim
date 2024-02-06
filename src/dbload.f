@@ -2,7 +2,7 @@
 
          USE Globals, only : DFLAG, DMFLAG, PIFLAG
          Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS
-         USE Lexer, only: EQKEYW, IDI
+         USE Lexer, only: EQKEYW, IDI, LXSREC
          USE Message, only : WARN
          USE Text, only : BLANK, STRASC
          USE DateTime, only : RMDATE

@@ -1,0 +1,229 @@
+MODULE Files
+   implicit none
+   private
+
+   INTEGER, public :: FILE1,LENBF1,LF1REC,CAREC,CRREC,CLREC
+   !  VARIABLE DEFINITIONS:
+   !     FILE1---UNIT FOR FILE1 - THE DIRECTORY FILE
+   !     LENBF1--LENGTH OF BLOCKS ON FILE1
+   !     LF1REC--LAST FILE1 RECORD USED
+   !     CAREC---CURRENT ATTRIBUTE RECORD
+   !     CRREC---CURRENT RELATION RECORD
+   !     CLREC---CURRENT LINK RECORD
+
+   ! FILE1 private common
+   INTEGER :: CPTTD,KUSAGE(20)
+
+   public F1OPN, F1CLO
+
+CONTAINS
+
+   SUBROUTINE F1OPN(RIMDB1)
+      USE Parameters
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, DFLAG, &
+         DMFLAG, DBFNAM
+      USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
+      USE Text, only : ASCTXT
+      USE Utils, only : ZEROIT, ZMOVE
+
+      CHARACTER*(ZFNAML), intent(in) :: RIMDB1
+
+      !
+      !  PURPOSE:   OPEN THE RIM DIRECTORY FILE - FILE 1
+      !
+      !  PARAMETERS:
+      !     RIMDB1--NAME OF THE FILE TO USE FOR FILE1
+      !
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'attble.inc'
+      INCLUDE 'reltbl.inc'
+      INCLUDE 'lnktbl.inc'
+
+      LOGICAL :: NE
+      INCLUDE 'dstats.inc'
+
+      INTEGER :: IOS, I, II
+
+      !
+      !  OPEN THE DIRECTORY FILE.
+      !
+      CALL RIOOPN(RIMDB1,FILE1,LENBF1,IOS)
+      !
+      !---  CALL MSG(' ','F1OPN: ' // RIMDB1,'+')
+      !---  CALL IMSG(FILE1,3,'+')
+      !---  CALL IMSG(IOS,5,' ')
+      IF(IOS.NE.0) RMSTAT = 2100 + IOS
+      !
+      !  READ IN THE FIRST RECORD FROM THIS FILE.
+      !
+      CALL RIOIN(FILE1,1,RELBUF,LENBF1,IOS)
+      IF(IOS.NE.0) GO TO 500
+      CRREC = 0
+      !
+      ! CHECK THAT THIS IS A DATABASE FILE
+      !
+      IF(NE(RELBUF(ZFXHID),KDBHDR)) THEN
+         RMSTAT = 10
+         GO TO 1000
+      ENDIF
+      !
+      ! CHECK FOR A TOO-OLD VERSION OF THE DB
+      !
+      IF (RELBUF(ZFXHVS).LT.1000) THEN
+         CALL MSG('WF', &
+            'YOUR DATABASE WAS CREATED BY AN OLDER VERSION OF RIM', &
+            ' ')
+         CALL MSG(' ', &
+            'WHICH BUILT KEY POINTERS IMPROPERLY---YOU SHOULD',' ')
+         CALL MSG(' ', &
+            'UNLOAD AND RELOAD THE DATABASE TO ENSURE VALID KEYS.', &
+            ' ')
+      ENDIF
+
+      !
+      !  MOVE THE CONTROL DATA TO WHERE IT IS NEEDED.
+      !
+      CALL ZMOVE(DBNAME,RELBUF(ZFXHDB))
+      CALL ZMOVE(OWNER,RELBUF(ZFXHOW))
+      DBDATE = RELBUF(ZFXHDT)
+      DBTIME = RELBUF(ZFXHTM)
+      LF1REC = RELBUF(ZF1HLR)
+      NRROW = RELBUF(ZF1HNR)
+      NAROW = RELBUF(ZF1HNA)
+      NLROW = RELBUF(ZF1HNL)
+      !CC   CPTTD=FLOAT(RELBUF(ZF1H9))/100
+      !CC   CPSTRT=SECOND()
+      CALL BLKMOV(KUSAGE,RELBUF(ZF1HDR+2),20)
+      ! IF(KUSAGE(1).EQ.0) CALL ZMOVE(KUSAGE(1),DBDATE)
+      ! CALL GETUN(KUSAGE(2))
+      ! CALL GETID(KUSAGE(3))
+      ! KUSAGE(4)=KUSAGE(4)+1
+      !
+      !  FILE 2 DELETE STATS.
+      !
+      !C    ISTAT = RELBUF(51)
+      !C    CPLAST= FLOAT(RELBUF(52))/100.
+      !C    IDELP = RELBUF(53)
+      !
+      !  SUCCESSFUL OPEN.
+      !
+      DFLAG = .TRUE.
+      DMFLAG = .TRUE.
+      RMSTAT = 0
+      GO TO 9999
+      !
+      !  EMPTY FILE 1 - WRITE THE FIRST RECORD ON IT.
+      !
+500   CONTINUE
+      CALL ZEROIT(RELBUF,LENBF1)
+      DO I = 1,4
+         CALL RIOOUT(FILE1,0,RELBUF,LENBF1,IOS)
+      END DO
+      !
+      CALL ASCTXT(DBNAME,ZC,DBFNAM)
+      LF1REC = 4
+      CAREC = 0
+      CRREC = 0
+      CLREC = 0
+      NRROW = ZRELRI
+      NAROW = ZATTRI
+      NLROW = ZLNKRI
+      CPTTD=0
+      ! CPSTRT=SECOND()
+      RMSTAT = 15
+      !CC   CALL RMDATE(KUSAGE(1))
+      !CCC  CALL GETUN(KUSAGE(2))
+      !CCC  CALL GETID(KUSAGE(3))
+      KUSAGE(4)=0
+      DO II=5,20
+         KUSAGE(II)=0
+      END DO
+      GO TO 1000
+      !
+      !  UNABLE TO OPEN FILE 1.
+      !
+1000  CONTINUE
+      DFLAG = .FALSE.
+9999  RETURN
+   END SUBROUTINE F1OPN
+
+
+   SUBROUTINE F1CLO
+      USE Parameters
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER
+      USE RandomFiles, only : RIOCLO, RIOOUT
+      USE Utils, only : ZEROIT, ZMOVE
+
+      !
+      !  PURPOSE:   CLOSE THE RIM DIRECTORY FILE - FILE 1
+      !
+      INCLUDE 'ascpar.inc'
+      INCLUDE 'rimcom.inc'
+      INCLUDE 'attble.inc'
+      INCLUDE 'reltbl.inc'
+      INCLUDE 'lnktbl.inc'
+      INCLUDE 'dstats.inc'
+
+      INTEGER :: IOS
+
+      !
+      !  WRITE OUT THE RELATION BUFFER IF IT WAS MODIFIED.
+      !
+      IF(RELMOD.EQ.0) GO TO 100
+      CALL RIOOUT(FILE1,CRREC,RELBUF,LENBF1,IOS)
+      IF(IOS.NE.0) RMSTAT = 2100 + IOS
+100   CONTINUE
+      CRREC = 0
+      RELMOD = 0
+      !
+      !  WRITE OUT THE ATTRIBUTE BUFFER IF IT WAS MODIFIED.
+      !
+      IF(ATTMOD.EQ.0) GO TO 200
+      CALL RIOOUT(FILE1,CAREC,ATTBUF,LENBF1,IOS)
+      IF(IOS.NE.0) RMSTAT = 2100 + IOS
+200   CONTINUE
+      CAREC = 0
+      ATTMOD = 0
+      !
+      !  WRITE OUT THE LINK BUFFER IF IT WAS MODIFIED.
+      !
+      IF(LNKMOD.EQ.0) GO TO 300
+      CALL RIOOUT(FILE1,CLREC,LNKBUF,LENBF1,IOS)
+      IF(IOS.NE.0) RMSTAT = 2100 + IOS
+300   CONTINUE
+      CLREC = 0
+      LNKMOD = 0
+      !
+      !  ZERO OUT RELBUF AND MOVE CONTROL VARIABLES THERE.
+      !
+      CALL ZEROIT(RELBUF,LENBF1)
+      CALL ZMOVE(RELBUF(ZFXHDB),DBNAME)
+      CALL ZMOVE(RELBUF(ZFXHID),KDBHDR)
+      CALL ZMOVE(RELBUF(ZFXHOW),OWNER )
+      RELBUF(ZFXHVS) = KDBVER
+      RELBUF(ZFXHDT) = DBDATE
+      RELBUF(ZFXHTM) = DBTIME
+      RELBUF(ZF1HLR) = LF1REC
+      RELBUF(ZF1HNR) = NRROW
+      RELBUF(ZF1HNA) = NAROW
+      RELBUF(ZF1HNL) = NLROW
+      !CCCDCRELBUF(ZF1HDR+1)=IFIX((CPTTD+SECOND()-CPSTRT)*100)
+      CALL BLKMOV(RELBUF(ZF1HDR+2),KUSAGE,20)
+      !C    RELBUF(51) = ISTAT
+      !C    RELBUF(52) = INT(CPLAST*100.)
+      !C    RELBUF(53) = IDELP
+      !
+      !  WRITE OUT THE CONTROL BLOCK.
+      !
+      CALL RIOOUT(FILE1,1,RELBUF,LENBF1,IOS)
+      !CC   CALL BLKDSP('F1CLOSE',RELBUF, 'ZIZZIIIII')
+      IF(IOS.NE.0) RMSTAT = 2100 + IOS
+      !
+      ! SYSTEM DEPENDENT CLOSE ROUTINE
+      !
+      CALL RIOCLO(FILE1)
+      RETURN
+   END SUBROUTINE F1CLO
+
+END MODULE Files

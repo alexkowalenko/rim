@@ -1,5 +1,6 @@
       SUBROUTINE RMINIT
 
+         USE Files, only : FILE1, LENBF1, LF1REC, CAREC, CRREC, CLREC
          USE Text, only : BLANK
          USE Utils, only : ZEROIT, ZMOVE
 
@@ -8,7 +9,6 @@ C
 C     RUN-TIME INITIALIZATION (CALLED WHEN DATABASE IS OPENED)
 C
          INCLUDE 'ascpar.inc'
-         INCLUDE 'f1com.inc'
          INCLUDE 'f2com.inc'
          INCLUDE 'f3com.inc'
          INCLUDE 'incore.inc'

@@ -3,6 +3,7 @@
          USE Globals, only : DFLAG, DMFLAG
          USE DateTime, only : RMDATE
          Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
+         Use Lexer, only: LXSREC
          USE Message, only: WARN
          USE Text, only : BLANK, NONE
          USE Utils, only : ZMOVE

@@ -1,6 +1,7 @@
       SUBROUTINE DBOPEN(NEWNAM,NEWOK)
 
          USE Globals, only : DFLAG, DBDATE, DBTIME
+         USE Files, only : FILE1, F1OPN
          USE DateTime, only: RMTIME, RMDATE
          USE RandomFiles, only: RIOCLO
          USE System, only: SYSDBN, CHKFIL
@@ -15,7 +16,6 @@ C
          CHARACTER*(*) NEWNAM
          LOGICAL NEWOK
          INCLUDE 'rimcom.inc'
-         INCLUDE 'f1com.inc'
          INCLUDE 'f2com.inc'
          INCLUDE 'f3com.inc'
          INCLUDE 'attble.inc'

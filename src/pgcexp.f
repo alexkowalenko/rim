@@ -3,7 +3,7 @@
          USE DateTime, only: KRMDTF, KRMTMF
          USE Lexer, only: ASLPAR, ASRPAR, MNSIGN, PLSIGN, TMSIGN, IDP
          USE Lexer, only: DVSIGN, KXINT, KXREAL, KXNAME, TOKTYP, ASCREC
-         USE Lexer, only: IDL, EQTOK, IDI, IDR
+         USE Lexer, only: IDL, EQTOK, IDI, IDR, LXLENW, LXSREC
 
          INCLUDE 'syspar.inc'
 C

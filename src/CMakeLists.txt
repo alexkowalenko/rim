@@ -16,16 +16,15 @@ add_library(rimcommon STATIC
     dbdefn.f dbload.f dbopcl.f dbopen.f deldat.f 
     deldup.f delete.f delrow.f
     eq.f
-    f1clo.f f1opn.f f2clo.f f2opn.f f3clo.f f3opn.f  fmtdec.f
+    f2clo.f f2opn.f f3clo.f f3opn.f  fmtdec.f
     getdat.f getkca.f gett.f gtsort.f
     isect.f
     join.f joirel.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
-    lfind.f
     locatt.f locboo.f
     locmac.f locprm.f locrel.f
     lodele.f lodpas.f lodrec.f lodrel.f
     lstrel.f
-    lxcmnt.f lxdate.f lxedit.f lxfmt.f lxlenw.f lxsrec.f lxwrec.f
+    lxcmnt.f lxdate.f lxedit.f lxfmt.f
     macdef.f macexp.f motscn.f
     ne.f nxtchr.f nxtchx.f nxttok.f90
     parse.f parval.f
@@ -47,6 +46,7 @@ add_library(rimcommon STATIC
     varadd.f 
     whetol.f wheval.f whrnam.f xhibit.f
     datetime.f90
+    files.f90
     globals.f90
     maths.f90
     message.f90

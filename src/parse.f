@@ -1,6 +1,6 @@
       FUNCTION PARSE(KEYLST,KEYLEN,KEYPTR)
 
-         USE Lexer, only : ITEMS
+         USE Lexer, only : ITEMS, LFIND
          INCLUDE 'syspar.inc'
 C
 C  SUBROUTINE TO PARSE A FREE-FIELD FORMAT INPUT RECORD.

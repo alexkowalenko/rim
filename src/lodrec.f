@@ -2,7 +2,7 @@
 
          USE Globals, only : TRACE
          USE Lexer, only: KXTEXT, KXNAME, IDT, TOKTYP, ASCREC, ASCNXT
-         USE Lexer, only: IDP, IDL, KWS, ITEMS, EQKEYW
+         USE Lexer, only: IDP, IDL, KWS, ITEMS, EQKEYW, LXSREC, LXSREC
          USE System, only : SystemExit, SystemTrap
          USE Lexer, only : EQSIGN, GTSIGN
 

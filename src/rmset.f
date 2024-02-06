@@ -6,7 +6,7 @@
 
          USE DateTime, only: KRMDTF, KRMTMF
          USE Lexer, only: KXINT, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS
-         USE Lexer, only: EQKEYW, IDI
+         USE Lexer, only: EQKEYW, IDI, LFIND, LXSREC
          USE Message, only: WARN
          USE Text, only : BLANK, STRASC, NONE
          USE Utils, only : ZMOVE

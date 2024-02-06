@@ -2,7 +2,7 @@
 
          USE Globals, only: PGVARS, INLINE, PGFLAG
          USE DateTime, only: RMTIME, RMDATE
-         USE Lexer, only: KXINT, TOKTYP, KWS, ITEMS, EQKEYW, IDI
+         USE Lexer, only: KXINT, TOKTYP, KWS, ITEMS, EQKEYW, IDI, LXSREC
          USE Message, only : WARN
          USE Text, only : ASCTXT
          USE Utils, only : ZMOVE

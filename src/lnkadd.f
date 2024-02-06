@@ -1,5 +1,6 @@
       SUBROUTINE LNKADD
 
+         USE Files, only : LF1REC
          USE Globals, only : IFMOD
          USE Utils, only : ZMOVE
 
@@ -9,7 +10,6 @@ C     ADD A NEW LINK ROW
 C
          INCLUDE 'tuplel.inc'
          INCLUDE 'lnktbl.inc'
-         INCLUDE 'f1com.inc'
 C
 C  GET THE PAGE FOR ADDING NEW TUPLES.
 C
