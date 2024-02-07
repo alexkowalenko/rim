@@ -5,6 +5,7 @@ PROGRAM MAIN
    USE Parameters
    USE System, only: SystemExit, SystemInitialise
    USE Lexer, only : Lexer_Initialise => Initialise, KWS, EQKEYW
+   USE Parser, only : LODREC
    USE Rim, only: RMCONS, RMINIT
 
    IMPLICIT NONE

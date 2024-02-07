@@ -2,6 +2,7 @@
 
          Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
          USE Message, only : WARN
+         USE Parser, only: LODREC
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

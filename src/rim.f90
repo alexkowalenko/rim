@@ -77,7 +77,7 @@ contains
       USE Globals, only: KZHPDB, KZHPRL, KZHPKY, KZHPSK, KZHPTX
       USE Globals, only: KDBHDR
       USE Globals, only : Globals_Initialise => Initialise
-      USE DateTime, only : DateTime_Initialise, DTFENC
+      USE DateTime, only : DateTime_Initialise => Initialise, DTFENC
       USE Lexer, only : Lexer_Initialise => Initialise
       USE Text, only : Text_Initialise, ASCTXT, ASCCHR, NONE
       USE Utils, only : ZMOVE
@@ -138,9 +138,7 @@ contains
       ! /CARDS/
       READCD = 0
       CRDIDX = 0
-      DO I = 1, ZCARDN
-         CRDRLL(I) = 0
-      END DO
+      CRDRLL = [(0, I = 1, ZCARDN)]
       LXEOC = 0
 
       ! /LXLCOM/
@@ -182,8 +180,6 @@ contains
       INCLUDE 'pgmcom.inc'
       !
       !  /RELTBL/
-
-      INTEGER :: I
 
       CALL ZMOVE(CNAME,BLANK)
       LRROW = 0
@@ -227,10 +223,8 @@ contains
       !  /F2COM/
       FILE2 = ZNFIL2
       LENBF2 = ZF2
-      DO I=1,3
-         CURBLK(I) = 0
-         MODFLG(I) = 0
-      END DO
+      CURBLK = [0, 0, 0]
+      MODFLG = [0, 0, 0]
 
       !  /F3COM/
       FILE3 = ZNFIL3
@@ -259,7 +253,6 @@ contains
       ! /PGMCOM/
       PGPBLK = 0
       PGVBLK = 0
-
 
       RETURN
    END SUBROUTINE RMINIT

@@ -3,6 +3,7 @@
          Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
          USE Lexer, only: LXSREC
          USE Message, only : WARN
+         USE Parser, only: LODREC
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
 

@@ -2,6 +2,7 @@
 
          USE Globals, only: HXFLAG
          USE Lexer, only: KXKEYW, TOKTYP, KWS, ITEMS, EQKEYW
+         USE Parser, only: LODREC
          USE System, only : SYSCOM
 
          INCLUDE 'syspar.inc'

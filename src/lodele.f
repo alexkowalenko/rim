@@ -3,6 +3,7 @@
          USE Lexer, only : KXINT, KXNAME, TOKTYP, ITEMS, EQKEYW, IDI
          USE Lexer, only : LFIND, LXSREC
          USE Message, only : WARN
+         USE Parser, only: LODREC
          USE Utils, only : HTOI
 
          INCLUDE 'syspar.inc'

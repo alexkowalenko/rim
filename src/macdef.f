@@ -11,6 +11,7 @@ C-----------------------------------------------------
 C
          Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS
          Use Lexer, only: EQKEYW, IDI, LXSREC
+         Use Macros, only: LOCMAC
          USE Message, only : WARN
          USE Text, only : STRMOV, BLANK, ABLANK
          USE Utils, only : ZMOVE

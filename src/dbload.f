@@ -4,6 +4,7 @@
          Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS
          USE Lexer, only: EQKEYW, IDI, LXSREC
          USE Message, only : WARN
+         USE Parser, only: LODREC
          USE Text, only : BLANK, STRASC
          USE DateTime, only : RMDATE
 

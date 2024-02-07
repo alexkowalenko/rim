@@ -2,7 +2,7 @@ MODULE DateTime
    implicit none
    private
 
-   public DateTime_Initialise
+   public Initialise
    public RMTIME
    public RMDATE
    public JULDAT
@@ -21,7 +21,7 @@ MODULE DateTime
 
 contains
 
-   SUBROUTINE DateTime_Initialise()
+   SUBROUTINE Initialise()
       USE Parameters
       USE Text, only : ASCTXT
       CHARACTER(len=3) :: MONTHS(12) = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
@@ -36,7 +36,7 @@ contains
 
       CALL DTFENC(KZDATE, KRMDTF, 'DD/MM/YYYY')
       CALL DTFENC(KZTIME, KRMTMF, 'HH:MM:SS')
-   END SUBROUTINE DateTime_Initialise
+   END SUBROUTINE Initialise
 
 
    INTEGER FUNCTION RMTIME()

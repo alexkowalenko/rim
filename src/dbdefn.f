@@ -4,6 +4,7 @@
          USE DateTime, only : RMDATE
          USE Lexer, only: ITEMS, EQKEYW, LXSREC
          USE Message, only : WARN
+         USE Parser, only: LODREC
          USE Rim, only : RMSTAT
          USE System, only: SYSDBG
          USE Text, only : NONE

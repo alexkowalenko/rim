@@ -3,6 +3,7 @@
          USE Globals, only: HXFLAG
          USE Lexer, only: ITEMS, EQKEYW
          USE Message, only : WARN
+         USE Parser, only: LODREC
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'

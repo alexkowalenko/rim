@@ -20,12 +20,11 @@ add_library(rimcommon STATIC
     isect.f
     join.f joirel.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
     locatt.f locboo.f
-    locmac.f locprm.f locrel.f
-    lodele.f lodpas.f lodrec.f lodrel.f
+    locprm.f locrel.f
+    lodele.f lodpas.f lodrel.f
     lstrel.f
-    lxcmnt.f lxdate.f lxedit.f lxfmt.f
-    macdef.f macexp.f motscn.f
-    ne.f nxtchr.f nxtchx.f nxttok.f90
+    lxdate.f lxedit.f lxfmt.f
+    macdef.f motscn.f ne.f 
     parse.f parval.f
     pject.f prckey.f prjtup.f
     putdat.f putt.f ptrs.f 
@@ -47,9 +46,11 @@ add_library(rimcommon STATIC
     datetime.f90
     files.f90
     globals.f90
+    macros.f90
     maths.f90
     message.f90
     lexer.f90
+    parser.f90
     randomfiles.f90
     rim.f90
     system.f90

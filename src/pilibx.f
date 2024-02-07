@@ -1,5 +1,4 @@
       SUBROUTINE AMSG(MTEXT,NUMC,MCONT)
-         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -9,7 +8,6 @@ C
 
 
       SUBROUTINE DMSG(JDAT,DFMT,MCONT)
-         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -19,7 +17,6 @@ C
 
 
       SUBROUTINE IMSG(NUM,NUMC,MCONT)
-         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -30,7 +27,6 @@ C
 
       SUBROUTINE MSG(MTYPE,MTEXT,MCONT)
          USE Rim, only : RMSTAT
-         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -44,7 +40,6 @@ C
 
 
       SUBROUTINE MSGCMV(MTEXT,CTYPE)
-         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -54,7 +49,6 @@ C
 
 
       SUBROUTINE NXTCRD(EOF)
-         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -63,7 +57,6 @@ C
 
 
       SUBROUTINE PROMPT(PTXT)
-         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -72,7 +65,6 @@ C
 
 
       SUBROUTINE SETIN(FILE)
-         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -82,7 +74,6 @@ C
 
 
       SUBROUTINE SETOUT(UN,UNF,FILE,STAT)
-         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -93,7 +84,6 @@ C
 
       SUBROUTINE WARN(W,TEXT1,TEXT2)
          USE Rim, only : RMSTAT
-         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -103,7 +93,6 @@ C
 
 
       SUBROUTINE PRMSET(MODE,PR)
-         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -114,14 +103,11 @@ C
 
 
       SUBROUTINE LOADIT(MAT,ATT)
-         INCLUDE 'syspar.inc'
-C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
          RETURN
       END
       SUBROUTINE LOADFM(MAT,ATT)
-         INCLUDE 'syspar.inc'
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
