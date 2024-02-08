@@ -8,7 +8,7 @@ PROGRAM MAIN
    USE Lexer, only: KXINT, KXKEYW, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW, IDI, LXSREC
    USE Parser, only: LODREC
    USE RandomFiles, only: RIOOPN, RIOCLO, RIOIN, RIOOUT
-   USE Rim, only: RMCONS, RMINIT
+   USE Rim, only: RMCONS, RMINIT, RMZIP
    USE System, only: SystemExit, SystemInitialise, SYSDBG, SYSDBN
    USE Text, only: STRMOV
    USE Utils, only: ZMOVE, HTOI, ITOH

@@ -1,0 +1,12 @@
+* RUN: rm -f sample.rimdb*
+* RUN: %rim %sample
+* RUN: %rim %s | FileCheck %s
+open sample
+exhibit symbol
+close
+exit
+* CHECK: Database 'sample' is open.
+* CHECK: Tables containing  symbol 
+* CHECK:   conductors      
+* CHECK:   measures        
+* CHECK:   notes 

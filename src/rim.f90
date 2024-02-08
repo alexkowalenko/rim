@@ -6,22 +6,27 @@ MODULE Rim
    INTERFACE
       MODULE SUBROUTINE RIMCMD
       END SUBROUTINE RIMCMD
+
+      MODULE SUBROUTINE RMZIP(*)
+      END SUBROUTINE
    END INTERFACE
 
    public RMCONS
    public RMINIT
    public RIMCMD
 
+   public DBOPCL
+   public RMZIP
 
 contains
 
    SUBROUTINE RMCONS
-      !
-      ! INITIALIZATION OF CONSTANTS
-      ! CALLED AT RIM STARTUP - open database
+      !!
+      !! INITIALIZATION OF CONSTANTS
+      !! CALLED AT RIM STARTUP - open database
       !
       ! MANY OF THESE ARE SYSTEM OR INSTALLATION DEPENDENT
-      !
+      !!
       !------------------------------------------------------------
       !
 
@@ -109,7 +114,9 @@ contains
 
 
    SUBROUTINE RMINIT
-
+      !!
+      !! RUN-TIME INITIALIZATION (CALLED WHEN DATABASE IS OPENED)
+      !!
       USE Parameters
       USE Files, only: FILE1, LENBF1, LF1REC, CAREC, CRREC, CLREC
       USE Files, only: FILE2, LENBF2, CURBLK, MODFLG, FILE3, LENBF3
@@ -117,9 +124,7 @@ contains
       USE Text, only : BLANK
       USE Utils, only : ZEROIT, ZMOVE
 
-      !
-      ! RUN-TIME INITIALIZATION (CALLED WHEN DATABASE IS OPENED)
-      !
+
       INCLUDE 'incore.inc'
       INCLUDE 'reltbl.inc'
       INCLUDE 'tupler.inc'
@@ -207,5 +212,44 @@ contains
 
       RETURN
    END SUBROUTINE RMINIT
+
+
+   SUBROUTINE DBOPCL(*,MODE)
+      !!
+      !! OPEN/CLOSE A DATABASE
+      !!
+      USE Parameters, only: ZFNAML, ZC
+      USE Globals, only : DFLAG, DBNAME, DBFNAM, RMSTAT
+      USE Message, only : WARN
+      USE System, only : SYSDBG, SYSDBN, CHKFIL
+
+      CHARACTER(len=*), intent(in) ::  MODE
+
+      CHARACTER*(ZFNAML) F1N,F2N,F3N,FSET
+      INTEGER :: DBSTAT
+      LOGICAL :: RW
+      !
+      IF (MODE.EQ.'OPEN') THEN
+         CALL SYSDBG(2,DBSTAT)
+         IF(DBSTAT.NE.0) GO TO 900
+         CALL DBOPEN(DBFNAM,.FALSE.)
+         IF(RMSTAT.NE.0) CALL WARN(RMSTAT)
+         IF (DFLAG) THEN
+            CALL MSG(' ','DATABASE ''','+')
+            CALL AMSG(DBNAME,-ZC,'+')
+            CALL MSG(' ',''' IS OPEN.',' ')
+            ! READ SETUP COMMANDS IN DBFNAM RIM
+            CALL SYSDBN(DBFNAM,F1N,F2N,F3N,FSET)
+            IF (CHKFIL(FSET,RW)) CALL SETIN(FSET)
+         ENDIF
+      ENDIF
+
+      IF (MODE.EQ.'CLOSE') THEN
+         CALL RMCLOS
+      ENDIF
+      !
+      !
+900   RETURN 1
+   END SUBROUTINE DBOPCL
 
 END MODULE Rim

@@ -1,0 +1,15 @@
+* RUN: rm -f sample.rimdb*
+* RUN: %rim %sample
+* RUN: %rim %s | FileCheck %s
+open sample
+list
+close
+exit
+* CHECK: Database 'sample' is open.
+* CHECK: Table name         rows  last modified
+* CHECK:  ---------------- ------  ------------ 
+* CHECK:  techs                 3
+* CHECK:  conductors            5
+* CHECK:  measures              6
+* CHECK:  notes                 2
+ 

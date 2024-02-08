@@ -7,6 +7,8 @@
          USE Rim, only : RMCONS, RMINIT
          USE System, only : SYSCOM
 
+         USE Rim, only : DBOPCL
+
          INCLUDE 'syspar.inc'
 C
 C     RIM FORTRAN INTERFACE (COMMANDS)
@@ -113,7 +115,7 @@ C
 C---- SCHEMA MODIFICATION
 C
 C.... IF (EQKEYW(1,'DEFINE'))  THEN
-C                                 CALL CSC(*900) ! Undefined subroutine 
+C                                 CALL CSC(*900) ! Undefined subroutine
 C     ENDIF
 C
 C---- RELATION ALGEBRA
