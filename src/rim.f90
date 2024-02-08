@@ -17,6 +17,7 @@ MODULE Rim
 
    public DBOPCL
    public RMZIP
+   public XHIBIT
 
 contains
 
@@ -251,5 +252,109 @@ contains
       !
 900   RETURN 1
    END SUBROUTINE DBOPCL
+
+   SUBROUTINE XHIBIT(*)
+      !!
+      !! LIST ALL RELATIONS HAVING SELECTED ATTRIBUTES.
+      !!
+      USE Parameters
+      USE Globals, only : DFLAG, USERID, OWNER
+      USE Lexer, only: ITEMS, LXSREC
+      USE Message, only: WARN
+      USE Text, only : BLANK, NONE
+
+      INCLUDE 'tupler.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'buffer.inc'
+      !
+      INTEGER :: NUMBER, B, I, L, K, ISTAT
+      LOGICAL :: FLAG
+
+      LOGICAL EQ
+      INTEGER LOCREL, LOCATT
+
+      !
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      !
+      !  EDIT THE EXHIBIT COMMAND
+      !
+      IF(ITEMS.EQ.1) THEN
+         CALL MSG('E','EXHIBIT REQUIRES A LIST OF COLUMNS.',' ')
+         GOTO 999
+      ENDIF
+      NUMBER = ITEMS - 1
+
+      ! ALLOCATE A BLOCK FOR THE ATTRIBUTE LIST
+      CALL BLKDEF(11,NUMBER,Z)
+      B = BLKLOC(11) - Z
+      !
+      !  COMMAND IS OKAY
+      !
+      FLAG = .FALSE.
+      !
+      DO I=1,NUMBER
+         L = B + I*Z
+         CALL LXSREC(I+1,BUFFER(L),ZC)
+      END DO
+      CALL MSG('R','TABLES CONTAINING ','+')
+      DO I = 1, NUMBER
+         L = B + I*Z
+         CALL MSG(' ',' ','+')
+         CALL AMSG(BUFFER(L),-ZC,'+')
+      END DO
+      CALL MSG(' ',' ',' ')
+      !
+      !  GO THROUGH EACH RELATION.
+      !
+      I = LOCREL(BLANK)
+200   CALL RELGET(ISTAT)
+      IF(ISTAT.NE.0) GO TO 500
+      !
+      !  SEE IF ALL THE ATTRIBUTES LISTED APPEAR IN THIS RELATION
+      !
+      DO I=1,NUMBER
+         L = B + I*Z
+         K = LOCATT(BUFFER(L),NAME)
+         IF(K.NE.0) GO TO 200
+      END DO
+      !
+      !  CHECK USER READ SECURITY.
+      !
+      IF(EQ(USERID,OWNER)) GO TO 400
+      IF(EQ(RPW,NONE)) GO TO 400
+      IF(EQ(RPW,USERID)) GO TO 400
+      IF(EQ(MPW,USERID)) GO TO 400
+      ! RELATION IS NOT AVAILABLE TO THE USER.
+      GO TO 200
+      !
+      !  ATTRIBUTES ARE IN THIS RELATION
+      !
+400   CALL MSG('R','   ','+')
+      CALL AMSG(NAME,ZC,' ')
+      FLAG = .TRUE.
+      GO TO 200
+      !
+      !  SEE IF ANY RELATIONS HAD THE ATTRIBUTES
+      !
+500   IF(FLAG) GO TO 999
+      !
+      !  NONE OF THE RELATIONS HAD THE ATTRIBUTES
+      !
+      CALL MSG('W','THOSE COLUMNS ARE NOT IN ANY TABLES.',' ')
+      GO TO 999
+      !
+      !
+      !  DONE WITH EXHIBIT
+      !
+999   CALL BLKCLR(11)
+      RETURN 1
+   END SUBROUTINE XHIBIT
 
 END MODULE Rim

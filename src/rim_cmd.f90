@@ -334,6 +334,7 @@ contains
       USE Lexer, only: KXKEYW, TOKTYP, KWS, ITEMS, EQKEYW
       USE Parser, only: LODREC
       USE System, only : SYSCOM
+      USE Rim, only : XHIBIT
 
       INCLUDE 'files.inc'
       !

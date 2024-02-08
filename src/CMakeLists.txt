@@ -42,7 +42,7 @@ add_library(rimcommon STATIC
     tokdsp.f tuplrc.f typer.f 
     union.f
     varadd.f 
-    whetol.f wheval.f whrnam.f xhibit.f
+    whetol.f wheval.f whrnam.f
     datetime.f90
     files.f90
     globals.f90
