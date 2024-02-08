@@ -3,8 +3,8 @@
          USE, intrinsic :: iso_fortran_env
 
          USE Maths, only : IEXP, ROUND
-         USE Text, only : FILCH, ABLANK, ITOA, RITOA
-         USE Lexer, only : PLSIGN, MNSIGN, DECIM, ASSTAR, UECH, U0
+         USE Text, only: FILCH, ABLANK, ITOA, RITOA, PLSIGN, MNSIGN
+         USE Text, only: DECIM, ASSTAR, UECH, U0
 
          INCLUDE 'syspar.inc'
 C

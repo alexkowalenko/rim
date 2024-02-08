@@ -1,9 +1,8 @@
       SUBROUTINE FMTDEC(DTFINT,TYPE,DTFASC,DTFASL)
 
          USE DateTime, only : DTFSPL
-         USE Text, only : ABLANK, ITOA
+         USE Text, only : ABLANK, ITOA, DECIM
          USE Utils, only : NDIGIT
-         USE Lexer, only : DECIM
 
          INCLUDE 'syspar.inc'
 C

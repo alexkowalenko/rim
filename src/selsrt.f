@@ -1,7 +1,8 @@
       FUNCTION SELSRT(FTOK,NTOK)
 
          USE Message, only: WARN
-         Use Lexer, only: EQSIGN, EQTOK, KWS, EQKEYW, LXSREC
+         Use Lexer, only: EQTOK, KWS, EQKEYW, LXSREC
+         Use Text, only: EQSIGN
 
          INCLUDE 'syspar.inc'
 C

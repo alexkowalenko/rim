@@ -2,7 +2,7 @@
      X  KEYCOL,KEYTYP,UPASS)
 
          USE Message, only: WARN
-         USE Rim, only : RMSTAT
+         USE Globals, only : RMSTAT
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

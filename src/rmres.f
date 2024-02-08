@@ -1,7 +1,6 @@
       SUBROUTINE RMRES(INDPTR)
 
-         USE Globals, only : TRACE
-         USE Rim, only : RMSTAT
+         USE Globals, only : TRACE, RMSTAT
 
          INCLUDE 'syspar.inc'
 C

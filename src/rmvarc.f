@@ -1,7 +1,7 @@
       SUBROUTINE RMVARC(CTYP,TUPVAL)
 
+         USE Globals, only : RMSTAT
          USE Text, only : BLANK
-         USE Rim, only : RMSTAT
 C
 C     FORTRAN INTERFACE SUBROUTINE
 C

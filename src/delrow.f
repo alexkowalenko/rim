@@ -1,9 +1,8 @@
       SUBROUTINE DELROW(*)
 
-         USE Globals, only : DFLAG, DMFLAG, DBNAME
+         USE Globals, only : DFLAG, DMFLAG, DBNAME, RMSTAT
          Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
          USE Message, only : WARN
-         USE Rim, only : RMSTAT
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'

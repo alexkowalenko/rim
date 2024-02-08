@@ -1,7 +1,7 @@
       SUBROUTINE BLKUP
 
          USE Files, only: CURBLK, MODFLG
-         USE Rim, only : RMSTAT
+         USE Globals, only : RMSTAT
          USE Utils, only: ZEROIT
 
          INCLUDE 'syspar.inc'

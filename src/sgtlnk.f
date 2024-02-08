@@ -1,6 +1,6 @@
       LOGICAL FUNCTION SGTLNK(I,MP,LP)
 
-         USE Rim, only : RMSTAT
+         USE Globals, only : RMSTAT
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

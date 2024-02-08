@@ -22,8 +22,15 @@ if(EXISTS "${LOC_PATH}")
     message(FATAL_ERROR "You cannot build in a source directory (or any directory with a CMakeLists.txt file). Please make a build subdirectory. Feel free to remove CMakeCache.txt and CMakeFiles.")
 endif()
 
-set(FVERSION "-std=legacy") # -std=f95, f2003, f2008, gnu, legacy
-set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} ${FVERSION}")
+get_filename_component (Fortran_COMPILER_NAME ${CMAKE_Fortran_COMPILER} NAME)
+if (Fortran_COMPILER_NAME MATCHES "gfortran.*")
+    set(FVERSION "-std=legacy") # -std=f95, f2003, f2008, gnu, legacy
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} ${FVERSION}")
+elseif (Fortran_COMPILER_NAME MATCHES "ifort.*")
+    set (CMAKE_Fortran_FLAGS "<Intel flags go here>")
+endif()
+
+
 # Put the Fortran module files into the build directory,
 # also that cmd executables can find them
 set(CMAKE_Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/src)

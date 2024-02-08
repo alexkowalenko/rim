@@ -1,4 +1,7 @@
 MODULE Parameters
+   !! Constants used throughout RIM
+
+   USE iso_fortran_env, only : character_storage_size, numeric_storage_size, output_unit, input_unit
 
    implicit none
    private
@@ -9,9 +12,9 @@ MODULE Parameters
    !        ZC        = NUMBER OF CHARACTERS IN A NAME
    !        Z         = NUMBER OF INTEGERS PER NAME
    !
-   INTEGER, PARAMETER, public :: ZC=16
-   INTEGER, PARAMETER, public :: ZCW=4
-   INTEGER, PARAMETER, public :: Z=(ZC-1) / ZCW+1
+   INTEGER, PARAMETER, public :: ZC = 16
+   INTEGER, PARAMETER, public :: ZCW = numeric_storage_size / character_storage_size
+   INTEGER, PARAMETER, public :: Z = ZC / ZCW
    !
    !        ZKEYWL       = MAX CHARACTERS IN A KEYWORD
    !
@@ -192,7 +195,7 @@ MODULE Parameters
    !     ------------- TEXT IO LIMITS -----------
    !
    !        ZCARDL       = MAX LENGTH OF CARD INPUT RECORDS
-   !        ZCARDW       = MAX LENGTH OF CARD INPUT RECORDS (WORDS)
+   !        ZCARDW       = MAX LENGTH OF CARD INPUT RECORDS (WORDS) - input width
    !        ZCARDN       = NUMBER OF INPUT RECORDS FOR RECALL (FOR EDIT)
    !        ZPRINL       = MAX LENGTH OF PRINTER OUTPUT RECORDS
    !        ZPRINW       = MAX LENGTH OF PRINTER OUTPUT RECORDS (WORDS)
@@ -240,8 +243,10 @@ MODULE Parameters
    !        ZCSRT2       = SORT SCRATCH NAME
    !        ZFSORT       = LENGTH OF SORT FILE BLOCKS
    !
-   INTEGER, PARAMETER, public :: ZNINT=5, ZNINTA=4
-   INTEGER, PARAMETER, public :: ZNOUT=6, ZNOUTR=7, ZNOUTL=8, ZNOUTT=9
+   INTEGER, PARAMETER, public :: ZNINT=input_unit
+   INTEGER, PARAMETER, public :: ZNINTA=4
+   INTEGER, PARAMETER, public :: ZNOUT= output_unit
+   INTEGER, PARAMETER, public ::  ZNOUTR=7, ZNOUTL=8, ZNOUTT=9
    INTEGER, PARAMETER, public :: ZNFIL1=31, ZNFIL2=ZNFIL1+1, ZNFIL3=ZNFIL1+2
    INTEGER, PARAMETER, public :: ZNSRT=40
    INTEGER, PARAMETER, public :: ZNSRT1=38, ZNSRT2=39

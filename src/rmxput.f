@@ -1,7 +1,6 @@
       SUBROUTINE RMXPUT(INDPTR,TUPLE)
 
-         USE Globals, only:  DBDATE
-         USE Rim, only : RMSTAT
+         USE Globals, only:  DBDATE, RMSTAT
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'

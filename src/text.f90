@@ -7,12 +7,38 @@ MODULE Text
    implicit none
    private
 
-   public Text_Initialise
+   INTEGER, PARAMETER, public :: ASPACE=32
+   INTEGER, PARAMETER, public :: LA=97,LZ=122,UA=65,UZ=90,USCOR=95
+   INTEGER, PARAMETER, public :: UECH=69,LECH=101
+   INTEGER, PARAMETER, public :: U0=48,U9=57,PLSIGN=43,MNSIGN=45,DECIM=46
+   INTEGER, PARAMETER, public :: TMSIGN=42,DVSIGN=47
+   INTEGER, PARAMETER, public :: ATSIGN=64,PCSIGN=37
+   INTEGER, PARAMETER, public :: EQSIGN=61,GTSIGN=62,LTSIGN=60,SQUOTE=39
+   INTEGER, PARAMETER, public :: DQUOTE=34
+   INTEGER, PARAMETER, public :: ASSTAR=42,ASPCNT=37
+   INTEGER, PARAMETER, public :: ASCOLN=58
+
+   INTEGER, public :: ASBLK,ASCOM,ASSEMI,ASPLUS,ASQUO
+   INTEGER, public  :: ASLPAR, ASRPAR
+
+   !  VARIABLE DEFINITIONS
+   !         ASBLK---FIELD SEPERATOR (MANY = 1)
+   !         ASCOM---FIELD SEPERATOR (MANY = MANY)
+   !         ASSEMI--RECORD DELIMITER
+   !-----C   ASDOL---RECORD DELIMITER (ARCHAIC)
+   !         ASPLUS--LINE CONTINUATION CHARACTER
+   !         ASQUO---STRING DELIMITER  (' OR ")
+   !         ASLPAR--LEFT PARENTHESIS
+   !         ASRPAR--RIGHT PARENTHESIS
+   !         ASPCNT--PERCENT SIGN
+
+   public Initialise
    public UPCASE, LOCASE
    public ASCCHR, CHRASC
    public ASCTXT
    public FILCH
    public STRASC
+   public CHTYPE
    public ATOI, ITOA
    public ATOR, RTOA
    public RITOA
@@ -29,16 +55,25 @@ MODULE Text
 
 CONTAINS
 
-   SUBROUTINE Text_Initialise()
+   SUBROUTINE Initialise()
       USE Parameters, only : ZC
       INTEGER :: I
+      INTRINSIC ICHAR
+
+      ASBLK  = ICHAR(' ')
+      ASCOM  = ICHAR(',')
+      ASPLUS = ICHAR('+')
+      ASQUO  = SQUOTE
+      ASLPAR = ICHAR('(')
+      ASRPAR = ICHAR(')')
+      ASSEMI = ICHAR(';')
 
       ABLANK = ASCCHR(' ')
       DO I = 1, ZC
          CALL PUTT(BLANK,I,ABLANK)
       END DO
       CALL ASCTXT(NONE,ZC,' ')
-   END SUBROUTINE Text_Initialise
+   END SUBROUTINE Initialise
 
 
    INTEGER FUNCTION UPCASE(ASCHR)
@@ -149,6 +184,78 @@ CONTAINS
       RETURN
    END SUBROUTINE FILCH
 
+
+   LOGICAL FUNCTION CHTYPE(TYPE,ASCHR)
+      !
+      ! RETURN TRUE IF ASCHR IS OF TYPE 'TYPE'
+      ! TYPE MAY BE
+      !
+      !     'LETTER' - (UPPER OR LOWER CASE, UNDERSCORE)
+      !     'DIGIT'  - (0-9)
+      !     'XDIGIT' - (0-9, PLUS, MINUS, DECIMAL, 'E')
+      !     'DELIMIT'- (DELIMITERS)
+      !
+      CHARACTER(len=*), intent(in) :: TYPE
+      INTEGER, intent(in) :: ASCHR
+      !
+      !
+      IF (TYPE.EQ.'LETTER') THEN
+         IF ( (ASCHR.GE.LA .AND. ASCHR.LE.LZ) .OR. &
+            (ASCHR.GE.UA .AND. ASCHR.LE.UZ) .OR. &
+            (ASCHR.EQ.USCOR) ) THEN
+            CHTYPE = .TRUE.
+         ELSE
+            CHTYPE = .FALSE.
+         ENDIF
+         RETURN
+      ENDIF
+      !
+      IF (TYPE.EQ.'DIGIT') THEN
+         IF (ASCHR.GE.U0 .AND. ASCHR.LE.U9) THEN
+            CHTYPE = .TRUE.
+         ELSE
+            CHTYPE = .FALSE.
+         ENDIF
+         RETURN
+      ENDIF
+      !
+      IF (TYPE.EQ.'XDIGIT') THEN
+         IF ( (ASCHR.GE.U0 .AND. ASCHR.LE.U9) .OR. &
+            (ASCHR.EQ.PLSIGN) .OR. (ASCHR.EQ.MNSIGN) .OR. &
+            (ASCHR.EQ.UECH) .OR. (ASCHR.EQ.LECH) .OR. &
+            (ASCHR.EQ.DECIM) ) THEN
+            CHTYPE = .TRUE.
+         ELSE
+            CHTYPE = .FALSE.
+         ENDIF
+         RETURN
+      ENDIF
+      !
+      ! DELIMITERS ARE: BLANK , ( ) < > = ' " : @ %
+      ! NOTE: = - * / ARE NOT DELIMITERS
+      !         (- IS ALSO UNIARY, * IS WILD-CARD, / OCCURS OFTEN IN DATES
+      !
+      IF (TYPE.EQ.'DELIMIT') THEN
+         IF ( (ASCHR.EQ.ASBLK)  .OR. (ASCHR.EQ.ASCOM) .OR. &
+            (ASCHR.EQ.ASLPAR) .OR. (ASCHR.EQ.ASRPAR).OR. &
+            (ASCHR.EQ.SQUOTE) .OR. (ASCHR.EQ.DQUOTE).OR. &
+            (ASCHR.EQ.LTSIGN) .OR. (ASCHR.EQ.GTSIGN).OR. &
+            (ASCHR.EQ.ATSIGN) .OR. (ASCHR.EQ.PCSIGN).OR. &
+            (ASCHR.EQ.EQSIGN) .OR. (ASCHR.EQ.ASCOLN) ) THEN
+            CHTYPE = .TRUE.
+         ELSE
+            CHTYPE = .FALSE.
+         ENDIF
+         RETURN
+      ENDIF
+      !
+      ! UNRECOGNISED TYPE CODE
+      !
+      CHTYPE = .FALSE.
+      RETURN
+   END FUNCTION CHTYPE
+
+
    SUBROUTINE STRASC(STR,ASC,NC)
       !
       ! RETURN THE STRING EQUIVALENT OF ASC (ASCII-TEXT, LENGTH NC)
@@ -175,7 +282,6 @@ CONTAINS
 
 
    LOGICAL FUNCTION ATOI(ASTR,SC,NC,VAL)
-      USE Lexer, only : U9, U0, MNSIGN, ASPACE
       !
       ! CONVERT ASCII-TEXT TO INTEGER AND RETURN TRUE IF OK
       !
@@ -212,7 +318,6 @@ CONTAINS
    SUBROUTINE ITOA(STRING,SC,FMT,INT,IERR)
       USE Parameters, only : Z
       USE Utils, only : NDIGIT
-      Use Lexer, only : U0, MNSIGN, DECIM, ASSTAR
 
       implicit none
       !
@@ -269,7 +374,6 @@ CONTAINS
 
 
    LOGICAL FUNCTION ATOR(ASTR,SC,NC,VAL)
-      USE Lexer, only : UECH, U9, U0, PLSIGN, MNSIGN, LECH, DECIM, ASPACE
       !
       ! CONVERT ASCII-TEXT TO DP AND RETURN TRUE IF OK
       !
@@ -347,7 +451,6 @@ CONTAINS
 
    SUBROUTINE RITOA(STRING,SC,LEN,RINT,REM,IERR)
       USE Maths, only : IEXP
-      USE Lexer, only : U0, MNSIGN
       !
       ! CONVERT THE INTEGER PARTOF A DOUBLE (RINT) TO ASCII-TEXT (STRING)
       ! IF IT WILL NOT FIT RETURN IERR > 0
@@ -398,7 +501,6 @@ CONTAINS
    SUBROUTINE RTOA(STRING,SC,FMT,RNUM,IERR)
 
       USE Maths, only : IEXP, ROUND
-      USE Lexer, only : U0, MNSIGN, PLSIGN, UECH, ASSTAR, DECIM
 
       !
       ! CONVERT A REAL (RNUM) TO ASCII-TEXT (STRING)

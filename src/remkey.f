@@ -1,9 +1,9 @@
       SUBROUTINE REMKEY(*)
 
          USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER
+         USE Globals, only : RMSTAT
          Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
          USE Message, only: WARN
-         USE Rim, only : RMSTAT
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'

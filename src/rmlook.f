@@ -1,7 +1,6 @@
       SUBROUTINE RMLOOK(MAT,INDEX,IFLAG,LENGTH)
 
-         USE Globals, only : TRACE, HXFLAG
-         USE Rim, only : RMSTAT
+         USE Globals, only : TRACE, HXFLAG, RMSTAT
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

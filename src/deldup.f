@@ -1,9 +1,8 @@
       SUBROUTINE DELDUP(*)
 
-         USE Globals, only : DFLAG
+         USE Globals, only : DFLAG, RMSTAT
          USE Lexer, only : ITEMS, LFIND, LXSREC
          USE Message, only : WARN
-         USE Rim, only : RMSTAT
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'

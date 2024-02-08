@@ -2,10 +2,9 @@
 
          USE, intrinsic :: iso_fortran_env
 
-         USE Globals, only : MRINDX, HXFLAG
+         USE Globals, only : MRINDX, HXFLAG, RMSTAT
          USE Maths, only : RTOD
          USE Message, only: WARN
-         USE Rim, only : RMSTAT
          USE Text, only : FILCH, ABLANK
 
          INCLUDE 'syspar.inc'

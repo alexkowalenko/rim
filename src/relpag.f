@@ -1,8 +1,8 @@
       SUBROUTINE RELPAG(THEROW)
 
          USE Files, only : FILE1, LENBF1, LF1REC, CRREC
+         USE Globals, only : RMSTAT
          USE RandomFiles, only: RIOIN, RIOOUT
-         USE Rim, only : RMSTAT
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'

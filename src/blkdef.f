@@ -1,7 +1,6 @@
       SUBROUTINE BLKDEF(IND,NROWS,NCOLS)
 
-         USE Globals, only : TRACE
-         USE Rim, only : RMSTAT
+         USE Globals, only : TRACE, RMSTAT
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'

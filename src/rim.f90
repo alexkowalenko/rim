@@ -1,63 +1,17 @@
 MODULE Rim
+   !! Contains top level functions for the database.
    implicit none
    private
 
-   !
-   !  RIM FORTRAN INTERFACE STATUS COMMON
-   !
-
-   INTEGER, public :: RMSTAT
-   !
-   !  VARIABLE DEFINITIONS
-   !     RMSTAT--STATUS FLAG
-   !               -1  NO MORE DATA AVAIABLE FOR RETRIEVAL
-   !                0  OK - OPERATION SUCCESSFULL
-   !               10  DATABASE FILES DO NOT CONTAIN A RIM DATABASE
-   !               11  DATABASE NAME DOES NOT MATCH FILE CONTENTS
-   !               12  INCOMPATABLE DATABASE FILES (DATE,TIME,ETC)
-   !               13  DATABASE IS ATTACHED IN READ ONLY MODE
-   !               14  DATABASE IS BEING UPDATED
-   !               15  DATABASE FILES ARE NOT LOCAL FILES
-   !               20  UNDEFINED RELATION
-   !               30  UNDEFINED ATTRIBUTE
-   !               40  MORE THAN 10 AND/OR OPERATORS IN THE WHERE CLAUSE
-   !               41  ILLEGAL "LIMIT EQ N" CONDITION
-   !               42  UNRECOGNIZED BOOLEAN COMPARISON
-   !               43  EQS ONLY AVAILABLE FOR TEXT ATTRIBUTES
-   !               44  ILLEGAL USE OF MIN/MAX IN THE WHERE CLAUSE
-   !               45  UNRECOGNIZED AND/OR OPERATOR
-   !               46  COMPARED ATTRIBUTES MUST BE THE SAME TYPE/LENGTH
-   !               47  LISTS ARE VALID ONLY FOR EQ NE AND CONTAINS
-   !               48  ILLEGAL ROW SPECIFICATION
-   !               50  RMFIND NOT CALLED
-   !               60  RMGET NOT CALLED
-   !               70  RELATION REFERENCE NUMBER OUT OF RANGE
-   !               80  VARIABLE LENGTH ATTRIBUTES MAY NOT BE SORTED
-   !               81  THE NUMBER OF SORTED ATTRIBUTES IS TOO LARGE
-   !               89  SORT SYSTEM ERROR (SHOULD NEVER GET THIS)
-   !               90  UNAUTHORIZED RELATION ACCESS
-   !              100  ILLEGAL VARIABLE LENGTH TUPLE DEFINITION (LOAD/PUT)
-   !              110  UNRECOGNIZED RULE RELATIONS
-   !              111  MORE THAN 10 RULES PER RELATION
-   !              112  UNABLE TO PROCESS RULES
-   !              2XX  TUPLE VIOLATES RULE XX
-   !
-   !         THE FOLLOWING CODES SHOULD NOT BE ENCOUNTERED IN NORMAL USE
-   !
-   !             1001  BUFFER SIZE PROBLEM - BLKCHG,BLKDEF
-   !             1002  UNDEFINED BLOCK - BLKLOC
-   !             1003  CANNOT FIND A LARGER BTREE VALUE - BTADD,PUTDAT
-   !             1004  CANNOT FIND BTREE BLOCK - BTPUT
-   !
-   !             21XX  RANDOM FILE ERROR XX ON FILE1
-   !             22XX  RANDOM FILE ERROR XX ON FILE2
-   !             23XX  RANDOM FILE ERROR XX ON FILE3
-   !             24XX  RANDOM FILE ERROR XX ON FILE4
-   !
-
+   INTERFACE
+      MODULE SUBROUTINE RIMCMD
+      END SUBROUTINE RIMCMD
+   END INTERFACE
 
    public RMCONS
    public RMINIT
+   public RIMCMD
+
 
 contains
 
@@ -78,8 +32,8 @@ contains
       USE Globals, only: KDBHDR
       USE Globals, only : Globals_Initialise => Initialise
       USE DateTime, only : DateTime_Initialise => Initialise, DTFENC
-      USE Lexer, only : Lexer_Initialise => Initialise
-      USE Text, only : Text_Initialise, ASCTXT, ASCCHR, NONE
+      USE Text, only : ASCTXT, ASCCHR, NONE
+      USE Text, only : Text_initialise => Initialise
       USE Utils, only : ZMOVE
 
       INCLUDE 'files.inc'
@@ -140,9 +94,6 @@ contains
       CRDIDX = 0
       CRDRLL = [(0, I = 1, ZCARDN)]
       LXEOC = 0
-
-      ! /LXLCOM/
-      CALL Lexer_Initialise
 
       ! /PROM/
       PRMPT = .TRUE.

@@ -1,11 +1,10 @@
       SUBROUTINE UNLOAD(*)
 
-         USE Globals, only : DFLAG, DBNAME, USERID, OWNER
+         USE Globals, only : DFLAG, DBNAME, USERID, OWNER, RMSTAT
          USE DateTime, only: RMTIME, RMDATE
          USE Lexer, only : ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW, LFIND
          USE Lexer, only : LXSREC
          USE Message, only: WARN
-         USE Rim, only : RMSTAT
          USE Text, only : STRASC
          USE Utils, only : ZMOVE
 

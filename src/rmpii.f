@@ -1,7 +1,7 @@
       SUBROUTINE RMPII
 
+         USE Globals, only : RMSTAT
          USE Text, only : BLANK
-         USE Rim, only : RMSTAT
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

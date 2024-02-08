@@ -1,8 +1,8 @@
       SUBROUTINE ISECT(RNAME1,RNAME3,MATN3,NCOL3,NATT3,PTABLE,
      XKEYCOL,KEYTYP)
 
+         USE Globals, only : RMSTAT
          USE Message, only : WARN
-         USE Rim, only : RMSTAT
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

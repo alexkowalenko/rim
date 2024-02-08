@@ -21,7 +21,7 @@ PROGRAM MAIN
    USE Parameters
    USE Globals, only : KDBVER
    USE DateTime, only: RMTIME, RMDATE
-   USE Rim, only: RMCONS, RMINIT
+   USE Rim, only: RMCONS, RMINIT, RIMCMD
    USE System, only: SystemExit, SystemTrap, SystemInitialise
 
    IMPLICIT NONE

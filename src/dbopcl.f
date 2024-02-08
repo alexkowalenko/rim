@@ -1,9 +1,8 @@
       SUBROUTINE DBOPCL(*,MODE)
 
          USE Parameters, only: ZFNAML, ZC
-         USE Globals, only : DFLAG, DBNAME, DBFNAM
+         USE Globals, only : DFLAG, DBNAME, DBFNAM, RMSTAT
          USE Message, only : WARN
-         USE Rim, only : RMSTAT
          USE System, only : SYSDBG, SYSDBN, CHKFIL
 C
 C     OPEN/CLOSE A DATABASE

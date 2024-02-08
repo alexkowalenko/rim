@@ -1,7 +1,7 @@
       SUBROUTINE SWVLFS(INFIL,OUTFIL,BUFFER,LBUF,LPRU,DPRU)
 
+         USE Globals, only : RMSTAT
          USE RandomFiles, only : RIOOPN, RIOCLO
-         USE Rim, only : RMSTAT
          USE System, only : SystemDelete
 
          INCLUDE 'syspar.inc'

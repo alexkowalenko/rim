@@ -1,8 +1,6 @@
       SUBROUTINE RMQERY(*,QCOM)
 
-         USE Globals, only : DFLAG, MRINDX
-         USE Rim, only : RMSTAT
-
+         USE Globals, only : DFLAG, MRINDX, RMSTAT
          INCLUDE 'syspar.inc'
 C
 C     PROG INTERFACE DRIVER FOR QUERY OF THE RIM DATA BASE.

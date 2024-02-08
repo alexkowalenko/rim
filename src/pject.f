@@ -1,11 +1,10 @@
       SUBROUTINE PJECT(*)
 
-         USE Globals, only : DFLAG, DMFLAG
+         USE Globals, only : DFLAG, DMFLAG, RMSTAT
          USE DateTime, only : RMDATE
          Use Lexer, only: KXNAME, TOKTYP, IDP, ITEMS, EQKEYW, LFIND
          Use Lexer, only: LXSREC
          USE Message, only : WARN
-         USE Rim, only : RMSTAT
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
 

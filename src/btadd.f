@@ -1,8 +1,8 @@
       SUBROUTINE BTADD(VALU,IPTR,TYPE)
 
          USE Files, only : LENBF3, MOTREC, MOTADD, LF3REC
+         USE Globals, only : RMSTAT
          USE Maths, only : DTOR
-         USE Rim, only : RMSTAT
          USE Utils, only : HTOI, ITOH
 
          INCLUDE 'syspar.inc'

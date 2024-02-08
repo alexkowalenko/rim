@@ -9,8 +9,7 @@ contains
    SUBROUTINE WARN(W,TEXT1,TEXT2)
 
       USE Parameters, only : Z, ZC
-      USE GLobals, only: HXFLAG
-      USE Rim, only : RMSTAT
+      USE GLobals, only: HXFLAG, RMSTAT
 
       !
       !  PURPOSE:   GENERAL PURPOSE ERROR PRINT ROUTINE

@@ -1,10 +1,10 @@
       SUBROUTINE DBOPEN(NEWNAM,NEWOK)
 
-         USE Globals, only : DFLAG, DBDATE, DBTIME
+         USE Globals, only : DFLAG, DBDATE, DBTIME, RMSTAT
          USE Files, only: FILE1, F1OPN, FILE2, F2OPN, FILE3, F3OPN
          USE DateTime, only: RMTIME, RMDATE
          USE RandomFiles, only: RIOCLO
-         USE Rim, only : RMSTAT, RMINIT
+         USE Rim, only : RMINIT
          USE System, only: SYSDBN, CHKFIL
 
          INCLUDE 'syspar.inc'

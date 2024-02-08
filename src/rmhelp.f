@@ -3,10 +3,9 @@
          USE, intrinsic :: iso_fortran_env
 
          USE Globals, only: LIBFLG, TOL, HXFLAG, PCENT, RUCK, DBFNAM
-         USE Globals, only: KZHPSK, KZHPRL, KZHPKY, DFLAG
+         USE Globals, only: KZHPSK, KZHPRL, KZHPKY, DFLAG, RMSTAT
          USE Lexer, only: KWS, ITEMS
          USE Message, only: WARN
-         USE Rim, only : RMSTAT
          USE Text, only: ASCTXT
 
          INCLUDE 'syspar.inc'

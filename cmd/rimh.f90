@@ -1,8 +1,8 @@
 PROGRAM MAIN
 
    USE Parameters
+   USE Globals, only : RMSTAT
    USE Text, only : STRASC
-   USE Rim, only : RMSTAT
 
    IMPLICIT NONE
 

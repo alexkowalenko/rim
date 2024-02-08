@@ -2,8 +2,8 @@
 
          USE Files, only: FILE3, LENBF3, LAST, NUMIC, MAXIC, ICORE
          USE Files, only: LF3REC
+         USE Globals, only : RMSTAT
          USE RandomFiles, only : RIOIN, RIOOUT
-         USE Rim, only : RMSTAT
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'

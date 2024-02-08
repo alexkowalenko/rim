@@ -12,7 +12,7 @@ add_library(rimcommon STATIC
     blkloc.f blkmov.f blknxt.f blkup.f
     btadd.f btget.f btinit.f btlki.f btlkr.f btmove.f btput.f btrep.f btsert.f
     build.f 
-    change.f chgdat.f chgpsw.f chkatt.f chkrel.f chtype.f
+    change.f chgdat.f chgpsw.f chkatt.f chkrel.f
     dbdefn.f dbload.f dbopcl.f dbopen.f deldat.f 
     deldup.f delete.f delrow.f
     eq.f fmtdec.f
@@ -69,17 +69,16 @@ add_library(rimextlib STATIC
     pgbres.f pgbsto.f pgcexp.f
     pgcomp.f pgcprt.f pgeexp.f pgeprt.f pgexec.f pgstor.f
     prmset.f prompt.f
-    report.f rimcmd.f rmhelp.f rmshow.f rmzip.f 
+    report.f rmhelp.f rmshow.f rmzip.f 
     selatt.f select.f selout.f selput.f 
     setin.f setout.f sgtlnk.f 
-    undata.f undef.f unload.f unpass.f 
+    undata.f undef.f unload.f unpass.f
+    rim_rimcmd.f90
     system.f90
 )
 
 add_library(rimlib STATIC
     pilib.f pilibx.f
     rmxdel.f rmxget.f rmxlod.f rmxput.f
+    system.f90
  )
-
-add_library(system STATIC 
-    system.f90)

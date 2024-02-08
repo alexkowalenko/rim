@@ -1,10 +1,10 @@
       FUNCTION PGCEXP(ST,NT)
 
          USE DateTime, only: KRMDTF, KRMTMF
-         USE Lexer, only: ASLPAR, ASRPAR, MNSIGN, PLSIGN, TMSIGN, IDP
-         USE Lexer, only: DVSIGN, KXINT, KXREAL, KXNAME, TOKTYP, ASCREC
+         USE Globals, only : RMSTAT
+         USE Lexer, only: KXINT, KXREAL, KXNAME, TOKTYP, ASCREC, IDP
          USE Lexer, only: IDL, EQTOK, IDI, IDR, LXLENW, LXSREC
-         USE Rim, only : RMSTAT
+         USE Text, only: DVSIGN, MNSIGN, PLSIGN, TMSIGN, ASLPAR, ASRPAR
 
 
          INCLUDE 'syspar.inc'

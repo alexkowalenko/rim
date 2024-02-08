@@ -4,9 +4,10 @@ PROGRAM MAIN
 
    USE Parameters
    USE System, only: SystemExit, SystemInitialise
-   USE Lexer, only : Lexer_Initialise => Initialise, KWS, EQKEYW
+   USE Lexer, only: KWS, EQKEYW
    USE Parser, only : LODREC
    USE Rim, only: RMCONS, RMINIT
+   USE Text, only : Text_Initialise => Initialise
 
    IMPLICIT NONE
    !
@@ -22,7 +23,7 @@ PROGRAM MAIN
 
    CALL RMCONS
    CALL RMINIT
-   CALL Lexer_Initialise
+   CALL Text_Initialise
    CALL SystemInitialise
    ! DON'T USE THE INIT FILE
    IF (NINT.NE.ZNINT) CALL SETIN(ZTRMIN)

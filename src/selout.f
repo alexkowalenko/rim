@@ -2,9 +2,8 @@
 
          USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
          USE DateTime, only : ASCDAT
-         USE Text, only : BLANK, ABLANK, ITOA, ASCAN, STRMOV
-         USE Text, only : FILCH
-         USE Lexer, only : ASSTAR
+         USE Text, only : ABLANK, ITOA, ASCAN, STRMOV
+         USE Text, only : FILCH, ASSTAR
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

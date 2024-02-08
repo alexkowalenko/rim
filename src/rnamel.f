@@ -1,9 +1,9 @@
       SUBROUTINE RNAMEL(*)
 
          USE Globals, only: DFLAG, DMFLAG, DBNAME, USERID, OWNER
+         USE Globals, only: RMSTAT
          USE Lexer, only: ITEMS, EQKEYW, LXSREC
          USE Message, only: WARN
-         USE Rim, only : RMSTAT
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

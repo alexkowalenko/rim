@@ -1,6 +1,6 @@
 PROGRAM MAIN
    USE Parameters
-   USE Rim, only : RMSTAT
+   USE Globals, only : RMSTAT
 
    IMPLICIT NONE
 

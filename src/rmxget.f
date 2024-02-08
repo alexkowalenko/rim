@@ -1,5 +1,5 @@
       SUBROUTINE RMXGET(INDPTR,TUPLE)
-         USE Rim, only : RMSTAT
+         USE Globals, only : RMSTAT
          INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE GETS THE NEXT ROW FROM A RELATION AND STORES

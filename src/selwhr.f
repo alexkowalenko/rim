@@ -1,10 +1,9 @@
       FUNCTION SELWHR(ST,NT)
 
-         USE Globals, only : CASEIG, TRACE
+         USE Globals, only : CASEIG, TRACE, RMSTAT
          USE Lexer, only: KXTEXT, KXNAME, TOKTYP, IDL, EQTOK, KWS
          USE Lexer, only: EQKEYW, LXLENW, LXSREC
          USE Message, only: WARN
-         USE Rim, only : RMSTAT
          USE Utils, only : HTOI, ITOH
 
          INCLUDE 'syspar.inc'

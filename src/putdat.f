@@ -1,9 +1,8 @@
       SUBROUTINE PUTDAT(INDEX,ID,ARRAY,LENGTH)
 
-         USE Globals, only : IFMOD
+         USE Globals, only : IFMOD, RMSTAT
          USE Files, only : FILE2, LENBF2, CURBLK, MODFLG
          USE RandomFiles, only: RIOIN, RIOOUT
-         USE Rim, only : RMSTAT
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

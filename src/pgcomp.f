@@ -1,11 +1,10 @@
       SUBROUTINE PGCOMP
 
-         USE Globals, only: PGVARS, INLINE, PGFLAG
+         USE Globals, only: PGVARS, INLINE, PGFLAG, RMSTAT
          USE DateTime, only: RMTIME, RMDATE
          USE Lexer, only: KXINT, TOKTYP, KWS, ITEMS, EQKEYW, IDI, LXSREC
          USE Message, only : WARN
          USE Parser, only: LODREC
-         USE Rim, only : RMSTAT
          USE Text, only : ASCTXT
          USE Utils, only : ZMOVE
 

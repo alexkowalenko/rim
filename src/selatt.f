@@ -4,10 +4,11 @@
          USE DateTime, only : DTFSPL, KRMDTF, KRMTMF
          USE Message, only: WARN
          USE Text, only : ASCCHR, ASCTXT, FILCH, BLANK, ABLANK, STRMOV
-         USE Text, only : LSTRNG
+         USE Text, only : LSTRNG,  ASLPAR, ASRPAR, ATSIGN, PCSIGN
+         USE Text, only : ASCOLN, ASSTAR, EQSIGN
          USE Utils, only : ZMOVE, HTOI, ITOH
-         USE Lexer, only : ASLPAR, ASRPAR, ATSIGN, PCSIGN, EQSIGN, KWS
-         USE Lexer, only : ASCOLN, ASSTAR, IDL, EQTOK, IDI, LXSREC
+         USE Lexer, only : KWS, IDL, EQTOK, IDI, LXSREC
+
 
          INCLUDE 'syspar.inc'
 C

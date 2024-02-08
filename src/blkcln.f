@@ -1,8 +1,8 @@
       SUBROUTINE BLKCLN
 
          USE Files, only : FILE2, LENBF2, CURBLK, MODFLG
+         USE Globals, only : RMSTAT
          USE RandomFiles, only : RIOOUT
-         USE Rim, only : RMSTAT
 
          INCLUDE 'syspar.inc'
 C

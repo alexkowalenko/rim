@@ -1,9 +1,8 @@
       SUBROUTINE BUILD(*)
 
-         USE Globals, only : DFLAG
+         USE Globals, only : DFLAG, RMSTAT
          USE Lexer, only : KWS, ITEMS, LXSREC
          USE Message, only : WARN
-         USE Rim, only : RMSTAT
 
          INCLUDE 'syspar.inc'
 C

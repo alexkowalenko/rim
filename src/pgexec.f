@@ -1,9 +1,8 @@
       SUBROUTINE PGEXEC
 
          USE Globals, only : TRACE, MRINDX, HXFLAG, CASEIG, PGFLAG,
-     +   DBFNAM
+     +   DBFNAM, RMSTAT
          USE Message, only : WARN
-         USE Rim, only : RMSTAT
          USE Text, only : FILCH, ABLANK, STRASC, STRMOV
          USE Utils, only : ZMOVE
 

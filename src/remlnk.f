@@ -1,9 +1,9 @@
       SUBROUTINE REMLNK(*)
 
          USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
+         USE Globals, only : RMSTAT
          USE Lexer, only : ITEMS, LXSREC, LXSREC
          USE Message, only: WARN
-         USE Rim, only : RMSTAT
 
          INCLUDE 'syspar.inc'
 C

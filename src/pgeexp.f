@@ -2,11 +2,11 @@
 
          USE, intrinsic :: iso_fortran_env
 
+         USE Globals, only : RMSTAT
          USE Maths, only : DTOR, RTOD
-         USE Text, only : BLANK, STRMOV
-         USE Rim, only : RMSTAT
+         USE Text, only : BLANK, STRMOV, PLSIGN, MNSIGN, TMSIGN, DVSIGN
          USE Utils, only : ITOH
-         USE Lexer, only : PLSIGN, MNSIGN, TMSIGN, DVSIGN
+
 
          INCLUDE 'syspar.inc'
 C

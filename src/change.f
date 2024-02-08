@@ -1,8 +1,8 @@
       SUBROUTINE CHANGE(MAT,NVAL,IFLAG,NTUP)
 
+         USE Globals, only : RMSTAT
          USE Lexer, only : KWS, IDI
          USE Message, only : WARN
-         USE Rim, only : RMSTAT
          USE Text, only : BLANK
          USE Utils, only : ZMOVE
 

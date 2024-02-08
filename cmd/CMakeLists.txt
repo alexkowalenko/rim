@@ -9,6 +9,7 @@ add_executable(rime rime.f90)
 add_executable(rimh rimh.f90)
 add_executable(lxtest lxtest.f90)
 add_executable(rmtest rmtest.f90)
+add_executable(test1 test1.f90)
 
 target_link_libraries(rim
      PRIVATE
@@ -20,7 +21,7 @@ target_link_libraries(rime
 
 target_link_libraries(rimh
      PRIVATE
-     rimcommon rimlib system)
+     rimcommon rimlib)
 
 target_link_libraries(lxtest
     PRIVATE
@@ -28,7 +29,7 @@ target_link_libraries(lxtest
 
 target_link_libraries(rmtest
     PRIVATE
-    rimcommon rimlib system)
+    rimcommon rimlib)
 
 install(TARGETS rim DESTINATION bin)
 install(TARGETS rimh DESTINATION bin)

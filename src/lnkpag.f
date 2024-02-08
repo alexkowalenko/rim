@@ -1,8 +1,8 @@
       SUBROUTINE LNKPAG(THEROW)
 
          USE Files, only : FILE1,LENBF1,LF1REC, CLREC
+         USE Globals, only : RMSTAT
          USE RandomFiles, only: RIOIN, RIOOUT
-         USE Rim, only : RMSTAT
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'

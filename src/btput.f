@@ -1,8 +1,7 @@
       SUBROUTINE BTPUT(ID)
 
          USE Files, only : NUMIC, ICORE
-         USE Globals, only : IFMOD
-         USE Rim, only : RMSTAT
+         USE Globals, only : IFMOD, RMSTAT
 
          implicit none
 

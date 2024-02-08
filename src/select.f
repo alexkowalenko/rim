@@ -1,9 +1,8 @@
       SUBROUTINE SELECT(*)
 
-         USE Globals, only : DFLAG
+         USE Globals, only : DFLAG, RMSTAT
          USE Lexer, only : ASCREC, IDP, IDL, KWS
          USE Message, only: WARN
-         USE Rim, only : RMSTAT
          USE Text, only : STRASC
 
          INCLUDE 'syspar.inc'

@@ -1,7 +1,6 @@
       SUBROUTINE GTSORT(MAT,INDEX,IFLAG,LENGTH)
 
-         USE Globals, only : MRINDX
-         USE Rim, only : RMSTAT
+         USE Globals, only : MRINDX, RMSTAT
 
          INCLUDE 'syspar.inc'
 C

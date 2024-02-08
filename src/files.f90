@@ -57,9 +57,8 @@ CONTAINS
 
    SUBROUTINE F1OPN(RIMDB1)
       USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, DFLAG, DMFLAG, DBFNAM, KDBHDR
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, DFLAG, DMFLAG, DBFNAM, KDBHDR, RMSTAT
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
-      USE Rim, only : RMSTAT
       USE Text, only : ASCTXT
       USE Utils, only : ZEROIT, ZMOVE
 
@@ -186,8 +185,7 @@ CONTAINS
 
    SUBROUTINE F1CLO
       USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR
-      USE Rim, only : RMSTAT
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR, RMSTAT
       USE RandomFiles, only : RIOCLO, RIOOUT
       USE Utils, only : ZEROIT, ZMOVE
 
@@ -264,9 +262,8 @@ CONTAINS
    SUBROUTINE F2OPN(RIMDB2)
 
       USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBHDR
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBHDR, RMSTAT
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
-      USE Rim, only : RMSTAT
       USE Utils, only : ZEROIT, ZMOVE
 
 
@@ -346,9 +343,8 @@ CONTAINS
 
    SUBROUTINE F2CLO
       USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR, RMSTAT
       USE RandomFiles, only : RIOCLO, RIOIN, RIOOUT
-      USE Rim, only : RMSTAT
       USE Utils, only : ZMOVE
 
       !
@@ -421,9 +417,8 @@ CONTAINS
 
    SUBROUTINE F3OPN(RIMDB3)
       USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBHDR
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBHDR, RMSTAT
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
-      USE Rim, only : RMSTAT
       USE Utils, only : ZEROIT, ZMOVE
 
       !
@@ -510,9 +505,8 @@ CONTAINS
 
    SUBROUTINE F3CLO
       USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR
+      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR, RMSTAT
       USE RandomFiles, only : RIOCLO, RIOOUT
-      USE Rim, only : RMSTAT
       USE Utils, only : ZEROIT, ZMOVE
 
       !

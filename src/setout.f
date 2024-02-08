@@ -1,7 +1,7 @@
       SUBROUTINE SETOUT(UN,UNF,FILE,STAT)
 
+         USE Globals, only : RMSTAT
          USE TextFiles, only : TIOOPN, TIOCLO
-         USE Rim, only : RMSTAT
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

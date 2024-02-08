@@ -26,7 +26,7 @@ C
 
 
       SUBROUTINE MSG(MTYPE,MTEXT,MCONT)
-         USE Rim, only : RMSTAT
+         USE Globals, only : RMSTAT
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C
@@ -83,7 +83,7 @@ C
 
 
       SUBROUTINE WARN(W,TEXT1,TEXT2)
-         USE Rim, only : RMSTAT
+         USE Globals, only : RMSTAT
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C

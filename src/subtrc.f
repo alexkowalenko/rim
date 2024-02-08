@@ -1,7 +1,7 @@
       SUBROUTINE SUBTRC(RNAME2,RNAME3,MATN3,NCOL3,NATT3,PTABLE,
      XKEYCOL,KEYTYP)
 
-         USE Rim, only : RMSTAT
+         USE Globals, only : RMSTAT
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

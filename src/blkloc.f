@@ -1,5 +1,5 @@
       INTEGER FUNCTION BLKLOC(IND)
-         USE Rim, only : RMSTAT
+         USE Globals, only : RMSTAT
          INCLUDE 'syspar.inc'
 C
 C  PURPOSE:    RETURN THE STARTING ADDRESS FOR THE REQUESTED BLOCK

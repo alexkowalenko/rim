@@ -26,6 +26,8 @@ lit.site.cfg.py
 *.ilg
 *.ind
 
+gen/doc/*
+
 gss
 
 .vscode/*

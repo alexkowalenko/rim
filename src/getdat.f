@@ -1,9 +1,8 @@
       SUBROUTINE GETDAT(INDEX,ID,LOCTUP,LENGTH)
 
-         USE Globals, only : TRACE
+         USE Globals, only : TRACE, RMSTAT
          USE Files, only : FILE2, LENBF2, LF2REC, CURBLK, MODFLG
          USE RandomFiles, only: RIOIN, RIOOUT
-         USE Rim, only : RMSTAT
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

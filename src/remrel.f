@@ -1,10 +1,10 @@
       SUBROUTINE REMREL(*)
 
          USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
+         USE Globals, only : RMSTAT
          USE Lexer, only: KWS, ITEMS, EQKEYW, LXSREC
          USE Message, only: WARN
          USE Parser, only: LODREC
-         USE Rim, only : RMSTAT
 
          INCLUDE 'syspar.inc'
 C

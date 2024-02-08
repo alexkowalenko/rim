@@ -1,7 +1,6 @@
       FUNCTION LOCPRM(RNAME,JCODE)
 
-         USE Globals, only : USERID, OWNER
-         USE Rim, only : RMSTAT
+         USE Globals, only : USERID, OWNER, RMSTAT
          USE Text, only : NONE
          INCLUDE 'syspar.inc'
 C

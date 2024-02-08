@@ -1,11 +1,10 @@
       FUNCTION RIM(IND,COM)
 
-         USE Globals, only : KDBVER, MRINDX, PIFLAG
+         USE Globals, only : KDBVER, MRINDX, PIFLAG, RMSTAT
          USE Text, only : ASCTXT
-         USE Lexer, only : Lexer_Initialise => Initialise, KXKEYW
-         USE Lexer, only : TOKTYP, ITEMS, EQKEYW
+         USE Lexer, only : TOKTYP, ITEMS, EQKEYW, KXKEYW
          USE Parser, only : LODREC
-         USE Rim, only : RMSTAT, RMCONS, RMINIT
+         USE Rim, only : RMCONS, RMINIT
          USE System, only : SYSCOM
 
          INCLUDE 'syspar.inc'
@@ -40,7 +39,6 @@ C
             CONNI = .FALSE.
             CONNO = .FALSE.
             CALL RMINIT
-            CALL Lexer_Initialise
             INITFL = 1
          ENDIF
 C
@@ -115,7 +113,7 @@ C
 C---- SCHEMA MODIFICATION
 C
 C.... IF (EQKEYW(1,'DEFINE'))  THEN
-C                                 CALL CSC(*900)
+C                                 CALL CSC(*900) ! Undefined subroutine 
 C     ENDIF
 C
 C---- RELATION ALGEBRA
@@ -158,8 +156,7 @@ C
 
 
       FUNCTION RIMDM(IND,COM,TUPLE)
-         USE Globals, only : DFLAG, DMFLAG
-         USE Rim, only : RMSTAT
+         USE Globals, only : DFLAG, DMFLAG, RMSTAT
          INCLUDE 'syspar.inc'
 C
 C     RIM FORTRAN INTERFACE (DATA MOVEMENT)

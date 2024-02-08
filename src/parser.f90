@@ -68,13 +68,12 @@ contains
       !
       !
       USE Parameters
-      USE Globals, only : TRACE
+      USE Globals, only : TRACE, RMSTAT
       USE Lexer, only: KXTEXT, KXNAME, IDT, TOKTYP, ASCREC, ASCNXT
-      USE Lexer, only: IDP, IDL, KWS, ITEMS, EQKEYW, LXSREC
+      USE Lexer, only: IDP, IDL, KWS, ITEMS, EQKEYW, LXSREC, NXTTOK, LXCMNT
       USE Macros, only: LOCMAC
-      USE Rim, only : RMSTAT
       USE System, only : SystemExit, SystemTrap
-      USE Lexer, only : EQSIGN, GTSIGN, NXTTOK, LXCMNT
+      USE Text, only: EQSIGN, GTSIGN
 
       INCLUDE 'files.inc'
       INCLUDE 'cards.inc'
