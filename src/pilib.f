@@ -4,7 +4,7 @@
          USE Text, only : ASCTXT
          USE Lexer, only : TOKTYP, ITEMS, EQKEYW, KXKEYW
          USE Parser, only : LODREC
-         USE Rim, only : RMCONS, RMINIT
+         USE Rim, only : RMCONS, RMINIT, RMSET
          USE System, only : SYSCOM
 
          USE Rim, only : DBOPCL

@@ -325,6 +325,146 @@ contains
    END SUBROUTINE RMZIP
 
 
+   SUBROUTINE RMHELP(*)
+      !!
+      !! PROCESSES THE HELP COMMAND
+      !!
+      ! THE HELP DATABASE CONTAINS:
+      !
+      !  COMKEY     - A 3 CHARACTER FIELD FOR FINDING A COMMAND
+      !  SUBKEY     - A 3 CHARACTER FIELD FOR FINDING A SUB-COMMAND
+      !  COMTXT     - A VARIABLE TEXT FIELD WITH A LINE OF STUFF.
+      !
+      ! THE USERS DATA BASE FILE IS CLOSED AND THE HELP FILES OPENED.
+      ! AFTER PROCESSING HELP COMMANDS,
+      ! THE HELP DATA BASE IS CLOSED AND THE USERS DATA BASE IS REOPENED.
+      !
+      USE, intrinsic :: iso_fortran_env
+
+      USE Globals, only: LIBFLG, TOL, HXFLAG, PCENT, RUCK, DBFNAM
+      USE Globals, only: KZHPSK, KZHPRL, KZHPKY, DFLAG, RMSTAT
+      USE Lexer, only: KWS, ITEMS
+      USE Message, only: WARN
+      USE Text, only: ASCTXT
+
+      INCLUDE 'syspar.inc'
+
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'whcom.inc.f90'
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'rimptr.inc'
+
+      COMMON /SAVDB/STOL,SSAVE,SPCENT,SRUCK
+      LOGICAL :: SSAVE,SPCENT,SRUCK
+      REAL(real64) :: STOL
+      !
+      !
+      ! CLOSE AND SAVE THE CURRENT DATA BASE AND OPEN HELP DATABASE
+      !
+      SSAVE = DFLAG
+      STOL = TOL
+      SPCENT = PCENT
+      SRUCK = RUCK
+      CALL RMCLOS
+      !
+      LIBFLG = 1
+      CALL DBOPEN(ZHFNAM,.FALSE.)
+      IF (RMSTAT.NE.0) THEN
+         CALL MSG('E','CANNOT FIND THE HELP DATABASE: ' // &
+            ZHFNAM // ' ','+')
+         CALL IMSG(RMSTAT,5,' ')
+         GOTO 810
+      ENDIF
+      !
+      ! SET UP WHERE CLAUSE
+      !
+      NBOO = 1
+      BOO(1) = WHAND
+      KOMTYP(1) = 2
+      KOMPOS(1) = 1
+      KOMLEN(1) = 1
+      KOMPOT(1) = 1
+      LIMTU = ALL9S
+      MAXTU = ALL9S
+      NS = 0
+      !
+      I = LOCREL(KZHPRL)
+      IF(I.NE.0) GO TO 800
+      I = LOCATT(KZHPKY,KZHPRL)
+      IF(I.NE.0) GO TO 800
+      CALL ATTGET(ISTAT)
+      KATTP(1) = ATTCOL
+      KATTL(1) = ATTLEN
+      KATTY(1) = ATTYPE
+      KSTRT = ATTKEY
+      IF(KSTRT.NE.0) NS = 2
+      ! INCLUDE COMMAND IN THE WHERE CLAUSE
+      IF (ITEMS.LT.2) KWS(2) = ' '
+      CALL ASCTXT(WHRVAL,ZKEYWL,KWS(2)(1:3))
+      WHRLEN(1) = ATTLEN
+      !
+      ! ALSO GET THE SUB-COMMAND KEYWORD
+      !
+      I = LOCATT(KZHPSK,KZHPRL)
+      IF(I.NE.0) GO TO 800
+      CALL ATTGET(ISTAT)
+      SKCOL = ATTCOL
+      IF (ITEMS.LT.3) KWS(3) = ' '
+      CALL ASCTXT(KZHPSK,ZCW,KWS(3)(1:3))
+      !
+      ! LOOP THRU RECORDS AND DISPLAY
+      !
+      NLINES = 0
+      !C    CALL BLKDEF(9,100,1)
+      !C    ITUP = BLKLOC(9)
+100   CALL RMLOOK(ITUP,1,1,LENGTH)
+110   IF(RMSTAT.NE.0) GOTO 200
+      !
+      ! POSSIBLE USER INTERRUPTION
+      !
+      IF (HXFLAG.NE.0) THEN
+         CALL WARN(6)
+         GOTO 900
+      ENDIF
+      IF (BUFFER(ITUP+SKCOL-1).NE.KZHPSK(1)) GOTO 100
+      NLINES = NLINES + 1
+      ITEXT = ITUP + BUFFER(ITUP+2)
+      NC = BUFFER(ITEXT)
+      CALL AMSG(BUFFER(ITEXT+1),NC,' ')
+      GOTO 100
+      !
+200   IF (NLINES.EQ.0) CALL MSG('E','THERE IS NO HELP TEXT FOR: ' // &
+         KWS(2) // ' ' // KWS(3),' ')
+      IF(RMSTAT.LE.0) GO TO 900
+      CALL MSG(' ','STATUS: ','+')
+      CALL IMSG(RMSTAT,5,' ')
+      GO TO 900
+      !
+      ! HELP NOT AVAILABLE
+      !
+800   CALL MSG('E','HELP IS NOT AVAILABLE',' ')
+810   CALL MSG(' ','CONSULT YOUR SYSTEM ADMINISTRATOR.',' ')
+      GOTO 900
+      !
+      ! TRY TO REVERT TO ENTRY CONDITIONS
+      !
+900   CALL RMCLOS
+      LIBFLG = 0
+      IF(SSAVE)THEN
+         CALL DBOPEN(DBFNAM,.FALSE.)
+         TOL=STOL
+         PCENT=SPCENT
+         RUCK=SRUCK
+      ENDIF
+      SSAVE=.FALSE.
+      RETURN 1
+   END SUBROUTINE RMHELP
+
+
+
    SUBROUTINE RIMCMD
       !!
       !! RIM COMMAND DISPATCHER

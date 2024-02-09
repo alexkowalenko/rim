@@ -2,6 +2,7 @@
 
          USE Globals, only : DBNAME, USERID
          USE Text, only : BLANK
+         USE Rim, only: RMTYPT
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

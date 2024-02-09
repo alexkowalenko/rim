@@ -4,6 +4,7 @@
          USE DateTime, only: RMTIME, RMDATE
          USE Lexer, only: ITEMS, EQKEYW, LXSREC
          USE Message, only : WARN
+         USE Rim, only: RMTYPT
          USE Text, only : BLANK, NONE
          USE Utils, only : ZMOVE
 

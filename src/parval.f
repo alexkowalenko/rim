@@ -6,6 +6,7 @@
          USE Lexer, only: ITEMS, IDI, IDR, LFIND, LXLENW, LXSREC
          USE Maths, only : DTOR
          USE Message, only : WARN
+         USE Rim, only: RMTYPT
          USE Text, only : BLANK
 
          INCLUDE 'syspar.inc'
