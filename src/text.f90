@@ -1,4 +1,5 @@
 MODULE Text
+   !! Text string processing routines
 
    USE, intrinsic :: iso_fortran_env
 
@@ -318,8 +319,6 @@ CONTAINS
    SUBROUTINE ITOA(STRING,SC,FMT,INT,IERR)
       USE Parameters, only : Z
       USE Utils, only : NDIGIT
-
-      implicit none
       !
       ! THIS ROUTINE CONVERTS AN INTEGER (INT) TO ASCII-TEXT (STRING)
       ! IF THE INTEGER WILL NOT FIT, STRING IS
@@ -657,7 +656,6 @@ CONTAINS
 
 
    SUBROUTINE STRMOV(FTXT,FPOS,NUMC,TTXT,TPOS)
-      implicit none
       INTEGER, intent(in) :: FTXT(*), FPOS
       INTEGER, intent(out) :: TTXT(*)
       INTEGER, intent(in) :: TPOS, NUMC

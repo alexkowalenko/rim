@@ -36,7 +36,6 @@ C
          INCLUDE 'rmatts.inc'
          INCLUDE 'files.inc'
          INCLUDE 'msgcom.inc'
-         INCLUDE 'cards.inc'
 C
          CHARACTER*1 CTYPE, MTYPE1
 C

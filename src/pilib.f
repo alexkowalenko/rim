@@ -1,10 +1,11 @@
       FUNCTION RIM(IND,COM)
 
          USE Globals, only : KDBVER, MRINDX, PIFLAG, RMSTAT
+         USE Cards, only : CRDREC, CRDPTR, CRDEND, READCD
          USE Text, only : ASCTXT
          USE Lexer, only : TOKTYP, ITEMS, EQKEYW, KXKEYW
-         USE Parser, only : LODREC
-         USE Rim, only : RMCONS, RMINIT, RMSET
+         USE Parser, only : LODREC, MACDEF
+         USE Rim, only : RMCONS, RMINIT, RMSET, DBLOAD
          USE System, only : SYSCOM
 
          USE Rim, only : DBOPCL
@@ -20,7 +21,6 @@ C
          LOGICAL RIM
          CHARACTER*(*) COM
 C
-         INCLUDE 'cards.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'files.inc'

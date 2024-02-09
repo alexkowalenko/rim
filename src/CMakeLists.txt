@@ -13,8 +13,7 @@ add_library(rimcommon STATIC
     btadd.f btget.f btinit.f btlki.f btlkr.f btmove.f btput.f btrep.f btsert.f
     build.f 
     change.f chgdat.f chgpsw.f chkatt.f chkrel.f
-    dbdefn.f dbload.f dbopen.f deldat.f 
-    deldup.f delete.f delrow.f
+    dbdefn.f deldat.f deldup.f delete.f delrow.f
     eq.f fmtdec.f
     getdat.f getkca.f gett.f gtsort.f
     isect.f
@@ -22,14 +21,13 @@ add_library(rimcommon STATIC
     locatt.f locboo.f
     locprm.f locrel.f
     lodele.f lodpas.f lodrel.f
-    lstrel.f
-    lxdate.f lxedit.f lxfmt.f
-    macdef.f motscn.f ne.f 
+    lstrel.f lxdate.f lxedit.f lxfmt.f
+    motscn.f ne.f 
     parse.f parval.f
     pject.f prckey.f prjtup.f
     putdat.f putt.f ptrs.f 
     reladd.f relget.f relpag.f relput.f remkey.f remlnk.f remrel.f rformt.f
-    rmclos.f rmlook.f rmpii.f rmqery.f rmres.f rmsav.f rmvarc.f
+    rmlook.f rmpii.f rmqery.f rmres.f rmsav.f rmvarc.f
     rnamea.f rnamel.f rnamer.f rtoa.f
     selrel.f selrpt.f selsrt.f selwhr.f
     sort.f subtrc.f swcon.f swcost.f
@@ -43,6 +41,7 @@ add_library(rimcommon STATIC
     union.f
     varadd.f 
     whetol.f wheval.f whrnam.f
+    cards.f90
     datetime.f90
     files.f90
     globals.f90

@@ -1,5 +1,6 @@
       SUBROUTINE NXTCRD(EOF)
 
+         USE Cards, only: CRDREC, CRDPTR, CRDEND, CRDRLB, CRDRLL, CRDIDX
          USE Globals, only : TRACE
          USE Text, only : UPCASE
          USE TextFiles, only : TIOIN
@@ -13,7 +14,6 @@ C  PARAMETERS
 C
 C         EOF-----END-OF-FILE FLAG (0=NO, 1=YES)
 C
-         INCLUDE 'cards.inc'
          INCLUDE 'files.inc'
          INCLUDE 'prom.inc'
          INCLUDE 'msgcom.inc'

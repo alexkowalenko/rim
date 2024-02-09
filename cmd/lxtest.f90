@@ -1,11 +1,12 @@
-PROGRAM MAIN
+PROGRAM LXTEST
 
    USE, intrinsic :: iso_fortran_env
 
    USE Parameters
+   USE Cards, only : READCD
    USE System, only: SystemExit, SystemInitialise
    USE Lexer, only: KWS, EQKEYW
-   USE Parser, only : LODREC
+   USE Parser, only : LODREC, MACDEF
    USE Rim, only: RMCONS, RMINIT
    USE Text, only : Text_Initialise => Initialise
 
@@ -13,7 +14,6 @@ PROGRAM MAIN
    !
    ! TEST LXL ROUTINES
    !
-   INCLUDE 'cards.inc'
    INCLUDE 'files.inc'
    INCLUDE 'rmatts.inc'
    !
@@ -58,4 +58,4 @@ PROGRAM MAIN
    !
 900 CALL SystemExit
    CALL EXIT(0)
-END PROGRAM MAIN
+END PROGRAM LXTEST

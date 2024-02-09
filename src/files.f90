@@ -1,4 +1,5 @@
 MODULE Files
+   !! Low level file opening and closing
    USE Parameters, only : ZICBL
 
    implicit none
@@ -52,10 +53,17 @@ MODULE Files
    public F2OPN, F2CLO
    public F3OPN, F3CLO
    public REUSE
+   public RMCLOS
 
 CONTAINS
 
    SUBROUTINE F1OPN(RIMDB1)
+      !!
+      !!  PURPOSE:   OPEN THE RIM DIRECTORY FILE - FILE 1
+      !!
+      !!  PARAMETERS:
+      !!     RIMDB1--NAME OF THE FILE TO USE FOR FILE1
+      !!
       USE Parameters
       USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, DFLAG, DMFLAG, DBFNAM, KDBHDR, RMSTAT
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
@@ -64,12 +72,6 @@ CONTAINS
 
       CHARACTER*(ZFNAML), intent(in) :: RIMDB1
 
-      !
-      !  PURPOSE:   OPEN THE RIM DIRECTORY FILE - FILE 1
-      !
-      !  PARAMETERS:
-      !     RIMDB1--NAME OF THE FILE TO USE FOR FILE1
-      !
       INCLUDE 'attble.inc'
       INCLUDE 'reltbl.inc'
       INCLUDE 'lnktbl.inc'
@@ -183,14 +185,14 @@ CONTAINS
 
 
    SUBROUTINE F1CLO
+      !!
+      !!  PURPOSE:   CLOSE THE RIM DIRECTORY FILE - FILE 1
+      !!
       USE Parameters
       USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR, RMSTAT
       USE RandomFiles, only : RIOCLO, RIOOUT
       USE Utils, only : ZEROIT, ZMOVE
 
-      !
-      !  PURPOSE:   CLOSE THE RIM DIRECTORY FILE - FILE 1
-      !
       INCLUDE 'attble.inc'
       INCLUDE 'reltbl.inc'
       INCLUDE 'lnktbl.inc'
@@ -258,6 +260,12 @@ CONTAINS
 
 
    SUBROUTINE F2OPN(RIMDB2)
+      !!
+      !!  PURPOSE:    OPEN A DATA RANDOM IO PAGING FILE - FILE 2
+      !!
+      !!  PARAMETERS:
+      !!    RIMDB2-----NAME OF THE FILE TO USE FOR FILE 2
+      !!
 
       USE Parameters
       USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBHDR, RMSTAT
@@ -266,12 +274,7 @@ CONTAINS
 
 
       CHARACTER*(ZFNAML), intent(in) :: RIMDB2
-      !
-      !  PURPOSE:    OPEN A DATA RANDOM IO PAGING FILE - FILE 2
-      !
-      !  PARAMETERS:
-      !    RIMDB2-----NAME OF THE FILE TO USE FOR FILE 2
-      !
+
       INCLUDE 'buffer.inc'
 
       INTEGER :: IOS, KQ1, KQ0
@@ -414,17 +417,17 @@ CONTAINS
 
 
    SUBROUTINE F3OPN(RIMDB3)
+      !!
+      !!  PURPOSE:    OPEN A B-TREE RANDOM IO PAGING FILE - FILE 3
+      !!
+      !!  PARAMETERS:
+      !!      RIMDB3----NAME OF THE FILE TO USE FOR FILE 3
+      !!
       USE Parameters
       USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBHDR, RMSTAT
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
       USE Utils, only : ZEROIT, ZMOVE
 
-      !
-      !  PURPOSE:    OPEN A B-TREE RANDOM IO PAGING FILE - FILE 3
-      !
-      !  PARAMETERS:
-      !      RIMDB3----NAME OF THE FILE TO USE FOR FILE 3
-      !
       INCLUDE 'btbuf.inc'
       INCLUDE 'start.inc'
 
@@ -553,9 +556,9 @@ CONTAINS
 
 
    SUBROUTINE REUSE
-      !
-      !  PURPOSE:    RESET THE USAGE FLAGS TO OFF IN THE ICORE FLAGS
-      !
+      !!
+      !!  PURPOSE:    RESET THE USAGE FLAGS TO OFF IN THE ICORE FLAGS
+      !!
       INTEGER :: NUMB
 
       DO NUMB=1,NUMIC
@@ -564,5 +567,35 @@ CONTAINS
       RETURN
    END SUBROUTINE REUSE
 
+
+   SUBROUTINE RMCLOS
+      !!
+      !!  PURPOSE:   CLOSE A RIM DATABASE.
+      !!
+
+      USE Globals, only : DFLAG, IFMOD, DBDATE, DBTIME, RMSTAT
+      USE DateTime, only: RMTIME, RMDATE
+
+      !  DO NOT CLOSE THE DATABASE IF THERE WERE NO MODIFICATIONS
+      !
+      RMSTAT = 0
+      IF(.NOT.DFLAG) GOTO 999
+      DFLAG = .FALSE.
+      IF(.NOT.IFMOD) GOTO 999
+      !
+      !  RESET THE DATABASE DATE AND TIME.
+      !
+      DBDATE = RMDATE()
+      DBTIME = RMTIME()
+      !
+      !  CLOSE THE THREE DATABASE FILES.
+      !
+      CALL F1CLO
+      CALL F2CLO
+      CALL F3CLO
+999   DFLAG = .FALSE.
+      IFMOD = .FALSE.
+      RETURN
+   END SUBROUTINE RMCLOS
 
 END MODULE Files

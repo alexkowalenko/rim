@@ -1,5 +1,6 @@
       SUBROUTINE LXEDIT
 
+         USE Cards, only : CRDREC, CRDEND, CRDRLB, CRDRLL, CRDIDX
          USE Text, only : UPCASE, ABLANK
          USE TextFiles, only : TIOIN
          USE Lexer, only : ASRCLL, ASLXEI, ASLXEE, ASLXEX, ASLXES
@@ -8,7 +9,6 @@
 C
 C     RECALL AND EDIT AN INPUT LINE OR COMMAND
 C
-         INCLUDE 'cards.inc'
          INCLUDE 'files.inc'
          INCLUDE 'prom.inc'
          INCLUDE 'msgcom.inc'

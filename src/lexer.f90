@@ -254,15 +254,15 @@ contains
       ! IF MACWPT<MACWPZ THEN THE CHARACTER IS TAKEN FROM MACWRK
       !
       USE Parameters
+      USE Cards, only : READCD, CRDPTR, CRDEND, CRDREC, LXEOC
+      USE Macros, only : MACWRK, MACWPT, MACWPZ
       USE Text, only : ABLANK, ASPLUS, ASSEMI
 
       LOGICAL, intent(in) :: TXTONL
 
       INTEGER :: NXT, LASTCH
 
-      INCLUDE 'cards.inc'
       INCLUDE 'files.inc'
-      INCLUDE 'maccom.inc'
       !
       ! CHECK FOR ACTIVE MACRO TEXT
       !
@@ -340,11 +340,11 @@ contains
       !          CH  =  CHARACTER TO REPLACE
       !
       USE Parameters
+      USE Cards, only : CRDPTR, CRDREC
+      USE Macros, only : MACWPT, MACWPZ, MACWRK
 
       INTEGER, intent(in) :: CH
 
-      INCLUDE 'cards.inc'
-      INCLUDE 'maccom.inc'
       !
       ! CH MAY BE REPLACED IN THE MACRO BUFFER OR IN THE CARD BUFFER
       !
@@ -378,12 +378,11 @@ contains
       !     TOKEN IS PUT INTO /TOKENS/ AT ITEMS+1
       !
       USE Parameters
+      USE Cards, only : LXEOC
       USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
       USE Text, only : CHRASC, ASCAN, UPCASE, BLANK, ABLANK, ATOI, ATOR, SQUOTE, DQUOTE, ASBLK, ASCOM, ASQUO, CHTYPE
 
       INTEGER, intent(out) :: EOR
-
-      INCLUDE 'cards.inc'
 
       INTEGER :: IDX, LOOKCH, LNB, X, ASCHR
       LOGICAL :: TXTONL, KWSOK, KNMOK

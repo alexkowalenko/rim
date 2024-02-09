@@ -3,27 +3,25 @@ MODULE Parser
    private
 
    PUBLIC LODREC
+   public MACDEF
 
 contains
 
    SUBROUTINE MACEXP(M)
-      !
-      ! --- TEXT PARSING ROUTINE
-      !
-      ! EXPANDS A MACRO (M) DEFINITION AT ITEMS
-      !
-      !-----------------------------------------------------
-      !
+      !!
+      !! --- TEXT PARSING ROUTINE
+      !!
+      !! EXPANDS A MACRO (M) DEFINITION AT ITEMS
+      !!
       USE Parameters
+      USE Cards, only : LXEOC
       USE Lexer, only : ASCREC, IDP, IDL, ITEMS, NXTTOK
+      USE Macros, only : MACNRG, MACWPT, MACWRK, MACPTR, MACTXT, MACLEN
       USE Text, only : ABLANK, STRMOV
 
       INTEGER, intent(in) :: M
 
       INTEGER :: MI, NARGS, XARGS, EOR, I, CH, ITM
-
-      INCLUDE 'cards.inc'
-      INCLUDE 'maccom.inc'
 
       MI = ITEMS
 ! ACCUMULATE ARGUMENTS
@@ -63,21 +61,19 @@ contains
 
 
    SUBROUTINE LODREC
-      !
-      !  SUBROUTINE TO READ A FREE-FIELD FORMAT INPUT RECORD.
-      !
-      !
+      !!
+      !!  SUBROUTINE TO READ A FREE-FIELD FORMAT INPUT RECORD.
+      !!
       USE Parameters
+      USE Cards, only : READCD
       USE Globals, only : TRACE, RMSTAT
-      USE Lexer, only: KXTEXT, KXNAME, IDT, TOKTYP, ASCREC, ASCNXT
-      USE Lexer, only: IDP, IDL, KWS, ITEMS, EQKEYW, LXSREC, NXTTOK, LXCMNT
-      USE Macros, only: LOCMAC
+      USE Files, only: RMCLOS
+      USE Lexer, only: KXTEXT, KXNAME, IDT, TOKTYP, ASCREC, ASCNXT, IDP, IDL, KWS, ITEMS, EQKEYW, LXSREC, NXTTOK, LXCMNT
+      USE Macros, only: LOCMAC, MACNUM
       USE System, only : SystemExit, SystemTrap
       USE Text, only: EQSIGN, GTSIGN
 
       INCLUDE 'files.inc'
-      INCLUDE 'cards.inc'
-      INCLUDE 'maccom.inc'
       !
       CHARACTER(len=2) :: PKW
       INTEGER :: MACTST(Z)
@@ -186,5 +182,100 @@ contains
       !
       RETURN
    END SUBROUTINE LODREC
+
+
+   SUBROUTINE MACDEF(*)
+      !!
+      !! COMMAND ROUTINE TO DEFINE A MACRO
+      !!
+      ! SYNTAX:  MACRO <NAME> = <TEXT> ARG# <TEXT> ...
+      !          MACRO <NAME> CLEAR
+      !
+      ! *  =  RETURN STATEMENT
+      !
+      !-----------------------------------------------------
+      !
+      USE Parameters
+      Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW, IDI, LXSREC
+      USE Macros, only: LOCMAC, MACNUM, MACLEN, MACPTR, MACTXT, MACNTX, MACNAM, MACNRG
+      USE Message, only : WARN
+      USE Text, only : STRMOV, BLANK, ABLANK
+      USE Utils, only : ZMOVE
+
+      INTEGER :: M, NW, ST, I, WP, PTR, NARG
+      INTEGER :: MAC(Z)
+
+      IF (ITEMS.LT.3) GOTO 8000
+      IF (.NOT.TOKTYP(2,KXNAME)) GOTO 8000
+      IF (ITEMS.EQ.3 .AND. KWS(3).EQ.'=') GOTO 9000
+      CALL LXSREC(2,MAC,ZC)
+      !
+      ! IF NEW MACRO THEN FIND SLOT IN MACNAM
+      ! ELSE DELETE OLD DEFINITION AND REUSE
+      !
+      M = LOCMAC(MAC)
+      IF (M.EQ.0) THEN
+         M = LOCMAC(BLANK)
+         IF (M.EQ.0) THEN
+            IF (MACNUM.GE.ZMXMAC) THEN
+               CALL MSG('E','TOO MANY MACRO DEFINITIONS',' ')
+               GOTO 9000
+            ENDIF
+            MACNUM = MACNUM + 1
+            M = MACNUM
+         ENDIF
+      ELSE
+         NW = (MACLEN(M)-1)/ZCW + 1
+         ST = MACPTR(M)
+         CALL BLKMOV(MACTXT(ST),MACTXT(ST+NW),MACNTX-ST-NW)
+         DO I = 1, MACNUM
+            IF (MACPTR(I).GT.ST) MACPTR(I) = MACPTR(I) - NW
+         END DO
+         MACNTX = MACNTX - NW
+         CALL ZMOVE(MACNAM(1,M),BLANK)
+         MACPTR(M) = 0
+      ENDIF
+
+      IF (EQKEYW(3,'CLEAR')) GOTO 9000
+      IF (KWS(3).NE.'=') GOTO 8000
+
+      CALL ZMOVE(MACNAM(1,M),MAC)
+      !
+      ! COPY REPLACEMENT TEXT TO MACRO AREA
+      ! EACH TOKEN WILL BE SURROUNDED BY A SPACE
+      !
+      WP = MACNTX
+      PTR = 0
+      NARG = 0
+      DO I = 4, ITEMS
+         ! PTR = PTR + 1
+         IF (PTR.GT.ZMXMTX*ZCW-2) GOTO 8200
+         ! CALL PUTT(MACTXT(WP),PTR,ABLANK)
+         IF (IDI(I).GT.0 .AND. IDI(I).LT.32) THEN
+            ! INTEGER IS PARAMETER NUMBER
+            PTR = PTR + 1
+            CALL PUTT(MACTXT(WP),PTR,IDI(I))
+            IF (IDI(I).GT.NARG) NARG = IDI(I)
+         ELSE
+            ! IS REPLACEMENT TEXT
+            IF (PTR+IDL(I).GT.ZMXMTX*ZCW-1) GOTO 8200
+            CALL STRMOV(ASCREC(IDP(I)),1,IDL(I),MACTXT(WP),PTR+1)
+            PTR = PTR + IDL(I)
+         ENDIF
+         ! PTR = PTR + 1
+         ! CALL PUTT(MACTXT(WP),PTR,ABLANK)
+      END DO
+      MACNRG(M) = NARG
+      MACPTR(M) = WP
+      MACLEN(M) = PTR
+      MACNTX = WP + (PTR-1)/ZCW + 1
+      GOTO 9000
+
+8000  CALL WARN(4)
+      GOTO 9000
+8200  CALL MSG('E','TOO MUCH MACRO TEXT',' ')
+
+9000  RETURN 1
+   END SUBROUTINE MACDEF
 
 END MODULE Parser

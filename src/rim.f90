@@ -16,8 +16,10 @@ MODULE Rim
    public RIMCMD
 
    public RMTYPT
+   public DBOPEN
 
    public DBOPCL
+   public DBLOAD
    public RMZIP
    public XHIBIT
    public RMSET, RMSHOW
@@ -76,24 +78,22 @@ contains
       !
 
       USE Parameters
+      USE Cards, only : Cards_Initialise => Initialise
       USE Globals, only: KMSSVL, KMSSVT, KNAPVL, KNAPVT, USERID
       USE Globals, only: ARBCHS, ARBCHM, USERID
       USE Globals, only: KZHPDB, KZHPRL, KZHPKY, KZHPSK, KZHPTX
       USE Globals, only: KDBHDR
       USE Globals, only : Globals_Initialise => Initialise
       USE DateTime, only : DateTime_Initialise => Initialise, DTFENC
+      USE Macros, only : Macros_Initialise => Initialise
       USE Text, only : ASCTXT, ASCCHR, NONE
       USE Text, only : Text_initialise => Initialise
       USE Utils, only : ZMOVE
 
       INCLUDE 'files.inc'
-      INCLUDE 'cards.inc'
       INCLUDE 'msgcom.inc'
       INCLUDE 'rmatts.inc'
       INCLUDE 'prom.inc'
-      INCLUDE 'maccom.inc'
-
-      INTEGER :: I
 
       !
       ! /ASCPAR/
@@ -140,19 +140,14 @@ contains
       MSGPTR = 0
 
       ! /CARDS/
-      READCD = 0
-      CRDIDX = 0
-      CRDRLL = [(0, I = 1, ZCARDN)]
-      LXEOC = 0
+      CALL Cards_Initialise
 
       ! /PROM/
       PRMPT = .TRUE.
       CALL PRMSET('INIT','RIM:')
 
       ! /MACCOM/
-      MACNUM = 0
-      MACNTX = 1
-      MACWPT = MACWPZ
+      CALL Macros_Initialise
 
       RETURN
    END SUBROUTINE RMCONS
@@ -259,12 +254,91 @@ contains
    END SUBROUTINE RMINIT
 
 
+   SUBROUTINE DBOPEN(NEWNAM,NEWOK)
+      !!
+      !!  PURPOSE:  OPEN A RIM DATABASE.
+      !!
+      !! NEWNAM CONTAINS THE DB NAME
+      !! NEWOK = .TRUE. IF THE DB MAY BE CREATED
+      !!
+      USE Parameters
+      USE Globals, only : DFLAG, DBDATE, DBTIME, RMSTAT
+      USE Files, only: FILE1, F1OPN, FILE2, F2OPN, FILE3, F3OPN, RMCLOS
+      USE DateTime, only: RMTIME, RMDATE
+      USE RandomFiles, only: RIOCLO
+      USE System, only: SYSDBN, CHKFIL
+
+      CHARACTER(len=*), intent(in) :: NEWNAM
+      LOGICAL, intent(in) :: NEWOK
+
+      LOGICAL :: RW
+      CHARACTER*(ZFNAML) RIMDB1,RIMDB2,RIMDB3,RIMDBX
+      !
+      RMSTAT = 0
+      CALL RMCLOS
+      !
+      !  INITIALIZE AND SET DATE, AND TIME
+      !
+      CALL RMINIT
+      DBDATE = RMDATE()
+      DBTIME = RMTIME()
+      !
+      !  FIX UP THE FILE NAMES.
+      !
+      CALL SYSDBN(NEWNAM,RIMDB1,RIMDB2,RIMDB3,RIMDBX)
+      !
+      !  CHECK IF THE DB EXISTS
+      !
+      IF (NEWOK) GOTO 100
+      IF (CHKFIL(RIMDB1,RW) .AND. CHKFIL(RIMDB2,RW) .AND. CHKFIL(RIMDB3,RW)) GOTO 100
+      CALL MSG('E','I CANNOT OPEN THE FILES.',' ')
+      GOTO 999
+      !
+      !  OPEN FILE 1.
+      !
+100   CALL F1OPN(RIMDB1)
+      IF((RMSTAT.NE.0).AND.(RMSTAT.NE.15)) GO TO 999
+      !
+      !  OPEN FILE 2.
+      !
+      CALL F2OPN(RIMDB2)
+      IF((RMSTAT.NE.0).AND.(RMSTAT.NE.12).AND.(RMSTAT.NE.15)) THEN
+         GO TO 999
+      END IF
+      !
+      !  OPEN FILE 3.
+      !
+      CALL F3OPN(RIMDB3)
+      IF((RMSTAT.NE.0).AND.(RMSTAT.NE.12).AND.(RMSTAT.NE.15)) THEN
+         GO TO 999
+      END IF
+      !
+      !  IF THIS IS A NEW DATABASE WE NEED TO SET UP THE FIRST BTREE.
+      !
+      IF(DFLAG) DBDATE = RMDATE()
+      !
+      !  IF THERE IS A LOT OF DELETED SPACE ON FILE TWO THEN ADVISE THE USER
+      !  TO DO A RELOAD.
+      !
+      ! CALL PERDEL
+      RETURN
+      !
+      ! AN ERROR SHOULD CLOSE ANY OPEN FILES WITHOUT UPDATE
+      !
+999   CALL RIOCLO(FILE1)
+      CALL RIOCLO(FILE2)
+      CALL RIOCLO(FILE3)
+      RETURN
+   END SUBROUTINE DBOPEN
+
+
    SUBROUTINE DBOPCL(*,MODE)
       !!
       !! OPEN/CLOSE A DATABASE
       !!
       USE Parameters, only: ZFNAML, ZC
       USE Globals, only : DFLAG, DBNAME, DBFNAM, RMSTAT
+      USE Files, only: RMCLOS
       USE Message, only : WARN
       USE System, only : SYSDBG, SYSDBN, CHKFIL
 
@@ -296,6 +370,237 @@ contains
       !
 900   RETURN 1
    END SUBROUTINE DBOPCL
+
+
+   SUBROUTINE DBLOAD(*)
+      !!
+      !!  THIS ROUTINE IS THE DRIVER FOR LOADING DATA VALUES IN THE
+      !!  RIM DATA BASE.
+      !!
+      !! :  LOAD REL_NAME <FROM FILE_NAME> <USING FILENAME>
+      USE Parameters
+      USE Globals, only : DFLAG, DMFLAG, PIFLAG
+      Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS
+      USE Lexer, only: EQKEYW, IDI, LXSREC
+      USE Message, only : WARN
+      USE Parser, only: LODREC
+      USE Text, only : BLANK, STRASC
+      USE DateTime, only : RMDATE
+
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'prom.inc'
+      INCLUDE 'dclar1.inc'
+      CHARACTER*(ZFNAML) FN, DFN
+      !
+      ! PARSING DATA FOR QUERY COMMANDS
+      !
+      INTEGER, PARAMETER :: QKEYL=2
+
+      CHARACTER*(ZKEYWL) QKEYS(QKEYL)
+      INTEGER :: SC, JI, JU, I, ISTAT, L, FOR, FPTR, STATUS, SVM, TYP, FMT, FMTLEN, NFOR, KQ1, KQ2
+      INTEGER :: QPTRS(2,QKEYL)
+
+      INTEGER PARSE, LOCREL, LOCPRM, LOCATT
+      !
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      !  MAKE SURE THE DATABASE CAN BE MODIFIED
+      !
+      IF (.NOT.DMFLAG) THEN
+         CALL WARN(8)
+         GO TO 999
+      ENDIF
+      !
+      QKEYS(1) = 'FROM'
+      QKEYS(2) = 'USING'
+      !
+      !  PARSE THE COMMAND
+      !
+      SC = PARSE(QKEYS,QKEYL,QPTRS)
+      JI = QPTRS(1,1)
+      JU = QPTRS(1,2)
+      IF ( (JI.NE.0 .AND. QPTRS(2,1).NE.2) .OR. (JU.NE.0 .AND. QPTRS(2,2).NE.2)) THEN
+         CALL WARN(4)
+         GOTO 999
+      ENDIF
+      !
+      !  LOOK FOR THE RELATION NAME
+      !
+      CALL LXSREC(2,RNAME,ZC)
+      I = LOCREL(RNAME)
+      IF(I.NE.0) GOTO 850
+      CALL RELGET(ISTAT)
+      IF(ISTAT.NE.0) GO TO 850
+      !
+      !  CHECK FOR AUTHORITY.
+      !
+      L = LOCPRM(RNAME,2)
+      IF(L.NE.0) THEN
+         CALL WARN(9,RNAME)
+         GO TO 999
+      ENDIF
+      !
+      ! IF PROG INTERFACE THEN RETURN NOW
+      !
+      IF (PIFLAG) THEN
+         CALL RMPII
+         GOTO 999
+      ENDIF
+      !
+      ! CHECK IF INPUT FROM FILE
+      !
+      IF (JI.NE.0) THEN
+         CALL STRASC(DFN,ASCREC(IDP(JI+1)),IDL(JI+1))
+         IF (KWS(JI+1).EQ.'TERMINAL') JI = 0
+      ENDIF
+      IF (JU.NE.0 .AND. JI.EQ.0) THEN
+         CALL MSG('E','FORMATTED LOADING REQUIRES A DATA FILE.',' ')
+         GOTO 999
+      ENDIF
+
+      !
+      ! CHECK IF FORMATTED
+      !
+97    IF (JU.NE.0) THEN
+         ! GET THE FILE WITH THE FORMAT
+         CALL STRASC(FN,ASCREC(IDP(JU+1)),IDL(JU+1))
+         IF (KWS(JU+1).EQ.'TERMINAL') FN = ZTRMIN
+98       CALL SETIN(FN)
+         !
+         !    ALLOCATE A BLOCK FOR THE FORMAT
+         !        1) ATTCOL
+         !        2) LINE NUMBER
+         !        3) STARTING COLUMN NUMBER
+         !        4) FIELD LENGTH PER ITEM (FROM FORMAT SPEC)
+         !        5) FORMAT
+         !        6) ITEM POSITION (LOADFM CALCULATES THIS)
+         !
+         !    LOOK FOR FORMAT CARD
+99       CALL LODREC
+         IF (.NOT.EQKEYW(1,'FORMAT')) THEN
+            CALL MSG('E','A ''FORMAT'' BLOCK WAS EXPECTED ON ''' // FN // '''',' ')
+            GOTO 999
+         ENDIF
+         CALL BLKDEF(9,6,NATT+1)
+         FOR = BLKLOC(9)
+
+         ! LOAD FORMAT SPECIFICATIONS
+         FPTR = FOR - 1
+100      CALL LODREC
+         IF (EQKEYW(1,'END')) GOTO 200
+
+         ! LINE IS:  LINE#, COLUMN#, ATTRIBUTE, FORMAT
+
+         ! POSITION  (ITEMS 1 & 2)
+         IF (IDI(1).LE.0 .OR. IDI(2).LE.0) THEN
+            CALL MSG('E','POSITIONS MUST BE POSITIVE INTEGERS.',' ')
+            GOTO 999
+         ENDIF
+         BUFFER(2+FPTR) = IDI(1)
+         BUFFER(3+FPTR) = IDI(2)
+
+         ! ATTRIBUTE (ITEM 3)
+         IF (TOKTYP(3,KXNAME)) THEN
+            CALL LXSREC(3,ANAME,ZC)
+            IF (LOCATT(ANAME,NAME).NE.0) THEN
+               CALL WARN(3,ANAME,NAME)
+               GOTO 999
+            ENDIF
+            CALL ATTGET(STATUS)
+            BUFFER(1+FPTR) = ATTCOL
+         ELSE
+            BUFFER(1+FPTR) = 0
+         ENDIF
+
+         ! FORMAT
+         CALL TYPER(ATTYPE,SVM,TYP)
+         CALL LXFMT(4,TYP,FMT,FMTLEN)
+         IF (FMT.EQ.0) GOTO 999
+         BUFFER(4+FPTR) = FMTLEN
+         BUFFER(5+FPTR) = FMT
+         BUFFER(6+FPTR) = 0
+
+         FPTR = FPTR + 6
+         GOTO 100
+
+200      NFOR = (FPTR - FOR + 1) / 6
+         IF (NFOR.LE.0) THEN
+            CALL MSG('E','YOU HAVE NOT SPECIFIED ANY FORMATS.',' ')
+            GOTO 999
+         ENDIF
+      ENDIF
+      !
+      ! IF INPUT FROM FILE  -  OPEN NOW
+      !
+      IF (JI.NE.0 .AND. DFN.NE.FN) CALL SETIN(DFN)
+      !
+      !  SET THE PROMPT CHARACTER TO L (LOAD)
+      !
+      CALL PRMSET('SET','RIM_LOAD:')
+      !
+      CALL MSG(' ','LOADING TABLE ''','+')
+      CALL AMSG(NAME,-ZC,'+')
+      CALL MSG(' ','''',' ')
+      !
+      !  DO THE LOADING
+      !
+      CALL BLKDEF(11,ZTUPAL,NATT)
+      !
+      !  FILL UP THIS MATRIX WITH DATA FROM TUPLEA.
+      !
+      I = LOCATT(BLANK,NAME)
+      KQ2 = BLKLOC(11)
+      DO I=1,NATT
+         CALL ATTGET(ISTAT)
+         IF(ISTAT.NE.0) GO TO 800
+         CALL BLKMOV(BUFFER(KQ2),ATTNAM,ZTUPAL)
+         KQ2 = KQ2 + ZTUPAL
+800      CONTINUE
+      END DO
+      CALL BLKDEF(10,1,MAXCOL)
+      KQ1 = BLKLOC(10)
+      KQ2 = BLKLOC(11)
+899   IF (JU.NE.0) THEN
+         CALL LOADFM(BUFFER(KQ1),BUFFER(KQ2),BUFFER(FOR),NFOR)
+         CALL BLKCLR(9)
+      ELSE
+         CALL LOADIT(BUFFER(KQ1),BUFFER(KQ2))
+      ENDIF
+      CALL BLKCLR(11)
+      !
+      !  UPDATE THE DATE OF LAST MODIFICATION.
+      !
+      RDATE = RMDATE()
+      CALL RELPUT
+      CALL BLKCLR(10)
+      !
+      ! MAY BE A SECOND LOAD COMMAND
+      !
+      !CCCC IF(EQKEYW(1,'LOAD')) GO TO 400
+      !
+      !  END OF LOADING.
+      !
+      CALL MSG(' ','END DATA LOADING',' ')
+      !
+      !  RESET THE PROMPT CHARACTER
+      !
+      CALL PRMSET('RESET',' ')
+      GOTO 999
+      !
+      ! UNRECOGNIZED RELATION NAME.
+850   CALL WARN(1,RNAME)
+      !
+999   RETURN 1
+   END SUBROUTINE DBLOAD
 
 
    SUBROUTINE XHIBIT(*)
@@ -645,18 +950,17 @@ contains
       !! SHOW PARAMETER VALUES
       !!
       USE Parameters
-      USE Globals, only : DFLAG, DBNAME, USERID, CASEIG, ARBCHS, &
-         ARBCHM, KRMINF, KRMRNF, KMSSVL, KMSSVT, KNAPVL, &
-         KNAPVT
+      USE Globals, only : DFLAG, DBNAME, USERID, CASEIG, ARBCHS, ARBCHM, KRMINF, KRMRNF, KMSSVL, KMSSVT, KNAPVL, KNAPVT
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
+      USE Macros, only: MACPTR, MACPTR, MACTXT, MACLEN
       USE DateTime, only: RMTIME, RMDATE, KRMDTF, KRMTMF
+      USE Macros, only: MACNUM, MACNAM
       USE Text, only : BLANK
       USE Utils, only : NDIGIT
 
       INCLUDE 'rmatts.inc'
       INCLUDE 'files.inc'
       INCLUDE 'msgcom.inc'
-      INCLUDE 'maccom.inc'
       INCLUDE 'tupler.inc'
 
       INTEGER :: TDAY, TTIM, I, J, CH

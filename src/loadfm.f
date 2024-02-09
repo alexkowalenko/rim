@@ -1,5 +1,6 @@
       SUBROUTINE LOADFM(MAT,ATT,FOR,NFOR)
 
+         USE Cards, only : CRDREC, CRDEND
          USE Lexer, only: KXTEXT, KXINT, KXREAL, IDT, ASCREC, IDP, IDL
          USE Lexer, only: KWS, ITEMS, IDI, IDR
          USE TextFiles, only : TIOIN
@@ -22,7 +23,6 @@ C            5) FORMAT
 C            6) ITEM POSITION (LOADFM CALCULATES THIS)
 C         NFOR----NUMBER OF ITEMS IN FOR
 C
-         INCLUDE 'cards.inc'
          INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'start.inc'

@@ -1,5 +1,6 @@
       LOGICAL FUNCTION LOADMV(CCOL,CLEN)
 
+         USE Cards, only : CRDREC
          USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
          USE Lexer, only: KXTEXT, KXINT, KXREAL, IDT, ITEMS, IDI
          USE Text, only : BLANK, ABLANK, ASCAN, STRMOV
@@ -12,8 +13,6 @@ C
 C  PARAMETERS:
 C         CCOL----STARTING COLUMN
 C         CLEN----LENGTH
-C
-         INCLUDE 'cards.inc'
 C
 C  DECLARATION STATEMENTS
 C

@@ -287,6 +287,7 @@ contains
       !!  PURPOSE:  PROCESS ZIP COMMAND  (CALL SYSTEM FUNCTION)
       !!
       USE Globals, only : DFLAG, DBFNAM
+      USE Files, only: RMCLOS
       USE Lexer, only: KXTEXT, TOKTYP, ASCREC, IDP, IDL, ITEMS
       USE Message, only: WARN
       USE Text, only : STRASC
@@ -341,10 +342,11 @@ contains
       !
       USE, intrinsic :: iso_fortran_env
 
-      USE Globals, only: LIBFLG, TOL, HXFLAG, PCENT, RUCK, DBFNAM
-      USE Globals, only: KZHPSK, KZHPRL, KZHPKY, DFLAG, RMSTAT
+      USE Globals, only: LIBFLG, TOL, HXFLAG, PCENT, RUCK, DBFNAM, KZHPSK, KZHPRL, KZHPKY, DFLAG, RMSTAT
+      USE Files, only: RMCLOS
       USE Lexer, only: KWS, ITEMS
       USE Message, only: WARN
+      USE RIM, only: DBOPEN
       USE Text, only: ASCTXT
 
       INCLUDE 'syspar.inc'
@@ -373,8 +375,7 @@ contains
       LIBFLG = 1
       CALL DBOPEN(ZHFNAM,.FALSE.)
       IF (RMSTAT.NE.0) THEN
-         CALL MSG('E','CANNOT FIND THE HELP DATABASE: ' // &
-            ZHFNAM // ' ','+')
+         CALL MSG('E','CANNOT FIND THE HELP DATABASE: ' // ZHFNAM // ' ','+')
          CALL IMSG(RMSTAT,5,' ')
          GOTO 810
       ENDIF
@@ -436,8 +437,7 @@ contains
       CALL AMSG(BUFFER(ITEXT+1),NC,' ')
       GOTO 100
       !
-200   IF (NLINES.EQ.0) CALL MSG('E','THERE IS NO HELP TEXT FOR: ' // &
-         KWS(2) // ' ' // KWS(3),' ')
+200   IF (NLINES.EQ.0) CALL MSG('E','THERE IS NO HELP TEXT FOR: ' // KWS(2) // ' ' // KWS(3),' ')
       IF(RMSTAT.LE.0) GO TO 900
       CALL MSG(' ','STATUS: ','+')
       CALL IMSG(RMSTAT,5,' ')
@@ -471,10 +471,11 @@ contains
       !!
       USE Parameters
       USE Globals, only: HXFLAG
+      USE Files, only: RMCLOS
       USE Lexer, only: KXKEYW, TOKTYP, KWS, ITEMS, EQKEYW
-      USE Parser, only: LODREC
+      USE Parser, only: LODREC, MACDEF
       USE System, only : SYSCOM
-      USE Rim, only : XHIBIT
+      USE Rim, only : XHIBIT, DBLOAD
 
       INCLUDE 'files.inc'
       !
