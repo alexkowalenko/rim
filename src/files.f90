@@ -75,7 +75,6 @@ CONTAINS
       INCLUDE 'lnktbl.inc'
 
       LOGICAL :: NE
-      INCLUDE 'dstats.inc'
 
       INTEGER :: IOS, I, II
 
@@ -195,7 +194,6 @@ CONTAINS
       INCLUDE 'attble.inc'
       INCLUDE 'reltbl.inc'
       INCLUDE 'lnktbl.inc'
-      INCLUDE 'dstats.inc'
 
       INTEGER :: IOS
 
