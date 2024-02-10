@@ -59,6 +59,165 @@ contains
    END SUBROUTINE REPORT
 
 
+   SUBROUTINE DBDEFN(*)
+      !!
+      !! DEFINE THE DATABASE SCHEMA
+      !!
+      !!  SYNTAX:  DEFINE <DATABASE>
+      !!       <COMMANDS>
+      !!       END
+      !!
+      USE Parameters
+      USE Globals, only : DFLAG, USERID, OWNER, DBNAME, IFMOD, DBFNAM
+      USE Globals, only : RMSTAT
+      USE DateTime, only : RMDATE
+      USE Lexer, only: ITEMS, EQKEYW, LXSREC
+      USE Message, only : WARN
+      USE Parser, only: LODREC, LODELE, LODREL, LODLNK, LODPAS
+      USE Rim, only: DBOPEN
+      USE System, only: SYSDBG
+      USE Text, only : NONE
+      USE Utils, only : ZMOVE
+
+      INCLUDE 'files.inc'
+      INCLUDE 'prom.inc'
+
+      INTEGER :: DBSTAT, ERROR, NEWCSN, NUMELE, RFLAG, TDAY
+
+      LOGICAL :: EQ, NE
+      INTEGER :: NAMOWN(Z)
+      !
+
+      NUMELE  = 0
+      NEWCSN = 0
+      TDAY = RMDATE()
+      !
+      ! SET THE PROMPT CHARACTER
+      !
+      CALL PRMSET('SET','RIM_DEF:')
+      !
+      ! CHECK THE DATA BASE NAME.
+      !
+      IF (ITEMS.GE.2) THEN
+         !
+         ! NAME SPECIFIED ON DEFINE COMMAND
+         !
+         CALL SYSDBG(2,DBSTAT)
+         IF(DBSTAT.NE.0) GO TO 999
+         !
+         !    CHECK THE DATABASE AND OPEN IT
+         !
+         CALL DBOPEN (DBFNAM,.TRUE.)
+         IF((RMSTAT.NE.15).AND.(RMSTAT.NE.0)) THEN
+            CALL WARN(RMSTAT)
+            GO TO 999
+         ENDIF
+      ELSE
+         !
+         ! USE CURRENT DATABASE
+         !
+         IF (.NOT.DFLAG) THEN
+            CALL WARN(2)
+            GOTO 999
+         ENDIF
+      ENDIF
+
+
+      CALL MSG(' ','BEGIN DEFINITIONS FOR ','+')
+      IF (DFLAG) THEN
+         CALL MSG(' ','EXISTING DATABASE: ','+')
+         RFLAG = 1
+      ELSE
+         CALL MSG(' ','NEW DATABASE: ','+')
+         CALL ZMOVE(OWNER,USERID)
+      ENDIF
+      CALL AMSG(DBNAME,ZC,' ')
+      NEWCSN = 1
+
+      !
+      !  PROCESS DB DEFINITION CAOMMANDS
+      !
+300   CALL LODREC
+350   IF(EQKEYW(1,'COLUMNS')) GO TO 400
+      IF(EQKEYW(1,'ATTRIBUTES')) GO TO 400
+      IF(EQKEYW(1,'TABLES')) GO TO 500
+      IF(EQKEYW(1,'RELATIONS')) GO TO 500
+      IF(EQKEYW(1,'LINKS')) GO TO 700
+      IF(EQKEYW(1,'PASSWORDS')) GO TO 750
+      IF(EQKEYW(1,'OWNER')) GO TO 800
+      IF(EQKEYW(1,'END')) GO TO 900
+      !
+      !  ERROR.
+      !
+      CALL WARN(4)
+      GO TO 300
+      !
+      !  PROCESS ATTRIBUTES.
+      !
+400   CALL LODELE(NUMELE)
+      GO TO 350
+      !
+      !
+      !  PROCESS RELATIONS.
+      !
+500   CONTINUE
+      CALL LODREL(NUMELE)
+      GO TO 350
+      !
+      !
+      !  PROCESS LINKS.
+      !
+700   CONTINUE
+      CALL LODLNK
+      GO TO 350
+      !
+      !  PROCESS PASSWORDS.
+      !
+750   CONTINUE
+      CALL LODPAS(ERROR)
+      GO TO 350
+      !
+      ! PROCESS OWNER
+      !
+800   IF (ITEMS.GE.2) THEN
+         CALL LXSREC(2,NAMOWN,ZC)
+      ELSE
+         CALL ZMOVE(NAMOWN,NONE)
+      ENDIF
+      IF (NE(OWNER,NONE) .AND. NE(OWNER,NAMOWN)) THEN
+         CALL MSG('E','YOU ARE NOT THE DATABASE OWNER.',' ')
+         ERROR = ERROR + 1
+         GO TO 300
+      ENDIF
+      CALL ZMOVE(OWNER,NAMOWN)
+      CALL ZMOVE(USERID,OWNER)
+      GOTO 300
+      !
+      !  PROCESS END.
+      !
+900   CONTINUE
+      !
+      !  SET THE RETURN CODE AND MAKE SURE A SCHEMA HAS BEEN DEFINED
+      !
+      IF(NEWCSN.EQ.0) GO TO 999
+      CALL MSG(' ','DATABASE DEFINITIONS COMPLETED.',' ')
+      !
+      !  BUFFER THE SCHEMA AND DATABASE OUT
+      !
+      DFLAG = .TRUE.
+      IFMOD = .TRUE.
+      CALL DBOPEN (DBFNAM,.FALSE.)
+      IF(RMSTAT.NE.0) CALL WARN(RMSTAT)
+      !
+      !
+      ! RESET THE PROMPT CHARACTER TO R
+      !
+999   CALL PRMSET('RESET',' ')
+      CALL BLKCLR(10)
+      RETURN 1
+   END SUBROUTINE DBDEFN
+
+
    SUBROUTINE UNLOAD(*)
       !!
       !! UNLOAD DATABASE SCHEMA, DATA, OR BOTH

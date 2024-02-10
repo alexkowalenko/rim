@@ -13,14 +13,13 @@ add_library(rimcommon STATIC
     btadd.f btget.f btinit.f btlki.f btlkr.f btmove.f btput.f btrep.f btsert.f
     build.f 
     change.f chgdat.f chgpsw.f chkatt.f chkrel.f
-    dbdefn.f deldat.f deldup.f delete.f delrow.f
+    deldat.f deldup.f delete.f delrow.f
     eq.f
     getdat.f getkca.f gett.f gtsort.f
     isect.f
     join.f joirel.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
-    locatt.f locboo.f
-    locprm.f locrel.f
-    lodele.f lodpas.f lodrel.f
+    lnkadd.f lnkpag.f
+    locatt.f locboo.f loclnk.f locprm.f locrel.f
     lstrel.f lxedit.f
     motscn.f ne.f 
     parse.f parval.f
@@ -59,9 +58,9 @@ add_library(rimcommon STATIC
 
 add_library(rimextlib STATIC
     amsg.f dmsg.f imsg.f
-    lnkadd.f lnkget.f lnkpag.f lnkput.f loadfm.f
+    lnkget.f lnkput.f loadfm.f
     loadit.f loadmv.f 
-    loclnk.f locvar.f lodlnk.f  
+    locvar.f
     msg.f msgcmv.f 
     nxtcrd.f 
     pgbres.f pgbsto.f pgcexp.f

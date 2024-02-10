@@ -4,6 +4,10 @@ MODULE Parser
 
    PUBLIC LODREC
    public MACDEF
+   public LODELE
+   public LODREL
+   public LODLNK
+   public LODPAS
 
 contains
 
@@ -277,5 +281,459 @@ contains
 
 9000  RETURN 1
    END SUBROUTINE MACDEF
+
+
+   SUBROUTINE LODELE(NUMELE)
+      !!
+      !! LOAD THE ELEMENT DATA INTO THE SCRATCH AREA
+      !!
+      !!  PARAMETERS:
+      !!     NUMELE--NUMBER OF NEWLY DEFINED ATTRIBUTES
+      !!
+      USE Parameters
+      USE Formater, only : TYPER, LXFMT
+      USE Lexer, only : KXINT, KXNAME, TOKTYP, ITEMS, EQKEYW, IDI
+      USE Lexer, only : LFIND, LXSREC
+      USE Message, only : WARN
+      USE Utils, only : HTOI
+
+      INTEGER, intent(in out) :: NUMELE
+
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'files.inc'
+      !
+      ! TEMPORARY ATTRIBUTE STORAGE
+      INCLUDE 'tmpa.inc'
+      !
+      INCLUDE 'dclar1.inc'
+
+      INTEGER :: COLUMN, FMT, FMTLEN, FMTPOS, KEY, KEYPOS, KQ1, LENGTH, LTEMS, NWORDS, ROWS, STYP, IATTV, VTYP
+
+      !
+      !  READ AN ELEMENT RECORD.
+      !
+100   CALL LODREC
+      IF(ITEMS.EQ.1) GOTO 900
+      !
+      !  EDIT ELEMENT INPUT.
+      !
+200   IATTV = 0
+      IF(EQKEYW(2,'REAL')) IATTV = KZREAL
+      IF(EQKEYW(2,'TEXT')) IATTV = KZTEXT
+      IF(EQKEYW(2,'DATE')) IATTV = KZDATE
+      IF(EQKEYW(2,'TIME')) IATTV = KZTIME
+      IF(EQKEYW(2,'INTEGER')) IATTV = KZINT
+      IF(EQKEYW(2,'DOUBLE')) IATTV = KZDOUB
+      IF(EQKEYW(2,'RVEC')) IATTV = KZRVEC
+      IF(EQKEYW(2,'IVEC')) IATTV = KZIVEC
+      IF(EQKEYW(2,'DVEC')) IATTV = KZDVEC
+      IF(EQKEYW(2,'RMAT')) IATTV = KZRMAT
+      IF(EQKEYW(2,'IMAT')) IATTV = KZIMAT
+      IF(EQKEYW(2,'DMAT')) IATTV = KZDMAT
+      IF(IATTV.EQ.0) THEN
+         CALL MSG('E','UNKNOWN DATA TYPE SPECIFIED.',' ')
+         GO TO 800
+      ENDIF
+      !
+      !  MAKE SURE THAT THE ATTRIBUTE NAME IS VALID
+      !
+      IF(.NOT.TOKTYP(1,KXNAME)) THEN
+         CALL LXSREC(1,ANAME,ZC)
+         CALL WARN(7,ANAME)
+         GO TO 800
+      ENDIF
+      !
+      ! SCAN LINE
+      !
+      LENGTH = 1
+      IF(EQKEYW(2,'TEXT')) LENGTH = ZC
+      ROWS = 1
+      COLUMN = 1
+      FMT = 0
+      KEY = 0
+      LTEMS = ITEMS
+      KEYPOS = LFIND(3,ITEMS-2,'KEY')
+      FMTPOS = LFIND(3,ITEMS-2,'FORMAT')
+      IF (KEYPOS.NE.0) LTEMS = KEYPOS - 1
+      IF (FMTPOS.NE.0) LTEMS = MIN(LTEMS,FMTPOS-1)
+      !
+      IF(LTEMS.EQ.2) GO TO 700
+      IF(LTEMS.EQ.3) GO TO 500
+      IF(LTEMS.EQ.4) GO TO 600
+      CALL WARN(4)
+      GO TO 800
+      !
+      !  ITEMS = 3.
+      !
+      !500   IF((IDI(3).GT.0).AND.(IDI(3).LE.9999)) THEN
+500   IF(IDI(3).GT.0) THEN
+         LENGTH = IDI(3)
+         ROWS = LENGTH
+         GO TO 700
+      ENDIF
+      IF(EQKEYW(3,'VAR')) THEN
+         LENGTH = 0
+         ROWS = 0
+         COLUMN = 0
+         GO TO 700
+      ENDIF
+      CALL MSG('E','LENGTH MUST BE A POSITIVE INTEGER.',' ')
+      GOTO 800
+      !
+      !
+      !  ITEMS = 4.
+      !
+600   IF((TOKTYP(3,KXINT)).AND.(IDI(3).GT.0)) THEN
+         LENGTH = IDI(3)
+         ROWS = LENGTH
+         IF((TOKTYP(4,KXINT)).AND.(IDI(4).GT.0)) THEN
+            COLUMN = IDI(4)
+            GOTO 670
+         ENDIF
+         IF(EQKEYW(4,'VAR')) THEN
+            COLUMN = 0
+            GOTO 670
+         ENDIF
+      ENDIF
+      IF(EQKEYW(3,'VAR')) THEN
+         LENGTH = 0
+         ROWS = 0
+         IF(EQKEYW(4,'VAR')) THEN
+            COLUMN = 0
+            GOTO 670
+         ENDIF
+      ENDIF
+      CALL MSG('E','LENGTH MUST BE A POSITIVE INTEGER.',' ')
+      GO TO 800
+      !
+      !
+670   IF(.NOT. (EQKEYW(2,'RMAT') .OR. &
+         EQKEYW(2,'IMAT') .OR. &
+         EQKEYW(2,'DMAT')))THEN
+         CALL MSG('E', &
+            'YOU ENTERED ROWS AND COLUMNS BUT TYPE NOT MATRIX.',' ')
+         GO TO 800
+      ENDIF
+      !
+      ! SET KEY AND FORMAT
+      !
+700   IF (KEYPOS.NE.0) KEY = 1
+      IF (FMTPOS.NE.0) THEN
+         CALL TYPER(IATTV,VTYP,STYP)
+         CALL LXFMT(FMTPOS+1,STYP,FMT,FMTLEN)
+         IF (FMT.EQ.0) THEN
+            GOTO 800
+         ENDIF
+      ENDIF
+      !
+      !  STORE THE ELEMENT IN JUNK.
+      !
+      NUMELE = NUMELE + 1
+      CALL BLKCHG(10,TMPAL,NUMELE)
+      KQ1 = BLKLOC(10)
+      KQ1 = KQ1 + (TMPAL*(NUMELE-1))
+      CALL LXSREC(1,BUFFER(KQ1),ZC)
+      BUFFER(KQ1+TMPA2-1) = IATTV
+      IF(EQKEYW(2,'DOUBLE')) LENGTH = LENGTH * 2
+      BUFFER(KQ1+TMPA3-1) = LENGTH
+      BUFFER(KQ1+TMPA4-1) = KEY
+      BUFFER(KQ1+TMPA5-1) = FMT
+      !
+      !  GET MORE DATA.
+      !
+      IF(IATTV.EQ.KZTEXT) THEN
+         ! SPECIAL PACKING FOR TEXT ATTRIBUTES.
+         NWORDS = ((LENGTH - 1) / ZCW) + 1
+         IF(LENGTH.EQ.0) NWORDS = 0
+         CALL HTOI(LENGTH,NWORDS,BUFFER(KQ1+TMPA3-1))
+         GO TO 100
+      ENDIF
+      !
+      IF(IATTV.EQ.KZDATE) GO TO 100
+      IF(IATTV.EQ.KZINT ) GO TO 100
+      IF(IATTV.EQ.KZREAL) GO TO 100
+      IF(IATTV.EQ.KZDOUB) GO TO 100
+      !
+      !  PROCESS VECTOR AND MATRIX ITEMS.
+      !
+      IF(IATTV.EQ.KZDVEC) COLUMN = 2
+      IF(IATTV.EQ.KZDMAT) COLUMN = COLUMN * 2
+      CALL HTOI(ROWS,ROWS*COLUMN,BUFFER(KQ1+TMPA3-1))
+      GO TO 100
+      !
+      !
+800   CALL MSG(' ','STILL DEFINING COLUMNS',' ')
+      GOTO 100
+      !
+      !  DONE.
+      !
+900   CONTINUE
+      !
+      !C    IF (DBGATT) THEN
+      !    CALL MSG(' ','INTERNAL ATTRIBUTE TABLE',' ')
+      !    DO 950 I = BLKLOC(10),BLKLOC(10)+(TMPAL*(NUMELE-1)),TMPAL
+      !950     CALL BLKDSP('ATTRIBUTE',BUFFER(I),'ZIIII')
+      !CC   ENDFI
+      !
+      RETURN
+   END SUBROUTINE LODELE
+
+
+   SUBROUTINE LODREL(NUMELE)
+      !!
+      !! LOAD THE RELATION DESCRIPTION
+      !!
+      USE Parameters
+      Use Lexer, only: KXNAME, TOKTYP, ITEMS, LXSREC
+      USE Message, only : WARN
+
+      INTEGER, intent(in) :: NUMELE
+
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'files.inc'
+      !
+      INCLUDE 'dclar1.inc'
+
+      INTEGER :: ERROR, I, JUNK
+
+      INTEGER LOCREL
+      !
+      !  READ RELATION DATA.
+      !
+100   CALL LODREC
+      IF(ITEMS.EQ.1) GO TO 999
+      IF(ITEMS.LT.3) THEN
+         ! SYNATX ERROR
+         CALL WARN(4)
+         GO TO 800
+      ENDIF
+      !
+      !  CHECK FOR VALID RELATION NAME.
+      !
+      IF(.NOT.TOKTYP(1,KXNAME)) THEN
+         CALL MSG('E','THE TABLE NAME IS NOT VALID.',' ')
+         GO TO 800
+      ENDIF
+      CALL LXSREC(1,RNAME,ZC)
+      I = LOCREL(RNAME)
+      IF(I.EQ.0) THEN
+         CALL WARN(5,RNAME)
+         GOTO 800
+      ENDIF
+      !
+      !  CHECK ATTRIBUTE NAMES.
+      !
+      JUNK = 1
+      IF(NUMELE.GT.0) JUNK = BLKLOC(10)
+      CALL CHKATT(BUFFER(JUNK),NUMELE,ERROR)
+      IF (ERROR.EQ.0) GO TO 100
+      !
+      !
+800   CALL MSG(' ','STILL DEFINING TABLES',' ')
+      GOTO 100
+      !
+      !  END RELATION PROCESSING.
+      !
+999   CONTINUE
+      RETURN
+   END SUBROUTINE LODREL
+
+
+   SUBROUTINE LODLNK
+      !
+      ! LOADS LINK DEFINITIONS.
+      !
+
+      USE Parameters
+      Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
+      USE Message, only : WARN
+      USE Utils, only : ZMOVE
+
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'files.inc'
+
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'tuplel.inc'
+      !
+      INCLUDE 'dclar1.inc'
+
+      INTEGER :: FLEN, FTYP, I, I1, I2
+      INTEGER :: LKNAM(Z)
+
+      INTEGER LOCLNK, LOCATT
+      !
+      ! READ LINK DEFINITIONS
+      !
+100   CONTINUE
+      CALL LODREC
+      IF(ITEMS.EQ.1) GO TO 999
+      !
+      ! ASSUME LINK DEFINITION - CHECK SYNTAX
+      !
+      IF (ITEMS.NE.9            .OR. &
+         .NOT.EQKEYW(2,'FROM') .OR. &
+         .NOT.EQKEYW(4,'IN')   .OR. &
+         .NOT.EQKEYW(6,'TO')   .OR. &
+         .NOT.EQKEYW(8,'IN')) THEN
+         CALL WARN(4)
+         GOTO 800
+      ENDIF
+      !
+      ! CHECK FOR VALID LINK NAME.
+      !
+200   IF(.NOT.TOKTYP(1,KXNAME)) THEN
+         CALL MSG('E','THE LINK NAME IS NOT VALID.',' ')
+         GO TO 800
+      ENDIF
+      !
+      CALL LXSREC(1,LKNAM,ZC)
+      I = LOCLNK(LKNAM)
+      IF(I.EQ.0) THEN
+         CALL MSG('E','THAT LINK HAS ALREADY BEEN DEFINED.',' ')
+         GO TO 800
+      ENDIF
+      !
+      ! CHECK RELATION AND ATTRIBUTE NAMES
+      !
+      CALL LXSREC(3,A1NAME,ZC)
+      CALL LXSREC(5,R1NAME,ZC)
+      IF (LOCATT(A1NAME,R1NAME).NE.0) THEN
+         CALL WARN(3,A1NAME,R1NAME)
+         GOTO 800
+      ENDIF
+      CALL ATTGET(I1)
+      FTYP = ATTYPE
+      FLEN = ATTLEN
+
+      CALL LXSREC(7,A2NAME,ZC)
+      CALL LXSREC(9,R2NAME,ZC)
+      IF (LOCATT(A2NAME,R2NAME).NE.0) THEN
+         CALL WARN(3,A2NAME,R2NAME)
+         GOTO 800
+      ENDIF
+      CALL ATTGET(I2)
+111   IF (ATTYPE.NE.FTYP .OR. ATTLEN.NE.FLEN) THEN
+         CALL MSG('E', &
+            'COLUMNS DO NOT HAVE THE SAME TYPE AND LENGTH.',' ')
+         GOTO 800
+      ENDIF
+
+      CALL ZMOVE(LNAME,LKNAM)
+      CALL LNKADD
+      GOTO 100
+      !
+      !
+800   CALL MSG(' ','STILL DEFINING LINKS',' ')
+      GOTO 100
+      !
+      !  END RELATION PROCESSING.
+      !
+999   CONTINUE
+      RETURN
+   END SUBROUTINE LODLNK
+
+
+   SUBROUTINE LODPAS(ERROR)
+      !!
+      !! PROCESS PASSWORDS DEFINITIONS
+      !!         PASSWORD KEYWORDS MAY BE ABBREVIATED
+      !!
+      !! SYNTAX: READ PASSWORD FOR <REL> IS <PASSWORD>
+      !!         RPW FOR <REL> IS <PASSWORD>
+      !!         WRITE PASSWORD FOR <REL> IS <PASSWORD>
+      !!         WPW FOR <REL> IS <PASSWORD>
+      !!
+      !!         <REL> CAN BE * FOR ALL RELATIONS
+      !!
+      USE Parameters
+      Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
+      USE Lexer, only: LXSREC
+      USE Message, only : WARN
+      USE Text, only : BLANK
+      USE Utils, only : ZMOVE
+
+      INTEGER, intent(in out) :: ERROR
+
+      INCLUDE 'tupler.inc'
+      INCLUDE 'files.inc'
+
+      INCLUDE 'dclar1.inc'
+      INCLUDE 'dclar3.inc'
+
+      INTEGER :: I, ISTAT, PWTP, STOK
+
+      INTEGER LOCREL
+      !
+      !  READ A PASSWORD.
+      !
+100   CONTINUE
+      CALL LODREC
+      IF (ITEMS.EQ.1) GOTO 999
+      PWTP = 0
+      IF (EQKEYW(1,'READ')) THEN
+         IF (.NOT.EQKEYW(2,'PASSWORD')) GOTO 700
+         PWTP = 1
+         STOK = 3
+         GOTO 200
+      ENDIF
+      IF (EQKEYW(1,'MODIFY')) THEN
+         IF (.NOT.EQKEYW(2,'PASSWORD')) GOTO 700
+         PWTP = 2
+         STOK = 3
+         GOTO 200
+      ENDIF
+      IF (EQKEYW(1,'RPW')) THEN
+         PWTP = 1
+         STOK = 2
+         GOTO 200
+      ENDIF
+      IF (EQKEYW(1,'MPW')) THEN
+         PWTP = 2
+         STOK = 2
+         GOTO 200
+      ENDIF
+      IF(PWTP.EQ.0)  GO TO 700
+      !
+200   IF(.NOT.EQKEYW(STOK,'FOR')) GOTO 700
+      IF(.NOT.EQKEYW(STOK+1,'*')) CALL LXSREC(STOK+1,RNAME,ZC)
+      I = LOCREL(RNAME)
+      IF(I.NE.0) THEN
+         CALL WARN(1,RNAME,BLANK)
+         GO TO 100
+      ENDIF
+      !
+      IF(.NOT.EQKEYW(STOK+2,'IS')) GO TO 700
+      !
+      !  STORE THE PASSWORD.
+      !
+500   CALL RELGET(ISTAT)
+      IF(ISTAT.NE.0) GO TO 100
+      IF(.NOT.TOKTYP(ITEMS,KXNAME)) THEN
+         CALL WARN(7,ASCREC(IDP(ITEMS)))
+         ERROR = ERROR + 1
+         GO TO 100
+      ENDIF
+      CALL LXSREC(STOK+3,RPW1,ZC)
+      IF(PWTP.EQ.1) CALL ZMOVE(RPW,RPW1)
+      IF(PWTP.EQ.2) CALL ZMOVE(MPW,RPW1)
+      CALL RELPUT
+      !
+      !  LOOK FOR MORE RELATIONS.
+      !
+      GO TO 500
+      !
+      ! SYNTAX ERROR
+      !
+700   CALL WARN(4)
+      GOTO 100
+      !
+      !  END PASSWORD PROCESSING.
+      !
+999   CONTINUE
+      RETURN
+   END SUBROUTINE LODPAS
 
 END MODULE Parser
