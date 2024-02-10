@@ -4,10 +4,11 @@
 
 cmake_minimum_required(VERSION 3.20)
 
-set(AX_LLVM /opt/homebrew/Cellar/llvm/18.0.0)
+set(AX_LLVM /opt/homebrew/Cellar/llvm/19.0.0)
 #set(CMAKE_Fortran_COMPILER ${AX_LLVM}/bin/flang-new -L/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib)
 #set(CMAKE_Fortran_COMPILER "C:/Program\ Files\ (x86)/Intel/oneAPI/compiler/latest/bin/ifx.exe")
 set(CMAKE_Fortran_PREPROCESS_SOURCE OFF)
+
 
 set(CMAKE_BUILD_TYPE Debug)
 
@@ -24,8 +25,11 @@ endif()
 
 get_filename_component (Fortran_COMPILER_NAME ${CMAKE_Fortran_COMPILER} NAME)
 if (Fortran_COMPILER_NAME MATCHES "gfortran.*")
+    message("gfortran options")
     set(FVERSION "-std=legacy") # -std=f95, f2003, f2008, gnu, legacy
     set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} ${FVERSION}")
+elseif (Fortran_COMPILER_NAME MATCHES ".*flang-new.*")
+    message("flang options")
 elseif (Fortran_COMPILER_NAME MATCHES "ifort.*")
     set (CMAKE_Fortran_FLAGS "<Intel flags go here>")
 endif()

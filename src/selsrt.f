@@ -1,5 +1,6 @@
       FUNCTION SELSRT(FTOK,NTOK)
 
+         USE Formater, only : TYPER
          USE Message, only: WARN
          Use Lexer, only: EQTOK, KWS, EQKEYW, LXSREC
          Use Text, only: EQSIGN

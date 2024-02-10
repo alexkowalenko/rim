@@ -5,10 +5,8 @@
          USE Text, only : ASCTXT
          USE Lexer, only : TOKTYP, ITEMS, EQKEYW, KXKEYW
          USE Parser, only : LODREC, MACDEF
-         USE Rim, only : RMCONS, RMINIT, RMSET, DBLOAD
+         USE Rim, only : RMCONS, RMINIT, RMSET, DBLOAD, DBOPCL
          USE System, only : SYSCOM
-
-         USE Rim, only : DBOPCL
 
          INCLUDE 'syspar.inc'
 C

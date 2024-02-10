@@ -2,6 +2,7 @@
 
          USE Globals, only : USERID, KRMINF, KRMRNF, KMSSVL,
      +   KMSSVT, KNAPVL, KNAPVT, RMSTAT
+         USE Formater, only : TYPER, FMTDEC
          USE Text, only : BLANK, ABLANK, ASCAN, STRMOV, NONE, SQUOTE
          USE DateTime, only : ASCDAT, KRMDTF
          USE Utils, only : ZMOVE

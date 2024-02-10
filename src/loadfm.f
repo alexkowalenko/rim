@@ -1,6 +1,7 @@
       SUBROUTINE LOADFM(MAT,ATT,FOR,NFOR)
 
          USE Cards, only : CRDREC, CRDEND
+         USE Formater, only : TYPER
          USE Lexer, only: KXTEXT, KXINT, KXREAL, IDT, ASCREC, IDP, IDL
          USE Lexer, only: KWS, ITEMS, IDI, IDR
          USE TextFiles, only : TIOIN

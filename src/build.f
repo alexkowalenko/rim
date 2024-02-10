@@ -1,6 +1,7 @@
       SUBROUTINE BUILD(*)
 
          USE Globals, only : DFLAG, RMSTAT
+         USE Formater, only : TYPER
          USE Lexer, only : KWS, ITEMS, LXSREC
          USE Message, only : WARN
 

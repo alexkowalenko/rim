@@ -1,6 +1,7 @@
       SUBROUTINE UNDEF(ALL,IRCNTR,IDAY,MODE,LHASH,ATREL)
 
          USE Globals, only : DBNAME, USERID
+         USE Formater, only : TYPER, FMTDEC
          USE Text, only : BLANK
          USE Rim, only: RMTYPT
          USE Utils, only : ZMOVE

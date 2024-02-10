@@ -68,7 +68,7 @@ contains
       USE Cards, only : READCD
       USE Globals, only : TRACE, RMSTAT
       USE Files, only: RMCLOS
-      USE Lexer, only: KXTEXT, KXNAME, IDT, TOKTYP, ASCREC, ASCNXT, IDP, IDL, KWS, ITEMS, EQKEYW, LXSREC, NXTTOK, LXCMNT
+      USE Lexer, only: KXTEXT, KXNAME, IDT, TOKTYP, ASCREC, ASCNXT, IDP, IDL, KWS, ITEMS, EQKEYW, LXSREC, NXTTOK, LXCMNT, TOKDSP
       USE Macros, only: LOCMAC, MACNUM
       USE System, only : SystemExit, SystemTrap
       USE Text, only: EQSIGN, GTSIGN

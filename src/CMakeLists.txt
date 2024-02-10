@@ -14,14 +14,14 @@ add_library(rimcommon STATIC
     build.f 
     change.f chgdat.f chgpsw.f chkatt.f chkrel.f
     dbdefn.f deldat.f deldup.f delete.f delrow.f
-    eq.f fmtdec.f
+    eq.f
     getdat.f getkca.f gett.f gtsort.f
     isect.f
     join.f joirel.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
     locatt.f locboo.f
     locprm.f locrel.f
     lodele.f lodpas.f lodrel.f
-    lstrel.f lxdate.f lxedit.f lxfmt.f
+    lstrel.f lxedit.f
     motscn.f ne.f 
     parse.f parval.f
     pject.f prckey.f prjtup.f
@@ -37,13 +37,12 @@ add_library(rimcommon STATIC
     swshel.f swsink.f swsmfl.f swsmvl.f 
     swunlo.f swunvl.f 
     swvacp.f swvlfs.f swvllo.f 
-    tokdsp.f tuplrc.f typer.f 
-    union.f
-    varadd.f 
+    tuplrc.f union.f varadd.f 
     whetol.f wheval.f whrnam.f
     cards.f90
     datetime.f90
     files.f90
+    formater.f90
     globals.f90
     macros.f90
     maths.f90

@@ -2,6 +2,7 @@
 
          USE, intrinsic :: iso_fortran_env
 
+         USE Formater, only : TYPER, LXDATE
          USE Lexer, only: KXTEXT, KXINT, KXREAL, TOKTYP, IDP, IDL, KWS
          USE Lexer, only: ITEMS, IDI, IDR, LFIND, LXLENW, LXSREC
          USE Maths, only : DTOR
@@ -38,8 +39,7 @@ C
          INTEGER IR(2)
          EQUIVALENCE (IR(1),RR)
 
-         DIMENSION MAT(2)
-         LOGICAL LXDATE
+         DIMENSION MAT(Z)
 C
          NULLVV = ZIMISS
          IF(IERR.EQ.-1) GO TO 600
@@ -58,7 +58,7 @@ C
 C
 C        DATE/TIME ITEM
 C
-            IF (.NOT.LXDATE(ID,MAT,ATTFOR,TYPE)) GOTO 8100
+            IF (.NOT.LXDATE(ID,MAT(1),ATTFOR,TYPE)) GOTO 8100
             ID = ID + 1
             RETURN
          ENDIF

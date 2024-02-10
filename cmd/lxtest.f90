@@ -4,8 +4,9 @@ PROGRAM LXTEST
 
    USE Parameters
    USE Cards, only : READCD
+   USE Formater, only : TYPER, LXFMT
    USE System, only: SystemExit, SystemInitialise
-   USE Lexer, only: KWS, EQKEYW
+   USE Lexer, only: KWS, EQKEYW, TOKDSP
    USE Parser, only : LODREC, MACDEF
    USE Rim, only: RMCONS, RMINIT
    USE Text, only : Text_Initialise => Initialise

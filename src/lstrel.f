@@ -2,6 +2,7 @@
 
          USE Globals, only : DFLAG, DBNAME, USERID, OWNER, KARRC, KARDT
          USE DateTime, only: RMTIME, RMDATE
+         USE Formater, only: FMTDEC
          USE Lexer, only: ITEMS, EQKEYW, LXSREC
          USE Message, only : WARN
          USE Rim, only: RMTYPT

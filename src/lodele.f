@@ -1,5 +1,6 @@
       SUBROUTINE LODELE(NUMELE)
 
+         USE Formater, only : TYPER, LXFMT
          USE Lexer, only : KXINT, KXNAME, TOKTYP, ITEMS, EQKEYW, IDI
          USE Lexer, only : LFIND, LXSREC
          USE Message, only : WARN

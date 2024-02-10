@@ -49,9 +49,9 @@ MODULE Files
    ! FILE3 private common
    INTEGER :: LF3RCH, LF3MCH
 
-   public F1OPN, F1CLO
-   public F2OPN, F2CLO
-   public F3OPN, F3CLO
+   public F1OPN
+   public F2OPN
+   public F3OPN
    public REUSE
    public RMCLOS
 

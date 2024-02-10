@@ -3,6 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE Globals, only : MRINDX, HXFLAG, RMSTAT
+         USE Formater, only : TYPER
          USE Maths, only : RTOD
          USE Message, only: WARN
          USE Text, only : FILCH, ABLANK

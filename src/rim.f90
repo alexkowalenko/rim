@@ -380,8 +380,8 @@ contains
       !! :  LOAD REL_NAME <FROM FILE_NAME> <USING FILENAME>
       USE Parameters
       USE Globals, only : DFLAG, DMFLAG, PIFLAG
-      Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS
-      USE Lexer, only: EQKEYW, IDI, LXSREC
+      USE Formater, only : TYPER, LXFMT
+      Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, EQKEYW, IDI, LXSREC
       USE Message, only : WARN
       USE Parser, only: LODREC
       USE Text, only : BLANK, STRASC
@@ -718,6 +718,7 @@ contains
 
       USE Parameters
       USE DateTime, only: KRMDTF, KRMTMF
+      USE Formater, only: LXFMT
       USE Lexer, only: KXINT, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS
       USE Lexer, only: EQKEYW, IDI, LFIND, LXSREC
       USE Message, only: WARN
@@ -951,6 +952,7 @@ contains
       !!
       USE Parameters
       USE Globals, only : DFLAG, DBNAME, USERID, CASEIG, ARBCHS, ARBCHM, KRMINF, KRMRNF, KMSSVL, KMSSVT, KNAPVL, KNAPVT
+      USE Formater, only : FMTDEC
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
       USE Macros, only: MACPTR, MACPTR, MACTXT, MACLEN
       USE DateTime, only: RMTIME, RMDATE, KRMDTF, KRMTMF

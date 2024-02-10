@@ -1,6 +1,7 @@
       FUNCTION PGCEXP(ST,NT)
 
          USE DateTime, only: KRMDTF, KRMTMF
+         USE Formater, only : TYPER, LXDATE
          USE Globals, only : RMSTAT
          USE Lexer, only: KXINT, KXREAL, KXNAME, TOKTYP, ASCREC, IDP
          USE Lexer, only: IDL, EQTOK, IDI, IDR, LXLENW, LXSREC
@@ -25,7 +26,6 @@ C
          CHARACTER*(ZKEYWL) KOMPAR
          LOGICAL PGSTOR
          INCLUDE 'dclar1.inc'
-         LOGICAL LXDATE
 
 C     OPLIST CONTAINS OPCODE + LEVEL*100 (NOTE MAX OPCODE = 99)
 C

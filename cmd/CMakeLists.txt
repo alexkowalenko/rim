@@ -3,6 +3,7 @@
 #
 
 include_directories(../src)
+set(CMAKE_Fortran_MODULE_DIRECTORY ${PROJECT_BINARY_DIR}/src)
 
 add_executable(rim rim.f90)
 add_executable(rime rime.f90)

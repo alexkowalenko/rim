@@ -5,6 +5,7 @@ PROGRAM RIME
    USE Parameters
    USE Globals, only: KRMRNF, DBFNAM
    USE DateTime, only: RMTIME, RMDATE
+   USE Formater, only : LXFMT
    USE Lexer, only: KXINT, KXKEYW, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW, IDI, LXSREC
    USE Parser, only: LODREC
    USE RandomFiles, only: RIOOPN, RIOCLO, RIOIN, RIOOUT

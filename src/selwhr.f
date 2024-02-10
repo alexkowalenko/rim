@@ -1,6 +1,7 @@
       FUNCTION SELWHR(ST,NT)
 
          USE Globals, only : CASEIG, TRACE, RMSTAT
+         USE Formater, only : TYPER
          USE Lexer, only: KXTEXT, KXNAME, TOKTYP, IDL, EQTOK, KWS
          USE Lexer, only: EQKEYW, LXLENW, LXSREC
          USE Message, only: WARN

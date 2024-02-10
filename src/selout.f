@@ -2,6 +2,7 @@
 
          USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
          USE DateTime, only : ASCDAT
+         USE Formater, only : TYPER
          USE Text, only : ABLANK, ITOA, ASCAN, STRMOV
          USE Text, only : FILCH, ASSTAR
          USE Utils, only : ITOH

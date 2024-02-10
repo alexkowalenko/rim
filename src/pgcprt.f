@@ -1,5 +1,6 @@
       LOGICAL FUNCTION PGCPRT(BLKTYP,MAXLIN)
 
+         USE Formater, only : TYPER, LXFMT
          USE Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS
          USE Lexer, only: EQKEYW, IDI, LXLENW, LXSREC
          USE Parser, only: LODREC

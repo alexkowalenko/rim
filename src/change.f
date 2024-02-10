@@ -1,6 +1,7 @@
       SUBROUTINE CHANGE(MAT,NVAL,IFLAG,NTUP)
 
          USE Globals, only : RMSTAT
+         USE Formater, only : TYPER
          USE Lexer, only : KWS, IDI
          USE Message, only : WARN
          USE Text, only : BLANK

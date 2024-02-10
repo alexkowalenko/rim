@@ -1,6 +1,7 @@
       SUBROUTINE RFORMT(*)
 
          USE Globals, only : DFLAG
+         USE Formater, only: LXFMT
          Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
          USE Lexer, only: LXSREC
          USE Message, only: WARN

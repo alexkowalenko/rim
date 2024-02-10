@@ -3,6 +3,7 @@
          USE Globals, only : TRACE, MRINDX, HXFLAG, CASEIG, PGFLAG,
      +   DBFNAM, RMSTAT
          USE Message, only : WARN
+         USE Formater, only : TYPER
          USE Rim, only : DBOPEN
          USE Text, only : FILCH, ABLANK, STRASC, STRMOV
          USE Utils, only : ZMOVE

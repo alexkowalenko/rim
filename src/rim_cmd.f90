@@ -346,7 +346,7 @@ contains
       USE Files, only: RMCLOS
       USE Lexer, only: KWS, ITEMS
       USE Message, only: WARN
-      USE RIM, only: DBOPEN
+      !USE RIM, only: DBOPEN
       USE Text, only: ASCTXT
 
       INCLUDE 'syspar.inc'
@@ -475,7 +475,7 @@ contains
       USE Lexer, only: KXKEYW, TOKTYP, KWS, ITEMS, EQKEYW
       USE Parser, only: LODREC, MACDEF
       USE System, only : SYSCOM
-      USE Rim, only : XHIBIT, DBLOAD
+      !USE Rim, only : XHIBIT, DBLOAD
 
       INCLUDE 'files.inc'
       !
