@@ -441,6 +441,368 @@ contains
    END SUBROUTINE UNLOAD
 
 
+   SUBROUTINE DELDUP(*)
+      !!
+      !! DELETE DUPLICATES ROUTINE
+      !!
+      ! METHOD -
+      !          1. SORT TUPLES ALONG ATTRIBUTES OR ALL
+      !          2. LOOP ON SORTED TUPLES, DELETING SUCCESSIVE
+      !                  DUPLICATES
+      !          3. WHEN DONE RESET RSTART AND NTUPLE, PRINT MESSAGE,
+      !              AND RETURN
+      !
+      USE Parameters
+      USE Globals, only : DFLAG, RMSTAT
+      USE Lexer, only : ITEMS, LFIND, LXSREC
+      USE Message, only : WARN
+      USE Text, only : BLANK
+
+      INCLUDE 'start.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'files.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'srtcom.inc'
+      INCLUDE 'whcom.inc.f90'
+      INCLUDE 'rmatts.inc'
+      !
+      LOGICAL :: IFALL
+      INTEGER :: COLUMN, I, II, IID, IP, ISTAT, J, JP1, JP2, KQ1, L, LENGTH, ND, NJ, NKSORT, NSORTW, NUMKEY, NW
+      INCLUDE 'dclar1.inc'
+      LOGICAL :: SELREL
+      INTEGER :: LOCATT
+
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      !
+      ! LOCATE WORD 'FROM' OR 'IN'
+      !
+      J = LFIND(1,ITEMS,'FROM')
+      IF(J.EQ.0) J = LFIND(1,ITEMS,'IN')
+      NJ = 2
+      IF (J.EQ.0) NJ = 0
+      !
+      ! GET RELATION INFO
+      !
+      IF (.NOT.SELREL(J,NJ)) GOTO 999
+
+      IFALL = .FALSE.
+      NKSORT = 1
+      MAXTU = ALL9S
+      LIMTU = ALL9S
+      NBOO = 0
+      LIMVAL = 0
+      NS = 0
+      IF (J.EQ.3)THEN
+         !
+         !    SET UP SORT ARRAYS FOR SORTING ON ENTIRE TUPLE
+         !
+         NSOVAR = 1
+         VARPOS(1) = 1
+         VARLEN(1) = 0
+         SORTYP(1) = .TRUE.
+         VARTYP(1) = 1
+         OFFSET = 0
+         IFALL = .TRUE.
+         NKSORT = 4
+         ! AND GO DO THE SORT
+         GOTO 250
+      ENDIF
+      !
+      ! SET UP FOR SPECIFIED ATTRIBUTES
+      !
+      II = ITEMS - 2
+      NSOVAR = 0
+      OFFSET = 0
+      DO I=3,II
+         CALL LXSREC(I,ANAME,ZC)
+         IF(LOCATT(ANAME,NAME).NE.0)THEN
+            CALL WARN(3,ANAME,NAME)
+            GO TO 999
+         ENDIF
+         CALL ATTGET(ISTAT)
+         !
+         !     GOT ATTRIBUTE - FILL SORTVAR LIST
+         !
+         NSOVAR = NSOVAR + 1
+         IF(NSOVAR.GT.NSORTW) THEN
+            CALL MSG('E','YOU HAVE SPECIFIED TOO MANY COLUMNS.',' ')
+            NSOVAR = NSORTW
+            GO TO 999
+         ENDIF
+         !
+         !     ADD TO SORT LIST ARRAYS
+         !
+         VARPOS(NSOVAR) = ATTCOL
+         VARLEN(NSOVAR) = ATTWDS
+         SORTYP(NSOVAR) = .TRUE.
+         IF(ATTYPE.EQ.KZINT .OR.ATTYPE.EQ.KZIVEC.OR.ATTYPE.EQ.KZIMAT) &
+            L = 1
+         IF(ATTYPE.EQ.KZREAL.OR.ATTYPE.EQ.KZRVEC.OR.ATTYPE.EQ.KZRMAT) &
+            L = 2
+         IF(ATTYPE.EQ.KZDOUB.OR.ATTYPE.EQ.KZDVEC.OR.ATTYPE.EQ.KZDMAT) &
+            L = 3
+         IF(ATTYPE.EQ.KZTEXT) L = 4
+         VARTYP(NSOVAR) = L
+      END DO
+      !
+      ! PERFORM THE SORT
+      !
+250   CALL SORT(NKSORT)
+      !
+      ! COMPARE THE TUPLES
+      !
+      ! GET BUFFERS FOR SAVED TUPLE AND READ TUPLE
+      !
+      CALL BLKDEF(6,MAXCOL,1)
+      KQ1 = BLKLOC(6)
+      CALL BLKDEF(7,MAXCOL,1)
+      IP  = BLKLOC(7)
+      !
+      ! CHECK FOR ANY KEY ATTRIBUTES
+      !
+      J = LOCATT(BLANK,NAME)
+      NUMKEY = 0
+      !
+252   CALL ATTGET(ISTAT)
+      IF(ISTAT.EQ.0) THEN
+         IF(ATTKEY.NE.0) NUMKEY=NUMKEY + 1
+         GO TO 252
+      ENDIF
+      !
+      !  RETRIEVE THE SORTED TUPLES
+      !
+      ! (OPEN THE SORT FILE)
+      LENGTH = NCOL
+      NS = 1
+      CALL GTSORT(IP,3,-1,LENGTH)
+      !
+      ! (READ THE FIRST RECORD)
+      ! (GTSORT RETURNS 'CID', 'NID' AND 'IVAL'
+      !          IN 'RIMPTR' COMMON)
+      !
+      CALL GTSORT(BUFFER(IP),3,0,LENGTH)
+      ND = 0
+      !
+      !  SAVE THE ACTIVE TUPLE IN THE BUFFER
+      !
+300   CALL BLKMOV(BUFFER(KQ1),BUFFER(IP),LENGTH)
+      !
+      !  GET NEXT TUPLE FROM SORT FILE
+      !
+400   CALL GTSORT(BUFFER(IP),3,0,LENGTH)
+      IF(CID.EQ.0) GO TO 600
+      IF(RMSTAT.NE.0) GO TO 600
+      !
+      ! COMPARE ATTRIBUTES
+      !
+      IF (.NOT.IFALL)THEN
+         !
+         ! COMPARE ON SELECTED ATTRIBUTES
+         !
+         DO I = 1,NSOVAR
+            L = VARPOS(I) - 1
+            IF (VARLEN(I).NE.0)THEN
+               !
+               !       FIXED LENGTH ATTR COMPARE
+               !
+               DO J = 1,VARLEN(I)
+                  IF(BUFFER(IP+L).NE.BUFFER(KQ1+L)) GO TO 300
+                  L = L + 1
+               END DO
+               GO TO 490
+            ELSE
+               !
+               !       VARIABLE LENGTH ATTR COMPARE
+               !
+               JP1 = BUFFER(IP+L) + IP - 1
+               JP2 = BUFFER(KQ1+L) + KQ1 - 1
+               IF(BUFFER(JP1).NE.BUFFER(JP2)) GO TO 300
+               NW = BUFFER(JP1) + 1
+               DO J = 1,NW
+                  IF(BUFFER(JP1+J).NE.BUFFER(JP2+J)) GO TO 300
+               END DO
+            ENDIF
+490         CONTINUE
+         END DO
+
+         ! (A DUP -- DELE IT)
+         GO TO 550
+      ELSE
+         !
+         ! COMPARE ALL ATTRIBUTES
+         !
+         DO I = 1,LENGTH
+            IF(BUFFER(IP-1+I).NE.BUFFER(KQ1-1+I)) GO TO 300
+         END DO
+      ENDIF
+      !
+      !
+      !  DELETE DUPLICATE RECORD
+      !
+550   CALL DELDAT (1,CID)
+      IF(NUMKEY.EQ.0)GOTO 580
+      !
+      ! PROCESS ANY KEY ATTRIBUTES
+      !
+      J = LOCATT(BLANK,NAME)
+      !
+      ! FOR EACH ATTRIBUTE
+560   CALL ATTGET(ISTAT)
+      IF (ISTAT.EQ.0) THEN
+         IF(ATTKEY.EQ.0) GO TO 560
+         ! PROCESS IF KEY
+         COLUMN = ATTCOL
+         IF(ATTWDS.EQ.0) COLUMN = BUFFER(IP+ATTCOL-1) + 2
+         START = ATTKEY
+         CALL BTREP(BUFFER(IP+COLUMN-1),0,CID,ATTYPE)
+         GO TO 560
+      ENDIF
+
+580   CONTINUE
+      IF (CID .EQ. IID) IID = NID
+      ND = ND + 1
+      GO TO 400
+      !
+      ! UPDATE RELATION INFORMATION
+      !
+600   CONTINUE
+      CALL RELGET(ISTAT)
+      NTUPLE = NTUPLE - ND
+      CALL RELPUT
+      !
+      CALL MSG(' ',' ','+')
+      CALL IMSG(ND,5,'+')
+      CALL MSG(' ',' ROWS WERE DELETED.',' ')
+      CALL BLKCLR(7)
+      CALL BLKCLR(6)
+      !
+999   RETURN 1
+   END SUBROUTINE DELDUP
+
+
+   SUBROUTINE RFORMT(*)
+      !!
+      !! REFORMAT AN ATTRIBUTE
+      !!
+      USE Parameters
+      USE Globals, only : DFLAG
+      USE Formater, only: LXFMT
+      Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
+      USE Lexer, only: LXSREC
+      USE Message, only: WARN
+      USE Text, only : BLANK
+      USE Utils, only : ZMOVE
+
+      INCLUDE 'files.inc'
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'dclar1.inc'
+
+      INTEGER :: FMTLEN, I, IFLAG, NEWFMT, NUMT, STATUS
+      LOGICAL :: NE,EQ
+      INTEGER :: LOCREL, LOCATT, LOCPRM
+
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      ! CHECK SYNTAX
+      !
+      IF(.NOT.EQKEYW(3,'TO')) GO TO 900
+      IF((ITEMS.GT.4).AND.(.NOT.EQKEYW(5,'IN'))) GO TO 900
+      IF((ITEMS.NE.4).AND.(ITEMS.NE.6)) GO TO 900
+      IF( .NOT.TOKTYP(2,KXNAME) ) THEN
+         CALL WARN(7,ASCREC(IDP(2)))
+         GOTO 999
+      ENDIF
+      CALL LXSREC(2,ANAME1,ZC)
+      !
+      ! LOOK FOR RELATION
+      !
+      CALL ZMOVE(RNAME1,BLANK)
+      IFLAG = 0
+      IF (EQKEYW(5,'IN')) THEN
+         IFLAG = 1
+         CALL LXSREC(6,RNAME1,ZC)
+         !  CHECK THAT RELATION EXISTS
+         I = LOCREL(RNAME1)
+         IF(I.NE.0) THEN
+            CALL WARN(1,RNAME1,BLANK)
+            GO TO 999
+         ENDIF
+      ENDIF
+      !
+      ! SEE IF ANAME1 EXISTS
+      !
+      I = LOCATT(ANAME1,RNAME1)
+      IF(I.NE.0) GO TO 910
+      CALL ATTGET(STATUS)
+      IF(STATUS.NE.0) GO TO 910
+      !
+      ! GET NEW FORMAT
+      !
+      CALL LXFMT(4,ATTYPE,NEWFMT,FMTLEN)
+      IF (NEWFMT.EQ.0) GOTO 999
+      !
+      ! REFORMAT ATTRIBUTES
+      !
+200   I = LOCATT(ANAME1,RNAME1)
+      NUMT = 0
+210   CALL ATTGET(STATUS)
+      IF(STATUS.NE.0) GO TO 300
+      !
+      ! CHECK FOR PERMISSION
+      !
+      I = LOCREL(RELNAM)
+      I = LOCPRM(RELNAM,2)
+      IF(I.EQ.0) GO TO 220
+      IF(IFLAG.NE.0) GO TO 930
+      GO TO 210
+      !
+220   NUMT = NUMT + 1
+      ATTFOR = NEWFMT
+      CALL ATTPUT(STATUS)
+      IF(IFLAG.EQ.0) GO TO 210
+      !
+300   IF (IFLAG.NE.0) THEN
+         CALL MSG(' ',' ','+')
+         CALL IMSG(NUMT,5,'+')
+         CALL MSG(' ',' TABLES MODIFIED.',' ')
+      ENDIF
+      GOTO 999
+      !
+      ! BAD SYNTAX
+      !
+900   CALL WARN(4)
+      GO TO 999
+      !
+      ! ANAME1 NOT THERE
+      !
+910   CALL WARN(3,ANAME1,RNAME1)
+      GO TO 999
+      !
+930   CALL WARN(8)
+      GO TO 999
+      !
+      ! ALL DONE
+      !
+999   CONTINUE
+      RETURN 1
+   END SUBROUTINE RFORMT
+
+
    MODULE SUBROUTINE RMZIP(*)
       !!
       !!  PURPOSE:  PROCESS ZIP COMMAND  (CALL SYSTEM FUNCTION)
@@ -623,7 +985,6 @@ contains
    END SUBROUTINE RMHELP
 
 
-
    SUBROUTINE RIMCMD
       !!
       !! RIM COMMAND DISPATCHER
@@ -673,7 +1034,10 @@ contains
       !
       !---- MODIFICATION COMMANDS
       !
-      IF (EQKEYW(1,'BUILD'))   CALL BUILD(*100)
+      IF (EQKEYW(1,'BUILD'))   THEN
+         CALL BUILD
+         GOTO 100
+      END IF
       IF (EQKEYW(1,'CHANGE'))  THEN
          IF (ITEMS.EQ.4 .AND. EQKEYW(2,'OWNER')) CALL CHGPSW(*100)
          IF (ITEMS.EQ.6 .AND. EQKEYW(2,'RPW'))   CALL CHGPSW(*100)

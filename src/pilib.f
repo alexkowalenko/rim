@@ -5,7 +5,8 @@
          USE Text, only : ASCTXT
          USE Lexer, only : TOKTYP, ITEMS, EQKEYW, KXKEYW
          USE Parser, only : LODREC, MACDEF
-         USE Rim, only : RMCONS, RMINIT, RMSET, DBLOAD, DBOPCL
+         USE Rim, only : RMCONS, RMINIT, RMSET, DBLOAD, DBOPCL, BUILD
+         USE Rim, only : CHGPSW, CHGDAT, DELROW, REMKEY, REMLNK, REMREL
          USE System, only : SYSCOM
 
          INCLUDE 'syspar.inc'
@@ -80,7 +81,10 @@ C
 C
 C---- MODIFICATION COMMANDS
 C
-         IF (EQKEYW(1,'BUILD'))   CALL BUILD(*900)
+         IF (EQKEYW(1,'BUILD'))   THEN
+            CALL BUILD()
+            GOTO 900
+         END IF
          IF (EQKEYW(1,'CHANGE'))  THEN
             IF (EQKEYW(2,'OWNER'))     CALL CHGPSW(*900)
             IF (EQKEYW(2,'RPW'))       CALL CHGPSW(*900)

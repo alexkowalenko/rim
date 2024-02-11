@@ -11,21 +11,20 @@ add_library(rimcommon STATIC
     blkchg.f blkcln.f blkclr.f blkdef.f blkdsp.f blkdwn.f blkext.f
     blkloc.f blkmov.f blknxt.f blkup.f
     btadd.f btget.f btinit.f btlki.f btlkr.f btmove.f btput.f btrep.f btsert.f
-    build.f 
-    change.f chgdat.f chgpsw.f chkatt.f chkrel.f
-    deldat.f deldup.f delete.f delrow.f
+    change.f chkatt.f chkrel.f
+    deldat.f delete.f
     eq.f
     getdat.f getkca.f gett.f gtsort.f
     isect.f
     join.f joirel.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
-    lnkadd.f lnkpag.f
+    lnkadd.f lnkget.f lnkpag.f
     locatt.f locboo.f loclnk.f locprm.f locrel.f
     lstrel.f lxedit.f
     motscn.f ne.f 
     parse.f parval.f
     pject.f prckey.f prjtup.f
     putdat.f putt.f ptrs.f 
-    reladd.f relget.f relpag.f relput.f remkey.f remlnk.f remrel.f rformt.f
+    reladd.f relget.f relpag.f relput.f
     rmlook.f rmpii.f rmqery.f rmres.f rmsav.f rmvarc.f
     rnamea.f rnamel.f rnamer.f rtoa.f
     selrel.f selrpt.f selsrt.f selwhr.f
@@ -58,7 +57,7 @@ add_library(rimcommon STATIC
 
 add_library(rimextlib STATIC
     amsg.f dmsg.f imsg.f
-    lnkget.f lnkput.f loadfm.f
+    lnkput.f loadfm.f
     loadit.f loadmv.f 
     locvar.f
     msg.f msgcmv.f 

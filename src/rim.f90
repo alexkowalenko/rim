@@ -21,6 +21,13 @@ MODULE Rim
    public DBOPCL
    public DBLOAD
    public RMZIP
+   public BUILD
+   public CHGPSW
+   public CHGDAT
+   public DELROW
+   public REMKEY
+   public REMLNK
+   public REMREL
    public XHIBIT
    public RMSET, RMSHOW
 
@@ -601,6 +608,704 @@ contains
       !
 999   RETURN 1
    END SUBROUTINE DBLOAD
+
+
+   SUBROUTINE BUILD()
+      !!
+      !!  PURPOSE:  BUILD A KEY INDEX FOR AN ATTRIBUTE IN A RELATION
+      !!
+      !! SYNTAX:  BUILD KEY FOR <ATTRIBUTE> IN <RELATION>
+      !!
+      USE Parameters
+      USE Globals, only : DFLAG, RMSTAT
+      USE Formater, only : TYPER
+      USE Lexer, only : KWS, ITEMS, LXSREC
+      USE Message, only : WARN
+
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'start.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'whcom.inc.f90'
+      INCLUDE 'srtcom.inc'
+      INCLUDE 'dclar1.inc'
+
+      INTEGER :: COLUMN, I, IP, ISTAT, L, LENGTH, NKSORT, SVM, TYP, ITUP
+
+      INTEGER :: LOCREL, LOCPRM, LOCATT
+
+      !
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      !
+      !  SCAN THE COMMAND FOR PROPER SYNTAX.
+      !
+      IF(KWS(2).NE.'KEY') GO TO 950
+      IF(KWS(3).NE.'FOR') GO TO 950
+      IF(KWS(5).NE.'IN' ) GO TO 950
+      IF(ITEMS.GT.6) GO TO 950
+      !
+      !  FIND THE ATTRIBUTE IN THE SPECIFIED RELATION.
+      !
+      CALL LXSREC(6,RNAME,ZC)
+      CALL LXSREC(4,ANAME,ZC)
+      IF(LOCREL(RNAME).NE.0) THEN
+         CALL WARN(1,RNAME)
+         GO TO 999
+      ENDIF
+      !
+      !  CHECK FOR MODIFY PERMISSION.
+      !
+      IF(LOCPRM(RNAME,2).NE.0) THEN
+         CALL WARN(9,RNAME)
+         GO TO 999
+      ENDIF
+      !
+      !  FIND THE ATTRIBUTE IN THE RELATION.
+      !
+      IF(LOCATT(ANAME,RNAME).NE.0) THEN
+         CALL WARN(3,ANAME,RNAME)
+         GO TO 999
+      ENDIF
+      !
+      !  DON'T DO IF ATTRIBUTE IS ALREADY A KEY.
+      !
+      CALL ATTGET(ISTAT)
+      IF(ATTKEY.NE.0) THEN
+         CALL MSG(' ','ATTRIBUTE ','+')
+         CALL AMSG(ANAME,-ZC,'+')
+         CALL MSG(' ',' IS ALREADY A KEY.',' ')
+         GO TO 999
+      ENDIF
+      !
+      !  DON'T DO IF REAL OR DOUBLE
+      !
+      CALL TYPER(ATTYPE,SVM,TYP)
+      IF(TYP.EQ.KZREAL .OR. TYP.EQ.KZDOUB) THEN
+         CALL MSG(' ','REAL OR DOUBLE COLUMNS MAY NOT BE KEYED.',' ')
+         GO TO 999
+      ENDIF
+      !
+      !  DETERMINE THE COLUMN TO BE USED FOR THIS ATTRIBUTE.
+      !
+      COLUMN = ATTCOL
+      !
+      !  INITIALIZE THE BTREE FOR THIS ELEMENT.
+      !
+      CALL BTINIT(ATTKEY)
+      START = ATTKEY
+      CALL ATTPUT(ISTAT)
+      !
+      !  SORT THE KEY VALUES IF THERE ARE MORE THAN 100 OF THEM
+      !
+      IF(NTUPLE.GT.100) GO TO 700
+      !
+      !   SCAN THROUGH ALL THE DATA FOR THIS RELATION.
+      !
+500   IF(NID.EQ.0) GO TO 900
+      CID = NID
+      CALL GETDAT(1,NID,ITUP,LENGTH)
+      IF(NID.LT.0) GO TO 900
+      IP = ITUP + COLUMN - 1
+      ! CHECK FOR A VARIABLE LENGTH ATTRIBUTE.
+      IF(ATTWDS.EQ.0) IP = BUFFER(IP) + ITUP + 1
+      IF(BUFFER(IP).EQ.NULL) GO TO 500
+      CALL BTADD(BUFFER(IP),CID,ATTYPE)
+      GO TO 500
+      !
+      !  SORT KEY VALUES BEFORE BUILDING THE B-TREE
+      !
+700   LENGTH = 2
+      NSOVAR = 1
+      NKSORT = 3
+      LIMTU = ALL9S
+      SORTYP(1) = .TRUE.
+      VARPOS(1) = 1
+      L = 2
+      IF(ATTYPE.EQ.KZTEXT) L = 4
+      IF(ATTYPE.EQ.KZINT ) L = 1
+      IF(ATTYPE.EQ.KZIVEC) L = 1
+      IF(ATTYPE.EQ.KZIMAT) L = 1
+      VARTYP(1) = L
+      VARLEN(1) = 1
+      OFFSET = 0
+      CALL SORT(NKSORT)
+      !
+      !  READ THE SORTED KEY VALUES AND BUILD THE BTREE
+      !
+      CALL GTSORT(IP,1,-1,LENGTH)
+      !
+800   CALL GTSORT(IP,1,1,LENGTH)
+      IF(RMSTAT.NE.0) GO TO 900
+      IF(BUFFER(IP).EQ.NULL) GO TO 800
+      CALL BTADD(BUFFER(IP),BUFFER(IP+1),ATTYPE)
+      GO TO 800
+      !
+      !  ALL DONE.
+      !
+      !  RESTORE THE START TO THE BTREE TABLE.
+      !
+900   I = LOCATT(ANAME,RNAME)
+      CALL ATTGET(ISTAT)
+      ATTKEY = START
+      CALL ATTPUT(ISTAT)
+      CALL MSG(' ','BUILD KEY COMPLETED.',' ')
+      RMSTAT = 0
+      GO TO 999
+      !
+      !  SYNTAX ERROR.
+      !
+950   CALL WARN(4)
+      !
+      !  RETURN
+      !
+999   RETURN 1
+   END SUBROUTINE BUILD
+
+
+   SUBROUTINE CHGDAT(*)
+      !!
+      !! PROCESS CHANGE DATA COMMAND
+      !!
+      USE Parameters
+      USE Globals, only : DFLAG
+      USE Lexer, only : LXSREC
+      USE Message, only : WARN
+      USE DateTime, only : RMDATE
+
+      INCLUDE 'selcom.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'whcom.inc.f90'
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'srtcom.inc'
+      INCLUDE 'buffer.inc'
+      !
+      LOGICAL :: SELREL, SELATT, SELWHR
+      INCLUDE 'dclar1.inc'
+      !
+      !
+      ! PARSING DATA FOR CHANGE COMMAND
+      !
+      INTEGER, PARAMETER  :: QKEYL=3
+      CHARACTER*(ZKEYWL) QKEYS(QKEYL)
+      INTEGER :: QPTRS(2,QKEYL)
+      INTEGER I, IFLAG, ISTAT, J, JT, JW, KQ1, KQ11, KQ12, SC, STATUS
+
+      INTEGER PARSE, LOCPRM, LOCATT
+      !
+      ! ---------------------------------------------
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      !
+      QKEYS(1) = 'TO'
+      QKEYS(2) = 'IN'
+      QKEYS(3) = 'WHERE'
+      !
+      !
+      !  PARSE THE COMMAND
+      !
+      SC = PARSE(QKEYS,QKEYL,QPTRS)
+
+      JT = QPTRS(1,1)
+      J = QPTRS(1,2)
+      JW = QPTRS(1,3)
+      !
+      ! GET RELATION INFO
+      !
+      IF (.NOT.SELREL(QPTRS(1,2),QPTRS(2,2))) GOTO 999
+      !CC   CALL BLKDSP('QUERY SELREL (TUPLER)',NAME,'ZZZZIIIII')
+      CALL RELGET(STATUS)
+      I = LOCPRM(NAME,2)
+      IF (I.NE.0) THEN
+         CALL WARN(8)
+         GOTO 999
+      ENDIF
+      !
+      ! GET ATTRIBUTE INFO
+      !
+      CALL LXSREC(2,ANAME,ZC)
+      I = LOCATT(ANAME,NAME)
+      IF (I.NE.0) THEN
+         CALL WARN(3,ANAME,NAME)
+         GOTO 999
+      ENDIF
+      CALL ATTGET(ISTAT)
+      IF (ISTAT.NE.0) GOTO 999
+      !
+      !  CALL CHANGE TO FINISH PROCESSING THE COMMAND.
+      !
+      CALL BLKDEF(7,MAXCOL,1)
+      CALL BLKDEF(8,MAXCOL,1)
+      CALL BLKDEF(9,MAXCOL,1)
+      KQ1 = BLKLOC(7)
+      KQ11 = BLKLOC(8)
+      KQ12 = BLKLOC(9)
+      RDATE = RMDATE()
+      CALL CHANGE(BUFFER(KQ1),BUFFER(KQ11),IFLAG,BUFFER(KQ12))
+      !
+999   RETURN 1
+   END SUBROUTINE CHGDAT
+
+
+   SUBROUTINE CHGPSW(*)
+      !!
+      !! CHANGE A PASSWORD
+      !!
+      !!
+      USE Parameters
+      USE Globals, only : DFLAG, USERID, OWNER, IFMOD
+      Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
+      USE Lexer, only: LXSREC
+      USE Message, only : WARN
+      USE Text, only : BLANK
+
+      INCLUDE 'files.inc'
+      INCLUDE 'tupler.inc'
+      !
+      INTEGER :: I, ISTAT, L
+      INTEGER :: RNAME(Z)
+
+      INTEGER LOCREL, LOCPRM
+      LOGICAL :: NE
+
+      !
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      !
+      ! CHECK FOR PERMISSION
+      !
+      IF (NE(OWNER,USERID)) THEN
+         CALL WARN(8)
+         GOTO 999
+      ENDIF
+      !
+      ! DO WHATEVER
+      !
+      IF (EQKEYW(2,'OWNER'))   THEN
+         IF (.NOT.EQKEYW(3,'TO')) GOTO 800
+         IF (.NOT.TOKTYP(4,KXNAME)) GOTO 810
+         CALL LXSREC(4,OWNER,ZC)
+         IFMOD = .TRUE.
+         GOTO 999
+      ENDIF
+
+      IF (EQKEYW(2,'RPW') .OR. EQKEYW(2,'MPW')) THEN
+         IF (.NOT.EQKEYW(3,'TO')) GOTO 800
+         IF (.NOT.EQKEYW(5,'FOR')) GOTO 800
+         IF(ITEMS.NE.6) GO TO 800
+         CALL LXSREC(6,RNAME,ZC)
+         I = LOCREL(RNAME)
+         IF(I.NE.0) THEN
+            CALL WARN(1,RNAME)
+            GO TO 999
+         ENDIF
+         L = LOCPRM(RNAME,2)
+         !CC      IF(L.NE.0) GO TO 999
+         IF(.NOT.TOKTYP(4,KXNAME)) GOTO 810
+         CALL RELGET(ISTAT)
+         !
+         !    CHANGE THE PASSWORD.
+         !
+         IF(EQKEYW(2,'RPW')) THEN
+            CALL LXSREC(4,RPW,ZC)
+         ELSE
+            CALL LXSREC(4,MPW,ZC)
+         ENDIF
+         CALL RELPUT
+         GOTO 999
+      ENDIF
+      !
+      ! ERRORS
+      !
+800   CALL WARN(4,BLANK,BLANK)
+      GOTO 999
+810   CALL WARN(7,ASCREC(IDP(4)))
+      GOTO 999
+      !
+      !---- EXIT
+      !
+999   RETURN 1
+   END SUBROUTINE CHGPSW
+
+
+   SUBROUTINE DELROW(*)
+      !!
+      !! DELETE ROWS FROM A RELATION
+      !!
+      USE Parameters
+      USE Globals, only : DFLAG, DMFLAG, DBNAME, RMSTAT
+      Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
+      USE Message, only : WARN
+      USE Text, only : BLANK
+
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'attble.inc'
+      INCLUDE 'buffer.inc'
+      LOGICAL :: NE
+      LOGICAL :: EQ
+      LOGICAL :: SELWHR
+      INCLUDE 'dclar1.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'whcom.inc.f90'
+
+      INTEGER :: I, KQ1, L
+
+      INTEGER LOCREL, LOCPRM
+
+      !
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      ! MAKE SURE THE DATABASE MAY BE MODIFIED
+      !
+      IF(.NOT.DMFLAG) THEN
+         CALL WARN(RMSTAT,DBNAME)
+         GO TO 999
+      ENDIF
+      !
+      ! CHECK THE COMMAND SYNTAX
+      !
+      IF(.NOT.EQKEYW(3,'FROM') .OR. &
+         .NOT.EQKEYW(5,'WHERE') .OR. &
+         .NOT.TOKTYP(4,KXNAME)) THEN
+         CALL WARN(4,BLANK,BLANK)
+         GOTO 999
+      ENDIF
+      !
+      !  FIND THE RELATION NAME IN THE RELATION TABLE.
+      !
+      CALL LXSREC(4,RNAME,ZC)
+      I = LOCREL(RNAME)
+      IF(I.NE.0) THEN
+         CALL WARN(1,RNAME,BLANK)
+         GOTO 999
+      ENDIF
+      !
+      ! CHECK FOR MODIFY PERMISSION
+      !
+      L = LOCPRM(RNAME,2)
+      IF(L.NE.0) GO TO 999
+      !
+      !
+      !  EVALUATE THE WHERE CLAUSE.
+      !
+      NBOO = 0
+      LIMTU = ALL9S
+      IF (.NOT.SELWHR(5,ITEMS-4)) GOTO 999
+      IF(RMSTAT.NE.0) GO TO 999
+      !
+      !  CALL DELETE TO FINISH PROCESSING THE COMMAND.
+      !
+      CALL BLKDEF(7,MAXCOL,1)
+      KQ1 = BLKLOC(7)
+      CALL DELETE(BUFFER(KQ1))
+      CALL BLKCLR(7)
+      !
+999   RETURN 1
+   END SUBROUTINE DELROW
+
+
+   SUBROUTINE REMKEY(*)
+      !!
+      !! REMOVE A KEY (MAKE ATTRIBUTE NON-KEYED)
+      !!
+      USE Parameters
+      USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER
+      USE Globals, only : RMSTAT
+      Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
+      USE Message, only: WARN
+      USE Text, only : BLANK
+
+      ! :  REMOVE KEY FOR ATTRIBUTE IN RELATION
+
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'attble.inc'
+
+      INCLUDE 'dclar1.inc'
+      INCLUDE 'rmatts.inc'
+
+      INTEGER :: I, ISTAT, L
+
+      INTEGER LOCREL, LOCPRM, LOCATT
+      LOGICAL :: NE, EQ
+      !
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      ! MAKE SURE THE DATABASE MAY BE MODIFIED
+      !
+      IF(.NOT.DMFLAG) THEN
+         CALL WARN(RMSTAT,DBNAME)
+         GO TO 999
+      ENDIF
+      !
+      ! ONLY THE OWNER CAN DO THIS
+      !
+      IF (NE(OWNER,USERID)) THEN
+         CALL WARN(8)
+         GOTO 999
+      ENDIF
+      !
+      ! CHECK THE COMMAND SYNTAX
+      !
+      IF(ITEMS.NE.6 .OR. .NOT.EQKEYW(3,'FOR') .OR. &
+         .NOT.EQKEYW(5,'IN') .OR. &
+         .NOT.TOKTYP(3,KXNAME) .OR. .NOT.TOKTYP(6,KXNAME)) THEN
+         CALL WARN(4)
+         GOTO 999
+      ENDIF
+      !
+      !  FIND THE RELATION NAME IN THE RELATION TABLE.
+      !
+      CALL LXSREC(6,RNAME,ZC)
+      I = LOCREL(RNAME)
+      IF(I.NE.0) THEN
+         CALL WARN(1,RNAME,BLANK)
+         GOTO 999
+      ENDIF
+      !
+      !
+      L = LOCPRM(RNAME,2)
+      IF(L.NE.0) GO TO 999
+      !
+      !  CHANGE THE ATTRIBUTE TABLE.
+      !
+      CALL LXSREC(4,ANAME,ZC)
+      I = LOCATT(ANAME,RNAME)
+      IF(I.NE.0) THEN
+         CALL WARN(3,ANAME,RNAME)
+         GOTO 999
+      ENDIF
+      CALL ATTGET(ISTAT)
+      ATTKEY = 0
+      CALL ATTPUT(ISTAT)
+      !
+999   RETURN 1
+   END SUBROUTINE REMKEY
+
+
+   SUBROUTINE REMLNK(*)
+      !!
+      !! REMOVE A LINK FROM THE DATABASE
+      !!
+      USE Parameters
+      USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
+      USE Globals, only : RMSTAT
+      USE Lexer, only : ITEMS, LXSREC, LXSREC
+      USE Message, only: WARN
+
+      INCLUDE 'tuplel.inc'
+      INCLUDE 'lnktbl.inc'
+      LOGICAL :: NE
+      LOGICAL :: EQ
+      INCLUDE 'rmatts.inc'
+
+      INTEGER :: I, ISTAT
+      INTEGER :: LKNAM(Z)
+
+      INTEGER LOCLNK
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      ! MAKE SURE THE DATABASE MAY BE MODIFIED
+      !
+      IF(.NOT.DMFLAG) THEN
+         CALL WARN(RMSTAT,DBNAME)
+         GO TO 999
+      ENDIF
+      !
+      ! ONLY THE OWNER CAN DO THIS
+      !
+      IF (NE(OWNER,USERID)) THEN
+         CALL WARN(8)
+         GOTO 999
+      ENDIF
+      !
+      IF(ITEMS.NE.3) GO TO 999
+      CALL LXSREC(3,LKNAM,ZC)
+      !
+      !  FIND THE LINK NAME IN THE LINK TABLE.
+      !
+      I = LOCLNK(LKNAM)
+      IF(I.NE.0) THEN
+         CALL MSG('E','LINK ''','+')
+         CALL AMSG(LKNAM,-ZC,'+')
+         CALL MSG(' ',''' IS NOT IN THE DATABASE.',' ')
+         GOTO 999
+      ENDIF
+      !
+      !
+      !  CHANGE THE LINK TABLE.
+      !
+      CALL LNKGET(ISTAT)
+      IF (LLROW.EQ.0) GO TO 999
+      !
+      !  CHANGE THE TUPLE STATUS FLAG TO DELETED.
+      !
+      LNKTBL(1,LLROW) = 0-LNKTBL(1,LLROW)
+      LNKMOD = 1
+      !
+      ! DONE
+      !
+800   CALL MSG(' ','LINK ''','+')
+      CALL AMSG(LKNAM,-ZC,'+')
+      CALL MSG(' ',''' HAS BEEN REMOVED.',' ')
+      IFMOD = .TRUE.
+      !
+999   RETURN 1
+   END SUBROUTINE REMLNK
+
+
+   SUBROUTINE REMREL(*)
+      !!
+      !! REMOVE A RELATION FROM THE DATABASE
+      !!
+      USE Parameters
+      USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
+      USE Globals, only : RMSTAT
+      USE Lexer, only: KWS, ITEMS, EQKEYW, LXSREC
+      USE Message, only: WARN
+      USE Parser, only: LODREC
+      USE Text, only: BLANK
+
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'reltbl.inc'
+      INCLUDE 'attble.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'rmatts.inc'
+      !
+      INCLUDE 'dclar1.inc'
+
+      INTEGER :: I, ISTAT, L, R
+
+      INTEGER LOCREL, LOCPRM, LOCATT
+      LOGICAL NE, EQ
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      ! MAKE SURE THE DATABASE MAY BE MODIFIED
+      !
+      IF(.NOT.DMFLAG) THEN
+         CALL WARN(RMSTAT,DBNAME)
+         GO TO 999
+      ENDIF
+      !
+      ! ONLY THE OWNER CAN DO THIS
+      !
+      IF (NE(OWNER,USERID)) THEN
+         CALL WARN(8)
+         GOTO 999
+      ENDIF
+      !
+      R = 2
+      IF (EQKEYW(2,'TABLE')) R = 3
+
+      IF(ITEMS.NE.R) THEN
+         CALL WARN(4)
+         GOTO 999
+      ENDIF
+      CALL LXSREC(R,RNAME,ZC)
+      !
+      !  FIND THE RELATION NAME IN THE RELATION TABLE.
+      !
+      I = LOCREL(RNAME)
+      IF(I.NE.0) THEN
+         CALL WARN(1,RNAME)
+         GOTO 999
+      ENDIF
+      !
+      !
+      L = LOCPRM(RNAME,2)
+      IF(L.NE.0) GO TO 999
+      !
+      ! IF ONLINE ASK FOR VERIFICATION
+      !
+      IF (CONNI) THEN
+         CALL MSG(' ','ARE YOU SURE (YES/NO) ?',' ')
+         CALL PRMSET('SET','?')
+         CALL LODREC
+         CALL PRMSET('RESET',' ')
+         IF (ITEMS.NE.1 .OR. KWS(1).NE.'YES') THEN
+            CALL MSG(' ','TABLE NOT REMOVED',' ')
+            GOTO 999
+         ENDIF
+      ENDIF
+      !
+      !  CHANGE THE RELATION TABLE.
+      !
+      CALL RELGET(ISTAT)
+      IF(LRROW.NE.0) THEN
+         RELTBL(1,LRROW) = -RELTBL(1,LRROW)
+         RELMOD = 1
+      ENDIF
+      !
+      !  CHANGE THE ATTRIBUTE TABLE.
+      !
+      I = LOCATT(BLANK,RNAME)
+      IF(I.NE.0) GO TO 800
+200   CALL ATTGET(ISTAT)
+      IF(ISTAT.NE.0) GO TO 800
+      CALL ATTDEL(ISTAT)
+      IF(ISTAT.NE.0) GO TO 800
+      GO TO 200
+      !
+      ! DONE
+      !
+800   CALL MSG(' ','TABLE ''','+')
+      CALL AMSG(RNAME,-ZC,'+')
+      CALL MSG(' ',''' HAS BEEN REMOVED FROM THE DATABASE.',' ')
+      IFMOD = .TRUE.
+      !
+999   RETURN 1
+   END SUBROUTINE REMREL
+
 
 
    SUBROUTINE XHIBIT(*)
