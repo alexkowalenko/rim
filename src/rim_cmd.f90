@@ -803,6 +803,1381 @@ contains
    END SUBROUTINE RFORMT
 
 
+   SUBROUTINE RNAMEA(*)
+      !!
+      !! RENAME AN ATTRIBUTE
+      !!
+      ! : RENAME <COLUMN> NAME TO NEW_NAME <IN TABLE>
+      !
+      USE Parameters
+      USE Globals, only : DFLAG, USERID, USERID
+      Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
+      Use Lexer, only: LXSREC
+      USE Message, only: WARN
+      USE Text, only : BLANK
+      USE Utils, only : ZMOVE
+
+      INCLUDE 'files.inc'
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'tuplel.inc'
+      INCLUDE 'dclar1.inc'
+      INTEGER :: I, II, IFLAG, ILEN, ITYPE, NUM, STATUS, STOK
+
+      LOGICAL NE,EQ
+      INTEGER LOCREL, LOCATT, LOCREL, LOCPRM, LOCLNK
+      !
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      ! CHECK SYNTAX
+      !
+      STOK = 2
+      IF (EQKEYW(2,'ATTRIBUTE') .OR. EQKEYW(2,'COLUMN')) STOK = 3
+      IF(.NOT.EQKEYW(STOK+1,'TO')) GO TO 900
+      IF((ITEMS.GT.2+STOK).AND.(.NOT.EQKEYW(3+STOK,'IN'))) GO TO 900
+      IF((ITEMS.NE.2+STOK).AND.(ITEMS.NE.4+STOK)) GO TO 900
+      IF( .NOT.TOKTYP(STOK,KXNAME) ) THEN
+         CALL WARN(7,ASCREC(IDP(STOK)))
+         GOTO 999
+      ENDIF
+      IF( .NOT.TOKTYP(2+STOK,KXNAME) ) THEN
+         CALL WARN(7,ASCREC(IDP(2+STOK)))
+         GOTO 999
+      ENDIF
+      CALL LXSREC(STOK,ANAME1,ZC)
+      CALL LXSREC(2+STOK,ANAME2,ZC)
+      !
+      ! LOOK FOR RELATION
+      !
+      CALL ZMOVE(RNAME1,BLANK)
+      IFLAG = 0
+      IF (EQKEYW(3+STOK,'IN')) THEN
+         IFLAG = 1
+         CALL LXSREC(4+STOK,RNAME1,ZC)
+         !  CHECK THAT RELATION EXISTS
+         I = LOCREL(RNAME1)
+         IF(I.NE.0) THEN
+            CALL WARN(1,RNAME1,BLANK)
+            GO TO 999
+         ENDIF
+      ENDIF
+      !
+      ! SEE IF ANAME1 EXISTS
+      !
+      I = LOCATT(ANAME1,RNAME1)
+      IF(I.NE.0) GO TO 910
+      !
+      ! SEE IF ANAME2 ALREADY EXISTS
+      !
+      I = LOCATT(ANAME2,BLANK )
+      IF(I.NE.0) GO TO 200
+      !
+      ! EXISTS - CHECK TYPE AND LENGTH
+      !
+      CALL ATTGET(STATUS)
+      ILEN = ATTLEN
+      ITYPE = ATTYPE
+      I = LOCATT(ANAME1,RNAME1)
+      CALL ATTGET(STATUS)
+      IF(ILEN.NE.ATTLEN) GO TO 920
+      IF(ITYPE.NE.ATTYPE) GO TO 920
+      !
+      ! NOW CHECK THAT OLD AND NEW DON'T COHABITATE IN SAME RELATION
+      !
+      NUM = 0
+120   NUM = NUM + 1
+      I = LOCATT(ANAME1,RNAME1)
+      DO II=1,NUM
+         CALL ATTGET(STATUS)
+         IF(STATUS.NE.0) GO TO 200
+      END DO
+      I = LOCATT(ANAME2,RELNAM)
+      IF(I.NE.0) GO TO 120
+      CALL MSG('E','COLUMN ''','+')
+      CALL AMSG(ANAME2,-ZC,'+')
+      CALL MSG(' ',''' ALREADY EXISTS IN TABLE ''','+')
+      CALL AMSG(RELNAM,-ZC,' ')
+      CALL MSG(' ','''',' ')
+      GO TO 999
+      !
+      ! RENAME ATTRIBUTE
+      !
+200   I = LOCATT(ANAME1,RNAME1)
+210   CALL ATTGET(STATUS)
+      IF(STATUS.NE.0) GO TO 300
+      !
+      ! CHECK FOR PERMISSION
+      !
+      I = LOCREL(RELNAM)
+      I = LOCPRM(RELNAM,2)
+      IF(I.NE.0) THEN
+         IF(IFLAG.NE.0) GO TO 930
+         GO TO 210
+      ENDIF
+      CALL ZMOVE(ATTNAM,ANAME2)
+      CALL ATTPUT(STATUS)
+      IF(IFLAG.EQ.0) GO TO 210
+      !
+      ! ALSO RENAME IN THE LINKS TABLES
+      !
+300   IF (LOCLNK(BLANK).NE.0) GOTO 800
+400   CALL LNKGET(STATUS)
+      IF (STATUS.NE.0) GOTO 800
+      IF (EQ(A1NAME,ANAME1) .AND. &
+         (EQ(R1NAME,RNAME1).OR.IFLAG.EQ.0)) &
+         CALL ZMOVE(A1NAME,ANAME2)
+      IF (EQ(A2NAME,ANAME1) .AND. &
+         (EQ(R2NAME,RNAME1).OR.IFLAG.EQ.0)) &
+         CALL ZMOVE(A2NAME,ANAME2)
+      CALL LNKPUT(STATUS)
+      GOTO 400
+      !
+800   CALL MSG(' ','COLUMN ''','+')
+      CALL AMSG(ANAME1,-ZC,'+')
+      CALL MSG(' ',''' RENAMED TO ''','+')
+      CALL AMSG(ANAME2,-ZC,'+')
+      CALL MSG(' ',''',',' ')
+      GOTO 999
+      !
+      ! BAD SYNTAX
+      !
+900   CALL WARN(4)
+      GO TO 999
+      !
+      ! ANAME1 NOT THERE
+      !
+910   CALL WARN(3,ANAME1,RNAME1)
+      GO TO 999
+      !
+      ! TYPE/LENGTH DIFFERS
+      !
+920   CALL MSG('E','COLUMN ''','+')
+      CALL AMSG(ANAME2,-ZC,'+')
+      CALL MSG(' ',''' HAS DIFFERENT TYPE OR LENGTH THAN ''','+')
+      CALL AMSG(ANAME1,ZC,'+')
+      CALL MSG(' ','''.',' ')
+      GO TO 999
+      !
+930   CALL WARN(8)
+      GO TO 999
+      !
+      ! ALL DONE
+      !
+999   CONTINUE
+      RETURN 1
+   END SUBROUTINE RNAMEA
+
+
+   SUBROUTINE RNAMEL(*)
+      !!
+      !! RENAME A LINK IN THE DATABASE
+      !!
+      USE Parameters
+      USE Globals, only: DFLAG, DMFLAG, DBNAME, USERID, OWNER
+      USE Globals, only: RMSTAT
+      USE Lexer, only: ITEMS, EQKEYW, LXSREC
+      USE Message, only: WARN
+      USE Utils, only : ZMOVE
+
+      INCLUDE 'tuplel.inc'
+      INCLUDE 'lnktbl.inc'
+
+      INCLUDE 'rmatts.inc'
+      !
+      INTEGER :: I, ISTAT
+      INTEGER :: LKNAM(Z), NLKNAM(Z)
+
+      INTEGER LOCLNK
+      LOGICAL NE, EQ
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      ! MAKE SURE THE DATABASE MAY BE MODIFIED
+      !
+      IF(.NOT.DMFLAG) THEN
+         CALL WARN(RMSTAT,DBNAME)
+         GO TO 999
+      ENDIF
+      !
+      ! ONLY THE OWNER CAN DO THIS
+      !
+      IF (NE(OWNER,USERID)) THEN
+         CALL WARN(8)
+         GOTO 999
+      ENDIF
+      !
+      IF(ITEMS.NE.5) GO TO 999
+      IF (.NOT.EQKEYW(4,'TO'))  THEN
+         CALL WARN(4)
+         GOTO 999
+      ENDIF
+
+      CALL LXSREC(3,LKNAM,ZC)
+      CALL LXSREC(5,NLKNAM,ZC)
+      !
+      !  CHECK THAT THE NEW NAME DOES NOT EXIST
+      !
+      I = LOCLNK(NLKNAM)
+      IF(I.EQ.0) THEN
+         CALL MSG('E','LINK ''','+')
+         CALL AMSG(NLKNAM,-ZC,'+')
+         CALL MSG(' ',''' IS ALREADY IN THE DATABASE.',' ')
+         GOTO 999
+      ENDIF
+      !
+      !  FIND THE OLD LINK NAME IN THE LINK TABLE.
+      !
+      I = LOCLNK(LKNAM)
+      IF(I.NE.0) THEN
+         CALL MSG('E','LINK ''','+')
+         CALL AMSG(LKNAM,-ZC,'+')
+         CALL MSG(' ',''' IS NOT IN THE DATABASE.',' ')
+         GOTO 999
+      ENDIF
+      !
+      !
+      !  CHANGE THE LINK TABLE.
+      !
+      CALL LNKGET(ISTAT)
+      CALL ZMOVE(LNAME,NLKNAM)
+      CALL LNKPUT(ISTAT)
+      IF (ISTAT.EQ.0) THEN
+         CALL MSG(' ','LINK ''','+')
+         CALL AMSG(LKNAM,-ZC,'+')
+         CALL MSG(' ',''' HAS BEEN RENAMED TO ''','+')
+         CALL AMSG(NLKNAM,-ZC,'+')
+         CALL MSG(' ','''',' ')
+      ENDIF
+      !
+999   RETURN 1
+   END SUBROUTINE RNAMEL
+
+
+   SUBROUTINE JOIREL(*)
+      !!
+      !!  THIS ROUTINE FINDS THE JOIN OF TWO RELATIONS BASED UPON JOINING
+      !!  TWO ATTRIBUTES.  THE RESULT FROM THIS PROCESS IS A
+      !!  RELATION WHICH HAS TUPLES CONTRUCTED FROM BOTH RELATIONS
+      !!  WHERE THE SPECIFIED ATTRIBUTES MATCH AS REQUESTED.
+      !!
+      !!  THE SYNTAX FOR THE JOIN COMMAND IS:
+      !!
+      !!  JOIN REL1 USING ATT1 WITH REL2 USING ATT2 FORMING REL3 WHERE EQ
+      !!
+      USE Parameters
+      USE Globals, only : DFLAG, DMFLAG
+      Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, KWS, ITEMS, EQKEYW, LXSREC
+      USE DateTime, only : RMDATE
+      USE Message, only : WARN
+      USE Text, only : BLANK, NONE
+      USE Utils, only : ZMOVE
+
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'files.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'whcom.inc.f90'
+      !
+      INTEGER :: PTABLE
+      LOGICAL :: EQ
+      LOGICAL :: NE
+      INCLUDE 'dclar1.inc'
+      INCLUDE 'dclar3.inc'
+      !  LOCAL ARRAYS AND VARIABLES :
+      !
+      INCLUDE 'ptbl.inc'
+      ! PTABLE (MATRIX 7) USED TO CONTROL POINTERS
+      ! PTBL1-- ATTRIBUTE NAME
+      ! PTBL2-- ATTRIBUTE LOCATION IN RELATION 1
+      ! PTBL3-- ATTRIBUTE LOCATION IN RELATION 2
+      ! PTBL4-- ATTRIBUTE LOCATION IN RELATION 3
+      ! PTBL5-- LENGTH IN WORDS
+      ! PTBL6-- ATTRIBUTE TYPE
+      !
+
+      INTEGER :: I, I1, I2, ICT, ISTAT, J, K, KATT3, KEYCOL, KEYLEN, KEYTYP, KQ1, KQ3, NATT1, NATT2, NATT3
+      INTEGER :: NCOL1, NCOL2, NCOL3, NK, NWORDS
+
+      INTEGER LOCBOO, LOCREL, LOCPRM, LOCATT
+
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      !
+      ! MAKE SURE THE DATABASE MAY BE MODIFIED
+      !
+      IF(.NOT.DMFLAG) THEN
+         CALL WARN(8)
+         GO TO 999
+      ENDIF
+      !
+      !  EDIT COMMAND SYNTAX
+      !
+      CALL BLKCLN
+      IF(.NOT.EQKEYW(3,'USING'))   GO TO 900
+      IF(.NOT.EQKEYW(5,'WITH'))    GO TO 900
+      IF(.NOT.EQKEYW(7,'USING'))   GO TO 900
+      IF(.NOT.EQKEYW(9,'FORMING')) GO TO 900
+      !
+      !  SET DEFAULT WHERE CONDITION (EQ OR NK = 2)
+      !
+      NK = 2
+      IF(ITEMS.LE.10) GO TO 50
+      !
+      !  CHECK WHERE COMPARISON.
+      !
+      IF(.NOT.EQKEYW(11,'WHERE')) GO TO 900
+      NK = LOCBOO(KWS(12))
+      IF(NK.EQ.0) GO TO 900
+      IF(NK.EQ.1) GO TO 900
+      !
+      !  KEYWORD SYNTAX OKAY
+      !
+50    CALL LXSREC(2,RNAME1,ZC)
+      I = LOCREL(RNAME1)
+      IF(I.NE.0) THEN
+         ! MISSING FIRST RELATION.
+         CALL WARN(1,RNAME1)
+         GO TO 999
+      ENDIF
+      !
+      !  SAVE DATA ABOUT RELATION 1
+      !
+      I1 = LOCPRM(RNAME1,1)
+      IF(I1.NE.0) THEN
+         CALL WARN(9,RNAME1)
+         GO TO 999
+      ENDIF
+      NCOL1 = NCOL
+111   NATT1 = NATT
+      CALL ZMOVE(RPW1,RPW)
+      CALL ZMOVE(MPW1,MPW)
+      !
+      !  CHECK THE COMPARISON ATTRIBUTE.
+      !
+      CALL LXSREC(4,ANAME1,ZC)
+      I = LOCATT(ANAME1,RNAME1)
+      IF(I.NE.0) THEN
+         CALL WARN(3,ANAME1,RNAME1)
+         GO TO 999
+      ENDIF
+      !
+      ! CHECK SECOND RELATION
+      !
+      CALL LXSREC(6,RNAME2,ZC)
+      I = LOCREL(RNAME2)
+      IF(I.NE.0) THEN
+         ! MISSING SECOND RELATION.
+         CALL WARN(1,RNAME2)
+         GO TO 999
+      ENDIF
+      !
+      !  SAVE DATA ABOUT RELATION 2
+      !
+      I2 = LOCPRM(RNAME2,1)
+      IF(I2.NE.0) THEN
+         CALL WARN(9,RNAME2)
+         GO TO 999
+      ENDIF
+      NCOL2 = NCOL
+      NATT2 = NATT
+      CALL ZMOVE(RPW2,RPW)
+      CALL ZMOVE(MPW2,MPW)
+      !
+      !  CHECK THE COMPARISON ATTRIBUTE.
+      !
+      CALL LXSREC(8,ANAME2,ZC)
+      I = LOCATT(ANAME2,RNAME2)
+      IF(I.NE.0) THEN
+         CALL WARN(3,ANAME2,RNAME2)
+         GO TO 999
+      ENDIF
+      !
+      !  CHECK FOR LEGAL RNAME3
+      !
+      IF(.NOT.TOKTYP(10,KXNAME)) THEN
+         CALL WARN(7,ASCREC(IDP(10)))
+         GO TO 999
+      ENDIF
+      !
+      !  CHECK FOR DUPLICATE RELATION 3
+      !
+      CALL LXSREC(10,RNAME3,ZC)
+      I = LOCREL(RNAME3)
+      IF(I.EQ.0) THEN
+         CALL WARN(5,RNAME3)
+         GO TO 999
+      ENDIF
+      !
+      !  CHECK USER READ SECURITY
+      !
+      IF((I1.NE.0).OR.(I2.NE.0)) GO TO 999
+      !
+      !  RELATION NAMES OKAY -- CHECK THE ATTRIBUTES
+      !
+      !  SET UP PTABLE IN BLOCK 7
+      !
+      CALL BLKDEF(7,PTBLL,NATT1+NATT2)
+      PTABLE = BLKLOC(7)
+      NATT3 = 0
+      ICT = 1
+      !
+      !  STORE DATA FROM RELATION 1 IN PTABLE
+      !
+      I = LOCATT(BLANK,RNAME1)
+      DO I=1,NATT1
+         CALL ATTGET(ISTAT)
+         IF(ISTAT.NE.0) GO TO 500
+         NATT3 = NATT3 + 1
+         CALL ZMOVE(BUFFER(PTABLE),ATTNAM)
+         BUFFER(PTABLE+PTBL2-1) = ATTCOL
+         BUFFER(PTABLE+PTBL4-1) = ICT
+         NWORDS = ATTWDS
+         BUFFER(PTABLE+PTBL5-1) = ATTLEN
+         IF(NWORDS.EQ.0) NWORDS = 1
+         ICT = ICT + NWORDS
+         BUFFER(PTABLE+PTBL6-1) = ATTYPE
+         BUFFER(PTABLE+PTBL7-1) = ATTFOR
+         PTABLE = PTABLE + PTBLL
+500      CONTINUE
+      END DO
+      !
+      !  STORE DATA FROM RELATION 2 IN PTABLE
+      !
+      KATT3 = NATT3
+      I = LOCATT(BLANK,RNAME2)
+      DO I=1,NATT2
+         CALL ATTGET(ISTAT)
+         IF(ISTAT.NE.0) GO TO 550
+         !
+         !  FIRST CHECK TO SEE IF ATTRIBUTE IS ALREADY IN PTABLE.
+         !
+         KQ1 = BLKLOC(7) - PTBLL
+         DO J=1,KATT3
+            KQ1 = KQ1 + PTBLL
+            IF(BUFFER(KQ1+PTBL3-1).NE.0) GO TO 520
+            IF (EQ(BUFFER(KQ1),ATTNAM)) THEN
+               CALL MSG('W','COLUMN ''','+')
+               CALL AMSG(ATTNAM,-ZC,'+')
+               CALL MSG(' ',''' IS DUPLICATED.  ','+')
+               CALL MSG(' F','YOU SHOULD RENAME IT.',' ')
+               GO TO 530
+            ENDIF
+520         CONTINUE
+         END DO
+         !
+         !  ADD THE DATA TO PTABLE.
+         !
+530      NATT3 = NATT3 + 1
+         CALL ZMOVE(BUFFER(PTABLE),ATTNAM)
+         BUFFER(PTABLE+PTBL3-1) = ATTCOL
+         BUFFER(PTABLE+PTBL4-1) = ICT
+         NWORDS = ATTWDS
+         BUFFER(PTABLE+PTBL5-1) = ATTLEN
+         IF(NWORDS.EQ.0) NWORDS = 1
+         ICT = ICT + NWORDS
+         BUFFER(PTABLE+PTBL6-1) = ATTYPE
+         BUFFER(PTABLE+PTBL7-1) = ATTFOR
+         PTABLE = PTABLE + PTBLL
+550      CONTINUE
+      END DO
+      ICT = ICT - 1
+      !
+      !  PTABLE IS CONSTRUCTED
+      !
+      !  NOW CREATE ATTRIBUTE AND RELATION TABLES AND THE RELATION
+      !
+      IF(ICT.GT.MAXCOL) GO TO 930
+      !
+      !  SET UP THE WHERE CLAUSE FOR THE JOIN.
+      !
+      I = LOCATT(ANAME2,RNAME2)
+      CALL ATTGET(ISTAT)
+      IF(ATTWDS.GT.300) GO TO 940
+      KEYCOL = ATTCOL
+      KEYTYP = ATTYPE
+      KEYLEN = ATTLEN
+      NBOO = 1
+      BOO(1) = WHAND
+      I = LOCATT(ANAME1,RNAME1)
+      CALL ATTGET(ISTAT)
+      KATTP(1) = ATTCOL
+      KATTL(1) = ATTLEN
+      !
+      !  MAKE SURE THE ATTRIBUTE TYPES MATCH.
+      !
+      IF(KEYTYP.NE.ATTYPE) GO TO 920
+      IF(KEYLEN.NE.ATTLEN) GO TO 910
+      KATTY(1) = ATTYPE
+      IF(KEYTYP.EQ.KZIVEC) KATTY(1) = KZINT
+      IF(KEYTYP.EQ.KZRVEC) KATTY(1) = KZREAL
+      IF(KEYTYP.EQ.KZDVEC) KATTY(1) = KZDOUB
+      IF(KEYTYP.EQ.KZIMAT) KATTY(1) = KZINT
+      IF(KEYTYP.EQ.KZRMAT) KATTY(1) = KZREAL
+      IF(KEYTYP.EQ.KZDMAT) KATTY(1) = KZDOUB
+      KOMTYP(1) = NK
+      KOMPOS(1) = 1
+      KOMLEN(1) = 1
+      KOMPOT(1) = 1
+      KSTRT = ATTKEY
+      IF(NK.NE.2) KSTRT = 0
+      MAXTU = ALL9S
+      LIMTU = ALL9S
+      !
+      !  SET UP RELATION TABLE.
+      !
+      CALL ZMOVE(NAME,RNAME3)
+      RDATE = RMDATE()
+      NCOL = ICT
+      NCOL3 = ICT
+      NATT = NATT3
+      NTUPLE = 0
+      RSTART = 0
+      REND = 0
+      CALL ZMOVE(RPW,RPW1)
+      CALL ZMOVE(MPW,MPW1)
+      IF(EQ(RPW,NONE).AND.NE(RPW2,NONE)) CALL ZMOVE(RPW,RPW2)
+      IF(EQ(MPW,NONE).AND.NE(MPW2,NONE)) CALL ZMOVE(MPW,MPW2)
+      CALL RELADD
+      !
+      CALL ATTNEW(NAME,NATT)
+      PTABLE = BLKLOC(7)
+      DO K=1,NATT3
+         CALL ZMOVE(ATTNAM,BUFFER(PTABLE))
+         CALL ZMOVE(RELNAM,NAME)
+         ATTCOL = BUFFER(PTABLE+PTBL4-1)
+         ATTLEN = BUFFER(PTABLE+PTBL5-1)
+         ATTYPE = BUFFER(PTABLE+PTBL6-1)
+         ATTFOR = BUFFER(PTABLE+PTBL7-1)
+         ATTKEY = 0
+         CALL ATTADD
+         PTABLE = PTABLE + PTBLL
+      END DO
+      !
+      !  CALL JOIN TO CONSTRUCT MATN3
+      !
+      CALL BLKDEF(8,MAXCOL,1)
+      KQ3 = BLKLOC(8)
+      PTABLE = BLKLOC(7)
+      I = LOCREL(RNAME2)
+      CALL JOIN(RNAME1,RNAME3,BUFFER(KQ3),NCOL3,NATT3,BUFFER(PTABLE), &
+         KEYCOL,KEYTYP)
+      GO TO 999
+      !
+      !
+      !  SYNTAX ERROR IN JOIN COMMAND
+      !
+900   CALL WARN(4)
+      !
+      !
+      !  MISMATCHED DATA TYPES.
+      !
+910   CALL MSG('E','JOIN COLUMNS HAVE DIFFERENT LENGTHS.',' ')
+      GO TO 999
+      !
+920   CALL MSG('E','JOIN COLUMNS HAVE DIFFERENT TYPES.',' ')
+      GO TO 999
+      !
+930   CALL WARN(15)
+      GO TO 999
+      !
+940   CALL MSG('E','JOIN COLUMN IS TOO LONG.',' ')
+      GO TO 999
+      !
+      !  DONE WITH JOIN
+      !
+999   CALL BLKCLR(7)
+      CALL BLKCLR(8)
+      RETURN 1
+   END SUBROUTINE JOIREL
+
+
+   SUBROUTINE PJECT(*)
+      !!
+      !! PERFORM PHYSICAL PROJECTIONS ON EXISTING RELATIONS.
+      !!
+      !! PROJECT RNAME2 FROM RNAME1 USING ATTR1 ATTR2...ATTRN
+      !!   ... WHERE CONDITION
+      !!
+      USE Parameters
+      USE Globals, only : DFLAG, DMFLAG, RMSTAT
+      USE DateTime, only : RMDATE
+      Use Lexer, only: KXNAME, TOKTYP, IDP, ITEMS, EQKEYW, LFIND
+      Use Lexer, only: LXSREC
+      USE Message, only : WARN
+      USE Text, only : BLANK
+      USE Utils, only : ZMOVE
+
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'whcom.inc.f90'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'files.inc'
+      INCLUDE 'buffer.inc'
+      !
+      !
+      INTEGER :: STATUS
+      INTEGER :: ATNCOL
+      LOGICAL :: PJALL
+      INTEGER :: TEMP(Z)
+      INCLUDE 'dclar1.inc'
+
+      INTEGER :: I, IERR, IPOINT, J, K, KK, KKX, KNEW, KQ, KQ7, KQ8, LENF, LENGTH, LENT
+      INTEGER :: LPAG, MEND, MSTART, NOATTS, NOCOLS, UC, UE
+
+      INTEGER LOCREL, LOCPRM, LOCATT
+      !
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      ! MAKE SURE THE DATABASE MAY BE MODIFIED
+      !
+      IF(.NOT.DMFLAG) THEN
+         CALL WARN(8)
+         GO TO 999
+      ENDIF
+      !
+      ! CHECK SYNTAX AND RELATION NAMES
+      !
+      CALL BLKCLN
+      IF(.NOT.EQKEYW(3,'FROM')) THEN
+         CALL WARN(4,BLANK,BLANK)
+         GOTO 999
+      ENDIF
+      UC = LFIND(5,ITEMS-4,'USING')
+      CALL LXSREC(4,RNAME1,ZC)
+      I = LOCREL(RNAME1)
+      LENF = NCOL
+      IF(I.NE.0) THEN
+         ! RNAME1 DOES NOT EXIST
+         CALL WARN(1,RNAME1)
+         GO TO 999
+      ENDIF
+      !
+      !
+      IF(.NOT.TOKTYP(2,KXNAME)) THEN
+         ! !CALL WARN(7,ASCTXT(IDP(2)),0) ! ASCTXT is a subroutine ???
+         TEMP(1) = KXNAME
+         CALL WARN(7, TEMP)
+         GO TO 999
+      ENDIF
+      CALL LXSREC(2,RNAME2,ZC)
+      I = LOCREL(RNAME2)
+      IF(I.EQ.0) THEN
+         ! DUPLICATE RELATION NAME ENCOUNTERED
+         CALL WARN(5,RNAME2)
+         GO TO 999
+      ENDIF
+      !
+      !  CHECK USER READ SECURITY
+      !
+      I = LOCREL(RNAME1)
+      I = LOCPRM(RNAME1,1)
+      IF(I.NE.0) THEN
+         CALL WARN(9,RNAME1)
+         GO TO 999
+      ENDIF
+      NS = 0
+      NID = RSTART
+      !
+      !  SET UP THE WHERE CLAUSE
+      !
+      K = LFIND(5,ITEMS-4,'WHERE')
+      NBOO = 0
+      LIMTU = ALL9S
+      RMSTAT = 0
+      KKX = K
+      IF(K.NE.0) CALL SELWHR(K,ITEMS-K+1)
+      IF(RMSTAT.NE.0) GO TO 999
+      !
+      !  CHECK THE ATTRIBUTES AND BUILD POINTER ARRAY - POS. 7
+      !
+      CALL BLKDEF(7,LENF,1)
+      KQ7 = BLKLOC(7) - 1
+      NOCOLS = 0
+      UE = ITEMS
+      IF(K.NE.0) UE = K - 1
+      IF (UC.EQ.0) THEN
+         !
+         !    ALL ATTRIBUTES
+         !
+         PJALL = .TRUE.
+         NOATTS = NATT
+      ELSE
+         !
+         !    SELECTED ATTRIBUTES - CHECK THEM
+         !
+         IERR = 0
+         DO I=UC+1,UE
+            CALL LXSREC(I,ANAME,ZC)
+            IF(LOCATT(ANAME,NAME).NE.0) THEN
+               CALL WARN(3,ANAME,NAME)
+               IERR = 1
+            ENDIF
+            IF(IERR.EQ.1) GO TO 999
+         END DO
+         PJALL = .FALSE.
+         NOATTS = UE - UC
+      ENDIF
+      CALL ATTNEW(RNAME2,NOATTS)
+      !
+      DO I=1,NOATTS
+         IF(PJALL) THEN
+            STATUS = LOCATT(BLANK,NAME)
+            DO J=1,I
+               CALL ATTGET(STATUS)
+               IF(STATUS.NE.0) GO TO 160
+            END DO
+         ELSE
+            CALL LXSREC(I+UC,ANAME,ZC)
+            IERR = LOCATT(ANAME,NAME)
+            CALL ATTGET(STATUS)
+         ENDIF
+         !
+         ATNCOL = NOCOLS + 1
+         IF(ATTWDS.GT.0) THEN
+            !
+            !    FIXED LENGTH
+            !
+            KQ = KQ7 + ATTCOL
+            DO KK=1,ATTWDS
+               NOCOLS = NOCOLS + 1
+               BUFFER(KQ) = NOCOLS
+               KQ = KQ + 1
+            END DO
+         ELSE
+            !
+            !    VARIABLE LENGTH
+            !
+            NOCOLS = NOCOLS + 1
+            BUFFER(KQ7+ATTCOL) = -NOCOLS
+         ENDIF
+         CALL ZMOVE(RELNAM,RNAME2)
+         ATTCOL = ATNCOL
+         ATTKEY = 0
+         CALL ATTADD
+160      CONTINUE
+      END DO
+      !
+      !  SET UP RELTBLE
+      !
+      CALL ZMOVE(NAME,RNAME2)
+      RDATE = RMDATE()
+      NCOL = NOCOLS
+      NATT = NOATTS
+      NTUPLE = 0
+      RSTART = 0
+      REND = 0
+      CALL RELADD
+      !
+      ! 1 IS INPUT BUFFER, 2 IS OUTPUT BUFFER, 8 IS OUTPUT TUPLE
+      !
+      LPAG = MAXCOL + 2
+      CALL BLKDEF(8,LPAG,1)
+      KQ8 = BLKLOC(8)
+      !
+      ! LOOP THRU THOSE TUPLES
+      !
+      RMSTAT = 0
+      I = LOCREL(RNAME1)
+      KNEW = 0
+      MSTART = 0
+      MEND = 0
+      !
+170   CALL RMLOOK(IPOINT,1,1,LENGTH)
+      IF (RMSTAT.EQ.0) THEN
+         CALL PRJTUP(BUFFER(KQ7+1),LENF,NOCOLS,BUFFER(IPOINT), &
+            BUFFER(KQ8),LENT)
+         CALL ADDDAT(2,MEND,BUFFER(KQ8),LENT)
+         IF(MSTART.EQ.0)MSTART = MEND
+         KNEW = KNEW + 1
+         GO TO 170
+      ENDIF
+      !
+      I = LOCREL(RNAME2)
+      CALL RELGET(STATUS)
+      NTUPLE = KNEW
+      RSTART = MSTART
+      REND = MEND
+      CALL RELPUT
+      CALL MSG(' ','PROJECT COMPLETED,','+')
+      CALL IMSG(KNEW,6,'+')
+      CALL MSG(' ',' ROWS GENERATED.',' ')
+      !
+      !
+999   CALL BLKCLR(7)
+      CALL BLKCLR(8)
+      RETURN 1
+   END SUBROUTINE PJECT
+
+
+   SUBROUTINE TUPLRC(OPCODE,*)
+      !!
+      !! PERFORM TUPLE RELATIONAL CALCULUS
+      !!
+      !! OPCODE MAY BE: UNION, INTERSECT, OR SUBTRACT
+      !!
+      !! FORMATS:
+      !!
+      !! UNION     REL1 WITH REL2 FORMING REL3 USING ATTR1 ATTR2...ATTR-N
+      !! INTERSECT REL1 WITH REL2 FORMING REL3 USING ATTR1 ATTR2...ATTR-N
+      !! SUBTRACT  REL2 FROM REL1 FORMING REL3 USING ATTR1 ATTR2...ATTR-N
+      !!
+      USE Parameters
+      USE Globals, only : DFLAG, DMFLAG
+      USE DateTime, only : RMDATE
+      Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW, LXSREC
+      USE Message, only: WARN
+      USE Text, only : BLANK, NONE
+      USE Utils, only : ZMOVE
+
+      CHARACTER(len=*), intent(in) :: OPCODE
+
+      INTEGER, PARAMETER :: OPIS=1, OPUN=2, OPSB=3
+      !
+      !
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'files.inc'
+      INCLUDE 'buffer.inc'
+      INCLUDE 'whcom.inc.f90'
+      !
+      INCLUDE 'ptbl.inc'
+      INCLUDE 'dclar1.inc'
+      INCLUDE 'dclar3.inc'
+
+      INTEGER :: I, I1, I2, ICHK1, ICHK2, ICT, IJ, ISTAT, J, K, KATT3, KEYCOL, KQ1, KQ3, NATT1, NATT2, NATT3
+      INTEGER :: NCOL1, NCOL2, NCOL3, NTUP1, NTUP2, NTUPSQ, OP, KEYTYP, NATTT, NWORDS
+
+      INTEGER :: PTABLE
+      LOGICAL :: EQ
+      LOGICAL :: NE
+      LOGICAL :: GETKCA, REQKCA
+      INTEGER LOCREL, LOCPRM, LOCATT
+
+      !
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      ! MAKE SURE THE DATABASE MAY BE MODIFIED
+      !
+      IF(.NOT.DMFLAG) THEN
+         CALL WARN(8)
+         GO TO 999
+      ENDIF
+      !
+      ! GET OPCODE TO INTEGER
+      !
+      OP = 0
+      IF (OPCODE.EQ.'INTERSECT') OP = OPIS
+      IF (OPCODE.EQ.'UNION')     OP = OPUN
+      IF (OPCODE.EQ.'SUBTRACT')  OP = OPSB
+      IF (OP.EQ.0) GOTO 900
+
+      !
+      !  EDIT COMMAND SYNTAX
+      !
+      CALL BLKCLN
+      NS = 0
+      IF(.NOT.EQKEYW(3,'WITH') .AND. .NOT.EQKEYW(3,'FROM')) GO TO 900
+      IF(.NOT.EQKEYW(5,'FORMING')) GO TO 900
+      IF(ITEMS.GT.6 .AND. .NOT.EQKEYW(7,'USING')) GO TO 900
+      !
+      !  KEYWORD SYNTAX OKAY
+      !
+      IF (OP.NE.OPSB) THEN
+         CALL LXSREC(2,RNAME1,ZC)
+         CALL LXSREC(4,RNAME2,ZC)
+      ELSE
+         CALL LXSREC(4,RNAME1,ZC)
+         CALL LXSREC(2,RNAME2,ZC)
+      ENDIF
+      I = LOCREL(RNAME1)
+      IF(I.NE.0) THEN
+         ! MISSING FIRST RELATION.
+         CALL WARN(1,RNAME1)
+         GO TO 999
+      ENDIF
+      !
+      !  SAVE DATA ABOUT RELATION 1
+      !
+      I1 = LOCPRM(RNAME1,1)
+      IF(I1.NE.0) THEN
+         CALL WARN(9,RNAME1)
+         GO TO 999
+      ENDIF
+      NCOL1 = NCOL
+      NATT1 = NATT
+      CALL ZMOVE(RPW1,RPW)
+      CALL ZMOVE(MPW1,MPW)
+      NTUP1 = NTUPLE
+      I = LOCREL(RNAME2)
+      IF(I.NE.0) THEN
+         !  MISSING SECOND RELATION.
+         CALL WARN(1,RNAME2)
+         GO TO 999
+      ENDIF
+      !
+      !  SAVE DATA ABOUT RELATION 2
+      !
+      I2 = LOCPRM(RNAME2,1)
+      IF(I2.NE.0) THEN
+         CALL WARN(9,RNAME2)
+         GO TO 999
+      ENDIF
+      NCOL2 = NCOL
+      NATT2 = NATT
+      CALL ZMOVE(RPW2,RPW)
+      CALL ZMOVE(MPW2,MPW)
+      NTUP2 = NTUPLE
+      NTUPSQ = (NTUP1+1)*(NTUP2+1)
+      !
+      !  CHECK FOR LEGAL RNAME3
+      !
+      IF(.NOT.TOKTYP(6,KXNAME)) THEN
+         CALL WARN(7,ASCREC(IDP(6)))
+         GO TO 999
+      ENDIF
+      !
+      !  CHECK FOR DUPLICATE RELATION 3
+      !
+      CALL LXSREC(6,RNAME3,ZC)
+      I = LOCREL(RNAME3)
+      IF(I.EQ.0) THEN
+         CALL WARN(5,RNAME3)
+         GO TO 999
+      ENDIF
+      !
+      !  CHECK USER READ SECURITY
+      !
+      IF((I1.NE.0).OR.(I2.NE.0)) GO TO 999
+      !
+      !  RELATION NAMES OKAY -- CHECK THE ATTRIBUTES
+      !
+      !  SET UP PTABLE IN BUFFER 7
+      !
+      NATTT = NATT1 + NATT2
+      IF (OP.EQ.OPSB) NATTT = NATT1
+      CALL BLKDEF(7,PTBLL,NATTT)
+      PTABLE = BLKLOC(7)
+      NATT3 = 0
+      IF(ITEMS.EQ.6) GO TO 500
+      !
+      !  OPERATE ON SOME OF THE ATTRIBUTES
+      !
+      IF(ITEMS-7.GT.NATTT) THEN
+         CALL MSG('E','TOO MANY COLUMNS SPECIFIED.',' ')
+         GO TO 999
+      ENDIF
+      IJ = 1
+      DO I=8,ITEMS
+         !
+         !  RETRIEVE ATTRIBUTE LENGTH FOR OLD ATTRIBUTE
+         !
+         !
+         ! GET THE ATTRIBUTE DATA
+         !
+         CALL LXSREC(I,ANAME,ZC)
+         ICHK1 = LOCATT(ANAME,RNAME1)
+         IF(ICHK1.EQ.0) GO TO 300
+         ICHK2 = LOCATT(ANAME,RNAME2)
+         IF(OP.NE.OPSB .AND. ICHK2.EQ.0) GO TO 300
+         !
+         !  ATTRIBUTE WAS NOT FOUND
+         !
+         CALL WARN(3,ANAME,BLANK)
+         GO TO 999
+         !
+         !  ATTRIBUTE IS OKAY -- SET UP PTABLE
+         !
+300      CALL ATTGET(ISTAT)
+         NATT3 = NATT3 + 1
+         CALL ZMOVE(BUFFER(PTABLE),ANAME)
+         BUFFER(PTABLE+PTBL4-1) = IJ
+         NWORDS = ATTWDS
+         BUFFER(PTABLE+PTBL5-1) = ATTLEN
+         IF(NWORDS.EQ.0) NWORDS = 1
+         IJ = IJ + NWORDS
+         BUFFER(PTABLE+PTBL6-1) = ATTYPE
+         BUFFER(PTABLE+PTBL7-1) = ATTFOR
+         IF(ICHK1.EQ.0) THEN
+            BUFFER(PTABLE+PTBL2-1) = ATTCOL
+            ICHK2 = LOCATT(ANAME,RNAME2)
+         ELSE
+            BUFFER(PTABLE+PTBL2-1) = 0
+         ENDIF
+         IF(ICHK2.EQ.0) THEN
+            CALL ATTGET(ISTAT)
+            BUFFER(PTABLE+PTBL3-1) = ATTCOL
+         ELSE
+            BUFFER(PTABLE+PTBL3-1) = 0
+         ENDIF
+         PTABLE = PTABLE + PTBLL
+         !
+      END DO
+      ICT = IJ - 1
+      GO TO 555
+      !
+      !  OPERATION IS ON ALL ATTRIBUTES
+      !
+500   CONTINUE
+      ICT = 1
+      !
+      !  STORE DATA FROM RELATION 1 IN PTABLE
+      !
+      I = LOCATT(BLANK,RNAME1)
+      DO I=1,NATT1
+         CALL ATTGET(ISTAT)
+         IF(ISTAT.NE.0) GO TO 515
+         NATT3 = NATT3 + 1
+         CALL ZMOVE(BUFFER(PTABLE),ATTNAM)
+         BUFFER(PTABLE+PTBL2-1) = ATTCOL
+         BUFFER(PTABLE+PTBL4-1) = ICT
+         NWORDS = ATTWDS
+         BUFFER(PTABLE+PTBL5-1) = ATTLEN
+         IF(NWORDS.EQ.0) NWORDS = 1
+         ICT = ICT + NWORDS
+         BUFFER(PTABLE+PTBL6-1) = ATTYPE
+         BUFFER(PTABLE+PTBL7-1) = ATTFOR
+         PTABLE = PTABLE + PTBLL
+515      CONTINUE
+      END DO
+      !
+      !  STORE DATA FROM RELATION 2 IN PTABLE
+      !
+      KATT3 = NATT3
+      I = LOCATT(BLANK,RNAME2)
+      DO I=1,NATT2
+         CALL ATTGET(ISTAT)
+         IF(ISTAT.NE.0) GO TO 550
+         !
+         !  FIRST CHECK TO SEE IF ATTRIBUTE IS ALREADY IN PTABLE.
+         !
+         KQ1 = BLKLOC(7) - PTBLL
+         DO J=1,KATT3
+            KQ1 = KQ1 + PTBLL
+            IF(BUFFER(KQ1+PTBL3-1).NE.0) GO TO 520
+            IF(EQ(BUFFER(KQ1),ATTNAM)) GO TO 530
+520         CONTINUE
+         END DO
+         !
+         !  NOT THERE -- PUT IT IN.
+         !
+         IF (OP.EQ.OPSB) GOTO 550
+         NATT3 = NATT3 + 1
+         CALL ZMOVE(BUFFER(PTABLE),ATTNAM)
+         BUFFER(PTABLE+PTBL3-1) = ATTCOL
+         BUFFER(PTABLE+PTBL4-1) = ICT
+         NWORDS = ATTWDS
+         BUFFER(PTABLE+PTBL5-1) = ATTLEN
+         IF(NWORDS.EQ.0) NWORDS = 1
+         ICT = ICT + NWORDS
+         BUFFER(PTABLE+PTBL6-1) = ATTYPE
+         BUFFER(PTABLE+PTBL7-1) = ATTFOR
+         PTABLE = PTABLE + PTBLL
+         GO TO 550
+         !
+         !  ALREADY THERE -- CHANGE THE 2ND POINTER
+         !
+530      CONTINUE
+         BUFFER(KQ1+PTBL3-1) = ATTCOL
+550      CONTINUE
+      END DO
+      ICT = ICT - 1
+      !
+      !  DONE LOADING PTABLE
+      !
+      !  SEE IF THERE ARE ANY COMMON ATTRIBUTES.
+      !
+555   PTABLE = BLKLOC(7)
+      DO I = 1,NATT3
+         IF((BUFFER(PTABLE+2).NE.0) &
+            .AND.(BUFFER(PTABLE+3).NE.0)) GO TO 600
+         PTABLE = PTABLE + PTBLL
+      END DO
+      !
+      !  NO COMMON ATTRIBUTES
+      !
+      CALL MSG('E','TABLES HAVE NO COMMON ATTRIBUTES.',' ')
+      GO TO 999
+      !
+      !  PTABLE IS CONSTRUCTED
+      !
+      !  NOW CREATE ATTRIBUTE AND RELATION TABLES AND THE RELATION
+      !
+600   CONTINUE
+      IF(ICT.GT.MAXCOL) GO TO 910
+      !
+      !  SET UP THE WHERE CLAUSE FOR THE OPERATION
+      !  THIS IS A DUMMY WHERE CLAUSE USED ONLY BY THE KEY PROCESSING
+      !  PTABLE IS NOW POINTING AT THE FIRST COMMON ATTRIBUTE.
+      !
+      KEYCOL = BUFFER(PTABLE+PTBL3-1)
+      KEYTYP = BUFFER(PTABLE+PTBL6-1)
+      NBOO = -1
+      KATTL(1) = BUFFER(PTABLE+PTBL5-1)
+      KATTY(1) = KEYTYP
+      IF(KEYTYP.EQ.KZIVEC) KATTY(1) = KZINT
+      IF(KEYTYP.EQ.KZRVEC) KATTY(1) = KZREAL
+      IF(KEYTYP.EQ.KZDVEC) KATTY(1) = KZDOUB
+      IF(KEYTYP.EQ.KZIMAT) KATTY(1) = KZINT
+      IF(KEYTYP.EQ.KZRMAT) KATTY(1) = KZREAL
+      IF(KEYTYP.EQ.KZDMAT) KATTY(1) = KZDOUB
+      KOMPOS(1) = 1
+      KSTRT = 0
+      MAXTU = ALL9S
+      LIMTU = ALL9S
+      !
+      !  SET UP RELATION TABLE.
+      !
+      CALL ZMOVE(NAME,RNAME3)
+      RDATE = RMDATE()
+      NCOL = ICT
+      NCOL3 = ICT
+      NATT = NATT3
+      NTUPLE = 0
+      RSTART = 0
+      REND = 0
+      CALL ZMOVE(RPW,RPW1)
+      CALL ZMOVE(MPW,MPW1)
+      IF (OP.NE.OPSB) THEN
+         IF(EQ(RPW,NONE)) CALL ZMOVE(RPW,RPW2)
+         IF(EQ(MPW,NONE)) CALL ZMOVE(MPW,MPW2)
+      ENDIF
+      CALL RELADD
+      !
+      CALL ATTNEW(NAME,NATT)
+      PTABLE = BLKLOC(7)
+      DO K=1,NATT3
+         CALL ZMOVE(ATTNAM,BUFFER(PTABLE))
+         CALL ZMOVE(RELNAM,NAME)
+         ATTCOL = BUFFER(PTABLE+PTBL4-1)
+         ATTLEN = BUFFER(PTABLE+PTBL5-1)
+         ATTYPE = BUFFER(PTABLE+PTBL6-1)
+         ATTFOR = BUFFER(PTABLE+PTBL7-1)
+         ATTKEY = 0
+         CALL ATTADD
+         PTABLE = PTABLE + PTBLL
+      END DO
+      !
+      ! INTERSECT USES COMMON ATTRIBUTE IN RELATION 1
+      ! SUBTRACT USES COMMON ATTRIBUTE IN RELATION 2
+      ! UNION USES BOTH
+      !
+      IF (OP.EQ.OPSB) GOTO 800
+      !
+      ! LOOK FOR A KEYED COMMON ATTRIBUTE IN RELATION 1
+      !
+      REQKCA = NTUPSQ .GT. 2500
+      IF (GETKCA(PTABLE,NATT3,RNAME1,REQKCA)) THEN
+         KSTRT = ATTKEY
+         NS = 2
+         KATTL(1) = BUFFER(PTABLE+PTBL5-1)
+         KATTY(1) = BUFFER(PTABLE+PTBL6-1)
+         KEYCOL = BUFFER(PTABLE+PTBL3-1)
+      ENDIF
+      !
+      ! CALL PROPER OPERATOR ROUTINE
+      !
+      CALL BLKDEF(8,MAXCOL,1)
+      KQ3 = BLKLOC(8)
+      PTABLE = BLKLOC(7)
+      I = LOCREL(RNAME2)
+      IF (OP.EQ.OPIS) THEN
+         CALL ISECT(RNAME1,RNAME3,BUFFER(KQ3), &
+            NCOL3,NATT3,BUFFER(PTABLE),KEYCOL,KEYTYP)
+         GOTO 999
+      ELSE IF (OP.EQ.OPUN) THEN
+         CALL UNION(RNAME1,RNAME3,BUFFER(KQ3), &
+            NCOL3,NATT3,BUFFER(PTABLE),KEYCOL,KEYTYP,1)
+      ENDIF
+      !
+      ! GET A KEYED COMMON ATTRIBUTE IN RELATION 2
+      !
+800   CALL BLKCLR(8)
+      KSTRT = 0
+      NS = 0
+      KATTL(1) = 0
+      KATTY(1) = 0
+      KEYCOL = 0
+      !
+      REQKCA = NTUPSQ .GT. 2500
+      IF (GETKCA(PTABLE,NATT3,RNAME2,REQKCA)) THEN
+         KSTRT = ATTKEY
+         NS = 2
+         KATTL(1) = BUFFER(PTABLE+PTBL5-1)
+         KATTY(1) = BUFFER(PTABLE+PTBL6-1)
+         KEYCOL = BUFFER(PTABLE+PTBL2-1)
+      ENDIF
+      !
+      !  CALL UNION2 TO CONSTRUCT THE REST OF MATN3
+      !
+      CALL BLKDEF(8,MAXCOL,1)
+      KQ3 = BLKLOC(8)
+      PTABLE = BLKLOC(7)
+      I = LOCREL(RNAME1)
+      IF (OP.EQ.OPUN) THEN
+         CALL UNION(RNAME2,RNAME3,BUFFER(KQ3), &
+            NCOL3,NATT3,BUFFER(PTABLE),KEYCOL,KEYTYP,2)
+      ELSE IF (OP.EQ.OPSB) THEN
+         CALL SUBTRC(RNAME2,RNAME3,BUFFER(KQ3), &
+            NCOL3,NATT3,BUFFER(PTABLE),KEYCOL,KEYTYP)
+      ENDIF
+      GO TO 999
+      !
+      !  SYNTAX ERROR
+      !
+900   CALL WARN(4)
+      !
+      !
+      !  TUPLE LENGTH EXCEEDS MAXCOL
+      !
+910   CALL WARN(15)
+      !
+      ! DONE
+      !
+999   CALL BLKCLR(7)
+      CALL BLKCLR(8)
+      RETURN 1
+   END SUBROUTINE TUPLRC
+
+
+   SUBROUTINE RNAMER(*)
+      !
+      ! SUBROUTINE TO RENAME A RELATION
+      !
+      USE Parameters
+      USE Globals, only : DFLAG
+      Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
+      Use Lexer, only: LXSREC
+      USE Message, only: WARN
+      USE Text, only : BLANK
+      USE Utils, only : ZMOVE
+
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'tuplel.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'attble.inc'
+      INCLUDE 'dclar1.inc'
+
+      INTEGER :: I, ISTAT, STATUS
+
+      LOGICAL NE,EQ
+      INTEGER LOCREL, LOCPRM, LOCATT, LOCLNK
+      !
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      !
+      IF(ITEMS.NE.5) GO TO 900
+      IF(.NOT.EQKEYW(4,'TO')) GO TO 900
+      IF(.NOT.TOKTYP(3,KXNAME)) THEN
+         CALL WARN(7,ASCREC(IDP(3)))
+         GOTO 999
+      ENDIF
+      IF(.NOT.TOKTYP(5,KXNAME)) THEN
+         CALL WARN(7,ASCREC(IDP(5)))
+         GOTO 999
+      ENDIF
+      CALL LXSREC(5,RNAME1,ZC)
+      I = LOCREL(RNAME1)
+      IF(I.EQ.0) THEN
+         !  NEW NAME IS A DUPLICATE.
+         CALL WARN(5,RNAME1)
+         GO TO 999
+      ENDIF
+      CALL LXSREC(3,RNAME,ZC)
+      I = LOCREL(RNAME)
+      IF(I.NE.0) THEN
+         CALL WARN(1,RNAME)
+         GOTO 999
+      ENDIF
+      I = LOCPRM(NAME,2)
+      IF(I.NE.0) THEN
+         ! FAILS MODIFY PERMISSION
+         CALL WARN(8)
+         GO TO 999
+      ENDIF
+      !
+      !  CHANGE EVERYTHING NEEDED FOR THE RELATION.
+      !
+      CALL RELGET(ISTAT)
+      CALL LXSREC(5,RNAME1,ZC)
+      CALL ZMOVE(NAME,RNAME1)
+      CALL RELPUT
+      I = LOCATT(BLANK,RNAME)
+      IF(I.NE.0) GO TO 300
+      !
+200   CALL ATTGET(ISTAT)
+      IF (ISTAT.EQ.0) THEN
+         CALL ZMOVE(RELNAM,RNAME1)
+         CALL ATTPUT(ISTAT)
+         GO TO 200
+      ENDIF
+      !
+      ! ALSO RENAME IN THE LINKS TABLES
+      !
+300   IF (LOCLNK(BLANK).NE.0) GOTO 800
+400   CALL LNKGET(STATUS)
+      IF (STATUS.NE.0) GOTO 800
+      IF (EQ(R1NAME,RNAME )) CALL ZMOVE(R1NAME,RNAME1)
+      IF (EQ(R2NAME,RNAME )) CALL ZMOVE(R2NAME,RNAME1)
+      CALL LNKPUT(STATUS)
+      GOTO 400
+      !
+      !
+800   CALL MSG(' ','TABLE ''','+')
+      CALL AMSG(RNAME,-ZC,'+')
+      CALL MSG(' ',''' RENAMED TO ''','+')
+      CALL AMSG(RNAME1,-ZC,'+')
+      CALL MSG(' ',''',',' ')
+      GOTO 999
+      !
+      ! SYNTAX ERROR
+      !
+900   CALL WARN(4)
+      !
+999   RETURN 1
+   END SUBROUTINE RNAMER
+
+
+
    MODULE SUBROUTINE RMZIP(*)
       !!
       !!  PURPOSE:  PROCESS ZIP COMMAND  (CALL SYSTEM FUNCTION)

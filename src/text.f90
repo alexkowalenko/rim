@@ -386,7 +386,9 @@ CONTAINS
       REAL :: DFAC, EXP
       REAL(real64) :: V
       INTEGER :: A, SVAL, SEXP, IFAC, MODE, I
-      !
+
+      INTRINSIC :: FLOAT
+
       ATOR = .FALSE.
       VAL = 0.0
       EXP = 0.0

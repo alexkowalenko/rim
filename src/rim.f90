@@ -768,7 +768,7 @@ contains
       !
       !  RETURN
       !
-999   RETURN 1
+999   RETURN
    END SUBROUTINE BUILD
 
 
