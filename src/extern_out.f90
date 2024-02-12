@@ -97,6 +97,74 @@ contains
    END SUBROUTINE SETOUT
 
 
+   SUBROUTINE PROMPT(PTXT)
+      !!
+      !! **UNIX SYSTEM DEPENDENT INTERNAL ROUTINE **
+      !!
+      !! ISSUE TERMINAL PROMPT
+      !!
+      USE Parameters
+      USE Text, only : ABLANK, LOCASE, CHRASC
 
+      INTEGER, intent(in) :: PTXT(*)
+      INTEGER :: a, i, l
+
+      INCLUDE 'msgcom.inc'
+      INCLUDE 'files.inc'
+
+      character*(zc) p
+
+      IF(nint.EQ.znint) then
+         l = 0
+         do i = 1, zc
+            call gett(ptxt,i,a)
+            if (a.eq.ablank) goto 11
+            if (i.ne.1) a = locase(a)
+            p(i:i) = chrasc(a)
+            l = i
+         end do
+11       if (l.ne.0) write(nout,101) p(1:l)
+101      FORMAT(a,$)
+      endif
+      RETURN
+   END SUBROUTINE PROMPT
+
+
+   SUBROUTINE PRMSET(MODE,PR)
+      !!
+      !! SET THE PROMPT CHARACTERS
+      !!
+      !! INPUT  - MODE... 'INIT' - SET INITIAL VALUES
+      !!                  'SET'  - SET NEW VALUES
+      !!                  'RESET'- RESTORE INITIAL VALUES
+      !!          PR..... NEW VALUE FOR PROMPT
+      !!
+      USE Parameters
+      USE Text, only : ASCCHR, LOCASE
+      USE Utils, only : ZMOVE
+
+      CHARACTER(len=*), intent(in) :: MODE,PR
+      !
+      INCLUDE 'prom.inc'
+      CHARACTER(len=1) :: CH
+      INTEGER :: AS, I
+      !
+      IF (MODE.EQ.'INIT' .OR. MODE.EQ.'SET') THEN
+         DO I = 1, ZC
+            IF (I.LE.LEN(PR)) THEN
+               CH = PR(I:I)
+            ELSE
+               CH = ' '
+            ENDIF
+            AS = ASCCHR(CH)
+            IF (I.GT.1) AS = LOCASE(AS)
+            CALL PUTT(PROM,I,AS)
+         END DO
+      ENDIF
+      !
+      IF (MODE.EQ.'INIT') CALL ZMOVE(INIPRM,PROM)
+      IF (MODE.EQ.'RESET') CALL ZMOVE(PROM,INIPRM)
+      RETURN
+   END SUBROUTINE PRMSET
 
 END SUBMODULE Extern_out

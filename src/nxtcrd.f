@@ -2,6 +2,7 @@
 
          USE Cards, only: CRDREC, CRDPTR, CRDEND, CRDRLB, CRDRLL, CRDIDX
          USE Globals, only : TRACE
+         USE Extern, only : PROMPT
          USE Text, only : UPCASE
          USE TextFiles, only : TIOIN
          USE Lexer, only : ASRCLL

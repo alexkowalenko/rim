@@ -28,6 +28,7 @@ MODULE Rim
    public REMKEY
    public REMLNK
    public REMREL
+   public RMQERY
    public XHIBIT
    public RMSET, RMSHOW
 
@@ -91,6 +92,7 @@ contains
       USE Globals, only: KZHPDB, KZHPRL, KZHPKY, KZHPSK, KZHPTX
       USE Globals, only: KDBHDR
       USE Globals, only : Globals_Initialise => Initialise
+      USE Extern, only: PRMSET
       USE DateTime, only : DateTime_Initialise => Initialise, DTFENC
       USE Macros, only : Macros_Initialise => Initialise
       USE Text, only : ASCTXT, ASCCHR, NONE
@@ -388,7 +390,7 @@ contains
       !! :  LOAD REL_NAME <FROM FILE_NAME> <USING FILENAME>
       USE Parameters
       USE Globals, only : DFLAG, DMFLAG, PIFLAG
-      USE Extern, only : SETIN
+      USE Extern, only : SETIN, PRMSET
       USE Formater, only : TYPER, LXFMT
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, EQKEYW, IDI, LXSREC
       USE Message, only : WARN
@@ -1206,6 +1208,7 @@ contains
       USE Parameters
       USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
       USE Globals, only : RMSTAT
+      USE Extern, only : PRMSET
       USE Lexer, only: KWS, ITEMS, EQKEYW, LXSREC
       USE Message, only: WARN
       USE Parser, only: LODREC
@@ -1308,6 +1311,129 @@ contains
 999   RETURN 1
    END SUBROUTINE REMREL
 
+
+   SUBROUTINE RMQERY(*,QCOM)
+      !!
+      !! PROG INTERFACE DRIVER FOR QUERY OF THE RIM DATA BASE.
+      !! ( THIS IS SIMILAR TO QUERY, BUT DOES NOT LOAD THE
+      !!   SELATT ROUTINES AND COMMONS )
+      !!
+      !! ALSO NO SORTING (9/28/89)
+      !!
+      USE Parameters
+      USE Globals, only : DFLAG, MRINDX, RMSTAT
+      USE Message, only: WARN
+
+      INCLUDE 'selcom.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'whcom.inc.f90'
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'srtcom.inc'
+      !
+      LOGICAL :: SELREL, SELWHR, SELSRT
+      INTEGER :: PARSE
+      !
+      CHARACTER(len=*) :: QCOM
+      INTEGER :: I, IDUMMY, IERR, IP, J, JS, JW, LENGTH, NKSORT, SC
+      !
+      ! PARSING DATA FOR QUERY COMMANDS
+      !
+      INTEGER, PARAMETER :: QKEYL=3
+      CHARACTER*(ZKEYWL) QKEYS(QKEYL)
+      INTEGER :: QPTRS(2,QKEYL)
+      !
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      !
+      QKEYS(1) = 'FROM'
+      QKEYS(2) = 'WHERE'
+      QKEYS(3) = 'SORTED'
+      !
+      !  PARSE THE COMMAND
+      !
+      SC = PARSE(QKEYS,QKEYL,QPTRS)
+      J = QPTRS(1,1)
+      JW = QPTRS(1,2)
+      JS = QPTRS(1,3)
+      NS = 0
+      !
+      !
+      ! GET RELATION INFO
+      !
+      IF (.NOT.SELREL(QPTRS(1,1),QPTRS(2,1))) GOTO 900
+      !
+      CALL RELGET(I)
+      IF (I.NE.0) THEN
+         RMSTAT = 20
+         GOTO 999
+      ENDIF
+      !
+      !  NO ATTRIBUTE INFO
+      !
+      !  EVALUATE THE WHERE CLAUSE.
+      !
+      NBOO = 0
+      LIMTU = ALL9S
+      IF(JW.EQ.0) GO TO 500
+      IF (.NOT.SELWHR(JW,QPTRS(2,2))) GOTO 900
+      IF(RMSTAT.NE.0) GO TO 900
+      !
+      !  SEE IF ANY TUPLES SATISFY THE WHERE CLAUSE.
+      !
+      CALL RMLOOK(IDUMMY,1,1,LENGTH)
+      IF(RMSTAT.NE.0) GOTO 900
+      ! BACKSPACE TO BEFORE FIRST FOUND ROW
+      NID = CID
+      IVAL = IVAL - 1
+      LIMVAL = 0
+      IF(NS.EQ.3) NS = 2
+      !
+      !  SEE IF SORTING IS NEEDED OR ASKED FOR.
+      !
+500   IF(JS.NE.0) THEN
+         !
+         !    CHECK PI LIMITS FOR SORTED RETRIEVALS
+         !
+         IF (MRINDX.LT.1 .OR. MRINDX.GT.3) THEN
+            RMSTAT = 70
+            GOTO 900
+         ENDIF
+         !
+         !    SORT THE DATA
+         !
+         IF (.NOT.SELSRT(JS,QPTRS(2,3))) GOTO 900
+         IF(IERR.EQ.1) GO TO 900
+         NKSORT = 1
+         CALL SORT(NKSORT)
+         NS = 1
+         !
+         !    OPEN THE SORT FILE TO SETUP FOR RMGET
+         !
+         LENGTH = NCOL
+         CALL GTSORT(IP,1,-1,LENGTH)
+         !
+         !    USER'S RMGET WILL GET THE RECORDS
+         !
+      ENDIF
+      !
+      ! INIT SOME OTHER VARIABLES
+      !
+      CALL RMPII
+      !
+      ! ADIOS
+      !
+900   CONTINUE
+999   RETURN  1
+   END SUBROUTINE RMQERY
 
 
    SUBROUTINE XHIBIT(*)

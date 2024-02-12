@@ -15,4 +15,14 @@ contains
       INTEGER, intent(out) :: STAT
    END SUBROUTINE SETOUT
 
+
+   SUBROUTINE PROMPT(PTXT)
+      INTEGER, intent(in) :: PTXT(*)
+   END
+
+   
+   SUBROUTINE PRMSET(MODE,PR)
+      CHARACTER(len=*), intent(in) :: MODE,PR
+   END SUBROUTINE PRMSET
+
 END SUBMODULE Extern_out

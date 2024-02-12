@@ -72,6 +72,7 @@ contains
       USE Globals, only : DFLAG, USERID, OWNER, DBNAME, IFMOD, DBFNAM
       USE Globals, only : RMSTAT
       USE DateTime, only : RMDATE
+      USE Extern, only: PRMSET
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
       USE Message, only : WARN
       USE Parser, only: LODREC, LODELE, LODREL, LODLNK, LODPAS
@@ -1065,6 +1066,147 @@ contains
    END SUBROUTINE RNAMEL
 
 
+   SUBROUTINE SELECT(*)
+      !!
+      !! PROCESS SELECT COMMAND
+      !!
+      USE Parameters
+      USE Globals, only : DFLAG, RMSTAT
+      USE Extern, only: SETOUT
+      USE Lexer, only : ASCREC, IDP, IDL, KWS
+      USE Message, only: WARN
+      USE Text, only : STRASC
+
+      INCLUDE 'selcom.inc'
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'rimptr.inc'
+      INCLUDE 'whcom.inc.f90'
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'files.inc'
+      INCLUDE 'srtcom.inc'
+      !
+      LOGICAL :: EQKEYW
+      LOGICAL :: SELREL, SELATT, SELWHR, SELSRT
+      INTEGER :: PARSE
+      CHARACTER*(ZFNAML) FN
+      !
+      ! PARSING DATA FOR QUERY COMMANDS
+      !
+      INTEGER, PARAMETER :: QKEYL=4
+      CHARACTER*(ZKEYWL) QKEYS(QKEYL)
+      INTEGER :: QPTRS(2,QKEYL)
+      INTEGER :: IDUMMY, J, JS, JW, JT, LENGTH, NKSORT, SC, STAT
+      !
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      !
+      QKEYS(1) = 'FROM'
+      QKEYS(2) = 'WHERE'
+      QKEYS(3) = 'SORT'
+      QKEYS(4) = 'TO'
+      !
+      !
+      !  PARSE THE COMMAND
+      !
+      SC = PARSE(QKEYS,QKEYL,QPTRS)
+      !CC   CALL BLKDSP('QUERY PARSE',QPTRS(1,1),'IIIIIIII')
+      IF (SC.LT.3) THEN
+         CALL WARN(4)
+         GOTO 999
+      ENDIF
+      J = QPTRS(1,1)
+      JW = QPTRS(1,2)
+      JS = QPTRS(1,3)
+      JT = QPTRS(1,4)
+      NS = 0
+      NSOVAR = 0
+      !
+      ! GET RELATION INFO
+      !
+      IF (.NOT.SELREL(QPTRS(1,1),QPTRS(2,1))) GOTO 900
+      !
+      ! GET ATTRIBUTE INFO
+      !
+      IF (.NOT.SELATT(2,SC-2)) GOTO 900
+      !
+      ! EVALUATE THE WHERE CLAUSE.
+      !
+      NBOO = 0
+      LIMTU = ALL9S
+      IF(JW.EQ.0) GO TO 500
+      IF (.NOT.SELWHR(JW,QPTRS(2,2))) GOTO 900
+      IF(RMSTAT.NE.0) GO TO 900
+      !
+      !  SEE IF ANY TUPLES SATISFY THE WHERE CLAUSE.
+      !
+      CALL RMLOOK(IDUMMY,1,1,LENGTH)
+      IF(RMSTAT.NE.0)THEN
+         CALL MSG('W','NO ROWS SATISFY YOUR SELECTION CRITERIA.',' ')
+         GO TO 900
+      ENDIF
+      ! BACKSPACE TO BEFORE FIRST FOUND ROW
+      NID = CID
+      IVAL = IVAL - 1
+      LIMVAL = 0
+      IF(NS.EQ.3) NS = 2
+      !
+      ! CHECK SORT CLAUSE
+      !
+500   IF (JS.NE.0) THEN
+         ! SORT IS REQUESTED
+         IF (SFUNCT) THEN
+            CALL MSG('E', &
+               'FUNCTION SORT IS ON THE INDEPENDENT COLUMN.',' ')
+            CALL MSG(' ','YOU MAY NOT SPECIFY A SORT CLAUSE.',' ')
+            GOTO 900
+         ENDIF
+         IF (.NOT.SELSRT(JS,QPTRS(2,3))) GOTO 900
+         NKSORT = 1
+         CALL SORT(NKSORT)
+         NS = 1
+      ELSE
+         ! SORT NOT REQUESTED - MAY DO ONE ANYWAY
+         IF (SFUNCT) THEN
+            OFFSET = 0
+            NKSORT = 1
+            CALL SORT(NKSORT)
+            NS = 1
+         ENDIF
+      ENDIF
+      !
+      ! SEE IF AN OUTPUT FILE HAS BEEN SPECIFIED
+      !
+      IF (JT.NE.0) THEN
+         CALL STRASC(FN,ASCREC(IDP(JT+1)),IDL(JT+1))
+         IF (KWS(JT+1).EQ.'TERMINAL') FN = ZTRMOU
+         CALL SETOUT(NOUTR,ZNOUTR,FN,STAT)
+         IF (STAT.NE.0) GOTO 999
+      ENDIF
+      !
+      ! CALL THE REPORT ROUTINE
+      !
+      CALL SELRPT
+      GOTO 900
+      !
+      ! ADIOS
+      !
+900   NUMATT = 0
+      IF (JT.NE.0) THEN
+         CALL SETOUT(NOUTR,ZNOUTR,ZTRMOU,STAT)
+         CALL MSG(' ','SELECT COMPLETED.',' ')
+      ENDIF
+999   RETURN  1
+   END SUBROUTINE SELECT
+
+
+
    SUBROUTINE JOIREL(*)
       !!
       !!  THIS ROUTINE FINDS THE JOIN OF TWO RELATIONS BASED UPON JOINING
@@ -1442,8 +1584,9 @@ contains
 
       INTEGER :: I, IERR, IPOINT, J, K, KK, KKX, KNEW, KQ, KQ7, KQ8, LENF, LENGTH, LENT
       INTEGER :: LPAG, MEND, MSTART, NOATTS, NOCOLS, UC, UE
+      LOGICAL :: XTMP
 
-      INTEGER LOCREL, LOCPRM, LOCATT
+      INTEGER LOCREL, LOCPRM, LOCATT, SELWHR
       !
       !
       ! CHECK FOR A DATABASE
@@ -1510,7 +1653,7 @@ contains
       LIMTU = ALL9S
       RMSTAT = 0
       KKX = K
-      IF(K.NE.0) CALL SELWHR(K,ITEMS-K+1)
+      IF(K.NE.0) XTMP = SELWHR(K,ITEMS-K+1)
       IF(RMSTAT.NE.0) GO TO 999
       !
       !  CHECK THE ATTRIBUTES AND BUILD POINTER ARRAY - POS. 7

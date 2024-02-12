@@ -7,6 +7,7 @@
          USE Parser, only : LODREC, MACDEF
          USE Rim, only : RMCONS, RMINIT, RMSET, DBLOAD, DBOPCL, BUILD
          USE Rim, only : CHGPSW, CHGDAT, DELROW, REMKEY, REMLNK, REMREL
+         USE Rim, only : RMQERY
          USE System, only : SYSCOM
 
          INCLUDE 'syspar.inc'

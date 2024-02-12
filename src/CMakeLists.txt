@@ -24,7 +24,7 @@ add_library(rimcommon STATIC
     parse.f parval.f prckey.f prjtup.f
     putdat.f putt.f ptrs.f 
     reladd.f relget.f relpag.f relput.f
-    rmlook.f rmpii.f rmqery.f rmres.f rmsav.f rmvarc.f rtoa.f
+    rmlook.f rmpii.f rmres.f rmsav.f rmvarc.f rtoa.f
     selrel.f selrpt.f selsrt.f selwhr.f
     sort.f subtrc.f swcon.f swcost.f
     swfilo.f swflfs.f 
@@ -63,8 +63,7 @@ add_library(rimextlib STATIC
     nxtcrd.f 
     pgbres.f pgbsto.f pgcexp.f
     pgcomp.f pgcprt.f pgeexp.f pgeprt.f pgexec.f pgstor.f
-    prmset.f prompt.f
-    selatt.f select.f selout.f selput.f sgtlnk.f 
+    selatt.f selout.f selput.f sgtlnk.f 
     undata.f undef.f unpass.f
     extern_out.f90
     rim_cmd.f90
