@@ -2,6 +2,7 @@
 
          USE Globals, only : TRACE, MRINDX, HXFLAG, CASEIG, PGFLAG,
      +   DBFNAM, RMSTAT
+         USE Extern, only: SETOUT, SETIN
          USE Message, only : WARN
          USE Formater, only : TYPER
          USE Rim, only : DBOPEN

@@ -70,6 +70,7 @@ contains
       !!
       USE Parameters
       USE Cards, only : READCD
+      USE Extern, only : SETIN
       USE Globals, only : TRACE, RMSTAT
       USE Files, only: RMCLOS
       USE Lexer, only: KXTEXT, KXNAME, IDT, TOKTYP, ASCREC, ASCNXT, IDP, IDL, KWS, ITEMS, EQKEYW, LXSREC, NXTTOK, LXCMNT, TOKDSP

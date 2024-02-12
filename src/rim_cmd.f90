@@ -11,6 +11,7 @@ contains
       !!
       USE Parameters
       USE Globals, only : DFLAG, RMSTAT
+      USE Extern, only: SETOUT
       USE Lexer, only : ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW
       USE Message, only: WARN
       USE Text, only : STRASC
@@ -225,6 +226,7 @@ contains
       USE Parameters
       USE Globals, only : DFLAG, DBNAME, USERID, OWNER, RMSTAT
       USE DateTime, only: RMTIME, RMDATE
+      USE Extern, only: SETOUT
       USE Lexer, only : ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW, LFIND
       USE Lexer, only : LXSREC
       USE Message, only: WARN
@@ -2366,6 +2368,7 @@ contains
       !!
       USE Parameters
       USE Globals, only: HXFLAG
+      USE Extern, only : SETIN
       USE Files, only: RMCLOS
       USE Lexer, only: KXKEYW, TOKTYP, KWS, ITEMS, EQKEYW
       USE Parser, only: LODREC, MACDEF

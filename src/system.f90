@@ -103,6 +103,7 @@ contains
       !
       ! SYSTEM INITIALIZE
       !
+      USE Extern, only : SETIN
       INCLUDE 'files.inc'
       INCLUDE 'prom.inc'
       !

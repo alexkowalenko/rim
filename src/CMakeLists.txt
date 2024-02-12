@@ -37,6 +37,7 @@ add_library(rimcommon STATIC
     whetol.f wheval.f whrnam.f
     cards.f90
     datetime.f90
+    extern.f90
     files.f90
     formater.f90
     globals.f90
@@ -63,9 +64,9 @@ add_library(rimextlib STATIC
     pgbres.f pgbsto.f pgcexp.f
     pgcomp.f pgcprt.f pgeexp.f pgeprt.f pgexec.f pgstor.f
     prmset.f prompt.f
-    selatt.f select.f selout.f selput.f 
-    setin.f setout.f sgtlnk.f 
+    selatt.f select.f selout.f selput.f sgtlnk.f 
     undata.f undef.f unpass.f
+    extern_out.f90
     rim_cmd.f90
     system.f90
 )
@@ -73,5 +74,6 @@ add_library(rimextlib STATIC
 add_library(rimlib STATIC
     pilib.f pilibx.f
     rmxdel.f rmxget.f rmxlod.f rmxput.f
+    extern_mute.f90
     system.f90
  )

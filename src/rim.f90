@@ -345,6 +345,7 @@ contains
       !!
       USE Parameters, only: ZFNAML, ZC
       USE Globals, only : DFLAG, DBNAME, DBFNAM, RMSTAT
+      USE Extern, only : SETIN
       USE Files, only: RMCLOS
       USE Message, only : WARN
       USE System, only : SYSDBG, SYSDBN, CHKFIL
@@ -387,6 +388,7 @@ contains
       !! :  LOAD REL_NAME <FROM FILE_NAME> <USING FILENAME>
       USE Parameters
       USE Globals, only : DFLAG, DMFLAG, PIFLAG
+      USE Extern, only : SETIN
       USE Formater, only : TYPER, LXFMT
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, EQKEYW, IDI, LXSREC
       USE Message, only : WARN
@@ -1423,6 +1425,7 @@ contains
 
       USE Parameters
       USE DateTime, only: KRMDTF, KRMTMF
+      USE Extern, only: SETOUT, SETIN
       USE Formater, only: LXFMT
       USE Lexer, only: KXINT, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS
       USE Lexer, only: EQKEYW, IDI, LFIND, LXSREC
