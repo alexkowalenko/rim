@@ -90,7 +90,7 @@ contains
       USE Globals, only: KMSSVL, KMSSVT, KNAPVL, KNAPVT, USERID
       USE Globals, only: ARBCHS, ARBCHM, USERID
       USE Globals, only: KZHPDB, KZHPRL, KZHPKY, KZHPSK, KZHPTX
-      USE Globals, only: KDBHDR
+      USE Globals, only: KDBHDR, NOUT
       USE Globals, only : Globals_Initialise => Initialise
       USE Extern, only: PRMSET
       USE DateTime, only : DateTime_Initialise => Initialise, DTFENC
@@ -99,7 +99,6 @@ contains
       USE Text, only : Text_initialise => Initialise
       USE Utils, only : ZMOVE
 
-      INCLUDE 'files.inc'
       INCLUDE 'msgcom.inc'
       INCLUDE 'rmatts.inc'
       INCLUDE 'prom.inc'
@@ -130,19 +129,6 @@ contains
       CALL ASCTXT(KZHPTX,ZC,'COMTXT')
       !
       !
-      ! /FILES/
-      NINT = ZNINT
-      NOUT = ZNOUT
-      NOUTR = ZNOUT
-      NOUTL = ZNOUT
-      NOUTT = ZNOUT
-      ECHO = .FALSE.
-      CONNI = .TRUE.
-      CONNO = .TRUE.
-      BATCH = .FALSE.
-      UTERML = 80
-      UPRINL = 136
-      ULPP = 0
 
       ! /MSGCOM/
       MSUNIT = NOUT
@@ -400,7 +386,6 @@ contains
 
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tupler.inc'
-      INCLUDE 'files.inc'
       INCLUDE 'buffer.inc'
       INCLUDE 'prom.inc'
       INCLUDE 'dclar1.inc'
@@ -632,7 +617,6 @@ contains
       INCLUDE 'tupler.inc'
       INCLUDE 'buffer.inc'
       INCLUDE 'start.inc'
-      INCLUDE 'files.inc'
       INCLUDE 'whcom.inc.f90'
       INCLUDE 'srtcom.inc'
       INCLUDE 'dclar1.inc'
@@ -792,7 +776,6 @@ contains
       INCLUDE 'whcom.inc.f90'
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tupler.inc'
-      INCLUDE 'files.inc'
       INCLUDE 'srtcom.inc'
       INCLUDE 'buffer.inc'
       !
@@ -881,7 +864,6 @@ contains
       USE Message, only : WARN
       USE Text, only : BLANK
 
-      INCLUDE 'files.inc'
       INCLUDE 'tupler.inc'
       !
       INTEGER :: I, ISTAT, L
@@ -1207,7 +1189,7 @@ contains
       !!
       USE Parameters
       USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
-      USE Globals, only : RMSTAT
+      USE Globals, only : RMSTAT, CONNI
       USE Extern, only : PRMSET
       USE Lexer, only: KWS, ITEMS, EQKEYW, LXSREC
       USE Message, only: WARN
@@ -1218,7 +1200,6 @@ contains
       INCLUDE 'tupler.inc'
       INCLUDE 'reltbl.inc'
       INCLUDE 'attble.inc'
-      INCLUDE 'files.inc'
       INCLUDE 'rmatts.inc'
       !
       INCLUDE 'dclar1.inc'
@@ -1330,7 +1311,6 @@ contains
       INCLUDE 'whcom.inc.f90'
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tupler.inc'
-      INCLUDE 'files.inc'
       INCLUDE 'srtcom.inc'
       !
       LOGICAL :: SELREL, SELWHR, SELSRT
@@ -1447,7 +1427,6 @@ contains
       USE Text, only : BLANK, NONE
 
       INCLUDE 'tupler.inc'
-      INCLUDE 'files.inc'
       INCLUDE 'buffer.inc'
       !
       INTEGER :: NUMBER, B, I, L, K, ISTAT
@@ -1547,7 +1526,7 @@ contains
       !!
       USE Globals, only : DBNAME, USERID, CASEIG, TRACE, ARBCHS, &
          ARBCHM, KRMINF, KRMRNF, KMSSVL, KMSSVT, &
-         KNAPVL, KNAPVT, IFMOD
+         KNAPVL, KNAPVT, IFMOD, NOUTR, NOUTT, ULPP, UPRINL, UTERML, ECHO
 
       USE Parameters
       USE DateTime, only: KRMDTF, KRMTMF
@@ -1560,7 +1539,6 @@ contains
       USE Utils, only : ZMOVE
 
       INCLUDE 'rmatts.inc'
-      INCLUDE 'files.inc'
       !
       INTEGER :: OP, FMT, LEN, STAT, L
       CHARACTER*(ZFNAML) :: FN
@@ -1786,6 +1764,7 @@ contains
       !!
       USE Parameters
       USE Globals, only : DFLAG, DBNAME, USERID, CASEIG, ARBCHS, ARBCHM, KRMINF, KRMRNF, KMSSVL, KMSSVT, KNAPVL, KNAPVT
+      USE Globals, only : NOUT, ECHO, ULPP, UPRINL, UTERML
       USE Formater, only : FMTDEC
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
       USE Macros, only: MACPTR, MACPTR, MACTXT, MACLEN
@@ -1795,7 +1774,6 @@ contains
       USE Utils, only : NDIGIT
 
       INCLUDE 'rmatts.inc'
-      INCLUDE 'files.inc'
       INCLUDE 'msgcom.inc'
       INCLUDE 'tupler.inc'
 

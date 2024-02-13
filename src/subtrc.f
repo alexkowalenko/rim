@@ -20,7 +20,6 @@ C         PTABLE--POINTER TABLE FOR THIS SUBTRACT
 C         KEYCOL--COLUMN OF MATN2 USED FOR SUPPLYING KEY VALUES
 C         KEYTYP--ATTRIBUTE TYPE OF MATN1 USED FOR KEY VALUES
          INCLUDE 'rmatts.inc'
-         INCLUDE 'files.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'buffer.inc'

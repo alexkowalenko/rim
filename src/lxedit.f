@@ -1,5 +1,6 @@
       SUBROUTINE LXEDIT
 
+         USE Globals, only : NINT
          USE Cards, only : CRDREC, CRDEND, CRDRLB, CRDRLL, CRDIDX
          USE Text, only : UPCASE, ABLANK
          USE TextFiles, only : TIOIN
@@ -9,7 +10,6 @@
 C
 C     RECALL AND EDIT AN INPUT LINE OR COMMAND
 C
-         INCLUDE 'files.inc'
          INCLUDE 'prom.inc'
          INCLUDE 'msgcom.inc'
 C

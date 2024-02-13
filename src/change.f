@@ -19,7 +19,6 @@ C                       0 : EXPRESSION CHANGE
 C         NTUP----SCRATCH ARRAY FOR A TUPLE
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimptr.inc'
-         INCLUDE 'files.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'start.inc'

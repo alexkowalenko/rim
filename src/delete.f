@@ -13,7 +13,6 @@ C         MAT-----ARRAY TO HOLD ONE TUPLE
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'rimptr.inc'
-         INCLUDE 'files.inc'
          INTEGER COLUMN
 C
 C  DIMENSION STATEMENTS.

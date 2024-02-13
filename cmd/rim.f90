@@ -19,7 +19,7 @@ PROGRAM MAIN
 
 
    USE Parameters
-   USE Globals, only : KDBVER
+   USE Globals, only : KDBVER, CONNI, CONNO, BATCH, NOUTR
    USE DateTime, only: RMTIME, RMDATE
    USE Extern, only: SETOUT
    USE Rim, only: RMCONS, RMINIT, RIMCMD
@@ -28,7 +28,6 @@ PROGRAM MAIN
    IMPLICIT NONE
 
    INCLUDE 'rmatts.inc'
-   INCLUDE 'files.inc'
    INCLUDE 'prom.inc'
    !
    CHARACTER(len=4) :: VER

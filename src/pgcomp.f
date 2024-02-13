@@ -22,7 +22,6 @@ C
          INCLUDE 'whcom.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
-         INCLUDE 'files.inc'
          INCLUDE 'srtcom.inc'
 C
          INCLUDE 'pgmcom.inc'

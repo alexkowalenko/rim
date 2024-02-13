@@ -1,6 +1,6 @@
       FUNCTION SELATT(FTOK,NTOK)
 
-         USE Globals, only :  KRMINF, KRMRNF
+         USE Globals, only :  KRMINF, KRMRNF, UPRINL
          USE DateTime, only : DTFSPL, KRMDTF, KRMTMF
          USE Formater, only : TYPER, LXFMT
          USE Message, only: WARN
@@ -21,7 +21,6 @@ C
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplel.inc'
-         INCLUDE 'files.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'srtcom.inc'
 

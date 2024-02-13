@@ -3,7 +3,7 @@ PROGRAM RIME
    USE, intrinsic :: iso_fortran_env
 
    USE Parameters
-   USE Globals, only: KRMRNF, DBFNAM
+   USE Globals, only: KRMRNF, DBFNAM, ECHO, CONNI, CONNO, BATCH, NINT, NOUTR
    USE DateTime, only: RMTIME, RMDATE
    USE Extern, only: SETOUT, SETIN, PRMSET
    USE Formater, only : LXFMT
@@ -26,7 +26,6 @@ PROGRAM RIME
    IMPLICIT NONE
 
    INCLUDE 'rmatts.inc'
-   INCLUDE 'files.inc'
    INCLUDE 'prom.inc'
    !
    CHARACTER (ZFNAML) :: RIMDB1,RIMDB2,RIMDB3,RIMDBX
@@ -44,7 +43,7 @@ PROGRAM RIME
 
    INTEGER :: D, D1, D2, FMT, FMTLEN, H1, H2, NEWR
    INTEGER :: NW, NXTAR, NXTLR, NXTRR, NXTUP, R, RW, STAT, STTUP, SW, W
-   INTEGER :: TDAY, TTIM
+   INTEGER :: TDAY, TTIM, X
    INTEGER :: NUMOPN = 0
 
    !

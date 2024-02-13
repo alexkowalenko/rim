@@ -1,6 +1,7 @@
       SUBROUTINE MSG(MTYPE,MTEXT,MCONT)
 
-         USE Globals, only : PGFLAG
+         USE Globals, only : PGFLAG, CONNI, NOUT, NOUTR, NOUTT, NOUTL
+         USE Globals, only : ECHO
          USE DateTime, only: RMTIME, RMDATE
 
          INCLUDE 'syspar.inc'
@@ -34,7 +35,6 @@ C
          CHARACTER*(1) MCONT
 C
          INCLUDE 'rmatts.inc'
-         INCLUDE 'files.inc'
          INCLUDE 'msgcom.inc'
 C
          CHARACTER*1 CTYPE, MTYPE1

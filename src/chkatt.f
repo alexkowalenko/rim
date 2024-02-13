@@ -22,7 +22,6 @@ C
 C
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
-         INCLUDE 'files.inc'
 C
          LOGICAL EQ, NE
          INTEGER IFLAG

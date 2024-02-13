@@ -145,6 +145,7 @@ CONTAINS
 
    SUBROUTINE TIOOUT(FILE,TEXT,LEN,IERR)
       USE Parameters, only : ZPRINL, znint
+      USE Globals, only : FFFLAG, NINT, ULPP
       USE Text, only: CHRASC
       !
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
@@ -162,8 +163,6 @@ CONTAINS
       INTEGER, intent(in) :: TEXT(1)
       INTEGER, intent(in) :: LEN
       INTEGER, intent(out) :: IERR
-
-      INCLUDE 'files.inc'
 
       CHARACTER(len=1) :: ffchar
       CHARACTER(ZPRINL) :: OULINE

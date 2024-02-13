@@ -20,7 +20,6 @@ C
 
 
          INCLUDE 'rmatts.inc'
-         INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'

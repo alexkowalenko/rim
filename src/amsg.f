@@ -1,5 +1,6 @@
       SUBROUTINE AMSG(MTEXT,NUMC,MCONT)
 
+         USE Globals, only : UTERML
          USE Text, only : ABLANK, STRMOV
          USE TextFiles, only : TIOOUT
 
@@ -21,7 +22,6 @@ C-----------------------------------------
          INTEGER NUMC
          CHARACTER*1 MCONT
 C
-         INCLUDE 'files.inc'
          INCLUDE 'msgcom.inc'
          LOGICAL DTB
 C

@@ -19,7 +19,6 @@ C
          CHARACTER*(*) MTEXT
          CHARACTER*(*) CTYPE
 C
-         INCLUDE 'files.inc'
          INCLUDE 'msgcom.inc'
 C
          LOGICAL UCASE, FCHAR

@@ -20,7 +20,6 @@ C
          INCLUDE 'buffer.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
-         INCLUDE 'files.inc'
          INCLUDE 'dclar1.inc'
 C
          INCLUDE 'pgmcom.inc'

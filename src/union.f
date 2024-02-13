@@ -26,7 +26,6 @@ C                              (RNAME = RNAME2) (EXCLUDE MATCHES)
 
 
          INCLUDE 'rmatts.inc'
-         INCLUDE 'files.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'buffer.inc'

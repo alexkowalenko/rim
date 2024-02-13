@@ -1,7 +1,7 @@
       SUBROUTINE PGEXEC
 
          USE Globals, only : TRACE, MRINDX, HXFLAG, CASEIG, PGFLAG,
-     +   DBFNAM, RMSTAT
+     +   DBFNAM, RMSTAT, FFFLAG, NOUTR, ULPP, UPRINL
          USE Extern, only: SETOUT, SETIN
          USE Message, only : WARN
          USE Formater, only : TYPER
@@ -19,7 +19,6 @@ C
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tuplel.inc'
-         INCLUDE 'files.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'srtcom.inc'

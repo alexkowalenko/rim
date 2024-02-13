@@ -2,7 +2,8 @@
 
          USE, intrinsic :: iso_fortran_env
 
-         USE Globals, only : MRINDX, HXFLAG, RMSTAT
+         USE Globals, only : MRINDX, HXFLAG, RMSTAT, FFFLAG, NOUTR
+         USE Globals, only : ULPP, UPRINL
          USE Formater, only : TYPER
          USE Maths, only : RTOD
          USE Message, only: WARN
@@ -17,7 +18,6 @@ C
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tuplel.inc'
-         INCLUDE 'files.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'whcom.inc'

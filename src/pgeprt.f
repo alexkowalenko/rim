@@ -2,6 +2,7 @@
 
          USE, intrinsic :: iso_fortran_env
 
+         USE Globals, only : NOUTR, UPRINL
          USE Formater, only : TYPER
          USE Text, only : FILCH, ABLANK, STRMOV
 
@@ -16,7 +17,6 @@ C     PTR-- ADDRESS OF SELCOM SAVE BLOCK
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tuplel.inc'
-         INCLUDE 'files.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'srtcom.inc'

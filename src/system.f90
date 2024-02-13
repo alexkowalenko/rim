@@ -103,8 +103,8 @@ contains
       !
       ! SYSTEM INITIALIZE
       !
+      USE Globals, only : CONNI, CONNO, BATCH
       USE Extern, only : SETIN
-      INCLUDE 'files.inc'
       INCLUDE 'prom.inc'
       !
       ! GET FILENAME FROM COMMAND LINE

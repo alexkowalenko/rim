@@ -146,10 +146,35 @@ MODULE Globals
    !             24XX  RANDOM FILE ERROR XX ON FILE4
    !
 
+   !  *** / F I L E S / ***
+   !
+   !  IDENTIFIERS AND FLAGS FOR INPUT AND OUTPUT FILES
+   !
+   LOGICAL, public :: ECHO,CONNI,CONNO,BATCH
+   INTEGER, public :: FFFLAG,NINT,NOUT,NOUTR,NOUTT,NOUTL,ULPP,UPRINL,UTERML
+   INTEGER, public :: INEOF
+   !
+   !  VARIABLE DEFINITIONS:
+   !         NINT----INPUT FILE UNIT
+   !         NOUT----OUTPUT FILE UNIT
+   !         NOUTR---REPORT FILE UNIT
+   !         NOUTL---OUTPUT FILE FOR LOG RECORDS (AND TRACE)
+   !         ECHO----ECHO FLAG FOR INPUT COMMANDS
+   !         NOUTT---TRACING FILE UNIT
+   !         CONNI---.TRUE. IFF INPUT IS TERMINAL AND NOT BATCH
+   !         CONNO---.TRUE. IFF OUTPUT IS TERMINAL AND NOT BATCH
+   !         BATCH---.TRUE. IFF BATCH MODE
+   !         INEOF---NON-ZERO INDICATES EOF ON NINT
+   !         UTERML--MAX COLUMNS/LINE ON TERMINAL
+   !         UPRINL--MAX COLUMNS/LINE ON FILES (NOUTR)
+   !         ULPP----MAX LINES/PAGE TO FILE (NOUTR)
+   !         FFFLAG--NON-ZERO TO FORMFEED NEXT NOUTR LINE
+
 
 contains
 
    SUBROUTINE Initialise
+      USE Parameters, only : ZNINT, ZNOUT
       ! Can't use any modules, as this module with Paramaters is the first compiled
       DFLAG = .FALSE.
       DMFLAG = .FALSE.
@@ -169,6 +194,21 @@ contains
       LIBFLG = 0
       PGVARS = 500
       PGFLAG = .FALSE.
+
+      ! /FILES/
+      NINT = ZNINT
+      NOUT = ZNOUT
+      NOUTR = ZNOUT
+      NOUTL = ZNOUT
+      NOUTT = ZNOUT
+      ECHO = .FALSE.
+      CONNI = .TRUE.
+      CONNO = .TRUE.
+      BATCH = .FALSE.
+      UTERML = 80
+      UPRINL = 136
+      ULPP = 0
+
    END SUBROUTINE Initialise
 
 END MODULE Globals

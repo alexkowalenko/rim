@@ -10,11 +10,11 @@ contains
       !!     ELSE SWITCH TO UNIT NINTA AND OPEN THE FILE
       !!
       USE Parameters
+      USE Globals, only : CONNI, BATCH, NINT
       USE TextFiles, only : TIOOPN, TIOCLO
 
       CHARACTER(len=*), intent(in) :: FILE
 
-      INCLUDE 'files.inc'
       INCLUDE 'prom.inc'
 
       INTEGER :: STAT
@@ -55,7 +55,7 @@ contains
       !!     ELSE SET UN TO UNF AND OPEN THE FILE
       !! IF COULD NOT OPEN FILE THEN SET STAT NE 0
       USE Parameters
-      USE Globals, only : RMSTAT
+      USE Globals, only : RMSTAT, CONNO, BATCH
       USE TextFiles, only : TIOOPN, TIOCLO
       USE Utils, only : ITOH
 
@@ -64,9 +64,6 @@ contains
       CHARACTER(len=*), intent(in) :: FILE
       INTEGER, intent(out) :: STAT
 
-
-      INCLUDE 'files.inc'
-      !
       STAT = 0
       !
       !  SEE IF THE CURRENT OUTPUT FILE NEEDS TO BE CLOSED.
@@ -104,13 +101,13 @@ contains
       !! ISSUE TERMINAL PROMPT
       !!
       USE Parameters
+      USE Globals, only: NINT, NOUT
       USE Text, only : ABLANK, LOCASE, CHRASC
 
       INTEGER, intent(in) :: PTXT(*)
       INTEGER :: a, i, l
 
       INCLUDE 'msgcom.inc'
-      INCLUDE 'files.inc'
 
       character*(zc) p
 
@@ -174,7 +171,7 @@ contains
       !!!
       USE Parameters
       USE Cards, only: CRDREC, CRDPTR, CRDEND, CRDRLB, CRDRLL, CRDIDX
-      USE Globals, only : TRACE
+      USE Globals, only : TRACE, CONNI, NOUTT, NINT
       USE Extern, only : PROMPT
       USE Text, only : UPCASE
       USE TextFiles, only : TIOIN
@@ -183,7 +180,6 @@ contains
       INTEGER, intent(out) :: EOF
       !!     EOF-----END-OF-FILE FLAG (0=NO, 1=YES)
 
-      INCLUDE 'files.inc'
       INCLUDE 'prom.inc'
       INCLUDE 'msgcom.inc'
 
@@ -258,7 +254,6 @@ contains
       USE Parser, only: LODREC
       USE Utils, only : ZEROIT
 
-      INCLUDE 'files.inc'
       INCLUDE 'start.inc'
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tupler.inc'
@@ -366,6 +361,7 @@ contains
       !! LOAD DATA VALUES FROM A FILE USING FORMAT.
       !!
       USE Parameters
+      USE Globals, only : NINT
       USE Cards, only : CRDREC, CRDEND
       USE Extern, only : SETIN
       USE Formater, only : TYPER
@@ -386,7 +382,6 @@ contains
       !        6) ITEM POSITION (LOADFM CALCULATES THIS)
       !     NFOR----NUMBER OF ITEMS IN FOR
       !
-      INCLUDE 'files.inc'
       INCLUDE 'buffer.inc'
       INCLUDE 'start.inc'
       INCLUDE 'rimptr.inc'

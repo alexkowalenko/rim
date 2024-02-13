@@ -15,7 +15,6 @@ C         MCONT---IF NON-BLANK MESSAGE CONTINUES ON NEXT CALL
 C
          CHARACTER*1 MCONT
 C
-         INCLUDE 'files.inc'
          INCLUDE 'msgcom.inc'
          PARAMETER (MAXL=24,MAXW=24/ZCW)
          INTEGER NSTR(MAXW)

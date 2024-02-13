@@ -21,7 +21,6 @@ C
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'srtcom.inc'
-         INCLUDE 'files.inc'
          INCLUDE 'buffer.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'

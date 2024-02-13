@@ -71,15 +71,13 @@ contains
       USE Parameters
       USE Cards, only : READCD
       USE Extern, only : SETIN
-      USE Globals, only : TRACE, RMSTAT
+      USE Globals, only : TRACE, RMSTAT, ECHO, CONNI, NINT, BATCH, INEOF
       USE Files, only: RMCLOS
       USE Lexer, only: KXTEXT, KXNAME, IDT, TOKTYP, ASCREC, ASCNXT, IDP, IDL, KWS, ITEMS, EQKEYW, LXSREC, NXTTOK, LXCMNT, TOKDSP
       USE Macros, only: LOCMAC, MACNUM
       USE System, only : SystemExit, SystemTrap
       USE Text, only: EQSIGN, GTSIGN
 
-      INCLUDE 'files.inc'
-      !
       CHARACTER(len=2) :: PKW
       INTEGER :: MACTST(Z)
       INTEGER :: EOR, I, M
@@ -302,7 +300,6 @@ contains
 
       INCLUDE 'rmatts.inc'
       INCLUDE 'buffer.inc'
-      INCLUDE 'files.inc'
       !
       ! TEMPORARY ATTRIBUTE STORAGE
       INCLUDE 'tmpa.inc'
@@ -493,7 +490,6 @@ contains
 
       INCLUDE 'rmatts.inc'
       INCLUDE 'buffer.inc'
-      INCLUDE 'files.inc'
       !
       INCLUDE 'dclar1.inc'
 
@@ -554,7 +550,6 @@ contains
 
       INCLUDE 'rmatts.inc'
       INCLUDE 'buffer.inc'
-      INCLUDE 'files.inc'
 
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tuplel.inc'
@@ -659,7 +654,6 @@ contains
       INTEGER, intent(in out) :: ERROR
 
       INCLUDE 'tupler.inc'
-      INCLUDE 'files.inc'
 
       INCLUDE 'dclar1.inc'
       INCLUDE 'dclar3.inc'

@@ -3,6 +3,7 @@ PROGRAM LXTEST
    USE, intrinsic :: iso_fortran_env
 
    USE Parameters
+   USE Globals, only : ECHO, NINT
    USE Cards, only : READCD
    USE Extern, only : SETIN
    USE Formater, only : TYPER, LXFMT
@@ -16,7 +17,6 @@ PROGRAM LXTEST
    !
    ! TEST LXL ROUTINES
    !
-   INCLUDE 'files.inc'
    INCLUDE 'rmatts.inc'
    !
    INTEGER :: FMT, LEN, TYP

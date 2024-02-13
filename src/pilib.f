@@ -1,6 +1,7 @@
       FUNCTION RIM(IND,COM)
 
-         USE Globals, only : KDBVER, MRINDX, PIFLAG, RMSTAT
+         USE Globals, only: KDBVER, MRINDX, PIFLAG, RMSTAT, CONNI
+         USE Globals, only: CONNO, BATCH
          USE Cards, only : CRDREC, CRDPTR, CRDEND, READCD
          USE Text, only : ASCTXT
          USE Lexer, only : TOKTYP, ITEMS, EQKEYW, KXKEYW
@@ -23,7 +24,6 @@ C
 C
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimptr.inc'
-         INCLUDE 'files.inc'
 C
          DATA INITFL /0/
 C

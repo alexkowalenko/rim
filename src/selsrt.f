@@ -19,7 +19,6 @@ C
          INCLUDE 'rimptr.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
-         INCLUDE 'files.inc'
          INCLUDE 'srtcom.inc'
          INCLUDE 'dclar1.inc'
          LOGICAL SAORD

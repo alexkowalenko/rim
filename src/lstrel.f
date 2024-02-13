@@ -18,7 +18,6 @@ C
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tuplel.inc'
-         INCLUDE 'files.inc'
 
          INTEGER STATUS
          LOGICAL EQ

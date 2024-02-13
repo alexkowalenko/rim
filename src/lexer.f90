@@ -255,6 +255,7 @@ contains
       ! IF MACWPT<MACWPZ THEN THE CHARACTER IS TAKEN FROM MACWRK
       !
       USE Parameters
+      USE Globals, only : INEOF
       USE Cards, only : READCD, CRDPTR, CRDEND, CRDREC, LXEOC
       USE Extern, only : NXTCRD
       USE Macros, only : MACWRK, MACWPT, MACWPZ
@@ -264,7 +265,6 @@ contains
 
       INTEGER :: NXT, LASTCH
 
-      INCLUDE 'files.inc'
       !
       ! CHECK FOR ACTIVE MACRO TEXT
       !
@@ -545,6 +545,7 @@ contains
 
    SUBROUTINE LXCMNT(EOR)
       USE Parameters, only : NULL
+      USE Globals, only: BATCH, INEOF
       USE Text, only: ASBLK, ASCOM, ASPLUS, ASSEMI
       !
       ! REMOVE A COMMENT FROM THE INPUT TOKEN STREAM
@@ -559,8 +560,6 @@ contains
 
       INTEGER :: SAVITM, SAVNXT, SET, ASCHR
       CHARACTER*(ZKEYWL) OPT
-
-      INCLUDE 'files.inc'
 
       SAVITM = ITEMS - 2
       SAVNXT = ASCNXT - 2

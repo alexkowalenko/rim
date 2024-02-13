@@ -10,14 +10,12 @@ contains
       !! PROCESS REPORT COMMAND
       !!
       USE Parameters
-      USE Globals, only : DFLAG, RMSTAT
+      USE Globals, only : DFLAG, RMSTAT, NOUTR
       USE Extern, only: SETOUT
       USE Lexer, only : ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW
       USE Message, only: WARN
       USE Text, only : STRASC
 
-      INCLUDE 'files.inc'
-      !
       INTEGER :: STAT
       CHARACTER(len=ZFNAML) :: FN
       LOGICAL :: OUTFIL
@@ -81,7 +79,6 @@ contains
       USE Text, only : NONE
       USE Utils, only : ZMOVE
 
-      INCLUDE 'files.inc'
       INCLUDE 'prom.inc'
 
       INTEGER :: DBSTAT, ERROR, NEWCSN, NUMELE, RFLAG, TDAY
@@ -225,7 +222,7 @@ contains
       !! UNLOAD DATABASE SCHEMA, DATA, OR BOTH
       !!
       USE Parameters
-      USE Globals, only : DFLAG, DBNAME, USERID, OWNER, RMSTAT
+      USE Globals, only : DFLAG, DBNAME, USERID, OWNER, RMSTAT, NOUTR, ULPP
       USE DateTime, only: RMTIME, RMDATE
       USE Extern, only: SETOUT
       USE Lexer, only : ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW, LFIND
@@ -235,7 +232,6 @@ contains
       USE Utils, only : ZMOVE
 
       INCLUDE 'rmatts.inc'
-      INCLUDE 'files.inc'
       INCLUDE 'buffer.inc'
       INCLUDE 'tupler.inc'
       INCLUDE 'dclar1.inc'
@@ -465,7 +461,6 @@ contains
       INCLUDE 'rimptr.inc'
       INCLUDE 'tupler.inc'
       INCLUDE 'tuplea.inc.f90'
-      INCLUDE 'files.inc'
       INCLUDE 'buffer.inc'
       INCLUDE 'srtcom.inc'
       INCLUDE 'whcom.inc.f90'
@@ -705,7 +700,6 @@ contains
       USE Text, only : BLANK
       USE Utils, only : ZMOVE
 
-      INCLUDE 'files.inc'
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'dclar1.inc'
 
@@ -820,7 +814,6 @@ contains
       USE Text, only : BLANK
       USE Utils, only : ZMOVE
 
-      INCLUDE 'files.inc'
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tuplel.inc'
       INCLUDE 'dclar1.inc'
@@ -1071,7 +1064,7 @@ contains
       !! PROCESS SELECT COMMAND
       !!
       USE Parameters
-      USE Globals, only : DFLAG, RMSTAT
+      USE Globals, only : DFLAG, RMSTAT, NOUTR
       USE Extern, only: SETOUT
       USE Lexer, only : ASCREC, IDP, IDL, KWS
       USE Message, only: WARN
@@ -1083,7 +1076,6 @@ contains
       INCLUDE 'whcom.inc.f90'
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tupler.inc'
-      INCLUDE 'files.inc'
       INCLUDE 'srtcom.inc'
       !
       LOGICAL :: EQKEYW
@@ -1229,7 +1221,6 @@ contains
       INCLUDE 'rmatts.inc'
       INCLUDE 'tupler.inc'
       INCLUDE 'tuplea.inc.f90'
-      INCLUDE 'files.inc'
       INCLUDE 'buffer.inc'
       INCLUDE 'whcom.inc.f90'
       !
@@ -1572,7 +1563,6 @@ contains
       INCLUDE 'whcom.inc.f90'
       INCLUDE 'tupler.inc'
       INCLUDE 'tuplea.inc.f90'
-      INCLUDE 'files.inc'
       INCLUDE 'buffer.inc'
       !
       !
@@ -1806,7 +1796,6 @@ contains
       INCLUDE 'rimptr.inc'
       INCLUDE 'tupler.inc'
       INCLUDE 'tuplea.inc.f90'
-      INCLUDE 'files.inc'
       INCLUDE 'buffer.inc'
       INCLUDE 'whcom.inc.f90'
       !
@@ -2229,7 +2218,6 @@ contains
 
       INCLUDE 'rmatts.inc'
       INCLUDE 'rimptr.inc'
-      INCLUDE 'files.inc'
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tuplel.inc'
       INCLUDE 'tupler.inc'
@@ -2393,7 +2381,6 @@ contains
       INCLUDE 'syspar.inc'
 
       INCLUDE 'rmatts.inc'
-      INCLUDE 'files.inc'
       INCLUDE 'tupler.inc'
       INCLUDE 'buffer.inc'
       INCLUDE 'whcom.inc.f90'
@@ -2510,16 +2497,13 @@ contains
       !! RIM COMMAND DISPATCHER
       !!
       USE Parameters
-      USE Globals, only: HXFLAG
+      USE Globals, only: HXFLAG, FFFLAG
       USE Extern, only : SETIN
       USE Files, only: RMCLOS
       USE Lexer, only: KXKEYW, TOKTYP, KWS, ITEMS, EQKEYW
       USE Parser, only: LODREC, MACDEF
       USE System, only : SYSCOM
-      !USE Rim, only : XHIBIT, DBLOAD
 
-      INCLUDE 'files.inc'
-      !
       LOGICAL :: SELREL
 
       ! -----------------------------------------------------
