@@ -256,6 +256,7 @@ contains
       !
       USE Parameters
       USE Cards, only : READCD, CRDPTR, CRDEND, CRDREC, LXEOC
+      USE Extern, only : NXTCRD
       USE Macros, only : MACWRK, MACWPT, MACWPZ
       USE Text, only : ABLANK, ASPLUS, ASSEMI
 

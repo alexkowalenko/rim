@@ -390,7 +390,7 @@ contains
       !! :  LOAD REL_NAME <FROM FILE_NAME> <USING FILENAME>
       USE Parameters
       USE Globals, only : DFLAG, DMFLAG, PIFLAG
-      USE Extern, only : SETIN, PRMSET
+      USE Extern, only : SETIN, PRMSET, LOADIT, LOADFM
       USE Formater, only : TYPER, LXFMT
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, EQKEYW, IDI, LXSREC
       USE Message, only : WARN

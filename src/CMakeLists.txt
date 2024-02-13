@@ -18,7 +18,7 @@ add_library(rimcommon STATIC
     isect.f
     join.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
     lnkadd.f lnkget.f lnkpag.f
-    locatt.f locboo.f loclnk.f locprm.f locrel.f
+    locatt.f locboo.f loclnk.f locprm.f locrel.f locvar.f
     lstrel.f lxedit.f
     motscn.f ne.f 
     parse.f parval.f prckey.f prjtup.f
@@ -56,11 +56,8 @@ add_library(rimcommon STATIC
 
 add_library(rimextlib STATIC
     amsg.f dmsg.f imsg.f
-    lnkput.f loadfm.f
-    loadit.f loadmv.f 
-    locvar.f
-    msg.f msgcmv.f 
-    nxtcrd.f 
+    lnkput.f loadmv.f
+    msg.f msgcmv.f
     pgbres.f pgbsto.f pgcexp.f
     pgcomp.f pgcprt.f pgeexp.f pgeprt.f pgexec.f pgstor.f
     selatt.f selout.f selput.f sgtlnk.f 
