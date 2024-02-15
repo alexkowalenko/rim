@@ -66,6 +66,7 @@ CONTAINS
       !!
       USE RM_Parameters
       USE RM_Globals, only : DBNAME, OWNER, DBDATE, DBTIME, DFLAG, DMFLAG, DBFNAM, KDBHDR, RMSTAT
+      USE Extern, only: MSG
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
       USE RM_Text, only : ASCTXT
       USE Utils, only : ZEROIT, ZMOVE

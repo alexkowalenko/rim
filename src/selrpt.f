@@ -4,7 +4,7 @@
 
          USE RM_Globals, only : MRINDX, HXFLAG, RMSTAT, FFFLAG, NOUTR
          USE RM_Globals, only : ULPP, UPRINL
-         USE Extern, only: IMSG, AMSG
+         USE Extern, only: IMSG, AMSG, MSG
          USE Formater, only : TYPER
          USE Maths, only : RTOD
          USE Message, only: WARN

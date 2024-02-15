@@ -64,7 +64,7 @@ contains
       !!
 
       USE RM_Parameters
-      USE Extern, only: AMSG
+      USE Extern, only: AMSG, MSG
       USE Lexer, only: ASCREC, IDP, IDL
       USE DateTime, only: DTFENC
       USE RM_Text, only : UPCASE, ATOI, CHRASC

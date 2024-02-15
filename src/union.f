@@ -3,7 +3,7 @@
 
          USE Message, only: WARN
          USE RM_Globals, only : RMSTAT
-         USE Extern, only: IMSG
+         USE Extern, only: IMSG, MSG
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

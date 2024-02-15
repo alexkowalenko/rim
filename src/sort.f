@@ -1,7 +1,7 @@
       SUBROUTINE SORT(NKSORT)
 
          USE RM_Globals, only : PGFLAG, MRINDX, RMSTAT
-         USE Extern, only: IMSG
+         USE Extern, only: IMSG, MSG
          USE RM_Text, only : BLANK
 
          INCLUDE 'syspar.inc'

@@ -104,7 +104,7 @@ contains
       ! SYSTEM INITIALIZE
       !
       USE RM_Globals, only : CONNI, CONNO, BATCH
-      USE Extern, only : SETIN
+      USE Extern, only : SETIN, MSG
       INCLUDE 'prom.inc'
       !
       ! GET FILENAME FROM COMMAND LINE

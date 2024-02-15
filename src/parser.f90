@@ -70,7 +70,7 @@ contains
       !!
       USE RM_Parameters
       USE Cards, only : READCD
-      USE Extern, only : SETIN, AMSG
+      USE Extern, only : SETIN, AMSG, MSG
       USE RM_Globals, only : TRACE, RMSTAT, ECHO, CONNI, NINT, BATCH, INEOF
       USE Files, only: RMCLOS
       USE Lexer, only: KXTEXT, KXNAME, IDT, TOKTYP, ASCREC, ASCNXT, IDP, IDL, KWS, ITEMS, EQKEYW, LXSREC, NXTTOK, LXCMNT, TOKDSP
@@ -199,6 +199,7 @@ contains
       !-----------------------------------------------------
       !
       USE RM_Parameters
+      USE Extern, only: MSG
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW, IDI, LXSREC
       USE Macros, only: LOCMAC, MACNUM, MACLEN, MACPTR, MACTXT, MACNTX, MACNAM, MACNRG
       USE Message, only : WARN
@@ -290,6 +291,7 @@ contains
       !!     NUMELE--NUMBER OF NEWLY DEFINED ATTRIBUTES
       !!
       USE RM_Parameters
+      USE Extern, only: MSG
       USE Formater, only : TYPER, LXFMT
       USE Lexer, only : KXINT, KXNAME, TOKTYP, ITEMS, EQKEYW, IDI
       USE Lexer, only : LFIND, LXSREC
@@ -483,6 +485,7 @@ contains
       !! LOAD THE RELATION DESCRIPTION
       !!
       USE RM_Parameters
+      USE Extern, only: MSG
       Use Lexer, only: KXNAME, TOKTYP, ITEMS, LXSREC
       USE Message, only : WARN
 
@@ -544,6 +547,7 @@ contains
       !
 
       USE RM_Parameters
+      USE Extern, only: MSG
       Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
       USE Message, only : WARN
       USE Utils, only : ZMOVE

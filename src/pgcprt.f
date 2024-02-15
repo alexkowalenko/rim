@@ -1,6 +1,6 @@
       LOGICAL FUNCTION PGCPRT(BLKTYP,MAXLIN)
 
-         USE Extern, only : AMSG
+         USE Extern, only : AMSG, MSG
          USE Formater, only : TYPER, LXFMT
          USE Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS
          USE Lexer, only: EQKEYW, IDI, LXLENW, LXSREC

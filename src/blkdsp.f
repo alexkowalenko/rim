@@ -1,6 +1,6 @@
       SUBROUTINE BLKDSP(NAME,BLK,CODES,LABELS,LLABEL)
 
-         USE Extern, only : DMSG, IMSG, AMSG
+         USE Extern, only : DMSG, IMSG, AMSG, MSG
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

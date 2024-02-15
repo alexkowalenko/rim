@@ -850,6 +850,105 @@ contains
    END SUBROUTINE AMSG
 
 
+   MODULE SUBROUTINE MSG(MTYPE,MTEXT,MCONT)
+      !!
+      !!  ROUTINE TO FORMAT AND PRINT MESSAGES
+      !!
+      !!  Parameters
+      !!
+      !! MTYPE---TYPE OF MESSAGE
+      !!
+      !!    1ST CHAR ' ' - INFORMATION RM_Text
+      !!                 'W' - WARNING RM_Text
+      !!             'E' - ERROR RM_Text
+      !!             'R' - REPORT RM_Text  (UNIT IS NOUTR)
+      !!             'L' - LOG ENTRY    (UNIT IS NOUTL)
+      !!             'T' - TRACE ENTRY  (UNIT IS NOUTT)
+      !!
+      !!    2ND CHAR 'U' - LEAVE UPPERCASE
+      !!             'F' - LOWERCASE ALL BUT FIRST CHARACTER
+      !!             'L' - LOWERCASE
+      !!             OTHER - SAME AS 'L'
+      !!
+      !! MTEXT---RM_Text OF MESSAGE
+      !!
+      !! MCONT---IF NON-BLANK MESSAGE CONTINUES ON NEXT CALL
+      !!
+      !! MTYPE IS IGNORED IF THE MESSAGE BUFFER IS NOT EMPTY
+      !!
+      USE RM_Parameters
+      USE RM_Globals, only : PGFLAG, CONNI, NOUT, NOUTR, NOUTT, NOUTL
+      USE RM_Globals, only : ECHO, INLINE
+      USE Extern, only: IMSG, AMSG, DMSG, MSGCMV
+      USE DateTime, only: RMTIME, RMDATE
+      USE RM_Text, only : BLANK
+
+      CHARACTER(len=*), intent(in) :: MTYPE
+      CHARACTER(len=*), intent(in) :: MTEXT
+      CHARACTER(len=1), intent(in) :: MCONT
+      !
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'msgcom.inc'
+      !
+      CHARACTER(len=1) :: CTYPE, MTYPE1
+      INTEGER :: L, TDAY, TTIM
+      !
+      ! SETUP CASE CONVERSION CODE (FOR MESSAGE PRETTY PRINTING)
+      !
+      CTYPE = ' '
+      IF (LEN(MTYPE).GE.2) CTYPE = MTYPE(2:2)
+      IF (CTYPE.EQ.' ') THEN
+         IF (MSGPTR.EQ.0) THEN
+            CTYPE = 'F'
+         ELSE
+            CTYPE = 'L'
+         ENDIF
+      ENDIF
+      !
+      ! CHECK MTYPE IF NO MESSAGE PENDING
+      !
+      IF (MSGPTR.EQ.0) THEN
+         MTYPE1 = MTYPE(1:1)
+         IF ( (MTYPE1.EQ.'E' .OR. MTYPE1.EQ.'W') .AND. &
+            (.NOT. (CONNI .OR. ECHO .OR. PGFLAG))) THEN
+            ! IDENTIFY THE INPUT LINE
+            CALL MSGCMV('LINE:','F')
+            CALL IMSG(INLINE,6,' ')
+         ENDIF
+         IF (MTYPE1.EQ.'E') THEN
+            CALL MSGCMV('YOUR REQUEST CANNOT BE COMPLETED.','F')
+            MSUNIT = NOUT
+            CALL AMSG(BLANK,0,' ')
+            !--------   STOP INPUT FROM FILE ON ERROR
+            !--------   CALL SETIN(ZTRMIN)
+         ENDIF
+         IF (MTYPE1.EQ.'W') CALL MSGCMV('* ','F')
+         MSUNIT = NOUT
+         IF (MTYPE1.EQ.'R') MSUNIT = NOUTR
+         IF (MTYPE1.EQ.'L') MSUNIT = NOUTL
+         IF (MTYPE1.EQ.'T') THEN
+            MSUNIT = NOUTT
+            CALL MSGCMV('* ','U')
+            TDAY = RMDATE()
+            TTIM = RMTIME()
+            CALL DMSG(TDAY,0,'+',KZDATE)
+            CALL MSGCMV(' ','U')
+            CALL DMSG(TTIM,0,'+',KZTIME)
+            CALL MSGCMV('* ','U')
+         ENDIF
+      ENDIF
+      !
+      L = LEN(MTEXT)
+      IF (L+MSGPTR.GT.ZPRINL) L = ZPRINL - MSGPTR
+      IF (L.GT.0) CALL MSGCMV(MTEXT(1:L),CTYPE)
+      !
+      ! PRINT IF NO CONTINUATION
+      !
+900   IF (MCONT.NE.'+') CALL AMSG(BLANK,0,MCONT)
+      RETURN
+   END SUBROUTINE MSG
+
+
    MODULE SUBROUTINE MSGCMV(MTEXT,CTYPE)
       !!
       !!  ROUTINE TO ADD CHARS TO THE OUTPUT LINE

@@ -1,7 +1,7 @@
       SUBROUTINE GETDAT(INDEX,ID,LOCTUP,LENGTH)
 
          USE RM_Globals, only : TRACE, RMSTAT
-         USE Extern, only: IMSG
+         USE Extern, only: IMSG, MSG
          USE Files, only : FILE2, LENBF2, LF2REC, CURBLK, MODFLG
          USE RandomFiles, only: RIOIN, RIOOUT
          USE Utils, only : ITOH

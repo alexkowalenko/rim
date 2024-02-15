@@ -1,7 +1,7 @@
       FUNCTION SELWHR(ST,NT)
 
          USE RM_Globals, only : CASEIG, TRACE, RMSTAT
-         USE Extern, only: IMSG
+         USE Extern, only: IMSG, MSG
          USE Formater, only : TYPER
          USE Lexer, only: KXTEXT, KXNAME, TOKTYP, IDL, EQTOK, KWS
          USE Lexer, only: EQKEYW, LXLENW, LXSREC

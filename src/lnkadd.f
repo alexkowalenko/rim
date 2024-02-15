@@ -1,5 +1,6 @@
       SUBROUTINE LNKADD
 
+         USE Extern, only: MSG
          USE Files, only : LF1REC
          USE RM_Globals, only : IFMOD
          USE Utils, only : ZMOVE

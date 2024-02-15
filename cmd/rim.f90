@@ -21,7 +21,7 @@ PROGRAM MAIN
    USE RM_Parameters
    USE RM_Globals, only : KDBVER, CONNI, CONNO, BATCH, NOUTR
    USE DateTime, only: RMTIME, RMDATE
-   USE Extern, only: SETOUT, DMSG
+   USE Extern, only: SETOUT, DMSG, MSG
    USE Rim, only: RMCONS, RMINIT, RIMCMD
    USE System, only: SystemExit, SystemTrap, SystemInitialise
 

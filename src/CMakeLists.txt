@@ -54,7 +54,7 @@ add_library(rimcommon STATIC
 )
 
 add_library(rimextlib STATIC
-    lnkput.f loadmv.f msg.f
+    lnkput.f loadmv.f
     pgbres.f pgbsto.f pgcexp.f
     pgcomp.f pgcprt.f pgeexp.f pgeprt.f pgexec.f pgstor.f
     selatt.f selout.f selput.f sgtlnk.f 
@@ -65,8 +65,7 @@ add_library(rimextlib STATIC
 )
 
 add_library(rimlib STATIC
-    pilib.f pilibx.f
-    rmxdel.f rmxget.f rmxlod.f rmxput.f
+    pilib.f rmxdel.f rmxget.f rmxlod.f rmxput.f
     extern_mute.f90
     system.f90
  )

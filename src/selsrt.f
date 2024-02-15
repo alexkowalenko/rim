@@ -1,5 +1,6 @@
       FUNCTION SELSRT(FTOK,NTOK)
 
+         USE Extern, only: MSG
          USE Formater, only : TYPER
          USE Message, only: WARN
          Use Lexer, only: EQTOK, KWS, EQKEYW, LXSREC

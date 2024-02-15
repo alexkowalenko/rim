@@ -1,5 +1,6 @@
       LOGICAL FUNCTION VARADD()
 
+         USE Extern, only: MSG
          USE RM_Text, only : FILCH, ABLANK
          USE Utils, only : ZMOVE, HTOI
 

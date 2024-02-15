@@ -9,7 +9,7 @@ contains
    SUBROUTINE WARN(W,TEXT1,TEXT2)
 
       USE RM_Parameters, only : Z, ZC
-      USE Extern, only: IMSG, AMSG
+      USE Extern, only: IMSG, AMSG, MSG
       USE RM_Globals, only: HXFLAG, RMSTAT
 
       !

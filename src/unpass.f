@@ -1,7 +1,7 @@
       SUBROUTINE UNPASS(ALL,IRCNTR,IDAY,MODE,LHASH,ATREL)
 
          USE RM_Globals, only : DBNAME, USERID
-         USE Extern, only : AMSG
+         USE Extern, only : AMSG, MSG
          USE RM_Text, only : BLANK, NONE
          USE Utils, only : ZMOVE
 

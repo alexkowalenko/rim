@@ -3,6 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE RM_Globals, only : RMSTAT
+         USE Extern, only: MSG
          USE Maths, only : DTOR, RTOD
          USE RM_Text, only : BLANK, STRMOV, PLSIGN, MNSIGN, TMSIGN
          USE RM_Text, only:  DVSIGN

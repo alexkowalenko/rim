@@ -381,6 +381,7 @@ contains
       !
       USE RM_Parameters
       USE Cards, only : LXEOC
+      USE Extern, only : MSG
       USE RM_Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
       USE RM_Text, only : CHRASC, ASCAN, UPCASE, BLANK, ABLANK, ATOI, ATOR, SQUOTE, DQUOTE, ASBLK, ASCOM, ASQUO, CHTYPE
 
@@ -645,7 +646,7 @@ contains
       !! DISPLAY /TOKENS/ COMMON
       !!
       USE RM_Parameters
-      USE Extern, only: IMSG, AMSG
+      USE Extern, only: IMSG, AMSG, MSG
       USE Maths, only : IEXP
       USE RM_Text, only : FILCH, ABLANK, RTOA
 

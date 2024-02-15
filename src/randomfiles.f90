@@ -61,7 +61,7 @@ contains
    SUBROUTINE RIOIN(FILE,RECORD,BUFFER,NWDS,IOS)
       USE RM_Parameters, only : ZNFIL1, Z
       USE RM_Globals, only : TRACE
-      USE Extern, only: IMSG
+      USE Extern, only: IMSG, MSG
       !
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
       !
@@ -99,7 +99,7 @@ contains
    SUBROUTINE RIOOUT(FILE,RECORD,BUFFER,NWDS,IOS)
       USE RM_Parameters, only : ZNFIL1, Z
       USE RM_Globals, only : TRACE
-      USE Extern, only: IMSG
+      USE Extern, only: IMSG, MSG
       !
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
       !

@@ -1,7 +1,7 @@
       FUNCTION PGCEXP(ST,NT)
 
          USE DateTime, only: KRMDTF, KRMTMF
-         USE Extern, only: IMSG
+         USE Extern, only: IMSG, MSG
          USE Formater, only : TYPER, LXDATE
          USE RM_Globals, only : RMSTAT
          USE Lexer, only: KXINT, KXREAL, KXNAME, TOKTYP, ASCREC, IDP

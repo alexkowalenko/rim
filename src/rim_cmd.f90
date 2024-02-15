@@ -11,7 +11,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, RMSTAT, NOUTR
-      USE Extern, only: SETOUT
+      USE Extern, only: SETOUT, MSG
       USE Lexer, only : ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW
       USE Message, only: WARN
       USE RM_Text, only : STRASC
@@ -70,7 +70,7 @@ contains
       USE RM_Globals, only : DFLAG, USERID, OWNER, DBNAME, IFMOD, DBFNAM
       USE RM_Globals, only : RMSTAT
       USE DateTime, only : RMDATE
-      USE Extern, only: PRMSET, AMSG
+      USE Extern, only: PRMSET, AMSG, MSG
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
       USE Message, only : WARN
       USE Parser, only: LODREC, LODELE, LODREL, LODLNK, LODPAS
@@ -224,7 +224,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DBNAME, USERID, OWNER, RMSTAT, NOUTR, ULPP
       USE DateTime, only: RMTIME, RMDATE
-      USE Extern, only: SETOUT, DMSG, AMSG
+      USE Extern, only: SETOUT, DMSG, AMSG, MSG
       USE Lexer, only : ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW, LFIND
       USE Lexer, only : LXSREC
       USE Message, only: WARN
@@ -453,7 +453,7 @@ contains
       !
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, RMSTAT
-      USE Extern, only: IMSG
+      USE Extern, only: IMSG, MSG
       USE Lexer, only : ITEMS, LFIND, LXSREC
       USE Message, only : WARN
       USE RM_Text, only : BLANK
@@ -694,7 +694,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG
-      USE Extern, only: IMSG
+      USE Extern, only: IMSG, MSG
       USE Formater, only: LXFMT
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
       USE Lexer, only: LXSREC
@@ -810,7 +810,7 @@ contains
       !
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, USERID, USERID
-      USE Extern, only : AMSG
+      USE Extern, only : AMSG, MSG
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
       Use Lexer, only: LXSREC
       USE Message, only: WARN
@@ -979,7 +979,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only: DFLAG, DMFLAG, DBNAME, USERID, OWNER
       USE RM_Globals, only: RMSTAT
-      USE Extern, only : AMSG
+      USE Extern, only : AMSG, MSG
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
       USE Message, only: WARN
       USE Utils, only : ZMOVE
@@ -1069,7 +1069,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, RMSTAT, NOUTR
-      USE Extern, only: SETOUT
+      USE Extern, only: SETOUT, MSG
       USE Lexer, only : ASCREC, IDP, IDL, KWS
       USE Message, only: WARN
       USE RM_Text, only : STRASC
@@ -1216,7 +1216,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG
-      USE Extern, only: IMSG, AMSG
+      USE Extern, only: IMSG, AMSG, MSG
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, KWS, ITEMS, EQKEYW, LXSREC
       USE DateTime, only : RMDATE
       USE Message, only : WARN
@@ -1558,7 +1558,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG, RMSTAT
       USE DateTime, only : RMDATE
-      USE Extern, only: IMSG
+      USE Extern, only: IMSG, MSG
       Use Lexer, only: KXNAME, TOKTYP, IDP, ITEMS, EQKEYW, LFIND
       Use Lexer, only: LXSREC
       USE Message, only : WARN
@@ -1788,6 +1788,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG
       USE DateTime, only : RMDATE
+      USE Extern, only: MSG
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW, LXSREC
       USE Message, only: WARN
       USE RM_Text, only : BLANK, NONE
@@ -2214,7 +2215,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DBNAME, USERID, OWNER, KARRC, KARDT
       USE DateTime, only: RMTIME, RMDATE
-      USE Extern, only: DMSG, IMSG, AMSG
+      USE Extern, only: DMSG, IMSG, AMSG, MSG
       USE Formater, only: FMTDEC
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
       USE Message, only : WARN
@@ -2486,7 +2487,7 @@ contains
       !
       USE RM_Parameters
       USE RM_Globals, only : DFLAG
-      USE Extern, only : AMSG
+      USE Extern, only : AMSG, MSG
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
       Use Lexer, only: LXSREC
       USE Message, only: WARN
@@ -2593,7 +2594,7 @@ contains
       !!  PURPOSE:  PROCESS ZIP COMMAND  (CALL SYSTEM FUNCTION)
       !!
       USE RM_Globals, only : DFLAG, DBFNAM
-      USE Extern, only: IMSG
+      USE Extern, only: IMSG, MSG
       USE Files, only: RMCLOS
       USE Lexer, only: KXTEXT, TOKTYP, ASCREC, IDP, IDL, ITEMS
       USE Message, only: WARN
@@ -2650,7 +2651,7 @@ contains
       USE, intrinsic :: iso_fortran_env
 
       USE RM_Globals, only: LIBFLG, TOL, HXFLAG, PCENT, RUCK, DBFNAM, KZHPSK, KZHPRL, KZHPKY, DFLAG, RMSTAT
-      USE Extern, only: IMSG, AMSG
+      USE Extern, only: IMSG, AMSG, MSG
       USE Files, only: RMCLOS
       USE Lexer, only: KWS, ITEMS
       USE Message, only: WARN
@@ -2777,7 +2778,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only: HXFLAG, FFFLAG
-      USE Extern, only : SETIN
+      USE Extern, only : SETIN, MSG
       USE Files, only: RMCLOS
       USE Lexer, only: KXKEYW, TOKTYP, KWS, ITEMS, EQKEYW
       USE Parser, only: LODREC, MACDEF

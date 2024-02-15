@@ -1,6 +1,6 @@
       FUNCTION SELREL(FTOK,NTOK)
 
-         USE Extern, only : AMSG
+         USE Extern, only : AMSG, MSG
          USE Message, only: WARN
          USE Lexer, only: LXSREC
          USE RM_Text, only : BLANK

@@ -64,6 +64,13 @@ contains
    END SUBROUTINE AMSG
 
 
+   MODULE SUBROUTINE MSG(MTYPE,MTEXT,MCONT)
+      CHARACTER(len=*), intent(in) :: MTYPE
+      CHARACTER(len=*), intent(in) :: MTEXT
+      CHARACTER(len=1), intent(in) :: MCONT
+   END SUBROUTINE MSG
+
+
    MODULE SUBROUTINE MSGCMV(MTEXT,CTYPE)
       CHARACTER(len=*) :: MTEXT
       CHARACTER(len=*) :: CTYPE
