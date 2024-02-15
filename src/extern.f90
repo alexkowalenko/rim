@@ -12,6 +12,8 @@ MODULE Extern
    public NXTCRD
    public LOADIT
    public LOADFM
+   public DMSG
+   public MSGCMV
 
    INTEGER, PARAMETER :: ZTUPAL = 2*Z+7
 
@@ -50,6 +52,21 @@ MODULE Extern
          INTEGER, intent(in out) :: FOR(6,1)
          INTEGER, intent(in) :: NFOR
       END SUBROUTINE LOADFM
+
+      ! Messaging routines
+
+      MODULE SUBROUTINE DMSG(JDAT,DFMT,MCONT,TYP)
+         INTEGER, intent(in) :: JDAT, DFMT, TYP
+         CHARACTER(len=1) :: MCONT
+      END SUBROUTINE DMSG
+
+
+      MODULE SUBROUTINE MSGCMV(MTEXT,CTYPE)
+         CHARACTER(len=*) :: MTEXT
+         CHARACTER(len=*) :: CTYPE
+      END SUBROUTINE MSGCMV
+
+
    END INTERFACE
 
 END MODULE Extern

@@ -224,7 +224,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DBNAME, USERID, OWNER, RMSTAT, NOUTR, ULPP
       USE DateTime, only: RMTIME, RMDATE
-      USE Extern, only: SETOUT
+      USE Extern, only: SETOUT, DMSG
       USE Lexer, only : ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW, LFIND
       USE Lexer, only : LXSREC
       USE Message, only: WARN
@@ -2208,6 +2208,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DBNAME, USERID, OWNER, KARRC, KARDT
       USE DateTime, only: RMTIME, RMDATE
+      USE Extern, only: DMSG
       USE Formater, only: FMTDEC
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
       USE Message, only : WARN

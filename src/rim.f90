@@ -1765,6 +1765,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DBNAME, USERID, CASEIG, ARBCHS, ARBCHM, KRMINF, KRMRNF, KMSSVL, KMSSVT, KNAPVL, KNAPVT
       USE RM_Globals, only : NOUT, ECHO, ULPP, UPRINL, UTERML
+      USE Extern, only: DMSG
       USE Formater, only : FMTDEC
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
       USE Macros, only: MACPTR, MACPTR, MACTXT, MACLEN

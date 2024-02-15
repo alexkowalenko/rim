@@ -3,6 +3,7 @@
          USE RM_Globals, only : PGFLAG, CONNI, NOUT, NOUTR, NOUTT, NOUTL
          USE RM_Globals, only : ECHO
          USE DateTime, only: RMTIME, RMDATE
+         USE Extern, only : DMSG, MSGCMV
 
          INCLUDE 'syspar.inc'
 C

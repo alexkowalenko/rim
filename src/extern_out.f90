@@ -730,4 +730,79 @@ contains
    END SUBROUTINE LOADFM
 
 
+   MODULE SUBROUTINE DMSG(JDAT,DFMT,MCONT,TYP)
+      !!
+      !!  ROUTINE TO FORMAT AND PRINT A JULIAN DATE
+      !!
+      !!  Parameters
+      !!
+      !!     JDAT---JULIAN DATE OR TIME
+      !!     DFMT----DATE/TIME FORMAT INTEGER
+      !!     MCONT---IF NON-BLANK MESSAGE CONTINUES ON NEXT CALL
+      !!     TYP-----TYPE (KZDATE / KZTIME)
+      !!
+      USE RM_Parameters
+      USE DateTime, only : ASCDAT
+
+      INTEGER, intent(in) :: JDAT, DFMT, TYP
+      CHARACTER(len=1) :: MCONT
+      !
+      INCLUDE 'msgcom.inc'
+      INCLUDE 'rmatts.inc'
+      !
+      INTEGER, PARAMETER :: DATW=12/ZCW
+      INTEGER :: ADAT(DATW), L
+      !
+      CALL ASCDAT(ADAT,1,L,JDAT,DFMT,TYP)
+      CALL AMSG(ADAT,L,MCONT)
+      RETURN
+   END SUBROUTINE DMSG
+
+
+   MODULE SUBROUTINE MSGCMV(MTEXT,CTYPE)
+      !!
+      !!  ROUTINE TO ADD CHARS TO THE OUTPUT LINE
+      !!
+      !!  Parameters
+      !!
+      !!     MTEXT---RM_Text OF MESSAGE
+      !!
+      !!     CTYPE---CASE CONVERSION CODE
+      !!             'U' - LEAVE UPPERCASE
+      !!             'F' - LOWERCASE ALL BUT FIRST CHARACTER
+      !!             'L' - LOWERCASE
+      !!             OTHER - SAME AS 'L'
+      !!
+
+      USE RM_Parameters, only : ZPRINW
+      USE RM_Text, only : ASCCHR, LOCASE
+
+      CHARACTER(len=*) :: MTEXT
+      CHARACTER(len=*) :: CTYPE
+      !
+      INCLUDE 'msgcom.inc'
+      !
+      LOGICAL :: UCASE, FCHAR
+      INTEGER :: I, L
+      !
+      UCASE = .FALSE.
+      FCHAR = .FALSE.
+      L = LEN(MTEXT)
+      IF (CTYPE.EQ.'F') FCHAR = .TRUE.
+      IF (CTYPE.EQ.'U') UCASE = .TRUE.
+      !
+      DO I = 1, L
+         IF (FCHAR .OR. UCASE) THEN
+            CALL PUTT(MSGREC,MSGPTR+I,ASCCHR(MTEXT(I:I)))
+         ELSE
+            CALL PUTT(MSGREC,MSGPTR+I,LOCASE(ASCCHR(MTEXT(I:I))))
+         ENDIF
+         IF (FCHAR .AND. (MTEXT(I:I).NE.' ')) FCHAR = .FALSE.
+      END DO
+      MSGPTR = MSGPTR + L
+      RETURN
+   END SUBROUTINE MSGCMV
+
+
+
 END SUBMODULE Extern_out
