@@ -5,7 +5,7 @@ PROGRAM RIME
    USE RM_Parameters
    USE RM_Globals, only: KRMRNF, DBFNAM, ECHO, CONNI, CONNO, BATCH, NINT, NOUTR
    USE DateTime, only: RMTIME, RMDATE
-   USE Extern, only: SETOUT, SETIN, PRMSET, DMSG, IMSG
+   USE Extern, only: SETOUT, SETIN, PRMSET, DMSG, IMSG, AMSG
    USE Formater, only : LXFMT
    USE Lexer, only: KXINT, KXKEYW, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW, IDI, LXSREC
    USE Parser, only: LODREC
@@ -45,6 +45,7 @@ PROGRAM RIME
    INTEGER :: NW, NXTAR, NXTLR, NXTRR, NXTUP, R, RW, STAT, STTUP, SW, W
    INTEGER :: TDAY, TTIM, X
    INTEGER :: NUMOPN = 0
+   INTEGER :: WW(1)
 
    !
    ! LABELS FOR DISPLAYS
@@ -293,9 +294,9 @@ PROGRAM RIME
       CALL IMSG(CURR,5,'+')
       CALL IMSG(IDI(2),   5,'+')
       CALL MSG(' ',':','+')
-      W = IDI(2)
-      IF (W.LE.4096) W = FILBUF(W)
-      CALL AMSG(W,4,' ')
+      WW(1) = IDI(2)
+      IF (WW(1).LE.4096) WW(1) = FILBUF(WW(1))
+      CALL AMSG(WW,4,' ')
       GOTO 100
    ENDIF
 
@@ -413,12 +414,13 @@ PROGRAM RIME
          CALL IMSG(CURR,5,'+')
          CALL IMSG(W,   5,'+')
          CALL MSG(' ',':','+')
+         WW(1) = FILBUF(W)
          D = FILBUF(W)
          CALL IMSG(D,15,'+')
          CALL MSG(' ',' ','+')
-         CALL AMSG(D,ZCW,'+')
+         CALL AMSG(WW,ZCW,'+')
          IF (W.EQ.SW) THEN
-            D = IABS(D)
+            D = IABS(WW(1))
             CALL ITOH(D1,D2,D)
             CALL MSG(' ',' ','+')
             CALL IMSG(D1,7,'+')
@@ -443,9 +445,10 @@ PROGRAM RIME
          CALL IMSG(W,   5,'+')
          CALL MSG(' ',':','+')
          D = FILBUF(W)
+         WW(1) = FILBUF(W)
          CALL IMSG(D,15,'+')
          CALL MSG(' ',' ','+')
-         CALL AMSG(D,ZCW,'+')
+         CALL AMSG(WW,ZCW,'+')
          D = IABS(D)
          IF (D.GT.ZHTOI) THEN
             CALL ITOH(D1,D2,D)

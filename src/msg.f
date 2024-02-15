@@ -2,9 +2,9 @@
 
          USE RM_Globals, only : PGFLAG, CONNI, NOUT, NOUTR, NOUTT, NOUTL
          USE RM_Globals, only : ECHO
-         USE Extern, only: IMSG
+         USE Extern, only: IMSG, AMSG, DMSG, MSGCMV
          USE DateTime, only: RMTIME, RMDATE
-         USE Extern, only : DMSG, MSGCMV
+         USE RM_Text, only : BLANK
 
          INCLUDE 'syspar.inc'
 C
@@ -66,7 +66,7 @@ C           IDENTIFY THE INPUT LINE
             IF (MTYPE1.EQ.'E') THEN
                CALL MSGCMV('YOUR REQUEST CANNOT BE COMPLETED.','F')
                MSUNIT = NOUT
-               CALL AMSG(L,0,' ')
+               CALL AMSG(BLANK,0,' ')
 C--------   STOP INPUT FROM FILE ON ERROR
 C--------   CALL SETIN(ZTRMIN)
             ENDIF
@@ -92,6 +92,6 @@ C
 C
 C     PRINT IF NO CONTINUATION
 C
-  900    IF (MCONT.NE.'+') CALL AMSG(L,0,MCONT)
+  900    IF (MCONT.NE.'+') CALL AMSG(BLANK,0,MCONT)
          RETURN
       END

@@ -57,6 +57,13 @@ contains
    END SUBROUTINE DMSG
 
 
+   MODULE SUBROUTINE AMSG(MTEXT,NUMC,MCONT)
+      INTEGER, intent(in) :: MTEXT(*)
+      INTEGER, intent(in) :: NUMC
+      CHARACTER(len=1), intent(in) :: MCONT
+   END SUBROUTINE AMSG
+
+
    MODULE SUBROUTINE MSGCMV(MTEXT,CTYPE)
       CHARACTER(len=*) :: MTEXT
       CHARACTER(len=*) :: CTYPE

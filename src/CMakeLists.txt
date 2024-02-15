@@ -54,7 +54,6 @@ add_library(rimcommon STATIC
 )
 
 add_library(rimextlib STATIC
-    amsg.f 
     lnkput.f loadmv.f msg.f
     pgbres.f pgbsto.f pgcexp.f
     pgcomp.f pgcprt.f pgeexp.f pgeprt.f pgexec.f pgstor.f

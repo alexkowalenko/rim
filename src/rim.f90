@@ -333,7 +333,7 @@ contains
       !!
       USE RM_Parameters, only: ZFNAML, ZC
       USE RM_Globals, only : DFLAG, DBNAME, DBFNAM, RMSTAT
-      USE Extern, only : SETIN
+      USE Extern, only : SETIN, AMSG
       USE Files, only: RMCLOS
       USE Message, only : WARN
       USE System, only : SYSDBG, SYSDBN, CHKFIL
@@ -376,7 +376,7 @@ contains
       !! :  LOAD REL_NAME <FROM FILE_NAME> <USING FILENAME>
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG, PIFLAG
-      USE Extern, only : SETIN, PRMSET, LOADIT, LOADFM
+      USE Extern, only : SETIN, PRMSET, LOADIT, LOADFM, AMSG
       USE Formater, only : TYPER, LXFMT
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, EQKEYW, IDI, LXSREC
       USE Message, only : WARN
@@ -607,6 +607,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, RMSTAT
+      USE Extern, only: AMSG
       USE Formater, only : TYPER
       USE Lexer, only : KWS, ITEMS, LXSREC
       USE Message, only : WARN
@@ -1111,8 +1112,8 @@ contains
       !! REMOVE A LINK FROM THE DATABASE
       !!
       USE RM_Parameters
-      USE RM_Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
-      USE RM_Globals, only : RMSTAT
+      USE RM_Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD, RMSTAT
+      USE Extern, only : AMSG
       USE Lexer, only : ITEMS, LXSREC, LXSREC
       USE Message, only: WARN
 
@@ -1188,9 +1189,8 @@ contains
       !! REMOVE A RELATION FROM THE DATABASE
       !!
       USE RM_Parameters
-      USE RM_Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
-      USE RM_Globals, only : RMSTAT, CONNI
-      USE Extern, only : PRMSET
+      USE RM_Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD, RMSTAT, CONNI
+      USE Extern, only : PRMSET, AMSG
       USE Lexer, only: KWS, ITEMS, EQKEYW, LXSREC
       USE Message, only: WARN
       USE Parser, only: LODREC
@@ -1422,6 +1422,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, USERID, OWNER
+      USE Extern, only : AMSG
       USE Lexer, only: ITEMS, LXSREC
       USE Message, only: WARN
       USE RM_Text, only : BLANK, NONE
@@ -1765,7 +1766,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DBNAME, USERID, CASEIG, ARBCHS, ARBCHM, KRMINF, KRMRNF, KMSSVL, KMSSVT, KNAPVL, KNAPVT
       USE RM_Globals, only : NOUT, ECHO, ULPP, UPRINL, UTERML
-      USE Extern, only: DMSG,IMSG
+      USE Extern, only: DMSG, IMSG, AMSG
       USE Formater, only : FMTDEC
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
       USE Macros, only: MACPTR, MACPTR, MACTXT, MACLEN
@@ -1831,7 +1832,7 @@ contains
       CALL MSG(' ','   MULTIPLE ARBCHAR: ','+')
       MSGPTR = MSGPTR + 1
       CALL PUTT(MSGREC,MSGPTR,ARBCHM)
-      CALL AMSG(0,0,' ')
+      CALL AMSG(BLANK,0,' ')
 
       CALL MSG(' ','FORMATS          ','+')
       CALL MSG(' ','DATE: ','+')

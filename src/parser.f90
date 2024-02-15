@@ -70,7 +70,7 @@ contains
       !!
       USE RM_Parameters
       USE Cards, only : READCD
-      USE Extern, only : SETIN
+      USE Extern, only : SETIN, AMSG
       USE RM_Globals, only : TRACE, RMSTAT, ECHO, CONNI, NINT, BATCH, INEOF
       USE Files, only: RMCLOS
       USE Lexer, only: KXTEXT, KXNAME, IDT, TOKTYP, ASCREC, ASCNXT, IDP, IDL, KWS, ITEMS, EQKEYW, LXSREC, NXTTOK, LXCMNT, TOKDSP

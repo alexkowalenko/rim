@@ -2,7 +2,7 @@
 
          USE, intrinsic :: iso_fortran_env
 
-         USE Extern, only: IMSG
+         USE Extern, only: IMSG, AMSG
          USE Formater, only : TYPER, LXDATE
          USE Lexer, only: KXTEXT, KXINT, KXREAL, TOKTYP, IDP, IDL, KWS
          USE Lexer, only: ITEMS, IDI, IDR, LFIND, LXLENW, LXSREC

@@ -293,7 +293,7 @@ contains
       USE Cards, only: CRDREC, CRDPTR, CRDEND, CRDRLB, CRDRLL, CRDIDX
       USE RM_Globals, only : TRACE, CONNI, NOUTT, NINT
       USE Extern, only : PROMPT
-      USE RM_Text, only : UPCASE
+      USE RM_Text, only : UPCASE, BLANK
       USE TextFiles, only : TIOIN
       USE Lexer, only : ASRCLL
 
@@ -349,7 +349,7 @@ contains
             CALL PUTT(MSGREC,MSGPTR,CH)
          END DO
          MSUNIT = NOUTT
-         CALL AMSG(0,0,' ')
+         CALL AMSG(BLANK,0,' ')
       ENDIF
       RETURN
       !
@@ -790,6 +790,64 @@ contains
       CALL AMSG(ADAT,L,MCONT)
       RETURN
    END SUBROUTINE DMSG
+
+
+   MODULE SUBROUTINE AMSG(MTEXT,NUMC,MCONT)
+      !!
+      !!  ROUTINE TO FORMAT AND PRINT ASCII-RM_Text
+      !!
+      !!  Parameters
+      !!
+      !!     MTEXT---RM_Text OF MESSAGE  (ASCII-RM_Text)
+      !!
+      !!     NUMC----NUMBER OF CHARS (NEG = DELETE TRAILING BLANKS)
+      !!
+      !!     MCONT---IF NON-BLANK MESSAGE CONTINUES ON NEXT CALL
+      !!
+      USE RM_Parameters, only: ZPRINW, ZNOUT, ZPRINL
+      USE RM_Globals, only : UTERML
+      USE RM_Text, only : ABLANK, STRMOV
+      USE TextFiles, only : TIOOUT
+
+      INTEGER, intent(in) :: MTEXT(*)
+      INTEGER, intent(in) :: NUMC
+      CHARACTER(len=1), intent(in) :: MCONT
+      !
+      INCLUDE 'msgcom.inc'
+      LOGICAL :: DTB
+      INTEGER :: L, A, I, IERR, LNB
+      !
+      !
+      IF (NUMC.EQ.0) GOTO 800
+      L = NUMC
+      DTB = .FALSE.
+      IF (L.LT.0) THEN
+         L = 0 - L
+         DTB = .TRUE.
+      ENDIF
+      IF (L+MSGPTR.GT.ZPRINL) L = ZPRINL - MSGPTR
+      !
+      LNB = 0
+      DO I = 1, L
+         CALL GETT(MTEXT,I,A)
+         CALL PUTT(MSGREC,MSGPTR+I,A)
+         IF (A.NE.ABLANK) LNB = I
+      END DO
+      IF (DTB) L = LNB
+      MSGPTR = MSGPTR + L
+      !
+      ! PRINT IF NO CONTINUATION
+      ! (LINE MAY BE LONGER THAN TERMINAL LINE LENGTH)
+      !
+800   IF (MCONT.NE.' ') RETURN
+810   L = MSGPTR
+      IF (MSUNIT.EQ.ZNOUT .AND. L.GT.UTERML) L = UTERML
+      CALL TIOOUT(MSUNIT,MSGREC,L,IERR)
+      MSGPTR = MSGPTR - L
+      IF (MSGPTR.EQ.0) RETURN
+      CALL STRMOV(MSGREC,L+1,MSGPTR,MSGREC,1)
+      GOTO 810
+   END SUBROUTINE AMSG
 
 
    MODULE SUBROUTINE MSGCMV(MTEXT,CTYPE)

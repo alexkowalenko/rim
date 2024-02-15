@@ -3,6 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE RM_Globals, only : NOUTR, UPRINL
+         USE Extern, only : AMSG
          USE Formater, only : TYPER
          USE RM_Text, only : FILCH, ABLANK, STRMOV
 

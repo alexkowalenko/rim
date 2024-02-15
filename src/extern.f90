@@ -14,6 +14,7 @@ MODULE Extern
    public LOADFM
    public IMSG
    public DMSG
+   public AMSG
    public MSGCMV
 
    INTEGER, PARAMETER :: ZTUPAL = 2*Z+7
@@ -66,6 +67,11 @@ MODULE Extern
          CHARACTER(len=1) :: MCONT
       END SUBROUTINE DMSG
 
+      MODULE SUBROUTINE AMSG(MTEXT,NUMC,MCONT)
+         INTEGER, intent(in) :: MTEXT(*)
+         INTEGER, intent(in) :: NUMC
+         CHARACTER(len=1), intent(in) :: MCONT
+      END SUBROUTINE AMSG
 
       MODULE SUBROUTINE MSGCMV(MTEXT,CTYPE)
          CHARACTER(len=*) :: MTEXT

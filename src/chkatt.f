@@ -1,6 +1,7 @@
       SUBROUTINE CHKATT(TMPA,NUMELE,ERROR)
 
          USE DateTime, only : RMDATE
+         USE Extern, only : AMSG
          USE Lexer, only : ITEMS, LXSREC
          USE Message, only : WARN
          USE RM_Text, only: BLANK, NONE
