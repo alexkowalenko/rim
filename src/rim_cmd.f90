@@ -2203,6 +2203,275 @@ contains
       RETURN 1
    END SUBROUTINE TUPLRC
 
+   SUBROUTINE LSTREL(*)
+
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, DBNAME, USERID, OWNER, KARRC, KARDT
+      USE DateTime, only: RMTIME, RMDATE
+      USE Formater, only: FMTDEC
+      USE Lexer, only: ITEMS, EQKEYW, LXSREC
+      USE Message, only : WARN
+      USE Rim, only: RMTYPT
+      USE RM_Text, only : BLANK, NONE
+      USE Utils, only : ZMOVE
+
+      !
+      ! SUMMARIZE THE USERS DEFINITION OF A RELATION
+      !
+      !
+      INCLUDE 'rmatts.inc'
+      INCLUDE 'tupler.inc'
+      INCLUDE 'tuplea.inc.f90'
+      INCLUDE 'tuplel.inc'
+
+      INTEGER :: STATUS, I, NC, MCHAR, NLINK, NP, NREL, NWORDS, TDAY, TTIM, NCHAR
+
+      LOGICAL :: ALLREL
+      CHARACTER(len=4) :: KEY,CRPW,CMPW
+      INTEGER :: FMTSTR(3)
+
+      LOGICAL :: EQ, NE
+      INTEGER :: LOCREL, LOCATT, LOCLNK
+      INCLUDE 'dclar1.inc'
+      !
+      !
+      !
+      ! CHECK FOR A DATABASE
+      !
+      IF (.NOT.DFLAG) THEN
+         CALL WARN(2)
+         GOTO 999
+      ENDIF
+      !
+      !
+      TDAY = RMDATE()
+      TTIM = RMTIME()
+      I = LOCREL(BLANK)
+      NP = 0
+      IF(I.NE.0) THEN
+         CALL MSG('W','THERE ARE NO TABLES.',' ')
+         GO TO 999
+      ENDIF
+      !
+      IF(ITEMS.GT.2) THEN
+         CALL WARN(4)
+         GOTO 999
+      ENDIF
+      IF(ITEMS.EQ.2) GO TO 1000
+      !
+      !   LISTREL (WITH NO RELATION SPECIFIED)
+      !
+100   CALL RELGET(STATUS)
+      IF(STATUS.NE.0) THEN
+         IF (NP.EQ.0) CALL WARN(8)
+         GOTO 999
+      ENDIF
+      !
+      ! DONT LISTREL RULE RELATIONS
+      !
+      IF(EQ(NAME,KARDT)) GO TO 100
+      IF(EQ(NAME,KARRC)) GO TO 100
+      !
+      !   VALIDATE USER
+      !
+      IF(EQ(USERID,OWNER)) GO TO 150
+      IF(EQ(RPW,NONE)) GO TO 150
+      IF(EQ(RPW,USERID)) GO TO 150
+      IF(EQ(MPW,USERID)) GO TO 150
+      GO TO 100
+150   CONTINUE
+      IF(NP.EQ.0) THEN
+         ! WRITE OUT HEADER
+         CALL MSG('R','  TABLE NAME      ' // &
+            '   ROWS' // '  LAST MODIFIED',' ')
+         CALL MSG('R','  ----------------' // &
+            ' ------' // '  ------------ ',' ')
+         NP = 1
+      ENDIF
+      CALL MSG('R','  ','+')
+      CALL AMSG(NAME,ZC,'+')
+      CALL IMSG(NTUPLE,7,'+')
+      CALL MSG('R','  ','+')
+      CALL DMSG(RDATE,0,' ',KZDATE)
+      GO TO 100
+      !
+      !   LISTREL A SPECIFIC RELATION
+      !
+1000  IF(EQKEYW(2,'*')) THEN
+         ALLREL = .TRUE.
+         CALL ZMOVE(RNAME,BLANK)
+      ELSE
+         ALLREL = .FALSE.
+         CALL LXSREC(2,RNAME,ZC)
+      ENDIF
+      NREL = 0
+      I = LOCREL(RNAME)
+      IF(I.NE.0) THEN
+         !  REQUESTED RELATION DOES NOT EXIST
+         IF (ALLREL) CALL MSG('E','THERE ARE NO TABLES.',' ')
+         IF (.NOT.ALLREL) CALL WARN(1,RNAME,BLANK)
+         GOTO 999
+      ENDIF
+      !
+1100  IF(ALLREL) THEN
+         CALL RELGET(STATUS)
+         IF((NREL.EQ.0).AND.(STATUS.NE.0)) THEN
+            CALL WARN(8)
+            GOTO 999
+         ENDIF
+         IF(STATUS.NE.0) GO TO 999
+      ENDIF
+      !
+      !   CHECK PERMISSION
+      !
+      IF(EQ(USERID,OWNER)) GO TO 1300
+      IF(EQ(RPW,NONE)) GO TO 1300
+      IF(EQ(RPW,USERID)) GO TO 1300
+      IF(EQ(MPW,USERID)) GO TO 1300
+      IF(ALLREL) GO TO 1100
+      CALL WARN(8)
+      GO TO 999
+1300  CONTINUE
+      !
+      !  PRINT HEADER.
+      !
+      NREL = NREL + 1
+      CRPW = 'NONE'
+      CMPW = 'NONE'
+      IF(NE(RPW,NONE)) CRPW = 'YES'
+      IF(NE(MPW,NONE)) CMPW = 'YES'
+      !
+      CALL MSG('R','      DATABASE : ','+')
+      CALL AMSG(DBNAME,ZC,'+')
+      CALL MSG(' ','   READ PASSWORD : ' // CRPW,'+')
+      CALL MSG(' ','    LAST MOD : ','+')
+      CALL DMSG(RDATE,0,' ',KZDATE)
+      CALL MSG('R','         TABLE : ','+')
+      CALL AMSG(NAME,ZC,'+')
+      CALL MSG(' ',' MODIFY PASSWORD : ' // CMPW,' ')
+      CALL MSG('R',' ',' ')
+      !
+      CALL MSG('R','  NAME            ' // '  TYPE' // &
+         '      LENGTH  ' // '   FORMAT    ' // ' KEY',' ')
+      CALL MSG('R','  ----------------' // '  ----' // &
+         ' -------------' // ' ----------- ' // ' ---',' ')
+      !
+      !  FIND AND PRINT ATTRIBUTE DESCRIPTIONS
+      !
+      I = LOCATT(BLANK,NAME)
+      IF(I.NE.0) THEN
+         CALL MSG('R','NO COLUMNS',' ')
+         GOTO 1800
+      ENDIF
+1500  CALL ATTGET(STATUS)
+      IF(STATUS.NE.0) GO TO 1600
+      KEY = ' '
+      IF(ATTKEY.NE.0) KEY = 'YES'
+      !
+      !  PRINT ATTRIBUTE INFO
+      !
+      CALL MSG('R','  ','+')
+      CALL AMSG(ATTNAM,ZC,'+')
+      CALL MSG(' ','  ' //  RMTYPT(ATTYPE),'+')
+
+      NCHAR = ATTCHA
+      NWORDS = ATTWDS
+      IF(ATTYPE.EQ.KZDOUB) NWORDS = NWORDS / 2
+      IF(ATTYPE.EQ.KZDVEC) NWORDS = NWORDS / 2
+      IF(ATTYPE.EQ.KZDMAT) NWORDS = NWORDS / 2
+
+      IF(ATTYPE.EQ.KZTEXT) THEN
+         IF (NCHAR.EQ.0) THEN
+            CALL MSG(' ','      VAR      ','+')
+         ELSE
+            CALL IMSG(NCHAR,5,'+')
+            CALL MSG(' ',' CHARS    ','+')
+         ENDIF
+         GO TO 1590
+      ENDIF
+      !
+      IF(ATTYPE.EQ.KZIMAT) GO TO 1520
+      IF(ATTYPE.EQ.KZRMAT) GO TO 1520
+      IF(ATTYPE.EQ.KZDMAT) GO TO 1520
+      IF (NWORDS.EQ.0) THEN
+         CALL MSG(' ','      VAR      ','+')
+      ELSE
+         CALL IMSG(NWORDS,5,'+')
+         CALL MSG(' ',' WORDS    ','+')
+      ENDIF
+      GO TO 1590
+
+1520  CONTINUE
+      IF(NWORDS.NE.0) THEN
+         NC = NWORDS / NCHAR
+         CALL IMSG(NCHAR,5,'+')
+         CALL MSG(' ',' BY ','+')
+         CALL IMSG(NC,5,'+')
+         CALL MSG(' ',' ','+')
+         GO TO 1590
+      ENDIF
+      !
+      IF(NCHAR.NE.0) THEN
+         NC = NWORDS / NCHAR
+         CALL IMSG(NCHAR,5,'+')
+         CALL MSG(' ',' BY VAR   ','+')
+         GO TO 1590
+      ENDIF
+      !
+      CALL MSG(' ',' VAR BY VAR    ','+')
+      !
+      ! FORMAT
+      !
+1590  IF (ATTFOR.NE.0) THEN
+         CALL FMTDEC(ATTFOR,ATTYPE,FMTSTR,12)
+         CALL AMSG(FMTSTR,12,'+')
+      ELSE
+         CALL MSG(' ','            ','+')
+      ENDIF
+      !
+      ! COMPLETE THE LINE
+      CALL MSG(' ',' ' // KEY,' ')
+      GOTO 1500
+
+      !
+      !  FIND AND PRINT LINKS
+      !
+1600  I = LOCLNK(BLANK)
+      NLINK = 0
+      CALL MSG(' ',' ',' ')
+1610  CALL LNKGET(STATUS)
+      IF(STATUS.NE.0) GO TO 1690
+      IF (NE(NAME,R1NAME) .AND. NE(NAME,R2NAME)) GOTO 1610
+      !
+      NLINK = NLINK + 1
+      CALL MSG('R','  LINK ','+')
+      CALL AMSG(LNAME,-ZC,'+')
+      CALL MSG(' ',' FROM ','+')
+      CALL AMSG(R1NAME,-ZC,'+')
+      CALL MSG(' ','(','+')
+      CALL AMSG(A1NAME,-ZC,'+')
+      CALL MSG(' ',') TO ','+')
+      CALL AMSG(R2NAME,-ZC,'+')
+      CALL MSG(' ','(','+')
+      CALL AMSG(A2NAME,-ZC,'+')
+      CALL MSG(' ',')',' ')
+      GOTO 1610
+
+1690  IF(NLINK.EQ.0) CALL MSG('R','  NO LINKS',' ')
+
+1700  CALL MSG('R',' ',' ')
+      CALL MSG('R','    CURRENT NUMBER OF ROWS = ','+')
+      CALL IMSG(NTUPLE,5,' ')
+      CALL MSG('R',' ',' ')
+1800  IF(ALLREL) GO TO 1100
+      GO TO 999
+      !
+      !  ALL DONE.
+      !
+999   RETURN  1
+   END SUBROUTINE LSTREL
+
+
 
    SUBROUTINE RNAMER(*)
       !

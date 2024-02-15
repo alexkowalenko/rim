@@ -165,6 +165,126 @@ contains
    END SUBROUTINE PRMSET
 
 
+   SUBROUTINE LXEDIT
+      USE RM_Parameters
+      USE RM_Globals, only : NINT
+      USE Cards, only : CRDREC, CRDEND, CRDRLB, CRDRLL, CRDIDX
+      USE RM_Text, only : UPCASE, ABLANK
+      USE TextFiles, only : TIOIN
+      USE Lexer, only : ASRCLL, ASLXEI, ASLXEE, ASLXEX, ASLXES
+
+      !
+      ! RECALL AND EDIT AN INPUT LINE OR COMMAND
+      !
+      INCLUDE 'prom.inc'
+      INCLUDE 'msgcom.inc'
+      !
+      INTEGER :: EDTREC(ZCARDW)
+      INTEGER :: CPYREC(ZCARDW)
+      LOGICAL :: INSMOD
+      INTEGER :: CP, CPCNT, CPYEND, CPYP, CRDP, ECH, EDTEND, EOF, I
+      !
+      ! RECALL AN INPUT RECORD
+      !
+      CP = CRDIDX
+      CPCNT = 0
+100   IF (CP.LT.1) CP = ZCARDN
+      CPCNT = CPCNT + 1
+      DO I = 1, ZCARDW
+         CPYREC(I) = CRDRLB(I,CP)
+      END DO
+      CPYEND = CRDRLL(CP)
+      IF (CPYEND.EQ.0 .OR. CPCNT.GT.ZCARDN) THEN
+         CRDEND = 0
+         GOTO 900
+      ENDIF
+      !
+      ! ECHO RECALLED LINE AND GET EDITS
+      !
+150   CPYP = 1
+      CRDP = 1
+      CALL AMSG(CPYREC,CPYEND,' ')
+      CALL TIOIN(NINT,EDTREC,EDTEND,EOF)
+      IF (EOF.NE.0) GOTO 300
+      IF(EDTEND.EQ.0) GO TO 300
+      !
+      ! IS IT ANOTHER RECALL COMMAND
+      !
+      IF (EDTEND.EQ.1) THEN
+         CALL GETT(EDTREC,1,ECH)
+         IF (UPCASE(ECH).EQ.ASRCLL) THEN
+            CP = CP - 1
+            GOTO 100
+         ENDIF
+      ENDIF
+      !
+      ! APPLY EDITS TO CPYREC
+      !
+      INSMOD = .FALSE.
+      DO I = 1, EDTEND
+         CALL GETT(EDTREC,I,ECH)
+         !
+         ! CHECK FOR '<' (BEGIN INSERT)
+210      IF (ECH.EQ.ASLXEI .AND. .NOT. INSMOD) THEN
+            INSMOD = .TRUE.
+            GOTO 200
+         ENDIF
+         !
+         ! CHECK FOR '>' (END INSERT)
+         IF (ECH.EQ.ASLXEE .AND. INSMOD) THEN
+            INSMOD = .FALSE.
+            GOTO 200
+         ENDIF
+         !
+         ! CHECK FOR '!' (END LINE)
+         IF (ECH.EQ.ASLXEX .AND. .NOT. INSMOD) GOTO 320
+         !
+         ! CHECK FOR '#' (SKIP CHARACTER)
+         IF (ECH.EQ.ASLXES .AND. .NOT. INSMOD) THEN
+            CPYP = CPYP + 1
+            GOTO 200
+         ENDIF
+         !
+         ! CHECK FOR ' ' (KEEP CHARACTER)
+         IF (ECH.EQ.ABLANK .AND. .NOT. INSMOD .AND. &
+            CPYP.LE.CPYEND) CALL GETT(CPYREC,CPYP,ECH)
+         !
+         ! MOVE CHARACTER
+190      CALL PUTT(CRDREC,CRDP,ECH)
+         IF (.NOT. INSMOD) CPYP = CPYP + 1
+         CRDP = CRDP + 1
+         IF (CRDP.GT.ZCARDL) GOTO 320
+200      CONTINUE
+      END DO
+      !
+      ! COPY REST OF OLD LINE
+      !
+300   IF (CPYP.LE.CPYEND) THEN
+         DO I = CPYP, CPYEND
+            CALL GETT(CPYREC,I,ECH)
+            CALL PUTT(CRDREC,CRDP,ECH)
+            CRDP = CRDP + 1
+            IF (CRDP.GT.ZCARDL) GOTO 320
+         END DO
+      ENDIF
+320   CRDEND = CRDP -1
+      INSMOD = .FALSE.
+      IF (EOF.NE.0 .OR. EDTEND.EQ.0) GOTO 900
+      !
+      ! MORE EDITS
+      !
+      DO I = 1, ZCARDW
+         CPYREC(I) = CRDREC(I)
+      END DO
+      CPYEND = CRDEND
+      GOTO 150
+      !
+      ! DONE WITH EDITS
+      !
+900   RETURN
+   END SUBROUTINE LXEDIT
+
+
    SUBROUTINE NXTCRD(EOF)
       !!
       !!  ROUTINE TO READ A RECORD TO /CARDS/

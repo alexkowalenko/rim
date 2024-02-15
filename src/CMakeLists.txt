@@ -19,7 +19,6 @@ add_library(rimcommon STATIC
     join.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
     lnkadd.f lnkget.f lnkpag.f
     locatt.f locboo.f loclnk.f locprm.f locrel.f locvar.f
-    lstrel.f lxedit.f
     motscn.f ne.f 
     parse.f parval.f prckey.f prjtup.f
     putdat.f putt.f ptrs.f 
