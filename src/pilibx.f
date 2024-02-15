@@ -7,15 +7,6 @@ C
       END
 
 
-      SUBROUTINE IMSG(NUM,NUMC,MCONT)
-C
-C     DUMMY ROUTINE FOR USER LIBRARY
-C
-         CHARACTER*(*) MCONT
-         RETURN
-      END
-
-
       SUBROUTINE MSG(MTYPE,MTEXT,MCONT)
          USE RM_Globals, only : RMSTAT
 C

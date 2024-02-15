@@ -1,6 +1,7 @@
       SUBROUTINE BLKCHG(IND,NROWS,NCOLS)
 
          USE RM_Globals, only : TRACE, RMSTAT
+         USE Extern, only: IMSG
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'

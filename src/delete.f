@@ -1,6 +1,7 @@
       SUBROUTINE DELETE(MAT)
 
          USE RM_Globals, only : RMSTAT
+         USE Extern, only: IMSG
          USE RM_Text, only : BLANK
 
          INCLUDE 'syspar.inc'

@@ -1,6 +1,7 @@
       SUBROUTINE UNDEF(ALL,IRCNTR,IDAY,MODE,LHASH,ATREL)
 
          USE RM_Globals, only : DBNAME, USERID
+         USE Extern, only: IMSG
          USE Formater, only : TYPER, FMTDEC
          USE RM_Text, only : BLANK
          USE Rim, only: RMTYPT

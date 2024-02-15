@@ -1,6 +1,7 @@
       SUBROUTINE RMSAV(INDPTR)
 
          USE RM_Globals, only : TRACE, RMSTAT
+         USE Extern, only: IMSG
 
          INCLUDE 'syspar.inc'
 C

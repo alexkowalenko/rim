@@ -2,6 +2,7 @@
      XKEYCOL,KEYTYP)
 
          USE RM_Globals, only : RMSTAT
+         USE Extern, only: IMSG
          USE Message, only : WARN
          USE Utils, only : HTOI, ITOH
 

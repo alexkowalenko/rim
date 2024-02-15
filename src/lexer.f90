@@ -645,6 +645,7 @@ contains
       !! DISPLAY /TOKENS/ COMMON
       !!
       USE RM_Parameters
+      USE Extern, only: IMSG
       USE Maths, only : IEXP
       USE RM_Text, only : FILCH, ABLANK, RTOA
 

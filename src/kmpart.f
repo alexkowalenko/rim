@@ -1,4 +1,5 @@
       SUBROUTINE KMPART(VALUE1,VALUE2,LEN,NK,OK)
+         USE Extern, only: IMSG
          INCLUDE 'syspar.inc'
 C
 C     THIS ROUTINE COMPARES LEN'S WORTH OF RM_Text WORDS TO

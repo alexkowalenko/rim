@@ -1,6 +1,7 @@
       SUBROUTINE BLKCLR(IND)
 
          USE RM_Globals, only : TRACE
+         USE Extern, only: IMSG
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'

@@ -2,6 +2,7 @@
 
          USE RM_Globals, only: PGVARS, INLINE, PGFLAG, RMSTAT
          USE DateTime, only: RMTIME, RMDATE
+         USE Extern, only: IMSG
          USE Lexer, only: KXINT, TOKTYP, KWS, ITEMS, EQKEYW, IDI, LXSREC
          USE Message, only : WARN
          USE Parser, only: LODREC

@@ -5,7 +5,7 @@ PROGRAM LXTEST
    USE RM_Parameters
    USE RM_Globals, only : ECHO, NINT
    USE Cards, only : READCD
-   USE Extern, only : SETIN
+   USE Extern, only : SETIN, IMSG
    USE Formater, only : TYPER, LXFMT
    USE System, only: SystemExit, SystemInitialise
    USE Lexer, only: KWS, EQKEYW, TOKDSP

@@ -1,6 +1,7 @@
       SUBROUTINE ATTGET(STATUS)
 
          USE RM_Text, only : BLANK
+         USE Extern, only: IMSG
          USE Utils, only : ZMOVE, ITOH
 
          INCLUDE 'syspar.inc'

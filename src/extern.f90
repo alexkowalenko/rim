@@ -12,6 +12,7 @@ MODULE Extern
    public NXTCRD
    public LOADIT
    public LOADFM
+   public IMSG
    public DMSG
    public MSGCMV
 
@@ -54,6 +55,11 @@ MODULE Extern
       END SUBROUTINE LOADFM
 
       ! Messaging routines
+
+      MODULE SUBROUTINE IMSG(NUM,NUMC,MCONT)
+         INTEGER, intent(in) :: NUM, NUMC
+         CHARACTER(len=1), intent(in) :: MCONT
+      END SUBROUTINE IMSG
 
       MODULE SUBROUTINE DMSG(JDAT,DFMT,MCONT,TYP)
          INTEGER, intent(in) :: JDAT, DFMT, TYP

@@ -483,7 +483,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : NINT
       USE Cards, only : CRDREC, CRDEND
-      USE Extern, only : SETIN
+      USE Extern, only : SETIN, IMSG
       USE Formater, only : TYPER
       USE Lexer, only: KXTEXT, KXINT, KXREAL, IDT, ASCREC, IDP, IDL
       USE Lexer, only: KWS, ITEMS, IDI, IDR
@@ -728,6 +728,39 @@ contains
 9999  CALL SETIN(ZTRMIN)
       RETURN
    END SUBROUTINE LOADFM
+
+
+   MODULE SUBROUTINE IMSG(NUM,NUMC,MCONT)
+      !!
+      !!  ROUTINE TO FORMAT AND PRINT AN INTEGER
+      !!
+      !!  Parameters
+      !!
+      !!     NUM-----INTEGER TO PRINT
+      !!     NUMC----NUMBER OF CHARS (NEG = DELETE BLANKS)
+      !!     MCONT---IF NON-BLANK MESSAGE CONTINUES ON NEXT CALL
+      !!
+
+      USE RM_Parameters, only : ZCW, ZPRINW
+      USE RM_Text, only : ITOA
+      USE Utils, only : NDIGIT
+
+      INTEGER, intent(in) :: NUM, NUMC
+      CHARACTER(len=1), intent(in) :: MCONT
+      !
+      INCLUDE 'msgcom.inc'
+      INTEGER, PARAMETER :: MAXL=24,MAXW=24/ZCW
+      INTEGER :: NSTR(MAXW)
+      INTEGER :: L, ERR
+      !
+      !
+      L = NUMC
+      IF (L.LT.0) L = MIN(NDIGIT(NUM),0-L)
+      L = MIN(L,MAXL)
+      CALL ITOA(NSTR,1,L,NUM,ERR)
+      CALL AMSG(NSTR,L,MCONT)
+      RETURN
+   END SUBROUTINE IMSG
 
 
    MODULE SUBROUTINE DMSG(JDAT,DFMT,MCONT,TYP)

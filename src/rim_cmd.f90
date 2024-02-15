@@ -453,6 +453,7 @@ contains
       !
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, RMSTAT
+      USE Extern, only: IMSG
       USE Lexer, only : ITEMS, LFIND, LXSREC
       USE Message, only : WARN
       USE RM_Text, only : BLANK
@@ -693,6 +694,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG
+      USE Extern, only: IMSG
       USE Formater, only: LXFMT
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
       USE Lexer, only: LXSREC
@@ -1212,6 +1214,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG
+      USE Extern, only: IMSG
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, KWS, ITEMS, EQKEYW, LXSREC
       USE DateTime, only : RMDATE
       USE Message, only : WARN
@@ -1553,6 +1556,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG, RMSTAT
       USE DateTime, only : RMDATE
+      USE Extern, only: IMSG
       Use Lexer, only: KXNAME, TOKTYP, IDP, ITEMS, EQKEYW, LFIND
       Use Lexer, only: LXSREC
       USE Message, only : WARN
@@ -2208,7 +2212,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DBNAME, USERID, OWNER, KARRC, KARDT
       USE DateTime, only: RMTIME, RMDATE
-      USE Extern, only: DMSG
+      USE Extern, only: DMSG, IMSG
       USE Formater, only: FMTDEC
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
       USE Message, only : WARN
@@ -2586,6 +2590,7 @@ contains
       !!  PURPOSE:  PROCESS ZIP COMMAND  (CALL SYSTEM FUNCTION)
       !!
       USE RM_Globals, only : DFLAG, DBFNAM
+      USE Extern, only: IMSG
       USE Files, only: RMCLOS
       USE Lexer, only: KXTEXT, TOKTYP, ASCREC, IDP, IDL, ITEMS
       USE Message, only: WARN
@@ -2642,6 +2647,7 @@ contains
       USE, intrinsic :: iso_fortran_env
 
       USE RM_Globals, only: LIBFLG, TOL, HXFLAG, PCENT, RUCK, DBFNAM, KZHPSK, KZHPRL, KZHPKY, DFLAG, RMSTAT
+      USE Extern, only: IMSG
       USE Files, only: RMCLOS
       USE Lexer, only: KWS, ITEMS
       USE Message, only: WARN

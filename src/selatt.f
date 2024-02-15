@@ -2,6 +2,7 @@
 
          USE RM_Globals, only :  KRMINF, KRMRNF, UPRINL
          USE DateTime, only : DTFSPL, KRMDTF, KRMTMF
+         USE Extern, only: IMSG
          USE Formater, only : TYPER, LXFMT
          USE Message, only: WARN
          USE RM_Text, only : ASCCHR, ASCTXT, FILCH, BLANK, ABLANK
