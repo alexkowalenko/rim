@@ -8,8 +8,8 @@ contains
 
    SUBROUTINE WARN(W,TEXT1,TEXT2)
 
-      USE Parameters, only : Z, ZC
-      USE GLobals, only: HXFLAG, RMSTAT
+      USE RM_Parameters, only : Z, ZC
+      USE RM_Globals, only: HXFLAG, RMSTAT
 
       !
       !  PURPOSE:   GENERAL PURPOSE ERROR PRINT ROUTINE

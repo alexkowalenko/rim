@@ -1,13 +1,13 @@
       SUBROUTINE RMSAV(INDPTR)
 
-         USE Globals, only : TRACE, RMSTAT
+         USE RM_Globals, only : TRACE, RMSTAT
 
          INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   SAVE THE INTERNAL POINTERS FOR THE
 C             MULTIPLE PROGRAM INTERFACE.
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C     INPUT:  INDPTR--INDEX TO SAVE BLOCK (RANGE OF 1 TO ZPIMAX)
          INCLUDE 'keydat.inc'
          INCLUDE 'srtcom.inc'

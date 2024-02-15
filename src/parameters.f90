@@ -1,4 +1,4 @@
-MODULE Parameters
+MODULE RM_Parameters
    !! Constants used throughout RIM
 
    USE iso_fortran_env, only : character_storage_size, numeric_storage_size, output_unit, input_unit

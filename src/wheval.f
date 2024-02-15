@@ -1,7 +1,7 @@
       LOGICAL FUNCTION WHEVAL(ITUP)
 
-         USE Globals, only : TOL
-         USE Text, only: LKSTR
+         USE RM_Globals, only : TOL
+         USE RM_Text, only: LKSTR
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

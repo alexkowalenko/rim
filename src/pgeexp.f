@@ -2,9 +2,10 @@
 
          USE, intrinsic :: iso_fortran_env
 
-         USE Globals, only : RMSTAT
+         USE RM_Globals, only : RMSTAT
          USE Maths, only : DTOR, RTOD
-         USE Text, only : BLANK, STRMOV, PLSIGN, MNSIGN, TMSIGN, DVSIGN
+         USE RM_Text, only : BLANK, STRMOV, PLSIGN, MNSIGN, TMSIGN
+         USE RM_Text, only:  DVSIGN
          USE Utils, only : ITOH
 
 
@@ -193,7 +194,7 @@ C
          RETURN
 
 C
-C     TEXT DATA (PUT RESULT INTO VAR)
+C     RM_Text DATA (PUT RESULT INTO VAR)
 C
   500    CALL ITOH(ATTCHA,ATTWDS,BUFFER(VP+Z))
          DO 502 J = 1, ATTWDS

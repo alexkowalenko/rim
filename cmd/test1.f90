@@ -2,7 +2,7 @@ PROGRAM Test1
 
    USE iso_fortran_env
 
-   USE Parameters
+   USE RM_Parameters
 
    PRINT *, compiler_version()
    PRINT *, compiler_options()

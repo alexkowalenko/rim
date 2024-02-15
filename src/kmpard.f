@@ -2,14 +2,14 @@
 
          USE, intrinsic :: iso_fortran_env
 
-         USE Globals, only : PCENT, TOL
+         USE RM_Globals, only : PCENT, TOL
 
          INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE COMPARES VALUE1 AND VALUE2 TO SEE IF THEY MEET THE
 C  DESIRED CONDITIONS.
 C
-C  PARAMETERS
+C  RM_Parameters
 C         VALUE1--FIRST VALUE
 C         VALUE2--SECOND VALUE
 C         LEN-----VALUE LENGTHS

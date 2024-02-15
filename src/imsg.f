@@ -1,13 +1,13 @@
       SUBROUTINE IMSG(NUM,NUMC,MCONT)
 
-         USE Text, only : ITOA
+         USE RM_Text, only : ITOA
          USE Utils, only : NDIGIT
 
          INCLUDE 'syspar.inc'
 C
 C  ROUTINE TO FORMAT AND PRINT AN INTEGER
 C
-C  PARAMETERS
+C  RM_Parameters
 C
 C         NUM-----INTEGER TO PRINT
 C         NUMC----NUMBER OF CHARS (NEG = DELETE BLANKS)

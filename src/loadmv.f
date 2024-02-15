@@ -1,16 +1,16 @@
       LOGICAL FUNCTION LOADMV(CCOL,CLEN)
 
          USE Cards, only : CRDREC
-         USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
+         USE RM_Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
          USE Lexer, only: KXTEXT, KXINT, KXREAL, IDT, ITEMS, IDI
-         USE Text, only : BLANK, ABLANK, ASCAN, STRMOV
+         USE RM_Text, only : BLANK, ABLANK, ASCAN, STRMOV
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
 C
 C     CHECK FORMATTED LOADING DATA FOR MISSING VALUES
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         CCOL----STARTING COLUMN
 C         CLEN----LENGTH
 C

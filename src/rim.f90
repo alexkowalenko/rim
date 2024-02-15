@@ -38,7 +38,7 @@ contains
       !!
       !! RETURN THE CHARACTER LABEL OF A RMTYPE CODE (KZXXXX)
       !!
-      USE Parameters
+      USE RM_Parameters
 
       INTEGER, intent(in) :: TYPE
 
@@ -85,18 +85,18 @@ contains
       !------------------------------------------------------------
       !
 
-      USE Parameters
+      USE RM_Parameters
       USE Cards, only : Cards_Initialise => Initialise
-      USE Globals, only: KMSSVL, KMSSVT, KNAPVL, KNAPVT, USERID
-      USE Globals, only: ARBCHS, ARBCHM, USERID
-      USE Globals, only: KZHPDB, KZHPRL, KZHPKY, KZHPSK, KZHPTX
-      USE Globals, only: KDBHDR, NOUT
-      USE Globals, only : Globals_Initialise => Initialise
+      USE RM_Globals, only: KMSSVL, KMSSVT, KNAPVL, KNAPVT, USERID
+      USE RM_Globals, only: ARBCHS, ARBCHM, USERID
+      USE RM_Globals, only: KZHPDB, KZHPRL, KZHPKY, KZHPSK, KZHPTX
+      USE RM_Globals, only: KDBHDR, NOUT
+      USE RM_Globals, only : Globals_Initialise => Initialise
       USE Extern, only: PRMSET
       USE DateTime, only : DateTime_Initialise => Initialise, DTFENC
       USE Macros, only : Macros_Initialise => Initialise
-      USE Text, only : ASCTXT, ASCCHR, NONE
-      USE Text, only : Text_initialise => Initialise
+      USE RM_Text, only : ASCTXT, ASCCHR, NONE
+      USE RM_Text, only : Text_initialise => Initialise
       USE Utils, only : ZMOVE
 
       INCLUDE 'msgcom.inc'
@@ -152,11 +152,11 @@ contains
       !!
       !! RUN-TIME INITIALIZATION (CALLED WHEN DATABASE IS OPENED)
       !!
-      USE Parameters
+      USE RM_Parameters
       USE Files, only: FILE1, LENBF1, LF1REC, CAREC, CRREC, CLREC
       USE Files, only: FILE2, LENBF2, CURBLK, MODFLG, FILE3, LENBF3
       USE Files, only: MAXIC
-      USE Text, only : BLANK
+      USE RM_Text, only : BLANK
       USE Utils, only : ZEROIT, ZMOVE
 
 
@@ -256,8 +256,8 @@ contains
       !! NEWNAM CONTAINS THE DB NAME
       !! NEWOK = .TRUE. IF THE DB MAY BE CREATED
       !!
-      USE Parameters
-      USE Globals, only : DFLAG, DBDATE, DBTIME, RMSTAT
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, DBDATE, DBTIME, RMSTAT
       USE Files, only: FILE1, F1OPN, FILE2, F2OPN, FILE3, F3OPN, RMCLOS
       USE DateTime, only: RMTIME, RMDATE
       USE RandomFiles, only: RIOCLO
@@ -331,8 +331,8 @@ contains
       !!
       !! OPEN/CLOSE A DATABASE
       !!
-      USE Parameters, only: ZFNAML, ZC
-      USE Globals, only : DFLAG, DBNAME, DBFNAM, RMSTAT
+      USE RM_Parameters, only: ZFNAML, ZC
+      USE RM_Globals, only : DFLAG, DBNAME, DBFNAM, RMSTAT
       USE Extern, only : SETIN
       USE Files, only: RMCLOS
       USE Message, only : WARN
@@ -374,14 +374,14 @@ contains
       !!  RIM DATA BASE.
       !!
       !! :  LOAD REL_NAME <FROM FILE_NAME> <USING FILENAME>
-      USE Parameters
-      USE Globals, only : DFLAG, DMFLAG, PIFLAG
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, DMFLAG, PIFLAG
       USE Extern, only : SETIN, PRMSET, LOADIT, LOADFM
       USE Formater, only : TYPER, LXFMT
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, EQKEYW, IDI, LXSREC
       USE Message, only : WARN
       USE Parser, only: LODREC
-      USE Text, only : BLANK, STRASC
+      USE RM_Text, only : BLANK, STRASC
       USE DateTime, only : RMDATE
 
       INCLUDE 'tuplea.inc.f90'
@@ -605,8 +605,8 @@ contains
       !!
       !! SYNTAX:  BUILD KEY FOR <ATTRIBUTE> IN <RELATION>
       !!
-      USE Parameters
-      USE Globals, only : DFLAG, RMSTAT
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, RMSTAT
       USE Formater, only : TYPER
       USE Lexer, only : KWS, ITEMS, LXSREC
       USE Message, only : WARN
@@ -764,8 +764,8 @@ contains
       !!
       !! PROCESS CHANGE DATA COMMAND
       !!
-      USE Parameters
-      USE Globals, only : DFLAG
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG
       USE Lexer, only : LXSREC
       USE Message, only : WARN
       USE DateTime, only : RMDATE
@@ -857,12 +857,12 @@ contains
       !! CHANGE A PASSWORD
       !!
       !!
-      USE Parameters
-      USE Globals, only : DFLAG, USERID, OWNER, IFMOD
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, USERID, OWNER, IFMOD
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
       USE Lexer, only: LXSREC
       USE Message, only : WARN
-      USE Text, only : BLANK
+      USE RM_Text, only : BLANK
 
       INCLUDE 'tupler.inc'
       !
@@ -942,11 +942,11 @@ contains
       !!
       !! DELETE ROWS FROM A RELATION
       !!
-      USE Parameters
-      USE Globals, only : DFLAG, DMFLAG, DBNAME, RMSTAT
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, DMFLAG, DBNAME, RMSTAT
       Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
       USE Message, only : WARN
-      USE Text, only : BLANK
+      USE RM_Text, only : BLANK
 
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tupler.inc'
@@ -1025,12 +1025,12 @@ contains
       !!
       !! REMOVE A KEY (MAKE ATTRIBUTE NON-KEYED)
       !!
-      USE Parameters
-      USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER
-      USE Globals, only : RMSTAT
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER
+      USE RM_Globals, only : RMSTAT
       Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
       USE Message, only: WARN
-      USE Text, only : BLANK
+      USE RM_Text, only : BLANK
 
       ! :  REMOVE KEY FOR ATTRIBUTE IN RELATION
 
@@ -1110,9 +1110,9 @@ contains
       !!
       !! REMOVE A LINK FROM THE DATABASE
       !!
-      USE Parameters
-      USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
-      USE Globals, only : RMSTAT
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
+      USE RM_Globals, only : RMSTAT
       USE Lexer, only : ITEMS, LXSREC, LXSREC
       USE Message, only: WARN
 
@@ -1187,14 +1187,14 @@ contains
       !!
       !! REMOVE A RELATION FROM THE DATABASE
       !!
-      USE Parameters
-      USE Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
-      USE Globals, only : RMSTAT, CONNI
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD
+      USE RM_Globals, only : RMSTAT, CONNI
       USE Extern, only : PRMSET
       USE Lexer, only: KWS, ITEMS, EQKEYW, LXSREC
       USE Message, only: WARN
       USE Parser, only: LODREC
-      USE Text, only: BLANK
+      USE RM_Text, only: BLANK
 
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tupler.inc'
@@ -1301,8 +1301,8 @@ contains
       !!
       !! ALSO NO SORTING (9/28/89)
       !!
-      USE Parameters
-      USE Globals, only : DFLAG, MRINDX, RMSTAT
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, MRINDX, RMSTAT
       USE Message, only: WARN
 
       INCLUDE 'selcom.inc'
@@ -1420,11 +1420,11 @@ contains
       !!
       !! LIST ALL RELATIONS HAVING SELECTED ATTRIBUTES.
       !!
-      USE Parameters
-      USE Globals, only : DFLAG, USERID, OWNER
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, USERID, OWNER
       USE Lexer, only: ITEMS, LXSREC
       USE Message, only: WARN
-      USE Text, only : BLANK, NONE
+      USE RM_Text, only : BLANK, NONE
 
       INCLUDE 'tupler.inc'
       INCLUDE 'buffer.inc'
@@ -1524,18 +1524,18 @@ contains
       !!
       !!  PURPOSE:  SET A PARAMETER
       !!
-      USE Globals, only : DBNAME, USERID, CASEIG, TRACE, ARBCHS, &
+      USE RM_Globals, only : DBNAME, USERID, CASEIG, TRACE, ARBCHS, &
          ARBCHM, KRMINF, KRMRNF, KMSSVL, KMSSVT, &
          KNAPVL, KNAPVT, IFMOD, NOUTR, NOUTT, ULPP, UPRINL, UTERML, ECHO
 
-      USE Parameters
+      USE RM_Parameters
       USE DateTime, only: KRMDTF, KRMTMF
       USE Extern, only: SETOUT, SETIN
       USE Formater, only: LXFMT
       USE Lexer, only: KXINT, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS
       USE Lexer, only: EQKEYW, IDI, LFIND, LXSREC
       USE Message, only: WARN
-      USE Text, only : BLANK, STRASC, NONE
+      USE RM_Text, only : BLANK, STRASC, NONE
       USE Utils, only : ZMOVE
 
       INCLUDE 'rmatts.inc'
@@ -1762,15 +1762,15 @@ contains
       !!
       !! SHOW PARAMETER VALUES
       !!
-      USE Parameters
-      USE Globals, only : DFLAG, DBNAME, USERID, CASEIG, ARBCHS, ARBCHM, KRMINF, KRMRNF, KMSSVL, KMSSVT, KNAPVL, KNAPVT
-      USE Globals, only : NOUT, ECHO, ULPP, UPRINL, UTERML
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, DBNAME, USERID, CASEIG, ARBCHS, ARBCHM, KRMINF, KRMRNF, KMSSVL, KMSSVT, KNAPVL, KNAPVT
+      USE RM_Globals, only : NOUT, ECHO, ULPP, UPRINL, UTERML
       USE Formater, only : FMTDEC
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
       USE Macros, only: MACPTR, MACPTR, MACTXT, MACLEN
       USE DateTime, only: RMTIME, RMDATE, KRMDTF, KRMTMF
       USE Macros, only: MACNUM, MACNAM
-      USE Text, only : BLANK
+      USE RM_Text, only : BLANK
       USE Utils, only : NDIGIT
 
       INCLUDE 'rmatts.inc'

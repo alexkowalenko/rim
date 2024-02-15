@@ -1,17 +1,17 @@
       SUBROUTINE BLKEXT(IND,NROWS,NCOLS)
-      INCLUDE 'syspar.inc'
+         INCLUDE 'syspar.inc'
 C
 C  PURPOSE:    EXTRACT THE NUMBER OF ROWS AND COLUMNS FOR A BLOCK
 C
-C  PARAMETERS
+C  RM_Parameters
 C     INPUT:   IND-----BLOCK INDEX
 C     OUTPUT:  NROWS---NUMBER OF ROWS
 C              NCOLS---NUMBER OF COLUMNS
-      INCLUDE 'incore.inc'
+         INCLUDE 'incore.inc'
 C
 C  EXTRACT THE DATA FROM BLOCKS.
 C
-      NROWS = BLOCKS(2,IND)
-      NCOLS = BLOCKS(3,IND)
-      RETURN
+         NROWS = BLOCKS(2,IND)
+         NCOLS = BLOCKS(3,IND)
+         RETURN
       END

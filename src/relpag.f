@@ -1,7 +1,7 @@
       SUBROUTINE RELPAG(THEROW)
 
          USE Files, only : FILE1, LENBF1, LF1REC, CRREC
-         USE Globals, only : RMSTAT
+         USE RM_Globals, only : RMSTAT
          USE RandomFiles, only: RIOIN, RIOOUT
          USE Utils, only : ZEROIT
 
@@ -9,7 +9,7 @@
 C
 C  PURPOSE:   DO PAGING AS NEEDED FOR THE RELTBL RELATION
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         THEROW--INPUT - ROW WANTED
 C                 OUTPUT - ACTUAL ROW TO USE IN THE BUFFER
          INCLUDE 'reltbl.inc'

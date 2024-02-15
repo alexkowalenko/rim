@@ -1,6 +1,6 @@
       LOGICAL FUNCTION GETKCA(PTABLE,NATT,RNAME,REQKCA)
 
-         USE Globals, only : RMSTAT
+         USE RM_Globals, only : RMSTAT
          USE Lexer, only : KXKEYW, KXNAME, IDT, ASCREC, IDP, IDL, KWS
          USE Lexer, only : ITEMS
          USE RIM, only: BUILD

@@ -17,11 +17,11 @@ contains
       !!
       !! EXPANDS A MACRO (M) DEFINITION AT ITEMS
       !!
-      USE Parameters
+      USE RM_Parameters
       USE Cards, only : LXEOC
       USE Lexer, only : ASCREC, IDP, IDL, ITEMS, NXTTOK
       USE Macros, only : MACNRG, MACWPT, MACWRK, MACPTR, MACTXT, MACLEN
-      USE Text, only : ABLANK, STRMOV
+      USE RM_Text, only : ABLANK, STRMOV
 
       INTEGER, intent(in) :: M
 
@@ -68,15 +68,15 @@ contains
       !!
       !!  SUBROUTINE TO READ A FREE-FIELD FORMAT INPUT RECORD.
       !!
-      USE Parameters
+      USE RM_Parameters
       USE Cards, only : READCD
       USE Extern, only : SETIN
-      USE Globals, only : TRACE, RMSTAT, ECHO, CONNI, NINT, BATCH, INEOF
+      USE RM_Globals, only : TRACE, RMSTAT, ECHO, CONNI, NINT, BATCH, INEOF
       USE Files, only: RMCLOS
       USE Lexer, only: KXTEXT, KXNAME, IDT, TOKTYP, ASCREC, ASCNXT, IDP, IDL, KWS, ITEMS, EQKEYW, LXSREC, NXTTOK, LXCMNT, TOKDSP
       USE Macros, only: LOCMAC, MACNUM
       USE System, only : SystemExit, SystemTrap
-      USE Text, only: EQSIGN, GTSIGN
+      USE RM_Text, only: EQSIGN, GTSIGN
 
       CHARACTER(len=2) :: PKW
       INTEGER :: MACTST(Z)
@@ -198,11 +198,11 @@ contains
       !
       !-----------------------------------------------------
       !
-      USE Parameters
+      USE RM_Parameters
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW, IDI, LXSREC
       USE Macros, only: LOCMAC, MACNUM, MACLEN, MACPTR, MACTXT, MACNTX, MACNAM, MACNRG
       USE Message, only : WARN
-      USE Text, only : STRMOV, BLANK, ABLANK
+      USE RM_Text, only : STRMOV, BLANK, ABLANK
       USE Utils, only : ZMOVE
 
       INTEGER :: M, NW, ST, I, WP, PTR, NARG
@@ -289,7 +289,7 @@ contains
       !!  PARAMETERS:
       !!     NUMELE--NUMBER OF NEWLY DEFINED ATTRIBUTES
       !!
-      USE Parameters
+      USE RM_Parameters
       USE Formater, only : TYPER, LXFMT
       USE Lexer, only : KXINT, KXNAME, TOKTYP, ITEMS, EQKEYW, IDI
       USE Lexer, only : LFIND, LXSREC
@@ -482,7 +482,7 @@ contains
       !!
       !! LOAD THE RELATION DESCRIPTION
       !!
-      USE Parameters
+      USE RM_Parameters
       Use Lexer, only: KXNAME, TOKTYP, ITEMS, LXSREC
       USE Message, only : WARN
 
@@ -543,7 +543,7 @@ contains
       ! LOADS LINK DEFINITIONS.
       !
 
-      USE Parameters
+      USE RM_Parameters
       Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
       USE Message, only : WARN
       USE Utils, only : ZMOVE
@@ -644,11 +644,11 @@ contains
       !!
       !!         <REL> CAN BE * FOR ALL RELATIONS
       !!
-      USE Parameters
+      USE RM_Parameters
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
       USE Lexer, only: LXSREC
       USE Message, only : WARN
-      USE Text, only : BLANK
+      USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE
 
       INTEGER, intent(in out) :: ERROR

@@ -1,7 +1,7 @@
       SUBROUTINE BTADD(VALU,IPTR,TYPE)
 
          USE Files, only : LENBF3, MOTREC, MOTADD, LF3REC
-         USE Globals, only : RMSTAT
+         USE RM_Globals, only : RMSTAT
          USE Maths, only : DTOR
          USE Utils, only : HTOI, ITOH
 
@@ -9,7 +9,7 @@
 C
 C  PURPOSE:   ADD NEW VALUES TO A BTREE
 C
-C  PARAMETERS
+C  RM_Parameters
 C    INPUT:  VALU----KEY VALUE TO PROCESS
 C            IPTR----POINTER TO TUPLE HAVING THIS KEY VALUE
 C            TYPE----TYPE OF VARIABLE BEING ADDED

@@ -1,6 +1,6 @@
       SUBROUTINE RELPUT
 
-         USE Globals, only : IFMOD
+         USE RM_Globals, only : IFMOD
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

@@ -2,7 +2,7 @@
 
          USE Files, only: FILE3, LENBF3, LAST, NUMIC, MAXIC, ICORE
          USE Files, only: LF3REC
-         USE Globals, only : RMSTAT
+         USE RM_Globals, only : RMSTAT
          USE RandomFiles, only : RIOIN, RIOOUT
          USE Utils, only : ZEROIT
 
@@ -10,7 +10,7 @@
 C
 C  PURPOSE:    RETREIVE OR SET UP A BTREE OR MOT NODE.
 C
-C  PARAMETERS
+C  RM_Parameters
 C     INPUT:   ID------DESIRED RECORD NUMBER
 C     OUTPUT:  NSTRT---BUFFER INDEX FOR REQUESTED NODE
 C

@@ -1,10 +1,10 @@
       SUBROUTINE SELOUT(MAT,IATT,ADONE)
 
-         USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
+         USE RM_Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
          USE DateTime, only : ASCDAT
          USE Formater, only : TYPER
-         USE Text, only : ABLANK, ITOA, ASCAN, STRMOV
-         USE Text, only : FILCH, ASSTAR
+         USE RM_Text, only : ABLANK, ITOA, ASCAN, STRMOV
+         USE RM_Text, only : FILCH, ASSTAR
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
@@ -35,16 +35,16 @@ C
          IF(TYP.EQ.KZDATE .OR. TYP.EQ.KZTIME) GO TO 90
          IF(TYP.NE.KZTEXT) GO TO 100
 C
-C     TEXT
+C     RM_Text
 C
          IF(PGRAPH.EQ.0) THEN
 
-C       NON-PARAGRAPHED TEXT
+C       NON-PARAGRAPHED RM_Text
             NC = NUMCOL(IATT)
             IF(NC.GT.LEN(IATT)) NC = LEN(IATT)
          ELSE
 
-C       PARAGRAPHED TEXT
+C       PARAGRAPHED RM_Text
             NC = NUMCOL(IATT)
             MAX = LEN(IATT) - CURPOS(IATT) + 1
             IF(NC.GT.MAX) NC = MAX
@@ -84,7 +84,7 @@ C
          CURPOS(IATT) = 2
          GOTO 9999
 C
-C     NON-TEXT, NON-DATE STUFF
+C     NON-RM_Text, NON-DATE STUFF
 C
   100    IF(SVM.EQ.KZMAT) GO TO 1000
          IF(SINGLE(IATT).NE.0) GO TO 3000

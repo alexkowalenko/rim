@@ -1,16 +1,16 @@
       SUBROUTINE AMSG(MTEXT,NUMC,MCONT)
 
-         USE Globals, only : UTERML
-         USE Text, only : ABLANK, STRMOV
+         USE RM_Globals, only : UTERML
+         USE RM_Text, only : ABLANK, STRMOV
          USE TextFiles, only : TIOOUT
 
          INCLUDE 'syspar.inc'
 C
-C  ROUTINE TO FORMAT AND PRINT ASCII-TEXT
+C  ROUTINE TO FORMAT AND PRINT ASCII-RM_Text
 C
-C  PARAMETERS
+C  RM_Parameters
 C
-C         MTEXT---TEXT OF MESSAGE  (ASCII-TEXT)
+C         MTEXT---RM_Text OF MESSAGE  (ASCII-RM_Text)
 C
 C         NUMC----NUMBER OF CHARS (NEG = DELETE TRAILING BLANKS)
 C

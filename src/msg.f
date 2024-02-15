@@ -1,21 +1,21 @@
       SUBROUTINE MSG(MTYPE,MTEXT,MCONT)
 
-         USE Globals, only : PGFLAG, CONNI, NOUT, NOUTR, NOUTT, NOUTL
-         USE Globals, only : ECHO
+         USE RM_Globals, only : PGFLAG, CONNI, NOUT, NOUTR, NOUTT, NOUTL
+         USE RM_Globals, only : ECHO
          USE DateTime, only: RMTIME, RMDATE
 
          INCLUDE 'syspar.inc'
 C
 C  ROUTINE TO FORMAT AND PRINT MESSAGES
 C
-C  PARAMETERS
+C  RM_Parameters
 C
 C     MTYPE---TYPE OF MESSAGE
 C
-C        1ST CHAR ' ' - INFORMATION TEXT
-C                 'W' - WARNING TEXT
-C                 'E' - ERROR TEXT
-C                 'R' - REPORT TEXT  (UNIT IS NOUTR)
+C        1ST CHAR ' ' - INFORMATION RM_Text
+C                 'W' - WARNING RM_Text
+C                 'E' - ERROR RM_Text
+C                 'R' - REPORT RM_Text  (UNIT IS NOUTR)
 C                 'L' - LOG ENTRY    (UNIT IS NOUTL)
 C                 'T' - TRACE ENTRY  (UNIT IS NOUTT)
 C
@@ -24,7 +24,7 @@ C                 'F' - LOWERCASE ALL BUT FIRST CHARACTER
 C                 'L' - LOWERCASE
 C                 OTHER - SAME AS 'L'
 C
-C     MTEXT---TEXT OF MESSAGE
+C     MTEXT---RM_Text OF MESSAGE
 C
 C     MCONT---IF NON-BLANK MESSAGE CONTINUES ON NEXT CALL
 C

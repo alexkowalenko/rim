@@ -1,11 +1,11 @@
       SUBROUTINE PGCOMP
 
-         USE Globals, only: PGVARS, INLINE, PGFLAG, RMSTAT
+         USE RM_Globals, only: PGVARS, INLINE, PGFLAG, RMSTAT
          USE DateTime, only: RMTIME, RMDATE
          USE Lexer, only: KXINT, TOKTYP, KWS, ITEMS, EQKEYW, IDI, LXSREC
          USE Message, only : WARN
          USE Parser, only: LODREC
-         USE Text, only : ASCTXT
+         USE RM_Text, only : ASCTXT
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -375,7 +375,7 @@ C
          IF (.NOT.PGSTOR(0    ,1)) GOTO 8000
          SETOP = 0
 C
-C     PARAMETERS WITH KEYWORDS
+C     RM_Parameters WITH KEYWORDS
          IF (EQKEYW(2,'CASE'))    THEN
             SETOP = 1
             IF (EQKEYW(3,'IGNORE')) THEN
@@ -389,7 +389,7 @@ C     PARAMETERS WITH KEYWORDS
             GOTO 1790
          ENDIF
 C
-C     PARAMETERS WITH ASCII-TEXT ARGS
+C     RM_Parameters WITH ASCII-RM_Text ARGS
          IF (EQKEYW(2,'INPUT'))  SETOP = 2
          IF (EQKEYW(2,'OUTPUT')) SETOP = 3
          IF (SETOP.NE.0) THEN
@@ -400,7 +400,7 @@ C     PARAMETERS WITH ASCII-TEXT ARGS
             GOTO 1790
          ENDIF
 C
-C     PARAMETERS WITH INTEGER ARGS
+C     RM_Parameters WITH INTEGER ARGS
          IF (EQKEYW(2,'REPORT')) THEN
             IF (ITEMS.LT.4) GOTO 7000
             IF (.NOT.TOKTYP(4,KXINT)) GOTO 7000

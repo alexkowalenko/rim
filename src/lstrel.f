@@ -1,12 +1,13 @@
       SUBROUTINE LSTREL(*)
 
-         USE Globals, only : DFLAG, DBNAME, USERID, OWNER, KARRC, KARDT
+         USE RM_Globals, only : DFLAG, DBNAME, USERID, OWNER, KARRC
+         USE RM_Globals, only: KARDT
          USE DateTime, only: RMTIME, RMDATE
          USE Formater, only: FMTDEC
          USE Lexer, only: ITEMS, EQKEYW, LXSREC
          USE Message, only : WARN
          USE Rim, only: RMTYPT
-         USE Text, only : BLANK, NONE
+         USE RM_Text, only : BLANK, NONE
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

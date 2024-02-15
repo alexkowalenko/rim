@@ -31,7 +31,7 @@ contains
 
 
    SUBROUTINE NULLIT(WORD1)
-      USE Parameters, only : Z, NULL
+      USE RM_Parameters, only : Z, NULL
       !
       !  PURPOSE:   COPIES NULL TO WORD1
       !
@@ -50,7 +50,7 @@ contains
 
 
    SUBROUTINE ZMOVE(WORD1,WORD2)
-      USE Parameters, only : Z
+      USE RM_Parameters, only : Z
       !
       !  PURPOSE:   COPIES WORD2 TO WORD1
       !
@@ -92,7 +92,7 @@ contains
 
 
    SUBROUTINE HTOI(I,J,K)
-      USE Parameters, only : ZHTOI
+      USE RM_Parameters, only : ZHTOI
       !
       !  PURPOSE:   PACK I AND J INTO K
       !
@@ -107,7 +107,7 @@ contains
 
 
    SUBROUTINE ITOH(I,J,K)
-      USE Parameters, only : ZHTOI
+      USE RM_Parameters, only : ZHTOI
       !
       !  PURPOSE:   UNPACK I AND J FROM K
       !

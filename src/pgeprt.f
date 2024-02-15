@@ -2,9 +2,9 @@
 
          USE, intrinsic :: iso_fortran_env
 
-         USE Globals, only : NOUTR, UPRINL
+         USE RM_Globals, only : NOUTR, UPRINL
          USE Formater, only : TYPER
-         USE Text, only : FILCH, ABLANK, STRMOV
+         USE RM_Text, only : FILCH, ABLANK, STRMOV
 
 C
 C     EXECUTE HEAD/FOOT PRINT
@@ -78,7 +78,7 @@ C     FIX VARIABLE LENGTH ATTRIBUTES
             ENDIF
 
  1239       IF (ATYPE(I).EQ.0) THEN
-C        OUTPUT FIXED TEXT
+C        OUTPUT FIXED RM_Text
                IF (LIN1(I).EQ.L)
      1            CALL STRMOV(BUFFER(FP(I)),1,LEN(I),LINE,COL1(I))
             ELSE

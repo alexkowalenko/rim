@@ -1,7 +1,7 @@
       SUBROUTINE RMVARC(CTYP,TUPVAL)
 
-         USE Globals, only : RMSTAT
-         USE Text, only : BLANK
+         USE RM_Globals, only : RMSTAT
+         USE RM_Text, only : BLANK
 C
 C     FORTRAN INTERFACE SUBROUTINE
 C
@@ -14,14 +14,14 @@ C
 C                             USER                    INTERNAL
 C           TYPE        WORD1       WORD2       WORD1       WORD2
 C           ----------  ----------  ----------  ----------  ----------
-C           TEXT        CHARACTERS  0           WORDS       CHARACTERS
+C           RM_Text        CHARACTERS  0           WORDS       CHARACTERS
 C           INT         ITEMS       0           WORDS       1
 C           REAL        ITEMS       0           WORDS       1
 C           DOUBLE      ITEMS       0           WORDS       1
 C           VECTORS     ITEMS       0           WORDS       1
 C           MATRICES    ROWS        COLS        WORDS       ROWS
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C           CTYP-----CONVERSION TYPE - -1 = INTERNAL TO USER
 C                                      +1 = USER TO INTERNAL
 C           TUPVAL---ARRAY CONTAINING THE TUPLE VALUES

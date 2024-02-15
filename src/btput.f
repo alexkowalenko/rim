@@ -1,7 +1,7 @@
       SUBROUTINE BTPUT(ID)
 
          USE Files, only : NUMIC, ICORE
-         USE Globals, only : IFMOD, RMSTAT
+         USE RM_Globals, only : IFMOD, RMSTAT
 
          implicit none
 
@@ -11,7 +11,7 @@
 C
 C  PURPOSE:    TURN ON THE WRITE FLAG ON THE INDICATED BLOCK
 C
-C  PARAMETERS
+C  RM_Parameters
 C     INPUT:   ID------RECORD NUMBER
 C
 C  LOOK FOR THIS BLOCK IN CORE.

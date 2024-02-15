@@ -1,8 +1,8 @@
 PROGRAM RIMH
 
-   USE Parameters
-   USE Globals, only : RMSTAT
-   USE Text, only : STRASC
+   USE RM_Parameters
+   USE RM_Globals, only : RMSTAT
+   USE RM_Text, only : STRASC
 
    IMPLICIT NONE
 
@@ -155,7 +155,7 @@ CONTAINS
 
    FUNCTION GETLIN(COM)
 
-      USE Text, only : ASCCHR, BLANK
+      USE RM_Text, only : ASCCHR, BLANK
 
       INCLUDE 'syspar.inc'
       !
@@ -193,7 +193,7 @@ CONTAINS
 
 
    FUNCTION KEY3(SUB)
-      USE Text, only : UPCASE, BLANK, ABLANK
+      USE RM_Text, only : UPCASE, BLANK, ABLANK
 
       INCLUDE 'syspar.inc'
       !
@@ -228,7 +228,7 @@ CONTAINS
 
 
    SUBROUTINE LODROW(LINE,NC)
-      USE Text, only : ABLANK
+      USE RM_Text, only : ABLANK
       !
       ! WRITE A LINE TO DB
       !

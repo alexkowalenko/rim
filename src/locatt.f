@@ -1,6 +1,6 @@
       FUNCTION LOCATT(ANAME,RNAME)
 
-         USE Text, only : BLANK
+         USE RM_Text, only : BLANK
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -8,7 +8,7 @@ C
 C  PURPOSE:   LOOK FOR ATTRIBUTES AND RELATIONS IN THE ATTRIBUTE
 C             RELATION
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         ANAME---NAME OF ATTRIBUTE OR BLANKS
 C         RNAME---NAME OF RELATION OR BLANKS
 C         LOCATT--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY

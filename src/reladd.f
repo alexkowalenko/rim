@@ -1,6 +1,6 @@
       SUBROUTINE RELADD
 
-         USE Globals, only : IFMOD
+         USE RM_Globals, only : IFMOD
          USE Files, only : LF1REC
          USE Utils, only : ZMOVE
 

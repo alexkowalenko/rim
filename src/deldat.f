@@ -1,6 +1,6 @@
       SUBROUTINE DELDAT(INDEX,ID)
 
-         USE Globals, only : IFMOD, RMSTAT
+         USE RM_Globals, only : IFMOD, RMSTAT
          USE Files, only : FILE2, LENBF2, CURBLK, MODFLG
          USE RandomFiles, only : RIOIN, RIOOUT
          USE Utils, only : HTOI, ITOH
@@ -9,7 +9,7 @@
 C
 C  PURPOSE:   DELINK A TUPLE FROM THE DATA FILE
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         INDEX---BLOCK REFERENCE NUMBER
 C         ID------PACKED ID WORD WITH OFFSET,IOBN
          INCLUDE 'buffer.inc'

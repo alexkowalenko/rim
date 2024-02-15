@@ -6,7 +6,7 @@
 C
 C     GET THE NEXT LINK ROW
 C
-C     PARAMETERS:
+C     RM_Parameters:
 C         STATUS--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
 
          INCLUDE 'lnktbl.inc'

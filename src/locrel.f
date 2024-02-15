@@ -1,13 +1,13 @@
       FUNCTION LOCREL(RNAME)
 
-         USE Text, only : BLANK
+         USE RM_Text, only : BLANK
          USE Utils, only : ZMOVE, NULLIT
 
          INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   LOOK FOR A RELATION IN THE RELTBL RELATION
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         RNAME---NAME OF RELATION OR BLANK
 C         LOCREL--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
          INCLUDE 'reltbl.inc'

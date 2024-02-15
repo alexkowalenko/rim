@@ -1,6 +1,6 @@
       SUBROUTINE ADDDAT(INDEX,ID,ARRAY,LENGTH)
 
-         USE Globals, only : IFMOD, RMSTAT
+         USE RM_Globals, only : IFMOD, RMSTAT
          USE Files, only: FILE2, LENBF2, LF2REC, LF2WRD, CURBLK
          USE Files, only: MODFLG
          USE RandomFiles, only : RIOIN, RIOOUT

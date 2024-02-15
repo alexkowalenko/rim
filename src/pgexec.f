@@ -1,12 +1,12 @@
       SUBROUTINE PGEXEC
 
-         USE Globals, only : TRACE, MRINDX, HXFLAG, CASEIG, PGFLAG,
+         USE RM_Globals, only : TRACE, MRINDX, HXFLAG, CASEIG, PGFLAG,
      +   DBFNAM, RMSTAT, FFFLAG, NOUTR, ULPP, UPRINL
          USE Extern, only: SETOUT, SETIN
          USE Message, only : WARN
          USE Formater, only : TYPER
          USE Rim, only : DBOPEN
-         USE Text, only : FILCH, ABLANK, STRASC, STRMOV
+         USE RM_Text, only : FILCH, ABLANK, STRASC, STRMOV
          USE Utils, only : ZMOVE
 
 
@@ -224,7 +224,7 @@ C     FIX VARIABLE LENGTH ATTRIBUTES
             ENDIF
 
  1239       IF (ATYPE(I).EQ.0) THEN
-C        OUTPUT FIXED TEXT
+C        OUTPUT FIXED RM_Text
                IF (LIN1(I).EQ.L)
      1            CALL STRMOV(BUFFER(FP(I)),1,LEN(I),LINE,COL1(I))
             ELSE

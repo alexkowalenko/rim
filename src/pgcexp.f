@@ -2,10 +2,11 @@
 
          USE DateTime, only: KRMDTF, KRMTMF
          USE Formater, only : TYPER, LXDATE
-         USE Globals, only : RMSTAT
+         USE RM_Globals, only : RMSTAT
          USE Lexer, only: KXINT, KXREAL, KXNAME, TOKTYP, ASCREC, IDP
          USE Lexer, only: IDL, EQTOK, IDI, IDR, LXLENW, LXSREC
-         USE Text, only: DVSIGN, MNSIGN, PLSIGN, TMSIGN, ASLPAR, ASRPAR
+         USE RM_Text, only: DVSIGN, MNSIGN, PLSIGN, TMSIGN, ASLPAR
+         USE RM_Text, only: ASRPAR
 
 
          INCLUDE 'syspar.inc'
@@ -141,7 +142,7 @@ C
          EXPTP(EOPP) = ATTYPE
          GOTO 400
 C
-C     VALUE (INT, REAL, TEXT)
+C     VALUE (INT, REAL, RM_Text)
 C
   300    EXPVTP(EOPP) = 1
          IF (TYP.EQ.KZDATE) THEN

@@ -1,9 +1,9 @@
       FUNCTION RIM(IND,COM)
 
-         USE Globals, only: KDBVER, MRINDX, PIFLAG, RMSTAT, CONNI
-         USE Globals, only: CONNO, BATCH
+         USE RM_Globals, only: KDBVER, MRINDX, PIFLAG, RMSTAT, CONNI
+         USE RM_Globals, only: CONNO, BATCH
          USE Cards, only : CRDREC, CRDPTR, CRDEND, READCD
-         USE Text, only : ASCTXT
+         USE RM_Text, only : ASCTXT
          USE Lexer, only : TOKTYP, ITEMS, EQKEYW, KXKEYW
          USE Parser, only : LODREC, MACDEF
          USE Rim, only : RMCONS, RMINIT, RMSET, DBLOAD, DBOPCL, BUILD
@@ -16,7 +16,7 @@ C
 C     RIM FORTRAN INTERFACE (COMMANDS)
 C
 C         IND  = MULTIPLE RELATION INDEX (0-ZPIMAX)
-C         COM  = TEXT OF COMMAND
+C         COM  = RM_Text OF COMMAND
 C         RIM  = RETURN STATUS (TRUE IF OK)
 C
          LOGICAL RIM
@@ -59,7 +59,7 @@ C     SAVE CURRENT POINTERS
          MRINDX = IND
 C
 C
-C  CONVERT INPUT TO ASCII-TEXT
+C  CONVERT INPUT TO ASCII-RM_Text
 C
          CALL ASCTXT(CRDREC,ZCARDL,COM)
          CRDEND = MIN(LEN(COM),ZCARDL)
@@ -161,7 +161,7 @@ C
 
 
       FUNCTION RIMDM(IND,COM,TUPLE)
-         USE Globals, only : DFLAG, DMFLAG, RMSTAT
+         USE RM_Globals, only : DFLAG, DMFLAG, RMSTAT
          INCLUDE 'syspar.inc'
 C
 C     RIM FORTRAN INTERFACE (DATA MOVEMENT)

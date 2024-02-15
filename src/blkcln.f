@@ -1,14 +1,14 @@
       SUBROUTINE BLKCLN
 
          USE Files, only : FILE2, LENBF2, CURBLK, MODFLG
-         USE Globals, only : RMSTAT
+         USE RM_Globals, only : RMSTAT
          USE RandomFiles, only : RIOOUT
 
          INCLUDE 'syspar.inc'
 C
 C  PURPOSE: CLEAN OUT THE ENTIRE BUFFER AREA
 C
-C  PARAMETERS -- NONE
+C  RM_Parameters -- NONE
 C
          INCLUDE 'incore.inc'
          INCLUDE 'buffer.inc'

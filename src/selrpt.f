@@ -2,12 +2,12 @@
 
          USE, intrinsic :: iso_fortran_env
 
-         USE Globals, only : MRINDX, HXFLAG, RMSTAT, FFFLAG, NOUTR
-         USE Globals, only : ULPP, UPRINL
+         USE RM_Globals, only : MRINDX, HXFLAG, RMSTAT, FFFLAG, NOUTR
+         USE RM_Globals, only : ULPP, UPRINL
          USE Formater, only : TYPER
          USE Maths, only : RTOD
          USE Message, only: WARN
-         USE Text, only : FILCH, ABLANK
+         USE RM_Text, only : FILCH, ABLANK
 
          INCLUDE 'syspar.inc'
 C
@@ -175,7 +175,7 @@ C
          GOTO 9000
 C
 C
-C     FUNCTION SELECT - NO VAR, NO LINKS, NO TEXT
+C     FUNCTION SELECT - NO VAR, NO LINKS, NO RM_Text
 C
 C     LOOP ON RECORDS
 C

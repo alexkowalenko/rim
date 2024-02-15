@@ -1,6 +1,6 @@
 MODULE Files
    !! Low level file opening and closing
-   USE Parameters, only : ZICBL
+   USE RM_Parameters, only : ZICBL
 
    implicit none
    private
@@ -64,10 +64,10 @@ CONTAINS
       !!  PARAMETERS:
       !!     RIMDB1--NAME OF THE FILE TO USE FOR FILE1
       !!
-      USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, DFLAG, DMFLAG, DBFNAM, KDBHDR, RMSTAT
+      USE RM_Parameters
+      USE RM_Globals, only : DBNAME, OWNER, DBDATE, DBTIME, DFLAG, DMFLAG, DBFNAM, KDBHDR, RMSTAT
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
-      USE Text, only : ASCTXT
+      USE RM_Text, only : ASCTXT
       USE Utils, only : ZEROIT, ZMOVE
 
       CHARACTER*(ZFNAML), intent(in) :: RIMDB1
@@ -188,8 +188,8 @@ CONTAINS
       !!
       !!  PURPOSE:   CLOSE THE RIM DIRECTORY FILE - FILE 1
       !!
-      USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR, RMSTAT
+      USE RM_Parameters
+      USE RM_Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR, RMSTAT
       USE RandomFiles, only : RIOCLO, RIOOUT
       USE Utils, only : ZEROIT, ZMOVE
 
@@ -267,8 +267,8 @@ CONTAINS
       !!    RIMDB2-----NAME OF THE FILE TO USE FOR FILE 2
       !!
 
-      USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBHDR, RMSTAT
+      USE RM_Parameters
+      USE RM_Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBHDR, RMSTAT
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
       USE Utils, only : ZEROIT, ZMOVE
 
@@ -343,8 +343,8 @@ CONTAINS
 
 
    SUBROUTINE F2CLO
-      USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR, RMSTAT
+      USE RM_Parameters
+      USE RM_Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR, RMSTAT
       USE RandomFiles, only : RIOCLO, RIOIN, RIOOUT
       USE Utils, only : ZMOVE
 
@@ -423,8 +423,8 @@ CONTAINS
       !!  PARAMETERS:
       !!      RIMDB3----NAME OF THE FILE TO USE FOR FILE 3
       !!
-      USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBHDR, RMSTAT
+      USE RM_Parameters
+      USE RM_Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBHDR, RMSTAT
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
       USE Utils, only : ZEROIT, ZMOVE
 
@@ -505,8 +505,8 @@ CONTAINS
 
 
    SUBROUTINE F3CLO
-      USE Parameters
-      USE Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR, RMSTAT
+      USE RM_Parameters
+      USE RM_Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR, RMSTAT
       USE RandomFiles, only : RIOCLO, RIOOUT
       USE Utils, only : ZEROIT, ZMOVE
 
@@ -573,7 +573,7 @@ CONTAINS
       !!  PURPOSE:   CLOSE A RIM DATABASE.
       !!
 
-      USE Globals, only : DFLAG, IFMOD, DBDATE, DBTIME, RMSTAT
+      USE RM_Globals, only : DFLAG, IFMOD, DBDATE, DBTIME, RMSTAT
       USE DateTime, only: RMTIME, RMDATE
 
       !  DO NOT CLOSE THE DATABASE IF THERE WERE NO MODIFICATIONS

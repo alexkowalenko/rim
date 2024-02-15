@@ -9,12 +9,12 @@ contains
       !!
       !! PROCESS REPORT COMMAND
       !!
-      USE Parameters
-      USE Globals, only : DFLAG, RMSTAT, NOUTR
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, RMSTAT, NOUTR
       USE Extern, only: SETOUT
       USE Lexer, only : ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW
       USE Message, only: WARN
-      USE Text, only : STRASC
+      USE RM_Text, only : STRASC
 
       INTEGER :: STAT
       CHARACTER(len=ZFNAML) :: FN
@@ -66,9 +66,9 @@ contains
       !!       <COMMANDS>
       !!       END
       !!
-      USE Parameters
-      USE Globals, only : DFLAG, USERID, OWNER, DBNAME, IFMOD, DBFNAM
-      USE Globals, only : RMSTAT
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, USERID, OWNER, DBNAME, IFMOD, DBFNAM
+      USE RM_Globals, only : RMSTAT
       USE DateTime, only : RMDATE
       USE Extern, only: PRMSET
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
@@ -76,7 +76,7 @@ contains
       USE Parser, only: LODREC, LODELE, LODREL, LODLNK, LODPAS
       USE Rim, only: DBOPEN
       USE System, only: SYSDBG
-      USE Text, only : NONE
+      USE RM_Text, only : NONE
       USE Utils, only : ZMOVE
 
       INCLUDE 'prom.inc'
@@ -221,14 +221,14 @@ contains
       !!
       !! UNLOAD DATABASE SCHEMA, DATA, OR BOTH
       !!
-      USE Parameters
-      USE Globals, only : DFLAG, DBNAME, USERID, OWNER, RMSTAT, NOUTR, ULPP
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, DBNAME, USERID, OWNER, RMSTAT, NOUTR, ULPP
       USE DateTime, only: RMTIME, RMDATE
       USE Extern, only: SETOUT
       USE Lexer, only : ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW, LFIND
       USE Lexer, only : LXSREC
       USE Message, only: WARN
-      USE Text, only : STRASC
+      USE RM_Text, only : STRASC
       USE Utils, only : ZMOVE
 
       INCLUDE 'rmatts.inc'
@@ -451,11 +451,11 @@ contains
       !          3. WHEN DONE RESET RSTART AND NTUPLE, PRINT MESSAGE,
       !              AND RETURN
       !
-      USE Parameters
-      USE Globals, only : DFLAG, RMSTAT
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, RMSTAT
       USE Lexer, only : ITEMS, LFIND, LXSREC
       USE Message, only : WARN
-      USE Text, only : BLANK
+      USE RM_Text, only : BLANK
 
       INCLUDE 'start.inc'
       INCLUDE 'rimptr.inc'
@@ -691,13 +691,13 @@ contains
       !!
       !! REFORMAT AN ATTRIBUTE
       !!
-      USE Parameters
-      USE Globals, only : DFLAG
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG
       USE Formater, only: LXFMT
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
       USE Lexer, only: LXSREC
       USE Message, only: WARN
-      USE Text, only : BLANK
+      USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE
 
       INCLUDE 'tuplea.inc.f90'
@@ -806,12 +806,12 @@ contains
       !!
       ! : RENAME <COLUMN> NAME TO NEW_NAME <IN TABLE>
       !
-      USE Parameters
-      USE Globals, only : DFLAG, USERID, USERID
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, USERID, USERID
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
       Use Lexer, only: LXSREC
       USE Message, only: WARN
-      USE Text, only : BLANK
+      USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE
 
       INCLUDE 'tuplea.inc.f90'
@@ -973,9 +973,9 @@ contains
       !!
       !! RENAME A LINK IN THE DATABASE
       !!
-      USE Parameters
-      USE Globals, only: DFLAG, DMFLAG, DBNAME, USERID, OWNER
-      USE Globals, only: RMSTAT
+      USE RM_Parameters
+      USE RM_Globals, only: DFLAG, DMFLAG, DBNAME, USERID, OWNER
+      USE RM_Globals, only: RMSTAT
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
       USE Message, only: WARN
       USE Utils, only : ZMOVE
@@ -1063,12 +1063,12 @@ contains
       !!
       !! PROCESS SELECT COMMAND
       !!
-      USE Parameters
-      USE Globals, only : DFLAG, RMSTAT, NOUTR
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, RMSTAT, NOUTR
       USE Extern, only: SETOUT
       USE Lexer, only : ASCREC, IDP, IDL, KWS
       USE Message, only: WARN
-      USE Text, only : STRASC
+      USE RM_Text, only : STRASC
 
       INCLUDE 'selcom.inc'
       INCLUDE 'rmatts.inc'
@@ -1210,12 +1210,12 @@ contains
       !!
       !!  JOIN REL1 USING ATT1 WITH REL2 USING ATT2 FORMING REL3 WHERE EQ
       !!
-      USE Parameters
-      USE Globals, only : DFLAG, DMFLAG
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, DMFLAG
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, KWS, ITEMS, EQKEYW, LXSREC
       USE DateTime, only : RMDATE
       USE Message, only : WARN
-      USE Text, only : BLANK, NONE
+      USE RM_Text, only : BLANK, NONE
       USE Utils, only : ZMOVE
 
       INCLUDE 'rmatts.inc'
@@ -1550,13 +1550,13 @@ contains
       !! PROJECT RNAME2 FROM RNAME1 USING ATTR1 ATTR2...ATTRN
       !!   ... WHERE CONDITION
       !!
-      USE Parameters
-      USE Globals, only : DFLAG, DMFLAG, RMSTAT
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, DMFLAG, RMSTAT
       USE DateTime, only : RMDATE
       Use Lexer, only: KXNAME, TOKTYP, IDP, ITEMS, EQKEYW, LFIND
       Use Lexer, only: LXSREC
       USE Message, only : WARN
-      USE Text, only : BLANK
+      USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE
 
       INCLUDE 'rimptr.inc'
@@ -1779,12 +1779,12 @@ contains
       !! INTERSECT REL1 WITH REL2 FORMING REL3 USING ATTR1 ATTR2...ATTR-N
       !! SUBTRACT  REL2 FROM REL1 FORMING REL3 USING ATTR1 ATTR2...ATTR-N
       !!
-      USE Parameters
-      USE Globals, only : DFLAG, DMFLAG
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG, DMFLAG
       USE DateTime, only : RMDATE
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW, LXSREC
       USE Message, only: WARN
-      USE Text, only : BLANK, NONE
+      USE RM_Text, only : BLANK, NONE
       USE Utils, only : ZMOVE
 
       CHARACTER(len=*), intent(in) :: OPCODE
@@ -2208,12 +2208,12 @@ contains
       !
       ! SUBROUTINE TO RENAME A RELATION
       !
-      USE Parameters
-      USE Globals, only : DFLAG
+      USE RM_Parameters
+      USE RM_Globals, only : DFLAG
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
       Use Lexer, only: LXSREC
       USE Message, only: WARN
-      USE Text, only : BLANK
+      USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE
 
       INCLUDE 'rmatts.inc'
@@ -2315,11 +2315,11 @@ contains
       !!
       !!  PURPOSE:  PROCESS ZIP COMMAND  (CALL SYSTEM FUNCTION)
       !!
-      USE Globals, only : DFLAG, DBFNAM
+      USE RM_Globals, only : DFLAG, DBFNAM
       USE Files, only: RMCLOS
       USE Lexer, only: KXTEXT, TOKTYP, ASCREC, IDP, IDL, ITEMS
       USE Message, only: WARN
-      USE Text, only : STRASC
+      USE RM_Text, only : STRASC
       USE System, only : SystemCommand
 
       INTEGER :: NC, IERR
@@ -2371,12 +2371,12 @@ contains
       !
       USE, intrinsic :: iso_fortran_env
 
-      USE Globals, only: LIBFLG, TOL, HXFLAG, PCENT, RUCK, DBFNAM, KZHPSK, KZHPRL, KZHPKY, DFLAG, RMSTAT
+      USE RM_Globals, only: LIBFLG, TOL, HXFLAG, PCENT, RUCK, DBFNAM, KZHPSK, KZHPRL, KZHPKY, DFLAG, RMSTAT
       USE Files, only: RMCLOS
       USE Lexer, only: KWS, ITEMS
       USE Message, only: WARN
       !USE RIM, only: DBOPEN
-      USE Text, only: ASCTXT
+      USE RM_Text, only: ASCTXT
 
       INCLUDE 'syspar.inc'
 
@@ -2496,8 +2496,8 @@ contains
       !!
       !! RIM COMMAND DISPATCHER
       !!
-      USE Parameters
-      USE Globals, only: HXFLAG, FFFLAG
+      USE RM_Parameters
+      USE RM_Globals, only: HXFLAG, FFFLAG
       USE Extern, only : SETIN
       USE Files, only: RMCLOS
       USE Lexer, only: KXKEYW, TOKTYP, KWS, ITEMS, EQKEYW

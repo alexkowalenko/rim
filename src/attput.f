@@ -1,6 +1,6 @@
       SUBROUTINE ATTPUT(STATUS)
 
-        USE Globals, only : IFMOD
+         USE RM_Globals, only : IFMOD
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -8,7 +8,7 @@ C
 C  PURPOSE:   REPLACE THE CURRENT TUPLE FROM THE ATTRIBUTE RELATION
 C             BASED ON CONDITIONS SET UP IN LOCATT AND ATTGET
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         STATUS--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
          INCLUDE 'tuplea.inc'
          INCLUDE 'attble.inc'

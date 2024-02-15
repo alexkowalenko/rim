@@ -1,13 +1,13 @@
       SUBROUTINE DELETE(MAT)
 
-         USE Globals, only : RMSTAT
-         USE Text, only : BLANK
+         USE RM_Globals, only : RMSTAT
+         USE RM_Text, only : BLANK
 
          INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE PROCESSES A DELETE IN RIM.
 C
-C  PARAMETERS
+C  RM_Parameters
 C         MAT-----ARRAY TO HOLD ONE TUPLE
          INCLUDE 'start.inc'
          INCLUDE 'tupler.inc'

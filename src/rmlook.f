@@ -1,13 +1,13 @@
       SUBROUTINE RMLOOK(MAT,INDEX,IFLAG,LENGTH)
 
-         USE Globals, only : TRACE, HXFLAG, RMSTAT
+         USE RM_Globals, only : TRACE, HXFLAG, RMSTAT
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
 C
 C   LOCATE NEXT DESIRED TUPLE
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         MAT-----ARRAY TO HOLD ONE TUPLE
 C                 IF(IFLAG.NE.0) MAT IS POINTER TO TUPLE
 C                 IN INPUT BUFFER.

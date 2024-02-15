@@ -3,7 +3,7 @@
          USE DateTime, only : RMDATE
          USE Lexer, only : ITEMS, LXSREC
          USE Message, only : WARN
-         USE Text, only: BLANK, NONE
+         USE RM_Text, only: BLANK, NONE
          USE Utils, only : ZMOVE, ITOH
 
          INCLUDE 'syspar.inc'
@@ -11,7 +11,7 @@ C
 C     THIS ROUTINE EDITS THE ATTRIBUTE LIST ON THE RELATION CARD
 C     AND CREATES A NEW RELATION.
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         TMPA----SCRATCH ARRAY WITH NEW ATTRIBUTE NAMES
          INCLUDE 'tmpa.inc'
 C

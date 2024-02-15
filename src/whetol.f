@@ -1,6 +1,6 @@
       SUBROUTINE WHETOL
 
-         USE Globals, only: TOL
+         USE RM_Globals, only: TOL
          USE Maths, only: TOLER, TOLED
          USE Utils, only : ITOH
 

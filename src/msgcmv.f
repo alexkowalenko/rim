@@ -1,14 +1,14 @@
       SUBROUTINE MSGCMV(MTEXT,CTYPE)
 
-         USE Text, only : ASCCHR, LOCASE
+         USE RM_Text, only : ASCCHR, LOCASE
 
          INCLUDE 'syspar.inc'
 C
 C  ROUTINE TO ADD CHARS TO THE OUTPUT LINE
 C
-C  PARAMETERS
+C  RM_Parameters
 C
-C         MTEXT---TEXT OF MESSAGE
+C         MTEXT---RM_Text OF MESSAGE
 C
 C         CTYPE---CASE CONVERSION CODE
 C                 'U' - LEAVE UPPERCASE

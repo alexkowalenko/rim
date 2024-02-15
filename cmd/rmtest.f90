@@ -1,6 +1,6 @@
 PROGRAM RMTEST
-   USE Parameters
-   USE Globals, only : RMSTAT
+   USE RM_Parameters
+   USE RM_Globals, only : RMSTAT
 
    IMPLICIT NONE
 

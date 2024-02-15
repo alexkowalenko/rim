@@ -1,13 +1,13 @@
       SUBROUTINE BLKCHG(IND,NROWS,NCOLS)
 
-         USE Globals, only : TRACE, RMSTAT
+         USE RM_Globals, only : TRACE, RMSTAT
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'
 C
 C  PURPOSE:    CHANGE THE DIMENSIONS OF AN EXISTING BLOCK
 C
-C  PARAMETERS
+C  RM_Parameters
 C     INPUT:   IND-----BLOCK INDEX
 C              NROWS---NUMBER OF ROWS
 C              NCOLS---NUMBER OF COLUMNS

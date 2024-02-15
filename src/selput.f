@@ -1,19 +1,19 @@
       SUBROUTINE SELPUT(VAL,TYP,FMT,START,STRING)
 
-         USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT, KRMRMF,
+         USE RM_Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT, KRMRMF,
      +   KRMDMF
          USE Maths, only : RTOD
-         USE Text, only : BLANK, ITOA, STRMOV
+         USE RM_Text, only : BLANK, ITOA, STRMOV
          USE Utils, only : NDIGIT
 
          INCLUDE 'syspar.inc'
 C
-C     THIS ROUTINE PUTS AN ACTUAL VALUE (NON-TEXT) INTO STRING.
+C     THIS ROUTINE PUTS AN ACTUAL VALUE (NON-RM_Text) INTO STRING.
 C     VAL ---- VALUE
 C     TYP ---- FROM TYPER
 C     FMT ---- FORMAT TO USE
 C     START -- STARTING PLACE IN STRING
-C     STRING - PLACE TO PUT TEXT
+C     STRING - PLACE TO PUT RM_Text
 C
          INCLUDE 'rmatts.inc'
          INTEGER :: FMT

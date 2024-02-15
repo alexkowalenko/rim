@@ -2,14 +2,14 @@
 
          USE Message, only: WARN
          USE Lexer, only: LXSREC
-         USE Text, only : BLANK         
+         USE RM_Text, only : BLANK
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
 C
 C  FUNCTION TO VALIDATE AND PROCESS A FROM OR USE CLAUSE
 C
-C  PARAMETERS
+C  RM_Parameters
 C         FTOK--- LOCATION OF 'FROM' TOKEN
 C         NTOK--- NUMBER OF TOKENS IN THE FROM CLAUSE
 C                 NTOK = 0 USES PRIOR VALUE

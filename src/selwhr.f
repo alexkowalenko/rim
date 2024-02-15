@@ -1,6 +1,6 @@
       FUNCTION SELWHR(ST,NT)
 
-         USE Globals, only : CASEIG, TRACE, RMSTAT
+         USE RM_Globals, only : CASEIG, TRACE, RMSTAT
          USE Formater, only : TYPER
          USE Lexer, only: KXTEXT, KXNAME, TOKTYP, IDL, EQTOK, KWS
          USE Lexer, only: EQKEYW, LXLENW, LXSREC
@@ -11,7 +11,7 @@
 C
 C  PURPOSE:  PROCESS A RIM WHERE CLAUSE
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         ST------STARTING TOKEN ('WHERE')
 C         NT------NUMBER OF TOKENS
 C

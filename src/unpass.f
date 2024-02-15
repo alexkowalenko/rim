@@ -1,7 +1,7 @@
       SUBROUTINE UNPASS(ALL,IRCNTR,IDAY,MODE,LHASH,ATREL)
 
-         USE Globals, only : DBNAME, USERID
-         USE Text, only : BLANK, NONE
+         USE RM_Globals, only : DBNAME, USERID
+         USE RM_Text, only : BLANK, NONE
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

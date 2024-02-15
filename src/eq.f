@@ -1,15 +1,15 @@
       LOGICAL FUNCTION EQ(WORD1,WORD2)
 
-         USE Text, only : UPCASE
+         USE RM_Text, only : UPCASE
 
          INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   COMPARE WORD1 AND WORD2 FOR EQ
-C             BOTH ARE ASCII-TEXT LENGTH ZC
+C             BOTH ARE ASCII-RM_Text LENGTH ZC
 C
-C  PARAMETERS:
-C         WORD1---A LONG WORD OF TEXT
-C         WORD2---ANOTHER LONG WORD OF TEXT
+C  RM_Parameters:
+C         WORD1---A LONG WORD OF RM_Text
+C         WORD2---ANOTHER LONG WORD OF RM_Text
 C         EQ------.TRUE. IF WORD1.EQ.WORD2
 C                 .FALSE. IF NOT EQ
 C

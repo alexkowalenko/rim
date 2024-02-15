@@ -1,8 +1,8 @@
       SUBROUTINE LXEDIT
 
-         USE Globals, only : NINT
+         USE RM_Globals, only : NINT
          USE Cards, only : CRDREC, CRDEND, CRDRLB, CRDRLL, CRDIDX
-         USE Text, only : UPCASE, ABLANK
+         USE RM_Text, only : UPCASE, ABLANK
          USE TextFiles, only : TIOIN
          USE Lexer, only : ASRCLL, ASLXEI, ASLXEE, ASLXEX, ASLXES
 

@@ -2,8 +2,8 @@ PROGRAM LXTEST
 
    USE, intrinsic :: iso_fortran_env
 
-   USE Parameters
-   USE Globals, only : ECHO, NINT
+   USE RM_Parameters
+   USE RM_Globals, only : ECHO, NINT
    USE Cards, only : READCD
    USE Extern, only : SETIN
    USE Formater, only : TYPER, LXFMT
@@ -11,7 +11,7 @@ PROGRAM LXTEST
    USE Lexer, only: KWS, EQKEYW, TOKDSP
    USE Parser, only : LODREC, MACDEF
    USE Rim, only: RMCONS, RMINIT
-   USE Text, only : Text_Initialise => Initialise
+   USE RM_Text, only : Text_Initialise => Initialise
 
    IMPLICIT NONE
    !

@@ -1,13 +1,13 @@
       SUBROUTINE BLKDEF(IND,NROWS,NCOLS)
 
-         USE Globals, only : TRACE, RMSTAT
+         USE RM_Globals, only : TRACE, RMSTAT
          USE Utils, only : ZEROIT
 
          INCLUDE 'syspar.inc'
 C
 C  PURPOSE:    DEFINE A NEW BLOCK FOR THE INCORE BUFFER
 C
-C  PARAMETERS
+C  RM_Parameters
 C     INPUT:   IND-----BLOCK INDEX
 C              NROWS---NUMBER OF ROWS
 C              NCOLS---NUMBER OF COLUMNS

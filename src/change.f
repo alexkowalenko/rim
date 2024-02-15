@@ -1,17 +1,17 @@
       SUBROUTINE CHANGE(MAT,NVAL,IFLAG,NTUP)
 
-         USE Globals, only : RMSTAT
+         USE RM_Globals, only : RMSTAT
          USE Formater, only : TYPER
          USE Lexer, only : KWS, IDI
          USE Message, only : WARN
-         USE Text, only : BLANK
+         USE RM_Text, only : BLANK
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE PROCESSES A CHANGE IN RIM.
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         MAT-----SCRATCH ARRAY FOR A TUPLE
 C         NVAL----SCRATCH ARRAY FOR A TUPLE
 C        IFLAG---OUTPUT 1 : NON EXPRESSION CHANGE

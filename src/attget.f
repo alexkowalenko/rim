@@ -1,6 +1,6 @@
       SUBROUTINE ATTGET(STATUS)
 
-         USE Text, only : BLANK
+         USE RM_Text, only : BLANK
          USE Utils, only : ZMOVE, ITOH
 
          INCLUDE 'syspar.inc'
@@ -8,7 +8,7 @@ C
 C  PURPOSE:   RETRIEVE THE NEXT TUPLE FROM THE ATTRIBUTE RELATION
 C             BASED ON CONDITIONS SET UP IN LOCATT
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         STATUS--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
          INCLUDE 'tuplea.inc'
          INCLUDE 'attble.inc'

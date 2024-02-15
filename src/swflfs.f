@@ -1,6 +1,6 @@
       SUBROUTINE SWFLFS(INFIL,OUTFIL,BUFFER,LBUF,LPRU,DPRU)
 
-         USE Globals, only : RMSTAT
+         USE RM_Globals, only : RMSTAT
          USE RandomFiles, only : RIOOPN, RIOCLO
          USE System, only : SystemDelete
 
@@ -11,7 +11,7 @@ C           OF FIXED LENGTH TUPLES
 C
 C  METHOD   A LEAST COST SORT STRATEGY
 C           IS ESTABLISHED BASED UPON
-C           MACHINE DEPENDENT PARAMETERS
+C           MACHINE DEPENDENT RM_Parameters
 C           THE COST IS BASED UPON
 C           COST FOR POSITIONING ON
 C           MASS STORAGE,MASS STORAGE

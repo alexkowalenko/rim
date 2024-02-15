@@ -1,6 +1,6 @@
-MODULE Globals
+MODULE RM_Globals
 
-   USE Parameters, only : Z, ZC, ZFNAML
+   USE RM_Parameters, only : Z, ZC, ZFNAML
 
    implicit none
    private
@@ -174,7 +174,7 @@ MODULE Globals
 contains
 
    SUBROUTINE Initialise
-      USE Parameters, only : ZNINT, ZNOUT
+      USE RM_Parameters, only : ZNINT, ZNOUT
       ! Can't use any modules, as this module with Paramaters is the first compiled
       DFLAG = .FALSE.
       DMFLAG = .FALSE.
@@ -211,4 +211,4 @@ contains
 
    END SUBROUTINE Initialise
 
-END MODULE Globals
+END MODULE RM_Globals

@@ -1,13 +1,13 @@
       SUBROUTINE RELGET(STATUS)
 
-         USE Text, only : BLANK
+         USE RM_Text, only : BLANK
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
 C
 C  PURPOSE:   GET THE NEXT TUPLE IN THE RELTBL RELATION
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         STATUS--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
          INCLUDE 'reltbl.inc'
          INCLUDE 'tupler.inc'

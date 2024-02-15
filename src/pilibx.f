@@ -26,7 +26,7 @@ C
 
 
       SUBROUTINE MSG(MTYPE,MTEXT,MCONT)
-         USE Globals, only : RMSTAT
+         USE RM_Globals, only : RMSTAT
 C
 C     DUMMY ROUTINE FOR USER LIBRARY
 C

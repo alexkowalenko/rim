@@ -2,8 +2,8 @@ PROGRAM RIME
 
    USE, intrinsic :: iso_fortran_env
 
-   USE Parameters
-   USE Globals, only: KRMRNF, DBFNAM, ECHO, CONNI, CONNO, BATCH, NINT, NOUTR
+   USE RM_Parameters
+   USE RM_Globals, only: KRMRNF, DBFNAM, ECHO, CONNI, CONNO, BATCH, NINT, NOUTR
    USE DateTime, only: RMTIME, RMDATE
    USE Extern, only: SETOUT, SETIN, PRMSET
    USE Formater, only : LXFMT
@@ -12,7 +12,7 @@ PROGRAM RIME
    USE RandomFiles, only: RIOOPN, RIOCLO, RIOIN, RIOOUT
    USE Rim, only: RMCONS, RMINIT, RMZIP, RMSET, RMSHOW
    USE System, only: SystemExit, SystemInitialise, SYSDBG, SYSDBN
-   USE Text, only: STRMOV
+   USE RM_Text, only: STRMOV
    USE Utils, only: ZMOVE, HTOI, ITOH
 
    !

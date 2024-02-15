@@ -1,6 +1,6 @@
 MODULE Extern
 
-   USE Parameters, only: Z, MAXCOL
+   USE RM_Parameters, only: Z, MAXCOL
 
    implicit none
    private

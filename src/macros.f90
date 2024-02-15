@@ -1,7 +1,7 @@
 MODULE Macros
    !! Routines for dealing with macros
 
-   USE Parameters, only : Z, ZCW, ZMXMAC, ZMXMTX, ZMASC
+   USE RM_Parameters, only : Z, ZCW, ZMXMAC, ZMXMTX, ZMASC
 
    implicit none
    private
@@ -55,7 +55,7 @@ contains
       !!
       !! LOCMAC = POSITION OF MACRO OR 0 IF NOT FOUND
       !!
-      USE Parameters
+      USE RM_Parameters
 
       INTEGER, intent(in) :: MAC(Z)
 

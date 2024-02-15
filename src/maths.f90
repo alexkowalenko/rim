@@ -104,7 +104,7 @@ contains
       ! K IS LOCBOO VALUE
       ! V(N) IS REAL ARRAY
       !
-      USE Globals, only : PCENT, TOL
+      USE RM_Globals, only : PCENT, TOL
 
       INTEGER, intent(in) :: K, N
       INTEGER, intent(inout) :: VI(N)
@@ -138,7 +138,7 @@ contains
       ! K IS LOCBOO VALUE
       ! V(N) IS DOUBLE ARRAY
       !
-      USE Globals, only : PCENT, TOL
+      USE RM_Globals, only : PCENT, TOL
       INTEGER, intent(in) :: K, N
       INTEGER, intent(inout) :: VI(N)
 

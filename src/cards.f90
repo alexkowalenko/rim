@@ -3,7 +3,7 @@ MODULE Cards
    !!  CONTAINS INPUT RECORD AS UNPACKED ASCII-TEXT
    !!
 
-   USE Parameters, only : ZCARDW, ZCARDN
+   USE RM_Parameters, only : ZCARDW, ZCARDN
 
    implicit none
    private

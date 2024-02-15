@@ -19,7 +19,7 @@ contains
       !! VECMAT..KZSCA,KZVEC,KZMAT
       !! TYPE....KZINT,KZREAL,KZDOUB,KZTEXT,KZDATE,...
       !!
-      USE Parameters
+      USE RM_Parameters
 
       INTEGER, intent(in) :: ATYPE
       INTEGER, intent(out) :: VECMAT, TYPE
@@ -63,10 +63,10 @@ contains
       !! LEN IS THE LENGTH OF THE DATA AS FORMATTED
       !!
 
-      USE Parameters
+      USE RM_Parameters
       USE Lexer, only: ASCREC, IDP, IDL
       USE DateTime, only: DTFENC
-      USE Text, only : UPCASE, ATOI, CHRASC
+      USE RM_Text, only : UPCASE, ATOI, CHRASC
 
       INTEGER, intent(in) :: I, TYP
       INTEGER, intent(out) :: FMT, LEN
@@ -157,9 +157,9 @@ contains
       !! DTFASC = DECODED STRING
       !! DTFASL = LENGTH OF DTFASC
       !!
-      USE Parameters
+      USE RM_Parameters
       USE DateTime, only : DTFSPL
-      USE Text, only : ABLANK, ITOA, DECIM
+      USE RM_Text, only : ABLANK, ITOA, DECIM
       USE Utils, only : NDIGIT
 
       INTEGER, intent(in) :: DTFINT, TYPE, DTFASL
@@ -278,10 +278,10 @@ contains
       !! LXDATE IS TRUE IF ALL OK
       !! TYP IS DATA TYPE
       !!
-      USE Parameters
+      USE RM_Parameters
       USE Lexer, only : ASCREC, IDP, IDI
       USE DateTime, only : JULDAT, ASMTXT, DTFSPL, KRMTMF
-      USE Text, only : ATOI, STRMOV
+      USE RM_Text, only : ATOI, STRMOV
 
       INTEGER, intent(in) :: I, FMT, TYP
       INTEGER, intent(out) :: JDAT

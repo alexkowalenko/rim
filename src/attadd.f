@@ -1,7 +1,7 @@
       SUBROUTINE ATTADD
 
          USE Files, only : LF1REC
-         USE Globals, only : IFMOD
+         USE RM_Globals, only : IFMOD
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

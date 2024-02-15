@@ -15,7 +15,7 @@
 !         ATTLEN--ATTRIBUTE LENGTH DATA - CALL ITOH(A,B,ATTLEN)
 !                 TYPE    LENGTH   A        B
 !                 ------  -------  -------  -------
-!                 TEXT    FIXED    NCHAR    NWORDS
+!                 RM_Text    FIXED    NCHAR    NWORDS
 !                 INT     FIXED    0        NWORDS
 !                 REAL    FIXED    0        NWORDS
 !                 DOUB    FIXED    0        NWORDS (2*ITEMS)
@@ -25,7 +25,7 @@
 !                 IMAT    FIXED    ROWS     NWORDS (ROWS*COLS)
 !                 RMAT    FIXED    ROWS     NWORDS (ROWS*COLS)
 !                 DMAT    FIXED    ROWS     NWORDS (2*ROWS*COLS)
-!                 TEXT    VAR      0        0
+!                 RM_Text    VAR      0        0
 !                 INT     VAR      0        0
 !                 REAL    VAR      0        0
 !                 DOUB    VAR      0        0
@@ -40,7 +40,7 @@
 !                 DMAT    VAR-VAR  0        0
 !         ATTCHA--THE "A" VALUE FROM ATTLEN
 !         ATTWDS--THE "B" VALUE FROM ATTLEN
-!         ATTYPE--VARIABLE TYPE (INT,REAL,TEXT,DOUB,ETC.)
+!         ATTYPE--VARIABLE TYPE (INT,REAL,RM_Text,DOUB,ETC.)
 !         ATTKEY--0 FOR NON-KEY ATTRIBUTES
 !                 BTREE START FOR KEY ATTRIBUTES
 !         ATTFOR--FORMAT

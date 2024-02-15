@@ -8,14 +8,14 @@
          USE Maths, only : DTOR
          USE Message, only : WARN
          USE Rim, only: RMTYPT
-         USE Text, only : BLANK
+         USE RM_Text, only : BLANK
 
          INCLUDE 'syspar.inc'
 C
 C     THIS ROUTINE PARSES A VALUE SPECIFICATION AND STORES THE
 C     VALUE IN MAT.
 C
-C     PARAMETERS.......
+C     RM_Parameters.......
 C     ID.......INPUT - STARTING LXLREC ITEM NUMBER
 C              OUTPUT- 1+ITEM NUMBER OF LAST ITEM IN VALUE
 C     MAT......OUTPUT- ARRAY OF VALUES
@@ -63,13 +63,13 @@ C
          ENDIF
          IF(TYPE.NE.KZTEXT) GO TO 100
 C
-C     TEXT STUFF
+C     RM_Text STUFF
 C
          IF(.NOT.TOKTYP(ID,KXTEXT)) GO TO 8000
          NW = LXLENW(ID)
          IF(NWORD.EQ.0) GO TO 50
 C
-C     FIXED TEXT
+C     FIXED RM_Text
 C
          IF(IDL(ID).GT.ROW) THEN
             CALL MSG('W','TEXT FOR COLUMN ''' ,'+')
@@ -79,7 +79,7 @@ C
          NW = NWORD
          GO TO 80
 C
-C     VARIABLE TEXT
+C     VARIABLE RM_Text
 C
    50    IF((NCOLT+NW).GT.ZMASC) GO TO 8300
          NWORD = NW
@@ -101,7 +101,7 @@ C
          NUMI = ITEMS - ID + 1
          IF(NWORD.GT.NUMI) GO TO 8100
 C
-C     NON-TEXT STUFF - CONVERT TYPE CODE
+C     NON-RM_Text STUFF - CONVERT TYPE CODE
 C
          DECPOI = MOD(ATTFOR,10000) / 100
          IF (TYPE.EQ.KZINT) THEN

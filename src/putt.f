@@ -1,5 +1,5 @@
       SUBROUTINE PUTT(ASTXT,POS,ASCHR)
-         USE Parameters, only : ZCW
+         USE RM_Parameters, only : ZCW
          implicit none
 C
 C     PUT THE ASCII-CHAR INTO ASTXT AT POS

@@ -1,13 +1,13 @@
       SUBROUTINE GTSORT(MAT,INDEX,IFLAG,LENGTH)
 
-         USE Globals, only : MRINDX, RMSTAT
+         USE RM_Globals, only : MRINDX, RMSTAT
 
          INCLUDE 'syspar.inc'
 C
 C  PURPOSE:  READ IN TUPLES FROM THE SORTED DATA FILE
 C            UNIT = ZNSRT + MRINDX
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C            MAT-----ARRAY TO HOLD ONE TUPLE (IF IFLAG = 0)
 C                    POINTER TO TUPLE IN BUFFER (IF IFLAG = 1)
 C            INDEX---PAGE BUFFER TO USE

@@ -1,9 +1,9 @@
-MODULE Text
+MODULE RM_Text
    !! Text string processing routines
 
    USE, intrinsic :: iso_fortran_env
 
-   USE Parameters, only : Z
+   USE RM_Parameters, only : Z
 
    implicit none
    private
@@ -57,7 +57,7 @@ MODULE Text
 CONTAINS
 
    SUBROUTINE Initialise()
-      USE Parameters, only : ZC
+      USE RM_Parameters, only : ZC
       INTEGER :: I
       INTRINSIC ICHAR
 
@@ -144,7 +144,7 @@ CONTAINS
 
 
    SUBROUTINE ASCTXT(ATXT,LTXT,CSTR)
-      USE Parameters, only : Z
+      USE RM_Parameters, only : Z
       !
       ! RETURN THE ASCII-TEXT EQUIVALENT OF CSTR
       !
@@ -317,7 +317,7 @@ CONTAINS
 
 
    SUBROUTINE ITOA(STRING,SC,FMT,INT,IERR)
-      USE Parameters, only : Z
+      USE RM_Parameters, only : Z
       USE Utils, only : NDIGIT
       !
       ! THIS ROUTINE CONVERTS AN INTEGER (INT) TO ASCII-TEXT (STRING)
@@ -699,7 +699,7 @@ CONTAINS
       ! THE ARBITRARY CHAR (ARBCHS) MATCHES ANY CHARACTER
       ! CASE IGNORE (CASEIG) MATCHES UPPER AND LOWER CASE
       !
-      USE Globals, only : CASEIG, ARBCHS
+      USE RM_Globals, only : CASEIG, ARBCHS
 
       INTEGER, intent(in) :: S1(*), S2(*)
       INTEGER, intent(in) :: I1, I2, N1, N2
@@ -755,7 +755,7 @@ CONTAINS
       !    LSTRNG = TRUE IF MATCH FOUND
       !
 
-      USE Globals, only : ARBCHM
+      USE RM_Globals, only : ARBCHM
 
       INTEGER, intent(in) :: DS(*), MS(*)
       INTEGER, intent(in) :: DL, ML
@@ -820,4 +820,4 @@ CONTAINS
       RETURN
    END FUNCTION LKSTR
 
-END MODULE Text
+END MODULE RM_Text

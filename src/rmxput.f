@@ -1,13 +1,13 @@
       SUBROUTINE RMXPUT(INDPTR,TUPLE)
 
-         USE Globals, only:  DBDATE, RMSTAT
-         USE Text, only : BLANK
+         USE RM_Globals, only:  DBDATE, RMSTAT
+         USE RM_Text, only : BLANK
 
          INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE PUTS DATA FROM TUPLE INTO THE CURRENT ROW.
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         INDPTR--INDEX TO SAVE BLOCK
 C         TUPLE---USER ARRAY WITH REPLACEMENT TUPLE
 C

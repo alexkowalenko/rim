@@ -9,8 +9,8 @@ contains
       !!     IF FILE IS THE TERMINAL THEN SWITCH TO UNIT NINT
       !!     ELSE SWITCH TO UNIT NINTA AND OPEN THE FILE
       !!
-      USE Parameters
-      USE Globals, only : CONNI, BATCH, NINT
+      USE RM_Parameters
+      USE RM_Globals, only : CONNI, BATCH, NINT
       USE TextFiles, only : TIOOPN, TIOCLO
 
       CHARACTER(len=*), intent(in) :: FILE
@@ -54,8 +54,8 @@ contains
       !!     IF FILE IS THE TERMINAL THEN SET UN TO NOUT
       !!     ELSE SET UN TO UNF AND OPEN THE FILE
       !! IF COULD NOT OPEN FILE THEN SET STAT NE 0
-      USE Parameters
-      USE Globals, only : RMSTAT, CONNO, BATCH
+      USE RM_Parameters
+      USE RM_Globals, only : RMSTAT, CONNO, BATCH
       USE TextFiles, only : TIOOPN, TIOCLO
       USE Utils, only : ITOH
 
@@ -100,9 +100,9 @@ contains
       !!
       !! ISSUE TERMINAL PROMPT
       !!
-      USE Parameters
-      USE Globals, only: NINT, NOUT
-      USE Text, only : ABLANK, LOCASE, CHRASC
+      USE RM_Parameters
+      USE RM_Globals, only: NINT, NOUT
+      USE RM_Text, only : ABLANK, LOCASE, CHRASC
 
       INTEGER, intent(in) :: PTXT(*)
       INTEGER :: a, i, l
@@ -136,8 +136,8 @@ contains
       !!                  'RESET'- RESTORE INITIAL VALUES
       !!          PR..... NEW VALUE FOR PROMPT
       !!
-      USE Parameters
-      USE Text, only : ASCCHR, LOCASE
+      USE RM_Parameters
+      USE RM_Text, only : ASCCHR, LOCASE
       USE Utils, only : ZMOVE
 
       CHARACTER(len=*), intent(in) :: MODE,PR
@@ -169,11 +169,11 @@ contains
       !!
       !!  ROUTINE TO READ A RECORD TO /CARDS/
       !!!
-      USE Parameters
+      USE RM_Parameters
       USE Cards, only: CRDREC, CRDPTR, CRDEND, CRDRLB, CRDRLL, CRDIDX
-      USE Globals, only : TRACE, CONNI, NOUTT, NINT
+      USE RM_Globals, only : TRACE, CONNI, NOUTT, NINT
       USE Extern, only : PROMPT
-      USE Text, only : UPCASE
+      USE RM_Text, only : UPCASE
       USE TextFiles, only : TIOIN
       USE Lexer, only : ASRCLL
 
@@ -247,8 +247,8 @@ contains
       !!  THIS ROUTINE IS THE FORTRAN ROUTINE FOR LOADING DATA VALUES IN THE
       !!  RIM DATA BASE.
       !!
-      USE Parameters
-      USE Globals, only: HXFLAG
+      USE RM_Parameters
+      USE RM_Globals, only: HXFLAG
       USE Lexer, only: ITEMS, EQKEYW
       USE Message, only : WARN
       USE Parser, only: LODREC
@@ -360,15 +360,15 @@ contains
       !!
       !! LOAD DATA VALUES FROM A FILE USING FORMAT.
       !!
-      USE Parameters
-      USE Globals, only : NINT
+      USE RM_Parameters
+      USE RM_Globals, only : NINT
       USE Cards, only : CRDREC, CRDEND
       USE Extern, only : SETIN
       USE Formater, only : TYPER
       USE Lexer, only: KXTEXT, KXINT, KXREAL, IDT, ASCREC, IDP, IDL
       USE Lexer, only: KWS, ITEMS, IDI, IDR
       USE TextFiles, only : TIOIN
-      USE Text, only : ABLANK, ATOI, ATOR, ASCAN, STRMOV
+      USE RM_Text, only : ABLANK, ATOI, ATOR, ASCAN, STRMOV
       USE Utils, only : ZEROIT
       !  PARAMETERS:
       !     MAT-----SCRATCH ARRAY FOR BUILDING TUPLES

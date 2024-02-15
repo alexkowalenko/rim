@@ -102,7 +102,7 @@ C     CHECK FOR VARIABLE
          VAR(NUMATT) = NWORDS.EQ.0
          GOTO 100
 C
-C     FIXED-TEXT PRINT
+C     FIXED-RM_Text PRINT
 C
   300    FP(NUMATT) = PGPPTR
          LEN(NUMATT) = IDL(3)
@@ -110,7 +110,7 @@ C
          W = LXLENW(3)
          ATYPE(NUMATT) = 0
          VAR(NUMATT) = .FALSE.
-C     TEXT DATA IS SAVED IN BUFFER
+C     RM_Text DATA IS SAVED IN BUFFER
          IF (.NOT.PGSTOR(ASCREC(IDP(3)),W)) GOTO 8000
          GO TO 100
 

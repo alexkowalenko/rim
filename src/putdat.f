@@ -1,6 +1,6 @@
       SUBROUTINE PUTDAT(INDEX,ID,ARRAY,LENGTH)
 
-         USE Globals, only : IFMOD, RMSTAT
+         USE RM_Globals, only : IFMOD, RMSTAT
          USE Files, only : FILE2, LENBF2, CURBLK, MODFLG
          USE RandomFiles, only: RIOIN, RIOOUT
          USE Utils, only : ITOH
@@ -9,7 +9,7 @@
 C
 C  PURPOSE:   REPLACE A TUPLE ON THE DATA FILE
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         INDEX---BLOCK REFERENCE NUMBER
 C         ID------PACKED ID WORD WITH OFFSET,IOBN
 C         ARRAY---ARRAY TO RECEIVE THE TUPLE

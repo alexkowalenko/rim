@@ -18,8 +18,8 @@ PROGRAM MAIN
    !------------------------------------------------------------
 
 
-   USE Parameters
-   USE Globals, only : KDBVER, CONNI, CONNO, BATCH, NOUTR
+   USE RM_Parameters
+   USE RM_Globals, only : KDBVER, CONNI, CONNO, BATCH, NOUTR
    USE DateTime, only: RMTIME, RMDATE
    USE Extern, only: SETOUT
    USE Rim, only: RMCONS, RMINIT, RIMCMD

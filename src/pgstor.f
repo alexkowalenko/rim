@@ -1,5 +1,5 @@
       LOGICAL FUNCTION PGSTOR(PGM,LPGM)
-         USE Globals, only : RMSTAT
+         USE RM_Globals, only : RMSTAT
          INCLUDE 'syspar.inc'
 C
 C     STORE PART OF A PROGRAM

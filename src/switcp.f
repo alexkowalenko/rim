@@ -1,11 +1,11 @@
       INTEGER FUNCTION SWITCP(I1,I2,LEN)
 
-         USE Globals, only : CASEIG
-         USE Text, only : UPCASE
+         USE RM_Globals, only : CASEIG
+         USE RM_Text, only : UPCASE
 
          INCLUDE 'syspar.inc'
 C
-C     COMPARE TWO ARRAYS OF ASCII-TEXT (WORD LEN = LEN)
+C     COMPARE TWO ARRAYS OF ASCII-RM_Text (WORD LEN = LEN)
 C
 C     IF I1 = I2 THEN SET SWITCP ZERO
 C     IF I1 > I2 THEN SET SWITCP NEG

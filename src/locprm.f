@@ -1,12 +1,12 @@
       FUNCTION LOCPRM(RNAME,JCODE)
 
-         USE Globals, only : USERID, OWNER, RMSTAT
-         USE Text, only : NONE
+         USE RM_Globals, only : USERID, OWNER, RMSTAT
+         USE RM_Text, only : NONE
          INCLUDE 'syspar.inc'
 C
 C  CHECK PERMISSION FOR A USERID AGAINST A RELATION.
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         RNAME---RELATION NAME
 C         JCODE---READ/MODIFY CODE
 C                 1 FOR READ

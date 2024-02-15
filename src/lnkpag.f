@@ -1,7 +1,7 @@
       SUBROUTINE LNKPAG(THEROW)
 
          USE Files, only : FILE1,LENBF1,LF1REC, CLREC
-         USE Globals, only : RMSTAT
+         USE RM_Globals, only : RMSTAT
          USE RandomFiles, only: RIOIN, RIOOUT
          USE Utils, only : ZEROIT
 
@@ -9,7 +9,7 @@
 C
 C     DO PAGING AS NEEDED FOR THE LINK HEADER PAGES
 C
-C     PARAMETERS:
+C     RM_Parameters:
 C         THEROW--INPUT - ROW WANTED
 C                 OUTPUT - ACTUAL ROW TO USE IN THE BUFFER
          INCLUDE 'lnktbl.inc'

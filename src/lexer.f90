@@ -2,7 +2,7 @@ MODULE Lexer
 
    USE, intrinsic :: iso_fortran_env
 
-   USE Parameters, only : ZMTOK, ZMASC, ZKEYWL, ZCW, Z, ZC
+   USE RM_Parameters, only : ZMTOK, ZMASC, ZKEYWL, ZCW, Z, ZC
    implicit none
    private
 
@@ -209,7 +209,7 @@ contains
       !
       !  MOVE NUMC ASCII-CHARS FROM THE ITH ITEM.                   .
       !
-      USE Text, only : BLANK, ABLANK, STRMOV
+      USE RM_Text, only : BLANK, ABLANK, STRMOV
       USE Utils, only : ZMOVE
 
       INTEGER, intent(in) :: I, NUMC
@@ -254,12 +254,12 @@ contains
       !
       ! IF MACWPT<MACWPZ THEN THE CHARACTER IS TAKEN FROM MACWRK
       !
-      USE Parameters
-      USE Globals, only : INEOF
+      USE RM_Parameters
+      USE RM_Globals, only : INEOF
       USE Cards, only : READCD, CRDPTR, CRDEND, CRDREC, LXEOC
       USE Extern, only : NXTCRD
       USE Macros, only : MACWRK, MACWPT, MACWPZ
-      USE Text, only : ABLANK, ASPLUS, ASSEMI
+      USE RM_Text, only : ABLANK, ASPLUS, ASSEMI
 
       LOGICAL, intent(in) :: TXTONL
 
@@ -341,7 +341,7 @@ contains
       ! PARAMETERS
       !          CH  =  CHARACTER TO REPLACE
       !
-      USE Parameters
+      USE RM_Parameters
       USE Cards, only : CRDPTR, CRDREC
       USE Macros, only : MACWPT, MACWPZ, MACWRK
 
@@ -379,10 +379,10 @@ contains
       !
       !     TOKEN IS PUT INTO /TOKENS/ AT ITEMS+1
       !
-      USE Parameters
+      USE RM_Parameters
       USE Cards, only : LXEOC
-      USE Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
-      USE Text, only : CHRASC, ASCAN, UPCASE, BLANK, ABLANK, ATOI, ATOR, SQUOTE, DQUOTE, ASBLK, ASCOM, ASQUO, CHTYPE
+      USE RM_Globals, only : KMSSVL, KMSSVT, KNAPVL, KNAPVT
+      USE RM_Text, only : CHRASC, ASCAN, UPCASE, BLANK, ABLANK, ATOI, ATOR, SQUOTE, DQUOTE, ASBLK, ASCOM, ASQUO, CHTYPE
 
       INTEGER, intent(out) :: EOR
 
@@ -544,9 +544,9 @@ contains
 
 
    SUBROUTINE LXCMNT(EOR)
-      USE Parameters, only : NULL
-      USE Globals, only: BATCH, INEOF
-      USE Text, only: ASBLK, ASCOM, ASPLUS, ASSEMI
+      USE RM_Parameters, only : NULL
+      USE RM_Globals, only: BATCH, INEOF
+      USE RM_Text, only: ASBLK, ASCOM, ASPLUS, ASSEMI
       !
       ! REMOVE A COMMENT FROM THE INPUT TOKEN STREAM
       ! THE COMMENT MAY HAVE A SET COMMAND WITHIN
@@ -644,9 +644,9 @@ contains
       !!
       !! DISPLAY /TOKENS/ COMMON
       !!
-      USE Parameters
+      USE RM_Parameters
       USE Maths, only : IEXP
-      USE Text, only : FILCH, ABLANK, RTOA
+      USE RM_Text, only : FILCH, ABLANK, RTOA
 
       INTEGER :: RTXT(ZPRINW), I, RF, N, ERR
       !

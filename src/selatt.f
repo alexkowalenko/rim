@@ -1,12 +1,12 @@
       FUNCTION SELATT(FTOK,NTOK)
 
-         USE Globals, only :  KRMINF, KRMRNF, UPRINL
+         USE RM_Globals, only :  KRMINF, KRMRNF, UPRINL
          USE DateTime, only : DTFSPL, KRMDTF, KRMTMF
          USE Formater, only : TYPER, LXFMT
          USE Message, only: WARN
-         USE Text, only : ASCCHR, ASCTXT, FILCH, BLANK, ABLANK, STRMOV
-         USE Text, only : LSTRNG,  ASLPAR, ASRPAR, ATSIGN, PCSIGN
-         USE Text, only : ASCOLN, ASSTAR, EQSIGN
+         USE RM_Text, only : ASCCHR, ASCTXT, FILCH, BLANK, ABLANK
+         USE RM_Text, only : LSTRNG,  ASLPAR, ASRPAR, ATSIGN, PCSIGN
+         USE RM_Text, only : ASCOLN, ASSTAR, EQSIGN, STRMOV
          USE Utils, only : ZMOVE, HTOI, ITOH
          USE Lexer, only : KWS, IDL, EQTOK, IDI, LXSREC
 

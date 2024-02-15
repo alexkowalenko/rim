@@ -10,8 +10,8 @@ MODULE TextFiles
 CONTAINS
 
    SUBROUTINE TIOOPN(FILE,UNIT,MODE,ERR)
-      USE Parameters, only : zfnaml, Z
-      USE Globals, only : INLINE
+      USE RM_Parameters, only : zfnaml, Z
+      USE RM_Globals, only : INLINE
       !
       ! ***UNIX SYSTEM DEPENDENT ROUTINE ***
       !
@@ -89,9 +89,9 @@ CONTAINS
 
    SUBROUTINE TIOIN(FILE,TEXT,LEN,EOF)
 
-      USE Parameters, only: ZCARDL, Z
-      USE Globals, only : INLINE
-      USE Text, only : ASCCHR
+      USE RM_Parameters, only: ZCARDL, Z
+      USE RM_Globals, only : INLINE
+      USE RM_Text, only : ASCCHR
 
       !
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
@@ -144,9 +144,9 @@ CONTAINS
 
 
    SUBROUTINE TIOOUT(FILE,TEXT,LEN,IERR)
-      USE Parameters, only : ZPRINL, znint
-      USE Globals, only : FFFLAG, NINT, ULPP
-      USE Text, only: CHRASC
+      USE RM_Parameters, only : ZPRINL, znint
+      USE RM_Globals, only : FFFLAG, NINT, ULPP
+      USE RM_Text, only: CHRASC
       !
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
       !

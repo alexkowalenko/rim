@@ -2,7 +2,7 @@
      X  KEYCOL,KEYTYP,UPASS)
 
          USE Message, only: WARN
-         USE Globals, only : RMSTAT
+         USE RM_Globals, only : RMSTAT
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
@@ -10,7 +10,7 @@ C
 C  THIS ROUTINE PERFORMS THE ACTUAL UNION BETWEEN
 C  RELATION 1 AND 2 FORMING 3
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         RNAME---NAME OF SEARCHED RELATION
 C         RNAME3--NAME OF RELATION 3
 C         MATN3---DATA TUPLE FOR RELATION 3
@@ -51,7 +51,7 @@ C
          IDNEW = REND
          NTUP3 = NTUPLE
 C
-C  GET THE PARAMETERS FOR THE SCANED MATRIX.
+C  GET THE RM_Parameters FOR THE SCANED MATRIX.
 C
          I = LOCREL(RNAME)
          IDM1 = NID

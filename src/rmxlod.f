@@ -1,13 +1,13 @@
       SUBROUTINE RMXLOD(INDPTR,TUPLE)
 
-         USE Globals, only : DBDATE, RMSTAT
-         USE Text, only : BLANK
+         USE RM_Globals, only : DBDATE, RMSTAT
+         USE RM_Text, only : BLANK
 
          INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE LOADS DATA FROM TUPLE INTO THE CURRENT RELATION.
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         INDPTR--INDEX TO SAVE BLOCK
 C         TUPLE---USER ARRAY WITH REPLACEMENT TUPLE
          INTEGER TUPLE(1)

@@ -1,7 +1,7 @@
       SUBROUTINE SUBTRC(RNAME2,RNAME3,MATN3,NCOL3,NATT3,PTABLE,
      XKEYCOL,KEYTYP)
 
-         USE Globals, only : RMSTAT
+         USE RM_Globals, only : RMSTAT
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
@@ -9,7 +9,7 @@ C
 C  THIS ROUTINE PERFORMS THE ACTUAL SUBTRACT
 C       ( REL2 - REL2 = REL3 )
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         RNAME2---NAME OF THE SUBTRAHEND RELATION
 C         RNAME3---NAME OF THE RESULTANT RELATION
 C                  NOTE.. NID POINTS TO RELATION 1
@@ -37,7 +37,7 @@ C
          IDNEW = 0
          IDCUR = NID
 C
-C  GET THE PARAMETERS FOR THE FIRST MATRIX.
+C  GET THE RM_Parameters FOR THE FIRST MATRIX.
 C
          I = LOCREL(RNAME2)
          IDM2 = NID

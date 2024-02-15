@@ -12,7 +12,7 @@ MODULE RandomFiles
 contains
 
    SUBROUTINE RIOOPN(FNAME,FILE,NWDS,IOS)
-      USE Parameters, only : znsrt1, znsrt2, ZNFIL1, ZCW
+      USE RM_Parameters, only : znsrt1, znsrt2, ZNFIL1, ZCW
       !
       ! *** UNIX SYSTEM DEPENDENT ROUTINE ***
       !
@@ -59,8 +59,8 @@ contains
 
 
    SUBROUTINE RIOIN(FILE,RECORD,BUFFER,NWDS,IOS)
-      USE Parameters, only : ZNFIL1, Z
-      USE Globals, only : TRACE
+      USE RM_Parameters, only : ZNFIL1, Z
+      USE RM_Globals, only : TRACE
       !
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
       !
@@ -96,8 +96,8 @@ contains
 
 
    SUBROUTINE RIOOUT(FILE,RECORD,BUFFER,NWDS,IOS)
-      USE Parameters, only : ZNFIL1, Z
-      USE Globals, only : TRACE
+      USE RM_Parameters, only : ZNFIL1, Z
+      USE RM_Globals, only : TRACE
       !
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
       !

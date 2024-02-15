@@ -2,7 +2,7 @@ MODULE System
 
    USE, intrinsic :: iso_fortran_env
 
-   USE Parameters
+   USE RM_Parameters
 
    IMPLICIT NONE
 
@@ -86,7 +86,7 @@ contains
 
 
    SUBROUTINE UNIXTRP
-      USE Globals, only : HXFLAG
+      USE RM_Globals, only : HXFLAG
 
       ! **UNIX SYSTEM DEPENDENT ROUTINE **
 
@@ -103,7 +103,7 @@ contains
       !
       ! SYSTEM INITIALIZE
       !
-      USE Globals, only : CONNI, CONNO, BATCH
+      USE RM_Globals, only : CONNI, CONNO, BATCH
       USE Extern, only : SETIN
       INCLUDE 'prom.inc'
       !
@@ -149,10 +149,10 @@ contains
 
 
    SUBROUTINE SYSDBG(DBX,STATUS)
-      USE Globals, only: DBFNAM
+      USE RM_Globals, only: DBFNAM
       USE Lexer, only : ASCREC, IDP, IDL, ITEMS
       USE Message, only: WARN
-      USE Text, only: STRASC, ASCAN
+      USE RM_Text, only: STRASC, ASCAN
       !
       ! ***UNIX SYSTEM DEPENDENT ROUTINE ***
       !

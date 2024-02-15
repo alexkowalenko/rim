@@ -3,7 +3,7 @@
          USE Formater, only : TYPER
          USE Message, only: WARN
          Use Lexer, only: EQTOK, KWS, EQKEYW, LXSREC
-         Use Text, only: EQSIGN
+         Use RM_Text, only: EQSIGN
 
          INCLUDE 'syspar.inc'
 C
@@ -73,7 +73,7 @@ C
          ENDIF
 C
 C  CHECK FOR VARIABLE LENGTH - SORTING ON VARIABLE LENGTH
-C  ATTRIBUTES IS ALLOWED ONLY FOR TEXT.
+C  ATTRIBUTES IS ALLOWED ONLY FOR RM_Text.
 C
          IF(ATTWDS.EQ.0 .AND. ATTYPE.NE.KZTEXT) THEN
             CALL MSG('E','NON-TEXT VARIABLE LENGTH ATTRIBUTES CANNOT' //

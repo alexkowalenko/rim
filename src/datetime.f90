@@ -22,8 +22,8 @@ MODULE DateTime
 contains
 
    SUBROUTINE Initialise()
-      USE Parameters
-      USE Text, only : ASCTXT
+      USE RM_Parameters
+      USE RM_Text, only : ASCTXT
       CHARACTER(len=3) :: MONTHS(12) = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC']
       INTEGER :: I
 
@@ -157,9 +157,9 @@ contains
 
    SUBROUTINE ASCDAT(STR,SC,L,JDAT,DFMT,TYP)
 
-      USE Parameters
-      USE Globals, only : KMSSVL, KMSSVT, KNAPVT, KNAPVL
-      USE Text, only : FILCH, ABLANK, ITOA, STRMOV
+      USE RM_Parameters
+      USE RM_Globals, only : KMSSVL, KMSSVT, KNAPVT, KNAPVL
+      USE RM_Text, only : FILCH, ABLANK, ITOA, STRMOV
 
       !
       ! CONVERT A DATE INTEGER TO ASCII-TEXT
@@ -256,8 +256,8 @@ contains
 
 
    SUBROUTINE DTFENC(TYP,DTFINT,DTFCHR)
-      USE Parameters
-      USE Text, only : ASCCHR
+      USE RM_Parameters
+      USE RM_Text, only : ASCCHR
       !
       ! ENCODE A DATE/TIME FORMAT STRING INTO AN INTEGER
       !

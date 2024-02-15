@@ -1,13 +1,13 @@
       FUNCTION LOCLNK(LKNAME)
 
-         USE Text, only : BLANK
+         USE RM_Text, only : BLANK
          USE Utils, only : ZMOVE, NULLIT
 
          INCLUDE 'syspar.inc'
 C
 C     LOOK FOR A LINK IN THE LNKTBL RELATION
 C
-C     PARAMETERS:
+C     RM_Parameters:
 C         LKNAME---NAME OF RELATION OR BLANK
 C         LOCLNK--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
          INCLUDE 'lnktbl.inc'

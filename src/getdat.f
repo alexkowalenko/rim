@@ -1,6 +1,6 @@
       SUBROUTINE GETDAT(INDEX,ID,LOCTUP,LENGTH)
 
-         USE Globals, only : TRACE, RMSTAT
+         USE RM_Globals, only : TRACE, RMSTAT
          USE Files, only : FILE2, LENBF2, LF2REC, CURBLK, MODFLG
          USE RandomFiles, only: RIOIN, RIOOUT
          USE Utils, only : ITOH
@@ -9,7 +9,7 @@
 C
 C  PURPOSE:  GET A TUPLE FROM THE DATA FILE
 C
-C  PARAMETERS:
+C  RM_Parameters:
 C         INDEX---BLOCK REFERENCE NUMBER
 C         ID------PACKED ID WORD WITH START,PRU
 C         LOCTUP--OFFSET IN BUFFER FOR THE TUPLE
