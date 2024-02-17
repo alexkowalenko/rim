@@ -1,6 +1,6 @@
 MODULE Extern
 
-   USE RM_Parameters, only: Z, MAXCOL
+   USE RM_Parameters, only: Z, MAXCOL, ZPRINW
 
    implicit none
    private
@@ -19,6 +19,19 @@ MODULE Extern
    public MSGCMV
 
    INTEGER, PARAMETER :: ZTUPAL = 2*Z+7
+
+   !!
+   !!  *** / M S G C O M / ***
+   !!
+   !!  CONTAINS OUTPUT RECORD AS UNPACKED ASCII-TEXT
+   !!
+   !! COMMON /MSGCOM/ MSGREC(ZPRINW), MSGPTR, MSUNIT
+   INTEGER, public :: MSGREC(ZPRINW)
+   !!         MSGREC--ARRAY OF CHARS AS ASCII-TEXT
+   INTEGER, public :: MSGPTR
+   !!         MSGPTR--POINTER TO CURRENT CHARACTER IN MSGREC
+   INTEGER, public :: MSUNIT
+   !!         MSUNIT--UNIT NUMBER FOR CURRENT MESSAGE
 
    INTERFACE
       MODULE SUBROUTINE SETIN(FILE)
@@ -85,7 +98,16 @@ MODULE Extern
          CHARACTER(len=*) :: CTYPE
       END SUBROUTINE MSGCMV
 
-
    END INTERFACE
+
+   public Initialise
+
+CONTAINS
+
+   SUBROUTINE Initialise
+      USE RM_Globals, only : NOUT
+      MSUNIT = NOUT
+      MSGPTR = 0
+   END SUBROUTINE Initialise
 
 END MODULE Extern

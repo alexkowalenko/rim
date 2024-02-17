@@ -2,7 +2,7 @@
 
          USE RM_Globals, only : TRACE, MRINDX, HXFLAG, CASEIG, PGFLAG,
      +   DBFNAM, RMSTAT, FFFLAG, NOUTR, ULPP, UPRINL
-         USE Extern, only: SETOUT, SETIN, IMSG, AMSG, MSG
+         USE Extern, only: SETOUT, SETIN, IMSG, AMSG, MSG, MSUNIT
          USE Message, only : WARN
          USE Formater, only : TYPER
          USE Rim, only : DBOPEN
@@ -23,7 +23,6 @@ C
          INCLUDE 'selcom.inc'
          INCLUDE 'srtcom.inc'
          INCLUDE 'whcom.inc'
-         INCLUDE 'msgcom.inc'
 C
          INCLUDE 'pgmcom.inc'
          INCLUDE 'expcom.inc'

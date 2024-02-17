@@ -4,7 +4,7 @@
 
          USE RM_Globals, only : MRINDX, HXFLAG, RMSTAT, FFFLAG, NOUTR
          USE RM_Globals, only : ULPP, UPRINL
-         USE Extern, only: IMSG, AMSG, MSG
+         USE Extern, only: IMSG, AMSG, MSG, MSUNIT
          USE Formater, only : TYPER
          USE Maths, only : RTOD
          USE Message, only: WARN
@@ -22,7 +22,6 @@ C
          INCLUDE 'rimptr.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'whcom.inc'
-         INCLUDE 'msgcom.inc'
 C
          LOGICAL SGTLNK
          LOGICAL ALDONE,ATDONE

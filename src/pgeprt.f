@@ -3,7 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE RM_Globals, only : NOUTR, UPRINL
-         USE Extern, only : AMSG
+         USE Extern, only : AMSG, MSUNIT
          USE Formater, only : TYPER
          USE RM_Text, only : FILCH, ABLANK, STRMOV
 
@@ -22,7 +22,6 @@ C     PTR-- ADDRESS OF SELCOM SAVE BLOCK
          INCLUDE 'selcom.inc'
          INCLUDE 'srtcom.inc'
          INCLUDE 'whcom.inc'
-         INCLUDE 'msgcom.inc'
 C
          INCLUDE 'pgmcom.inc'
          INCLUDE 'expcom.inc'

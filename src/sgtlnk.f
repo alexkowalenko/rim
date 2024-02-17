@@ -21,7 +21,6 @@ C
          INCLUDE 'rimptr.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'whcom.inc'
-         INCLUDE 'msgcom.inc'
 C
          SGTLNK = .FALSE.
 

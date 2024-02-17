@@ -57,7 +57,7 @@ add_library(rimextlib STATIC
     lnkput.f loadmv.f
     pgbres.f pgbsto.f pgcexp.f
     pgcomp.f pgcprt.f pgeexp.f pgeprt.f pgexec.f pgstor.f
-    selatt.f selout.f selput.f sgtlnk.f 
+    selatt.f selout.f selput.f90 sgtlnk.f 
     undata.f undef.f unpass.f
     extern_out.f90
     rim_cmd.f90

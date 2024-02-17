@@ -87,19 +87,16 @@ contains
 
       USE RM_Parameters
       USE Cards, only : Cards_Initialise => Initialise
-      USE RM_Globals, only: KMSSVL, KMSSVT, KNAPVL, KNAPVT, USERID
-      USE RM_Globals, only: ARBCHS, ARBCHM, USERID
+      USE RM_Globals, only: KMSSVL, KMSSVT, KNAPVL, KNAPVT, USERID, ARBCHS, ARBCHM, USERID, KDBHDR
       USE RM_Globals, only: KZHPDB, KZHPRL, KZHPKY, KZHPSK, KZHPTX
-      USE RM_Globals, only: KDBHDR, NOUT
       USE RM_Globals, only : Globals_Initialise => Initialise
-      USE Extern, only: PRMSET
+      USE Extern, only: PRMSET, Extern_Intialise => Initialise
       USE DateTime, only : DateTime_Initialise => Initialise, DTFENC
       USE Macros, only : Macros_Initialise => Initialise
       USE RM_Text, only : ASCTXT, ASCCHR, NONE
       USE RM_Text, only : Text_initialise => Initialise
       USE Utils, only : ZMOVE
 
-      INCLUDE 'msgcom.inc'
       INCLUDE 'rmatts.inc'
       INCLUDE 'prom.inc'
 
@@ -131,8 +128,7 @@ contains
       !
 
       ! /MSGCOM/
-      MSUNIT = NOUT
-      MSGPTR = 0
+      CALL Extern_Intialise
 
       ! /CARDS/
       CALL Cards_Initialise
@@ -1767,7 +1763,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DBNAME, USERID, CASEIG, ARBCHS, ARBCHM, KRMINF, KRMRNF, KMSSVL, KMSSVT, KNAPVL, KNAPVT
       USE RM_Globals, only : NOUT, ECHO, ULPP, UPRINL, UTERML
-      USE Extern, only: DMSG, IMSG, AMSG, MSG
+      USE Extern, only: DMSG, IMSG, AMSG, MSG, MSGREC, MSGPTR, MSUNIT
       USE Formater, only : FMTDEC
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
       USE Macros, only: MACPTR, MACPTR, MACTXT, MACLEN
@@ -1777,7 +1773,6 @@ contains
       USE Utils, only : NDIGIT
 
       INCLUDE 'rmatts.inc'
-      INCLUDE 'msgcom.inc'
       INCLUDE 'tupler.inc'
 
       INTEGER :: TDAY, TTIM, I, J, CH

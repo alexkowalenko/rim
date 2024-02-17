@@ -20,7 +20,6 @@ C
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplel.inc'
-         INCLUDE 'msgcom.inc'
          INCLUDE 'dclar1.inc'
          INCLUDE 'dclar3.inc'
          LOGICAL EQ, NE

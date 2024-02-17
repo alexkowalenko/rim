@@ -2,7 +2,7 @@
 
          USE RM_Globals, only : USERID, KRMINF, KRMRNF, KMSSVL,
      +   KMSSVT, KNAPVL, KNAPVT, RMSTAT
-         USE Extern, only : AMSG, MSG
+         USE Extern, only : AMSG, MSG, MSGREC, MSGPTR
          USE Formater, only : TYPER, FMTDEC
          USE RM_Text, only : BLANK, ABLANK, ASCAN, STRMOV, NONE, SQUOTE
          USE DateTime, only : ASCDAT, KRMDTF
@@ -26,7 +26,6 @@ C
          INCLUDE 'buffer.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
-         INCLUDE 'msgcom.inc'
          INCLUDE 'dclar1.inc'
          INCLUDE 'dclar3.inc'
 C

@@ -1,7 +1,7 @@
       SUBROUTINE UNDEF(ALL,IRCNTR,IDAY,MODE,LHASH,ATREL)
 
          USE RM_Globals, only : DBNAME, USERID
-         USE Extern, only: IMSG, AMSG, MSG
+         USE Extern, only: IMSG, AMSG, MSG, MSGPTR
          USE Formater, only : TYPER, FMTDEC
          USE RM_Text, only : BLANK
          USE Rim, only: RMTYPT
@@ -25,7 +25,6 @@ C
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplel.inc'
-         INCLUDE 'msgcom.inc'
          INCLUDE 'dclar1.inc'
          INCLUDE 'dclar3.inc'
          LOGICAL EQ, NE

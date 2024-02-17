@@ -107,8 +107,6 @@ contains
       INTEGER, intent(in) :: PTXT(*)
       INTEGER :: a, i, l
 
-      INCLUDE 'msgcom.inc'
-
       character*(zc) p
 
       IF(nint.EQ.znint) then
@@ -177,7 +175,6 @@ contains
       ! RECALL AND EDIT AN INPUT LINE OR COMMAND
       !
       INCLUDE 'prom.inc'
-      INCLUDE 'msgcom.inc'
       !
       INTEGER :: EDTREC(ZCARDW)
       INTEGER :: CPYREC(ZCARDW)
@@ -301,7 +298,6 @@ contains
       !!     EOF-----END-OF-FILE FLAG (0=NO, 1=YES)
 
       INCLUDE 'prom.inc'
-      INCLUDE 'msgcom.inc'
 
       INTEGER :: CH, I
 
@@ -748,7 +744,6 @@ contains
       INTEGER, intent(in) :: NUM, NUMC
       CHARACTER(len=1), intent(in) :: MCONT
       !
-      INCLUDE 'msgcom.inc'
       INTEGER, PARAMETER :: MAXL=24,MAXW=24/ZCW
       INTEGER :: NSTR(MAXW)
       INTEGER :: L, ERR
@@ -780,7 +775,6 @@ contains
       INTEGER, intent(in) :: JDAT, DFMT, TYP
       CHARACTER(len=1) :: MCONT
       !
-      INCLUDE 'msgcom.inc'
       INCLUDE 'rmatts.inc'
       !
       INTEGER, PARAMETER :: DATW=12/ZCW
@@ -813,7 +807,6 @@ contains
       INTEGER, intent(in) :: NUMC
       CHARACTER(len=1), intent(in) :: MCONT
       !
-      INCLUDE 'msgcom.inc'
       LOGICAL :: DTB
       INTEGER :: L, A, I, IERR, LNB
       !
@@ -888,7 +881,6 @@ contains
       CHARACTER(len=1), intent(in) :: MCONT
       !
       INCLUDE 'rmatts.inc'
-      INCLUDE 'msgcom.inc'
       !
       CHARACTER(len=1) :: CTYPE, MTYPE1
       INTEGER :: L, TDAY, TTIM
@@ -970,7 +962,6 @@ contains
       CHARACTER(len=*) :: MTEXT
       CHARACTER(len=*) :: CTYPE
       !
-      INCLUDE 'msgcom.inc'
       !
       LOGICAL :: UCASE, FCHAR
       INTEGER :: I, L
