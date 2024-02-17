@@ -163,7 +163,7 @@ contains
    END SUBROUTINE PRMSET
 
 
-   MODULE SUBROUTINE LXEDIT
+   SUBROUTINE LXEDIT
       USE RM_Parameters
       USE RM_Globals, only : NINT
       USE Cards, only : CRDREC, CRDEND, CRDRLB, CRDRLL, CRDIDX
@@ -289,7 +289,6 @@ contains
       USE RM_Parameters
       USE Cards, only: CRDREC, CRDPTR, CRDEND, CRDRLB, CRDRLL, CRDIDX
       USE RM_Globals, only : TRACE, CONNI, NOUTT, NINT
-      USE Extern, only : PROMPT
       USE RM_Text, only : UPCASE, BLANK
       USE TextFiles, only : TIOIN
       USE Lexer, only : ASRCLL
@@ -479,7 +478,6 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : NINT
       USE Cards, only : CRDREC, CRDEND
-      USE Extern, only : SETIN, IMSG
       USE Formater, only : TYPER
       USE Lexer, only: KXTEXT, KXINT, KXREAL, IDT, ASCREC, IDP, IDL
       USE Lexer, only: KWS, ITEMS, IDI, IDR
@@ -872,7 +870,6 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : PGFLAG, CONNI, NOUT, NOUTR, NOUTT, NOUTL
       USE RM_Globals, only : ECHO, INLINE
-      USE Extern, only: IMSG, AMSG, DMSG, MSGCMV
       USE DateTime, only: RMTIME, RMDATE
       USE RM_Text, only : BLANK
 

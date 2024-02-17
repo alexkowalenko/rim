@@ -8,7 +8,7 @@ contains
    END SUBROUTINE SETIN
 
 
-   SUBROUTINE SETOUT(UN,UNF,FILE,STAT)
+   MODULE SUBROUTINE SETOUT(UN,UNF,FILE,STAT)
       INTEGER, intent(inout) :: UN
       INTEGER, intent(in) :: UNF
       CHARACTER(len=*), intent(in) :: FILE
@@ -21,7 +21,7 @@ contains
    END
 
 
-   SUBROUTINE PRMSET(MODE,PR)
+   MODULE SUBROUTINE PRMSET(MODE,PR)
       CHARACTER(len=*), intent(in) :: MODE,PR
    END SUBROUTINE PRMSET
 

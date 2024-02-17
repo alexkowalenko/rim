@@ -74,7 +74,6 @@ contains
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
       USE Message, only : WARN
       USE Parser, only: LODREC, LODELE, LODREL, LODLNK, LODPAS
-      USE Rim, only: DBOPEN
       USE System, only: SYSDBG
       USE RM_Text, only : NONE
       USE Utils, only : ZMOVE
@@ -823,7 +822,7 @@ contains
       INTEGER :: I, II, IFLAG, ILEN, ITYPE, NUM, STATUS, STOK
 
       LOGICAL NE,EQ
-      INTEGER LOCREL, LOCATT, LOCREL, LOCPRM, LOCLNK
+      INTEGER LOCREL, LOCATT, LOCPRM, LOCLNK
       !
       !
       ! CHECK FOR A DATABASE
@@ -2219,7 +2218,6 @@ contains
       USE Formater, only: FMTDEC
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
       USE Message, only : WARN
-      USE Rim, only: RMTYPT
       USE RM_Text, only : BLANK, NONE
       USE Utils, only : ZMOVE
 
@@ -2772,7 +2770,7 @@ contains
    END SUBROUTINE RMHELP
 
 
-   SUBROUTINE RIMCMD
+   MODULE SUBROUTINE RIMCMD
       !!
       !! RIM COMMAND DISPATCHER
       !!
