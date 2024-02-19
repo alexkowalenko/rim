@@ -1,6 +1,7 @@
       SUBROUTINE BLKCLR(IND)
 
          USE RM_Globals, only : TRACE
+         USE RM_BufferData, only: BUFFER
          USE Extern, only: IMSG, MSG
          USE Utils, only : ZEROIT
 
@@ -12,7 +13,6 @@ C     IND-----BLOCK INDEX
 
 
          INCLUDE 'incore.inc'
-         INCLUDE 'buffer.inc'
 C
 C     TRACING
          IF (TRACE.GE.11) THEN

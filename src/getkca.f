@@ -1,6 +1,7 @@
       LOGICAL FUNCTION GETKCA(PTABLE,NATT,RNAME,REQKCA)
 
          USE RM_Globals, only : RMSTAT
+         USE RM_BufferData, only: BUFFER
          USE Extern, only: IMSG, AMSG, MSG
          USE Lexer, only : KXKEYW, KXNAME, IDT, ASCREC, IDP, IDL, KWS
          USE Lexer, only : ITEMS
@@ -23,9 +24,9 @@ C
 C       GETKCA RETURNS TRUE IF A KEYED COMMON ATTRIBUTE WAS FOUND
 C
          LOGICAL REQKCA
+         INTEGER BLKLOC
 C
          INCLUDE 'tuplea.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'dclar1.inc'
          INCLUDE 'ptbl.inc'
 C

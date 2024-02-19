@@ -22,7 +22,6 @@ C         NTUP----SCRATCH ARRAY FOR A TUPLE
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'start.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'

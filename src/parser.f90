@@ -291,6 +291,7 @@ contains
       !!     NUMELE--NUMBER OF NEWLY DEFINED ATTRIBUTES
       !!
       USE RM_Parameters
+      USE RM_BufferData, only: BUFFER
       USE Extern, only: MSG
       USE Formater, only : TYPER, LXFMT
       USE Lexer, only : KXINT, KXNAME, TOKTYP, ITEMS, EQKEYW, IDI
@@ -301,7 +302,6 @@ contains
       INTEGER, intent(in out) :: NUMELE
 
       INCLUDE 'rmatts.inc'
-      INCLUDE 'buffer.inc'
       !
       ! TEMPORARY ATTRIBUTE STORAGE
       INCLUDE 'tmpa.inc'
@@ -309,6 +309,7 @@ contains
       INCLUDE 'dclar1.inc'
 
       INTEGER :: COLUMN, FMT, FMTLEN, FMTPOS, KEY, KEYPOS, KQ1, LENGTH, LTEMS, NWORDS, ROWS, STYP, IATTV, VTYP
+      INTEGER BLKLOC
 
       !
       !  READ AN ELEMENT RECORD.
@@ -485,6 +486,7 @@ contains
       !! LOAD THE RELATION DESCRIPTION
       !!
       USE RM_Parameters
+      USE RM_BufferData, only: BUFFER
       USE Extern, only: MSG
       Use Lexer, only: KXNAME, TOKTYP, ITEMS, LXSREC
       USE Message, only : WARN
@@ -492,13 +494,12 @@ contains
       INTEGER, intent(in) :: NUMELE
 
       INCLUDE 'rmatts.inc'
-      INCLUDE 'buffer.inc'
       !
       INCLUDE 'dclar1.inc'
 
       INTEGER :: ERROR, I, JUNK
 
-      INTEGER LOCREL
+      INTEGER LOCREL, BLKLOC
       !
       !  READ RELATION DATA.
       !
@@ -553,7 +554,6 @@ contains
       USE Utils, only : ZMOVE
 
       INCLUDE 'rmatts.inc'
-      INCLUDE 'buffer.inc'
 
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tuplel.inc'

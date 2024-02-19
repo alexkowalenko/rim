@@ -1,6 +1,7 @@
       LOGICAL FUNCTION VARADD()
 
          USE Extern, only: MSG
+         USE RM_BufferData, only: BUFFER
          USE RM_Text, only : FILCH, ABLANK
          USE Utils, only : ZMOVE, HTOI
 
@@ -10,7 +11,6 @@ C     ADD A VARIABLE TO THE VAR LIST
 C
 C
          INCLUDE 'incore.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'pgmcom.inc'
 C

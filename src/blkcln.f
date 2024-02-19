@@ -1,6 +1,7 @@
       SUBROUTINE BLKCLN
 
          USE Files, only : FILE2, LENBF2, CURBLK, MODFLG
+         USE RM_BufferData, only: BUFFER
          USE RM_Globals, only : RMSTAT
          USE RandomFiles, only : RIOOUT
 
@@ -11,7 +12,7 @@ C
 C  RM_Parameters -- NONE
 C
          INCLUDE 'incore.inc'
-         INCLUDE 'buffer.inc'
+         INTEGER BLKLOC
 C
 C  WRITE OUT ANY PAGES THAT HAVE BEEN MODIFIED
 C

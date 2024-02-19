@@ -1,6 +1,7 @@
       LOGICAL FUNCTION WHEVAL(ITUP)
 
          USE RM_Globals, only : TOL
+         USE RM_BufferData, only: BUFFER
          USE RM_Text, only: LKSTR
          USE Utils, only : ITOH
 
@@ -16,7 +17,6 @@ C
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'start.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'pgmcom.inc'
 C
          LOGICAL OK,BTEST

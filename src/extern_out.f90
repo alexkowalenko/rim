@@ -498,7 +498,6 @@ contains
       !        6) ITEM POSITION (LOADFM CALCULATES THIS)
       !     NFOR----NUMBER OF ITEMS IN FOR
       !
-      INCLUDE 'buffer.inc'
       INCLUDE 'start.inc'
       INCLUDE 'rimptr.inc'
       INCLUDE 'rmatts.inc'

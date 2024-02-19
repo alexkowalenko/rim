@@ -1,5 +1,6 @@
       SUBROUTINE BLKUP
 
+         USE RM_BufferData, only: BUFFER
          USE Files, only: CURBLK, MODFLG
          USE RM_Globals, only : RMSTAT
          USE Utils, only: ZEROIT
@@ -9,7 +10,6 @@ C
 C  MAKE A NEW BLOCK SET.
 C
 C
-         INCLUDE 'buffer.inc'
          INCLUDE 'incore.inc'
 C  ASSUME WE ARE GOING TO RUN OUT OF SPACE.
          ISTAT = RMSTAT

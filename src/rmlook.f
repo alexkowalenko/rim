@@ -1,6 +1,7 @@
       SUBROUTINE RMLOOK(MAT,INDEX,IFLAG,LENGTH)
 
          USE RM_Globals, only : TRACE, HXFLAG, RMSTAT
+         USE RM_BufferData, only: BUFFER
          USE RM_Buffer, only: GETDAT
          USE Extern, only: IMSG, MSG
          USE Utils, only : ITOH
@@ -21,7 +22,6 @@ C         LENGTH--LENGTH OF TUPLE IN WORDS
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'start.inc'
-         INCLUDE 'buffer.inc'
 C
          DIMENSION MAT(1)
          LOGICAL EQTEST, WHEVAL

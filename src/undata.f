@@ -2,6 +2,7 @@
 
          USE RM_Globals, only : USERID, KRMINF, KRMRNF, KMSSVL,
      +   KMSSVT, KNAPVL, KNAPVT, RMSTAT
+         USE RM_BufferData, only: BUFFER, IREL
          USE RM_Buffer, only: GETDAT
          USE Extern, only : AMSG, MSG, MSGREC, MSGPTR
          USE Formater, only : TYPER, FMTDEC
@@ -24,14 +25,12 @@ C
          CHARACTER*(*) MODE
 C
          INCLUDE 'rmatts.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'dclar1.inc'
          INCLUDE 'dclar3.inc'
 C
-         INTEGER IREL(Z,1),ATDATA(250,7),STAT
-         EQUIVALENCE (BUFFER(1),IREL(1,1))
+         INTEGER ATDATA(250,7),STAT
          LOGICAL ALL,PERM,LHASH
          LOGICAL NE
          INTEGER LINE(ZCARDW)

@@ -149,9 +149,7 @@ contains
       !! RUN-TIME INITIALIZATION (CALLED WHEN DATABASE IS OPENED)
       !!
       USE RM_Parameters
-      USE Files, only: FILE1, LENBF1, LF1REC, CAREC, CRREC, CLREC
-      USE Files, only: FILE2, LENBF2, CURBLK, MODFLG, FILE3, LENBF3
-      USE Files, only: MAXIC
+      USE Files, only: Files_Initialise => Initialise
       USE RM_Text, only : BLANK
       USE Utils, only : ZEROIT, ZMOVE
 
@@ -200,23 +198,9 @@ contains
       NUMBL = 0
 
       !  /F1COM/
-      FILE1 = ZNFIL1
-      LENBF1 = ZF1
-      LF1REC = 0
-      CAREC = 0
-      CRREC = 0
-      CLREC = 0
-
       !  /F2COM/
-      FILE2 = ZNFIL2
-      LENBF2 = ZF2
-      CURBLK = [0, 0, 0]
-      MODFLG = [0, 0, 0]
-
       !  /F3COM/
-      FILE3 = ZNFIL3
-      LENBF3 = ZF3
-      MAXIC = ZICBL
+      CALL Files_Initialise
 
       !  /RIMPTR/
       IVAL = 0
@@ -373,6 +357,7 @@ contains
       !! :  LOAD REL_NAME <FROM FILE_NAME> <USING FILENAME>
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG, PIFLAG
+      USE RM_BufferData, only: BUFFER
       USE Extern, only : SETIN, PRMSET, LOADIT, LOADFM, AMSG, MSG
       USE Formater, only : TYPER, LXFMT
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, EQKEYW, IDI, LXSREC
@@ -383,7 +368,6 @@ contains
 
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tupler.inc'
-      INCLUDE 'buffer.inc'
       INCLUDE 'prom.inc'
       INCLUDE 'dclar1.inc'
       CHARACTER*(ZFNAML) FN, DFN
@@ -396,7 +380,7 @@ contains
       INTEGER :: SC, JI, JU, I, ISTAT, L, FOR, FPTR, STATUS, SVM, TYP, FMT, FMTLEN, NFOR, KQ1, KQ2
       INTEGER :: QPTRS(2,QKEYL)
 
-      INTEGER PARSE, LOCREL, LOCPRM, LOCATT
+      INTEGER PARSE, LOCREL, LOCPRM, LOCATT, BLKLOC
       !
       !
       ! CHECK FOR A DATABASE
@@ -604,6 +588,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, RMSTAT
+      USE RM_BufferData, only: BUFFER
       USE RM_Buffer, only: GETDAT
       USE Extern, only: AMSG, MSG
       USE Formater, only : TYPER
@@ -614,7 +599,6 @@ contains
       INCLUDE 'rimptr.inc'
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tupler.inc'
-      INCLUDE 'buffer.inc'
       INCLUDE 'start.inc'
       INCLUDE 'whcom.inc.f90'
       INCLUDE 'srtcom.inc'
@@ -765,6 +749,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG
+      USE RM_BufferData, only: BUFFER
       USE Lexer, only : LXSREC
       USE Message, only : WARN
       USE DateTime, only : RMDATE
@@ -776,7 +761,6 @@ contains
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tupler.inc'
       INCLUDE 'srtcom.inc'
-      INCLUDE 'buffer.inc'
       !
       LOGICAL :: SELREL, SELATT, SELWHR
       INCLUDE 'dclar1.inc'
@@ -789,7 +773,7 @@ contains
       INTEGER :: QPTRS(2,QKEYL)
       INTEGER I, IFLAG, ISTAT, J, JT, JW, KQ1, KQ11, KQ12, SC, STATUS
 
-      INTEGER PARSE, LOCPRM, LOCATT
+      INTEGER PARSE, LOCPRM, LOCATT, BLKLOC
       !
       ! ---------------------------------------------
       !
@@ -943,6 +927,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG, DBNAME, RMSTAT
+      USE RM_BufferData, only: BUFFER
       Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
       USE Message, only : WARN
       USE RM_Text, only : BLANK
@@ -950,7 +935,6 @@ contains
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tupler.inc'
       INCLUDE 'attble.inc'
-      INCLUDE 'buffer.inc'
       LOGICAL :: NE
       LOGICAL :: EQ
       LOGICAL :: SELWHR
@@ -960,7 +944,7 @@ contains
 
       INTEGER :: I, KQ1, L
 
-      INTEGER LOCREL, LOCPRM
+      INTEGER LOCREL, LOCPRM, BLKLOC
 
       !
       !
@@ -1420,19 +1404,19 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, USERID, OWNER
+      USE RM_BufferData, only: BUFFER
       USE Extern, only : AMSG, MSG
       USE Lexer, only: ITEMS, LXSREC
       USE Message, only: WARN
       USE RM_Text, only : BLANK, NONE
 
       INCLUDE 'tupler.inc'
-      INCLUDE 'buffer.inc'
       !
       INTEGER :: NUMBER, B, I, L, K, ISTAT
       LOGICAL :: FLAG
 
       LOGICAL EQ
-      INTEGER LOCREL, LOCATT
+      INTEGER LOCREL, LOCATT, BLKLOC
 
       !
       !

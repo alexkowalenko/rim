@@ -1,6 +1,7 @@
       SUBROUTINE UNPASS(ALL,IRCNTR,IDAY,MODE,LHASH,ATREL)
 
          USE RM_Globals, only : DBNAME, USERID
+         USE RM_BufferData, only: IREL
          USE Extern, only : AMSG, MSG
          USE RM_Text, only : BLANK, NONE
          USE Utils, only : ZMOVE
@@ -16,7 +17,6 @@ C          IDAY-----------DAY CODE FOR HASH.
 C          MODE -----------COMMAND SPECIFIED.
 C
          INCLUDE 'rmatts.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplel.inc'
@@ -27,8 +27,7 @@ C
 C
 C
          CHARACTER*(*) MODE
-         INTEGER IREL(Z,1),ATREL(Z,1)
-         EQUIVALENCE (BUFFER(1),IREL(1,1))
+         INTEGER ATREL(Z,1)
          INTEGER FMTSTR(3)
 C
 C

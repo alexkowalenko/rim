@@ -1,6 +1,7 @@
       SUBROUTINE BLKCHG(IND,NROWS,NCOLS)
 
          USE RM_Globals, only : TRACE, RMSTAT
+         USE RM_BufferData, only: BUFFER
          USE Extern, only: IMSG, MSG
          USE Utils, only : ZEROIT
 
@@ -13,7 +14,6 @@ C     INPUT:   IND-----BLOCK INDEX
 C              NROWS---NUMBER OF ROWS
 C              NCOLS---NUMBER OF COLUMNS
          INCLUDE 'incore.inc'
-         INCLUDE 'buffer.inc'
 C
 C     TRACING
          IF (TRACE.GE.9) THEN

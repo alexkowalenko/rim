@@ -1,5 +1,8 @@
       SUBROUTINE RMXGET(INDPTR,TUPLE)
+
          USE RM_Globals, only : RMSTAT
+         USE RM_BufferData, only: BUFFER
+
          INCLUDE 'syspar.inc'
 C
 C  THIS ROUTINE GETS THE NEXT ROW FROM A RELATION AND STORES
@@ -11,7 +14,6 @@ C         TUPLE---USER ARRAY TO HOLD ONE COMPLETE TUPLE
 
          INCLUDE 'vardat.inc'
          INCLUDE 'rimptr.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'picom.inc'
 C

@@ -1,5 +1,8 @@
       LOGICAL FUNCTION PGSTOR(PGM,LPGM)
+
          USE RM_Globals, only : RMSTAT
+         USE RM_BufferData, only: BUFFER
+
          INCLUDE 'syspar.inc'
 C
 C     STORE PART OF A PROGRAM
@@ -9,7 +12,6 @@ C              LPGM----LENGTH OF PGM
 C              IF LPGM<0 THEN ALLOCATE ENSURE SPACE ONLY
 C
          INCLUDE 'incore.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'pgmcom.inc'
 C
          PGSTOR = .FALSE.

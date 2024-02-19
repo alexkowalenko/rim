@@ -1,6 +1,7 @@
       SUBROUTINE RMXPUT(INDPTR,TUPLE)
 
          USE RM_Globals, only:  DBDATE, RMSTAT
+         USE RM_BufferData, only: BUFFER
          USE RM_Buffer, only: ADDDAT, DELDAT, PUTDAT
          USE RM_Text, only : BLANK
 
@@ -19,9 +20,10 @@ C
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'start.inc'
          INCLUDE 'picom.inc'
+
+         INTEGER BLKLOC
 C
          INTEGER TUPLE(1)
          RMSTAT = 0

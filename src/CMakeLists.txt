@@ -32,6 +32,7 @@ add_library(rimcommon STATIC
     swvacp.f swvlfs.f swvllo.f 
     union.f varadd.f 
     whetol.f wheval.f whrnam.f
+    buffer_data.f90
     buffer.f90
     cards.f90
     datetime.f90

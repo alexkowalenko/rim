@@ -1,6 +1,7 @@
       LOGICAL FUNCTION SGTLNK(I,MP,LP)
 
          USE RM_Globals, only : RMSTAT
+         USE RM_BufferData, only: BUFFER
          USE Extern, only: MSG
          USE Utils, only : ZMOVE
 
@@ -14,7 +15,6 @@ C     LP = POINTER TO LINKED TUPLE IN BUFFER
 C     RETURNS TRUE IF LINKED TUPLE FOUND
 C
          INCLUDE 'rmatts.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tuplel.inc'

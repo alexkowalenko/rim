@@ -1,5 +1,6 @@
       SUBROUTINE GTSORT(MAT,INDEX,IFLAG,LENGTH)
 
+         USE RM_BufferData, only: BUFFER
          USE RM_Globals, only : MRINDX, RMSTAT
 
          INCLUDE 'syspar.inc'
@@ -18,10 +19,10 @@ C            LENGTH--LENGTH OF TUPLE IN WORDS
 C
          INCLUDE 'srtcom.inc'
          INCLUDE 'whcom.inc'
-         INCLUDE 'buffer.inc'
 C
          INCLUDE 'rimptr.inc'
          DIMENSION MAT(1)
+         INTEGER BLKLOC
 C
 C     USE BLOCKS 8-10 (FOR INDICES 1-3)
 C     SEE PGEXEC FOR OTHER BLOCK USAGE

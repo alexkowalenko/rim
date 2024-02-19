@@ -1,6 +1,7 @@
       SUBROUTINE SORT(NKSORT)
 
          USE RM_Globals, only : PGFLAG, MRINDX, RMSTAT
+         USE RM_BufferData, only: BUFFER
          USE RM_Buffer, only: GETDAT
          USE Extern, only: IMSG, MSG
          USE RM_Text, only : BLANK
@@ -23,7 +24,6 @@ C
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'srtcom.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'incore.inc'

@@ -4,6 +4,7 @@
 
          USE RM_Globals, only : MRINDX, HXFLAG, RMSTAT, FFFLAG, NOUTR
          USE RM_Globals, only : ULPP, UPRINL
+         USE RM_BufferData, only: BUFFER
          USE Extern, only: IMSG, AMSG, MSG, MSUNIT
          USE Formater, only : TYPER
          USE Maths, only : RTOD
@@ -15,7 +16,6 @@ C
 C     REPORT SELECTED DATA
 C
          INCLUDE 'rmatts.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tuplel.inc'

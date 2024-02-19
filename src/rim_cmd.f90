@@ -222,6 +222,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DBNAME, USERID, OWNER, RMSTAT, NOUTR, ULPP
+      USE RM_BufferData, only: BUFFER, IREL
       USE DateTime, only: RMTIME, RMDATE
       USE Extern, only: SETOUT, DMSG, AMSG, MSG
       USE Lexer, only : ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW, LFIND
@@ -231,18 +232,15 @@ contains
       USE Utils, only : ZMOVE
 
       INCLUDE 'rmatts.inc'
-      INCLUDE 'buffer.inc'
       INCLUDE 'tupler.inc'
       INCLUDE 'dclar1.inc'
 
-      INTEGER :: IREL(Z,1)
       CHARACTER(len=3) :: MODE
       CHARACTER(len=ZFNAML) :: FN
-      EQUIVALENCE (BUFFER(1),IREL(1,1))
       INTEGER :: NWORDS, TP, NN, SAVLPP, NOGO, ICNTR, IPERM, PTR, I, STAT, J, IERR, IN, ISTAT, KK, KQ2, NUM
       LOGICAL :: ALL,PERM,LHASH
 
-      INTEGER LOCREL
+      INTEGER LOCREL, BLKLOC
       LOGICAL EQ, NE
       DATA NWORDS /2500/
 
@@ -452,6 +450,7 @@ contains
       !
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, RMSTAT
+      USE RM_BufferData, only: BUFFER
       USE RM_Buffer, only: DELDAT
       USE Extern, only: IMSG, MSG
       USE Lexer, only : ITEMS, LFIND, LXSREC
@@ -462,7 +461,6 @@ contains
       INCLUDE 'rimptr.inc'
       INCLUDE 'tupler.inc'
       INCLUDE 'tuplea.inc.f90'
-      INCLUDE 'buffer.inc'
       INCLUDE 'srtcom.inc'
       INCLUDE 'whcom.inc.f90'
       INCLUDE 'rmatts.inc'
@@ -471,7 +469,7 @@ contains
       INTEGER :: COLUMN, I, II, IID, IP, ISTAT, J, JP1, JP2, KQ1, L, LENGTH, ND, NJ, NKSORT, NSORTW, NUMKEY, NW
       INCLUDE 'dclar1.inc'
       LOGICAL :: SELREL
-      INTEGER :: LOCATT
+      INTEGER :: LOCATT, BLKLOC
 
       !
       ! CHECK FOR A DATABASE
@@ -1216,6 +1214,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG
+      USE RM_BufferData, only: BUFFER
       USE Extern, only: IMSG, AMSG, MSG
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, KWS, ITEMS, EQKEYW, LXSREC
       USE DateTime, only : RMDATE
@@ -1226,7 +1225,6 @@ contains
       INCLUDE 'rmatts.inc'
       INCLUDE 'tupler.inc'
       INCLUDE 'tuplea.inc.f90'
-      INCLUDE 'buffer.inc'
       INCLUDE 'whcom.inc.f90'
       !
       INTEGER :: PTABLE
@@ -1249,7 +1247,7 @@ contains
       INTEGER :: I, I1, I2, ICT, ISTAT, J, K, KATT3, KEYCOL, KEYLEN, KEYTYP, KQ1, KQ3, NATT1, NATT2, NATT3
       INTEGER :: NCOL1, NCOL2, NCOL3, NK, NWORDS
 
-      INTEGER LOCBOO, LOCREL, LOCPRM, LOCATT
+      INTEGER LOCBOO, LOCREL, LOCPRM, LOCATT, BLKLOC
 
       !
       ! CHECK FOR A DATABASE
@@ -1557,6 +1555,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG, RMSTAT
+      USE RM_BufferData, only: BUFFER
       USE RM_Buffer, only: ADDDAT
       USE DateTime, only : RMDATE
       USE Extern, only: IMSG, MSG
@@ -1570,7 +1569,6 @@ contains
       INCLUDE 'whcom.inc.f90'
       INCLUDE 'tupler.inc'
       INCLUDE 'tuplea.inc.f90'
-      INCLUDE 'buffer.inc'
       !
       !
       INTEGER :: STATUS
@@ -1583,7 +1581,7 @@ contains
       INTEGER :: LPAG, MEND, MSTART, NOATTS, NOCOLS, UC, UE
       LOGICAL :: XTMP
 
-      INTEGER LOCREL, LOCPRM, LOCATT, SELWHR
+      INTEGER LOCREL, LOCPRM, LOCATT, SELWHR, BLKLOC
       !
       !
       ! CHECK FOR A DATABASE
@@ -1788,6 +1786,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG
+      USE RM_BufferData, only: BUFFER
       USE DateTime, only : RMDATE
       USE Extern, only: MSG
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW, LXSREC
@@ -1804,7 +1803,6 @@ contains
       INCLUDE 'rimptr.inc'
       INCLUDE 'tupler.inc'
       INCLUDE 'tuplea.inc.f90'
-      INCLUDE 'buffer.inc'
       INCLUDE 'whcom.inc.f90'
       !
       INCLUDE 'ptbl.inc'
@@ -1818,7 +1816,7 @@ contains
       LOGICAL :: EQ
       LOGICAL :: NE
       LOGICAL :: GETKCA, REQKCA
-      INTEGER LOCREL, LOCPRM, LOCATT
+      INTEGER LOCREL, LOCPRM, LOCATT, BLKLOC
 
       !
       !
@@ -2651,6 +2649,7 @@ contains
       USE, intrinsic :: iso_fortran_env
 
       USE RM_Globals, only: LIBFLG, TOL, HXFLAG, PCENT, RUCK, DBFNAM, KZHPSK, KZHPRL, KZHPKY, DFLAG, RMSTAT
+      USE RM_BufferData, only: BUFFER
       USE Extern, only: IMSG, AMSG, MSG
       USE Files, only: RMCLOS
       USE Lexer, only: KWS, ITEMS
@@ -2662,7 +2661,6 @@ contains
 
       INCLUDE 'rmatts.inc'
       INCLUDE 'tupler.inc'
-      INCLUDE 'buffer.inc'
       INCLUDE 'whcom.inc.f90'
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'rimptr.inc'

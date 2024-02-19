@@ -1,6 +1,7 @@
       SUBROUTINE PGCOMP
 
          USE RM_Globals, only: PGVARS, INLINE, PGFLAG, RMSTAT
+         USE RM_BufferData, only: BUFFER
          USE DateTime, only: RMTIME, RMDATE
          USE Extern, only: IMSG, AMSG, MSG
          USE Lexer, only: KXINT, TOKTYP, KWS, ITEMS, EQKEYW, IDI, LXSREC
@@ -19,7 +20,6 @@ C
          INCLUDE 'selcom.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimptr.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
@@ -32,6 +32,7 @@ C
          LOGICAL PGSTOR, PGBSTO
          LOGICAL SELREL, SELWHR, SELSRT
          LOGICAL VARADD, PGCEXP, PGCPRT
+         INTEGER BLKLOC
          INTEGER OP(ZPGLVL), RELSAV(Z,ZPGLVL)
          INTEGER VARNAM(Z)
 C

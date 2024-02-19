@@ -2,6 +2,7 @@
      XKEYCOL,KEYTYP)
 
          USE RM_Globals, only : RMSTAT
+         USE RM_BufferData, only: BUFFER
          USE RM_Buffer, only: ADDDAT, GETDAT
          USE Extern, only: IMSG, MSG
          USE Message, only : WARN
@@ -24,7 +25,6 @@ C         KEYTYP--ATTRIBUTE TYPE OF MATN1 USED FOR KEY VALUES
          INCLUDE 'rmatts.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'rimptr.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'dclar1.inc'
          DIMENSION MATN3(1)

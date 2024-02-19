@@ -20,6 +20,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : IFMOD, RMSTAT
+      USE RM_BufferData, only: BUFFER
       USE Files, only: FILE2, LENBF2, LF2REC, LF2WRD, CURBLK
       USE Files, only: MODFLG
       USE RandomFiles, only : RIOIN, RIOOUT
@@ -30,9 +31,8 @@ contains
       INTEGER, intent(out) :: ARRAY(1)
       INTEGER, intent(out) :: LENGTH
 
-      INCLUDE 'buffer.inc'
-      !
       INTEGER :: OFFSET, I, IOBN, IOS, ISIGN, KQ0, KQ1, NUMBLK
+      INTEGER BLKLOC
       !
       !  UNPAC THE ID WORD.
       !
@@ -160,9 +160,10 @@ contains
       !!  RM_Parameters:
       !!     INDEX---BLOCK REFERENCE NUMBER
       !!     ID------PACKED ID WORD WITH OFFSET,IOBN
-      
+
       USE RM_Parameters
       USE RM_Globals, only : IFMOD, RMSTAT
+      USE RM_BufferData, only: BUFFER
       USE Files, only : FILE2, LENBF2, CURBLK, MODFLG
       USE RandomFiles, only : RIOIN, RIOOUT
       USE Utils, only : HTOI, ITOH
@@ -170,9 +171,8 @@ contains
       INTEGER, intent(in) :: INDEX
       INTEGER, intent(in) :: ID
 
-      INCLUDE 'buffer.inc'
-
       INTEGER :: OFFSET, I, IOBN, IOS, KQ0, KQ1, NUMBLK
+      INTEGER BLKLOC
       !
       !  UNPAC THE ID WORD.
       !
@@ -240,6 +240,7 @@ contains
 
       USE RM_Parameters
       USE RM_Globals, only : TRACE, RMSTAT
+      USE RM_BufferData, only: BUFFER
       USE Extern, only: IMSG, MSG
       USE Files, only : FILE2, LENBF2, LF2REC, CURBLK, MODFLG
       USE RandomFiles, only: RIOIN, RIOOUT
@@ -250,11 +251,10 @@ contains
       INTEGER, intent(out) :: LOCTUP
       INTEGER, intent(out) :: LENGTH
 
-
-      INCLUDE 'buffer.inc'
       INCLUDE 'rimptr.inc'
       !
       INTEGER :: OFFSET, I, IOBN, IOS, KQ0, KQ1, KQ2, N1, N2, NUMBLK, ISOFF
+      INTEGER BLKLOC
       !
       !  UNPAC THE ID WORD.
       !
@@ -375,6 +375,7 @@ contains
 
       USE RM_Parameters
       USE RM_Globals, only : IFMOD, RMSTAT
+      USE RM_BufferData, only: BUFFER
       USE Files, only : FILE2, LENBF2, CURBLK, MODFLG
       USE RandomFiles, only: RIOIN, RIOOUT
       USE Utils, only : ITOH
@@ -384,9 +385,8 @@ contains
       INTEGER, intent(out) :: ARRAY(1)
       INTEGER, intent(out) :: LENGTH
 
-      INCLUDE 'buffer.inc'
-
       INTEGER :: OFFSET, I, IOBN, IOS, KQ0, KQ1, LEN, NUMBLK
+      INTEGER BLKLOC
       !
       !  UNPAC THE ID WORD.
       !

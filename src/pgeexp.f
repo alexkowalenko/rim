@@ -3,6 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE RM_Globals, only : RMSTAT
+         USE RM_BufferData, only: BUFFER
          USE Extern, only: MSG
          USE Maths, only : DTOR, RTOD
          USE RM_Text, only : BLANK, STRMOV, PLSIGN, MNSIGN, TMSIGN
@@ -20,7 +21,6 @@ C
          LOGICAL PGEEXP
 C
          INCLUDE 'rmatts.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'expcom.inc'
 C

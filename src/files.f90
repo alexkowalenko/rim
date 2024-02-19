@@ -49,13 +49,37 @@ MODULE Files
    ! FILE3 private common
    INTEGER :: LF3RCH, LF3MCH
 
+   public Initialise
    public F1OPN
    public F2OPN
    public F3OPN
    public REUSE
    public RMCLOS
 
+
 CONTAINS
+
+   SUBROUTINE Initialise
+      USE RM_Parameters, only : ZNFIL1, ZF1, ZNFIL2, ZF2, ZNFIL3, ZF3
+      !  /F1COM/
+      FILE1 = ZNFIL1
+      LENBF1 = ZF1
+      LF1REC = 0
+      CAREC = 0
+      CRREC = 0
+      CLREC = 0
+
+      !  /F2COM/
+      FILE2 = ZNFIL2
+      LENBF2 = ZF2
+      CURBLK = [0, 0, 0]
+      MODFLG = [0, 0, 0]
+
+      !  /F3COM/
+      FILE3 = ZNFIL3
+      LENBF3 = ZF3
+      MAXIC = ZICBL
+   END SUBROUTINE Initialise
 
    SUBROUTINE F1OPN(RIMDB1)
       !!
@@ -270,16 +294,16 @@ CONTAINS
 
       USE RM_Parameters
       USE RM_Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBHDR, RMSTAT
+      USE RM_BufferData, only: BUFFER
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
       USE Utils, only : ZEROIT, ZMOVE
 
 
       CHARACTER*(ZFNAML), intent(in) :: RIMDB2
 
-      INCLUDE 'buffer.inc'
-
       INTEGER :: IOS, KQ1, KQ0
       LOGICAL :: NE
+      INTEGER BLKLOC
 
       !
       !  OPEN UP THE PAGED DATA FILE.
@@ -346,16 +370,16 @@ CONTAINS
    SUBROUTINE F2CLO
       USE RM_Parameters
       USE RM_Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR, RMSTAT
+      USE RM_BufferData, only: BUFFER
       USE RandomFiles, only : RIOCLO, RIOIN, RIOOUT
       USE Utils, only : ZMOVE
 
       !
       !  PURPOSE:    CLOSE THE DATA RANDOM IO FILE - FILE 2
       !
-      INCLUDE 'buffer.inc'
-
 
       INTEGER :: REC1, NUMB, IOS, KQ1, KQ0
+      INTEGER BLKLOC
 
       !
       !  SEQUENCE THROUGH THE BUFFERS LOOKING FOR WRITE FLAGS.

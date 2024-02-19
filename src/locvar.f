@@ -1,5 +1,6 @@
       FUNCTION LOCVAR(ANAME)
 
+         USE RM_BufferData, only: BUFFER
          USE RM_Text, only : BLANK
          USE Utils, only : ZMOVE, ITOH
 
@@ -11,7 +12,6 @@ C         ANAME---NAME OF VARIABLE
 C         LOCVAR--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
 
          INCLUDE 'tuplea.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'pgmcom.inc'
          LOGICAL EQ
          LOGICAL NE

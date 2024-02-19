@@ -18,7 +18,6 @@ C
          INCLUDE 'selcom.inc'
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimptr.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'dclar1.inc'

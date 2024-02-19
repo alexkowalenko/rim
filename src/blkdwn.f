@@ -1,12 +1,12 @@
       SUBROUTINE BLKDWN
 
+         USE RM_BufferData, only: BUFFER
          USE Files, only : CURBLK, MODFLG
          USE Utils, only : ZEROIT
 C
 C  GO TO THE NEXT LOWER BLOCK SET.
 C
          INCLUDE 'syspar.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'incore.inc'
          CALL BLKCLN
          DO 107 II=10,20

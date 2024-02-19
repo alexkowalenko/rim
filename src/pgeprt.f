@@ -3,6 +3,7 @@
          USE, intrinsic :: iso_fortran_env
 
          USE RM_Globals, only : NOUTR, UPRINL
+         USE RM_BufferData, only: BUFFER
          USE Extern, only : AMSG, MSUNIT
          USE Formater, only : TYPER
          USE RM_Text, only : FILCH, ABLANK, STRMOV
@@ -14,7 +15,6 @@ C     PTR-- ADDRESS OF SELCOM SAVE BLOCK
 
          INCLUDE 'syspar.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'buffer.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tuplel.inc'
