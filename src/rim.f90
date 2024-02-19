@@ -604,6 +604,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, RMSTAT
+      USE RM_Buffer, only: GETDAT
       USE Extern, only: AMSG, MSG
       USE Formater, only : TYPER
       USE Lexer, only : KWS, ITEMS, LXSREC

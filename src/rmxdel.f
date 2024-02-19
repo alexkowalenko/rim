@@ -1,6 +1,7 @@
       SUBROUTINE RMXDEL(INDPTR)
 
          USE RM_Globals, only : RMSTAT
+         USE RM_Buffer, only: DELDAT
          USE RM_Text, only : BLANK
 
          INCLUDE 'syspar.inc'

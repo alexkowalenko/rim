@@ -364,6 +364,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only: HXFLAG
+      USE RM_Buffer, only: ADDDAT
       USE Lexer, only: ITEMS, EQKEYW
       USE Message, only : WARN
       USE Parser, only: LODREC
@@ -477,6 +478,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : NINT
+      USE RM_Buffer, only: ADDDAT
       USE Cards, only : CRDREC, CRDEND
       USE Formater, only : TYPER
       USE Lexer, only: KXTEXT, KXINT, KXREAL, IDT, ASCREC, IDP, IDL

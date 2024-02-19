@@ -1,9 +1,10 @@
       SUBROUTINE UNION(RNAME,RNAME3,MATN3,NCOL3,NATT3,PTABLE,
      X  KEYCOL,KEYTYP,UPASS)
 
-         USE Message, only: WARN
          USE RM_Globals, only : RMSTAT
+         USE RM_Buffer, only: ADDDAT, GETDAT
          USE Extern, only: IMSG, MSG
+         USE Message, only: WARN
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

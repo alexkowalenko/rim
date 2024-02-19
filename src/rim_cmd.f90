@@ -452,6 +452,7 @@ contains
       !
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, RMSTAT
+      USE RM_Buffer, only: DELDAT
       USE Extern, only: IMSG, MSG
       USE Lexer, only : ITEMS, LFIND, LXSREC
       USE Message, only : WARN
@@ -1556,6 +1557,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG, RMSTAT
+      USE RM_Buffer, only: ADDDAT
       USE DateTime, only : RMDATE
       USE Extern, only: IMSG, MSG
       Use Lexer, only: KXNAME, TOKTYP, IDP, ITEMS, EQKEYW, LFIND

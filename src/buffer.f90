@@ -1,0 +1,441 @@
+MODULE RM_Buffer
+   implicit none
+   private
+
+   PUBLIC ADDDAT
+   PUBLIC DELDAT
+   PUBLIC GETDAT
+   PUBLIC PUTDAT
+
+contains
+
+   SUBROUTINE ADDDAT(INDEX,ID,ARRAY,LENGTH)
+      !!
+      !! ADD A TUPLE TO THE DATA FILE
+      !!
+      !!    INDEX   = BLOCK REFERENCE NUMBER
+      !!    ID      = PACKED ID WORD WITH OFFSET,IOBN
+      !!    ARRAY   = ARRAY TO RECEIVE THE TUPLE
+      !!    LENGTH  = LENGTH OF THE TUPLE
+      !!
+      USE RM_Parameters
+      USE RM_Globals, only : IFMOD, RMSTAT
+      USE Files, only: FILE2, LENBF2, LF2REC, LF2WRD, CURBLK
+      USE Files, only: MODFLG
+      USE RandomFiles, only : RIOIN, RIOOUT
+      USE Utils, only : ZEROIT, HTOI, ITOH
+
+      INTEGER, intent(in) :: INDEX
+      INTEGER, intent(inout) :: ID
+      INTEGER, intent(out) :: ARRAY(1)
+      INTEGER, intent(out) :: LENGTH
+
+      INCLUDE 'buffer.inc'
+      !
+      INTEGER :: OFFSET, I, IOBN, IOS, ISIGN, KQ0, KQ1, NUMBLK
+      !
+      !  UNPAC THE ID WORD.
+      !
+      CALL ITOH(OFFSET,IOBN,ID)
+      !
+      !  CALCULATE THE NEW ID VALUE.
+      !
+      IF(LF2WRD + LENGTH + 1 .LE. LENBF2) GO TO 100
+      LF2REC = LF2REC + 1
+      LF2WRD = 1
+100   CONTINUE
+      CALL HTOI(LF2WRD,LF2REC,ID)
+      IF(IOBN.EQ.0) GO TO 500
+      !
+      !  SEE IF THE NEEDED BLOCK IS CURRENTLY IN CORE.
+      !
+      NUMBLK = 0
+      DO I=1,3
+         IF(IOBN.EQ.CURBLK(I)) NUMBLK = I
+      END DO
+      IF(NUMBLK.NE.0) GO TO 400
+      NUMBLK = INDEX
+      !
+      !  WE MUST DO PAGING.
+      !
+      !  SEE IF THE CURRENT BLOCK NEEDS WRITING.
+      !
+      IF(MODFLG(NUMBLK).EQ.0) GO TO 300
+      !
+      !  WRITE OUT THE CURRENT BLOCK.
+      !
+      KQ1 = BLKLOC(NUMBLK)
+      CALL RIOOUT(FILE2,CURBLK(NUMBLK),BUFFER(KQ1),LENBF2,IOS)
+      IF(IOS.NE.0) RMSTAT = 2200 + IOS
+300   CONTINUE
+      !
+      !  READ IN THE NEEDED BLOCK.
+      !
+      CALL BLKCHG(NUMBLK,LENBF2,1)
+      KQ1 = BLKLOC(NUMBLK)
+      CALL RIOIN(FILE2,IOBN,BUFFER(KQ1),LENBF2,IOS)
+      CURBLK(NUMBLK) = IOBN
+      IF(IOS.EQ.0) GO TO 400
+      !
+      !  WRITE OUT THE RECORD FOR THE FIRST TIME.
+      !
+      CALL ZEROIT(BUFFER(KQ1),LENBF2)
+      CALL RIOOUT(FILE2,0,BUFFER(KQ1),LENBF2,IOS)
+      IF(IOS.NE.0) RMSTAT = 2200 + IOS
+400   CONTINUE
+      MODFLG(NUMBLK) = 1
+      IFMOD = .TRUE.
+      !
+      !  FIX UP THE ID POINTER SO IT POINTS TO THE NEXT TUPLE.
+      !
+      KQ0 = BLKLOC(NUMBLK) - 1
+      ISIGN = 1
+      IF(BUFFER(KQ0 + OFFSET).LT.0) ISIGN = -1
+      BUFFER(KQ0 + OFFSET) = ISIGN * ID
+      MODFLG(NUMBLK) = 1
+      IFMOD = .TRUE.
+      !
+      !  NOW MOVE THE NEW TUPLE.
+      !
+500   CONTINUE
+      CALL ITOH(OFFSET,IOBN,ID)
+      !
+      !  SEE IF THE NEEDED BLOCK IS CURRENTLY IN CORE.
+      !
+      NUMBLK = 0
+      DO I=1,3
+         IF(IOBN.EQ.CURBLK(I)) NUMBLK = I
+      END DO
+      IF(NUMBLK.NE.0) GO TO 800
+      NUMBLK = INDEX
+      !
+      !  WE MUST DO PAGING.
+      !
+      !  SEE IF THE CURRENT BLOCK NEEDS WRITING.
+      !
+      IF(MODFLG(NUMBLK).EQ.0) GO TO 700
+      !
+      !  WRITE OUT THE CURRENT BLOCK.
+      !
+      KQ1 = BLKLOC(NUMBLK)
+      CALL RIOOUT(FILE2,CURBLK(NUMBLK),BUFFER(KQ1),LENBF2,IOS)
+      IF(IOS.NE.0) RMSTAT = 2200 + IOS
+700   CONTINUE
+      !
+      !  READ IN THE NEEDED BLOCK.
+      !
+      CALL BLKCHG(NUMBLK,LENBF2,1)
+      KQ1 = BLKLOC(NUMBLK)
+      CALL RIOIN(FILE2,IOBN,BUFFER(KQ1),LENBF2,IOS)
+      CURBLK(NUMBLK) = IOBN
+      IF(IOS.EQ.0) GO TO 800
+      !
+      !  WRITE OUT THE RECORD FOR THE FIRST TIME.
+      !
+      CALL ZEROIT(BUFFER(KQ1),LENBF2)
+      CALL RIOOUT(FILE2,0,BUFFER(KQ1),LENBF2,IOS)
+      IF(IOS.NE.0) RMSTAT = 2200 + IOS
+800   CONTINUE
+      MODFLG(NUMBLK) = 1
+      IFMOD = .TRUE.
+      !
+      !  MOVE THE TUPLE TO THE PAGE.
+      !
+      KQ0 = BLKLOC(NUMBLK) - 1
+      BUFFER(KQ0 + OFFSET) = 0
+      BUFFER(KQ0 + OFFSET + 1) = LENGTH
+      CALL BLKMOV(BUFFER(KQ0 + OFFSET + 2),ARRAY(1),LENGTH)
+      LF2WRD = LF2WRD + LENGTH + 2
+      !
+      !  ALL DONE.
+      !
+      RETURN
+   END SUBROUTINE ADDDAT
+
+
+   SUBROUTINE DELDAT(INDEX,ID)
+      !!
+      !!  PURPOSE:   DELINK A TUPLE FROM THE DATA FILE
+      !!
+      !!  RM_Parameters:
+      !!     INDEX---BLOCK REFERENCE NUMBER
+      !!     ID------PACKED ID WORD WITH OFFSET,IOBN
+      
+      USE RM_Parameters
+      USE RM_Globals, only : IFMOD, RMSTAT
+      USE Files, only : FILE2, LENBF2, CURBLK, MODFLG
+      USE RandomFiles, only : RIOIN, RIOOUT
+      USE Utils, only : HTOI, ITOH
+
+      INTEGER, intent(in) :: INDEX
+      INTEGER, intent(in) :: ID
+
+      INCLUDE 'buffer.inc'
+
+      INTEGER :: OFFSET, I, IOBN, IOS, KQ0, KQ1, NUMBLK
+      !
+      !  UNPAC THE ID WORD.
+      !
+      CALL ITOH(OFFSET,IOBN,ID)
+      !
+      !  SEE IF THE NEEDED BLOCK IS CURRENTLY IN CORE.
+      !
+      NUMBLK = 0
+      DO I=1,3
+         IF(IOBN.EQ.CURBLK(I)) NUMBLK = I
+      END DO
+      IF(NUMBLK.NE.0) GO TO 400
+      NUMBLK = INDEX
+      !
+      !  WE MUST DO PAGING.
+      !
+      !  SEE IF THE CURRENT BLOCK NEEDS WRITING.
+      !
+      IF(MODFLG(NUMBLK).EQ.0) GO TO 300
+      !
+      !  WRITE OUT THE CURRENT BLOCK.
+      !
+      KQ1 = BLKLOC(NUMBLK)
+      CALL RIOOUT(FILE2,CURBLK(NUMBLK),BUFFER(KQ1),LENBF2,IOS)
+      IF(IOS.NE.0) RMSTAT = 2200 + IOS
+300   CONTINUE
+      !
+      !  READ IN THE NEEDED BLOCK.
+      !
+      CALL BLKCHG(NUMBLK,LENBF2,1)
+      KQ1 = BLKLOC(NUMBLK)
+      CALL RIOIN(FILE2,IOBN,BUFFER(KQ1),LENBF2,IOS)
+      CURBLK(NUMBLK) = IOBN
+      IF(IOS.NE.0) RMSTAT = 2200 + IOS
+400   CONTINUE
+      MODFLG(NUMBLK) = 1
+      IFMOD = .TRUE.
+      !
+      !  CHANGE THE ID POINTER.
+      !
+      KQ0 = BLKLOC(NUMBLK) - 1
+      BUFFER(KQ0 + OFFSET) = -BUFFER(KQ0 + OFFSET)
+      IF(BUFFER(KQ0+OFFSET).EQ.100000)BUFFER(KQ0+OFFSET)=0
+      MODFLG(NUMBLK) = 1
+      IFMOD = .TRUE.
+      IF(BUFFER(KQ0 + OFFSET).NE.0) RETURN
+      !
+      !  SPECIAL STUFF FOR DELETING THE LAST TUPLE.
+      !
+      CALL HTOI(1,0,BUFFER(KQ0 + OFFSET))
+      BUFFER(KQ0 + OFFSET) = -BUFFER(KQ0 + OFFSET)
+      RETURN
+   END SUBROUTINE DELDAT
+
+
+   SUBROUTINE GETDAT(INDEX,ID,LOCTUP,LENGTH)
+      !!
+      !!  PURPOSE:  GET A TUPLE FROM THE DATA FILE
+      !!
+      !!  RM_Parameters:
+      !!     INDEX---BLOCK REFERENCE NUMBER
+      !!     ID------PACKED ID WORD WITH START,PRU
+      !!     LOCTUP--OFFSET IN BUFFER FOR THE TUPLE
+      !!     LENGTH---LENGTH OF THE TUPLE
+
+      USE RM_Parameters
+      USE RM_Globals, only : TRACE, RMSTAT
+      USE Extern, only: IMSG, MSG
+      USE Files, only : FILE2, LENBF2, LF2REC, CURBLK, MODFLG
+      USE RandomFiles, only: RIOIN, RIOOUT
+      USE Utils, only : ITOH
+
+      INTEGER, intent(in) :: INDEX
+      INTEGER, intent(inout) :: ID
+      INTEGER, intent(out) :: LOCTUP
+      INTEGER, intent(out) :: LENGTH
+
+
+      INCLUDE 'buffer.inc'
+      INCLUDE 'rimptr.inc'
+      !
+      INTEGER :: OFFSET, I, IOBN, IOS, KQ0, KQ1, KQ2, N1, N2, NUMBLK, ISOFF
+      !
+      !  UNPAC THE ID WORD.
+      !
+      CALL ITOH(OFFSET,IOBN,ID)
+100   CONTINUE
+      !
+      !  MAKE SURE WE HAVE A VALID ID.
+      !
+      IF(IOBN.GT.LF2REC) GO TO 600
+      IF(OFFSET.GT.LENBF2) GO TO 600
+      !
+      !  SEE IF THE NEEDED BLOCK IS CURRENTLY IN CORE.
+      !
+      NUMBLK = 0
+      DO I=1,3
+         IF(IOBN.EQ.CURBLK(I)) NUMBLK = I
+      END DO
+      IF((NUMBLK.NE.0).AND.(NUMBLK.LE.INDEX)) GO TO 400
+      !
+      !  WE MUST DO PAGING.
+      !
+      !  SEE IF THE CURRENT BLOCK NEEDS WRITING.
+      !
+      IF(MODFLG(INDEX).EQ.0) GO TO 300
+      !
+      !  WRITE OUT THE CURRENT BLOCK.
+      !
+      KQ1 = BLKLOC(INDEX)
+      CALL RIOOUT(FILE2,CURBLK(INDEX),BUFFER(KQ1),LENBF2,IOS)
+      IF(IOS.NE.0) RMSTAT = 2200 + IOS
+300   CONTINUE
+      !
+      !  SEE IF THE BLOCK WE NEED WAS IN ANOTHER SLOT.
+      !
+      IF(NUMBLK.EQ.0) GO TO 350
+      !
+      !  IT WAS. MOVE IT FROM NUMBLK TO INDEX.
+      !
+      CALL BLKCHG(INDEX,LENBF2,1)
+      KQ1 = BLKLOC(INDEX)
+      KQ2 = BLKLOC(NUMBLK)
+      CALL BLKMOV(BUFFER(KQ1),BUFFER(KQ2),LENBF2)
+      CURBLK(INDEX) = CURBLK(NUMBLK)
+      MODFLG(INDEX) = MODFLG(NUMBLK)
+      CURBLK(NUMBLK) = 0
+      MODFLG(NUMBLK) = 0
+      NUMBLK = INDEX
+      GO TO 400
+350   CONTINUE
+      NUMBLK = INDEX
+      !
+      !  READ IN THE NEEDED BLOCK.
+      !
+      CALL BLKCHG(NUMBLK,LENBF2,1)
+      KQ1 = BLKLOC(NUMBLK)
+      CALL RIOIN(FILE2,IOBN,BUFFER(KQ1),LENBF2,IOS)
+      IF(IOS.NE.0) RMSTAT = 2200 + IOS
+      CURBLK(NUMBLK) = IOBN
+      MODFLG(NUMBLK) = 0
+400   CONTINUE
+      !
+      !  MOVE THE DESIRED DATA.
+      !
+      KQ0 = BLKLOC(NUMBLK) - 1
+      ID = BUFFER(KQ0 + OFFSET)
+      IF(ID.GE.0) GO TO 500
+      !
+      !  THIS TUPLE IS NOT ACTIVE. GO TO THE NEXT ONE.
+      !
+      ID = -ID
+      CID = ID
+      ISOFF = OFFSET
+      CALL ITOH(OFFSET,IOBN,ID)
+      IF (TRACE.GE.6) THEN
+         CALL MSG('T','GETDAT (DEL) ','+')
+         CALL IMSG(OFFSET,6,'+')
+         CALL IMSG(IOBN,9,' ')
+      ENDIF
+
+      IF(IOBN.NE.0) GO TO 100
+      !
+      !  WE HAVE AN INACTIVE LAST TUPLE.
+      !
+      ID = -ID
+      OFFSET = ISOFF
+500   CONTINUE
+      LOCTUP = KQ0 + OFFSET + 2
+      LENGTH = BUFFER(LOCTUP - 1)
+      IF (TRACE.GE.6) THEN
+         CALL MSG('T','GETDAT (OK ) ','+')
+         CALL IMSG(OFFSET,6,'+')
+         CALL IMSG(IOBN,9,'+')
+         CALL IMSG(INDEX,3,'+')
+         CALL IMSG(KQ0,5,'+')
+         CALL ITOH(N1,N2,ID)
+         CALL IMSG(N1,6,'+')
+         CALL IMSG(N2,9,' ')
+      ENDIF
+      RETURN
+      !
+      !  BAD ID VALUE.
+      !
+600   CONTINUE
+      ID = 0
+      RETURN
+   END SUBROUTINE GETDAT
+
+
+   SUBROUTINE PUTDAT(INDEX,ID,ARRAY,LENGTH)
+      !!
+      !!  PURPOSE:   REPLACE A TUPLE ON THE DATA FILE
+      !!
+      !!  RM_Parameters:
+      !!     INDEX---BLOCK REFERENCE NUMBER
+      !!     ID------PACKED ID WORD WITH OFFSET,IOBN
+      !!     ARRAY---ARRAY TO RECEIVE THE TUPLE
+      !!     LENGTH--LENGTH OF THE TUPLE
+
+      USE RM_Parameters
+      USE RM_Globals, only : IFMOD, RMSTAT
+      USE Files, only : FILE2, LENBF2, CURBLK, MODFLG
+      USE RandomFiles, only: RIOIN, RIOOUT
+      USE Utils, only : ITOH
+
+      INTEGER, intent(in) :: INDEX
+      INTEGER, intent(inout) :: ID
+      INTEGER, intent(out) :: ARRAY(1)
+      INTEGER, intent(out) :: LENGTH
+
+      INCLUDE 'buffer.inc'
+
+      INTEGER :: OFFSET, I, IOBN, IOS, KQ0, KQ1, LEN, NUMBLK
+      !
+      !  UNPAC THE ID WORD.
+      !
+      CALL ITOH(OFFSET,IOBN,ID)
+      !
+      !  SEE IF THE NEEDED BLOCK IS CURRENTLY IN CORE.
+      !
+      NUMBLK = 0
+      DO I=1,3
+         IF(IOBN.EQ.CURBLK(I)) NUMBLK = I
+      END DO
+      IF(NUMBLK.NE.0) GO TO 400
+      NUMBLK = INDEX
+      !
+      !  WE MUST DO PAGING.
+      !
+      !  SEE IF THE CURRENT BLOCK NEEDS WRITING.
+      !
+      IF(MODFLG(NUMBLK).EQ.0) GO TO 300
+      !
+      !  WRITE OUT THE CURRENT BLOCK.
+      !
+      KQ1 = BLKLOC(NUMBLK)
+      CALL RIOOUT(FILE2,CURBLK(NUMBLK),BUFFER(KQ1),LENBF2,IOS)
+      IF(IOS.NE.0) RMSTAT = 2200 + IOS
+300   CONTINUE
+      !
+      !  READ IN THE NEEDED BLOCK.
+      !
+      CALL BLKCHG(NUMBLK,LENBF2,1)
+      KQ1 = BLKLOC(NUMBLK)
+      CALL RIOIN(FILE2,IOBN,BUFFER(KQ1),LENBF2,IOS)
+      IF(IOS.NE.0) RMSTAT = 2200 + IOS
+      CURBLK(NUMBLK) = IOBN
+400   CONTINUE
+      MODFLG(NUMBLK) = 1
+      IFMOD = .TRUE.
+      !
+      !  MOVE THE TUPLE TO THE PAGE.
+      !
+      KQ0 = BLKLOC(NUMBLK) - 1
+      LEN = BUFFER(KQ0 + OFFSET + 1)
+      IF(LEN.NE.LENGTH) RMSTAT = 1002
+      CALL BLKMOV(BUFFER(KQ0 + OFFSET + 2),ARRAY(1),LEN)
+      !
+      !  ALL DONE.
+      !
+      RETURN
+   END SUBROUTINE PUTDAT
+
+
+END MODULE RM_Buffer

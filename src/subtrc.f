@@ -2,6 +2,7 @@
      XKEYCOL,KEYTYP)
 
          USE RM_Globals, only : RMSTAT
+         USE RM_Buffer, only: ADDDAT, GETDAT
          USE Extern, only: IMSG, MSG
          USE Utils, only : ITOH
 

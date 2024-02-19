@@ -2,6 +2,7 @@
 
          USE RM_Globals, only : USERID, KRMINF, KRMRNF, KMSSVL,
      +   KMSSVT, KNAPVL, KNAPVT, RMSTAT
+         USE RM_Buffer, only: GETDAT
          USE Extern, only : AMSG, MSG, MSGREC, MSGPTR
          USE Formater, only : TYPER, FMTDEC
          USE RM_Text, only : BLANK, ABLANK, ASCAN, STRMOV, NONE, SQUOTE

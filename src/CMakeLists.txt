@@ -6,22 +6,20 @@
 
 add_library(rimcommon STATIC
     parameters.f90
-    adddat.f
     attadd.f attdel.f attget.f attnew.f attpag.f attput.f
     blkchg.f blkcln.f blkclr.f blkdef.f blkdsp.f blkdwn.f blkext.f
     blkloc.f blkmov.f blknxt.f blkup.f
     btadd.f btget.f btinit.f btlki.f btlkr.f btmove.f btput.f btrep.f btsert.f
     change.f chkatt.f chkrel.f
-    deldat.f delete.f
-    eq.f
-    getdat.f getkca.f gett.f gtsort.f
+    delete.f eq.f
+    getkca.f gett.f gtsort.f
     isect.f
     join.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
     lnkadd.f lnkget.f lnkpag.f
     locatt.f locboo.f loclnk.f locprm.f locrel.f locvar.f
     motscn.f ne.f 
     parse.f parval.f prckey.f prjtup.f
-    putdat.f putt.f ptrs.f 
+    putt.f ptrs.f 
     reladd.f relget.f relpag.f relput.f
     rmlook.f rmpii.f rmres.f rmsav.f rmvarc.f rtoa.f
     selrel.f selrpt.f selsrt.f selwhr.f
@@ -34,6 +32,7 @@ add_library(rimcommon STATIC
     swvacp.f swvlfs.f swvllo.f 
     union.f varadd.f 
     whetol.f wheval.f whrnam.f
+    buffer.f90
     cards.f90
     datetime.f90
     extern.f90

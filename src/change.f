@@ -1,6 +1,7 @@
       SUBROUTINE CHANGE(MAT,NVAL,IFLAG,NTUP)
 
          USE RM_Globals, only : RMSTAT
+         USE RM_Buffer, only: ADDDAT, DELDAT, PUTDAT
          USE Extern, only: IMSG, AMSG, MSG
          USE Formater, only : TYPER
          USE Lexer, only : KWS, IDI

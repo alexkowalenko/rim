@@ -2,6 +2,7 @@
 
          USE RM_Globals, only : TRACE, MRINDX, HXFLAG, CASEIG, PGFLAG,
      +   DBFNAM, RMSTAT, FFFLAG, NOUTR, ULPP, UPRINL
+         USE RM_Buffer, only: GETDAT
          USE Extern, only: SETOUT, SETIN, IMSG, AMSG, MSG, MSUNIT
          USE Message, only : WARN
          USE Formater, only : TYPER

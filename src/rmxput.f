@@ -1,6 +1,7 @@
       SUBROUTINE RMXPUT(INDPTR,TUPLE)
 
          USE RM_Globals, only:  DBDATE, RMSTAT
+         USE RM_Buffer, only: ADDDAT, DELDAT, PUTDAT
          USE RM_Text, only : BLANK
 
          INCLUDE 'syspar.inc'
