@@ -4,6 +4,7 @@
          USE DateTime, only : DTFSPL, KRMDTF, KRMTMF
          USE Extern, only: IMSG, AMSG, MSG
          USE Formater, only : TYPER, LXFMT
+         USE RM_Links, only: LOCLNK
          USE Message, only: WARN
          USE RM_Text, only : ASCCHR, ASCTXT, FILCH, BLANK, ABLANK
          USE RM_Text, only : LSTRNG,  ASLPAR, ASRPAR, ATSIGN, PCSIGN

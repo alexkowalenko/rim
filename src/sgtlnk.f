@@ -3,6 +3,7 @@
          USE RM_Globals, only : RMSTAT
          USE RM_BufferData, only: BUFFER
          USE Extern, only: MSG
+         USE RM_Links, only: LOCLNK
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

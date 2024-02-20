@@ -1097,6 +1097,7 @@ contains
       USE RM_Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD, RMSTAT
       USE Extern, only : AMSG, MSG
       USE Lexer, only : ITEMS, LXSREC, LXSREC
+      USE RM_Links, only: LNKGET, LOCLNK
       USE Message, only: WARN
 
       INCLUDE 'tuplel.inc'
@@ -1107,8 +1108,6 @@ contains
 
       INTEGER :: I, ISTAT
       INTEGER :: LKNAM(Z)
-
-      INTEGER LOCLNK
       !
       ! CHECK FOR A DATABASE
       !

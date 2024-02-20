@@ -550,6 +550,7 @@ contains
       USE RM_Parameters
       USE Extern, only: MSG
       Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
+      Use RM_Links, only: LNKADD, LOCLNK
       USE Message, only : WARN
       USE Utils, only : ZMOVE
 
@@ -563,7 +564,7 @@ contains
       INTEGER :: FLEN, FTYP, I, I1, I2
       INTEGER :: LKNAM(Z)
 
-      INTEGER LOCLNK, LOCATT
+      INTEGER LOCATT
       !
       ! READ LINK DEFINITIONS
       !

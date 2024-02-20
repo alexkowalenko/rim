@@ -4,6 +4,7 @@
          USE RM_BufferData, only: IREL
          USE Extern, only: IMSG, AMSG, MSG, MSGPTR
          USE Formater, only : TYPER, FMTDEC
+         USE RM_Links, only: LNKGET, LOCLNK
          USE RM_Text, only : BLANK
          USE Rim, only: RMTYPT
          USE Utils, only : ZMOVE

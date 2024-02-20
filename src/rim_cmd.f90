@@ -694,8 +694,7 @@ contains
       USE RM_Globals, only : DFLAG
       USE Extern, only: IMSG, MSG
       USE Formater, only: LXFMT
-      Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
-      USE Lexer, only: LXSREC
+      Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW, LXSREC
       USE Message, only: WARN
       USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE
@@ -809,8 +808,8 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, USERID, USERID
       USE Extern, only : AMSG, MSG
-      Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
-      Use Lexer, only: LXSREC
+      Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW, LXSREC
+      USE RM_Links, only: LNKGET, LNKPUT, LOCLNK
       USE Message, only: WARN
       USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE
@@ -821,7 +820,7 @@ contains
       INTEGER :: I, II, IFLAG, ILEN, ITYPE, NUM, STATUS, STOK
 
       LOGICAL NE,EQ
-      INTEGER LOCREL, LOCATT, LOCPRM, LOCLNK
+      INTEGER LOCREL, LOCATT, LOCPRM
       !
       !
       ! CHECK FOR A DATABASE
@@ -979,6 +978,7 @@ contains
       USE RM_Globals, only: RMSTAT
       USE Extern, only : AMSG, MSG
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
+      USE RM_Links, only: LNKGET, LNKPUT, LOCLNK
       USE Message, only: WARN
       USE Utils, only : ZMOVE
 
@@ -990,7 +990,6 @@ contains
       INTEGER :: I, ISTAT
       INTEGER :: LKNAM(Z), NLKNAM(Z)
 
-      INTEGER LOCLNK
       LOGICAL NE, EQ
       !
       ! CHECK FOR A DATABASE
@@ -2217,6 +2216,7 @@ contains
       USE Extern, only: DMSG, IMSG, AMSG, MSG
       USE Formater, only: FMTDEC
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
+      USE RM_Links, only: LNKGET, LOCLNK
       USE Message, only : WARN
       USE RM_Text, only : BLANK, NONE
       USE Utils, only : ZMOVE
@@ -2237,7 +2237,7 @@ contains
       INTEGER :: FMTSTR(3)
 
       LOGICAL :: EQ, NE
-      INTEGER :: LOCREL, LOCATT, LOCLNK
+      INTEGER :: LOCREL, LOCATT
       INCLUDE 'dclar1.inc'
       !
       !
@@ -2486,8 +2486,8 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG
       USE Extern, only : AMSG, MSG
-      Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
-      Use Lexer, only: LXSREC
+      Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW, LXSREC
+      USE RM_Links, only: LNKGET, LNKPUT, LOCLNK
       USE Message, only: WARN
       USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE
@@ -2503,7 +2503,7 @@ contains
       INTEGER :: I, ISTAT, STATUS
 
       LOGICAL NE,EQ
-      INTEGER LOCREL, LOCPRM, LOCATT, LOCLNK
+      INTEGER LOCREL, LOCPRM, LOCATT
       !
       !
       ! CHECK FOR A DATABASE
