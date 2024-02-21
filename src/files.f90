@@ -91,6 +91,7 @@ CONTAINS
       USE RM_Parameters
       USE RM_Globals, only : DBNAME, OWNER, DBDATE, DBTIME, DFLAG, DMFLAG, DBFNAM, KDBHDR, RMSTAT
       USE Extern, only: MSG
+      USE RM_Links, only: NLROW
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
       USE RM_Text, only : ASCTXT
       USE Utils, only : ZEROIT, ZMOVE
@@ -99,7 +100,6 @@ CONTAINS
 
       INCLUDE 'attble.inc'
       INCLUDE 'reltbl.inc'
-      INCLUDE 'lnktbl.inc'
 
       LOGICAL :: NE
 
@@ -215,12 +215,12 @@ CONTAINS
       !!
       USE RM_Parameters
       USE RM_Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR, RMSTAT
+      USE RM_Links, only: LNKBUF, NLROW, LNKMOD
       USE RandomFiles, only : RIOCLO, RIOOUT
       USE Utils, only : ZEROIT, ZMOVE
 
       INCLUDE 'attble.inc'
       INCLUDE 'reltbl.inc'
-      INCLUDE 'lnktbl.inc'
 
       INTEGER :: IOS
 

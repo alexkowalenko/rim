@@ -150,6 +150,7 @@ contains
       !!
       USE RM_Parameters
       USE Files, only: Files_Initialise => Initialise
+      USE RM_Links, only: Links_Initialise => Initialise
       USE RM_Text, only : BLANK
       USE Utils, only : ZEROIT, ZMOVE
 
@@ -158,7 +159,6 @@ contains
       INCLUDE 'reltbl.inc'
       INCLUDE 'tupler.inc'
       INCLUDE 'attble.inc'
-      INCLUDE 'lnktbl.inc'
       INCLUDE 'rimptr.inc'
       INCLUDE 'srtcom.inc'
       INCLUDE 'ptrcom.inc'
@@ -187,9 +187,7 @@ contains
       APBUF = ZATTR
 
       !  /LNKTBL/
-      LLROW = 0
-      NLROW = 0
-      LPBUF = ZLNKR
+      CALL Links_Initialise
 
       !  /INCORE/
       CALL ZEROIT(BLOCKS(1,1),60)
@@ -1097,11 +1095,10 @@ contains
       USE RM_Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD, RMSTAT
       USE Extern, only : AMSG, MSG
       USE Lexer, only : ITEMS, LXSREC, LXSREC
-      USE RM_Links, only: LNKGET, LOCLNK
+      USE RM_Links, only: LNKGET, LOCLNK, LNKTBL, LLROW, LNKMOD
       USE Message, only: WARN
 
       INCLUDE 'tuplel.inc'
-      INCLUDE 'lnktbl.inc'
       LOGICAL :: NE
       LOGICAL :: EQ
       INCLUDE 'rmatts.inc'

@@ -983,7 +983,6 @@ contains
       USE Utils, only : ZMOVE
 
       INCLUDE 'tuplel.inc'
-      INCLUDE 'lnktbl.inc'
 
       INCLUDE 'rmatts.inc'
       !

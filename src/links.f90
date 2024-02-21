@@ -1,13 +1,31 @@
 MODULE RM_Links
+
+   USE RM_Parameters
    implicit none
    private
+
+   INTEGER, public :: LNKBUF(ZF1)
+   INTEGER, public :: LNKTBL(ZLNKL,ZLNKR)
+   INTEGER, public :: LLROW
+   INTEGER, public :: NLROW
+   INTEGER, public :: LNKMOD
+   INTEGER :: LPBUF
+   EQUIVALENCE (LNKBUF(2),LNKTBL(1,1))
 
    public LNKADD
    public LNKGET
    public LNKPUT
    public LOCLNK
+   public Initialise
 
 contains
+
+   SUBROUTINE Initialise
+      USE RM_Parameters
+      LLROW = 0
+      NLROW = 0
+      LPBUF = ZLNKR
+   END SUBROUTINE Initialise
 
    SUBROUTINE LNKADD
       !!
@@ -20,7 +38,6 @@ contains
       USE Utils, only : ZMOVE
 
       INCLUDE 'tuplel.inc'
-      INCLUDE 'lnktbl.inc'
 
       INTEGER :: MRSTRT, I
 
@@ -71,7 +88,6 @@ contains
 
       INTEGER, intent(out) :: STATUS
 
-      INCLUDE 'lnktbl.inc'
       INCLUDE 'tuplel.inc'
 
       INTEGER :: I, MRSTRT
@@ -137,8 +153,6 @@ contains
 
       INTEGER, intent(in out) :: THEROW
 
-      INCLUDE 'lnktbl.inc'
-
       INTEGER :: NNREC, NNROW, IOS, RELMOD
       !
       !  TURN THE REQUESTED ROW INTO A RECORD AND OFFSET.
@@ -197,7 +211,6 @@ contains
       INTEGER, intent(out) :: STATUS
 
       INCLUDE 'tuplel.inc'
-      INCLUDE 'lnktbl.inc'
       !
       STATUS = 0
       IF(LLROW.EQ.0) GO TO 9000
@@ -234,7 +247,6 @@ contains
       USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE, NULLIT
 
-      INCLUDE 'lnktbl.inc'
       INCLUDE 'tuplel.inc'
       INCLUDE 'rimptr.inc'
 
@@ -289,6 +301,5 @@ contains
 9999  CONTINUE
       RETURN
    END FUNCTION LOCLNK
-
 
 END MODULE RM_Links
