@@ -4,10 +4,11 @@
      +   KMSSVT, KNAPVL, KNAPVT, RMSTAT
          USE RM_BufferData, only: BUFFER, IREL
          USE RM_Buffer, only: GETDAT
+         USE DateTime, only : ASCDAT, KRMDTF
          USE Extern, only : AMSG, MSG, MSGREC, MSGPTR
          USE Formater, only : TYPER, FMTDEC
+         USE RM_Relations, only: LOCREL
          USE RM_Text, only : BLANK, ABLANK, ASCAN, STRMOV, NONE, SQUOTE
-         USE DateTime, only : ASCDAT, KRMDTF
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'

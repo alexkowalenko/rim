@@ -368,6 +368,7 @@ contains
       USE Lexer, only: ITEMS, EQKEYW
       USE Message, only : WARN
       USE Parser, only: LODREC
+      USE RM_Relations, only : RELPUT
       USE Utils, only : ZEROIT
 
       INCLUDE 'start.inc'
@@ -484,6 +485,7 @@ contains
       USE Lexer, only: KXTEXT, KXINT, KXREAL, IDT, ASCREC, IDP, IDL
       USE Lexer, only: KWS, ITEMS, IDI, IDR
       USE TextFiles, only : TIOIN
+      USE RM_Relations, only : RELPUT
       USE RM_Text, only : ABLANK, ATOI, ATOR, ASCAN, STRMOV
       USE Utils, only : ZEROIT
       !  PARAMETERS:

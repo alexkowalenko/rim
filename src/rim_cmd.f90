@@ -228,6 +228,7 @@ contains
       USE Lexer, only : ASCREC, IDP, IDL, KWS, ITEMS, EQKEYW, LFIND
       USE Lexer, only : LXSREC
       USE Message, only: WARN
+      USE RM_Relations, only: LOCREL
       USE RM_Text, only : STRASC
       USE Utils, only : ZMOVE
 
@@ -240,7 +241,7 @@ contains
       INTEGER :: NWORDS, TP, NN, SAVLPP, NOGO, ICNTR, IPERM, PTR, I, STAT, J, IERR, IN, ISTAT, KK, KQ2, NUM
       LOGICAL :: ALL,PERM,LHASH
 
-      INTEGER LOCREL, BLKLOC
+      INTEGER BLKLOC
       LOGICAL EQ, NE
       DATA NWORDS /2500/
 
@@ -455,6 +456,7 @@ contains
       USE Extern, only: IMSG, MSG
       USE Lexer, only : ITEMS, LFIND, LXSREC
       USE Message, only : WARN
+      USE RM_Relations, only : RELGET, RELPUT
       USE RM_Text, only : BLANK
 
       INCLUDE 'start.inc'
@@ -696,6 +698,7 @@ contains
       USE Formater, only: LXFMT
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW, LXSREC
       USE Message, only: WARN
+      USE RM_Relations, only: LOCREL
       USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE
 
@@ -704,7 +707,7 @@ contains
 
       INTEGER :: FMTLEN, I, IFLAG, NEWFMT, NUMT, STATUS
       LOGICAL :: NE,EQ
-      INTEGER :: LOCREL, LOCATT, LOCPRM
+      INTEGER :: LOCATT, LOCPRM
 
       !
       ! CHECK FOR A DATABASE
@@ -811,6 +814,7 @@ contains
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW, LXSREC
       USE RM_Links, only: LNKGET, LNKPUT, LOCLNK
       USE Message, only: WARN
+      USE RM_Relations, only: LOCREL
       USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE
 
@@ -820,7 +824,7 @@ contains
       INTEGER :: I, II, IFLAG, ILEN, ITYPE, NUM, STATUS, STOK
 
       LOGICAL NE,EQ
-      INTEGER LOCREL, LOCATT, LOCPRM
+      INTEGER LOCATT, LOCPRM
       !
       !
       ! CHECK FOR A DATABASE
@@ -1217,6 +1221,7 @@ contains
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, KWS, ITEMS, EQKEYW, LXSREC
       USE DateTime, only : RMDATE
       USE Message, only : WARN
+      USE RM_Relations, only: RELADD, LOCREL
       USE RM_Text, only : BLANK, NONE
       USE Utils, only : ZMOVE
 
@@ -1245,7 +1250,7 @@ contains
       INTEGER :: I, I1, I2, ICT, ISTAT, J, K, KATT3, KEYCOL, KEYLEN, KEYTYP, KQ1, KQ3, NATT1, NATT2, NATT3
       INTEGER :: NCOL1, NCOL2, NCOL3, NK, NWORDS
 
-      INTEGER LOCBOO, LOCREL, LOCPRM, LOCATT, BLKLOC
+      INTEGER LOCBOO, LOCPRM, LOCATT, BLKLOC
 
       !
       ! CHECK FOR A DATABASE
@@ -1560,6 +1565,7 @@ contains
       Use Lexer, only: KXNAME, TOKTYP, IDP, ITEMS, EQKEYW, LFIND
       Use Lexer, only: LXSREC
       USE Message, only : WARN
+      USE RM_Relations, only: RELADD, RELGET, LOCREL, RELPUT
       USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE
 
@@ -1579,7 +1585,7 @@ contains
       INTEGER :: LPAG, MEND, MSTART, NOATTS, NOCOLS, UC, UE
       LOGICAL :: XTMP
 
-      INTEGER LOCREL, LOCPRM, LOCATT, SELWHR, BLKLOC
+      INTEGER LOCPRM, LOCATT, SELWHR, BLKLOC
       !
       !
       ! CHECK FOR A DATABASE
@@ -1789,6 +1795,7 @@ contains
       USE Extern, only: MSG
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW, LXSREC
       USE Message, only: WARN
+      USE RM_Relations, only: RELADD, LOCREL
       USE RM_Text, only : BLANK, NONE
       USE Utils, only : ZMOVE
 
@@ -1814,7 +1821,7 @@ contains
       LOGICAL :: EQ
       LOGICAL :: NE
       LOGICAL :: GETKCA, REQKCA
-      INTEGER LOCREL, LOCPRM, LOCATT, BLKLOC
+      INTEGER LOCPRM, LOCATT, BLKLOC
 
       !
       !
@@ -2217,6 +2224,7 @@ contains
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
       USE RM_Links, only: LNKGET, LOCLNK
       USE Message, only : WARN
+      USE RM_Relations, only : RELGET, RELGET, LOCREL
       USE RM_Text, only : BLANK, NONE
       USE Utils, only : ZMOVE
 
@@ -2236,7 +2244,7 @@ contains
       INTEGER :: FMTSTR(3)
 
       LOGICAL :: EQ, NE
-      INTEGER :: LOCREL, LOCATT
+      INTEGER :: LOCATT
       INCLUDE 'dclar1.inc'
       !
       !
@@ -2488,6 +2496,7 @@ contains
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW, LXSREC
       USE RM_Links, only: LNKGET, LNKPUT, LOCLNK
       USE Message, only: WARN
+      USE RM_Relations, only : RELGET, LOCREL, RELPUT
       USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE
 
@@ -2502,7 +2511,7 @@ contains
       INTEGER :: I, ISTAT, STATUS
 
       LOGICAL NE,EQ
-      INTEGER LOCREL, LOCPRM, LOCATT
+      INTEGER LOCPRM, LOCATT
       !
       !
       ! CHECK FOR A DATABASE
@@ -2653,7 +2662,8 @@ contains
       USE Files, only: RMCLOS
       USE Lexer, only: KWS, ITEMS
       USE Message, only: WARN
-      !USE RIM, only: DBOPEN
+      USE Rim, only: DBOPEN
+      USE RM_Relations, only: LOCREL
       USE RM_Text, only: ASCTXT
 
       INCLUDE 'syspar.inc'

@@ -3,6 +3,7 @@
          USE RM_Globals, only : RMSTAT
          USE RM_BufferData, only: BUFFER
          USE RM_Buffer, only: DELDAT
+         USE RM_Relations, only : RELPUT
          USE RM_Text, only : BLANK
 
          INCLUDE 'syspar.inc'

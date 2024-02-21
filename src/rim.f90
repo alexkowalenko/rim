@@ -362,6 +362,7 @@ contains
       USE Message, only : WARN
       USE Parser, only: LODREC
       USE RM_Text, only : BLANK, STRASC
+      USE RM_Relations, only : RELGET, LOCREL, RELPUT
       USE DateTime, only : RMDATE
 
       INCLUDE 'tuplea.inc.f90'
@@ -378,7 +379,7 @@ contains
       INTEGER :: SC, JI, JU, I, ISTAT, L, FOR, FPTR, STATUS, SVM, TYP, FMT, FMTLEN, NFOR, KQ1, KQ2
       INTEGER :: QPTRS(2,QKEYL)
 
-      INTEGER PARSE, LOCREL, LOCPRM, LOCATT, BLKLOC
+      INTEGER PARSE, LOCPRM, LOCATT, BLKLOC
       !
       !
       ! CHECK FOR A DATABASE
@@ -592,6 +593,7 @@ contains
       USE Formater, only : TYPER
       USE Lexer, only : KWS, ITEMS, LXSREC
       USE Message, only : WARN
+      USE RM_Relations, only: LOCREL
 
       INCLUDE 'rmatts.inc'
       INCLUDE 'rimptr.inc'
@@ -604,7 +606,7 @@ contains
 
       INTEGER :: COLUMN, I, IP, ISTAT, L, LENGTH, NKSORT, SVM, TYP, ITUP
 
-      INTEGER :: LOCREL, LOCPRM, LOCATT
+      INTEGER :: LOCPRM, LOCATT
 
       !
       !
@@ -748,9 +750,10 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG
       USE RM_BufferData, only: BUFFER
+      USE DateTime, only : RMDATE
       USE Lexer, only : LXSREC
       USE Message, only : WARN
-      USE DateTime, only : RMDATE
+      USE RM_Relations, only : RELGET
 
       INCLUDE 'selcom.inc'
       INCLUDE 'rmatts.inc'
@@ -843,6 +846,7 @@ contains
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
       USE Lexer, only: LXSREC
       USE Message, only : WARN
+      USE RM_Relations, only:  RELGET, LOCREL, RELPUT
       USE RM_Text, only : BLANK
 
       INCLUDE 'tupler.inc'
@@ -850,7 +854,7 @@ contains
       INTEGER :: I, ISTAT, L
       INTEGER :: RNAME(Z)
 
-      INTEGER LOCREL, LOCPRM
+      INTEGER LOCPRM
       LOGICAL :: NE
 
       !
@@ -928,6 +932,7 @@ contains
       USE RM_BufferData, only: BUFFER
       Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
       USE Message, only : WARN
+      USE RM_Relations, only: LOCREL
       USE RM_Text, only : BLANK
 
       INCLUDE 'tuplea.inc.f90'
@@ -942,7 +947,7 @@ contains
 
       INTEGER :: I, KQ1, L
 
-      INTEGER LOCREL, LOCPRM, BLKLOC
+      INTEGER LOCPRM, BLKLOC
 
       !
       !
@@ -1011,6 +1016,7 @@ contains
       USE RM_Globals, only : RMSTAT
       Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
       USE Message, only: WARN
+      USE RM_Relations, only: LOCREL
       USE RM_Text, only : BLANK
 
       ! :  REMOVE KEY FOR ATTRIBUTE IN RELATION
@@ -1024,7 +1030,7 @@ contains
 
       INTEGER :: I, ISTAT, L
 
-      INTEGER LOCREL, LOCPRM, LOCATT
+      INTEGER LOCPRM, LOCATT
       LOGICAL :: NE, EQ
       !
       !
@@ -1171,7 +1177,9 @@ contains
       USE Extern, only : PRMSET, AMSG, MSG
       USE Lexer, only: KWS, ITEMS, EQKEYW, LXSREC
       USE Message, only: WARN
+      USE RM_Relations, only:  RELGET
       USE Parser, only: LODREC
+      USE RM_Relations, only: LOCREL
       USE RM_Text, only: BLANK
 
       INCLUDE 'tuplea.inc.f90'
@@ -1184,7 +1192,7 @@ contains
 
       INTEGER :: I, ISTAT, L, R
 
-      INTEGER LOCREL, LOCPRM, LOCATT
+      INTEGER LOCPRM, LOCATT
       LOGICAL NE, EQ
       !
       ! CHECK FOR A DATABASE
@@ -1282,6 +1290,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, MRINDX, RMSTAT
       USE Message, only: WARN
+      USE RM_Relations, only:  RELGET
 
       INCLUDE 'selcom.inc'
       INCLUDE 'rmatts.inc'
@@ -1404,6 +1413,7 @@ contains
       USE Extern, only : AMSG, MSG
       USE Lexer, only: ITEMS, LXSREC
       USE Message, only: WARN
+      USE RM_Relations, only:  RELGET, LOCREL
       USE RM_Text, only : BLANK, NONE
 
       INCLUDE 'tupler.inc'
@@ -1412,7 +1422,7 @@ contains
       LOGICAL :: FLAG
 
       LOGICAL EQ
-      INTEGER LOCREL, LOCATT, BLKLOC
+      INTEGER LOCATT, BLKLOC
 
       !
       !

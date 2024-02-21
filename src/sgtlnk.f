@@ -4,6 +4,7 @@
          USE RM_BufferData, only: BUFFER
          USE Extern, only: MSG
          USE RM_Links, only: LOCLNK
+         USE RM_Relations, only: LOCREL
          USE Utils, only : ZMOVE
 
          INCLUDE 'syspar.inc'
@@ -22,6 +23,8 @@ C
          INCLUDE 'rimptr.inc'
          INCLUDE 'selcom.inc'
          INCLUDE 'whcom.inc'
+
+         INTEGER temp
 C
          SGTLNK = .FALSE.
 
@@ -47,7 +50,7 @@ C     SET UP WHERE CLAUSE
    80    WHRVAL(P) = BUFFER(MP+ATTCOL+P-2)
          WHRLEN(1) = ATTLEN
 
-         CALL LOCREL(R2NAME)
+         temp = LOCREL(R2NAME)
          CALL LOCATT(A2NAME,R2NAME)
          CALL ATTGET(STATUS)
          IF (STATUS.NE.0) THEN

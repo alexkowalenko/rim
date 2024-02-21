@@ -3,6 +3,7 @@
          USE RM_Globals, only : TRACE, RMSTAT
          USE RM_BufferData, only: BUFFER
          USE Extern, only: IMSG, MSG
+         USE RM_Relations, only: LOCREL
 
          INCLUDE 'syspar.inc'
 C

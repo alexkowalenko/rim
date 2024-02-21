@@ -7,6 +7,7 @@
          USE Extern, only: SETOUT, SETIN, IMSG, AMSG, MSG, MSUNIT
          USE Message, only : WARN
          USE Formater, only : TYPER
+         USE RM_Relations, only: LOCREL
          USE Rim, only : DBOPEN
          USE RM_Text, only : FILCH, ABLANK, STRASC, STRMOV
          USE Utils, only : ZMOVE

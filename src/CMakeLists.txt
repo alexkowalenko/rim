@@ -15,11 +15,10 @@ add_library(rimcommon STATIC
     getkca.f gett.f gtsort.f
     isect.f
     join.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
-    locatt.f locboo.f locprm.f locrel.f locvar.f
+    locatt.f locboo.f locprm.f locvar.f
     motscn.f ne.f 
     parse.f parval.f prckey.f prjtup.f
-    putt.f ptrs.f 
-    reladd.f relget.f relpag.f relput.f
+    putt.f ptrs.f
     rmlook.f rmpii.f rmres.f rmsav.f rmvarc.f rtoa.f
     selrel.f selrpt.f selsrt.f selwhr.f
     sort.f subtrc.f swcon.f swcost.f
@@ -46,6 +45,7 @@ add_library(rimcommon STATIC
     lexer.f90
     parser.f90
     randomfiles.f90
+    relations.f90
     rim.f90
     system.f90
     text.f90

@@ -6,6 +6,7 @@
          USE RM_Buffer, only: ADDDAT, GETDAT
          USE Extern, only: IMSG, MSG
          USE Message, only : WARN
+         USE RM_Relations, only : RELGET, LOCREL, RELPUT
          USE Utils, only : HTOI, ITOH
 
          INCLUDE 'syspar.inc'

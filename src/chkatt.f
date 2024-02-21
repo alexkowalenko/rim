@@ -4,6 +4,7 @@
          USE Extern, only : AMSG, MSG
          USE Lexer, only : ITEMS, LXSREC
          USE Message, only : WARN
+         USE RM_Relations, only: RELADD
          USE RM_Text, only: BLANK, NONE
          USE Utils, only : ZMOVE, ITOH
 

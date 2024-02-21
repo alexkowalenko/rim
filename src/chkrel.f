@@ -1,6 +1,7 @@
       SUBROUTINE CHKREL (PERM,MODE,ISTAT,NAMUSR)
 
          USE RM_Globals, only : OWNER
+         USE RM_Relations, only : RELGET
          USE RM_Text, only : NONE
 
          INCLUDE 'syspar.inc'

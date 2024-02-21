@@ -3,6 +3,7 @@
          USE RM_Globals, only : DBNAME, USERID
          USE RM_BufferData, only: IREL
          USE Extern, only : AMSG, MSG
+         USE RM_Relations, only: LOCREL
          USE RM_Text, only : BLANK, NONE
          USE Utils, only : ZMOVE
 

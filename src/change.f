@@ -6,6 +6,7 @@
          USE Formater, only : TYPER
          USE Lexer, only : KWS, IDI
          USE Message, only : WARN
+         USE RM_Relations, only: RELPUT
          USE RM_Text, only : BLANK
          USE Utils, only : ZMOVE
 

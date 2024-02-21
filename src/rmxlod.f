@@ -2,6 +2,7 @@
 
          USE RM_Globals, only : DBDATE, RMSTAT
          USE RM_Buffer, only: ADDDAT
+         USE RM_Relations, only : RELPUT
          USE RM_Text, only : BLANK
 
          INCLUDE 'syspar.inc'

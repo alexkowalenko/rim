@@ -489,6 +489,7 @@ contains
       USE RM_BufferData, only: BUFFER
       USE Extern, only: MSG
       Use Lexer, only: KXNAME, TOKTYP, ITEMS, LXSREC
+      USE RM_Relations, only: LOCREL
       USE Message, only : WARN
 
       INTEGER, intent(in) :: NUMELE
@@ -499,7 +500,7 @@ contains
 
       INTEGER :: ERROR, I, JUNK
 
-      INTEGER LOCREL, BLKLOC
+      INTEGER BLKLOC
       !
       !  READ RELATION DATA.
       !
@@ -653,6 +654,7 @@ contains
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, ITEMS, EQKEYW
       USE Lexer, only: LXSREC
       USE Message, only : WARN
+      USE RM_Relations, only:  RELGET, LOCREL, RELPUT
       USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE
 
@@ -665,7 +667,6 @@ contains
 
       INTEGER :: I, ISTAT, PWTP, STOK
 
-      INTEGER LOCREL
       !
       !  READ A PASSWORD.
       !

@@ -6,6 +6,7 @@
          USE Formater, only : TYPER, FMTDEC
          USE RM_Links, only: LNKGET, LOCLNK
          USE RM_Text, only : BLANK
+         USE RM_Relations, only:  RELGET, LOCREL
          USE Rim, only: RMTYPT
          USE Utils, only : ZMOVE
 

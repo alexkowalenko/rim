@@ -3,6 +3,7 @@
          USE Extern, only : AMSG, MSG
          USE Message, only: WARN
          USE Lexer, only: LXSREC
+         USE RM_Relations, only: LOCREL
          USE RM_Text, only : BLANK
          USE Utils, only : ZMOVE
 
