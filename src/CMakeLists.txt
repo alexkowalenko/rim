@@ -15,8 +15,7 @@ add_library(rimcommon STATIC
     getkca.f gett.f gtsort.f
     isect.f
     join.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
-    lnkadd.f lnkget.f lnkpag.f
-    locatt.f locboo.f loclnk.f locprm.f locrel.f locvar.f
+    locatt.f locboo.f locprm.f locrel.f locvar.f
     motscn.f ne.f 
     parse.f parval.f prckey.f prjtup.f
     putt.f ptrs.f 
@@ -40,6 +39,7 @@ add_library(rimcommon STATIC
     files.f90
     formater.f90
     globals.f90
+    links.f90
     macros.f90
     maths.f90
     message.f90
@@ -54,7 +54,7 @@ add_library(rimcommon STATIC
 )
 
 add_library(rimextlib STATIC
-    lnkput.f loadmv.f
+    loadmv.f
     pgbres.f pgbsto.f pgcexp.f
     pgcomp.f pgcprt.f pgeexp.f pgeprt.f pgexec.f pgstor.f
     selatt.f selout.f selput.f90 sgtlnk.f 

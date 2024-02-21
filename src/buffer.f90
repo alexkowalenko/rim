@@ -383,7 +383,7 @@ contains
       INTEGER, intent(in) :: INDEX
       INTEGER, intent(inout) :: ID
       INTEGER, intent(out) :: ARRAY(1)
-      INTEGER, intent(out) :: LENGTH
+      INTEGER, intent(in) :: LENGTH
 
       INTEGER :: OFFSET, I, IOBN, IOS, KQ0, KQ1, LEN, NUMBLK
       INTEGER BLKLOC
