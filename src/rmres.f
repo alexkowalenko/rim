@@ -4,6 +4,7 @@
          USE RM_BufferData, only: BUFFER
          USE Extern, only: IMSG, MSG
          USE RM_Relations, only: LOCREL
+         USE RM_Relations_Data, only: CNAME, LRROW
 
          INCLUDE 'syspar.inc'
 C
@@ -18,7 +19,6 @@ C     INPUT:  INDPTR--INDEX TO SAVE BLOCK (RANGE OF 0 TO ZPIMAX)
          INCLUDE 'tupler.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
-         INCLUDE 'reltbl.inc'
          INCLUDE 'ptrcom.inc'
          INCLUDE 'srtcom.inc'
          LOGICAL NE

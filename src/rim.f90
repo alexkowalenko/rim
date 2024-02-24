@@ -151,12 +151,12 @@ contains
       USE RM_Parameters
       USE Files, only: Files_Initialise => Initialise
       USE RM_Links, only: Links_Initialise => Initialise
+      USE RM_Relations, only: Relations_Initialise => Initialise
       USE RM_Text, only : BLANK
       USE Utils, only : ZEROIT, ZMOVE
 
 
       INCLUDE 'incore.inc'
-      INCLUDE 'reltbl.inc'
       INCLUDE 'tupler.inc'
       INCLUDE 'attble.inc'
       INCLUDE 'rimptr.inc'
@@ -165,12 +165,7 @@ contains
       INCLUDE 'pgmcom.inc'
       !
       !  /RELTBL/
-
-      CALL ZMOVE(CNAME,BLANK)
-      LRROW = 0
-      NRROW = ZRELRI
-      RELMOD = 0
-      RPBUF = ZRELR
+      CALL Relations_Initialise
 
       !
       !  /TUPLER/
@@ -1101,7 +1096,8 @@ contains
       USE RM_Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD, RMSTAT
       USE Extern, only : AMSG, MSG
       USE Lexer, only : ITEMS, LXSREC, LXSREC
-      USE RM_Links, only: LNKGET, LOCLNK, LNKTBL, LLROW, LNKMOD
+      USE RM_Links, only: LNKGET, LOCLNK
+      USE RM_Links_Data, only: LNKTBL, LLROW, LNKMOD
       USE Message, only: WARN
 
       INCLUDE 'tuplel.inc'
@@ -1178,13 +1174,13 @@ contains
       USE Lexer, only: KWS, ITEMS, EQKEYW, LXSREC
       USE Message, only: WARN
       USE RM_Relations, only:  RELGET
+      USE RM_Relations_Data, only:  LRROW, RELMOD, RELTBL
       USE Parser, only: LODREC
       USE RM_Relations, only: LOCREL
       USE RM_Text, only: BLANK
 
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tupler.inc'
-      INCLUDE 'reltbl.inc'
       INCLUDE 'attble.inc'
       INCLUDE 'rmatts.inc'
       !

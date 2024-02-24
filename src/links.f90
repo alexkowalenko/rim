@@ -4,13 +4,8 @@ MODULE RM_Links
    implicit none
    private
 
-   INTEGER, public :: LNKBUF(ZF1)
-   INTEGER, public :: LNKTBL(ZLNKL,ZLNKR)
-   INTEGER, public :: LLROW
-   INTEGER, public :: NLROW
-   INTEGER, public :: LNKMOD
    INTEGER :: LPBUF
-   EQUIVALENCE (LNKBUF(2),LNKTBL(1,1))
+   !!         LPBUF---LINKS PER PAGE
 
    public LNKADD
    public LNKGET
@@ -22,6 +17,8 @@ contains
 
    SUBROUTINE Initialise
       USE RM_Parameters
+      USE RM_Links_Data
+
       LLROW = 0
       NLROW = 0
       LPBUF = ZLNKR
@@ -36,6 +33,8 @@ contains
       USE Files, only : LF1REC
       USE RM_Globals, only : IFMOD
       USE Utils, only : ZMOVE
+
+      USE RM_Links_Data
 
       INCLUDE 'tuplel.inc'
 
@@ -85,6 +84,8 @@ contains
 
       USE RM_Parameters
       USE Utils, only : ZMOVE
+
+      USE RM_Links_Data
 
       INTEGER, intent(out) :: STATUS
 
@@ -151,6 +152,8 @@ contains
       USE RandomFiles, only: RIOIN, RIOOUT
       USE Utils, only : ZEROIT
 
+      USE RM_Links_Data
+
       INTEGER, intent(in out) :: THEROW
 
       INTEGER :: NNREC, NNROW, IOS, RELMOD
@@ -208,6 +211,8 @@ contains
       USE RM_Globals, only : IFMOD
       USE Utils, only : ZMOVE
 
+      USE RM_Links_Data
+
       INTEGER, intent(out) :: STATUS
 
       INCLUDE 'tuplel.inc'
@@ -246,6 +251,8 @@ contains
       USE RM_Parameters
       USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE, NULLIT
+
+      USE RM_Links_Data
 
       INCLUDE 'tuplel.inc'
       INCLUDE 'rimptr.inc'

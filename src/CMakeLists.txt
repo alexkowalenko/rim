@@ -38,6 +38,7 @@ add_library(rimcommon STATIC
     files.f90
     formater.f90
     globals.f90
+    links_data.f90
     links.f90
     macros.f90
     maths.f90
@@ -45,6 +46,7 @@ add_library(rimcommon STATIC
     lexer.f90
     parser.f90
     randomfiles.f90
+    relations_data.f90
     relations.f90
     rim.f90
     system.f90

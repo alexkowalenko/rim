@@ -91,15 +91,15 @@ CONTAINS
       USE RM_Parameters
       USE RM_Globals, only : DBNAME, OWNER, DBDATE, DBTIME, DFLAG, DMFLAG, DBFNAM, KDBHDR, RMSTAT
       USE Extern, only: MSG
-      USE RM_Links, only: NLROW
+      USE RM_Links_Data, only: NLROW
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
+      USE RM_Relations_Data, only: RELBUF, NRROW
       USE RM_Text, only : ASCTXT
       USE Utils, only : ZEROIT, ZMOVE
 
       CHARACTER*(ZFNAML), intent(in) :: RIMDB1
 
       INCLUDE 'attble.inc'
-      INCLUDE 'reltbl.inc'
 
       LOGICAL :: NE
 
@@ -215,12 +215,12 @@ CONTAINS
       !!
       USE RM_Parameters
       USE RM_Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR, RMSTAT
-      USE RM_Links, only: LNKBUF, NLROW, LNKMOD
+      USE RM_Links_Data, only: LNKBUF, NLROW, LNKMOD
       USE RandomFiles, only : RIOCLO, RIOOUT
+      USE RM_Relations_Data, only: RELBUF, RELMOD, NRROW
       USE Utils, only : ZEROIT, ZMOVE
 
       INCLUDE 'attble.inc'
-      INCLUDE 'reltbl.inc'
 
       INTEGER :: IOS
 

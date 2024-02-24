@@ -1,13 +1,35 @@
 MODULE RM_Relations
+
+   USE RM_Parameters
+
    implicit none
    private
 
+   INTEGER :: RPBUF
+   !!         RPBUF---RELATIONS PER RELBUF PAGE
+
+   public Initialise
    public RELADD
    public RELGET
    public RELPUT
    public LOCREL
 
 contains
+
+   SUBROUTINE Initialise
+      USE RM_Parameters
+      USE RM_Text, only: BLANK
+      USE Utils, only: ZMOVE
+
+      USE RM_Relations_Data
+
+      CALL ZMOVE(CNAME,BLANK)
+      LRROW = 0
+      NRROW = ZRELRI
+      RELMOD = 0
+      RPBUF = ZRELR
+   END SUBROUTINE Initialise
+
 
    SUBROUTINE RELADD
       !!
@@ -18,8 +40,9 @@ contains
       USE Files, only : LF1REC
       USE Utils, only : ZMOVE
 
+      USE RM_Relations_Data
+
       INCLUDE 'tupler.inc'
-      INCLUDE 'reltbl.inc'
 
       INTEGER :: MRSTRT, I
       !
@@ -69,7 +92,8 @@ contains
       USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE
 
-      INCLUDE 'reltbl.inc'
+      USE RM_Relations_Data
+
       INCLUDE 'tupler.inc'
 
       INTEGER, intent(out) :: STATUS
@@ -141,7 +165,8 @@ contains
       USE RandomFiles, only: RIOIN, RIOOUT
       USE Utils, only : ZEROIT
 
-      INCLUDE 'reltbl.inc'
+      USE RM_Relations_Data
+
       INTEGER, intent(in out) :: THEROW
 
       INTEGER :: NNREC, NNROW, IOS
@@ -200,8 +225,9 @@ contains
       USE RM_Globals, only : IFMOD
       USE Utils, only : ZMOVE
 
+      USE RM_Relations_Data
+
       INCLUDE 'tupler.inc'
-      INCLUDE 'reltbl.inc'
 
       IF(LRROW.EQ.0) GO TO 9999
       !
@@ -235,9 +261,10 @@ contains
       USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE, NULLIT
 
+      USE RM_Relations_Data
+
       !INTEGER, intent(in) :: RNAME(Z)
 
-      INCLUDE 'reltbl.inc'
       INCLUDE 'tupler.inc'
       INCLUDE 'rimptr.inc'
       LOGICAL :: EQ

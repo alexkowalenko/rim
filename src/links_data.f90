@@ -1,0 +1,25 @@
+MODULE  RM_Links_Data
+   !!
+   !!  *** / L N K T B L / ***
+   !!
+   !!  BUFFER TO HOLD ONE PAGE FROM THE LINK HEADER TABLE
+   !!
+
+   USE RM_Parameters
+
+   implicit none
+   private
+
+   INTEGER, public :: LNKBUF(ZF1)
+   !!         LNKBUF--BUFFER FOR ONE PAGE FROM THE LINK HEADER
+   INTEGER, public :: LNKTBL(ZLNKL,ZLNKR)
+   !!         LNKTBL--EQUIVALENCE ARRAY FOR EASIER USE OF LNKBUF
+   INTEGER, public :: LLROW
+   !!         LLROW---LAST ROW SENT IN TUPLEL
+   INTEGER, public :: NLROW
+   !!         NLROW---NEXT AVAILABLE ROW FOR ADDING A LINK
+   INTEGER, public :: LNKMOD
+   !!         LNKMOD--MODIFICATION FLAG - O MEANS NO, 1 MEANS YES
+   EQUIVALENCE (LNKBUF(2),LNKTBL(1,1))
+
+END MODULE RM_Links_Data
