@@ -1,6 +1,7 @@
       SUBROUTINE RMXDEL(INDPTR)
 
          USE RM_Globals, only : RMSTAT
+         USE RM_Attributes, only: ATTGET, LOCATT
          USE RM_BufferData, only: BUFFER
          USE RM_Buffer, only: DELDAT
          USE RM_Relations, only : RELPUT

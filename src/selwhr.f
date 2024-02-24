@@ -1,6 +1,7 @@
       FUNCTION SELWHR(ST,NT)
 
          USE RM_Globals, only : CASEIG, TRACE, RMSTAT
+         USE RM_Attributes, only: ATTGET, LOCATT
          USE Extern, only: IMSG, MSG
          USE Formater, only : TYPER
          USE Lexer, only: KXTEXT, KXNAME, TOKTYP, IDL, EQTOK, KWS

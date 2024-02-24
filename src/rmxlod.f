@@ -1,6 +1,7 @@
       SUBROUTINE RMXLOD(INDPTR,TUPLE)
 
          USE RM_Globals, only : DBDATE, RMSTAT
+         USE RM_Attributes, only: ATTGET, ATTPUT, LOCATT
          USE RM_Buffer, only: ADDDAT
          USE RM_Relations, only : RELPUT
          USE RM_Text, only : BLANK

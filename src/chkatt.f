@@ -1,5 +1,6 @@
       SUBROUTINE CHKATT(TMPA,NUMELE,ERROR)
 
+         USE RM_Attributes, only: ATTADD, ATTGET, ATTNEW, LOCATT
          USE DateTime, only : RMDATE
          USE Extern, only : AMSG, MSG
          USE Lexer, only : ITEMS, LXSREC

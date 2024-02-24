@@ -1,6 +1,7 @@
       FUNCTION SELATT(FTOK,NTOK)
 
          USE RM_Globals, only :  KRMINF, KRMRNF, UPRINL
+         USE RM_Attributes, only: ATTGET, LOCATT
          USE DateTime, only : DTFSPL, KRMDTF, KRMTMF
          USE Extern, only: IMSG, AMSG, MSG
          USE Formater, only : TYPER, LXFMT
@@ -28,7 +29,7 @@ C
 
          LOGICAL END,ALLATT
          LOGICAL EQ,NE
-         INTEGER STATUS
+         INTEGER STATUS, TEMP
          INCLUDE 'dclar1.inc'
          LOGICAL SUMALL
          CHARACTER*3 FUN
@@ -63,7 +64,7 @@ C
          IP = 0
          PFUNCT = 0
 
-         IF (ALLATT)  CALL LOCATT(BLANK,NAME)
+         IF (ALLATT)  CALL TEMP = LOCATT(BLANK,NAME)
 C
 C     LOOP ON ATTRIBUTES
 C
@@ -148,7 +149,7 @@ C       IS NORMAL ATTRIBUTE
 
          IT = IT + 1
 
-         CALL LOCATT(ANAME,RNAME)
+         TEMP = LOCATT(ANAME,RNAME)
          CALL ATTGET(STATUS)
          IF(STATUS.NE.0) THEN
             CALL WARN(3,ANAME,RNAME)

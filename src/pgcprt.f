@@ -1,5 +1,6 @@
       LOGICAL FUNCTION PGCPRT(BLKTYP,MAXLIN)
 
+         USE RM_Attributes, only: ATTGET, LOCATT
          USE Extern, only : AMSG, MSG
          USE Formater, only : TYPER, LXFMT
          USE Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS

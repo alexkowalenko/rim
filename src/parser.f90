@@ -549,6 +549,7 @@ contains
       !
 
       USE RM_Parameters
+      USE RM_Attributes, only: ATTGET, LOCATT
       USE Extern, only: MSG
       Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
       Use RM_Links, only: LNKADD, LOCLNK
@@ -565,7 +566,6 @@ contains
       INTEGER :: FLEN, FTYP, I, I1, I2
       INTEGER :: LKNAM(Z)
 
-      INTEGER LOCATT
       !
       ! READ LINK DEFINITIONS
       !

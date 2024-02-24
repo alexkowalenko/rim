@@ -1,5 +1,6 @@
       FUNCTION SELSRT(FTOK,NTOK)
 
+         USE RM_Attributes, only: ATTGET, LOCATT
          USE Extern, only: MSG
          USE Formater, only : TYPER
          USE Message, only: WARN
@@ -23,6 +24,7 @@ C
          INCLUDE 'srtcom.inc'
          INCLUDE 'dclar1.inc'
          LOGICAL SAORD
+         INTEGER :: TEMP
 C
 C     *********************************************** S T A R T
 C
@@ -43,7 +45,7 @@ C
          ENDIF
 
   100    CALL LXSREC(TP,ANAME,ZC)
-         CALL LOCATT(ANAME,NAME)
+         TEMP = LOCATT(ANAME,NAME)
          CALL ATTGET(STATUS)
          IF (STATUS.NE.0) THEN
             CALL WARN(3,ANAME,NAME)

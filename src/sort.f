@@ -1,6 +1,7 @@
       SUBROUTINE SORT(NKSORT)
 
          USE RM_Globals, only : PGFLAG, MRINDX, RMSTAT
+         USE RM_Attributes, only: ATTGET, LOCATT
          USE RM_BufferData, only: BUFFER
          USE RM_Buffer, only: GETDAT
          USE Extern, only: IMSG, MSG

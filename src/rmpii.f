@@ -1,6 +1,7 @@
       SUBROUTINE RMPII
 
          USE RM_Globals, only : RMSTAT
+         USE RM_Attributes, only: ATTGET, LOCATT
          USE RM_Text, only : BLANK
          USE Utils, only : ZMOVE
 

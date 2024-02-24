@@ -1,6 +1,7 @@
       LOGICAL FUNCTION SGTLNK(I,MP,LP)
 
          USE RM_Globals, only : RMSTAT
+         USE RM_Attributes, only: ATTGET, LOCATT
          USE RM_BufferData, only: BUFFER
          USE Extern, only: MSG
          USE RM_Links, only: LOCLNK
@@ -40,7 +41,7 @@ C     GET LINK
          CALL RMSAV(1)
 
 C     SET UP WHERE CLAUSE
-         CALL LOCATT(A1NAME,R1NAME)
+         TEMP = LOCATT(A1NAME,R1NAME)
          CALL ATTGET(STATUS)
          IF (STATUS.NE.0) THEN
             CALL MSG('E','LINK FR ATT NOT FOUND' ,' ')
@@ -51,7 +52,7 @@ C     SET UP WHERE CLAUSE
          WHRLEN(1) = ATTLEN
 
          temp = LOCREL(R2NAME)
-         CALL LOCATT(A2NAME,R2NAME)
+         TEMP = LOCATT(A2NAME,R2NAME)
          CALL ATTGET(STATUS)
          IF (STATUS.NE.0) THEN
             CALL MSG('E','LINK TO ATT NOT FOUND' ,' ')

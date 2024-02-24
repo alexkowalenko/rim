@@ -1,5 +1,6 @@
       FUNCTION PGCEXP(ST,NT)
 
+         USE RM_Attributes, only: ATTGET, LOCATT
          USE DateTime, only: KRMDTF, KRMTMF
          USE Extern, only: IMSG, MSG
          USE Formater, only : TYPER, LXDATE

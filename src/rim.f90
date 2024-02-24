@@ -350,6 +350,7 @@ contains
       !! :  LOAD REL_NAME <FROM FILE_NAME> <USING FILENAME>
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG, PIFLAG
+      USE RM_Attributes, only: ATTGET, LOCATT
       USE RM_BufferData, only: BUFFER
       USE Extern, only : SETIN, PRMSET, LOADIT, LOADFM, AMSG, MSG
       USE Formater, only : TYPER, LXFMT
@@ -374,7 +375,7 @@ contains
       INTEGER :: SC, JI, JU, I, ISTAT, L, FOR, FPTR, STATUS, SVM, TYP, FMT, FMTLEN, NFOR, KQ1, KQ2
       INTEGER :: QPTRS(2,QKEYL)
 
-      INTEGER PARSE, LOCPRM, LOCATT, BLKLOC
+      INTEGER PARSE, LOCPRM, BLKLOC
       !
       !
       ! CHECK FOR A DATABASE
@@ -582,6 +583,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, RMSTAT
+      USE RM_Attributes, only: ATTGET, ATTPUT, LOCATT
       USE RM_BufferData, only: BUFFER
       USE RM_Buffer, only: GETDAT
       USE Extern, only: AMSG, MSG
@@ -601,7 +603,7 @@ contains
 
       INTEGER :: COLUMN, I, IP, ISTAT, L, LENGTH, NKSORT, SVM, TYP, ITUP
 
-      INTEGER :: LOCPRM, LOCATT
+      INTEGER :: LOCPRM
 
       !
       !
@@ -744,6 +746,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG
+      USE RM_Attributes, only: ATTGET, LOCATT
       USE RM_BufferData, only: BUFFER
       USE DateTime, only : RMDATE
       USE Lexer, only : LXSREC
@@ -769,7 +772,7 @@ contains
       INTEGER :: QPTRS(2,QKEYL)
       INTEGER I, IFLAG, ISTAT, J, JT, JW, KQ1, KQ11, KQ12, SC, STATUS
 
-      INTEGER PARSE, LOCPRM, LOCATT, BLKLOC
+      INTEGER PARSE, LOCPRM, BLKLOC
       !
       ! ---------------------------------------------
       !
@@ -1007,8 +1010,8 @@ contains
       !! REMOVE A KEY (MAKE ATTRIBUTE NON-KEYED)
       !!
       USE RM_Parameters
-      USE RM_Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER
-      USE RM_Globals, only : RMSTAT
+      USE RM_Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, RMSTAT
+      USE RM_Attributes, only: ATTGET, ATTPUT, LOCATT
       Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
       USE Message, only: WARN
       USE RM_Relations, only: LOCREL
@@ -1025,7 +1028,7 @@ contains
 
       INTEGER :: I, ISTAT, L
 
-      INTEGER LOCPRM, LOCATT
+      INTEGER LOCPRM
       LOGICAL :: NE, EQ
       !
       !
@@ -1170,6 +1173,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG, DBNAME, USERID, OWNER, IFMOD, RMSTAT, CONNI
+      USE RM_Attributes, only: ATTDEL, ATTGET, LOCATT
       USE Extern, only : PRMSET, AMSG, MSG
       USE Lexer, only: KWS, ITEMS, EQKEYW, LXSREC
       USE Message, only: WARN
@@ -1188,7 +1192,7 @@ contains
 
       INTEGER :: I, ISTAT, L, R
 
-      INTEGER LOCPRM, LOCATT
+      INTEGER LOCPRM
       LOGICAL NE, EQ
       !
       ! CHECK FOR A DATABASE
@@ -1405,6 +1409,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, USERID, OWNER
+      USE RM_Attributes, only: LOCATT
       USE RM_BufferData, only: BUFFER
       USE Extern, only : AMSG, MSG
       USE Lexer, only: ITEMS, LXSREC
@@ -1418,7 +1423,7 @@ contains
       LOGICAL :: FLAG
 
       LOGICAL EQ
-      INTEGER LOCATT, BLKLOC
+      INTEGER BLKLOC
 
       !
       !

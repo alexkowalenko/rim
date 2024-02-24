@@ -1,6 +1,7 @@
       SUBROUTINE RMVARC(CTYP,TUPVAL)
 
          USE RM_Globals, only : RMSTAT
+         USE RM_Attributes, only: ATTGET, LOCATT
          USE RM_Text, only : BLANK
 C
 C     FORTRAN INTERFACE SUBROUTINE

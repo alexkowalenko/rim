@@ -2,6 +2,7 @@
 
          USE RM_Globals, only : USERID, KRMINF, KRMRNF, KMSSVL,
      +   KMSSVT, KNAPVL, KNAPVT, RMSTAT
+         USE RM_Attributes, only: ATTGET, LOCATT
          USE RM_BufferData, only: BUFFER, IREL
          USE RM_Buffer, only: GETDAT
          USE DateTime, only : ASCDAT, KRMDTF

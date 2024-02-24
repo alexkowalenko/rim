@@ -1,6 +1,7 @@
       SUBROUTINE DELETE(MAT)
 
          USE RM_Globals, only : RMSTAT
+         USE RM_Attributes, only: ATTGET, LOCATT
          USE RM_Buffer, only: DELDAT
          USE Extern, only: IMSG, MSG
          USE RM_Relations, only : RELGET, RELPUT
