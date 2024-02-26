@@ -150,6 +150,7 @@ contains
       !!
       USE RM_Parameters
       USE Files, only: Files_Initialise => Initialise
+      USE RM_Attributes, only: Attributes_Initialise => Initialise
       USE RM_Links, only: Links_Initialise => Initialise
       USE RM_Relations, only: Relations_Initialise => Initialise
       USE RM_Text, only : BLANK
@@ -158,7 +159,6 @@ contains
 
       INCLUDE 'incore.inc'
       INCLUDE 'tupler.inc'
-      INCLUDE 'attble.inc'
       INCLUDE 'rimptr.inc'
       INCLUDE 'srtcom.inc'
       INCLUDE 'ptrcom.inc'
@@ -172,14 +172,7 @@ contains
       CALL ZMOVE(NAME,BLANK)
 
       !  /ATTBLE/
-      CALL ZMOVE(CANAME,BLANK)
-      CALL ZMOVE(CRNAME,BLANK)
-      CRSTRT = 0
-      CROW = 0
-      LROW = 0
-      NAROW = ZATTRI
-      ATTMOD = 0
-      APBUF = ZATTR
+      CALL Attributes_Initialise
 
       !  /LNKTBL/
       CALL Links_Initialise
@@ -935,7 +928,6 @@ contains
 
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tupler.inc'
-      INCLUDE 'attble.inc'
       LOGICAL :: NE
       LOGICAL :: EQ
       LOGICAL :: SELWHR
@@ -1021,7 +1013,6 @@ contains
 
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tupler.inc'
-      INCLUDE 'attble.inc'
 
       INCLUDE 'dclar1.inc'
       INCLUDE 'rmatts.inc'
@@ -1185,7 +1176,6 @@ contains
 
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tupler.inc'
-      INCLUDE 'attble.inc'
       INCLUDE 'rmatts.inc'
       !
       INCLUDE 'dclar1.inc'

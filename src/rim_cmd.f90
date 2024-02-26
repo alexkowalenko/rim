@@ -2512,7 +2512,6 @@ contains
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tuplel.inc'
       INCLUDE 'tupler.inc'
-      INCLUDE 'attble.inc'
       INCLUDE 'dclar1.inc'
 
       INTEGER :: I, ISTAT, STATUS

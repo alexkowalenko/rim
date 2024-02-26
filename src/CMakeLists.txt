@@ -30,6 +30,7 @@ add_library(rimcommon STATIC
     union.f varadd.f 
     whetol.f wheval.f whrnam.f
     attributes.f90
+    attributes_data.f90
     buffer_data.f90
     buffer.f90
     cards.f90

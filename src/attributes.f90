@@ -1,6 +1,22 @@
 MODULE RM_Attributes
+
+   USE RM_Parameters, only: Z
+
    implicit none
    private
+
+   INTEGER :: CANAME(Z)
+   !!         CANAME--CURRENT ATTRIBUTE NAME
+   INTEGER :: CRNAME(Z)
+   !!         CRNAME--CURRENT RELATION NAME
+   INTEGER :: CRSTRT
+   !!         CRSTRT--CURRENT START IN ATTBUF FOR CRNAME
+   INTEGER :: CROW
+   !!         CROW----NEXT ROW IN ATTBLE TO GET
+   INTEGER :: LROW
+   !!         LROW----LAST ROW SENT IN TUPLEA
+   INTEGER :: APBUF
+   !!         APBUF---ATTRIBUTES PER ATTBUF PAGE
 
    public ATTADD
    public ATTDEL
@@ -8,20 +24,38 @@ MODULE RM_Attributes
    public ATTNEW
    public ATTPUT
    public LOCATT
+   public Initialise
 
 CONTAINS
+
+   SUBROUTINE Initialise
+      USE RM_Parameters, only: ZATTRI
+      USE RM_Attributes_Data
+      USE RM_Text, only: BLANK
+      USE Utils, only : ZMOVE
+
+      CALL ZMOVE(CANAME,BLANK)
+      CALL ZMOVE(CRNAME,BLANK)
+      CRSTRT = 0
+      CROW = 0
+      LROW = 0
+      NAROW = ZATTRI
+      ATTMOD = 0
+      APBUF = ZATTR
+   END SUBROUTINE
+
 
    SUBROUTINE ATTADD
       !!
       !!  PURPOSE:   ADD A NEW TUPLE TO THE ATTRIBUTE RELATION
       !!
       USE RM_Parameters
+      USE RM_Attributes_Data
       USE Files, only : LF1REC
       USE RM_Globals, only : IFMOD
       USE Utils, only : ZMOVE
 
       INCLUDE 'tuplea.inc.f90'
-      INCLUDE 'attble.inc'
 
       INTEGER :: MRSTRT, I, L
 
@@ -69,11 +103,11 @@ CONTAINS
       !!     STATUS--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
 
       USE RM_Parameters
+      USE RM_Attributes_Data
 
       INTEGER, intent(out) :: STATUS
 
       INCLUDE 'rmatts.inc'
-      INCLUDE 'attble.inc'
       INCLUDE 'start.inc'
       !
       STATUS = 0
@@ -103,6 +137,7 @@ CONTAINS
       !!     STATUS--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
 
       USE RM_Parameters
+      USE RM_Attributes_Data
       USE RM_Text, only : BLANK
       USE Extern, only: IMSG, MSG
       USE Utils, only : ZMOVE, ITOH
@@ -110,7 +145,6 @@ CONTAINS
       INTEGER, intent(out) :: STATUS
 
       INCLUDE 'tuplea.inc.f90'
-      INCLUDE 'attble.inc'
       LOGICAL :: EQ
       LOGICAL :: NE
 
@@ -222,10 +256,10 @@ CONTAINS
       !!     RNAME---NAME OF A RELATION
       !!     NATT----NUMBER OF ATTRIBUTES IN THE RELATION
       USE RM_Parameters
+      USE RM_Attributes_Data
       USE Files, only : LF1REC
 
       INCLUDE 'rmatts.inc'
-      INCLUDE 'attble.inc'
       INCLUDE 'start.inc'
       INCLUDE 'dclar1.inc'
 
@@ -271,12 +305,12 @@ CONTAINS
       !!             OUTPUT - ACTUAL ROW TO USE IN THE BUFFER
 
       USE RM_Parameters
+      USE RM_Attributes_Data
       USE Files, only : FILE1, LENBF1, LF1REC, CAREC
       USE RM_Globals, only : RMSTAT
       USE RandomFiles, only : RIOIN, RIOOUT
       USE Utils, only : ZEROIT
 
-      INCLUDE 'attble.inc'
       INTEGER, intent(in out) :: THEROW
 
       INTEGER :: NNREC, NNROW, IOS
@@ -334,11 +368,11 @@ CONTAINS
       !!     STATUS--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
 
       USE RM_Parameters
+      USE RM_Attributes_Data
       USE RM_Globals, only : IFMOD
       USE Utils, only : ZMOVE
 
       INCLUDE 'tuplea.inc.f90'
-      INCLUDE 'attble.inc'
 
       INTEGER, intent(out) :: STATUS
       !
@@ -378,10 +412,10 @@ CONTAINS
       !!     LOCATT--STATUS VARIABLE - 0 MEANS OK, 1 MEANS NO WAY
 
       USE RM_Parameters
+      USE RM_Attributes_Data
       USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE
 
-      INCLUDE 'attble.inc'
       INCLUDE 'start.inc'
       LOGICAL :: EQ
       LOGICAL :: NE
@@ -490,6 +524,5 @@ CONTAINS
 9999  CONTINUE
       RETURN
    END FUNCTION LOCATT
-
 
 END MODULE RM_Attributes
