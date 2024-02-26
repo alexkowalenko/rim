@@ -14,7 +14,7 @@ add_library(rimcommon STATIC
     getkca.f gett.f gtsort.f
     isect.f
     join.f kmpard.f kmpari.f kmparr.f kmpart.f kompxx.f
-    locboo.f locprm.f locvar.f
+    locboo.f locprm.f
     motscn.f ne.f 
     parse.f parval.f prckey.f prjtup.f
     putt.f ptrs.f
@@ -27,8 +27,7 @@ add_library(rimcommon STATIC
     swshel.f swsink.f swsmfl.f swsmvl.f 
     swunlo.f swunvl.f 
     swvacp.f swvlfs.f swvllo.f 
-    union.f varadd.f 
-    whetol.f wheval.f whrnam.f
+    union.f whetol.f wheval.f whrnam.f
     attributes.f90
     attributes_data.f90
     buffer_data.f90
@@ -54,6 +53,7 @@ add_library(rimcommon STATIC
     text.f90
     textfiles.f90
     utils.f90
+    variables.f90
 )
 
 add_library(rimextlib STATIC

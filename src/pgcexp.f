@@ -9,6 +9,7 @@
          USE Lexer, only: IDL, EQTOK, IDI, IDR, LXLENW, LXSREC
          USE RM_Text, only: DVSIGN, MNSIGN, PLSIGN, TMSIGN, ASLPAR
          USE RM_Text, only: ASRPAR
+         USE RM_Variables, only: LOCVAR
 
 
          INCLUDE 'syspar.inc'

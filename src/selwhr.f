@@ -8,6 +8,7 @@
          USE Lexer, only: EQKEYW, LXLENW, LXSREC
          USE Message, only: WARN
          USE Utils, only : HTOI, ITOH
+         USE RM_Variables, only: LOCVAR
 
          INCLUDE 'syspar.inc'
 C

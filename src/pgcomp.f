@@ -9,6 +9,7 @@
          USE Parser, only: LODREC
          USE RM_Text, only : ASCTXT
          USE Utils, only : ZMOVE
+         USE RM_Variables, only: VARADD, LOCVAR
 
          INCLUDE 'syspar.inc'
 C
@@ -31,7 +32,7 @@ C
          INCLUDE 'dclar1.inc'
          LOGICAL PGSTOR, PGBSTO
          LOGICAL SELREL, SELWHR, SELSRT
-         LOGICAL VARADD, PGCEXP, PGCPRT
+         LOGICAL PGCEXP, PGCPRT
          INTEGER BLKLOC
          INTEGER OP(ZPGLVL), RELSAV(Z,ZPGLVL)
          INTEGER VARNAM(Z)

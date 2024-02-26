@@ -6,6 +6,7 @@
          USE Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, IDL, KWS, ITEMS
          USE Lexer, only: EQKEYW, IDI, LXLENW, LXSREC
          USE Parser, only: LODREC
+         USE RM_Variables, only: LOCVAR
 
          INCLUDE 'syspar.inc'
 C
