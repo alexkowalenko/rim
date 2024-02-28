@@ -20,6 +20,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : IFMOD, RMSTAT
+      USE RM_Blocks, only: BLKCHG, BLKLOC
       USE RM_BufferData, only: BUFFER
       USE Files, only: FILE2, LENBF2, LF2REC, LF2WRD, CURBLK
       USE Files, only: MODFLG
@@ -32,7 +33,6 @@ contains
       INTEGER, intent(out) :: LENGTH
 
       INTEGER :: OFFSET, I, IOBN, IOS, ISIGN, KQ0, KQ1, NUMBLK
-      INTEGER BLKLOC
       !
       !  UNPAC THE ID WORD.
       !
@@ -163,6 +163,7 @@ contains
 
       USE RM_Parameters
       USE RM_Globals, only : IFMOD, RMSTAT
+      USE RM_Blocks, only: BLKCHG, BLKLOC
       USE RM_BufferData, only: BUFFER
       USE Files, only : FILE2, LENBF2, CURBLK, MODFLG
       USE RandomFiles, only : RIOIN, RIOOUT
@@ -172,7 +173,6 @@ contains
       INTEGER, intent(in) :: ID
 
       INTEGER :: OFFSET, I, IOBN, IOS, KQ0, KQ1, NUMBLK
-      INTEGER BLKLOC
       !
       !  UNPAC THE ID WORD.
       !
@@ -240,6 +240,7 @@ contains
 
       USE RM_Parameters
       USE RM_Globals, only : TRACE, RMSTAT
+      USE RM_Blocks, only: BLKCHG, BLKLOC
       USE RM_BufferData, only: BUFFER
       USE Extern, only: IMSG, MSG
       USE Files, only : FILE2, LENBF2, LF2REC, CURBLK, MODFLG
@@ -254,7 +255,6 @@ contains
       INCLUDE 'rimptr.inc'
       !
       INTEGER :: OFFSET, I, IOBN, IOS, KQ0, KQ1, KQ2, N1, N2, NUMBLK, ISOFF
-      INTEGER BLKLOC
       !
       !  UNPAC THE ID WORD.
       !
@@ -375,6 +375,7 @@ contains
 
       USE RM_Parameters
       USE RM_Globals, only : IFMOD, RMSTAT
+      USE RM_Blocks, only: BLKCHG, BLKLOC
       USE RM_BufferData, only: BUFFER
       USE Files, only : FILE2, LENBF2, CURBLK, MODFLG
       USE RandomFiles, only: RIOIN, RIOOUT
@@ -386,7 +387,6 @@ contains
       INTEGER, intent(in) :: LENGTH
 
       INTEGER :: OFFSET, I, IOBN, IOS, KQ0, KQ1, LEN, NUMBLK
-      INTEGER BLKLOC
       !
       !  UNPAC THE ID WORD.
       !

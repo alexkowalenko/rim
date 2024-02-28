@@ -6,8 +6,7 @@
 
 add_library(rimcommon STATIC
     parameters.f90
-    blkchg.f blkcln.f blkclr.f blkdef.f blkdsp.f blkdwn.f blkext.f
-    blkloc.f blkmov.f blknxt.f blkup.f
+    blkmov.f
     btadd.f btget.f btinit.f btlki.f btlkr.f btmove.f btput.f btrep.f btsert.f
     change.f chkatt.f chkrel.f
     delete.f eq.f
@@ -30,6 +29,7 @@ add_library(rimcommon STATIC
     union.f whetol.f wheval.f whrnam.f
     attributes.f90
     attributes_data.f90
+    blocks.f90
     buffer_data.f90
     buffer.f90
     cards.f90

@@ -2,6 +2,8 @@
 
          USE RM_Globals, only : TRACE, MRINDX, HXFLAG, CASEIG, PGFLAG,
      +   DBFNAM, RMSTAT, FFFLAG, NOUTR, ULPP, UPRINL
+         USE RM_Blocks, only: BLKCHG, BLKDEF, BLKDWN, BLKEXT, BLKLOC
+         USE RM_Blocks, only: BLKUP
          USE RM_BufferData, only: BUFFER
          USE RM_Buffer, only: GETDAT
          USE Extern, only: SETOUT, SETIN, IMSG, AMSG, MSG, MSUNIT
@@ -32,7 +34,6 @@ C
          INCLUDE 'dclar1.inc'
          LOGICAL ALDONE, ATDONE
          LOGICAL PGEEXP, WHEVAL
-         INTEGER BLKLOC
          CHARACTER*(ZFNAML) FN
 
 C     BUFFERS *** BLOCKS 5 - 7 MUST STAY FIXED

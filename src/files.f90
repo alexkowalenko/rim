@@ -292,6 +292,7 @@ CONTAINS
 
       USE RM_Parameters
       USE RM_Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBHDR, RMSTAT
+      USE RM_Blocks, only: BLKDEF, BLKLOC
       USE RM_BufferData, only: BUFFER
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
       USE Utils, only : ZEROIT, ZMOVE
@@ -301,7 +302,6 @@ CONTAINS
 
       INTEGER :: IOS, KQ1, KQ0
       LOGICAL :: NE
-      INTEGER BLKLOC
 
       !
       !  OPEN UP THE PAGED DATA FILE.
@@ -368,6 +368,7 @@ CONTAINS
    SUBROUTINE F2CLO
       USE RM_Parameters
       USE RM_Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR, RMSTAT
+      USE RM_Blocks, only: BLKCHG, BLKCLR, BLKLOC
       USE RM_BufferData, only: BUFFER
       USE RandomFiles, only : RIOCLO, RIOIN, RIOOUT
       USE Utils, only : ZMOVE
@@ -377,7 +378,6 @@ CONTAINS
       !
 
       INTEGER :: REC1, NUMB, IOS, KQ1, KQ0
-      INTEGER BLKLOC
 
       !
       !  SEQUENCE THROUGH THE BUFFERS LOOKING FOR WRITE FLAGS.

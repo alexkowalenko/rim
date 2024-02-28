@@ -1,6 +1,7 @@
       SUBROUTINE RMSAV(INDPTR)
 
          USE RM_Globals, only : TRACE, RMSTAT
+         USE RM_Blocks, only: BLKCHG, BLKLOC
          USE RM_BufferData, only: BUFFER
          USE Extern, only: IMSG, MSG
 
@@ -19,7 +20,6 @@ C     INPUT:  INDPTR--INDEX TO SAVE BLOCK (RANGE OF 1 TO ZPIMAX)
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'ptrcom.inc'
-         INTEGER BLKLOC
 C
 C  SEE IF THE INDEX IS WITHIN RANGE.
 C

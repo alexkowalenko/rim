@@ -1,6 +1,7 @@
       SUBROUTINE PGCOMP
 
          USE RM_Globals, only: PGVARS, INLINE, PGFLAG, RMSTAT
+         USE RM_Blocks, only: BLKCLN, BLKCLR, BLKDEF, BLKLOC
          USE RM_BufferData, only: BUFFER
          USE DateTime, only: RMTIME, RMDATE
          USE Extern, only: IMSG, AMSG, MSG
@@ -33,7 +34,6 @@ C
          LOGICAL PGSTOR, PGBSTO
          LOGICAL SELREL, SELWHR, SELSRT
          LOGICAL PGCEXP, PGCPRT
-         INTEGER BLKLOC
          INTEGER OP(ZPGLVL), RELSAV(Z,ZPGLVL)
          INTEGER VARNAM(Z)
 C

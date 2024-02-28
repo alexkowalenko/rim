@@ -2,6 +2,7 @@
 
          USE RM_Globals, only : RMSTAT
          USE RM_Attributes, only: ATTGET, LOCATT
+         USE RM_Blocks, only: BLKDWN, BLKLOC, BLKUP
          USE RM_BufferData, only: BUFFER
          USE Extern, only: IMSG, AMSG, MSG
          USE Lexer, only : KXKEYW, KXNAME, IDT, ASCREC, IDP, IDL, KWS
@@ -25,7 +26,6 @@ C
 C       GETKCA RETURNS TRUE IF A KEYED COMMON ATTRIBUTE WAS FOUND
 C
          LOGICAL REQKCA
-         INTEGER BLKLOC
 C
          INCLUDE 'tuplea.inc'
          INCLUDE 'dclar1.inc'

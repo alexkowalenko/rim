@@ -4,6 +4,7 @@
 
          USE RM_Globals, only : MRINDX, HXFLAG, RMSTAT, FFFLAG, NOUTR
          USE RM_Globals, only : ULPP, UPRINL
+         USE RM_Blocks, only: BLKCLR
          USE RM_BufferData, only: BUFFER
          USE Extern, only: IMSG, AMSG, MSG, MSUNIT
          USE Formater, only : TYPER

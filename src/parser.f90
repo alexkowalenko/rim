@@ -291,6 +291,7 @@ contains
       !!     NUMELE--NUMBER OF NEWLY DEFINED ATTRIBUTES
       !!
       USE RM_Parameters
+      USE RM_Blocks, only: BLKCHG, BLKLOC
       USE RM_BufferData, only: BUFFER
       USE Extern, only: MSG
       USE Formater, only : TYPER, LXFMT
@@ -309,7 +310,6 @@ contains
       INCLUDE 'dclar1.inc'
 
       INTEGER :: COLUMN, FMT, FMTLEN, FMTPOS, KEY, KEYPOS, KQ1, LENGTH, LTEMS, NWORDS, ROWS, STYP, IATTV, VTYP
-      INTEGER BLKLOC
 
       !
       !  READ AN ELEMENT RECORD.
@@ -486,6 +486,7 @@ contains
       !! LOAD THE RELATION DESCRIPTION
       !!
       USE RM_Parameters
+      USE RM_Blocks, only: BLKLOC
       USE RM_BufferData, only: BUFFER
       USE Extern, only: MSG
       Use Lexer, only: KXNAME, TOKTYP, ITEMS, LXSREC
@@ -500,7 +501,6 @@ contains
 
       INTEGER :: ERROR, I, JUNK
 
-      INTEGER BLKLOC
       !
       !  READ RELATION DATA.
       !

@@ -1,5 +1,6 @@
       SUBROUTINE GTSORT(MAT,INDEX,IFLAG,LENGTH)
 
+         USE RM_Blocks, only: BLKCHG, BLKCLR, BLKLOC
          USE RM_BufferData, only: BUFFER
          USE RM_Globals, only : MRINDX, RMSTAT
 
@@ -22,7 +23,6 @@ C
 C
          INCLUDE 'rimptr.inc'
          DIMENSION MAT(1)
-         INTEGER BLKLOC
 C
 C     USE BLOCKS 8-10 (FOR INDICES 1-3)
 C     SEE PGEXEC FOR OTHER BLOCK USAGE

@@ -344,6 +344,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG, PIFLAG
       USE RM_Attributes, only: ATTGET, LOCATT
+      USE RM_Blocks, only: BLKCLR, BLKDEF, BLKLOC
       USE RM_BufferData, only: BUFFER
       USE Extern, only : SETIN, PRMSET, LOADIT, LOADFM, AMSG, MSG
       USE Formater, only : TYPER, LXFMT
@@ -368,7 +369,7 @@ contains
       INTEGER :: SC, JI, JU, I, ISTAT, L, FOR, FPTR, STATUS, SVM, TYP, FMT, FMTLEN, NFOR, KQ1, KQ2
       INTEGER :: QPTRS(2,QKEYL)
 
-      INTEGER PARSE, LOCPRM, BLKLOC
+      INTEGER PARSE, LOCPRM
       !
       !
       ! CHECK FOR A DATABASE
@@ -740,6 +741,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG
       USE RM_Attributes, only: ATTGET, LOCATT
+      USE RM_Blocks, only: BLKDEF, BLKLOC
       USE RM_BufferData, only: BUFFER
       USE DateTime, only : RMDATE
       USE Lexer, only : LXSREC
@@ -765,7 +767,7 @@ contains
       INTEGER :: QPTRS(2,QKEYL)
       INTEGER I, IFLAG, ISTAT, J, JT, JW, KQ1, KQ11, KQ12, SC, STATUS
 
-      INTEGER PARSE, LOCPRM, BLKLOC
+      INTEGER PARSE, LOCPRM
       !
       ! ---------------------------------------------
       !
@@ -920,6 +922,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG, DBNAME, RMSTAT
+      USE RM_Blocks, only: BLKCLR, BLKDEF, BLKLOC
       USE RM_BufferData, only: BUFFER
       Use Lexer, only: KXNAME, TOKTYP, ITEMS, EQKEYW, LXSREC
       USE Message, only : WARN
@@ -937,7 +940,7 @@ contains
 
       INTEGER :: I, KQ1, L
 
-      INTEGER LOCPRM, BLKLOC
+      INTEGER LOCPRM
 
       !
       !
@@ -1400,6 +1403,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, USERID, OWNER
       USE RM_Attributes, only: LOCATT
+      USE RM_Blocks, only: BLKCLR, BLKDEF, BLKLOC
       USE RM_BufferData, only: BUFFER
       USE Extern, only : AMSG, MSG
       USE Lexer, only: ITEMS, LXSREC
@@ -1413,7 +1417,6 @@ contains
       LOGICAL :: FLAG
 
       LOGICAL EQ
-      INTEGER BLKLOC
 
       !
       !

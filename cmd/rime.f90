@@ -4,6 +4,7 @@ PROGRAM RIME
 
    USE RM_Parameters
    USE RM_Globals, only: KRMRNF, DBFNAM, ECHO, CONNI, CONNO, BATCH, NINT, NOUTR
+   USE RM_Blocks, only: BLKDSP
    USE DateTime, only: RMTIME, RMDATE
    USE Extern, only: SETOUT, SETIN, PRMSET, DMSG, IMSG, AMSG, MSG
    USE Formater, only : LXFMT

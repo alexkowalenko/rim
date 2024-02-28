@@ -2,6 +2,7 @@
 
          USE RM_Globals, only : RMSTAT
          USE RM_Attributes, only: ATTGET, LOCATT
+         USE RM_Blocks, only: BLKCHG, BLKLOC
          USE RM_BufferData, only: BUFFER
          USE RM_Buffer, only: DELDAT
          USE RM_Relations, only : RELPUT
@@ -18,7 +19,6 @@ C         INDPTR--INDEX TO SAVE BLOCK (RANGE OF 1 TO 9)
          INCLUDE 'tuplea.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'start.inc'
-         INTEGER BLKLOC
 
          INTEGER COLUMN
          RMSTAT = 0

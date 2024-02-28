@@ -1,6 +1,7 @@
       SUBROUTINE RMRES(INDPTR)
 
          USE RM_Globals, only : TRACE, RMSTAT
+         USE RM_Blocks, only: BLKLOC
          USE RM_BufferData, only: BUFFER
          USE Extern, only: IMSG, MSG
          USE RM_Relations, only: LOCREL
@@ -23,7 +24,6 @@ C     INPUT:  INDPTR--INDEX TO SAVE BLOCK (RANGE OF 0 TO ZPIMAX)
          INCLUDE 'srtcom.inc'
          LOGICAL NE
          LOGICAL EQ
-         INTEGER BLKLOC
 C
 C  SEE IF THE INDEX IS WITHIN RANGE.
 C

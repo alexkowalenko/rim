@@ -1,6 +1,7 @@
       LOGICAL FUNCTION PGSTOR(PGM,LPGM)
 
          USE RM_Globals, only : RMSTAT
+         USE RM_Blocks, only: BLKCHG
          USE RM_BufferData, only: BUFFER
 
          INCLUDE 'syspar.inc'

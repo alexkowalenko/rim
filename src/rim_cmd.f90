@@ -67,8 +67,8 @@ contains
       !!       END
       !!
       USE RM_Parameters
-      USE RM_Globals, only : DFLAG, USERID, OWNER, DBNAME, IFMOD, DBFNAM
-      USE RM_Globals, only : RMSTAT
+      USE RM_Globals, only : DFLAG, USERID, OWNER, DBNAME, IFMOD, DBFNAM, RMSTAT
+      USE RM_Blocks, only: BLKCLR
       USE DateTime, only : RMDATE
       USE Extern, only: PRMSET, AMSG, MSG
       USE Lexer, only: ITEMS, EQKEYW, LXSREC
@@ -222,6 +222,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DBNAME, USERID, OWNER, RMSTAT, NOUTR, ULPP
+      USE RM_Blocks, only: BLKCHG, BLKCLN, BLKDEF, BLKLOC
       USE RM_BufferData, only: BUFFER, IREL
       USE DateTime, only: RMTIME, RMDATE
       USE Extern, only: SETOUT, DMSG, AMSG, MSG
@@ -241,7 +242,6 @@ contains
       INTEGER :: NWORDS, TP, NN, SAVLPP, NOGO, ICNTR, IPERM, PTR, I, STAT, J, IERR, IN, ISTAT, KK, KQ2, NUM
       LOGICAL :: ALL,PERM,LHASH
 
-      INTEGER BLKLOC
       LOGICAL EQ, NE
       DATA NWORDS /2500/
 
@@ -452,6 +452,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, RMSTAT
       USE RM_Attributes, only: ATTGET, LOCATT
+      USE RM_Blocks, only: BLKCLR, BLKDEF, BLKLOC
       USE RM_BufferData, only: BUFFER
       USE RM_Buffer, only: DELDAT
       USE Extern, only: IMSG, MSG
@@ -472,7 +473,6 @@ contains
       INTEGER :: COLUMN, I, II, IID, IP, ISTAT, J, JP1, JP2, KQ1, L, LENGTH, ND, NJ, NKSORT, NSORTW, NUMKEY, NW
       INCLUDE 'dclar1.inc'
       LOGICAL :: SELREL
-      INTEGER :: BLKLOC
 
       !
       ! CHECK FOR A DATABASE
@@ -1220,6 +1220,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG
       USE RM_Attributes, only: ATTADD, ATTGET, ATTNEW, LOCATT
+      USE RM_Blocks, only: BLKCLN, BLKCLR, BLKDEF, BLKLOC
       USE RM_BufferData, only: BUFFER
       USE Extern, only: IMSG, AMSG, MSG
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, KWS, ITEMS, EQKEYW, LXSREC
@@ -1254,7 +1255,7 @@ contains
       INTEGER :: I, I1, I2, ICT, ISTAT, J, K, KATT3, KEYCOL, KEYLEN, KEYTYP, KQ1, KQ3, NATT1, NATT2, NATT3
       INTEGER :: NCOL1, NCOL2, NCOL3, NK, NWORDS
 
-      INTEGER LOCBOO, LOCPRM, BLKLOC
+      INTEGER LOCBOO, LOCPRM
 
       !
       ! CHECK FOR A DATABASE
@@ -1563,6 +1564,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG, RMSTAT
       USE RM_Attributes, only: ATTADD, ATTGET, ATTNEW, LOCATT
+      USE RM_Blocks, only: BLKCLN, BLKCLR, BLKDEF, BLKLOC
       USE RM_BufferData, only: BUFFER
       USE RM_Buffer, only: ADDDAT
       USE DateTime, only : RMDATE
@@ -1590,7 +1592,7 @@ contains
       INTEGER :: LPAG, MEND, MSTART, NOATTS, NOCOLS, UC, UE
       LOGICAL :: XTMP
 
-      INTEGER LOCPRM, SELWHR, BLKLOC
+      INTEGER LOCPRM, SELWHR
       !
       !
       ! CHECK FOR A DATABASE
@@ -1796,6 +1798,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG
       USE RM_Attributes, only: ATTADD, ATTGET, ATTNEW, LOCATT
+      USE RM_Blocks, only: BLKCLN, BLKCLR, BLKDEF, BLKLOC
       USE RM_BufferData, only: BUFFER
       USE DateTime, only : RMDATE
       USE Extern, only: MSG
@@ -1827,7 +1830,7 @@ contains
       LOGICAL :: EQ
       LOGICAL :: NE
       LOGICAL :: GETKCA, REQKCA
-      INTEGER LOCPRM, BLKLOC
+      INTEGER LOCPRM
 
       !
       !
@@ -2664,6 +2667,7 @@ contains
 
       USE RM_Globals, only: LIBFLG, TOL, HXFLAG, PCENT, RUCK, DBFNAM, KZHPSK, KZHPRL, KZHPKY, DFLAG, RMSTAT
       USE RM_Attributes, only: ATTGET, LOCATT
+      USE RM_Blocks, only: BLKDEF
       USE RM_BufferData, only: BUFFER
       USE Extern, only: IMSG, AMSG, MSG
       USE Files, only: RMCLOS
