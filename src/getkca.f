@@ -2,7 +2,7 @@
 
          USE RM_Globals, only : RMSTAT
          USE RM_Attributes, only: ATTGET, LOCATT
-         USE RM_Blocks, only: BLKDWN, BLKLOC, BLKUP
+         USE RM_Blocks, only: BLKLOC
          USE RM_BufferData, only: BUFFER
          USE Extern, only: IMSG, AMSG, MSG
          USE Lexer, only : KXKEYW, KXNAME, IDT, ASCREC, IDP, IDL, KWS

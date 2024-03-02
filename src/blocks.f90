@@ -3,15 +3,12 @@ MODULE RM_Blocks
    private
 
    public BLKCHG
-   public BLKCLN
    public BLKCLR
    public BLKDEF
    public BLKDSP
-   public BLKDWN
    public BLKEXT
    public BLKLOC
    public BLKNXT
-   public BLKUP
 
 
 contains
@@ -103,41 +100,6 @@ contains
       RMSTAT = 1001
       RETURN
    END SUBROUTINE BLKCHG
-
-
-   SUBROUTINE BLKCLN
-      !!
-      !!  PURPOSE: CLEAN OUT THE ENTIRE BUFFER AREA
-      !!
-      !!  RM_Parameters -- NONE
-      !!
-
-      USE RM_Parameters
-      USE Files, only : FILE2, LENBF2, CURBLK, MODFLG
-      USE RM_BufferData, only: BUFFER
-      USE RM_Globals, only : RMSTAT
-      USE RandomFiles, only : RIOOUT
-
-      INCLUDE 'incore.inc'
-      INTEGER :: I, IOS, KQ1
-      !
-      !  WRITE OUT ANY PAGES THAT HAVE BEEN MODIFIED
-      !
-      DO I=1,3
-         IF(MODFLG(I).EQ.0) GO TO 90
-         KQ1 = BLKLOC(I)
-         CALL RIOOUT(FILE2,CURBLK(I),BUFFER(KQ1),LENBF2,IOS)
-         IF(IOS.NE.0) RMSTAT = 2200 + IOS
-         MODFLG(I) = 0
-90       CONTINUE
-         CURBLK(I) = 0
-         CALL BLKCLR(I)
-      END DO
-      DO I=4,9
-         CALL BLKCLR(I)
-      END DO
-      RETURN
-   END SUBROUTINE BLKCLN
 
 
    SUBROUTINE BLKCLR(IND)
@@ -331,40 +293,6 @@ contains
    END SUBROUTINE BLKDSP
 
 
-   SUBROUTINE BLKDWN
-      !!
-      !!  GO TO THE NEXT LOWER BLOCK SET.
-      !!
-
-      USE RM_BufferData, only: BUFFER
-      USE Files, only : CURBLK, MODFLG
-      USE Utils, only : ZEROIT
-
-      INCLUDE 'incore.inc'
-
-      INTEGER :: II, IB, IN
-
-      CALL BLKCLN
-      DO II=10,20
-         CALL BLKCLR(II)
-      END DO
-
-      IF (NEXT .LT. 69+1) GOTO 900
-      !
-      !  GET THE OLD BLOCK SET INFO.
-      IB = NEXT - 69
-      IN = NEXT - 7
-      CALL BLKMOV(BLOCKS,BUFFER(IB),63)
-      CALL BLKMOV(CURBLK,BUFFER(IB+63),3)
-      CALL BLKMOV(MODFLG,BUFFER(IB+66),3)
-      NUMBL = BUFFER(IN)
-      CALL ZEROIT(BUFFER(IB),69)
-      NEXT = IB
-900   CONTINUE
-      RETURN
-   END SUBROUTINE BLKDWN
-
-
    SUBROUTINE BLKEXT(IND,NROWS,NCOLS)
       !!
       !!  PURPOSE:    EXTRACT THE NUMBER OF ROWS AND COLUMNS FOR A BLOCK
@@ -439,56 +367,6 @@ contains
       NXT = NEXT
       RETURN
    END SUBROUTINE BLKNXT
-
-
-   SUBROUTINE BLKUP
-      !!
-      !!  MAKE A NEW BLOCK SET.
-      !!
-
-      USE RM_Parameters
-      USE RM_BufferData, only: BUFFER
-      USE Files, only: CURBLK, MODFLG
-      USE RM_Globals, only : RMSTAT
-      USE Utils, only: ZEROIT
-
-      INCLUDE 'incore.inc'
-
-      INTEGER :: ISTAT, NEW
-
-      !  ASSUME WE ARE GOING TO RUN OUT OF SPACE.
-      ISTAT = RMSTAT
-      RMSTAT = 1001
-      !
-      !  SEE IF THERE IS ENOUGH ROOM TO STORE THE BLOCK INFO.
-      NEW = 69 + NEXT - 1
-      !
-      !  IF NOT ENOUGH ROOM, EXIT.
-      IF (NEW .GE. LIMIT) then
-         write(6,9997) new, limit
-9997     format(' new, limit ', i6, i6)
-         GOTO 900
-      endif
-      !CCCC CALL BLKCLN
-      !
-      !  AOK.
-      RMSTAT = ISTAT
-      !
-      !  MOVE OLD BLOCK INFO INTO RIMBUF COMMON
-      CALL BLKMOV(BUFFER(NEXT),BLOCKS,63)
-      CALL BLKMOV(BUFFER(NEXT+63),CURBLK,3)
-      CALL BLKMOV(BUFFER(NEXT+66),MODFLG,3)
-      NEXT = NEXT + 69
-      !
-      !  CLEAR OUT OLD BLOCK INFO.
-      CALL ZEROIT(BLOCKS,60)
-      CALL ZEROIT(CURBLK,3)
-      CALL ZEROIT(MODFLG,3)
-      NUMBL = 0
-      !
-900   CONTINUE
-      RETURN
-   END SUBROUTINE BLKUP
 
 
 END MODULE RM_Blocks

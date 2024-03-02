@@ -222,7 +222,7 @@ contains
       !!
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DBNAME, USERID, OWNER, RMSTAT, NOUTR, ULPP
-      USE RM_Blocks, only: BLKCHG, BLKCLN, BLKDEF, BLKLOC
+      USE RM_Blocks, only: BLKCHG, BLKDEF, BLKLOC
       USE RM_BufferData, only: BUFFER, IREL
       USE DateTime, only: RMTIME, RMDATE
       USE Extern, only: SETOUT, DMSG, AMSG, MSG
@@ -1220,7 +1220,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG
       USE RM_Attributes, only: ATTADD, ATTGET, ATTNEW, LOCATT
-      USE RM_Blocks, only: BLKCLN, BLKCLR, BLKDEF, BLKLOC
+      USE RM_Blocks, only: BLKCLR, BLKDEF, BLKLOC
       USE RM_BufferData, only: BUFFER
       USE Extern, only: IMSG, AMSG, MSG
       Use Lexer, only: KXNAME, TOKTYP, ASCREC, IDP, KWS, ITEMS, EQKEYW, LXSREC
@@ -1564,7 +1564,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG, RMSTAT
       USE RM_Attributes, only: ATTADD, ATTGET, ATTNEW, LOCATT
-      USE RM_Blocks, only: BLKCLN, BLKCLR, BLKDEF, BLKLOC
+      USE RM_Blocks, only: BLKCLR, BLKDEF, BLKLOC
       USE RM_BufferData, only: BUFFER
       USE RM_Buffer, only: ADDDAT
       USE DateTime, only : RMDATE
@@ -1798,7 +1798,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, DMFLAG
       USE RM_Attributes, only: ATTADD, ATTGET, ATTNEW, LOCATT
-      USE RM_Blocks, only: BLKCLN, BLKCLR, BLKDEF, BLKLOC
+      USE RM_Blocks, only: BLKCLR, BLKDEF, BLKLOC
       USE RM_BufferData, only: BUFFER
       USE DateTime, only : RMDATE
       USE Extern, only: MSG

@@ -1,7 +1,7 @@
       SUBROUTINE PGCOMP
 
          USE RM_Globals, only: PGVARS, INLINE, PGFLAG, RMSTAT
-         USE RM_Blocks, only: BLKCLN, BLKCLR, BLKDEF, BLKLOC
+         USE RM_Blocks, only: BLKCLR, BLKDEF, BLKLOC
          USE RM_BufferData, only: BUFFER
          USE DateTime, only: RMTIME, RMDATE
          USE Extern, only: IMSG, AMSG, MSG

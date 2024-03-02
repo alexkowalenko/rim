@@ -6,7 +6,7 @@
 
 add_library(rimcommon STATIC
     parameters.f90
-    blkmov.f
+    blkcln.f90 blkdwn.f90 blkmov.f blkup.f90
     btadd.f btget.f btinit.f btlki.f btlkr.f btmove.f btput.f btrep.f btsert.f
     change.f chkatt.f chkrel.f
     delete.f eq.f
