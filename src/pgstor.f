@@ -12,7 +12,6 @@ C     INPUT:   PGM-----PROGRAM TO STORE
 C              LPGM----LENGTH OF PGM
 C              IF LPGM<0 THEN ALLOCATE ENSURE SPACE ONLY
 C
-         INCLUDE 'incore.inc'
          INCLUDE 'pgmcom.inc'
 C
          PGSTOR = .FALSE.

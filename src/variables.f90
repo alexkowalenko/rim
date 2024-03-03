@@ -19,7 +19,6 @@ contains
       USE RM_Text, only : FILCH, ABLANK
       USE Utils, only : ZMOVE, HTOI
 
-      INCLUDE 'incore.inc'
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'pgmcom.inc'
       !

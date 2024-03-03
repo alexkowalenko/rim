@@ -3,14 +3,12 @@ SUBROUTINE BLKDWN
    !!  GO TO THE NEXT LOWER BLOCK SET.
    !!
 
-   USE RM_Blocks, only: BLKCLR
+   USE RM_Blocks, only: BLKCLR, BLOCKS, NEXT, NUMBL
    USE RM_BufferData, only: BUFFER
    USE Files, only : CURBLK, MODFLG
    USE Utils, only : ZEROIT
 
    implicit none
-
-   INCLUDE 'incore.inc'
 
    INTEGER :: II, IB, IN
 

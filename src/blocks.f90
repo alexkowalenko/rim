@@ -2,6 +2,24 @@ MODULE RM_Blocks
    implicit none
    private
 
+   !  *** / I N C O R E / ***
+   !
+   !  CONTROL VARIABLES FOR INCORE BUFFER MANAGEMENT
+   !
+
+   !COMMON /INCORE/ BLOCKS(3,20),NEXT,LIMIT,NUMBL
+   INTEGER, public :: BLOCKS(3,20)
+   !!     BLOCKS--ARRAY WITH POINTERS AND DIMENSIONS OF INCORE BLOCKS
+   !!         ROW 1---STARTING POSITION
+   !!         ROW 2---NUMBER OF ROWS
+   !!         ROW 3---NUMBER OF COLUMNS
+   INTEGER, public :: NEXT
+   !!     NEXT----NEXT AVAILABLE ADDRESS IN THE BUFFER
+   INTEGER, public :: LIMIT
+   !!     LIMIT---LAST WORD IN THE BUFFER
+   INTEGER, public :: NUMBL
+   !!     NUMBL---NUMBER OF BLOCKS DEFINED
+
    public BLKCHG
    public BLKCLR
    public BLKDEF
@@ -9,9 +27,20 @@ MODULE RM_Blocks
    public BLKEXT
    public BLKLOC
    public BLKNXT
-
+   public Intialise
 
 contains
+
+   SUBROUTINE Intialise
+      USE RM_Parameters, only: ZBUF
+      USE Utils, only : ZEROIT
+
+      CALL ZEROIT(BLOCKS(1,1),60)
+      NEXT = 1
+      LIMIT = ZBUF
+      NUMBL = 0
+   END SUBROUTINE
+
 
    SUBROUTINE BLKCHG(IND,NROWS,NCOLS)
       !!
@@ -31,7 +60,6 @@ contains
       INTEGER, intent(in) :: IND
       INTEGER, intent(in) :: NROWS
       INTEGER, intent(in) :: NCOLS
-      INCLUDE 'incore.inc'
 
       INTEGER :: KNR, KNC, NWOLD, KS, NWNEW, NWADD, MOVE, I, ITEST
 
@@ -116,8 +144,6 @@ contains
 
       INTEGER, intent(in) :: IND
 
-      INCLUDE 'incore.inc'
-
       INTEGER :: KNR, KNC, NWOLD, KS, MOVE, I
 
       !
@@ -181,8 +207,6 @@ contains
       INTEGER, intent(in) :: IND
       INTEGER, intent(in) :: NROWS
       INTEGER, intent(in) :: NCOLS
-
-      INCLUDE 'incore.inc'
 
       INTEGER :: NWNEW
 
@@ -306,7 +330,6 @@ contains
       INTEGER, intent(out) :: NROWS
       INTEGER, intent(out) :: NCOLS
 
-      INCLUDE 'incore.inc'
       !
       !  EXTRACT THE DATA FROM BLOCKS.
       !
@@ -327,8 +350,6 @@ contains
       USE Extern, only: IMSG, MSG
 
       INTEGER, intent(in) :: IND
-
-      INCLUDE 'incore.inc'
 
       INTEGER :: KS
       !
@@ -361,7 +382,6 @@ contains
 
       INTEGER, intent(out) :: NXT
 
-      INCLUDE 'incore.inc'
       !
       CALL BLKCLN
       NXT = NEXT

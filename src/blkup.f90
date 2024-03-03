@@ -4,14 +4,13 @@ SUBROUTINE BLKUP
    !!
 
    USE RM_Parameters
+   USE RM_Blocks, only: BLOCKS, NEXT, LIMIT, NUMBL
    USE RM_BufferData, only: BUFFER
    USE Files, only: CURBLK, MODFLG
    USE RM_Globals, only : RMSTAT
    USE Utils, only: ZEROIT
 
    implicit none
-
-   INCLUDE 'incore.inc'
 
    INTEGER :: ISTAT, NEW
 

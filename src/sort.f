@@ -2,7 +2,7 @@
 
          USE RM_Globals, only : PGFLAG, MRINDX, RMSTAT
          USE RM_Attributes, only: ATTGET, LOCATT
-         USE RM_Blocks, only: BLKCLR, BLKDEF, BLKNXT
+         USE RM_Blocks, only: BLKCLR, BLKDEF, BLKNXT, LIMIT
          USE RM_BufferData, only: BUFFER
          USE RM_Buffer, only: GETDAT
          USE Extern, only: IMSG, MSG
@@ -28,7 +28,6 @@ C
          INCLUDE 'srtcom.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
-         INCLUDE 'incore.inc'
 C
          DIMENSION JBUF(ZMSRT)
 C===============================

@@ -13,7 +13,6 @@ SUBROUTINE BLKCLN
 
    implicit none
 
-   INCLUDE 'incore.inc'
    INTEGER :: I, IOS, KQ1
    !
    !  WRITE OUT ANY PAGES THAT HAVE BEEN MODIFIED

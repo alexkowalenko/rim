@@ -149,6 +149,7 @@ contains
       !! RUN-TIME INITIALIZATION (CALLED WHEN DATABASE IS OPENED)
       !!
       USE RM_Parameters
+      USE RM_Blocks, only: Blocks_Intialise => Intialise
       USE Files, only: Files_Initialise => Initialise
       USE RM_Attributes, only: Attributes_Initialise => Initialise
       USE RM_Links, only: Links_Initialise => Initialise
@@ -156,8 +157,6 @@ contains
       USE RM_Text, only : BLANK
       USE Utils, only : ZEROIT, ZMOVE
 
-
-      INCLUDE 'incore.inc'
       INCLUDE 'tupler.inc'
       INCLUDE 'rimptr.inc'
       INCLUDE 'srtcom.inc'
@@ -178,10 +177,7 @@ contains
       CALL Links_Initialise
 
       !  /INCORE/
-      CALL ZEROIT(BLOCKS(1,1),60)
-      NEXT = 1
-      LIMIT = ZBUF
-      NUMBL = 0
+      CALL Blocks_Intialise
 
       !  /F1COM/
       !  /F2COM/
