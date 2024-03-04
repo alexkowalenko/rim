@@ -2,6 +2,7 @@
 
          USE RM_Globals, only : RMSTAT
          USE RM_BufferData, only: BUFFER
+         USE Utils, only: BLKMOV
 
          INCLUDE 'syspar.inc'
 C

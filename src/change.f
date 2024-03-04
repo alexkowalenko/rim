@@ -9,7 +9,7 @@
          USE Message, only : WARN
          USE RM_Relations, only: RELPUT
          USE RM_Text, only : BLANK
-         USE Utils, only : ZMOVE
+         USE Utils, only : ZMOVE, BLKMOV
 
          INCLUDE 'syspar.inc'
 C
@@ -29,8 +29,8 @@ C         NTUP----SCRATCH ARRAY FOR A TUPLE
          INCLUDE 'tupler.inc'
 C
          CHARACTER*1 OP
-         DIMENSION MAT(1)
-         DIMENSION NVAL(2), NTUP(1)
+         INTEGER :: MAT(1)
+         INTEGER :: NVAL(2), NTUP(1)
          LOGICAL NE, EQ
          LOGICAL SINGLE
          INCLUDE 'dclar1.inc'

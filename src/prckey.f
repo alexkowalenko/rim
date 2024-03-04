@@ -1,6 +1,7 @@
       SUBROUTINE PRCKEY(IWORD,MAT,ATT)
 
          USE RM_Attributes, only: ATTGET, ATTPUT, LOCATT
+         USE Utils, only: BLKMOV
 
          INCLUDE 'syspar.inc'
 C

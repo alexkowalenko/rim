@@ -7,7 +7,7 @@
          USE Extern, only: IMSG, MSG
          USE Message, only : WARN
          USE RM_Relations, only : RELGET, LOCREL, RELPUT
-         USE Utils, only : HTOI, ITOH
+         USE Utils, only : HTOI, ITOH, BLKMOV
 
          INCLUDE 'syspar.inc'
 C

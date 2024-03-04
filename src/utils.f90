@@ -2,22 +2,31 @@ MODULE Utils
    implicit none
    private
 
+   !interface BLKMOV
+   !   MODULE SUBROUTINE BLKMOV_array(TO,FROM,NWORDS)
+   !      INTEGER, intent(out) :: TO(*)
+   !      INTEGER, intent(in) :: FROM(*)
+   !      INTEGER, intent(in) :: NWORDS
+   !   END SUBROUTINE
+   !end interface BLKMOV
+
    public ZEROIT
    public NULLIT
    public ZMOVE
    public NDIGIT
    public HTOI, ITOH
+   public BLKMOV
 
 contains
 
    SUBROUTINE ZEROIT(ARRAY,NWDS)
-      !
-      !  PURPOSE:   ZERO OUT AN ARRAY
-      !
-      !  PARAMETERS:
-      !     ARRAY---ARRAY TO BE ZEROED OUT
-      !     NWDS----NUMBER OF WORDS IN THE ARRAY
-      !
+      !!
+      !!  PURPOSE:   ZERO OUT AN ARRAY
+      !!
+      !!  PARAMETERS:
+      !!     ARRAY---ARRAY TO BE ZEROED OUT
+      !!     NWDS----NUMBER OF WORDS IN THE ARRAY
+      !!
       INTEGER, intent(out) :: ARRAY(1)
       INTEGER, intent(in) :: NWDS
 
@@ -32,12 +41,12 @@ contains
 
    SUBROUTINE NULLIT(WORD1)
       USE RM_Parameters, only : Z, NULL
-      !
-      !  PURPOSE:   COPIES NULL TO WORD1
-      !
-      !  PARAMETERS:
-      !     WORD1---DESTINATION LONG WORD
-      !
+      !!
+      !!  PURPOSE:   COPIES NULL TO WORD1
+      !!
+      !!  PARAMETERS:
+      !!     WORD1---DESTINATION LONG WORD
+      !!
       INTEGER, intent(out) :: WORD1(Z)
 
       INTEGER :: I
@@ -51,13 +60,13 @@ contains
 
    SUBROUTINE ZMOVE(WORD1,WORD2)
       USE RM_Parameters, only : Z
-      !
-      !  PURPOSE:   COPIES WORD2 TO WORD1
-      !
-      !  PARAMETERS:
-      !     WORD1---DESTINATION LONG WORD
-      !     WORD2---SOURCE LONG WORD
-      !
+      !!
+      !!  PURPOSE:   COPIES WORD2 TO WORD1
+      !!
+      !!  PARAMETERS:
+      !!     WORD1---DESTINATION LONG WORD
+      !!     WORD2---SOURCE LONG WORD
+      !!
       INTEGER, intent(out) :: WORD1(Z)
       INTEGER, intent(in) :: WORD2(Z)
 
@@ -71,9 +80,9 @@ contains
 
 
    INTEGER FUNCTION NDIGIT(INT)
-      !
-      ! RETURN THE NUMBER OF DIGITS IN INT
-      !
+      !!
+      !! RETURN THE NUMBER OF DIGITS IN INT
+      !!
       INTEGER, intent(in) :: INT
 
       INTEGER :: ABS
@@ -93,11 +102,11 @@ contains
 
    SUBROUTINE HTOI(I,J,K)
       USE RM_Parameters, only : ZHTOI
-      !
-      !  PURPOSE:   PACK I AND J INTO K
-      !
-      !  OFFSET I BY MULTIPLYING BY ZHTOI
-      !
+      !!
+      !!  PURPOSE:   PACK I AND J INTO K
+      !!
+      !!  OFFSET I BY MULTIPLYING BY ZHTOI
+      !!
       INTEGER, intent(in) :: I, J
       INTEGER, intent(out) :: K
 
@@ -108,11 +117,11 @@ contains
 
    SUBROUTINE ITOH(I,J,K)
       USE RM_Parameters, only : ZHTOI
-      !
-      !  PURPOSE:   UNPACK I AND J FROM K
-      !
-      !  I WAS MULTIPLIED BY ZHTOI
-      !
+      !!
+      !!  PURPOSE:   UNPACK I AND J FROM K
+      !!
+      !!  I WAS MULTIPLIED BY ZHTOI
+      !!
       INTEGER, intent(out) :: I, J
       INTEGER, intent(in) :: K
 
@@ -120,5 +129,34 @@ contains
       J = K - (ZHTOI * I)
       RETURN
    END SUBROUTINE ITOH
+
+
+   SUBROUTINE BLKMOV(TO,FROM,NWORDS)
+      !!
+      !!  PURPOSE:   MOVE WORDS BETWEEN ARRAYS
+      !!
+      INTEGER, intent(out) :: TO(*)
+      INTEGER, intent(in) :: FROM(*)
+      INTEGER, intent(in) :: NWORDS
+
+      INTEGER :: I, NW
+      IF(NWORDS.LT.0) GO TO 200
+      !!
+      !!  MOVE FROM THE FRONT OF THE ARRAYS.
+      !!
+      DO I=1,NWORDS
+         TO(I) = FROM(I)
+      END DO
+      RETURN
+      !
+      !  MOVE FROM THE REAR OF THE ARRAYS.
+      !
+200   CONTINUE
+      NW = -NWORDS
+      DO I=1,NW
+         TO(NW+1-I) = FROM(NW+1-I)
+      END DO
+      RETURN
+   END SUBROUTINE BLKMOV
 
 END MODULE Utils
