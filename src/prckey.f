@@ -2,6 +2,7 @@
 
          USE RM_Attributes, only: ATTGET, ATTPUT, LOCATT
          USE RM_BTree, only: BTADD
+         USE RM_BTree_Data, only : START
          USE Utils, only: BLKMOV
 
          INCLUDE 'syspar.inc'
@@ -18,7 +19,6 @@ C                 (ATTRIBUTE TABLE)
 C
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
-         INCLUDE 'start.inc'
          INCLUDE 'rimptr.inc'
          CHARACTER*(*) IWORD
          INTEGER COLUMN

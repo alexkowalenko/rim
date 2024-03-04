@@ -3,6 +3,7 @@
          USE RM_Globals, only : RMSTAT
          USE RM_Attributes, only: ATTGET, ATTPUT, LOCATT
          USE RM_BTree, only: BTADD
+         USE RM_BTree_Data, only : START
          USE RM_Buffer, only: ADDDAT, DELDAT, PUTDAT
          USE Extern, only: IMSG, AMSG, MSG
          USE Formater, only : TYPER
@@ -25,7 +26,6 @@ C         NTUP----SCRATCH ARRAY FOR A TUPLE
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
-         INCLUDE 'start.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'tupler.inc'
 C

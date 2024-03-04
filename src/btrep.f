@@ -1,6 +1,7 @@
       SUBROUTINE BTREP(VALU,IPTR,IPTRO,TYPE)
 
          USE RM_BTree, only: BTGET, BTPUT
+         USE RM_BTree_Data, only: CORE, VALUE, RVALUE, START, STACK, SP
          USE Files, only : LENBF3
          USE Utils, only : ITOH
 
@@ -22,9 +23,6 @@ C
 C  DECLARATIVES
 C
          INCLUDE 'rmatts.inc'
-         INCLUDE 'btbuf.inc'
-         INCLUDE 'start.inc'
-         INCLUDE 'stack.inc'
 C
          INTEGER VAL,VALU(1)
 C

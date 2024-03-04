@@ -575,6 +575,7 @@ contains
       USE RM_Globals, only : DFLAG, RMSTAT
       USE RM_Attributes, only: ATTGET, ATTPUT, LOCATT
       USE RM_BTree, only: BTADD, BTINIT
+      USE RM_BTree_Data, only : START
       USE RM_BufferData, only: BUFFER
       USE RM_Buffer, only: GETDAT
       USE Extern, only: AMSG, MSG
@@ -587,7 +588,6 @@ contains
       INCLUDE 'rimptr.inc'
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tupler.inc'
-      INCLUDE 'start.inc'
       INCLUDE 'whcom.inc.f90'
       INCLUDE 'srtcom.inc'
       INCLUDE 'dclar1.inc'

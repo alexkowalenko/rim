@@ -26,6 +26,7 @@ contains
       !!     BTPUT---PAGING ROUTINE
       !!
       USE RM_Parameters
+      USE RM_BTree_Data, only: CORE, VALUE, RVALUE, START, STACK, SP
       USE Files, only : LENBF3, MOTREC, MOTADD, LF3REC
       USE RM_Globals, only : RMSTAT
       USE Maths, only : DTOR
@@ -48,9 +49,6 @@ contains
       !     BTPUT---PAGING ROUTINE
       !
       INCLUDE 'rmatts.inc'
-      INCLUDE 'btbuf.inc'
-      INCLUDE 'start.inc'
-      INCLUDE 'stack.inc'
       !
       ! RVAL IS REAL UNTIL BTREE IS ALLOWED 2 WORDS PER ENTRY
       !
@@ -231,16 +229,14 @@ contains
       !!
 
       USE RM_Parameters
-      USE Files, only: FILE3, LENBF3, LAST, NUMIC, MAXIC, ICORE
-      USE Files, only: LF3REC
+      USE RM_BTree_Data, only: CORE
+      USE Files, only: FILE3, LENBF3, LAST, NUMIC, MAXIC, ICORE, LF3REC
       USE RM_Globals, only : RMSTAT
       USE RandomFiles, only : RIOIN, RIOOUT
       USE Utils, only : ZEROIT
 
       INTEGER, intent(in) :: ID
       INTEGER, intent(out) :: NSTRT
-
-      INCLUDE 'btbuf.inc'
 
       INTEGER :: NUMB, MINUMB, MINUSE, NUMUSE, ISTRT, IEND, IOBN, IOS
 
@@ -335,8 +331,8 @@ contains
       !!
 
       USE RM_Parameters
+      USE RM_BTree_Data, only : VALUE
       USE Files, only: LF3REC
-      INCLUDE 'btbuf.inc'
       !
       INTEGER, intent(out) :: START
 
@@ -375,10 +371,8 @@ contains
       !!
 
       USE RM_Parameters
+      USE RM_BTree_Data, only : VALUE, START
       USE Files, only : LENBF3
-
-      INCLUDE 'btbuf.inc'
-      INCLUDE 'start.inc'
       !
       INTEGER, intent(in) :: VAL
       INTEGER, intent(out) :: IPTR, MOTID
@@ -464,10 +458,8 @@ contains
       !!     BTGET---PAGING ROUTINE
       !!
       USE RM_Parameters
+      USE RM_BTree_Data, only : VALUE, RVALUE, START
       USE Files, only : LENBF3
-
-      INCLUDE 'btbuf.inc'
-      INCLUDE 'start.inc'
       !
       ! VAL IS REAL UNTIL BTREE IS ALLOWED 2 WORDS
       !
@@ -588,14 +580,12 @@ contains
       !!     BTMOVE--MOVES DATA BETWEEN AREAS
       !!
       USE RM_Parameters
+      USE RM_BTree_Data, only : VALUE, START
       USE Files, only : LENBF3, LF3REC, REUSE
       USE Utils, only : ZEROIT
 
       INTEGER :: VAL, IP, LOC, IN
       INTEGER :: STACK(1)
-
-      INCLUDE 'btbuf.inc'
-      INCLUDE 'start.inc'
 
       INTEGER :: VALT, SP
       INTEGER :: KEND, NV, J, IBT, IMT, N2, L, N1

@@ -2,6 +2,7 @@
 
          USE RM_Globals, only : DBDATE, RMSTAT
          USE RM_Attributes, only: ATTGET, ATTPUT, LOCATT
+         USE RM_BTree_Data, only : START
          USE RM_BTree, only: BTADD
          USE RM_Buffer, only: ADDDAT
          USE RM_Relations, only : RELPUT
@@ -23,7 +24,6 @@ C         TUPLE---USER ARRAY WITH REPLACEMENT TUPLE
          INCLUDE 'rmatts.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
-         INCLUDE 'start.inc'
          INTEGER COLUMN
          INCLUDE 'picom.inc'
 C

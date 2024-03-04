@@ -2,6 +2,7 @@
 
          USE RM_Globals, only : TRACE, HXFLAG, RMSTAT
          USE RM_BTree, only: BTLKI, BTLKR
+         USE RM_BTree_Data, only : START
          USE RM_BufferData, only: BUFFER
          USE RM_Buffer, only: GETDAT
          USE Extern, only: IMSG, MSG
@@ -22,7 +23,6 @@ C         LENGTH--LENGTH OF TUPLE IN WORDS
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
-         INCLUDE 'start.inc'
 C
          DIMENSION MAT(1)
          LOGICAL EQTEST, WHEVAL

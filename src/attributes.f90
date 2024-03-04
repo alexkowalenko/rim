@@ -108,7 +108,6 @@ CONTAINS
       INTEGER, intent(out) :: STATUS
 
       INCLUDE 'rmatts.inc'
-      INCLUDE 'start.inc'
       !
       STATUS = 0
       IF(LROW.EQ.0) GO TO 9000
@@ -257,10 +256,10 @@ CONTAINS
       !!     NATT----NUMBER OF ATTRIBUTES IN THE RELATION
       USE RM_Parameters
       USE RM_Attributes_Data
+      USE RM_BTree_Data, only : START
       USE Files, only : LF1REC
 
       INCLUDE 'rmatts.inc'
-      INCLUDE 'start.inc'
       INCLUDE 'dclar1.inc'
 
       ! INTEGER, intent(in) :: RNAME(*) ! declared in dclar1.inc (?)
@@ -416,7 +415,6 @@ CONTAINS
       USE RM_Text, only : BLANK
       USE Utils, only : ZMOVE
 
-      INCLUDE 'start.inc'
       LOGICAL :: EQ
       LOGICAL :: NE
       INCLUDE 'dclar1.inc'

@@ -2,6 +2,7 @@
 
          USE RM_Globals, only : RMSTAT
          USE RM_Attributes, only: ATTGET, LOCATT
+         USE RM_BTree_Data, only : START
          USE RM_Buffer, only: DELDAT
          USE Extern, only: IMSG, MSG
          USE RM_Relations, only : RELGET, RELPUT
@@ -13,7 +14,6 @@ C  THIS ROUTINE PROCESSES A DELETE IN RIM.
 C
 C  RM_Parameters
 C         MAT-----ARRAY TO HOLD ONE TUPLE
-         INCLUDE 'start.inc'
          INCLUDE 'tupler.inc'
          INCLUDE 'tuplea.inc'
          INCLUDE 'rimptr.inc'

@@ -453,6 +453,7 @@ contains
       USE RM_Globals, only : DFLAG, RMSTAT
       USE RM_Attributes, only: ATTGET, LOCATT
       USE RM_Blocks, only: BLKCLR, BLKDEF, BLKLOC
+      USE RM_BTree_Data, only : START
       USE RM_BufferData, only: BUFFER
       USE RM_Buffer, only: DELDAT
       USE Extern, only: IMSG, MSG
@@ -461,7 +462,6 @@ contains
       USE RM_Relations, only : RELGET, RELPUT
       USE RM_Text, only : BLANK
 
-      INCLUDE 'start.inc'
       INCLUDE 'rimptr.inc'
       INCLUDE 'tupler.inc'
       INCLUDE 'tuplea.inc.f90'

@@ -16,7 +16,6 @@ C
          INCLUDE 'rmatts.inc'
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
-         INCLUDE 'start.inc'
          INCLUDE 'pgmcom.inc'
 C
          LOGICAL OK,BTEST

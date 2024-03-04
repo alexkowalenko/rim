@@ -1,6 +1,7 @@
       SUBROUTINE MOTSCN(MOTID,IPTR)
 
          USE RM_BTree, only: BTGET
+         USE RM_BTree_Data, only: CORE
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'
@@ -12,9 +13,7 @@ C    INPUT:  MOTID---ID FOR THIS WORD
 C    OUTPUT: MOTID---ID FOR MOT WORD NEXT TIME OR 0
 C                    (0 IMPLIES THIS IS THE LAST VALUE)
 C            IPTR----USER POINTER DESIRED
-C
-C  DECLARATIVES
-         INCLUDE 'btbuf.inc'
+
 C
 C  CHECK FOR END OF MOT LIST.
 C

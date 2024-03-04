@@ -371,7 +371,6 @@ contains
       USE RM_Relations, only : RELPUT
       USE Utils, only : ZEROIT
 
-      INCLUDE 'start.inc'
       INCLUDE 'tuplea.inc.f90'
       INCLUDE 'tupler.inc'
       !
@@ -500,7 +499,6 @@ contains
       !        6) ITEM POSITION (LOADFM CALCULATES THIS)
       !     NFOR----NUMBER OF ITEMS IN FOR
       !
-      INCLUDE 'start.inc'
       INCLUDE 'rimptr.inc'
       INCLUDE 'rmatts.inc'
       INCLUDE 'tuplea.inc.f90'

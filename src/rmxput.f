@@ -3,6 +3,7 @@
          USE RM_Globals, only:  DBDATE, RMSTAT
          USE RM_Attributes, only: ATTGET, ATTPUT, LOCATT
          USE RM_BTree, only: BTADD
+         USE RM_BTree_Data, only : START
          USE RM_Blocks, only: BLKCHG, BLKLOC
          USE RM_BufferData, only: BUFFER
          USE RM_Buffer, only: ADDDAT, DELDAT, PUTDAT
@@ -24,7 +25,6 @@ C
          INCLUDE 'rimptr.inc'
          INCLUDE 'whcom.inc'
          INCLUDE 'rmatts.inc'
-         INCLUDE 'start.inc'
          INCLUDE 'picom.inc'
 C
          INTEGER TUPLE(1)

@@ -30,6 +30,7 @@ add_library(rimcommon STATIC
     attributes.f90
     attributes_data.f90
     blocks.f90
+    btree_data.f90
     btree.f90
     buffer_data.f90
     buffer.f90

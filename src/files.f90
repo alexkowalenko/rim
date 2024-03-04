@@ -447,12 +447,10 @@ CONTAINS
       !!      RIMDB3----NAME OF THE FILE TO USE FOR FILE 3
       !!
       USE RM_Parameters
+      USE RM_BTree_Data, only: CORE, START
       USE RM_Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBHDR, RMSTAT
       USE RandomFiles, only : RIOOPN, RIOIN, RIOOUT
       USE Utils, only : ZEROIT, ZMOVE
-
-      INCLUDE 'btbuf.inc'
-      INCLUDE 'start.inc'
 
       CHARACTER*(ZFNAML), intent(in) :: RIMDB3
 
@@ -530,13 +528,13 @@ CONTAINS
    SUBROUTINE F3CLO
       USE RM_Parameters
       USE RM_Globals, only : DBNAME, OWNER, DBDATE, DBTIME, KDBVER, KDBHDR, RMSTAT
+      USE RM_BTree_Data, only: CORE
       USE RandomFiles, only : RIOCLO, RIOOUT
       USE Utils, only : ZEROIT, ZMOVE
 
       !
       !  PURPOSE:    CLOSE THE B-TREE RANDOM IO FILE - FILE 3
       !
-      INCLUDE 'btbuf.inc'
 
       INTEGER :: NUMB, ISTRT, IOS
 
