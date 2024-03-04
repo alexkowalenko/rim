@@ -574,6 +574,7 @@ contains
       USE RM_Parameters
       USE RM_Globals, only : DFLAG, RMSTAT
       USE RM_Attributes, only: ATTGET, ATTPUT, LOCATT
+      USE RM_BTree, only: BTADD, BTINIT
       USE RM_BufferData, only: BUFFER
       USE RM_Buffer, only: GETDAT
       USE Extern, only: AMSG, MSG

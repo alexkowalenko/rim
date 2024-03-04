@@ -1,6 +1,7 @@
       SUBROUTINE RMLOOK(MAT,INDEX,IFLAG,LENGTH)
 
          USE RM_Globals, only : TRACE, HXFLAG, RMSTAT
+         USE RM_BTree, only: BTLKI, BTLKR
          USE RM_BufferData, only: BUFFER
          USE RM_Buffer, only: GETDAT
          USE Extern, only: IMSG, MSG

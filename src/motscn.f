@@ -1,5 +1,6 @@
       SUBROUTINE MOTSCN(MOTID,IPTR)
 
+         USE RM_BTree, only: BTGET
          USE Utils, only : ITOH
 
          INCLUDE 'syspar.inc'

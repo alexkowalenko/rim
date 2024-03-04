@@ -2,6 +2,7 @@
 
          USE RM_Globals, only:  DBDATE, RMSTAT
          USE RM_Attributes, only: ATTGET, ATTPUT, LOCATT
+         USE RM_BTree, only: BTADD
          USE RM_Blocks, only: BLKCHG, BLKLOC
          USE RM_BufferData, only: BUFFER
          USE RM_Buffer, only: ADDDAT, DELDAT, PUTDAT

@@ -1,5 +1,6 @@
       SUBROUTINE BTREP(VALU,IPTR,IPTRO,TYPE)
 
+         USE RM_BTree, only: BTGET, BTPUT
          USE Files, only : LENBF3
          USE Utils, only : ITOH
 
